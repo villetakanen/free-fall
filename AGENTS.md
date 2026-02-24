@@ -1,6 +1,7 @@
 # AGENTS.md
 
-> **Project:** free-fall — web-native tabletop RPG authoring platform.
+FREE//FALL — tabletop RPG delivered as a web-native application
+
 > **Core constraint:** Experimental; prioritize learning velocity and clean architecture over premature optimization.
 
 ## Toolchain
@@ -29,3 +30,8 @@ _No toolchain configured yet. Update this table as tools are added._
 - Explain your plan before writing code
 - Handle errors explicitly — never swallow exceptions silently
 - Prefer simple, readable code over clever abstractions
+
+## Personas
+
+Invoke via skill: `/spec`
+Definitions: `.claude/skills/`
