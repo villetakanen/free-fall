@@ -1,3 +1,9 @@
+/* =========================================
+   APP TRAY — M3 Navigation Drawer
+   Toggle driven by checkbox :checked state.
+   JS only needed for focus trap + escape key.
+   ========================================= */
+
 .app-tray {
   --app-tray-z-tray: 100;
   --app-tray-z-scrim: 99;
@@ -5,13 +11,20 @@
   --app-tray-tray-width: calc(40 * var(--freefall-space-1));
   --app-tray-burger-size: calc(6 * var(--freefall-space-1));
   --app-tray-icon-size: calc(3 * var(--freefall-space-1));
-
-  display: flex;
-  min-height: 100vh;
 }
 
 /* =========================================
-   HAMBURGER BUTTON
+   TOGGLE (hidden checkbox)
+   ========================================= */
+
+.app-tray__toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================
+   HAMBURGER BUTTON (label for checkbox)
    ========================================= */
 
 .app-tray__burger {
@@ -24,8 +37,6 @@
   justify-content: center;
   width: var(--app-tray-burger-size);
   height: var(--app-tray-burger-size);
-  padding: 0;
-  border: none;
   border-radius: var(--freefall-space-1);
   background: transparent;
   color: var(--freefall-text-body);
@@ -50,11 +61,11 @@
   opacity: 0;
 }
 
-.app-tray[data-open] .app-tray__burger-icon--menu {
+.app-tray:has(.app-tray__toggle:checked) .app-tray__burger-icon--menu {
   opacity: 0;
 }
 
-.app-tray[data-open] .app-tray__burger-icon--close {
+.app-tray:has(.app-tray__toggle:checked) .app-tray__burger-icon--close {
   opacity: 1;
 }
 
@@ -107,7 +118,7 @@
   overflow-y: auto;
 }
 
-.app-tray[data-open] .app-tray__drawer {
+.app-tray:has(.app-tray__toggle:checked) .app-tray__drawer {
   transform: translateX(0);
   transition: transform 200ms ease-out;
 }
@@ -139,7 +150,7 @@
 }
 
 /* =========================================
-   SCRIM
+   SCRIM (label for checkbox — click to close)
    ========================================= */
 
 .app-tray__scrim {
@@ -150,21 +161,13 @@
   background: hsl(0 0% 0% / 0.5);
   opacity: 0;
   transition: opacity 150ms ease-in;
+  cursor: pointer;
 }
 
-.app-tray[data-open] .app-tray__scrim {
+.app-tray:has(.app-tray__toggle:checked) .app-tray__scrim {
   display: block;
   opacity: 1;
   transition: opacity 200ms ease-out;
-}
-
-/* =========================================
-   CONTENT
-   ========================================= */
-
-.app-tray__content {
-  flex: 1;
-  min-width: 0;
 }
 
 /* =========================================
@@ -193,10 +196,6 @@
     width: var(--app-tray-tray-width);
     border-right: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
   }
-
-  .app-tray__content {
-    transition: margin-left 150ms ease-in;
-  }
 }
 
 /* =========================================
@@ -213,12 +212,12 @@
     height: auto;
   }
 
-  .app-tray[data-open] .app-tray__drawer {
+  .app-tray:has(.app-tray__toggle:checked) .app-tray__drawer {
     width: var(--app-tray-tray-width);
     transform: translateX(0);
   }
 
-  .app-tray[data-open] .app-tray__scrim {
+  .app-tray:has(.app-tray__toggle:checked) .app-tray__scrim {
     display: none;
   }
 }

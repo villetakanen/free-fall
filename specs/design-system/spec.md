@@ -91,7 +91,7 @@ Design tokens exist in two forms that must stay in sync:
 
 - **No CSS frameworks** — The design system owns all styling. No Tailwind, Bootstrap, or similar.
 - **No component without demo** — Every exported component, token set, or style file must have a corresponding entry in the demo app.
-- **No JavaScript-heavy components** — If a component requires client-side JS, it must use a Svelte 5 island. Astro components are server-only.
+- **No framework islands for toggle UI** — If the core interaction is a state toggle (open/close, show/hide), use a CSS checkbox pattern with `:has(:checked)` and add JS as progressive enhancement only. Reserve Svelte 5 islands for genuinely complex reactive state that cannot be achieved with HTML + CSS.
 - **No app-specific styles in the package** — The design system is generic to all apps. App-specific overrides live in the consuming app.
 - **No build step for the package** — Source files are consumed directly. No compile, bundle, or transpile step in `packages/design-system`.
 

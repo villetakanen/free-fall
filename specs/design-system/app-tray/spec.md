@@ -6,6 +6,8 @@
 
 The app tray is the primary navigation surface for FREE//FALL. It follows the Material 3 navigation drawer pattern — a collapsible side panel that adapts across breakpoints from a full-screen modal on small viewports to a persistent rail + tray on large ones. A hamburger button with a micro-interaction animation (menu/close morph) controls the open/closed state at every breakpoint.
 
+The component is built with progressive enhancement: all layout, toggle, transitions, and scrim work with pure HTML + CSS. A small inline script adds keyboard support (Escape to close) and focus trap (modal overlay mode) as enhancements.
+
 Parent spec: `specs/design-system/spec.md`
 
 ### Architecture
@@ -40,6 +42,10 @@ The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-deskt
 +-------+---------------------------+
 ```
 
+**Toggle mechanism:**
+
+A hidden `<input type="checkbox">` drives the open/closed state. The hamburger button and scrim are both `<label>` elements for the checkbox. CSS `:has(.app-tray__toggle:checked)` selectors control all visual state changes. No JavaScript is required for toggle, transitions, or scrim dismiss.
+
 **Dimensions (grid-derived):**
 
 | Dimension | Formula | Resolves to |
@@ -52,7 +58,7 @@ The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-deskt
 
 **Hamburger button micro-interaction:**
 
-The hamburger icon animates between `menu` and `close` states using a CSS transition. Uses the Material Symbols Sharp `menu` and `close` ligatures. The transition morphs between the two glyphs via opacity crossfade — no custom SVG path animation.
+The hamburger icon animates between `menu` and `close` states using a CSS transition. Uses the Material Symbols Sharp `menu` and `close` ligatures. The transition morphs between the two glyphs via opacity crossfade — no custom SVG path animation. Driven entirely by checkbox `:checked` state.
 
 **Surface styling:**
 
@@ -67,16 +73,29 @@ The hamburger icon animates between `menu` and `close` states using a CSS transi
 
 **Component structure:**
 
-Since the tray requires open/close state and animated transitions, it will be implemented as a **Svelte 5 island** (per design system spec: "If a component requires client-side JS, it must use a Svelte 5 island").
+The tray is an Astro component — server-rendered HTML + CSS with a small inline `<script>` for progressive enhancement. No framework island required.
 
 | File | Contents |
 |---|---|
-| `src/components/AppTray.svelte` | Svelte 5 island — tray, rail, hamburger, state management |
-| `src/styles/app-tray.css` | Layout, dimensions, responsive rules, transitions |
+| `src/components/AppTray.astro` | Astro component — checkbox toggle, labels, rail, drawer, scrim, inline script |
+| `src/styles/app-tray.css` | Layout, dimensions, responsive rules, transitions — all driven by `:has(:checked)` |
+
+**What works without JavaScript:**
+
+- Hamburger toggle (checkbox + label)
+- Drawer slide-in/out transitions
+- Hamburger icon crossfade
+- Scrim display and click-to-close (label for same checkbox)
+- All responsive modes (rail, overlay, push)
+
+**What JavaScript adds (progressive enhancement):**
+
+- `Escape` key closes the tray
+- Focus trap when tray overlays content (small + medium viewports)
 
 **Scrim (small + medium only):**
 
-When the tray is open on small or medium viewports (where it overlays content), a semi-transparent scrim covers the content area. Clicking the scrim closes the tray.
+When the tray is open on small or medium viewports (where it overlays content), a `<label>` scrim covers the content area. Clicking the scrim unchecks the checkbox, closing the tray — no JavaScript needed.
 
 **Transition:**
 
@@ -84,35 +103,35 @@ When the tray is open on small or medium viewports (where it overlays content), 
 - Scrim fade: `opacity` with matching duration
 - Hamburger crossfade: `150ms`
 
-**Keyboard and accessibility:**
+**Keyboard and accessibility (progressive enhancement):**
 
-- Hamburger button: `<button>` with `aria-expanded` and `aria-controls`
 - Tray container: `<nav>` with `aria-label="Main navigation"`
-- Focus trap when tray is open as overlay (small + medium)
-- `Escape` closes the tray when open
+- Focus trap when tray is open as overlay (small + medium) — requires JS
+- `Escape` closes the tray when open — requires JS
 
 ### Anti-Patterns
 
-- **No JS-free toggle hack** — Do not use hidden checkbox or `:target` for open/close state. The Svelte island owns the state for accessibility (focus trap, aria attributes).
+- **No framework islands for toggle UI** — If the core interaction is a state toggle (open/close, show/hide, expand/collapse), use a CSS checkbox pattern, not a Svelte/React island. Reserve framework islands for genuinely complex reactive state.
 - **No fixed pixel widths** — All dimensions derive from `--freefall-space-1`. No raw px or rem values in the CSS.
 - **No z-index wars** — Define tray and scrim z-index as component-scoped custom properties, not global magic numbers.
-- **No content-aware logic** — The tray is a layout shell. It provides slots for nav items but does not know about specific routes or pages.
+- **No content-aware logic** — The tray is a navigation component. It accepts nav items via props but does not own page layout or wrap page content.
 - **No custom hamburger SVG** — Use Material Symbols Sharp ligatures (`menu` / `close`).
+- **No wrapping page content** — The tray renders alongside page content, not around it. The Astro page owns its layout.
 
 ## Contract
 
 ### Definition of Done
 
-- [ ] `AppTray.svelte` renders a responsive navigation tray with rail, full drawer, and hamburger toggle
+- [ ] `AppTray.astro` renders a responsive navigation tray with rail, full drawer, and hamburger toggle
+- [ ] Toggle, transitions, and scrim work without JavaScript
 - [ ] Small viewport: tray is hidden by default, opens as full-screen overlay
 - [ ] Medium viewport: rail visible by default, tray opens as overlay
 - [ ] Large viewport: rail visible by default, tray opens and pushes content
 - [ ] Hamburger button animates between menu/close states
 - [ ] All dimensions use `calc()` with `--freefall-space-1` — no raw px/rem
-- [ ] Scrim renders on small + medium when tray is open; click-to-close works
-- [ ] `aria-expanded`, `aria-controls`, `aria-label` are correct in all states
-- [ ] Focus trap active when tray overlays content
-- [ ] `Escape` key closes the tray
+- [ ] Scrim renders on small + medium when tray is open; click-to-close works without JS
+- [ ] Focus trap active when tray overlays content (progressive enhancement)
+- [ ] `Escape` key closes the tray (progressive enhancement)
 - [ ] Transitions match specified durations
 - [ ] Demo app has an app-tray reference page showing the component at all breakpoints
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
@@ -123,6 +142,7 @@ When the tray is open on small or medium viewports (where it overlays content), 
 - Rail must not appear below the tablet breakpoint
 - Hamburger button must always be visible and reachable regardless of tray state
 - Scrim must not render on desktop (tray pushes content instead of overlaying)
+- Core toggle must work without JavaScript — do not introduce JS dependencies for open/close state
 
 ### Scenarios
 
@@ -151,15 +171,20 @@ Scenario: Large viewport — rail visible, tray pushes content
   When: The user clicks the hamburger button
   Then: The tray expands and content area shifts right — no scrim, no overlay
 
-Scenario: Escape closes the tray
-  Given: The tray is open at any breakpoint
+Scenario: No-JS baseline works
+  Given: JavaScript is disabled
+  When: The user clicks the hamburger button
+  Then: The tray opens, transitions play, scrim appears — all via CSS checkbox toggle
+
+Scenario: Escape closes the tray (JS enhancement)
+  Given: JavaScript is enabled and the tray is open
   When: The user presses Escape
-  Then: The tray closes and focus returns to the hamburger button
+  Then: The tray closes
 
 Scenario: Scrim click closes the tray
   Given: The tray is open on small or medium viewport
   When: The user clicks the scrim
-  Then: The tray closes
+  Then: The tray closes (via label unchecking the checkbox — no JS)
 
 Scenario: Hamburger micro-interaction
   Given: The tray is closed
