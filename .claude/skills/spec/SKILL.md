@@ -27,6 +27,7 @@ Produce clear, minimal, and actionable specs that serve as the permanent source 
 ### Spec Location
 
 - Place specs in `specs/{feature-domain}/spec.md`
+- Child specs nest under their parent: `specs/{parent}/{child}/spec.md`
 - Use kebab-case for directory names
 - One spec per independently evolvable feature
 
