@@ -8,7 +8,7 @@
     "format": "biome check --write .",
     "typecheck": "tsc --noEmit && pnpm -r --filter './apps/*' run typecheck",
     "test": "pnpm -r run test",
-    "test:e2e": "echo 'e2e not configured yet'"
+    "test:e2e": "pnpm --filter @free-fall/app run test:e2e"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
