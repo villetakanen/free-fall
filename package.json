@@ -1,0 +1,15 @@
+{
+  "name": "free-fall",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "lint": "echo 'lint not configured yet'",
+    "typecheck": "tsc --noEmit",
+    "test": "echo 'test not configured yet'",
+    "test:e2e": "echo 'e2e not configured yet'"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
