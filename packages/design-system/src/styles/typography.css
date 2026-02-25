@@ -17,6 +17,20 @@ samp {
 p,
 .text-copy {
   color: var(--freefall-text-body);
+  font-size: 1rem;
+  line-height: calc(3 * var(--freefall-space-1));
+  margin-bottom: calc(2 * var(--freefall-space-1));
+}
+
+p:last-child,
+.text-copy:last-child {
+  margin-bottom: 0;
+}
+
+h4,
+.text-h4 {
+  font-size: calc(1.414 * 2 * var(--freefall-space-1));
+  line-height: calc(2 * 2 * var(--freefall-space-1));
 }
 
 .text-high {
