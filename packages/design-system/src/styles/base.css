@@ -1,4 +1,5 @@
 @import "./tokens.css";
+@import "./typography.css";
 
 *,
 *::before,
@@ -8,7 +9,6 @@
 }
 
 html {
-  font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
 }

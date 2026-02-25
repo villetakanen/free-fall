@@ -1,0 +1,95 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import { typography } from "@free-fall/design-system";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
+import "@free-fall/design-system/styles/base.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Typography — FREE//FALL Design System</title>
+    <FontLinks />
+    <style>
+      .font-sample {
+        margin: 1rem 0 2rem;
+        padding: 1.5rem;
+        border: 1px solid var(--freefall-border-subtle);
+        border-radius: 4px;
+      }
+      .font-sample p {
+        margin: 0.5rem 0;
+      }
+      .weight-label {
+        display: inline-block;
+        width: 5rem;
+        font-size: 0.75rem;
+        color: var(--freefall-text-muted);
+        font-family: var(--freefall-font-mono);
+      }
+      .sample-text {
+        font-size: 1.25rem;
+      }
+      .token-info {
+        font-size: 0.75rem;
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-top: 0.5rem;
+      }
+      .code-sample {
+        margin: 1rem 0 2rem;
+        padding: 1.5rem;
+        border: 1px solid var(--freefall-border-subtle);
+        border-radius: 4px;
+        font-family: var(--freefall-font-mono);
+      }
+      .code-sample code {
+        display: block;
+        margin: 0.25rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Typography</h1>
+
+    <h2>Body — Lato</h2>
+    <p class="token-info">--freefall-font-body → {typography.fonts.body}</p>
+    <div class="font-sample" style="font-family: var(--freefall-font-body);">
+      <p>
+        <span class="weight-label">300</span>
+        <span class="sample-text" style="font-weight: 300;">The quick brown fox jumps over the lazy dog</span>
+      </p>
+      <p>
+        <span class="weight-label">400</span>
+        <span class="sample-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
+      </p>
+      <p>
+        <span class="weight-label">700</span>
+        <span class="sample-text" style="font-weight: 700;">The quick brown fox jumps over the lazy dog</span>
+      </p>
+    </div>
+
+    <h2>Mono — IBM Plex Mono</h2>
+    <p class="token-info">--freefall-font-mono → {typography.fonts.mono}</p>
+    <div class="font-sample" style="font-family: var(--freefall-font-mono);">
+      <p>
+        <span class="weight-label">400</span>
+        <span class="sample-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
+      </p>
+      <p>
+        <span class="weight-label">500</span>
+        <span class="sample-text" style="font-weight: 500;">The quick brown fox jumps over the lazy dog</span>
+      </p>
+    </div>
+
+    <h2>Code Elements</h2>
+    <div class="code-sample">
+      <code>&lt;code&gt; renders in IBM Plex Mono</code>
+      <code>const x = 42; // monospace by default</code>
+    </div>
+
+    <p><a href="/" style="color: var(--freefall-alert-base)">← Back to index</a></p>
+  </body>
+</html>

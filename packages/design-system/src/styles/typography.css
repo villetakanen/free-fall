@@ -1,0 +1,15 @@
+:root {
+  --freefall-font-body: "Lato", system-ui, -apple-system, sans-serif;
+  --freefall-font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
+}
+
+html {
+  font-family: var(--freefall-font-body);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--freefall-font-mono);
+}

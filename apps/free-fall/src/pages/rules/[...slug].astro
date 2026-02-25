@@ -1,5 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("rules");
@@ -19,6 +21,7 @@ const { Content } = await render(entry);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{entry.data.title} — FREE//FALL</title>
+    <FontLinks />
   </head>
   <body>
     <Content />

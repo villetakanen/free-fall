@@ -2,6 +2,8 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import { breakpoints } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
+import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import Heading from "@free-fall/design-system/components/Heading.astro";
 import "@free-fall/design-system/styles/base.css";
 ---
@@ -11,6 +13,7 @@ import "@free-fall/design-system/styles/base.css";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FREE//FALL Design System</title>
+    <FontLinks />
   </head>
   <body>
     <Heading>FREE//FALL Design System</Heading>
@@ -22,6 +25,7 @@ import "@free-fall/design-system/styles/base.css";
     <h2>Pages</h2>
     <ul>
       <li><a href="/tokens/" style="color: var(--freefall-alert-base)">Design Tokens</a></li>
+      <li><a href="/typography/" style="color: var(--freefall-alert-base)">Typography</a></li>
     </ul>
   </body>
 </html>
