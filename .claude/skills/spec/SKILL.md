@@ -26,7 +26,7 @@ Produce clear, minimal, and actionable specs that serve as the permanent source 
 
 ### Spec Location
 
-- Place specs in `plans/{feature-domain}/spec.md`
+- Place specs in `specs/{feature-domain}/spec.md`
 - Use kebab-case for directory names
 - One spec per independently evolvable feature
 
