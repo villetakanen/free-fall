@@ -15,8 +15,9 @@ FREE//FALL — tabletop RPG delivered as a web-native application
 | Typecheck | `pnpm typecheck` | Root tsc + astro check per app |
 | Test | `pnpm test` | Vitest across all packages |
 | E2E | `pnpm test:e2e` | Playwright against built dist/ |
-| Dev (free-fall) | `pnpm --filter @free-fall/app dev` | Astro dev server |
-| Dev (design-system) | `pnpm --filter @free-fall/design-system-docs dev` | DS docs dev server |
+| Dev (all) | `pnpm dev` | Both apps in parallel |
+| Dev (free-fall) | `pnpm --filter @free-fall/app dev` | Port 4321 |
+| Dev (design-system) | `pnpm --filter @free-fall/design-system-docs dev` | Port 4322 |
 
 **Always use `pnpm` — never use `npm` or `npx` when `pnpm` or `pnpm exec` can do the job.**
 
