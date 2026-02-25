@@ -6,13 +6,19 @@ FREE//FALL — tabletop RPG delivered as a web-native application
 
 ## Toolchain
 
-_No toolchain configured yet. Update this table as tools are added._
-
-| Action | Command | Authority |
+| Action | Command | Notes |
 |---|---|---|
-| Build | TBD | — |
-| Test | TBD | — |
-| Lint | TBD | — |
+| Install | `pnpm install` | From repo root |
+| Build | `pnpm build` | Builds all apps via pnpm -r |
+| Lint | `pnpm lint` | Biome check across all packages |
+| Format | `pnpm format` | Biome auto-fix |
+| Typecheck | `pnpm typecheck` | Root tsc + astro check per app |
+| Test | `pnpm test` | Vitest across all packages |
+| E2E | `pnpm test:e2e` | Playwright against built dist/ |
+| Dev (free-fall) | `pnpm --filter @free-fall/app dev` | Astro dev server |
+| Dev (design-system) | `pnpm --filter @free-fall/design-system-docs dev` | DS docs dev server |
+
+**Always use `pnpm` — never use `npm` or `npx` when `pnpm` or `pnpm exec` can do the job.**
 
 ## Judgment Boundaries
 
