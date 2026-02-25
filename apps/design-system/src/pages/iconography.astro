@@ -1,0 +1,136 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
+import "@free-fall/design-system/styles/base.css";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const sampleIcons = [
+  "arrow_forward",
+  "arrow_back",
+  "search",
+  "settings",
+  "home",
+  "menu",
+  "close",
+  "warning",
+  "info",
+  "check_circle",
+  "delete",
+  "edit",
+  "visibility",
+  "rocket_launch",
+  "public",
+  "terminal",
+];
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const sizes = ["1rem", "1.5rem", "2rem", "3rem"];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iconography — FREE//FALL Design System</title>
+    <FontLinks />
+    <style>
+      .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.75rem;
+        margin: 1rem 0 2rem;
+      }
+      .icon-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 0.5rem;
+        border: 1px solid var(--freefall-border-subtle);
+        border-radius: 4px;
+      }
+      .icon-cell span:first-child {
+        font-size: 1.5rem;
+      }
+      .icon-name {
+        font-family: var(--freefall-font-mono);
+        font-size: 0.625rem;
+        color: var(--freefall-text-muted);
+        text-align: center;
+        word-break: break-all;
+      }
+      .size-row {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--freefall-border-subtle);
+      }
+      .size-label {
+        font-family: var(--freefall-font-mono);
+        font-size: 0.75rem;
+        color: var(--freefall-text-muted);
+        width: 4rem;
+        flex-shrink: 0;
+      }
+      .color-demo {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 1rem 0 2rem;
+        font-size: 2rem;
+      }
+      .token-info {
+        font-size: 0.75rem;
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Iconography</h1>
+    <p class="token-info">Material Symbols Sharp — ligature-based, loaded via Google Fonts</p>
+
+    <h2>Sample Icons</h2>
+    <div class="icon-grid">
+      {sampleIcons.map((name) => (
+        <div class="icon-cell">
+          <span class="material-symbols-sharp">{name}</span>
+          <div class="icon-name">{name}</div>
+        </div>
+      ))}
+    </div>
+
+    <h2>Sizing</h2>
+    <p class="token-info">Icons scale with font-size — base class uses 1.25em</p>
+    <div style="margin: 1rem 0 2rem;">
+      {sizes.map((size) => (
+        <div class="size-row">
+          <div class="size-label">{size}</div>
+          <span class="material-symbols-sharp" style={`font-size: ${size}`}>rocket_launch</span>
+          <span class="material-symbols-sharp" style={`font-size: ${size}`}>settings</span>
+          <span class="material-symbols-sharp" style={`font-size: ${size}`}>warning</span>
+        </div>
+      ))}
+    </div>
+
+    <h2>Color Inheritance</h2>
+    <p class="token-info">Icons inherit color from their parent element</p>
+    <div class="color-demo">
+      <span style="color: var(--freefall-text-display)"><span class="material-symbols-sharp">home</span></span>
+      <span style="color: var(--freefall-text-body)"><span class="material-symbols-sharp">home</span></span>
+      <span style="color: var(--freefall-text-muted)"><span class="material-symbols-sharp">home</span></span>
+      <span style="color: var(--freefall-alert-base)"><span class="material-symbols-sharp">home</span></span>
+    </div>
+
+    <h2>Accessibility</h2>
+    <p class="token-info">Ligature text is readable by screen readers. Use aria-hidden for decorative icons.</p>
+    <div style="margin: 1rem 0 2rem; font-size: 1.125rem;">
+      <p style="margin: 0.5rem 0;">Standalone: <code>&lt;span class="material-symbols-sharp"&gt;search&lt;/span&gt;</code></p>
+      <p style="margin: 0.5rem 0;">Decorative: <code>&lt;span class="material-symbols-sharp" aria-hidden="true"&gt;arrow_forward&lt;/span&gt; Next</code></p>
+    </div>
+
+    <p><a href="/" style="color: var(--freefall-alert-base)">← Back to index</a></p>
+  </body>
+</html>
