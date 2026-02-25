@@ -3,6 +3,7 @@
 import { breakpoints } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import Heading from "@free-fall/design-system/components/Heading.astro";
+import "@free-fall/design-system/styles/base.css";
 ---
 
 <html lang="en">
@@ -17,6 +18,10 @@ import Heading from "@free-fall/design-system/components/Heading.astro";
     <ul>
       <li>Tablet: {breakpoints.tablet}</li>
       <li>Desktop: {breakpoints.desktop}</li>
+    </ul>
+    <h2>Pages</h2>
+    <ul>
+      <li><a href="/tokens/" style="color: var(--freefall-alert-base)">Design Tokens</a></li>
     </ul>
   </body>
 </html>

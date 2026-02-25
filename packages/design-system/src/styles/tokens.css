@@ -1,0 +1,68 @@
+/**
+ * FREEFALL DESIGN TOKENS
+ * Deep space cobalt theme with harsh neon contrast.
+ */
+
+:root {
+  /* =========================================
+     BASE PALETTE: DEEP SPACE COBALT
+     ========================================= */
+
+  /* Ceramic Whites (Highlights) */
+  --freefall-color-primary-50: hsl(210, 36%, 96%);
+  --freefall-color-primary-100: hsl(210, 37%, 88%);
+  --freefall-color-primary-200: hsl(210, 32%, 78%);
+
+  /* Cobalt Steel (Midtones) */
+  --freefall-color-primary-300: hsl(211, 23%, 44%);
+  --freefall-color-primary-400: hsl(212, 26%, 36%);
+  --freefall-color-primary-500: hsl(213, 29%, 28%);
+  --freefall-color-primary-600: hsl(213, 32%, 22%);
+
+  /* Void Darks (Shadows & Backgrounds) */
+  --freefall-color-primary-700: hsl(214, 34%, 16%);
+  --freefall-color-primary-800: hsl(216, 36%, 11%);
+  --freefall-color-primary-900: hsl(219, 41%, 7%);
+  --freefall-color-primary-950: hsl(220, 43%, 3%);
+
+  /* =========================================
+     BASE PALETTE: ISOTOPE NEON
+     ========================================= */
+
+  --freefall-color-accent-400: hsl(64, 80%, 54%);
+  --freefall-color-accent-500: hsl(64, 90%, 45%);
+  --freefall-color-accent-900: hsl(64, 70%, 15%);
+
+  /* =========================================
+     BREAKPOINTS
+     ========================================= */
+
+  --breakpoint-tablet: 620px;
+  --breakpoint-desktop: 780px;
+
+  /* =========================================
+     SEMANTIC TOKENS
+     ========================================= */
+
+  /* Backgrounds */
+  --freefall-bg-canvas: var(--freefall-color-primary-950);
+  --freefall-bg-surface-1: var(--freefall-color-primary-900);
+  --freefall-bg-surface-2: var(--freefall-color-primary-800);
+
+  /* Typography */
+  --freefall-text-display: var(--freefall-color-primary-50);
+  --freefall-text-body: var(--freefall-color-primary-100);
+  --freefall-text-muted: var(--freefall-color-primary-400);
+
+  /* Borders & Dividers */
+  --freefall-border-subtle: var(--freefall-color-primary-800);
+  --freefall-border-strong: var(--freefall-color-primary-700);
+
+  /* Interactive States */
+  --freefall-action-base: var(--freefall-color-primary-500);
+  --freefall-action-hover: var(--freefall-color-primary-400);
+
+  /* Alerts & Emphasis */
+  --freefall-alert-base: var(--freefall-color-accent-400);
+  --freefall-alert-bg: var(--freefall-color-accent-900);
+}

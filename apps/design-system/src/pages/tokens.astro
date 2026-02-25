@@ -1,0 +1,170 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import { colors } from "@free-fall/design-system";
+import "@free-fall/design-system/styles/base.css";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const primarySteps = [
+  50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
+] as const;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const accentSteps = [400, 500, 900] as const;
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const semanticTokens = [
+  { name: "--freefall-bg-canvas", role: "Page background", ref: "primary-950" },
+  {
+    name: "--freefall-bg-surface-1",
+    role: "Card / panel background",
+    ref: "primary-900",
+  },
+  {
+    name: "--freefall-bg-surface-2",
+    role: "Elevated surface",
+    ref: "primary-800",
+  },
+  {
+    name: "--freefall-text-display",
+    role: "Headings, hero text",
+    ref: "primary-50",
+  },
+  { name: "--freefall-text-body", role: "Body copy", ref: "primary-100" },
+  {
+    name: "--freefall-text-muted",
+    role: "Secondary / disabled text",
+    ref: "primary-400",
+  },
+  {
+    name: "--freefall-border-subtle",
+    role: "Dividers, low-contrast",
+    ref: "primary-800",
+  },
+  {
+    name: "--freefall-border-strong",
+    role: "High-contrast borders",
+    ref: "primary-700",
+  },
+  {
+    name: "--freefall-action-base",
+    role: "Buttons, links (default)",
+    ref: "primary-500",
+  },
+  {
+    name: "--freefall-action-hover",
+    role: "Buttons, links (hover)",
+    ref: "primary-400",
+  },
+  {
+    name: "--freefall-alert-base",
+    role: "Alert text, emphasis",
+    ref: "accent-400",
+  },
+  {
+    name: "--freefall-alert-bg",
+    role: "Alert panel background",
+    ref: "accent-900",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tokens — FREE//FALL Design System</title>
+    <style>
+      .swatch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.75rem;
+        margin: 1rem 0 2rem;
+      }
+      .swatch {
+        border: 1px solid var(--freefall-border-subtle);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .swatch-color {
+        height: 64px;
+      }
+      .swatch-label {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        font-family: monospace;
+      }
+      .swatch-label strong {
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+      .semantic-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 2rem;
+      }
+      .semantic-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--freefall-border-subtle);
+        font-size: 0.875rem;
+      }
+      .semantic-swatch {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        border: 1px solid var(--freefall-border-subtle);
+        flex-shrink: 0;
+      }
+      .semantic-name {
+        font-family: monospace;
+        font-size: 0.75rem;
+        color: var(--freefall-text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Design Tokens</h1>
+
+    <h2>Primary Palette — Deep Space Cobalt</h2>
+    <div class="swatch-grid">
+      {primarySteps.map((step) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background: var(--freefall-color-primary-${step})`} />
+          <div class="swatch-label">
+            <strong>{step}</strong>
+            {colors.primary[step]}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h2>Accent Palette — Isotope Neon</h2>
+    <div class="swatch-grid">
+      {accentSteps.map((step) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background: var(--freefall-color-accent-${step})`} />
+          <div class="swatch-label">
+            <strong>{step}</strong>
+            {colors.accent[step]}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h2>Semantic Tokens</h2>
+    <ul class="semantic-list">
+      {semanticTokens.map((token) => (
+        <li class="semantic-item">
+          <div class="semantic-swatch" style={`background: var(${token.name})`} />
+          <div>
+            <div>{token.role}</div>
+            <div class="semantic-name">{token.name} → {token.ref}</div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <p><a href="/" style="color: var(--freefall-alert-base)">← Back to index</a></p>
+  </body>
+</html>

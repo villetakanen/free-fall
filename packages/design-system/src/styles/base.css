@@ -1,4 +1,4 @@
-@import "./breakpoints.css";
+@import "./tokens.css";
 
 *,
 *::before,
@@ -17,6 +17,8 @@ body {
   padding: 1rem;
   max-width: 100%;
   overflow-x: hidden;
+  background: var(--freefall-bg-canvas);
+  color: var(--freefall-text-body);
 }
 
 @media (min-width: 620px) {
@@ -31,4 +33,13 @@ body {
     max-width: 60rem;
     margin: 0 auto;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--freefall-text-display);
 }
