@@ -68,6 +68,18 @@ The `display=swap` parameter ensures text is immediately visible in the fallback
 - `code`, `pre`, `kbd`, `samp` set `font-family: var(--freefall-font-mono)`
 - No font sizes defined at this level — sizing is left to component styles
 
+**Text emphasis classes:**
+
+Three levels of text emphasis mapped to the ceramic highlight colors:
+
+| Class | Also applies to | Color token | Palette step |
+|---|---|---|---|
+| `.text-high` | — | `--freefall-text-display` | color-mix(in lab, primary-50 80%, accent-400) |
+| `.text-copy` | `p` | `--freefall-text-body` | primary-100 |
+| `.text-low` | — | `--freefall-text-muted` | primary-300 |
+
+`p` elements receive `.text-copy` styling by default — no class needed. Use `.text-copy` explicitly on non-`p` elements that should match paragraph color. Use `.text-high` or `.text-low` on any element (including `p`) to override.
+
 ### Anti-Patterns
 
 - **No direct Google Fonts URLs in app code** — Always use the `FontLinks` component. The URLs live in one place.

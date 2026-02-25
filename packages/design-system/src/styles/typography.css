@@ -13,3 +13,16 @@ kbd,
 samp {
   font-family: var(--freefall-font-mono);
 }
+
+p,
+.text-copy {
+  color: var(--freefall-text-body);
+}
+
+.text-high {
+  color: var(--freefall-text-display);
+}
+
+.text-low {
+  color: var(--freefall-text-muted);
+}

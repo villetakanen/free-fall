@@ -60,9 +60,13 @@
   --freefall-bg-surface-2: var(--freefall-color-primary-800);
 
   /* Typography */
-  --freefall-text-display: var(--freefall-color-primary-50);
+  --freefall-text-display: color-mix(
+    in lab,
+    var(--freefall-color-primary-50) 80%,
+    var(--freefall-color-accent-400)
+  );
   --freefall-text-body: var(--freefall-color-primary-100);
-  --freefall-text-muted: var(--freefall-color-primary-400);
+  --freefall-text-muted: var(--freefall-color-primary-300);
 
   /* Borders & Dividers */
   --freefall-border-subtle: var(--freefall-color-primary-800);
