@@ -1,0 +1,106 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppTray from "@free-fall/design-system/components/AppTray.svelte";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
+import "@free-fall/design-system/styles/base.css";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/", active: false },
+  {
+    icon: "palette",
+    label: "Design Tokens",
+    href: "/tokens/",
+    active: false,
+  },
+  {
+    icon: "text_fields",
+    label: "Typography",
+    href: "/typography/",
+    active: false,
+  },
+  {
+    icon: "emoji_symbols",
+    label: "Iconography",
+    href: "/iconography/",
+    active: false,
+  },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/", active: true },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App Tray — FREE//FALL Design System</title>
+    <FontLinks />
+    <style>
+      body {
+        padding: 0;
+        max-width: none;
+        margin: 0;
+      }
+      .demo-content {
+        padding: var(--freefall-space-4);
+      }
+      .token-info {
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+      }
+      .dimension-table {
+        border-collapse: collapse;
+        margin: var(--freefall-space-2) 0;
+      }
+      .dimension-table th,
+      .dimension-table td {
+        text-align: left;
+        padding: var(--freefall-space-1) var(--freefall-space-2);
+        border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
+      }
+      .dimension-table th {
+        color: var(--freefall-text-muted);
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+      }
+    </style>
+  </head>
+  <body>
+    <AppTray items={navItems} client:load>
+      <div class="demo-content">
+        <h1>App Tray</h1>
+        <p>M3-style responsive navigation drawer with rail. Resize the browser to see all three modes.</p>
+
+        <h2>Responsive Modes</h2>
+        <table class="dimension-table">
+          <tr><th>Viewport</th><th>Closed</th><th>Open</th></tr>
+          <tr><td>Small (&lt; 620px)</td><td>Hidden</td><td>Full-screen overlay</td></tr>
+          <tr><td>Medium (620–779px)</td><td>Rail</td><td>Overlay drawer</td></tr>
+          <tr><td>Large (≥ 780px)</td><td>Rail</td><td>Push drawer</td></tr>
+        </table>
+
+        <h2>Dimensions</h2>
+        <table class="dimension-table">
+          <tr><th>Element</th><th>Token formula</th><th>Computed</th></tr>
+          <tr><td>Rail width</td><td class="token-info">calc(10 * var(--freefall-space-1))</td><td>5rem</td></tr>
+          <tr><td>Tray width</td><td class="token-info">calc(40 * var(--freefall-space-1))</td><td>20rem</td></tr>
+          <tr><td>Burger button</td><td class="token-info">calc(6 * var(--freefall-space-1))</td><td>3rem</td></tr>
+          <tr><td>Rail icon</td><td class="token-info">calc(3 * var(--freefall-space-1))</td><td>1.5rem</td></tr>
+          <tr><td>Nav item padding</td><td class="token-info">var(--freefall-space-2)</td><td>1rem</td></tr>
+        </table>
+
+        <h2>Interactions</h2>
+        <ul>
+          <li>Click the hamburger button to toggle the tray</li>
+          <li>Press <kbd>Escape</kbd> to close</li>
+          <li>Click the scrim to close (small + medium viewports)</li>
+          <li>Focus is trapped in overlay mode, free in push mode</li>
+        </ul>
+
+        <p class="token-info">Transitions: slide 200ms ease-out (open) / 150ms ease-in (close) · crossfade 150ms</p>
+      </div>
+    </AppTray>
+  </body>
+</html>
