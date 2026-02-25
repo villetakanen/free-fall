@@ -54,7 +54,7 @@ Components and styles consume **semantic tokens only**. Base palette tokens exis
 | `--freefall-bg-canvas` | `primary-950` | Page background |
 | `--freefall-bg-surface-1` | `primary-900` | Card / panel background |
 | `--freefall-bg-surface-2` | `primary-800` | Elevated surface |
-| `--freefall-text-display` | `color-mix(in lab, primary-50 80%, accent-400)` | Headings, hero text |
+| `--freefall-text-display` | `primary-50` | Headings, hero text |
 | `--freefall-text-body` | `primary-100` | Body copy |
 | `--freefall-text-muted` | `primary-300` | Secondary / disabled text |
 | `--freefall-border-subtle` | `primary-800` | Dividers, low-contrast borders |

@@ -74,7 +74,7 @@ Three levels of text emphasis mapped to the ceramic highlight colors:
 
 | Class | Also applies to | Color token | Palette step |
 |---|---|---|---|
-| `.text-high` | — | `--freefall-text-display` | color-mix(in lab, primary-50 80%, accent-400) |
+| `.text-high` | — | `--freefall-text-display` | primary-50 |
 | `.text-copy` | `p` | `--freefall-text-body` | primary-100 |
 | `.text-low` | — | `--freefall-text-muted` | primary-300 |
 
