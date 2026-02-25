@@ -64,6 +64,22 @@ Use plain HTML + CSS by default. Provide an Astro component only when one or mor
 
 When none of these apply, provide CSS classes or custom properties instead.
 
+**Preflight / CSS reset** (in `base.css`):
+
+A modern preflight inspired by Tailwind/modern-normalize, applied globally via `base.css`. Key rules:
+
+- `box-sizing: border-box` on all elements (including pseudo-elements)
+- Universal `margin: 0` reset
+- `line-height: 1.5` on `html`, inherited by `body`
+- `-webkit-font-smoothing: antialiased` on `body`
+- Media elements (`img`, `picture`, `video`, `canvas`, `svg`) set to `display: block` and `max-width: 100%`
+- Form elements (`input`, `button`, `textarea`, `select`) inherit font
+- `overflow-wrap: break-word` on text elements; `text-wrap: balance` on headings
+- Anchor reset (inherit color and text-decoration)
+- Table `border-collapse: collapse`
+
+The preflight lives in `src/styles/preflight.css` and is imported first in `base.css`.
+
 **Token duality:**
 
 Design tokens exist in two forms that must stay in sync:
