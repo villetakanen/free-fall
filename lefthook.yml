@@ -1,0 +1,17 @@
+pre-commit:
+  commands:
+    lint:
+      glob: "*.{ts,astro,json}"
+      run: pnpm lint
+
+commit-msg:
+  commands:
+    conventional-commit:
+      run: |
+        msg=$(head -1 {1})
+        if ! echo "$msg" | grep -qE '^(feat|fix|chore|docs|style|refactor|perf|test|build|ci|revert)(\(.+\))?!?:\ .+'; then
+          echo "Commit message must follow Conventional Commits format."
+          echo "Examples: feat: add login, fix(auth): handle token expiry"
+          echo "Got: $msg"
+          exit 1
+        fi

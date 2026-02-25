@@ -4,12 +4,22 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r run build",
-    "lint": "echo 'lint not configured yet'",
+    "lint": "biome check .",
+    "format": "biome check --write .",
     "typecheck": "tsc --noEmit",
     "test": "echo 'test not configured yet'",
     "test:e2e": "echo 'e2e not configured yet'"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "lefthook": "^1.11.0",
     "typescript": "^5.7.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "lefthook"
+    ]
   }
 }

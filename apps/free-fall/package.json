@@ -1,0 +1,12 @@
+{
+  "name": "@free-fall/app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "astro": "^5.5.0"
+  }
+}
