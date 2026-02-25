@@ -1,0 +1,22 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import { breakpoints } from "@free-fall/design-system";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import Heading from "@free-fall/design-system/components/Heading.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FREE//FALL Design System</title>
+  </head>
+  <body>
+    <Heading>FREE//FALL Design System</Heading>
+    <h2>Breakpoints</h2>
+    <ul>
+      <li>Tablet: {breakpoints.tablet}</li>
+      <li>Desktop: {breakpoints.desktop}</li>
+    </ul>
+  </body>
+</html>
