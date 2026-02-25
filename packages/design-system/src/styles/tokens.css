@@ -41,6 +41,16 @@
   --breakpoint-desktop: 780px;
 
   /* =========================================
+     SPACING (0.5rem base unit)
+     ========================================= */
+
+  --freefall-space-1: 0.5rem;
+  --freefall-space-2: 1rem;
+  --freefall-space-4: 2rem;
+  --freefall-space-8: 4rem;
+  --freefall-space-16: 8rem;
+
+  /* =========================================
      SEMANTIC TOKENS
      ========================================= */
 

@@ -1,6 +1,6 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import { colors } from "@free-fall/design-system";
+import { colors, spacing } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
 import "@free-fall/design-system/styles/base.css";
@@ -124,6 +124,31 @@ const semanticTokens = [
         font-size: 0.75rem;
         color: var(--freefall-text-muted);
       }
+      .spacing-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 2rem;
+      }
+      .spacing-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--freefall-border-subtle);
+        font-size: 0.875rem;
+      }
+      .spacing-bar {
+        height: 1rem;
+        background: var(--freefall-action-base);
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+      .spacing-label {
+        font-family: monospace;
+        font-size: 0.75rem;
+        color: var(--freefall-text-muted);
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -163,6 +188,19 @@ const semanticTokens = [
           <div>
             <div>{token.role}</div>
             <div class="semantic-name">{token.name} → {token.ref}</div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Spacing — 0.5rem base (1rem = 16px)</h2>
+    <ul class="spacing-list">
+      {([1, 2, 4, 8, 16] as const).map((step) => (
+        <li class="spacing-item">
+          <div class="spacing-bar" style={`width: var(--freefall-space-${step})`} />
+          <div>
+            <div>space-{step}</div>
+            <div class="spacing-label">--freefall-space-{step} → {spacing[step]} ({step * 8}px)</div>
           </div>
         </li>
       ))}
