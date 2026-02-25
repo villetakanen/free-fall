@@ -1,18 +1,15 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
-import "@free-fall/design-system/styles/base.css";
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/", active: true },
+  { icon: "menu_book", label: "Rules", href: "/rules/core/" },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FREE//FALL</title>
-    <FontLinks />
-  </head>
-  <body>
-    <h1>FREE//FALL</h1>
-    <p>A web-native tabletop RPG.</p>
-  </body>
-</html>
+<AppShell title="FREE//FALL" navItems={navItems}>
+  <h1>FREE//FALL</h1>
+  <p>A web-native tabletop RPG.</p>
+</AppShell>

@@ -1,0 +1,45 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppTray from "./AppTray.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import FontLinks from "./FontLinks.astro";
+import "../styles/base.css";
+
+interface NavItem {
+  icon: string;
+  label: string;
+  href: string;
+  active?: boolean;
+}
+
+interface Props {
+  title: string;
+  navItems: NavItem[];
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { title, navItems } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <FontLinks />
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <AppTray items={navItems} />
+      <div class="app-shell__body">
+        <header class="app-shell__bar">
+          <span class="app-shell__title">{title}</span>
+        </header>
+        <main class="app-shell__content">
+          <slot />
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

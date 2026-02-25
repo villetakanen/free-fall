@@ -2,32 +2,32 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import { breakpoints } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import Heading from "@free-fall/design-system/components/Heading.astro";
-import "@free-fall/design-system/styles/base.css";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/", active: true },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FREE//FALL Design System</title>
-    <FontLinks />
-  </head>
-  <body>
-    <Heading>FREE//FALL Design System</Heading>
-    <h2>Breakpoints</h2>
-    <ul>
-      <li>Tablet: {breakpoints.tablet}</li>
-      <li>Desktop: {breakpoints.desktop}</li>
-    </ul>
-    <h2>Pages</h2>
-    <ul>
-      <li><a href="/tokens/" style="color: var(--freefall-alert-base)">Design Tokens</a></li>
-      <li><a href="/typography/" style="color: var(--freefall-alert-base)">Typography</a></li>
-      <li><a href="/iconography/" style="color: var(--freefall-alert-base)">Iconography</a></li>
-      <li><a href="/app-tray/" style="color: var(--freefall-alert-base)">App Tray</a></li>
-    </ul>
-  </body>
-</html>
+<AppShell title="FREE//FALL Design System" navItems={navItems}>
+  <Heading>FREE//FALL Design System</Heading>
+  <h2>Breakpoints</h2>
+  <ul>
+    <li>Tablet: {breakpoints.tablet}</li>
+    <li>Desktop: {breakpoints.desktop}</li>
+  </ul>
+  <h2>Pages</h2>
+  <ul>
+    <li><a href="/tokens/" style="color: var(--freefall-alert-base)">Design Tokens</a></li>
+    <li><a href="/typography/" style="color: var(--freefall-alert-base)">Typography</a></li>
+    <li><a href="/iconography/" style="color: var(--freefall-alert-base)">Iconography</a></li>
+    <li><a href="/app-tray/" style="color: var(--freefall-alert-base)">App Tray</a></li>
+  </ul>
+</AppShell>

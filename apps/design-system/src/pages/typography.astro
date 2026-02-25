@@ -2,16 +2,25 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import { typography } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
-import "@free-fall/design-system/styles/base.css";
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  {
+    icon: "text_fields",
+    label: "Typography",
+    href: "/typography/",
+    active: true,
+  },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Typography — FREE//FALL Design System</title>
-    <FontLinks />
+<AppShell title="Typography — FREE//FALL Design System" navItems={navItems}>
+  <Fragment slot="head">
     <style>
       .font-sample {
         margin: 1rem 0 2rem;
@@ -50,64 +59,61 @@ import "@free-fall/design-system/styles/base.css";
         margin: 0.25rem 0;
       }
     </style>
-  </head>
-  <body>
-    <h1>Typography</h1>
+  </Fragment>
 
-    <h2>Body — Lato</h2>
-    <p class="token-info">--freefall-font-body → {typography.fonts.body}</p>
-    <div class="font-sample" style="font-family: var(--freefall-font-body);">
-      <p>
-        <span class="weight-label">300</span>
-        <span class="sample-text" style="font-weight: 300;">The quick brown fox jumps over the lazy dog</span>
-      </p>
-      <p>
-        <span class="weight-label">400</span>
-        <span class="sample-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
-      </p>
-      <p>
-        <span class="weight-label">700</span>
-        <span class="sample-text" style="font-weight: 700;">The quick brown fox jumps over the lazy dog</span>
-      </p>
-    </div>
+  <h1>Typography</h1>
 
-    <h2>Mono — IBM Plex Mono</h2>
-    <p class="token-info">--freefall-font-mono → {typography.fonts.mono}</p>
-    <div class="font-sample" style="font-family: var(--freefall-font-mono);">
-      <p>
-        <span class="weight-label">400</span>
-        <span class="sample-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
-      </p>
-      <p>
-        <span class="weight-label">500</span>
-        <span class="sample-text" style="font-weight: 500;">The quick brown fox jumps over the lazy dog</span>
-      </p>
-    </div>
+  <h2>Body — Lato</h2>
+  <p class="token-info">--freefall-font-body → {typography.fonts.body}</p>
+  <div class="font-sample" style="font-family: var(--freefall-font-body);">
+    <p>
+      <span class="weight-label">300</span>
+      <span class="sample-text" style="font-weight: 300;">The quick brown fox jumps over the lazy dog</span>
+    </p>
+    <p>
+      <span class="weight-label">400</span>
+      <span class="sample-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
+    </p>
+    <p>
+      <span class="weight-label">700</span>
+      <span class="sample-text" style="font-weight: 700;">The quick brown fox jumps over the lazy dog</span>
+    </p>
+  </div>
 
-    <h2>Type Scale — Augmented Fourth (1.414)</h2>
-    <p class="token-info">--freefall-type-ratio: 1.414 · base: 2 × space-1 (1rem)</p>
-    <div class="font-sample">
-      <h1>h1 — ratio⁴ (3.998rem) / 9 × space-1</h1>
-      <h2>h2 — ratio³ (2.827rem) / 6 × space-1</h2>
-      <h3>h3 — ratio² (1.999rem) / 5 × space-1</h3>
-      <h4>h4 — ratio¹ (1.414rem) / 4 × space-1</h4>
-      <p>Body copy — 1rem / 3 × space-1 (1.5rem). Paragraphs get 2 × space-1 margin-bottom, zeroed on :last-child.</p>
-    </div>
+  <h2>Mono — IBM Plex Mono</h2>
+  <p class="token-info">--freefall-font-mono → {typography.fonts.mono}</p>
+  <div class="font-sample" style="font-family: var(--freefall-font-mono);">
+    <p>
+      <span class="weight-label">400</span>
+      <span class="sample-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
+    </p>
+    <p>
+      <span class="weight-label">500</span>
+      <span class="sample-text" style="font-weight: 500;">The quick brown fox jumps over the lazy dog</span>
+    </p>
+  </div>
 
-    <h2>Text Emphasis</h2>
-    <p class="token-info">.text-high → --freefall-text-display (primary-50) · .text-copy / p → --freefall-text-body (primary-100) · .text-low → --freefall-text-muted (primary-300)</p>
-    <div class="font-sample">
-      <p class="text-high" style="margin-bottom: 0.75rem;">High emphasis — used for display text, hero lines, and critical callouts that demand immediate attention from the crew.</p>
-      <p style="margin-bottom: 0.75rem;">Default copy — the Kepler-442 mining consortium reported gravitational anomalies in Sector 7G last cycle. Survey drones mapped the debris field across fourteen orbital shells, each layered with the remnants of decommissioned relay stations. Navigation officers reclassified the corridor from amber to red after the third unscheduled course correction. Hull integrity sensors flagged micro-fracture propagation along the starboard thermal tiles, consistent with repeated exposure to unshielded re-entry plasma. Engineering dispatched a repair skiff, but the maintenance window closed before the attitude thrusters could be recalibrated.</p>
-      <p class="text-low">Low emphasis — secondary annotations, timestamps, metadata, and supplementary context that supports the primary content without competing for attention.</p>
-    </div>
+  <h2>Type Scale — Augmented Fourth (1.414)</h2>
+  <p class="token-info">--freefall-type-ratio: 1.414 · base: 2 × space-1 (1rem)</p>
+  <div class="font-sample">
+    <h1>h1 — ratio⁴ (3.998rem) / 9 × space-1</h1>
+    <h2>h2 — ratio³ (2.827rem) / 6 × space-1</h2>
+    <h3>h3 — ratio² (1.999rem) / 5 × space-1</h3>
+    <h4>h4 — ratio¹ (1.414rem) / 4 × space-1</h4>
+    <p>Body copy — 1rem / 3 × space-1 (1.5rem). Paragraphs get 2 × space-1 margin-bottom, zeroed on :last-child.</p>
+  </div>
 
-    <h2>Code Elements</h2>
-    <div class="code-sample">
-      <code>&lt;code&gt; renders in IBM Plex Mono</code>
-      <code>const x = 42; // monospace by default</code>
-    </div>
+  <h2>Text Emphasis</h2>
+  <p class="token-info">.text-high → --freefall-text-display (primary-50) · .text-copy / p → --freefall-text-body (primary-100) · .text-low → --freefall-text-muted (primary-300)</p>
+  <div class="font-sample">
+    <p class="text-high" style="margin-bottom: 0.75rem;">High emphasis — used for display text, hero lines, and critical callouts that demand immediate attention from the crew.</p>
+    <p style="margin-bottom: 0.75rem;">Default copy — the Kepler-442 mining consortium reported gravitational anomalies in Sector 7G last cycle. Survey drones mapped the debris field across fourteen orbital shells, each layered with the remnants of decommissioned relay stations. Navigation officers reclassified the corridor from amber to red after the third unscheduled course correction. Hull integrity sensors flagged micro-fracture propagation along the starboard thermal tiles, consistent with repeated exposure to unshielded re-entry plasma. Engineering dispatched a repair skiff, but the maintenance window closed before the attitude thrusters could be recalibrated.</p>
+    <p class="text-low">Low emphasis — secondary annotations, timestamps, metadata, and supplementary context that supports the primary content without competing for attention.</p>
+  </div>
 
-    <p><a href="/" style="color: var(--freefall-alert-base)">← Back to index</a></p>
-  </body>
-</html>
+  <h2>Code Elements</h2>
+  <div class="code-sample">
+    <code>&lt;code&gt; renders in IBM Plex Mono</code>
+    <code>const x = 42; // monospace by default</code>
+  </div>
+</AppShell>

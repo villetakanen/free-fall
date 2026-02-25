@@ -1,0 +1,63 @@
+/* =========================================
+   APP SHELL — M3 Scaffold Layout
+   Flex row: AppTray + body (bar + content).
+   ========================================= */
+
+.app-shell {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.app-shell__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================================
+   TOP APP BAR
+   ========================================= */
+
+.app-shell__bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: calc(8 * var(--freefall-space-1));
+  background: var(--freefall-bg-surface-1);
+  border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
+  padding: 0 var(--freefall-space-2);
+}
+
+.app-shell__title {
+  color: var(--freefall-text-display);
+  font-size: calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+}
+
+/* Small viewport: clear the fixed burger button */
+@media (max-width: 619px) {
+  .app-shell__bar {
+    padding-left: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
+  }
+}
+
+/* =========================================
+   CONTENT PANE
+   ========================================= */
+
+.app-shell__content {
+  padding: var(--freefall-space-2);
+}
+
+@media (min-width: 620px) {
+  .app-shell__content {
+    padding: var(--freefall-space-4);
+  }
+}
+
+@media (min-width: 780px) {
+  .app-shell__content {
+    max-width: calc(120 * var(--freefall-space-1));
+  }
+}

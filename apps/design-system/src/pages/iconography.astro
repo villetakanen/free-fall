@@ -1,7 +1,6 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
-import "@free-fall/design-system/styles/base.css";
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const sampleIcons = [
@@ -25,14 +24,24 @@ const sampleIcons = [
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const sizes = ["1rem", "1.5rem", "2rem", "3rem"];
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  {
+    icon: "emoji_symbols",
+    label: "Iconography",
+    href: "/iconography/",
+    active: true,
+  },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Iconography — FREE//FALL Design System</title>
-    <FontLinks />
+<AppShell title="Iconography — FREE//FALL Design System" navItems={navItems}>
+  <Fragment slot="head">
     <style>
       .icon-grid {
         display: grid;
@@ -87,50 +96,47 @@ const sizes = ["1rem", "1.5rem", "2rem", "3rem"];
         margin-top: 0.5rem;
       }
     </style>
-  </head>
-  <body>
-    <h1>Iconography</h1>
-    <p class="token-info">Material Symbols Sharp — ligature-based, loaded via Google Fonts</p>
+  </Fragment>
 
-    <h2>Sample Icons</h2>
-    <div class="icon-grid">
-      {sampleIcons.map((name) => (
-        <div class="icon-cell">
-          <span class="material-symbols-sharp">{name}</span>
-          <div class="icon-name">{name}</div>
-        </div>
-      ))}
-    </div>
+  <h1>Iconography</h1>
+  <p class="token-info">Material Symbols Sharp — ligature-based, loaded via Google Fonts</p>
 
-    <h2>Sizing</h2>
-    <p class="token-info">Icons scale with font-size — base class uses 1.25em</p>
-    <div style="margin: 1rem 0 2rem;">
-      {sizes.map((size) => (
-        <div class="size-row">
-          <div class="size-label">{size}</div>
-          <span class="material-symbols-sharp" style={`font-size: ${size}`}>rocket_launch</span>
-          <span class="material-symbols-sharp" style={`font-size: ${size}`}>settings</span>
-          <span class="material-symbols-sharp" style={`font-size: ${size}`}>warning</span>
-        </div>
-      ))}
-    </div>
+  <h2>Sample Icons</h2>
+  <div class="icon-grid">
+    {sampleIcons.map((name) => (
+      <div class="icon-cell">
+        <span class="material-symbols-sharp">{name}</span>
+        <div class="icon-name">{name}</div>
+      </div>
+    ))}
+  </div>
 
-    <h2>Color Inheritance</h2>
-    <p class="token-info">Icons inherit color from their parent element</p>
-    <div class="color-demo">
-      <span style="color: var(--freefall-text-display)"><span class="material-symbols-sharp">home</span></span>
-      <span style="color: var(--freefall-text-body)"><span class="material-symbols-sharp">home</span></span>
-      <span style="color: var(--freefall-text-muted)"><span class="material-symbols-sharp">home</span></span>
-      <span style="color: var(--freefall-alert-base)"><span class="material-symbols-sharp">home</span></span>
-    </div>
+  <h2>Sizing</h2>
+  <p class="token-info">Icons scale with font-size — base class uses 1.25em</p>
+  <div style="margin: 1rem 0 2rem;">
+    {sizes.map((size) => (
+      <div class="size-row">
+        <div class="size-label">{size}</div>
+        <span class="material-symbols-sharp" style={`font-size: ${size}`}>rocket_launch</span>
+        <span class="material-symbols-sharp" style={`font-size: ${size}`}>settings</span>
+        <span class="material-symbols-sharp" style={`font-size: ${size}`}>warning</span>
+      </div>
+    ))}
+  </div>
 
-    <h2>Accessibility</h2>
-    <p class="token-info">Ligature text is readable by screen readers. Use aria-hidden for decorative icons.</p>
-    <div style="margin: 1rem 0 2rem; font-size: 1.125rem;">
-      <p style="margin: 0.5rem 0;">Standalone: <code>&lt;span class="material-symbols-sharp"&gt;search&lt;/span&gt;</code></p>
-      <p style="margin: 0.5rem 0;">Decorative: <code>&lt;span class="material-symbols-sharp" aria-hidden="true"&gt;arrow_forward&lt;/span&gt; Next</code></p>
-    </div>
+  <h2>Color Inheritance</h2>
+  <p class="token-info">Icons inherit color from their parent element</p>
+  <div class="color-demo">
+    <span style="color: var(--freefall-text-display)"><span class="material-symbols-sharp">home</span></span>
+    <span style="color: var(--freefall-text-body)"><span class="material-symbols-sharp">home</span></span>
+    <span style="color: var(--freefall-text-muted)"><span class="material-symbols-sharp">home</span></span>
+    <span style="color: var(--freefall-alert-base)"><span class="material-symbols-sharp">home</span></span>
+  </div>
 
-    <p><a href="/" style="color: var(--freefall-alert-base)">← Back to index</a></p>
-  </body>
-</html>
+  <h2>Accessibility</h2>
+  <p class="token-info">Ligature text is readable by screen readers. Use aria-hidden for decorative icons.</p>
+  <div style="margin: 1rem 0 2rem; font-size: 1.125rem;">
+    <p style="margin: 0.5rem 0;">Standalone: <code>&lt;span class="material-symbols-sharp"&gt;search&lt;/span&gt;</code></p>
+    <p style="margin: 0.5rem 0;">Decorative: <code>&lt;span class="material-symbols-sharp" aria-hidden="true"&gt;arrow_forward&lt;/span&gt; Next</code></p>
+  </div>
+</AppShell>

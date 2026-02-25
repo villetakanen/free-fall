@@ -2,8 +2,7 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import { colors, spacing } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
-import "@free-fall/design-system/styles/base.css";
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const primarySteps = [
@@ -67,14 +66,19 @@ const semanticTokens = [
     ref: "accent-900",
   },
 ];
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/", active: true },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tokens — FREE//FALL Design System</title>
-    <FontLinks />
+<AppShell title="Tokens — FREE//FALL Design System" navItems={navItems}>
+  <Fragment slot="head">
     <style>
       .swatch-grid {
         display: grid;
@@ -150,62 +154,59 @@ const semanticTokens = [
         white-space: nowrap;
       }
     </style>
-  </head>
-  <body>
-    <h1>Design Tokens</h1>
+  </Fragment>
 
-    <h2>Primary Palette — Deep Space Cobalt</h2>
-    <div class="swatch-grid">
-      {primarySteps.map((step) => (
-        <div class="swatch">
-          <div class="swatch-color" style={`background: var(--freefall-color-primary-${step})`} />
-          <div class="swatch-label">
-            <strong>{step}</strong>
-            {colors.primary[step]}
-          </div>
+  <h1>Design Tokens</h1>
+
+  <h2>Primary Palette — Deep Space Cobalt</h2>
+  <div class="swatch-grid">
+    {primarySteps.map((step) => (
+      <div class="swatch">
+        <div class="swatch-color" style={`background: var(--freefall-color-primary-${step})`} />
+        <div class="swatch-label">
+          <strong>{step}</strong>
+          {colors.primary[step]}
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
 
-    <h2>Accent Palette — Isotope Neon</h2>
-    <div class="swatch-grid">
-      {accentSteps.map((step) => (
-        <div class="swatch">
-          <div class="swatch-color" style={`background: var(--freefall-color-accent-${step})`} />
-          <div class="swatch-label">
-            <strong>{step}</strong>
-            {colors.accent[step]}
-          </div>
+  <h2>Accent Palette — Isotope Neon</h2>
+  <div class="swatch-grid">
+    {accentSteps.map((step) => (
+      <div class="swatch">
+        <div class="swatch-color" style={`background: var(--freefall-color-accent-${step})`} />
+        <div class="swatch-label">
+          <strong>{step}</strong>
+          {colors.accent[step]}
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
 
-    <h2>Semantic Tokens</h2>
-    <ul class="semantic-list">
-      {semanticTokens.map((token) => (
-        <li class="semantic-item">
-          <div class="semantic-swatch" style={`background: var(${token.name})`} />
-          <div>
-            <div>{token.role}</div>
-            <div class="semantic-name">{token.name} → {token.ref}</div>
-          </div>
-        </li>
-      ))}
-    </ul>
+  <h2>Semantic Tokens</h2>
+  <ul class="semantic-list">
+    {semanticTokens.map((token) => (
+      <li class="semantic-item">
+        <div class="semantic-swatch" style={`background: var(${token.name})`} />
+        <div>
+          <div>{token.role}</div>
+          <div class="semantic-name">{token.name} → {token.ref}</div>
+        </div>
+      </li>
+    ))}
+  </ul>
 
-    <h2>Spacing — 0.5rem base (1rem = 16px)</h2>
-    <ul class="spacing-list">
-      {([1, 2, 4, 8, 16] as const).map((step) => (
-        <li class="spacing-item">
-          <div class="spacing-bar" style={`width: var(--freefall-space-${step})`} />
-          <div>
-            <div>space-{step}</div>
-            <div class="spacing-label">--freefall-space-{step} → {spacing[step]} ({step * 8}px)</div>
-          </div>
-        </li>
-      ))}
-    </ul>
-
-    <p><a href="/" style="color: var(--freefall-alert-base)">← Back to index</a></p>
-  </body>
-</html>
+  <h2>Spacing — 0.5rem base (1rem = 16px)</h2>
+  <ul class="spacing-list">
+    {([1, 2, 4, 8, 16] as const).map((step) => (
+      <li class="spacing-item">
+        <div class="spacing-bar" style={`width: var(--freefall-space-${step})`} />
+        <div>
+          <div>space-{step}</div>
+          <div class="spacing-label">--freefall-space-{step} → {spacing[step]} ({step * 8}px)</div>
+        </div>
+      </li>
+    ))}
+  </ul>
+</AppShell>

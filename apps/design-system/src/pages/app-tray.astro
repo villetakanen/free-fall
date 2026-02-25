@@ -1,46 +1,19 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppTray from "@free-fall/design-system/components/AppTray.astro";
-// biome-ignore lint/correctness/noUnusedImports: used in template
-import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
-import "@free-fall/design-system/styles/base.css";
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const navItems = [
-  { icon: "home", label: "Home", href: "/", active: false },
-  {
-    icon: "palette",
-    label: "Design Tokens",
-    href: "/tokens/",
-    active: false,
-  },
-  {
-    icon: "text_fields",
-    label: "Typography",
-    href: "/typography/",
-    active: false,
-  },
-  {
-    icon: "emoji_symbols",
-    label: "Iconography",
-    href: "/iconography/",
-    active: false,
-  },
-  {
-    icon: "menu_open",
-    label: "App Tray",
-    href: "/app-tray/",
-    active: true,
-  },
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/", active: true },
 ];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>App Tray — FREE//FALL Design System</title>
-    <FontLinks />
+<AppShell title="App Tray — FREE//FALL Design System" navItems={navItems}>
+  <Fragment slot="head">
     <style>
       .token-info {
         font-size: calc(1.5 * var(--freefall-space-1));
@@ -64,73 +37,66 @@ const navItems = [
         font-family: var(--freefall-font-mono);
       }
     </style>
-  </head>
-  <body>
-    <AppTray items={navItems} />
+  </Fragment>
 
-    <h1>App Tray</h1>
-    <p>
-      M3-style responsive navigation drawer with rail. Resize the browser to see
-      all three modes. Works without JavaScript — toggle is a CSS checkbox hack,
-      JS only adds Escape key and focus trap.
-    </p>
+  <h1>App Tray</h1>
+  <p>
+    M3-style responsive navigation drawer with rail. Resize the browser to see
+    all three modes. Works without JavaScript — toggle is a CSS checkbox hack,
+    JS only adds Escape key and focus trap.
+  </p>
 
-    <h2>Responsive Modes</h2>
-    <table class="dimension-table">
-      <tr><th>Viewport</th><th>Closed</th><th>Open</th></tr>
-      <tr>
-        <td>Small (&lt; 620px)</td><td>Hidden</td>
-        <td>Full-screen overlay</td>
-      </tr>
-      <tr><td>Medium (620–779px)</td><td>Rail</td><td>Overlay drawer</td></tr>
-      <tr><td>Large (≥ 780px)</td><td>Rail</td><td>Push drawer</td></tr>
-    </table>
+  <h2>Responsive Modes</h2>
+  <table class="dimension-table">
+    <tr><th>Viewport</th><th>Closed</th><th>Open</th></tr>
+    <tr>
+      <td>Small (&lt; 620px)</td><td>Hidden</td>
+      <td>Full-screen overlay</td>
+    </tr>
+    <tr><td>Medium (620–779px)</td><td>Rail</td><td>Overlay drawer</td></tr>
+    <tr><td>Large (≥ 780px)</td><td>Rail</td><td>Push drawer</td></tr>
+  </table>
 
-    <h2>Dimensions</h2>
-    <table class="dimension-table">
-      <tr><th>Element</th><th>Token formula</th><th>Computed</th></tr>
-      <tr>
-        <td>Rail width</td>
-        <td class="token-info">calc(10 * var(--freefall-space-1))</td>
-        <td>5rem</td>
-      </tr>
-      <tr>
-        <td>Tray width</td>
-        <td class="token-info">calc(40 * var(--freefall-space-1))</td>
-        <td>20rem</td>
-      </tr>
-      <tr>
-        <td>Burger button</td>
-        <td class="token-info">calc(6 * var(--freefall-space-1))</td>
-        <td>3rem</td>
-      </tr>
-      <tr>
-        <td>Rail icon</td>
-        <td class="token-info">calc(3 * var(--freefall-space-1))</td>
-        <td>1.5rem</td>
-      </tr>
-      <tr>
-        <td>Nav item padding</td>
-        <td class="token-info">var(--freefall-space-2)</td>
-        <td>1rem</td>
-      </tr>
-    </table>
+  <h2>Dimensions</h2>
+  <table class="dimension-table">
+    <tr><th>Element</th><th>Token formula</th><th>Computed</th></tr>
+    <tr>
+      <td>Rail width</td>
+      <td class="token-info">calc(10 * var(--freefall-space-1))</td>
+      <td>5rem</td>
+    </tr>
+    <tr>
+      <td>Tray width</td>
+      <td class="token-info">calc(40 * var(--freefall-space-1))</td>
+      <td>20rem</td>
+    </tr>
+    <tr>
+      <td>Burger button</td>
+      <td class="token-info">calc(6 * var(--freefall-space-1))</td>
+      <td>3rem</td>
+    </tr>
+    <tr>
+      <td>Rail icon</td>
+      <td class="token-info">calc(3 * var(--freefall-space-1))</td>
+      <td>1.5rem</td>
+    </tr>
+    <tr>
+      <td>Nav item padding</td>
+      <td class="token-info">var(--freefall-space-2)</td>
+      <td>1rem</td>
+    </tr>
+  </table>
 
-    <h2>Interactions</h2>
-    <ul>
-      <li>Click the hamburger button to toggle (pure CSS — no JS)</li>
-      <li>Click the scrim to close (pure CSS — label for same checkbox)</li>
-      <li>Press <kbd>Escape</kbd> to close (progressive enhancement, JS)</li>
-      <li>Focus trap in overlay mode (progressive enhancement, JS)</li>
-    </ul>
+  <h2>Interactions</h2>
+  <ul>
+    <li>Click the hamburger button to toggle (pure CSS — no JS)</li>
+    <li>Click the scrim to close (pure CSS — label for same checkbox)</li>
+    <li>Press <kbd>Escape</kbd> to close (progressive enhancement, JS)</li>
+    <li>Focus trap in overlay mode (progressive enhancement, JS)</li>
+  </ul>
 
-    <p class="token-info">
-      Transitions: slide 200ms ease-out (open) / 150ms ease-in (close) ·
-      crossfade 150ms
-    </p>
-
-    <p>
-      <a href="/" style="color: var(--freefall-alert-base)">← Back to index</a>
-    </p>
-  </body>
-</html>
+  <p class="token-info">
+    Transitions: slide 200ms ease-out (open) / 150ms ease-in (close) ·
+    crossfade 150ms
+  </p>
+</AppShell>
