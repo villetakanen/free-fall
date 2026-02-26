@@ -5,7 +5,7 @@
    ========================================= */
 
 .app-tray {
-  /* Flex row layout for aligning rail column and drawer side-by-side */
+  /* Flex row layout for aligning rail column side-by-side */
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -19,15 +19,6 @@
 }
 
 /* =========================================
-   TOGGLE (hidden checkbox)
-   ========================================= */
-
-/* =========================================
-   TOGGLE HIDDEN STATE
-   ========================================= */
-/* The underlying checkbox is now provided by HamburgerButton.astro */
-
-/* =========================================
    HAMBURGER BUTTON (label for checkbox)
    ========================================= */
 
@@ -36,93 +27,43 @@
   position: fixed;
   top: var(--freefall-space-2);
   left: var(--freefall-space-2);
-  z-index: calc(var(--app-tray-z-tray) + 1);
+  z-index: calc(var(--app-tray-z-tray) + 2);
 }
 
 /* =========================================
-   RAIL
+   RAIL COLUMN (Unified Tray Container)
    ========================================= */
 
-/* Mobile default: Rail hidden, column doesn't affect flow */
+/* Mobile default: Hidden completely off-screen until opened */
 .app-tray__rail-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.app-tray__rail {
-  display: none;
-}
-
-.app-tray__rail-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--freefall-space-1);
-  padding: var(--freefall-space-2) 0;
-  color: var(--freefall-text-body);
-  text-decoration: none;
-  font-size: calc(1.5 * var(--freefall-space-1));
-  cursor: pointer;
-}
-
-.app-tray__rail-item:hover {
-  background: var(--freefall-action-hover);
-}
-
-.app-tray__rail-item[data-active] {
-  color: var(--freefall-text-display);
-}
-
-.app-tray__rail-icon {
-  font-size: var(--app-tray-icon-size);
-}
-
-/* =========================================
-   TRAY (DRAWER)
-   ========================================= */
-
-.app-tray__drawer {
   position: fixed;
   top: 0;
   left: 0;
   z-index: var(--app-tray-z-tray);
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   background: var(--freefall-bg-surface-1);
+  width: var(--app-tray-tray-width);
+  max-width: 100vw;
   transform: translateX(-100%);
-  transition: transform 150ms ease-in;
+  transition: transform 150ms ease-in, width 150ms ease-in;
   overflow-y: auto;
+  border-right: none;
+  container-type: inline-size;
 }
 
-.app-tray:has(#app-tray-toggle:checked) .app-tray__drawer {
+.app-tray:has(#app-tray-toggle:checked) .app-tray__rail-column {
   transform: translateX(0);
-  transition: transform 200ms ease-out;
+  transition: transform 200ms ease-out, width 200ms ease-out;
 }
 
-.app-tray__drawer-header {
-  height: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
-}
-
-.app-tray__nav-item {
+.app-tray__nav {
   display: flex;
-  align-items: center;
-  gap: var(--freefall-space-2);
-  padding: var(--freefall-space-2);
-  color: var(--freefall-text-body);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.app-tray__nav-item:hover {
-  background: var(--freefall-action-hover);
-}
-
-.app-tray__nav-item[data-active] {
-  color: var(--freefall-text-display);
-}
-
-.app-tray__nav-icon {
-  font-size: var(--app-tray-icon-size);
+  flex-direction: column;
+  padding: 0 calc(1.5 * var(--freefall-space-1));
+  gap: var(--freefall-space-1);
+  margin-top: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
 }
 
 /* =========================================
@@ -152,11 +93,12 @@
 
 @media (min-width: 620px) {
 
-  /* Rail column visible, gives background and width */
+  /* Rail column visible always. Unchecked = Rail mode, Checked = Tray mode overlaying content */
   .app-tray__rail-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    /* Restores it to document flow */
+    transform: translateX(0);
+    /* Always visible */
     width: var(--app-tray-rail-width);
     flex-shrink: 0;
     background: var(--freefall-bg-surface-2);
@@ -164,25 +106,16 @@
     z-index: calc(var(--app-tray-z-tray) + 1);
   }
 
-  .app-tray__burger-wrapper {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: var(--freefall-space-2) auto;
-  }
-
-  /* Rail inner items container */
-  .app-tray__rail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  /* Tray becomes an overlay relative to the screen (not pushing) */
-  .app-tray__drawer {
+  /* When toggled, overlay tray pops out natively (absolute overlay behavior simulating drawer) */
+  .app-tray:has(#app-tray-toggle:checked) .app-tray__rail-column {
+    position: absolute;
+    height: 100vh;
     width: var(--app-tray-tray-width);
-    border-right: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
+    background: var(--freefall-bg-surface-1);
+  }
+
+  .app-tray__nav {
+    margin-top: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
   }
 }
 
@@ -192,22 +125,16 @@
 
 @media (min-width: 780px) {
 
-  /* Tray goes relative to flow, pushes content */
-  .app-tray__drawer {
-    position: relative;
-    transform: translateX(-100%);
-    width: 0;
-    overflow: hidden;
-    flex-shrink: 0;
-    height: 100%;
-  }
-
-  .app-tray:has(#app-tray-toggle:checked) .app-tray__drawer {
-    width: var(--app-tray-tray-width);
-    transform: translateX(0);
-  }
-
+  /* Desktop never uses scrim */
   .app-tray:has(#app-tray-toggle:checked) .app-tray__scrim {
     display: none;
+  }
+
+  /* Checked = Tray mode pushing content */
+  .app-tray:has(#app-tray-toggle:checked) .app-tray__rail-column {
+    position: relative;
+    /* Restores relative positioning so it pushes content */
+    width: var(--app-tray-tray-width);
+    background: var(--freefall-bg-surface-1);
   }
 }

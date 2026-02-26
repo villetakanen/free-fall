@@ -61,26 +61,30 @@
 }
 
 /* =========================================
-   MINIMIZED STATE
-   Parent signals via [data-tray-state="minimized"].
-   Icon centers, label becomes visually hidden
-   but remains accessible to screen readers.
+   MINIMIZED STATE (Container Query Driven)
+   When the button's parent container is narrow (like a rail),
+   the icon centers and the label becomes visually hidden.
    ========================================= */
 
-[data-tray-state="minimized"] .tray-button {
-  justify-content: center;
-  width: max-content;
-  margin-inline: auto;
-}
+@container (max-width: 160px) {
+  .tray-button {
+    width: calc(6 * var(--freefall-space-1));
+    height: calc(6 * var(--freefall-space-1));
+    padding: 0;
+    justify-content: center;
+    margin-inline: auto;
+    gap: 0;
+  }
 
-[data-tray-state="minimized"] .tray-button__label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  .tray-button__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
