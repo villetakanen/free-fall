@@ -4,8 +4,14 @@
 @import "./app-tray.css";
 @import "./app-shell.css";
 
+html,
 body {
-  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
   background: var(--freefall-bg-canvas);
   color: var(--freefall-text-body);
 }

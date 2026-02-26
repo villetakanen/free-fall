@@ -31,7 +31,7 @@ The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-deskt
 | A |                               |   T = Tray (rail + labels)
 | I |                               |
 | L |                               |
-+---+-------------------------------+
++-C-+-------------------------------+   C = Rail Column (wraps B & R)
 
 +-------+---------------------------+
 | B     |                           |
@@ -77,8 +77,8 @@ The tray is an Astro component — server-rendered HTML + CSS with a small inlin
 
 | File | Contents |
 |---|---|
-| `src/components/AppTray.astro` | Astro component — checkbox toggle, labels, rail, drawer, scrim, inline script |
-| `src/styles/app-tray.css` | Layout, dimensions, responsive rules, transitions — all driven by `:has(:checked)` |
+| `src/components/AppTray.astro` | Astro component — checkbox toggle, labels, rail-column wrapper, drawer, scrim, inline script |
+| `src/styles/app-tray.css` | Layout (root flex-row), dimensions, responsive rules, transitions — all driven by `:has(:checked)` |
 
 **What works without JavaScript:**
 

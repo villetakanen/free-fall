@@ -5,6 +5,11 @@
    ========================================= */
 
 .app-tray {
+  /* Flex row layout for aligning rail column and drawer side-by-side */
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  
   --app-tray-z-tray: 100;
   --app-tray-z-scrim: 99;
   --app-tray-rail-width: calc(10 * var(--freefall-space-1));
@@ -28,6 +33,7 @@
    ========================================= */
 
 .app-tray__burger {
+  /* Default mobile state: Fixed top left */
   position: fixed;
   top: var(--freefall-space-2);
   left: var(--freefall-space-2);
@@ -72,6 +78,12 @@
 /* =========================================
    RAIL
    ========================================= */
+
+/* Mobile default: Rail hidden, column doesn't affect flow */
+.app-tray__rail-column {
+  display: flex;
+  flex-direction: column;
+}
 
 .app-tray__rail {
   display: none;
@@ -175,14 +187,8 @@
    ========================================= */
 
 @media (min-width: 620px) {
-  .app-tray__burger {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: var(--freefall-space-2) auto;
-  }
-
-  .app-tray__rail {
+  /* Rail column visible, gives background and width */
+  .app-tray__rail-column {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -190,8 +196,25 @@
     flex-shrink: 0;
     background: var(--freefall-bg-surface-2);
     border-right: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
+    z-index: calc(var(--app-tray-z-tray) + 1);
   }
 
+  .app-tray__burger {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: var(--freefall-space-2) auto;
+  }
+
+  /* Rail inner items container */
+  .app-tray__rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Tray becomes an overlay relative to the screen (not pushing) */
   .app-tray__drawer {
     width: var(--app-tray-tray-width);
     border-right: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
@@ -203,13 +226,14 @@
    ========================================= */
 
 @media (min-width: 780px) {
+  /* Tray goes relative to flow, pushes content */
   .app-tray__drawer {
     position: relative;
     transform: translateX(-100%);
     width: 0;
     overflow: hidden;
     flex-shrink: 0;
-    height: auto;
+    height: 100%;
   }
 
   .app-tray:has(.app-tray__toggle:checked) .app-tray__drawer {
