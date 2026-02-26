@@ -34,4 +34,18 @@ describe("typography tokens", () => {
       expect(typography.weights.mono.medium).toBe(500);
     });
   });
+
+  describe("editorial scale", () => {
+    it("exports an explicit editorial scale mapping", () => {
+      expect(typography.scale).toBeDefined();
+    });
+
+    it("includes required semantic elements", () => {
+      expect(typography.scale.chapter).toBeDefined();
+      expect(typography.scale.section).toBeDefined();
+      expect(typography.scale.subsection).toBeDefined();
+      expect(typography.scale.bodyLead).toBeDefined();
+      expect(typography.scale.caption).toBeDefined();
+    });
+  });
 });

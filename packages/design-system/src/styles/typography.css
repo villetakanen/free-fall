@@ -27,29 +27,47 @@ p:last-child,
   margin-bottom: 0;
 }
 
-h1,
-.text-h1 {
+/* =========================================
+   Editorial Typography Scale
+   ========================================= */
+
+.text-chapter {
   font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(9 * var(--freefall-space-1));
+  letter-spacing: -0.02em;
+  /* Tighter tracking for massive headers */
+  color: var(--freefall-text-display);
 }
 
-h2,
-.text-h2 {
+.text-section {
   font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(6 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
 }
 
-h3,
-.text-h3 {
+.text-subsection {
   font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(5 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
 }
 
-h4,
-.text-h4 {
+.text-body-lead {
   font-size: calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(4 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
 }
+
+.text-caption {
+  font-size: calc(2 * var(--freefall-space-1));
+  line-height: calc(2 * var(--freefall-space-1));
+  color: var(--freefall-text-muted);
+  letter-spacing: 0.05em;
+  /* Looser tracking for small sizes */
+}
+
+/* =========================================
+   Emphasis Utilities
+   ========================================= */
 
 .text-high {
   color: var(--freefall-text-display);
@@ -71,4 +89,105 @@ h4,
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+}
+
+/* =========================================
+   Prose / Rich Text Scoping
+   ========================================= */
+
+.freefall-prose {
+  max-width: 65ch;
+  /* Ergonomic measure for long-form reading */
+}
+
+/* Base Paragraphs in Prose */
+.freefall-prose p {
+  color: var(--freefall-text-body);
+  font-size: 1rem;
+  line-height: calc(3 * var(--freefall-space-1));
+  margin-bottom: calc(2 * var(--freefall-space-1));
+}
+
+.freefall-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Headings mapped to Editorial Scale */
+.freefall-prose h1 {
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+  line-height: calc(9 * var(--freefall-space-1));
+  letter-spacing: -0.02em;
+  color: var(--freefall-text-display);
+  margin-top: calc(8 * var(--freefall-space-1));
+  margin-bottom: calc(3 * var(--freefall-space-1));
+}
+
+.freefall-prose h2 {
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+  line-height: calc(6 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
+  margin-top: calc(6 * var(--freefall-space-1));
+  margin-bottom: calc(2 * var(--freefall-space-1));
+}
+
+.freefall-prose h3 {
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+  line-height: calc(5 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
+  margin-top: calc(4 * var(--freefall-space-1));
+  margin-bottom: calc(2 * var(--freefall-space-1));
+}
+
+/* Lists */
+.freefall-prose ul,
+.freefall-prose ol {
+  color: var(--freefall-text-body);
+  font-size: 1rem;
+  line-height: calc(3 * var(--freefall-space-1));
+  margin-top: calc(2 * var(--freefall-space-1));
+  margin-bottom: calc(2 * var(--freefall-space-1));
+  padding-left: calc(3 * var(--freefall-space-1));
+}
+
+.freefall-prose li {
+  margin-bottom: calc(1 * var(--freefall-space-1));
+}
+
+/* Blockquotes for flavor text */
+.freefall-prose blockquote {
+  font-style: italic;
+  color: var(--freefall-text-muted);
+  border-left: 2px solid var(--freefall-border-strong);
+  padding-left: calc(2 * var(--freefall-space-1));
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: calc(3 * var(--freefall-space-1));
+  margin-bottom: calc(3 * var(--freefall-space-1));
+}
+
+/* Tables for stats and rolls */
+.freefall-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: calc(3 * var(--freefall-space-1));
+  margin-bottom: calc(3 * var(--freefall-space-1));
+  font-size: 1rem;
+  line-height: calc(3 * var(--freefall-space-1));
+}
+
+.freefall-prose th {
+  color: var(--freefall-text-display);
+  border-bottom: 2px solid var(--freefall-border-strong);
+  padding: calc(1 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+  text-align: left;
+}
+
+.freefall-prose td {
+  color: var(--freefall-text-body);
+  border-bottom: 1px solid var(--freefall-border-subtle);
+  padding: calc(1 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+}
+
+.freefall-prose tbody tr:nth-child(even) {
+  background-color: var(--freefall-bg-surface-1);
 }

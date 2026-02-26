@@ -3,8 +3,6 @@
 import { breakpoints } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
-// biome-ignore lint/correctness/noUnusedImports: used in template
-import Heading from "@free-fall/design-system/components/Heading.astro";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const navItems = [
@@ -18,7 +16,10 @@ const navItems = [
 ---
 
 <AppShell title="FREE//FALL Design System" navItems={navItems}>
-  <Heading>FREE//FALL Design System</Heading>
+  <div class="test-container" style="padding: 2rem;">
+    <h1 class="text-chapter">FREE//FALL Design System</h1>
+    <h2 class="text-section">Component Reference</h2>
+  </div>
   <h2>Breakpoints</h2>
   <ul>
     <li>Tablet: {breakpoints.tablet}</li>
@@ -28,19 +29,22 @@ const navItems = [
   <ul>
     <li>
       <a href="/tokens/" style="color: var(--freefall-alert-base)"
-        >Design Tokens</a>
+        >Design Tokens</a
+      >
     </li>
     <li>
       <a href="/typography/" style="color: var(--freefall-alert-base)"
-        >Typography</a>
+        >Typography</a
+      >
     </li>
     <li>
       <a href="/iconography/" style="color: var(--freefall-alert-base)"
-        >Iconography</a>
+        >Iconography</a
+      >
     </li>
     <li>
-      <a href="/app-tray/" style="color: var(--freefall-alert-base)"
-        >App Tray</a>
+      <a href="/app-tray/" style="color: var(--freefall-alert-base)">App Tray</a
+      >
     </li>
   </ul>
 </AppShell>

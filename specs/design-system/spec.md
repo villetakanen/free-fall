@@ -113,6 +113,30 @@ Design tokens exist in two forms that must stay in sync:
 - Token values in TypeScript and CSS custom properties must match
 - Dependency direction is one-way: apps → `packages/design-system`, never the reverse
 
+### Architecture
+
+The project is structured as a monorepo containing a shared library and consumer applications.
+
+- `packages/design-system`: The source of truth. Contains design tokens, shared CSS architecture, and reusable UI components.
+- `apps/design-system`: The interactive documentation and development sandbox for the design system itself.
+- `apps/free-fall`: The main user-facing application (the TTRPG web app).
+
+### Component Philosophy
+
+FREE//FALL strictly minimizes JavaScript shipped to the client. The design system leverages **pure HTML and CSS** where possible. Abstracting semantic HTML nodes like text formatting or headings into JS wrappers is actively avoided. Complex interactions should use `svelte` components carefully tailored to progressive enhancement.
+
+Astro components are used for macro-structural layouts (e.g., `AppShell`, `AppTray`) or SVG icon encapsulations, where build-time templating provides value without introducing runtime JS overhead.
+
+```astro
+---
+// apps/design-system/src/pages/index.astro
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+---
+<AppShell title="FREE//FALL Components">
+  <h1 class="text-chapter">Design System Reference</h1>
+</AppShell>
+```
+
 ### Scenarios
 
 Scenario: New CSS component added
@@ -122,7 +146,7 @@ Scenario: New CSS component added
 
 Scenario: New Astro component added
   Given: A new `.astro` file is added to `packages/design-system/src/components/`
-  When: It is imported via `@free-fall/design-system/components/Name.astro`
+  When: It is imported via `@free-fall/design-system/components/Button.astro`
   Then: Vite alias resolves it, the demo app renders it, and no JS is shipped
 
 Scenario: Token added

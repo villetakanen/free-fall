@@ -14,4 +14,14 @@ export const typography = {
       medium: 500,
     },
   },
+  scale: {
+    chapter:
+      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+    section:
+      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+    subsection:
+      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+    bodyLead: "calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+    caption: "calc(2 * var(--freefall-space-1))",
+  },
 } as const;

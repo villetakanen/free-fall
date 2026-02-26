@@ -68,24 +68,52 @@ The `display=swap` parameter ensures text is immediately visible in the fallback
 - `code`, `pre`, `kbd`, `samp` set `font-family: var(--freefall-font-mono)`
 - No font sizes defined at this level — sizing is left to component styles
 
-**Text emphasis classes:**
+**Text emphasis classes & Editorial Typography:**
+
+Instead of generic abstract headings, FREE//FALL uses a strict editorial scale tailored for complex TTRPG information architecture. Semantic HTML structure (`<h1>`, `<h2>`) is decoupled from visual size using these specific modifier classes:
+
+| Class | Visual Weight | Usage |
+|---|---|---|
+| `.text-chapter` | Massive, tight tracking | `<h1>` equivalents, cover titles |
+| `.text-section` | Large, distinct | `<h2>` equivalents, major rules sections |
+| `.text-subsection` | Medium, structural | `<h3>` equivalents, granular rules blocks |
+| `.text-body-lead` | Slightly enlarged body | Intro paragraphs, chapter summaries |
+| `.text-copy` | Base body size (1rem) | Standard paragraphs (`<p>`) |
+| `.text-caption` | Small, loose tracking | Figure captions, subtle notes |
+| `.text-callout` | Thematic, visually distinct | Flavor text, in-universe quotes |
+
+*Note: `p` elements receive standard body styling by default. The `.text-copy` class is only needed to apply paragraph typography to non-`p` nodes.*
+
+**Emphasis & Color Classes:**
 
 Three levels of text emphasis mapped to the ceramic highlight colors:
 
-| Class | Also applies to | Color token | Palette step |
-|---|---|---|---|
-| `.text-high` | — | `--freefall-text-display` | primary-50 |
-| `.text-copy` | `p` | `--freefall-text-body` | primary-100 |
-| `.text-low` | — | `--freefall-text-muted` | primary-300 |
+| Class | Color token | Palette step |
+|---|---|---|
+| `.text-high` | `--freefall-text-display` | primary-50 |
+| `.text-low` | `--freefall-text-muted` | primary-300 |
 
-`p` elements receive `.text-copy` styling by default — no class needed. Use `.text-copy` explicitly on non-`p` elements that should match paragraph color. Use `.text-high` or `.text-low` on any element (including `p`) to override.
+Use `.text-high` or `.text-low` on any element to override its default color.
+
+**Prose Scoping for Markdown (`.freefall-prose`):**
+
+When rendering raw Markdown bodies (like long-form rulebooks), do not attempt to map utility classes to every single generated HTML node. Instead, wrap the output in a `<div class="freefall-prose">` scope container.
+
+The `.freefall-prose` scope automatically:
+- Enforces an ergonomic `max-width: 65ch` measure to prevent unreadable widescreen text walls.
+- Applies the correct vertical rhythm (margins that map to the `4px` base grid) between paragraphs and headings.
+- Automatically styles all naked `<h1>`, `<h2>`, and `<h3>` tags to the `.text-chapter`, `.text-section`, and `.text-subsection` scales respectively.
+- Deep-styles TTRPG-specific nested structures natively:
+  - **Lists**: Strictly indented padding for `<ul>` and `<ol>`, with unified vertical spacing for complex nested rules exceptions.
+  - **Tables**: Robust zebra striping, distinct header bottom-borders, and cell padding for readability in data-dense stat blocks and roll tables.
+  - **Blockquotes**: Left-indented, italicized rendering for narrative flavor text, visually distinct from mechanical rules text.
 
 ### Anti-Patterns
 
 - **No direct Google Fonts URLs in app code** — Always use the `FontLinks` component. The URLs live in one place.
 - **No font-family strings in component CSS** — Use `var(--freefall-font-body)` or `var(--freefall-font-mono)`. Never hardcode `"Lato"` or `"IBM Plex Mono"` outside the token definitions.
 - **No self-hosted fonts** — Google Fonts CDN handles delivery and caching. Do not download and bundle font files.
-- **No font-size tokens at this level** — Typography spec defines families and weights only. Component-level sizing is a separate concern.
+- **No JS Typography Wrappers** — Do not build abstract `<Heading>` or `<Text>` components in Svelte or Astro. Rely exclusively on Semantic HTML augmented by the defined `.text-*` utility classes to uphold the pure HTML/CSS engineering philosophy.
 
 ## Contract
 
@@ -93,21 +121,21 @@ Three levels of text emphasis mapped to the ceramic highlight colors:
 
 - [ ] `src/components/FontLinks.astro` renders preconnect and stylesheet `<link>` tags for both fonts
 - [ ] `src/styles/typography.css` defines `--freefall-font-body` and `--freefall-font-mono` custom properties
-- [ ] `src/styles/typography.css` applies font families to `html` and code elements
+- [ ] `src/styles/typography.css` implements the detailed editorial scale utility classes (`.text-chapter`, `.text-section`, etc.) and the `.freefall-prose` comprehensive scope styles.
+- [ ] `src/styles/typography.css` adheres strictly to baseline rhythm (`line-height` evaluates to multiples of `var(--freefall-space-1)`).
 - [ ] `src/styles/base.css` imports `typography.css`
-- [ ] `src/tokens/typography.ts` exports font family and weight constants
-- [ ] Unit tests verify TypeScript token values
+- [ ] `src/tokens/typography.ts` exports font family constants and the mapped editorial scale values.
+- [ ] Unit tests verify TypeScript token values mapped to the editorial hierarchy.
 - [ ] Both apps use `FontLinks` in their layouts
-- [ ] Demo app has a typography reference page showing both fonts with sample text
+- [ ] Demo app has a typography reference page showing both fonts, the editorial scales, and a mock `.freefall-prose` Markdown output.
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 - [ ] Built HTML contains Google Fonts `<link>` tags and zero `<script>` tags
 
 ### Regression Guardrails
 
 - Font family values in CSS and TypeScript must match
-- Google Fonts URLs in `FontLinks.astro` must load the same families defined in the tokens
-- Google Fonts stylesheet URL must include `&display=swap`
-- No `font-family` declaration anywhere outside `typography.css` may use a raw string — always `var()`
+- CSS utility modifier token sizes must strictly map back to TypeScript typography size constants.
+- Line heights across all typographic nodes must always mathematically equate to a multiple of `4px` (`--freefall-space-1`).
 
 ### Scenarios
 
