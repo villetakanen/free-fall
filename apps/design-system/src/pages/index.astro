@@ -2,6 +2,8 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import { breakpoints } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
+import nineTailRaw from "@free-fall/design-system/assets/nine-tail.svg?raw";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
@@ -17,6 +19,10 @@ const navItems = [
 
 <AppShell title="FREE//FALL Design System" navItems={navItems}>
   <div class="test-container" style="padding: 2rem;">
+    <div
+      style="display: flex; justify-content: center;width:96px; opacity:0.44"
+      set:html={nineTailRaw}
+    />
     <h1 class="text-chapter">FREE//FALL Design System</h1>
     <h2 class="text-section">Component Reference</h2>
   </div>
