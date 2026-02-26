@@ -1,0 +1,86 @@
+/* =========================================
+   TRAY BUTTON — Adaptive nav button for AppTray
+   Shows icon + label when expanded,
+   icon-only when parent signals minimized state.
+   ========================================= */
+
+.tray-button {
+  display: flex;
+  align-items: center;
+  gap: calc(2 * var(--freefall-space-1));
+  padding: calc(2 * var(--freefall-space-1));
+  color: var(--freefall-text-body);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  --tray-button-icon-size: calc(3 * var(--freefall-space-1));
+}
+
+/* =========================================
+   ICON
+   ========================================= */
+
+.tray-button__icon {
+  font-size: var(--tray-button-icon-size);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* =========================================
+   LABEL
+   ========================================= */
+
+.tray-button__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================
+   INTERACTIVE STATES
+   ========================================= */
+
+.tray-button:hover {
+  background: var(--freefall-action-hover);
+}
+
+.tray-button:focus-visible {
+  outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-alert-base);
+  outline-offset: calc(var(--freefall-space-1) / 4);
+}
+
+.tray-button[aria-current="page"] {
+  color: var(--freefall-text-display);
+  background: var(--freefall-bg-surface-2);
+}
+
+.tray-button[aria-current="page"] .tray-button__icon {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* =========================================
+   MINIMIZED STATE
+   Parent signals via [data-tray-state="minimized"].
+   Icon centers, label becomes visually hidden
+   but remains accessible to screen readers.
+   ========================================= */
+
+[data-tray-state="minimized"] .tray-button {
+  justify-content: center;
+  width: max-content;
+  margin-inline: auto;
+}
+
+[data-tray-state="minimized"] .tray-button__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

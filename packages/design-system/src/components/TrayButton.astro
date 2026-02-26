@@ -1,0 +1,22 @@
+---
+interface Props {
+  icon: string;
+  label: string;
+  href: string;
+  active?: boolean;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { icon, label, href, active } = Astro.props;
+---
+
+<a
+  class="tray-button"
+  href={href}
+  aria-current={active ? "page" : undefined}
+>
+  <span class="tray-button__icon material-symbols-sharp" aria-hidden="true">
+    {icon}
+  </span>
+  <span class="tray-button__label">{label}</span>
+</a>
