@@ -1,15 +1,61 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
+import { VERSION } from "@free-fall/core-rulebook";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import { Content as CoreMechanics } from "@free-fall/core-rulebook/content/rules/core-mechanics.md";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import alphaBadgeRaw from "@free-fall/design-system/assets/v7-alpha.svg?raw";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [
-  { icon: "home", label: "Home", href: "/", active: true },
-  { icon: "menu_book", label: "Rules", href: "/rules/core/" },
-];
+const navItems = [];
 ---
 
-<AppShell title="FREE//FALL" navItems={navItems}>
-  <h1>FREE//FALL</h1>
-  <p>A web-native tabletop RPG.</p>
+<AppShell title={`FREE//FALL Rulebook v${VERSION}`} navItems={navItems}>
+  <div class="alpha-container">
+    <div class="version-badge">VERSION {VERSION}</div>
+    <div class="alpha-badge" set:html={alphaBadgeRaw} />
+    <div class="freefall-prose">
+      <CoreMechanics />
+    </div>
+  </div>
 </AppShell>
+
+<style is:global>
+  /* MVP Alpha Overrides: Hide navigation primitives */
+  .app-tray,
+  .hamburger-button-container,
+  .mobile-overlay {
+    display: none !important;
+  }
+
+  /* Force the content area to collapse its margin since the Rail is hidden */
+  .app-shell__content {
+    margin-left: 0 !important;
+  }
+</style>
+
+<style>
+  .alpha-container {
+    padding: calc(4 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .version-badge {
+    font-family: var(--freefall-font-mono);
+    color: var(--freefall-text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin-bottom: calc(4 * var(--freefall-space-1));
+    border-bottom: 1px solid var(--freefall-border-subtle);
+    padding-bottom: calc(1 * var(--freefall-space-1));
+  }
+  .alpha-badge {
+    display: flex;
+    width: 100%;
+    height: 96px;
+    justify-content: center;
+  }
+</style>
