@@ -37,6 +37,7 @@ const navItems = [
     active: true,
   },
   { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
 ];
 ---
 
@@ -99,44 +100,74 @@ const navItems = [
   </Fragment>
 
   <h1>Iconography</h1>
-  <p class="token-info">Material Symbols Sharp — ligature-based, loaded via Google Fonts</p>
+  <p class="token-info">
+    Material Symbols Sharp — ligature-based, loaded via Google Fonts
+  </p>
 
   <h2>Sample Icons</h2>
   <div class="icon-grid">
-    {sampleIcons.map((name) => (
-      <div class="icon-cell">
-        <span class="material-symbols-sharp">{name}</span>
-        <div class="icon-name">{name}</div>
-      </div>
-    ))}
+    {
+      sampleIcons.map((name) => (
+        <div class="icon-cell">
+          <span class="material-symbols-sharp">{name}</span>
+          <div class="icon-name">{name}</div>
+        </div>
+      ))
+    }
   </div>
 
   <h2>Sizing</h2>
   <p class="token-info">Icons scale with font-size — base class uses 1.25em</p>
   <div style="margin: 1rem 0 2rem;">
-    {sizes.map((size) => (
-      <div class="size-row">
-        <div class="size-label">{size}</div>
-        <span class="material-symbols-sharp" style={`font-size: ${size}`}>rocket_launch</span>
-        <span class="material-symbols-sharp" style={`font-size: ${size}`}>settings</span>
-        <span class="material-symbols-sharp" style={`font-size: ${size}`}>warning</span>
-      </div>
-    ))}
+    {
+      sizes.map((size) => (
+        <div class="size-row">
+          <div class="size-label">{size}</div>
+          <span class="material-symbols-sharp" style={`font-size: ${size}`}>
+            rocket_launch
+          </span>
+          <span class="material-symbols-sharp" style={`font-size: ${size}`}>
+            settings
+          </span>
+          <span class="material-symbols-sharp" style={`font-size: ${size}`}>
+            warning
+          </span>
+        </div>
+      ))
+    }
   </div>
 
   <h2>Color Inheritance</h2>
   <p class="token-info">Icons inherit color from their parent element</p>
   <div class="color-demo">
-    <span style="color: var(--freefall-text-display)"><span class="material-symbols-sharp">home</span></span>
-    <span style="color: var(--freefall-text-body)"><span class="material-symbols-sharp">home</span></span>
-    <span style="color: var(--freefall-text-muted)"><span class="material-symbols-sharp">home</span></span>
-    <span style="color: var(--freefall-alert-base)"><span class="material-symbols-sharp">home</span></span>
+    <span style="color: var(--freefall-text-display)"
+      ><span class="material-symbols-sharp">home</span></span
+    >
+    <span style="color: var(--freefall-text-body)"
+      ><span class="material-symbols-sharp">home</span></span
+    >
+    <span style="color: var(--freefall-text-muted)"
+      ><span class="material-symbols-sharp">home</span></span
+    >
+    <span style="color: var(--freefall-alert-base)"
+      ><span class="material-symbols-sharp">home</span></span
+    >
   </div>
 
   <h2>Accessibility</h2>
-  <p class="token-info">Ligature text is readable by screen readers. Use aria-hidden for decorative icons.</p>
+  <p class="token-info">
+    Ligature text is readable by screen readers. Use aria-hidden for decorative
+    icons.
+  </p>
   <div style="margin: 1rem 0 2rem; font-size: 1.125rem;">
-    <p style="margin: 0.5rem 0;">Standalone: <code>&lt;span class="material-symbols-sharp"&gt;search&lt;/span&gt;</code></p>
-    <p style="margin: 0.5rem 0;">Decorative: <code>&lt;span class="material-symbols-sharp" aria-hidden="true"&gt;arrow_forward&lt;/span&gt; Next</code></p>
+    <p style="margin: 0.5rem 0;">
+      Standalone: <code
+        >&lt;span class="material-symbols-sharp"&gt;search&lt;/span&gt;</code>
+    </p>
+    <p style="margin: 0.5rem 0;">
+      Decorative: <code
+        >&lt;span class="material-symbols-sharp"
+        aria-hidden="true"&gt;arrow_forward&lt;/span&gt; Next</code>
+    </p>
   </div>
 </AppShell>

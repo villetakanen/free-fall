@@ -1,4 +1,7 @@
 ---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import HamburgerButton from "./HamburgerButton.astro";
+
 interface NavItem {
   icon: string;
   label: string;
@@ -15,101 +18,94 @@ const { items } = Astro.props;
 ---
 
 <div class="app-tray">
-  <input type="checkbox" id="app-tray-toggle" class="app-tray__toggle" />
+    <div class="app-tray__rail-column">
+        <div class="app-tray__burger-wrapper">
+            <HamburgerButton id="app-tray-toggle" />
+        </div>
 
-  <div class="app-tray__rail-column">
-    <label
-      for="app-tray-toggle"
-      class="app-tray__burger"
-      aria-label="Toggle navigation"
+        <aside class="app-tray__rail">
+            {
+                items.map((item: NavItem) => (
+                    <a
+                        class="app-tray__rail-item"
+                        href={item.href}
+                        data-active={item.active ? "" : undefined}
+                    >
+                        <span
+                            class="app-tray__rail-icon material-symbols-sharp"
+                            aria-hidden="true"
+                        >
+                            {item.icon}
+                        </span>
+                    </a>
+                ))
+            }
+        </aside>
+    </div>
+
+    <nav
+        id="app-tray-nav"
+        class="app-tray__drawer"
+        aria-label="Main navigation"
     >
-      <span
-        class="app-tray__burger-icon app-tray__burger-icon--menu material-symbols-sharp"
-        aria-hidden="true">menu</span
-      >
-      <span
-        class="app-tray__burger-icon app-tray__burger-icon--close material-symbols-sharp"
-        aria-hidden="true">close</span
-      >
-    </label>
+        <div class="app-tray__drawer-header"></div>
+        {
+            items.map((item: NavItem) => (
+                <a
+                    class="app-tray__nav-item"
+                    href={item.href}
+                    data-active={item.active ? "" : undefined}
+                >
+                    <span
+                        class="app-tray__nav-icon material-symbols-sharp"
+                        aria-hidden="true"
+                    >
+                        {item.icon}
+                    </span>
+                    {item.label}
+                </a>
+            ))
+        }
+    </nav>
 
-    <aside class="app-tray__rail">
-      {
-        items.map((item: NavItem) => (
-          <a
-            class="app-tray__rail-item"
-            href={item.href}
-            data-active={item.active ? "" : undefined}
-          >
-            <span
-              class="app-tray__rail-icon material-symbols-sharp"
-              aria-hidden="true"
-            >
-              {item.icon}
-            </span>
-          </a>
-        ))
-      }
-    </aside>
-  </div>
-
-  <nav id="app-tray-nav" class="app-tray__drawer" aria-label="Main navigation">
-    <div class="app-tray__drawer-header"></div>
-    {
-      items.map((item: NavItem) => (
-        <a
-          class="app-tray__nav-item"
-          href={item.href}
-          data-active={item.active ? "" : undefined}
-        >
-          <span
-            class="app-tray__nav-icon material-symbols-sharp"
-            aria-hidden="true"
-          >
-            {item.icon}
-          </span>
-          {item.label}
-        </a>
-      ))
-    }
-  </nav>
-
-  <label
-    for="app-tray-toggle"
-    class="app-tray__scrim"
-    aria-label="Close navigation"></label>
+    <label
+        for="app-tray-toggle"
+        class="app-tray__scrim"
+        aria-label="Close navigation"></label>
 </div>
 
 <script>
-  const toggle = document.getElementById(
-    "app-tray-toggle",
-  ) as HTMLInputElement | null;
-  const drawer = document.getElementById("app-tray-nav");
-  if (toggle && drawer) {
-    const isOverlay = () => !window.matchMedia("(min-width: 780px)").matches;
+    const toggle = document.getElementById(
+        "app-tray-toggle",
+    ) as HTMLInputElement | null;
+    const drawer = document.getElementById("app-tray-nav");
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && toggle.checked) {
-        toggle.checked = false;
-      }
+    if (toggle && drawer) {
+        const isOverlay = () =>
+            !window.matchMedia("(min-width: 780px)").matches;
 
-      if (e.key === "Tab" && toggle.checked && isOverlay()) {
-        const focusable = drawer.querySelectorAll<HTMLElement>(
-          'a, button, [tabindex]:not([tabindex="-1"])',
-        );
-        if (focusable.length === 0) return;
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && toggle.checked) {
+                toggle.checked = false;
+            }
 
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
+            if (e.key === "Tab" && toggle.checked && isOverlay()) {
+                const focusable = drawer.querySelectorAll<HTMLElement>(
+                    'a, button, [tabindex]:not([tabindex="-1"])',
+                );
+                if (focusable.length === 0) return;
 
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    });
-  }
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+    }
 </script>

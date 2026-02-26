@@ -74,6 +74,7 @@ const navItems = [
   { icon: "text_fields", label: "Typography", href: "/typography/" },
   { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
   { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
 ];
 ---
 
@@ -160,53 +161,77 @@ const navItems = [
 
   <h2>Primary Palette — Deep Space Cobalt</h2>
   <div class="swatch-grid">
-    {primarySteps.map((step) => (
-      <div class="swatch">
-        <div class="swatch-color" style={`background: var(--freefall-color-primary-${step})`} />
-        <div class="swatch-label">
-          <strong>{step}</strong>
-          {colors.primary[step]}
+    {
+      primarySteps.map((step) => (
+        <div class="swatch">
+          <div
+            class="swatch-color"
+            style={`background: var(--freefall-color-primary-${step})`}
+          />
+          <div class="swatch-label">
+            <strong>{step}</strong>
+            {colors.primary[step]}
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 
   <h2>Accent Palette — Isotope Neon</h2>
   <div class="swatch-grid">
-    {accentSteps.map((step) => (
-      <div class="swatch">
-        <div class="swatch-color" style={`background: var(--freefall-color-accent-${step})`} />
-        <div class="swatch-label">
-          <strong>{step}</strong>
-          {colors.accent[step]}
+    {
+      accentSteps.map((step) => (
+        <div class="swatch">
+          <div
+            class="swatch-color"
+            style={`background: var(--freefall-color-accent-${step})`}
+          />
+          <div class="swatch-label">
+            <strong>{step}</strong>
+            {colors.accent[step]}
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 
   <h2>Semantic Tokens</h2>
   <ul class="semantic-list">
-    {semanticTokens.map((token) => (
-      <li class="semantic-item">
-        <div class="semantic-swatch" style={`background: var(${token.name})`} />
-        <div>
-          <div>{token.role}</div>
-          <div class="semantic-name">{token.name} → {token.ref}</div>
-        </div>
-      </li>
-    ))}
+    {
+      semanticTokens.map((token) => (
+        <li class="semantic-item">
+          <div
+            class="semantic-swatch"
+            style={`background: var(${token.name})`}
+          />
+          <div>
+            <div>{token.role}</div>
+            <div class="semantic-name">
+              {token.name} → {token.ref}
+            </div>
+          </div>
+        </li>
+      ))
+    }
   </ul>
 
   <h2>Spacing — 0.5rem base (1rem = 16px)</h2>
   <ul class="spacing-list">
-    {([1, 2, 4, 8, 16] as const).map((step) => (
-      <li class="spacing-item">
-        <div class="spacing-bar" style={`width: var(--freefall-space-${step})`} />
-        <div>
-          <div>space-{step}</div>
-          <div class="spacing-label">--freefall-space-{step} → {spacing[step]} ({step * 8}px)</div>
-        </div>
-      </li>
-    ))}
+    {
+      ([1, 2, 4, 8, 16] as const).map((step) => (
+        <li class="spacing-item">
+          <div
+            class="spacing-bar"
+            style={`width: var(--freefall-space-${step})`}
+          />
+          <div>
+            <div>space-{step}</div>
+            <div class="spacing-label">
+              --freefall-space-{step} → {spacing[step]} ({step * 8}px)
+            </div>
+          </div>
+        </li>
+      ))
+    }
   </ul>
 </AppShell>

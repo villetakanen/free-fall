@@ -1,0 +1,24 @@
+---
+interface Props {
+  /**
+   * Optional ID for the internal checkbox.
+   * Useful if you need to control or query the state externally.
+   */
+  id?: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { id = "hamburger-toggle" } = Astro.props;
+---
+
+<div class="hamburger-btn">
+    <input type="checkbox" id={id} class="hamburger-btn__toggle" />
+
+    <label for={id} class="hamburger-btn__label" aria-label="Toggle menu">
+        <div class="hamburger-btn__bars" aria-hidden="true">
+            <span class="hamburger-btn__bar hamburger-btn__bar--top"></span>
+            <span class="hamburger-btn__bar hamburger-btn__bar--middle"></span>
+            <span class="hamburger-btn__bar hamburger-btn__bar--bottom"></span>
+        </div>
+    </label>
+</div>

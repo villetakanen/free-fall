@@ -1,0 +1,122 @@
+/* =========================================
+   HAMBURGER BUTTON
+   Pure CSS animated toggle using skewY
+   ========================================= */
+
+.hamburger-btn {
+  --hamburger-size: calc(6 * var(--freefall-space-1));
+  --hamburger-bar-width: calc(2.25 * var(--freefall-space-1));
+  --hamburger-bar-height: calc(0.25 * var(--freefall-space-1));
+  /* 2px */
+  --hamburger-bar-gap: calc(0.5 * var(--freefall-space-1));
+  /* 4px gap */
+  --hamburger-transition: 270ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  position: relative;
+  display: inline-flex;
+}
+
+/* =========================================
+   TOGGLE HIDDEN STATE
+   ========================================= */
+.hamburger-btn__toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================
+   M3 ROUNDED BACKGROUND TARGET
+   ========================================= */
+.hamburger-btn__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hamburger-size);
+  height: var(--hamburger-size);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--hamburger-transition);
+}
+
+.hamburger-btn__label:hover {
+  background: var(--freefall-action-hover);
+}
+
+/* =========================================
+   BARS CONTAINER
+   ========================================= */
+.hamburger-btn__bars {
+  position: relative;
+  width: var(--hamburger-bar-width);
+  /* The total height configures how far the top and bottom bars space out */
+  height: calc(
+    (var(--hamburger-bar-height) * 3) + (var(--hamburger-bar-gap) * 2)
+  );
+}
+
+/* =========================================
+   BASE BAR STRUCTURE
+   ========================================= */
+.hamburger-btn__bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--hamburger-bar-height);
+  background-color: var(--freefall-text-body);
+  border-radius: 0;
+  /* Sharp, non-rounded edges enforced */
+  transition:
+    transform var(--hamburger-transition),
+    opacity var(--hamburger-transition),
+    background-color var(--hamburger-transition);
+}
+
+/* Initial placements */
+.hamburger-btn__bar--top {
+  top: 0;
+  transform-origin: center;
+}
+
+.hamburger-btn__bar--middle {
+  top: 50%;
+  transform: translateY(-50%);
+  /* Bound origin to right edge for 100-to-0 scale */
+  transform-origin: right center;
+}
+
+.hamburger-btn__bar--bottom {
+  bottom: 0;
+  transform-origin: center;
+}
+
+/* =========================================
+   ANIMATED :CHECKED STATE ("X" CROSS)
+   ========================================= */
+
+/* Middle bar collapses horizontally rightward and shifts to neon yellow */
+.hamburger-btn:has(.hamburger-btn__toggle:checked) .hamburger-btn__bar--middle {
+  transform: translateY(-50%) scaleX(0.15);
+  background-color: var(--freefall-color-accent-500);
+}
+
+/* Top bar drops to center and skews 45deg.
+   Apply scaleY(1.4142) to counteract the vertical thinning caused by skewY(45deg) */
+.hamburger-btn:has(.hamburger-btn__toggle:checked) .hamburger-btn__bar--top {
+  /* Translate distance: half container height - half bar height */
+  transform: translateY(
+      calc(var(--hamburger-bar-height) + var(--hamburger-bar-gap))
+    )
+    skewY(45deg) scaleY(1.4142);
+}
+
+/* Bottom bar rises to center and skews -45deg.
+   Apply scaleY(1.4142) to counteract the vertical thinning caused by skewY(-45deg) */
+.hamburger-btn:has(.hamburger-btn__toggle:checked) .hamburger-btn__bar--bottom {
+  /* Translate distance: negative (half container height - half bar height) */
+  transform: translateY(
+      calc((var(--hamburger-bar-height) + var(--hamburger-bar-gap)) * -1)
+    )
+    skewY(-45deg) scaleY(1.4142);
+}

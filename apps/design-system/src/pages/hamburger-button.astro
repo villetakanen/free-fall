@@ -1,0 +1,51 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import HamburgerButton from "@free-fall/design-system/components/HamburgerButton.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+  {
+    icon: "menu",
+    label: "Hamburger Button",
+    href: "/hamburger-button/",
+    active: true,
+  },
+  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
+];
+---
+
+<AppShell
+    title="Hamburger Button — FREE//FALL Design System"
+    navItems={navItems}
+>
+    <h1>Hamburger Button (CSS Skew Variant)</h1>
+    <p>
+        An interactive toggle button managing its animated state purely via CSS
+        Checkbox hacks. Zero Javascript is required. It utilizes <code
+            >skewY</code
+        > instead of <code>rotate</code> to ensure vertical edges stay sharp and geometric.
+    </p>
+
+    <div
+        style="margin-top: calc(4 * var(--freefall-space-1)); display: flex; align-items: center; gap: calc(2 * var(--freefall-space-1));"
+    >
+        <div
+            style="border: 1px dashed var(--freefall-border-subtle); padding: calc(2 * var(--freefall-space-1)); border-radius: 8px;"
+        >
+            <HamburgerButton id="demo-hamburger" />
+        </div>
+        <label
+            for="demo-hamburger"
+            style="cursor: pointer; color: var(--freefall-text-muted);"
+        >
+            &larr; Click me to toggle state
+        </label>
+    </div>
+</AppShell>

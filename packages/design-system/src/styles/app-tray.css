@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   height: 100%;
-  
+
   --app-tray-z-tray: 100;
   --app-tray-z-scrim: 99;
   --app-tray-rail-width: calc(10 * var(--freefall-space-1));
@@ -22,57 +22,21 @@
    TOGGLE (hidden checkbox)
    ========================================= */
 
-.app-tray__toggle {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
+/* =========================================
+   TOGGLE HIDDEN STATE
+   ========================================= */
+/* The underlying checkbox is now provided by HamburgerButton.astro */
 
 /* =========================================
    HAMBURGER BUTTON (label for checkbox)
    ========================================= */
 
-.app-tray__burger {
+.app-tray__burger-wrapper {
   /* Default mobile state: Fixed top left */
   position: fixed;
   top: var(--freefall-space-2);
   left: var(--freefall-space-2);
   z-index: calc(var(--app-tray-z-tray) + 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--app-tray-burger-size);
-  height: var(--app-tray-burger-size);
-  border-radius: var(--freefall-space-1);
-  background: transparent;
-  color: var(--freefall-text-body);
-  cursor: pointer;
-}
-
-.app-tray__burger:hover {
-  background: var(--freefall-action-hover);
-}
-
-.app-tray__burger-icon {
-  position: absolute;
-  font-size: calc(4 * var(--freefall-space-1));
-  transition: opacity 150ms;
-}
-
-.app-tray__burger-icon--menu {
-  opacity: 1;
-}
-
-.app-tray__burger-icon--close {
-  opacity: 0;
-}
-
-.app-tray:has(.app-tray__toggle:checked) .app-tray__burger-icon--menu {
-  opacity: 0;
-}
-
-.app-tray:has(.app-tray__toggle:checked) .app-tray__burger-icon--close {
-  opacity: 1;
 }
 
 /* =========================================
@@ -130,7 +94,7 @@
   overflow-y: auto;
 }
 
-.app-tray:has(.app-tray__toggle:checked) .app-tray__drawer {
+.app-tray:has(#app-tray-toggle:checked) .app-tray__drawer {
   transform: translateX(0);
   transition: transform 200ms ease-out;
 }
@@ -176,7 +140,7 @@
   cursor: pointer;
 }
 
-.app-tray:has(.app-tray__toggle:checked) .app-tray__scrim {
+.app-tray:has(#app-tray-toggle:checked) .app-tray__scrim {
   display: block;
   opacity: 1;
   transition: opacity 200ms ease-out;
@@ -187,6 +151,7 @@
    ========================================= */
 
 @media (min-width: 620px) {
+
   /* Rail column visible, gives background and width */
   .app-tray__rail-column {
     display: flex;
@@ -199,7 +164,7 @@
     z-index: calc(var(--app-tray-z-tray) + 1);
   }
 
-  .app-tray__burger {
+  .app-tray__burger-wrapper {
     position: relative;
     top: auto;
     left: auto;
@@ -226,6 +191,7 @@
    ========================================= */
 
 @media (min-width: 780px) {
+
   /* Tray goes relative to flow, pushes content */
   .app-tray__drawer {
     position: relative;
@@ -236,12 +202,12 @@
     height: 100%;
   }
 
-  .app-tray:has(.app-tray__toggle:checked) .app-tray__drawer {
+  .app-tray:has(#app-tray-toggle:checked) .app-tray__drawer {
     width: var(--app-tray-tray-width);
     transform: translateX(0);
   }
 
-  .app-tray:has(.app-tray__toggle:checked) .app-tray__scrim {
+  .app-tray:has(#app-tray-toggle:checked) .app-tray__scrim {
     display: none;
   }
 }

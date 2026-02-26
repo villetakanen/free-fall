@@ -28,9 +28,9 @@ Traditionally, CSS hamburger menus rotate their top and bottom bars to form an "
 
 1. **Top Bar**: Translates down to the Y-center, and applies `transform: skewY(45deg)`.
 2. **Bottom Bar**: Translates up to the Y-center, and applies `transform: skewY(-45deg)`.
-3. **Middle Bar**: Animates out purely via horizontal compression anchored entirely to the right edge. Specifically, width compresses from `100%` to `0%` using `transform-origin: right center; transform: scaleX(0);`.
+3. **Middle Bar**: Animates out purely via horizontal compression anchored entirely to the right edge. Specifically, width compresses using `transform-origin: right center; transform: scaleX(0.15);` alongside a neon yellow background color fade.
 
-All animations use an `ease-in-out` timing function stretching across approximately 200–250ms.
+All animations use an `ease-in-out` timing function stretching across 270ms.
 
 **Tokens used:**
 
@@ -62,7 +62,7 @@ All animations use an `ease-in-out` timing function stretching across approximat
 - [ ] `HamburgerButton.astro` provides the HTML scaffold for a pure-CSS boolean toggle.
 - [ ] `hamburger-button.css` manages the 48px rounded M3 target container and nested bars.
 - [ ] Checkbox `:checked` CSS handles the transition to the close state.
-- [ ] Middle bar compresses horizontally to the right via `transform-origin: right` and `scaleX(0)` bounding.
+- [ ] Middle bar compresses horizontally to the right via `transform-origin: right` and `scaleX(0.15)` bounding, shifting to the accent color.
 - [ ] Top and bottom bars form an X using `translateY` offset and `skewY` (45deg / -45deg).
 - [ ] Left and right limits of all expanding/skewing bars act as perfectly vertical bounds.
 - [ ] Bars utilize sharp 0px border-radius edges.
