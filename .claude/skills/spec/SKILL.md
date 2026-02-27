@@ -73,6 +73,7 @@ Scenario: [Name]
 - **Falsifiable** — Every statement in the spec should be verifiable. Avoid vague language.
 - **No tutorials** — Assume engineering competence. Document decisions and constraints, not general knowledge.
 - **Same-commit rule** — If code behavior changes, the spec must update in the same commit.
+- **Execution via Issues** — Specs define state; execution is tracked via GitHub Issues (created by `/plan`), not plan files.
 
 ## Boundaries
 

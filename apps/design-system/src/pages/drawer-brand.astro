@@ -1,0 +1,95 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import DrawerBrand from "@free-fall/design-system/components/DrawerBrand.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
+  { icon: "buttons_alt", label: "Tray Button", href: "/tray-button/" },
+  { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
+  {
+    icon: "branding_watermark",
+    label: "Drawer Brand",
+    href: "/drawer-brand/",
+    active: true,
+  },
+];
+---
+
+<AppShell
+  title="Drawer Brand — FREE//FALL Design System"
+  navItems={navItems}
+  brandHref="/drawer-brand/"
+>
+  <Fragment slot="head">
+    <style>
+      .demo-section {
+        margin-bottom: calc(4 * var(--freefall-space-1));
+      }
+      .demo-container {
+        container-type: inline-size;
+        border: calc(var(--freefall-space-1) / 4) dashed white;
+        padding: 0;
+      }
+      .demo-container--rail {
+        width: calc(10 * var(--freefall-space-1));
+      }
+      .demo-container--open {
+        width: calc(40 * var(--freefall-space-1));
+      }
+      .demo-label {
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-bottom: var(--freefall-space-1);
+      }
+    </style>
+  </Fragment>
+
+  <h1>Drawer Brand</h1>
+  <p>
+    A compact branding strip for the bottom of the navigation drawer. Shows only
+    the Myrrys logo in rail mode and reveals the copyright notice and licence
+    identifier when the drawer opens. The entire strip is a single
+    <code>&lt;a&gt;</code> element. Layout adapts via CSS container queries — no JavaScript
+    required.
+  </p>
+
+  <div class="demo-section">
+    <h2>Open State</h2>
+    <p class="demo-label">
+      container width: calc(40 * var(--freefall-space-1)) · 320px
+    </p>
+    <div class="demo-container demo-container--open">
+      <DrawerBrand href="/drawer-brand/" />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Rail State</h2>
+    <p class="demo-label">
+      container width: calc(10 * var(--freefall-space-1)) · 80px
+    </p>
+    <div class="demo-container demo-container--rail">
+      <DrawerBrand href="/drawer-brand/" />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Interactive States</h2>
+    <p>
+      Hover the branding strip to see the text colour shift from muted to body.
+      Tab to see the focus-visible outline.
+    </p>
+    <div class="demo-container demo-container--open">
+      <DrawerBrand href="/drawer-brand/" />
+    </div>
+  </div>
+</AppShell>

@@ -26,12 +26,12 @@ The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-deskt
 
 ```
 +---+-------------------------------+
-| B |                               |   B = Hamburger button
-| R |        Content area           |   R = Rail (icons only)
-| A |                               |   T = Tray (rail + labels)
-| I |                               |
+| B |                               |   B = Hamburger button      
+| R |        Content area           |   R = Rail (TrayButton icon)
+| A |                               |   T = Tray (TrayButton icon + label)
+| I |                               |   
 | L |                               |
-+-C-+-------------------------------+   C = Rail Column (wraps B & R)
++-C-+-------------------------------+   C = Rail Column (main container)
 
 +-------+---------------------------+
 | B     |                           |
@@ -53,8 +53,12 @@ A hidden `<input type="checkbox">` drives the open/closed state. The hamburger b
 | Rail width | `calc(10 * var(--freefall-space-1))` | 5rem (80px) |
 | Tray width | `calc(40 * var(--freefall-space-1))` | 20rem (320px) |
 | Hamburger button size | `calc(6 * var(--freefall-space-1))` | 3rem (48px) |
+| Hamburger left pos | `var(--freefall-space-2)` | 1rem (16px) |
 | Rail icon size | `calc(3 * var(--freefall-space-1))` | 1.5rem (24px) |
-| Tray item padding | `var(--freefall-space-2)` | 1rem |
+| Tray item rail padding | `calc(1.5 * var(--freefall-space-1))` | 12px horizontal |
+| Minimized Button Size | `calc(6 * var(--freefall-space-1))` | 48px square |
+
+*Math note on perfect center alignment*: To ensure the `TrayButton` icons align perfectly under the center axis of the `HamburgerButton` (which sits at `16px` left + `24px` radius = `40px` center), the `.app-tray__nav` enforces a precisely matching `12px` horizontal boundary padding. In minimized state, buttons force a `48px` absolute square using an auto-margin that resolves to `4px`. (`12px` nav padding + `4px` margin = `16px` button left edge, mirroring the Hamburger button perfectly).
 
 **Hamburger button micro-interaction:**
 
@@ -77,8 +81,8 @@ The tray is an Astro component — server-rendered HTML + CSS with a small inlin
 
 | File | Contents |
 |---|---|
-| `src/components/AppTray.astro` | Astro component — checkbox toggle, labels, rail-column wrapper, drawer, scrim, inline script |
-| `src/styles/app-tray.css` | Layout (root flex-row), dimensions, responsive rules, transitions — all driven by `:has(:checked)` |
+| `src/components/AppTray.astro` | Astro component — checkbox toggle, main container acting as both rail and tray, scrim, inline script |
+| `src/styles/app-tray.css` | Layout, dimensions, responsive rules, width transitions — all driven by `:has(:checked)` |
 
 **What works without JavaScript:**
 
@@ -134,6 +138,7 @@ When the tray is open on small or medium viewports (where it overlays content), 
 - [ ] `Escape` key closes the tray (progressive enhancement)
 - [ ] Transitions match specified durations
 - [ ] Demo app has an app-tray reference page showing the component at all breakpoints
+- [ ] Playwright e2e tests cover all Scenarios against build artifacts
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
@@ -143,6 +148,9 @@ When the tray is open on small or medium viewports (where it overlays content), 
 - Hamburger button must always be visible and reachable regardless of tray state
 - Scrim must not render on desktop (tray pushes content instead of overlaying)
 - Core toggle must work without JavaScript — do not introduce JS dependencies for open/close state
+- Do not duplicate DOM nodes for rail icons and drawer icons — use the unified `TrayButton` to handle responsive states
+- **State Logic**: Do not use `[data-state]` attributes to pass the expanded state down to buttons. Use CSS Container Queries (`@container`) pointing at `.app-tray__rail-column`'s `inline-size` to allow fluid geometric expansion.
+- **Icon Alignment**: Do not use arbitrary margin values to align icons. Rely on strict math equating the exact center axis computed from the fixed `HamburgerButton`'s radius + absolute left positioning.
 
 ### Scenarios
 

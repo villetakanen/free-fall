@@ -1,5 +1,7 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
+import AppBar from "./AppBar.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import AppTray from "./AppTray.astro";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import FontLinks from "./FontLinks.astro";
@@ -15,10 +17,11 @@ interface NavItem {
 interface Props {
   title: string;
   navItems: NavItem[];
+  brandHref?: string;
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const { title, navItems } = Astro.props;
+const { title, navItems, brandHref } = Astro.props;
 ---
 
 <html lang="en">
@@ -31,11 +34,9 @@ const { title, navItems } = Astro.props;
   </head>
   <body>
     <div class="app-shell">
-      <AppTray items={navItems} />
+      <AppTray items={navItems} brandHref={brandHref} />
       <div class="app-shell__body">
-        <header class="app-shell__bar">
-          <span class="app-shell__title">{title}</span>
-        </header>
+        <AppBar title={title} />
         <main class="app-shell__content">
           <slot />
         </main>

@@ -1,0 +1,140 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import TrayButton from "@free-fall/design-system/components/TrayButton.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  { icon: "home", label: "Home", href: "/" },
+  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
+  { icon: "text_fields", label: "Typography", href: "/typography/" },
+  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
+  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
+  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
+  {
+    icon: "buttons_alt",
+    label: "Tray Button",
+    href: "/tray-button/",
+    active: true,
+  },
+  { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
+  {
+    icon: "branding_watermark",
+    label: "Drawer Brand",
+    href: "/drawer-brand/",
+  },
+];
+---
+
+<AppShell title="Tray Button — FREE//FALL Design System" navItems={navItems} brandHref="/drawer-brand/">
+  <Fragment slot="head">
+    <style>
+      .demo-section {
+        margin-bottom: calc(4 * var(--freefall-space-1));
+      }
+      .demo-container {
+        border: calc(var(--freefall-space-1) / 4) dashed
+          var(--freefall-border-subtle);
+        border-radius: calc(var(--freefall-space-1));
+        padding: var(--freefall-space-2);
+        margin-top: var(--freefall-space-2);
+      }
+      .demo-container--minimized {
+        width: calc(10 * var(--freefall-space-1));
+      }
+      .demo-container--open {
+        width: calc(40 * var(--freefall-space-1));
+      }
+      .demo-label {
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-bottom: var(--freefall-space-1);
+      }
+    </style>
+  </Fragment>
+
+  <h1>Tray Button</h1>
+  <p>
+    An adaptive navigation button for the AppTray. Displays an icon and text
+    label in the expanded state, and collapses to icon-only when its parent
+    container signals minimized state via
+    <code>data-tray-state="minimized"</code>. No JavaScript required — layout
+    adapts entirely through CSS.
+  </p>
+
+  <div class="demo-section">
+    <h2>Open State</h2>
+    <p class="demo-label">
+      data-tray-state="open" · width: calc(40 * var(--freefall-space-1))
+    </p>
+    <div class="demo-container demo-container--open" data-tray-state="open">
+      <TrayButton icon="home" label="Home" href="/" />
+      <TrayButton icon="palette" label="Design Tokens" href="/tokens/" />
+      <TrayButton
+        icon="text_fields"
+        label="Typography"
+        href="/typography/"
+        active
+      />
+      <TrayButton
+        icon="emoji_symbols"
+        label="Iconography"
+        href="/iconography/"
+      />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Minimized State</h2>
+    <p class="demo-label">
+      data-tray-state="minimized" · width: calc(10 * var(--freefall-space-1))
+    </p>
+    <div
+      class="demo-container demo-container--minimized"
+      data-tray-state="minimized"
+    >
+      <TrayButton icon="home" label="Home" href="/" />
+      <TrayButton icon="palette" label="Design Tokens" href="/tokens/" />
+      <TrayButton
+        icon="text_fields"
+        label="Typography"
+        href="/typography/"
+        active
+      />
+      <TrayButton
+        icon="emoji_symbols"
+        label="Iconography"
+        href="/iconography/"
+      />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Interactive States</h2>
+    <p>Hover any button to see the hover state. Tab to see focus-visible outlines. Buttons with <code>active</code> prop use display-level text color.</p>
+
+    <h3>Active / Selected</h3>
+    <div class="demo-container demo-container--open" data-tray-state="open">
+      <TrayButton icon="home" label="Home (default)" href="/" />
+      <TrayButton icon="home" label="Home (active)" href="/" active />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Text Overflow</h2>
+    <p class="demo-label">Label truncates with ellipsis when constrained.</p>
+    <div
+      class="demo-container"
+      data-tray-state="open"
+      style={`width: calc(24 * var(--freefall-space-1));`}
+    >
+      <TrayButton
+        icon="settings"
+        label="A very long navigation label that should truncate"
+        href="/"
+      />
+    </div>
+  </div>
+</AppShell>

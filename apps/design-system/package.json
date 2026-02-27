@@ -5,12 +5,16 @@
   "scripts": {
     "build": "astro build",
     "dev": "astro dev --port 4322",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.0",
     "@astrojs/svelte": "^7.2.5",
     "astro": "^5.5.0",
     "svelte": "^5.53.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
   }
 }

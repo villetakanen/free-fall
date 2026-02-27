@@ -67,6 +67,7 @@ All animations use an `ease-in-out` timing function stretching across 270ms.
 - [ ] Left and right limits of all expanding/skewing bars act as perfectly vertical bounds.
 - [ ] Bars utilize sharp 0px border-radius edges.
 - [ ] Demo app mounts a reference subpage testing the toggle in standalone isolation.
+- [ ] Playwright e2e tests cover all Scenarios against build artifacts.
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` tasks pass cleanly.
 
 ### Regression Guardrails

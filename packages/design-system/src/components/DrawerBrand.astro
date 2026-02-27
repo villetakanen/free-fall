@@ -1,0 +1,86 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import myrrysLogoRaw from "../assets/myrrys-logo.svg?raw";
+
+interface Props {
+  href?: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { href = "/about" } = Astro.props;
+---
+
+<a
+  class="drawer-brand"
+  href={href}
+  aria-label="Kustannusosakeyhtiö Myrrys — about"
+>
+  <span class="logo" set:html={myrrysLogoRaw} />
+  <span class="drawer-brand__caption text-caption">
+    &copy; Myrrys 2026 <br />
+    MIT / CC-BY
+  </span>
+</a>
+
+<style>
+  .drawer-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--freefall-space-2);
+    padding: var(--freefall-space-2);
+    margin: 0;
+    color: var(--freefall-text-muted);
+    text-decoration: none;
+    border-radius: calc(var(--freefall-space-1));
+    transition: color 0.2s ease;
+  }
+
+  .logo {
+    width: calc(4 * var(--freefall-space-1));
+    height: calc(4 * var(--freefall-space-1));
+    flex-shrink: 0;
+    border: solid calc(var(--freefall-space-1) / 8)
+      var(--freefall-color-accent-500);
+    display: block;
+    padding: calc(var(--freefall-space-1) / 4);
+  }
+
+  .logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .drawer-brand__caption {
+    white-space: nowrap;
+  }
+
+  .drawer-brand:hover {
+    color: var(--freefall-text-body);
+  }
+
+  .drawer-brand:focus-visible {
+    outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-alert-base);
+    outline-offset: calc(var(--freefall-space-1) / 4);
+  }
+
+  @container (max-width: 64px) {
+    .drawer-brand {
+      justify-content: center;
+      padding: calc(var(--freefall-space-1));
+      gap: 0;
+    }
+
+    .drawer-brand__caption {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+</style>

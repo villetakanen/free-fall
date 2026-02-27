@@ -35,6 +35,10 @@ importers:
       svelte:
         specifier: ^5.53.5
         version: 5.53.5
+    devDependencies:
+      '@playwright/test':
+        specifier: ^1.58.2
+        version: 1.58.2
 
   apps/free-fall:
     dependencies:

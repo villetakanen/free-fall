@@ -38,6 +38,20 @@ FREE//FALL — tabletop RPG delivered as a web-native application
 - Handle errors explicitly — never swallow exceptions silently
 - Prefer simple, readable code over clever abstractions
 
+## Workflow
+
+Specs are the permanent source of truth. GitHub Issues are the delta.
+
+| Artifact | Location | Purpose |
+|---|---|---|
+| Spec | `specs/{domain}/{feature}/spec.md` | How the system works (state) |
+| Spec template | `specs/TEMPLATE.md` | Template for new specs |
+| PBI (issue) | GitHub Issues | What to change next (delta) |
+
+**Specs before code** — Every feature has a spec. Create one with `/spec` before implementation.
+
+**Issues before implementation** — Decompose work into GitHub Issues with `/plan`. Each issue is one committable unit of work.
+
 ## Personas
 
 Invoke via skill: `/spec`

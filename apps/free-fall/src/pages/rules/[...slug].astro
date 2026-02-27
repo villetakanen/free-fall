@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppShell from "@free-fall/design-system/components/AppShell.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("rules");
@@ -14,14 +14,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const { Content } = await render(entry);
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [
-  { icon: "home", label: "Home", href: "/" },
-  { icon: "menu_book", label: "Rules", href: "/rules/core/", active: true },
-];
 ---
 
-<AppShell title={`${entry.data.title} — FREE//FALL`} navItems={navItems}>
+<BaseLayout title={`${entry.data.title} — FREE//FALL`}>
   <Content />
-</AppShell>
+</BaseLayout>

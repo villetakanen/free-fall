@@ -1,0 +1,38 @@
+/* =========================================
+   APP BAR — M3 Top App Bar
+   Transparent header with title + trailing
+   action slot. 64px left margin clears the
+   navigation rail / hamburger button.
+   ========================================= */
+
+.app-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  height: calc(8 * var(--freefall-space-1));
+  margin-left: calc(8 * var(--freefall-space-1));
+  padding: 0 var(--freefall-space-2);
+  background: transparent;
+}
+
+@media (min-width: 620px) {
+  .app-bar {
+    margin-left: 0;
+    padding: 0 var(--freefall-space-4);
+  }
+}
+
+.app-bar__title {
+  color: var(--freefall-text-display);
+  font-size: calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+}
+
+.app-bar__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--freefall-space-1);
+  margin-left: auto;
+}
