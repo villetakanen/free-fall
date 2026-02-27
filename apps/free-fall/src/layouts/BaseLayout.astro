@@ -3,11 +3,13 @@
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 interface Props {
-  title: string;
+  title?: string;
+  frontmatter?: { title?: string };
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const { title } = Astro.props;
+const title =
+  Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const navItems = [
