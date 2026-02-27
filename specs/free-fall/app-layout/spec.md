@@ -25,7 +25,10 @@ An Astro layout that wraps `AppShell` with the app's navigation configuration. A
 
 | Prop | Type | Required | Description |
 |---|---|---|---|
-| `title` | `string` | yes | Passed through to AppShell as page `<title>` and AppBar title |
+| `title` | `string` | no | Page title — passed through to AppShell |
+| `frontmatter` | `{ title?: string }` | no | Astro injects this for markdown pages using `layout` frontmatter |
+
+Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL"`. This allows both `.astro` pages (passing `title` directly) and `.md` pages (using `layout` frontmatter) to use the same layout.
 
 **Navigation items (hardcoded in BaseLayout):**
 
@@ -37,9 +40,18 @@ Only one nav item. The globe icon (`public` from Material Symbols Sharp) represe
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.
 
-**About page** (`apps/free-fall/src/pages/about.astro`)
+**About page** (`apps/free-fall/src/pages/about.md`)
 
-A placeholder page at `/about/` using BaseLayout. Content will be updated later. For now, renders a minimal heading and placeholder text indicating the page is under construction.
+A markdown page at `/about/` using BaseLayout via frontmatter `layout` reference. Content will be updated later, but will ultimately include publisher (Myrrys) details, copyright information, and general app "about" info. For now, renders a minimal heading and placeholder text.
+
+```markdown
+---
+layout: ../layouts/BaseLayout.astro
+title: About — FREE//FALL
+---
+```
+
+**Page type guidance:** Prefer `.md` files with frontmatter layout for content-focused pages (about, rules, legal). Use `.astro` files only when the page needs programmatic imports or dynamic data (e.g., `index.astro` importing VERSION and CoreMechanics).
 
 **Migration from current state:**
 
@@ -64,7 +76,7 @@ A placeholder page at `/about/` using BaseLayout. Content will be updated later.
 - [ ] `apps/free-fall/src/layouts/BaseLayout.astro` wraps AppShell with navItems and brandHref
 - [ ] NavItems contains one entry: globe icon (`public`), label "Home", href `/`
 - [ ] brandHref is `/about/`
-- [ ] `about.astro` page exists at `/about/` with placeholder content
+- [ ] `about.md` page exists at `/about/` with placeholder content and frontmatter layout
 - [ ] `index.astro` uses BaseLayout, no longer hides navigation, no inline navItems
 - [ ] `rules/[...slug].astro` uses BaseLayout, no inline navItems
 - [ ] Navigation (hamburger, rail, drawer) is fully functional on all app pages
