@@ -1,0 +1,17 @@
+---
+import "../styles/app-bar.css";
+
+interface Props {
+  title: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { title } = Astro.props;
+---
+
+<header class="app-bar">
+  <span class="app-bar__title">{title}</span>
+  <div class="app-bar__actions">
+    <slot />
+  </div>
+</header>
