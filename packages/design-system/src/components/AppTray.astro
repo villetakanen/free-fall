@@ -1,5 +1,7 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
+import DrawerBrand from "./DrawerBrand.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import HamburgerButton from "./HamburgerButton.astro";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import TrayButton from "./TrayButton.astro";
@@ -13,10 +15,11 @@ interface NavItem {
 
 interface Props {
   items: NavItem[];
+  brandHref?: string;
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const { items } = Astro.props;
+const { items, brandHref } = Astro.props;
 ---
 
 <div class="app-tray">
@@ -41,6 +44,7 @@ const { items } = Astro.props;
                 ))
             }
         </nav>
+        <DrawerBrand href={brandHref} />
     </div>
 
     <label

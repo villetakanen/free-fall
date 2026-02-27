@@ -1,0 +1,19 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import myrrysLogoRaw from "../assets/myrrys-logo.svg?raw";
+
+interface Props {
+  href?: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { href = "/about" } = Astro.props;
+---
+
+<a class="drawer-brand" href={href} aria-label="Kustannusosakeyhtiö Myrrys — about">
+    <span class="drawer-brand__logo" set:html={myrrysLogoRaw} />
+    <span class="drawer-brand__caption text-caption">
+        &copy; Kustannusosakeyhti&ouml; Myrrys<br />
+        MIT / CC-BY
+    </span>
+</a>

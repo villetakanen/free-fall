@@ -17,10 +17,11 @@ interface NavItem {
 interface Props {
   title: string;
   navItems: NavItem[];
+  brandHref?: string;
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const { title, navItems } = Astro.props;
+const { title, navItems, brandHref } = Astro.props;
 ---
 
 <html lang="en">
@@ -33,7 +34,7 @@ const { title, navItems } = Astro.props;
   </head>
   <body>
     <div class="app-shell">
-      <AppTray items={navItems} />
+      <AppTray items={navItems} brandHref={brandHref} />
       <div class="app-shell__body">
         <AppBar title={title} />
         <main class="app-shell__content">
