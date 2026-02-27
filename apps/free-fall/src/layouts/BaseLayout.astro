@@ -1,0 +1,26 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+
+interface Props {
+  title: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { title } = Astro.props;
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  {
+    icon: "public",
+    label: "Home",
+    href: "/",
+    active: Astro.url.pathname === "/",
+  },
+];
+---
+
+<AppShell title={title} navItems={navItems} brandHref="/about/">
+  <slot name="head" slot="head" />
+  <slot />
+</AppShell>

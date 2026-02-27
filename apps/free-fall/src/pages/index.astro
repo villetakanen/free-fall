@@ -6,13 +6,10 @@ import { Content as CoreMechanics } from "@free-fall/core-rulebook/content/rules
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import alphaBadgeRaw from "@free-fall/design-system/assets/v7-alpha.svg?raw";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppShell from "@free-fall/design-system/components/AppShell.astro";
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [];
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<AppShell title={`FREE//FALL Rulebook v${VERSION}`} navItems={navItems}>
+<BaseLayout title={`FREE//FALL Rulebook v${VERSION}`}>
   <div class="alpha-container">
     <div class="version-badge">VERSION {VERSION}</div>
     <div class="alpha-badge" set:html={alphaBadgeRaw} />
@@ -20,21 +17,7 @@ const navItems = [];
       <CoreMechanics />
     </div>
   </div>
-</AppShell>
-
-<style is:global>
-  /* MVP Alpha Overrides: Hide navigation primitives */
-  .app-tray,
-  .hamburger-button-container,
-  .mobile-overlay {
-    display: none !important;
-  }
-
-  /* Force the content area to collapse its margin since the Rail is hidden */
-  .app-shell__content {
-    margin-left: 0 !important;
-  }
-</style>
+</BaseLayout>
 
 <style>
   .alpha-container {

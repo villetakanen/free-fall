@@ -1,0 +1,21 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About — FREE//FALL">
+  <div class="about-container">
+    <h1 class="text-chapter">About FREE//FALL</h1>
+    <p class="text-copy" style="color: var(--freefall-text-muted);">
+      This page is under construction.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-container {
+    padding: calc(4 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
