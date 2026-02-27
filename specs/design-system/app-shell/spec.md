@@ -50,7 +50,7 @@ The scaffold has four regions:
 | Region | Description |
 |---|---|
 | **Navigation** | AppTray component — rail, drawer, burger, scrim (see app-tray spec) |
-| **Top app bar** | Horizontal bar above the content pane. Contains page title. On small screens, the burger button lives here (fixed, top-left). |
+| **Top app bar** | `AppBar` component above the content pane (see `specs/design-system/app-bar/spec.md`). Receives `title` from the shell. |
 | **Content pane** | The main scrollable area. Receives page content via default `<slot />`. |
 | **Head** | Hidden region — `<head>` with meta, fonts, and a named slot for page-specific additions. |
 
@@ -67,9 +67,7 @@ The scaffold has four regions:
     <div class="app-shell">
       <AppTray items={navItems} />
       <div class="app-shell__body">
-        <header class="app-shell__bar">
-          <span class="app-shell__title">{title}</span>
-        </header>
+        <AppBar title={title} />
         <main class="app-shell__content">
           <slot />
         </main>
@@ -83,9 +81,9 @@ The scaffold has four regions:
 
 | Viewport | Navigation | Top bar | Content pane |
 |---|---|---|---|
-| Small (< 620px) | Hidden (burger fixed top-left) | Full width, clears burger | Full width, padded |
-| Medium (tablet) | Rail visible (flex column, left) | Fills remaining width after rail | Fills remaining width after rail |
-| Large (desktop) | Rail visible, tray pushes | Fills remaining width | Fills remaining width, max-width constrained |
+| Small (< 620px) | Hidden (burger fixed top-left) | Full width, 80px left margin clears burger | Full width, padded |
+| Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, 80px left margin clears rail | Fills remaining width after rail |
+| Large (desktop) | Rail visible, tray pushes | Fills remaining width, 80px left margin clears rail | Fills remaining width, max-width constrained |
 
 The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app-shell__body` (bar + content) takes remaining space via `flex: 1`.
 
@@ -93,19 +91,11 @@ The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow
 
 | Dimension | Formula | Resolves to |
 |---|---|---|
-| Top bar height | `calc(8 * var(--freefall-space-1))` | 4rem (64px) |
 | Content padding (small) | `var(--freefall-space-2)` | 1rem |
 | Content padding (medium+) | `var(--freefall-space-4)` | 2rem |
 | Content max-width (large) | `calc(120 * var(--freefall-space-1))` | 60rem |
 
-**Top app bar styling:**
-
-| Element | Token |
-|---|---|
-| Bar background | `--freefall-bg-surface-1` |
-| Title color | `--freefall-text-display` |
-| Title font size | h4 scale (`calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1))`) |
-| Bar border | `--freefall-border-subtle` (bottom edge) |
+Top bar dimensions and styling are defined in the app-bar spec (`specs/design-system/app-bar/spec.md`).
 
 **Props:**
 
@@ -118,8 +108,8 @@ The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow
 
 | File | Contents |
 |---|---|
-| `src/components/AppShell.astro` | Astro layout — html, head, body, AppTray, top bar, content slot |
-| `src/styles/app-shell.css` | Flex layout, top bar, content area sizing, responsive padding |
+| `src/components/AppShell.astro` | Astro layout — html, head, body, AppTray, AppBar, content slot |
+| `src/styles/app-shell.css` | Flex layout, content area sizing, responsive padding |
 
 The shell imports `base.css`. Pages using the shell do not need to import it.
 
@@ -140,9 +130,9 @@ The current body padding and max-width rules in `base.css` are shell concerns. T
 
 ### Definition of Done
 
-- [ ] `AppShell.astro` provides full document skeleton with top bar, AppTray, and content slot
+- [ ] `AppShell.astro` provides full document skeleton with AppBar, AppTray, and content slot
 - [ ] Both apps use the shell as their base layout on all pages
-- [ ] Top app bar displays page title, clears burger on small viewports
+- [ ] Top app bar is rendered via the `AppBar` component (see app-bar spec)
 - [ ] Content pane has responsive padding and max-width via spacing tokens
 - [ ] Content area shifts when rail is visible (medium+) and when tray pushes (desktop)
 - [ ] Named `head` slot allows page-specific `<head>` content
@@ -154,7 +144,7 @@ The current body padding and max-width rules in `base.css` are shell concerns. T
 
 - Shell must always render AppTray — navigation is not optional
 - Content pane must never overlap with the rail on medium+ viewports
-- Content pane must never be hidden behind the top bar or burger
+- Content pane must never be hidden behind the app bar or burger
 - Pages must not contain `<html>` or `<body>` tags when using the shell
 - Top bar title must be visible at all breakpoints
 
@@ -170,10 +160,10 @@ Scenario: Content responds to tray on desktop
   When: The user opens the tray
   Then: The top bar and content pane shift right as the tray pushes into the flex row
 
-Scenario: Top bar clears burger on small viewport
-  Given: Viewport is below 620px
-  When: The page loads
-  Then: The top bar has left padding so the title does not overlap the fixed hamburger button
+Scenario: App bar clears navigation at all breakpoints
+  Given: The shell renders with AppBar and AppTray
+  When: Viewed at any viewport size
+  Then: The app bar's 80px left margin clears the hamburger button (small) and rail (medium+)
 
 Scenario: Page injects head content
   Given: A page passes styles via the `head` slot
