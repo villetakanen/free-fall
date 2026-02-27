@@ -35,8 +35,9 @@ Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FR
 | Icon | Label | Href |
 |---|---|---|
 | `public` | Home | `/` |
+| `menu_book` | Registry | `/registry/` |
 
-Only one nav item. The globe icon (`public` from Material Symbols Sharp) represents the app's home.
+The globe icon (`public`) represents the app's home. The open book icon (`menu_book`) represents the game terminology registry. Both are from Material Symbols Sharp.
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.
 
@@ -74,7 +75,7 @@ title: About — FREE//FALL
 ### Definition of Done
 
 - [ ] `apps/free-fall/src/layouts/BaseLayout.astro` wraps AppShell with navItems and brandHref
-- [ ] NavItems contains one entry: globe icon (`public`), label "Home", href `/`
+- [ ] NavItems contains entries: globe icon (`public`) "Home" `/`, book icon (`menu_book`) "Registry" `/registry/`
 - [ ] brandHref is `/about/`
 - [ ] `about.md` page exists at `/about/` with placeholder content and frontmatter layout
 - [ ] `index.astro` uses BaseLayout, no longer hides navigation, no inline navItems
@@ -109,6 +110,16 @@ Scenario: About page renders
   Given: A user navigates to `/about/`
   When: The page loads
   Then: The page renders with BaseLayout, showing navigation and placeholder content
+
+Scenario: Registry nav item is active on registry page
+  Given: A user is on the registry page at `/registry/`
+  When: The rail or drawer is visible
+  Then: The "Registry" item with book icon is marked active
+
+Scenario: Registry page renders
+  Given: A user navigates to `/registry/`
+  When: The page loads
+  Then: The page renders with BaseLayout, showing the game terminology glossary with proper typography
 
 Scenario: Rules page uses BaseLayout
   Given: A user navigates to a rules page

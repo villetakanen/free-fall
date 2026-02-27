@@ -1,6 +1,6 @@
 {
   "name": "@free-fall/core-rulebook",
-  "version": "7.0.0-alpha.1",
+  "version": "7.0.0-alpha.2",
   "type": "module",
   "description": "The FREE//FALL core rules engine definition and content package.",
   "exports": {
