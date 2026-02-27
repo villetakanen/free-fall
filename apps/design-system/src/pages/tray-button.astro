@@ -19,10 +19,15 @@ const navItems = [
     active: true,
   },
   { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
+  {
+    icon: "branding_watermark",
+    label: "Drawer Brand",
+    href: "/drawer-brand/",
+  },
 ];
 ---
 
-<AppShell title="Tray Button — FREE//FALL Design System" navItems={navItems}>
+<AppShell title="Tray Button — FREE//FALL Design System" navItems={navItems} brandHref="/drawer-brand/">
   <Fragment slot="head">
     <style>
       .demo-section {

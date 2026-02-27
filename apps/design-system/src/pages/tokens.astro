@@ -77,10 +77,11 @@ const navItems = [
   { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
   { icon: "buttons_alt", label: "Tray Button", href: "/tray-button/" },
   { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
+  { icon: "branding_watermark", label: "Drawer Brand", href: "/drawer-brand/" },
 ];
 ---
 
-<AppShell title="Tokens — FREE//FALL Design System" navItems={navItems}>
+<AppShell title="Tokens — FREE//FALL Design System" navItems={navItems} brandHref="/drawer-brand/">
   <Fragment slot="head">
     <style>
       .swatch-grid {

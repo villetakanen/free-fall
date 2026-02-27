@@ -22,7 +22,7 @@
    HAMBURGER BUTTON (label for checkbox)
    ========================================= */
 
-.app-tray__burger-wrapper {
+.app-tray > .hamburger-btn {
   /* Default mobile state: Fixed top left */
   position: fixed;
   top: var(--freefall-space-2);
@@ -43,11 +43,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--freefall-bg-surface-1);
   width: var(--app-tray-tray-width);
   max-width: 100vw;
   transform: translateX(-100%);
-  transition: transform 150ms ease-in, width 150ms ease-in;
+  transition:
+    transform 150ms ease-in,
+    width 150ms ease-in;
   overflow-y: auto;
   border-right: none;
   container-type: inline-size;
@@ -55,15 +56,15 @@
 
 .app-tray:has(#app-tray-toggle:checked) .app-tray__rail-column {
   transform: translateX(0);
-  transition: transform 200ms ease-out, width 200ms ease-out;
+  transition:
+    transform 200ms ease-out,
+    width 200ms ease-out;
 }
 
 .app-tray__nav {
   display: flex;
   flex-direction: column;
-  padding: 0 calc(1.5 * var(--freefall-space-1));
   gap: var(--freefall-space-1);
-  margin-top: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
 }
 
 /* =========================================
@@ -75,7 +76,6 @@
   position: fixed;
   inset: 0;
   z-index: var(--app-tray-z-scrim);
-  background: hsl(0 0% 0% / 0.5);
   opacity: 0;
   transition: opacity 150ms ease-in;
   cursor: pointer;
@@ -91,8 +91,8 @@
    MEDIUM (TABLET): RAIL + OVERLAY TRAY
    ========================================= */
 
-@media (min-width: 620px) {
-
+/* Breakpoint is 620, so we target ABOVE it!*/
+@media (min-width: 621px) {
   /* Rail column visible always. Unchecked = Rail mode, Checked = Tray mode overlaying content */
   .app-tray__rail-column {
     position: relative;
@@ -101,8 +101,8 @@
     /* Always visible */
     width: var(--app-tray-rail-width);
     flex-shrink: 0;
-    background: var(--freefall-bg-surface-2);
-    border-right: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
+    border-right: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-border-subtle);
     z-index: calc(var(--app-tray-z-tray) + 1);
   }
 
@@ -111,11 +111,6 @@
     position: absolute;
     height: 100vh;
     width: var(--app-tray-tray-width);
-    background: var(--freefall-bg-surface-1);
-  }
-
-  .app-tray__nav {
-    margin-top: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
   }
 }
 
@@ -124,7 +119,6 @@
    ========================================= */
 
 @media (min-width: 780px) {
-
   /* Desktop never uses scrim */
   .app-tray:has(#app-tray-toggle:checked) .app-tray__scrim {
     display: none;
@@ -135,6 +129,5 @@
     position: relative;
     /* Restores relative positioning so it pushes content */
     width: var(--app-tray-tray-width);
-    background: var(--freefall-bg-surface-1);
   }
 }

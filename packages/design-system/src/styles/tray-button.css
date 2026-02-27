@@ -13,7 +13,9 @@
   text-decoration: none;
   cursor: pointer;
   border-radius: 9999px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 
   --tray-button-icon-size: calc(3 * var(--freefall-space-1));
 }
@@ -57,7 +59,7 @@
 }
 
 .tray-button[aria-current="page"] .tray-button__icon {
-  font-variation-settings: 'FILL' 1;
+  font-variation-settings: "FILL" 1;
 }
 
 /* =========================================
@@ -66,11 +68,9 @@
    the icon centers and the label becomes visually hidden.
    ========================================= */
 
-@container (max-width: 160px) {
+@container (max-width: 64px) {
   .tray-button {
     width: calc(6 * var(--freefall-space-1));
-    height: calc(6 * var(--freefall-space-1));
-    padding: 0;
     justify-content: center;
     margin-inline: auto;
     gap: 0;

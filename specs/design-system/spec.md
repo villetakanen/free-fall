@@ -94,6 +94,7 @@ Design tokens exist in two forms that must stay in sync:
 - **No framework islands for toggle UI** — If the core interaction is a state toggle (open/close, show/hide), use a CSS checkbox pattern with `:has(:checked)` and add JS as progressive enhancement only. Reserve Svelte 5 islands for genuinely complex reactive state that cannot be achieved with HTML + CSS.
 - **No app-specific styles in the package** — The design system is generic to all apps. App-specific overrides live in the consuming app.
 - **No build step for the package** — Source files are consumed directly. No compile, bundle, or transpile step in `packages/design-system`.
+- **No strict BEM for layout wrappers** — Do not introduce arbitrary DOM elements (`<div class="block__element">`) solely to apply layout (like `position` or `z-index`) to a child component. Prefer using native CSS descendant combinators (e.g., `.parent > .child`) to style the child within the parent's context without breaking component encapsulation or muddying the DOM map.
 
 ## Contract
 

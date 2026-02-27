@@ -10,13 +10,15 @@ interface Props {
 const { icon, label, href, active } = Astro.props;
 ---
 
-<a
-  class="tray-button"
-  href={href}
-  aria-current={active ? "page" : undefined}
->
+<a class="tray-button" href={href} aria-current={active ? "page" : undefined}>
   <span class="tray-button__icon material-symbols-sharp" aria-hidden="true">
     {icon}
   </span>
   <span class="tray-button__label">{label}</span>
 </a>
+
+<style>
+  .tray-button {
+    height: calc(var(--freefall-space-1) * 6);
+  }
+</style>
