@@ -97,6 +97,7 @@ const { items, brandHref } = Astro.props;
   @media (min-width: 621px) {
     .app-tray {
       width: var(--app-tray-rail-width);
+      transition: 270ms width;
     }
     .app-tray:has(#app-tray-toggle:checked) {
       width: var(--app-tray-tray-width);

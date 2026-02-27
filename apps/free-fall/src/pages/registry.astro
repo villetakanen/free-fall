@@ -1,0 +1,22 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import { Content as Registry } from "@free-fall/core-rulebook/content/rules/registry.md";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Registry — FREE//FALL">
+  <div class="registry-container">
+    <div class="freefall-prose">
+      <Registry />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .registry-container {
+    padding: calc(4 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
