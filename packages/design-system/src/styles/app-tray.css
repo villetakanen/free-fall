@@ -6,9 +6,6 @@
 
 .app-tray {
   /* Flex row layout for aligning rail column side-by-side */
-  display: flex;
-  flex-direction: row;
-  height: 100%;
 
   --app-tray-z-tray: 100;
   --app-tray-z-scrim: 99;

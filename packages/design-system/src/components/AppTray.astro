@@ -62,11 +62,17 @@ const { items, brandHref } = Astro.props;
   /* Note: these styles are owned by the Tray, so they do not belong to BEM or
    component classes. The styles are only used by this bespoke component */
   .app-tray {
+    display: flex;
+    flex-direction: row;
     position: relative;
     top: 0;
     left: 0;
     height: 100%; /* AppShell is 100dvh, span whole shell vertically */
     background: var(--freefall-bg-surface-1);
+    width: 0;
+  }
+  .app-tray:has(#app-tray-toggle:checked) {
+    width: 100dvh;
   }
 
   .app-tray-drawer {
@@ -82,9 +88,19 @@ const { items, brandHref } = Astro.props;
     padding-bottom: var(--freefall-space-2);
     padding-left: calc(var(--freefall-space-1) * 1.5);
     padding-right: calc(var(--freefall-space-1) * 1.5);
+    width: 100%;
   }
   .app-tray-nav {
     align-items: flex-start;
+  }
+  /* Breakpoint is 620, so we target ABOVE it!*/
+  @media (min-width: 621px) {
+    .app-tray {
+      width: var(--app-tray-rail-width);
+    }
+    .app-tray:has(#app-tray-toggle:checked) {
+      width: var(--app-tray-tray-width);
+    }
   }
 </style>
 
