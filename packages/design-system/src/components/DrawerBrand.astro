@@ -55,15 +55,6 @@ const { href = "/about" } = Astro.props;
     white-space: nowrap;
   }
 
-  .drawer-brand:hover {
-    color: var(--freefall-text-body);
-  }
-
-  .drawer-brand:focus-visible {
-    outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-alert-base);
-    outline-offset: calc(var(--freefall-space-1) / 4);
-  }
-
   @container (max-width: 64px) {
     .drawer-brand {
       justify-content: center;
