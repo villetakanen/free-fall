@@ -20,33 +20,6 @@
 }
 
 /* =========================================
-   TOP APP BAR
-   ========================================= */
-
-.app-shell__bar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-shrink: 0;
-  height: calc(8 * var(--freefall-space-1));
-  background: var(--freefall-bg-surface-1);
-  border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
-  padding: 0 var(--freefall-space-2);
-}
-
-.app-shell__title {
-  color: var(--freefall-text-display);
-  font-size: calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
-}
-
-/* Small viewport: clear the fixed burger button */
-@media (max-width: 619px) {
-  .app-shell__bar {
-    padding-left: calc(var(--app-tray-burger-size) + 2 * var(--freefall-space-2));
-  }
-}
-
-/* =========================================
    CONTENT PANE
    ========================================= */
 
