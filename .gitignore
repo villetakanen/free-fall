@@ -143,3 +143,6 @@ test-results/
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# MacOS image cache
+**.DS_Store

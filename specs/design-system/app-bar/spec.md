@@ -15,8 +15,8 @@ Parent spec: `specs/design-system/spec.md`
 **Anatomy:**
 
 ```
-+--[80px margin]--+--Title-----------[  slot  ]--+
-|   (rail/burger  |                   (actions)   |
++--[64px margin]--+--Title-----------[  slot  ]--+
+|   (mobile       |                   (actions)   |
 |    clearance)   |                               |
 +-----------------+-------------------------------+
 ```
@@ -28,10 +28,10 @@ The bar is a flex row. The left margin clears the fixed hamburger button / navig
 | Dimension | Formula | Resolves to |
 |---|---|---|
 | Bar height | `calc(8 * var(--freefall-space-1))` | 4rem (64px) |
-| Left margin | `calc(10 * var(--freefall-space-1))` | 5rem (80px) |
-| Horizontal padding | `var(--freefall-space-2)` | 1rem (16px) |
+| Left margin (mobile) | `calc(8 * var(--freefall-space-1))` | 4rem (64px) |
+| Horizontal padding | `var(--freefall-space-2)` (mobile) to `var(--freefall-space-4)` (tablet+) | 1rem (16px) to 2rem (32px) |
 
-The left margin of `calc(10 * var(--freefall-space-1))` matches the rail width from the app-tray spec. On small viewports (< 620px) where the rail is hidden, the same margin clears the fixed hamburger button (48px button + 16px left offset = 64px, within the 80px margin).
+The left margin of `calc(8 * var(--freefall-space-1))` on small viewports (< 620px) clears the fixed hamburger button perfectly (48px button + 16px left offset = 64px). On tablet and desktop (>= 620px), the margin is reset to `0` because the `<nav>` rail pushes the layout content grid, and the AppBar receives an expanded horizontal padding to align with the rest of the application body.
 
 **Surface styling:**
 
@@ -73,7 +73,6 @@ The AppShell replaces its inline `<header class="app-shell__bar">` with `<AppBar
 - **No border** — Do not add a bottom border. The bar is a clean, floating element.
 - **No fixed pixel dimensions** — All sizing derives from spacing tokens via `calc()`.
 - **No content-awareness** — The bar does not know what page it is on. It receives a title prop and renders a slot.
-- **No responsive margin changes** — The 80px left margin is constant across all breakpoints. It clears the rail on medium+ and the burger on small.
 - **No wrapping slot items** — The trailing slot is `flex-wrap: nowrap`. If too many items are added, they overflow — that's a consumer concern, not the bar's.
 
 ## Contract
@@ -82,7 +81,7 @@ The AppShell replaces its inline `<header class="app-shell__bar">` with `<AppBar
 
 - [ ] `AppBar.astro` renders a `<header>` with title prop and default slot for trailing actions
 - [ ] Bar has transparent background, no border
-- [ ] Left margin is `calc(10 * var(--freefall-space-1))` (80px) at all breakpoints
+- [ ] Left margin is `calc(8 * var(--freefall-space-1))` (64px) on mobile and `0` on tablet+
 - [ ] Bar height is `calc(8 * var(--freefall-space-1))` (64px)
 - [ ] Default slot content is pushed to the right end of the bar via `margin-left: auto` on the slot container
 - [ ] Slot container is a flex row with `align-items: center` and `gap: var(--freefall-space-1)`
@@ -95,9 +94,9 @@ The AppShell replaces its inline `<header class="app-shell__bar">` with `<AppBar
 ### Regression Guardrails
 
 - Bar must never have a visible background — `transparent` only
-- Left margin must be constant (80px equivalent) across all viewport sizes
+- Left margin must accurately clear the mobile hamburger menu (64px) and reset when nav-rail provides natural document flow spacing
 - Slotted content must always align to the right end of the bar
-- Title must remain visible and not overlap with the left margin area
+- Title must remain visible and not overlap with the hamburger menu
 - The bar must not introduce any JavaScript — it is a pure Astro/CSS component
 
 ### Scenarios
@@ -105,7 +104,7 @@ The AppShell replaces its inline `<header class="app-shell__bar">` with `<AppBar
 Scenario: Bar renders with title
   Given: A page renders `<AppBar title="Design Tokens" />`
   When: The page loads
-  Then: A `<header>` is visible with "Design Tokens" displayed as the title text, left-aligned after the 80px margin
+  Then: A `<header>` is visible with "Design Tokens" displayed as the title text, left-aligned correctly past the hamburger menu
 
 Scenario: Slotted actions align right
   Given: A page renders `<AppBar title="Home"><button>Settings</button></AppBar>`

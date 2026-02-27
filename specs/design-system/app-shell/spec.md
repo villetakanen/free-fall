@@ -65,7 +65,7 @@ The scaffold has four regions:
   </head>
   <body>
     <div class="app-shell">
-      <AppTray items={navItems} />
+      <AppTray items={navItems} brandHref={brandHref} />
       <div class="app-shell__body">
         <AppBar title={title} />
         <main class="app-shell__content">
@@ -81,9 +81,9 @@ The scaffold has four regions:
 
 | Viewport | Navigation | Top bar | Content pane |
 |---|---|---|---|
-| Small (< 620px) | Hidden (burger fixed top-left) | Full width, 80px left margin clears burger | Full width, padded |
-| Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, 80px left margin clears rail | Fills remaining width after rail |
-| Large (desktop) | Rail visible, tray pushes | Fills remaining width, 80px left margin clears rail | Fills remaining width, max-width constrained |
+| Small (< 620px) | Hidden (burger fixed top-left) | Full width, 64px left margin clears burger | Full width, padded |
+| Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
+| Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width, max-width constrained |
 
 The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app-shell__body` (bar + content) takes remaining space via `flex: 1`.
 
@@ -103,6 +103,7 @@ Top bar dimensions and styling are defined in the app-bar spec (`specs/design-sy
 |---|---|---|---|
 | `title` | `string` | yes | Page `<title>` and top bar title |
 | `navItems` | `NavItem[]` | yes | Passed through to AppTray |
+| `brandHref` | `string` | no | Passed through to AppTray for brand logo link |
 
 **Component structure:**
 
@@ -163,7 +164,7 @@ Scenario: Content responds to tray on desktop
 Scenario: App bar clears navigation at all breakpoints
   Given: The shell renders with AppBar and AppTray
   When: Viewed at any viewport size
-  Then: The app bar's 80px left margin clears the hamburger button (small) and rail (medium+)
+  Then: The app bar's 64px left margin clears the hamburger button (small), and flex layout clears the rail (medium+)
 
 Scenario: Page injects head content
   Given: A page passes styles via the `head` slot
