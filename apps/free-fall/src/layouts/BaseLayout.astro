@@ -1,5 +1,4 @@
 ---
-// biome-ignore lint/correctness/noUnusedImports: used in template
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
 import { getCoreRulebookNavItems } from "../lib/nav.ts";
 
@@ -8,13 +7,11 @@ interface Props {
   frontmatter?: { title?: string };
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const title =
   Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL";
 
 const coreRulebookSubItems = await getCoreRulebookNavItems(Astro.url.pathname);
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const navItems = [
   {
     icon: "public",

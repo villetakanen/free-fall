@@ -1,5 +1,4 @@
 ---
-// biome-ignore lint/correctness/noUnusedImports: used in template
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 interface Props {
@@ -7,13 +6,11 @@ interface Props {
   frontmatter?: { title?: string };
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const title =
   Astro.props.title ||
   Astro.props.frontmatter?.title ||
   "FREE//FALL Design System";
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const navItems = [
   {
     icon: "home",

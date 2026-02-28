@@ -1,44 +1,18 @@
 ---
-// biome-ignore lint/correctness/noUnusedImports: used in template
-import { VERSION } from "@free-fall/core-rulebook";
-// biome-ignore lint/correctness/noUnusedImports: used in template
-import { Content as CoreMechanics } from "@free-fall/core-rulebook/content/rules/core-mechanics.md";
-// biome-ignore lint/correctness/noUnusedImports: used in template
-import alphaBadgeRaw from "@free-fall/design-system/assets/v7-alpha.svg?raw";
-// biome-ignore lint/correctness/noUnusedImports: used in template
+import VersionInfo from "../components/landing/VersionInfo.astro";
+import { Content as Hero } from "../content/landing/hero.md";
+import { Content as Intro } from "../content/landing/intro.md";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title={`FREE//FALL Rulebook v${VERSION}`}>
-  <div class="alpha-container">
-    <div class="version-badge">VERSION {VERSION}</div>
-    <div class="alpha-badge" set:html={alphaBadgeRaw} />
-    <div class="freefall-prose">
-      <CoreMechanics />
-    </div>
+<BaseLayout title="FREE//FALL">
+  <VersionInfo />
+  <div class="landing">
+    <section class="freefall-prose">
+      <blockquote>
+        <Hero />
+      </blockquote>
+      <Intro />
+    </section>
   </div>
 </BaseLayout>
-
-<style>
-  .alpha-container {
-    padding: calc(4 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .version-badge {
-    font-family: var(--freefall-font-mono);
-    color: var(--freefall-text-muted);
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    margin-bottom: calc(4 * var(--freefall-space-1));
-    border-bottom: 1px solid var(--freefall-border-subtle);
-    padding-bottom: calc(1 * var(--freefall-space-1));
-  }
-  .alpha-badge {
-    display: flex;
-    width: 100%;
-    height: 96px;
-    justify-content: center;
-  }
-</style>
