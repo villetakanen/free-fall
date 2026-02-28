@@ -1,33 +1,11 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppShell from "@free-fall/design-system/components/AppShell.astro";
-// biome-ignore lint/correctness/noUnusedImports: used in template
 import TrayButton from "@free-fall/design-system/components/TrayButton.astro";
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [
-  { icon: "home", label: "Home", href: "/" },
-  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
-  { icon: "text_fields", label: "Typography", href: "/typography/" },
-  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
-  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
-  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
-  {
-    icon: "buttons_alt",
-    label: "Tray Button",
-    href: "/tray-button/",
-    active: true,
-  },
-  { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
-  {
-    icon: "branding_watermark",
-    label: "Drawer Brand",
-    href: "/drawer-brand/",
-  },
-];
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<AppShell title="Tray Button — FREE//FALL Design System" navItems={navItems} brandHref="/drawer-brand/">
+<BaseLayout title="Tray Button — FREE//FALL Design System">
   <Fragment slot="head">
     <style>
       .demo-section {
@@ -113,7 +91,10 @@ const navItems = [
 
   <div class="demo-section">
     <h2>Interactive States</h2>
-    <p>Hover any button to see the hover state. Tab to see focus-visible outlines. Buttons with <code>active</code> prop use display-level text color.</p>
+    <p>
+      Hover any button to see the hover state. Tab to see focus-visible
+      outlines. Buttons with <code>active</code> prop use display-level text color.
+    </p>
 
     <h3>Active / Selected</h3>
     <div class="demo-container demo-container--open" data-tray-state="open">
@@ -137,4 +118,4 @@ const navItems = [
       />
     </div>
   </div>
-</AppShell>
+</BaseLayout>

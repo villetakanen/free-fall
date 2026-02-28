@@ -1,0 +1,69 @@
+/* =========================================
+   TRAY LINK GROUP & ITEM
+   ========================================= */
+
+.tray-link-group {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-inline-start: calc(6 * var(--freefall-space-1) + var(--freefall-space-2));
+}
+
+.tray-link-item {
+  display: flex;
+  min-width: 0;
+}
+
+.tray-link {
+  display: flex;
+  align-items: center;
+  padding-block: var(--freefall-space-1);
+  padding-inline: calc(1.5 * var(--freefall-space-1));
+  margin-block: calc(0.25 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  width: 100%;
+}
+
+.tray-link__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  /* Smaller typography */
+}
+
+/* =========================================
+   INTERACTIVE STATES
+   ========================================= */
+
+.tray-link:hover {
+  background: var(--freefall-action-hover);
+}
+
+.tray-link:focus-visible {
+  outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-alert-base);
+  outline-offset: calc(var(--freefall-space-1) / -4);
+}
+
+.tray-link[aria-current="page"] {
+  color: var(--freefall-text-display);
+  background: var(--freefall-bg-surface-2);
+}
+
+/* =========================================
+   MINIMIZED STATE (Container Query Driven)
+   ========================================= */
+
+@container (max-width: 64px) {
+  .tray-link-group {
+    display: none;
+  }
+}

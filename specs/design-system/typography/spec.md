@@ -81,6 +81,8 @@ Instead of generic abstract headings, FREE//FALL uses a strict editorial scale t
 | `.text-copy` | Base body size (1rem) | Standard paragraphs (`<p>`) |
 | `.text-caption` | Small, loose tracking | Figure captions, subtle notes |
 | `.text-callout` | Thematic, visually distinct | Flavor text, in-universe quotes |
+| `.text-ui` | Standard UI size (1rem) | Primary buttons, app bars, tabs |
+| `.text-ui-small` | Small UI size (0.875rem) | Secondary navigation, badges, metadata |
 
 *Note: `p` elements receive standard body styling by default. The `.text-copy` class is only needed to apply paragraph typography to non-`p` nodes.*
 
@@ -101,7 +103,7 @@ When rendering raw Markdown bodies (like long-form rulebooks), do not attempt to
 
 The `.freefall-prose` scope automatically:
 - Enforces an ergonomic `max-width: 65ch` measure to prevent unreadable widescreen text walls.
-- Applies the correct vertical rhythm (margins that map to the `4px` base grid) between paragraphs and headings.
+- Applies the correct vertical rhythm (margins that map to the `8px` base grid) between paragraphs and headings.
 - Automatically styles all naked `<h1>`, `<h2>`, and `<h3>` tags to the `.text-chapter`, `.text-section`, and `.text-subsection` scales respectively.
 - Deep-styles TTRPG-specific nested structures natively:
   - **Lists**: Strictly indented padding for `<ul>` and `<ol>`, with unified vertical spacing for complex nested rules exceptions.
@@ -135,7 +137,7 @@ The `.freefall-prose` scope automatically:
 
 - Font family values in CSS and TypeScript must match
 - CSS utility modifier token sizes must strictly map back to TypeScript typography size constants.
-- Line heights across all typographic nodes must always mathematically equate to a multiple of `4px` (`--freefall-space-1`).
+- Line heights across all typographic nodes must always mathematically equate to a multiple of `8px` (`--freefall-space-1`).
 
 ### Scenarios
 

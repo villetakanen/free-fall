@@ -12,6 +12,11 @@ interface NavItem {
   label: string;
   href: string;
   active?: boolean;
+  subItems?: {
+    label: string;
+    href: string;
+    active?: boolean;
+  }[];
 }
 
 interface Props {

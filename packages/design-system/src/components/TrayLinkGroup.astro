@@ -1,0 +1,12 @@
+---
+interface Props {
+  ariaLabel?: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { ariaLabel = "Secondary Navigation" } = Astro.props;
+---
+
+<ul class="tray-link-group" aria-label={ariaLabel}>
+    <slot />
+</ul>
