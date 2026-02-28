@@ -30,14 +30,13 @@ An Astro layout that wraps `AppShell` with the app's navigation configuration. A
 
 Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL"`. This allows both `.astro` pages (passing `title` directly) and `.md` pages (using `layout` frontmatter) to use the same layout.
 
-**Navigation items (hardcoded in BaseLayout):**
+**Navigation items:**
 
-| Icon | Label | Href |
-|---|---|---|
-| `public` | Home | `/` |
-| `menu_book` | Registry | `/registry/` |
+| Icon | Label | Href | Sub-items |
+|---|---|---|---|
+| `public` | Home | `/` | Dynamic — populated from `core-rulebook` collection via `getCoreRulebookNavItems()` helper in `src/lib/nav.ts` |
 
-The globe icon (`public`) represents the app's home. The open book icon (`menu_book`) represents the game terminology registry. Both are from Material Symbols Sharp.
+The globe icon (`public`) represents the app's home. Home is active on `/` and all `/free-fall-core-rulebook/*` routes. Sub-items are generated at build time from the `core-rulebook` content collection (see `specs/free-fall/core-rulebook-nav/spec.md`).
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.
 
@@ -75,7 +74,7 @@ title: About — FREE//FALL
 ### Definition of Done
 
 - [ ] `apps/free-fall/src/layouts/BaseLayout.astro` wraps AppShell with navItems and brandHref
-- [ ] NavItems contains entries: globe icon (`public`) "Home" `/`, book icon (`menu_book`) "Registry" `/registry/`
+- [ ] NavItems contains Home (`public` icon, `/`) with dynamic `subItems` from `core-rulebook` collection
 - [ ] brandHref is `/about/`
 - [ ] `about.md` page exists at `/about/` with placeholder content and frontmatter layout
 - [ ] `index.astro` uses BaseLayout, no longer hides navigation, no inline navItems
@@ -101,6 +100,11 @@ Scenario: Home nav item is active on index
   When: The rail or drawer is visible
   Then: The "Home" item with globe icon is marked active
 
+Scenario: Home nav item is active on core rulebook pages
+  Given: A user is on `/free-fall-core-rulebook/core-mechanics/`
+  When: The rail or drawer is visible
+  Then: The "Home" item with globe icon is marked active
+
 Scenario: DrawerBrand links to about page
   Given: A user opens the navigation drawer
   When: They click the brand logo
@@ -110,16 +114,6 @@ Scenario: About page renders
   Given: A user navigates to `/about/`
   When: The page loads
   Then: The page renders with BaseLayout, showing navigation and placeholder content
-
-Scenario: Registry nav item is active on registry page
-  Given: A user is on the registry page at `/registry/`
-  When: The rail or drawer is visible
-  Then: The "Registry" item with book icon is marked active
-
-Scenario: Registry page renders
-  Given: A user navigates to `/registry/`
-  When: The page loads
-  Then: The page renders with BaseLayout, showing the game terminology glossary with proper typography
 
 Scenario: Rules page uses BaseLayout
   Given: A user navigates to a rules page
