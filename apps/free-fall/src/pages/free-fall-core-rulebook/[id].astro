@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from "astro:content";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("core-rulebook");
+  return entries.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} — FREE//FALL`}>
+  <div class="rulebook-container">
+    <div class="freefall-prose">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .rulebook-container {
+    padding: calc(4 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>

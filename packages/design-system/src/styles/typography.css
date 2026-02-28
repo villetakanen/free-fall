@@ -33,11 +33,7 @@ p:last-child,
    ========================================= */
 
 .text-chapter {
-  font-size: calc(
-    var(--freefall-type-ratio) * var(--freefall-type-ratio) *
-      var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 *
-      var(--freefall-space-1)
-  );
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(9 * var(--freefall-space-1));
   letter-spacing: -0.02em;
   /* Tighter tracking for massive headers */
@@ -45,19 +41,13 @@ p:last-child,
 }
 
 .text-section {
-  font-size: calc(
-    var(--freefall-type-ratio) * var(--freefall-type-ratio) *
-      var(--freefall-type-ratio) * 2 * var(--freefall-space-1)
-  );
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(6 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }
 
 .text-subsection {
-  font-size: calc(
-    var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 *
-      var(--freefall-space-1)
-  );
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(5 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }
@@ -74,6 +64,18 @@ p:last-child,
   color: var(--freefall-text-muted);
   letter-spacing: 0.05em;
   /* Looser tracking for small sizes */
+}
+
+.text-ui {
+  font-size: 1rem;
+  line-height: calc(3 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
+}
+
+.text-ui-small {
+  font-size: calc(1.75 * var(--freefall-space-1));
+  line-height: calc(3 * var(--freefall-space-1));
+  color: var(--freefall-text-display);
 }
 
 /* =========================================
@@ -125,11 +127,7 @@ p:last-child,
 
 /* Headings mapped to Editorial Scale */
 .freefall-prose h1 {
-  font-size: calc(
-    var(--freefall-type-ratio) * var(--freefall-type-ratio) *
-      var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 *
-      var(--freefall-space-1)
-  );
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(9 * var(--freefall-space-1));
   letter-spacing: -0.02em;
   color: var(--freefall-text-display);
@@ -138,10 +136,7 @@ p:last-child,
 }
 
 .freefall-prose h2 {
-  font-size: calc(
-    var(--freefall-type-ratio) * var(--freefall-type-ratio) *
-      var(--freefall-type-ratio) * 2 * var(--freefall-space-1)
-  );
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(6 * var(--freefall-space-1));
   color: var(--freefall-text-display);
   margin-top: calc(6 * var(--freefall-space-1));
@@ -149,10 +144,7 @@ p:last-child,
 }
 
 .freefall-prose h3 {
-  font-size: calc(
-    var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 *
-      var(--freefall-space-1)
-  );
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
   line-height: calc(5 * var(--freefall-space-1));
   color: var(--freefall-text-display);
   margin-top: calc(4 * var(--freefall-space-1));
@@ -212,6 +204,7 @@ p:last-child,
 .freefall-prose tbody tr:nth-child(even) {
   background-color: var(--freefall-bg-surface-1);
 }
+
 .underline {
   font-weight: 900;
   color: var(--freefall-color-primary-50);

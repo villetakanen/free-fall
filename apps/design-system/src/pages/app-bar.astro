@@ -2,23 +2,10 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import AppBar from "@free-fall/design-system/components/AppBar.astro";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppShell from "@free-fall/design-system/components/AppShell.astro";
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [
-  { icon: "home", label: "Home", href: "/" },
-  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
-  { icon: "text_fields", label: "Typography", href: "/typography/" },
-  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
-  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
-  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
-  { icon: "buttons_alt", label: "Tray Button", href: "/tray-button/" },
-  { icon: "web_asset", label: "App Bar", href: "/app-bar/", active: true },
-  { icon: "branding_watermark", label: "Drawer Brand", href: "/drawer-brand/" },
-];
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<AppShell title="App Bar — FREE//FALL Design System" navItems={navItems} brandHref="/drawer-brand/">
+<BaseLayout title="App Bar — FREE//FALL Design System">
   <Fragment slot="head">
     <style>
       .demo-section {
@@ -57,16 +44,14 @@ const navItems = [
 
   <h1>App Bar</h1>
   <p>
-    M3-style top app bar. Transparent background, 80px left margin to clear
-    the navigation rail / hamburger button. Accepts a <code>title</code> prop
-    and a default slot for trailing actions pushed to the right.
+    M3-style top app bar. Transparent background, 80px left margin to clear the
+    navigation rail / hamburger button. Accepts a <code>title</code> prop and a default
+    slot for trailing actions pushed to the right.
   </p>
 
   <div class="demo-section">
     <h2>Title Only</h2>
-    <p class="demo-label">
-      No slotted content — title fills the bar.
-    </p>
+    <p class="demo-label">No slotted content — title fills the bar.</p>
     <div class="demo-container">
       <AppBar title="Page Title" />
     </div>
@@ -84,7 +69,8 @@ const navItems = [
           Search
         </button>
         <button class="demo-action">
-          <span class="material-symbols-sharp" aria-hidden="true">settings</span>
+          <span class="material-symbols-sharp" aria-hidden="true">settings</span
+          >
         </button>
       </AppBar>
     </div>
@@ -92,14 +78,23 @@ const navItems = [
 
   <div class="demo-section">
     <h2>Multiple Icon Actions</h2>
-    <p class="demo-label">
-      Actions spaced with gap: var(--freefall-space-1).
-    </p>
+    <p class="demo-label">Actions spaced with gap: var(--freefall-space-1).</p>
     <div class="demo-container">
       <AppBar title="Character Sheet">
-        <span class="material-symbols-sharp" style="color: var(--freefall-text-body); cursor: pointer;">casino</span>
-        <span class="material-symbols-sharp" style="color: var(--freefall-text-body); cursor: pointer;">share</span>
-        <span class="material-symbols-sharp" style="color: var(--freefall-text-body); cursor: pointer;">more_vert</span>
+        <span
+          class="material-symbols-sharp"
+          style="color: var(--freefall-text-body); cursor: pointer;"
+          >casino</span
+        >
+        <span
+          class="material-symbols-sharp"
+          style="color: var(--freefall-text-body); cursor: pointer;">share</span
+        >
+        <span
+          class="material-symbols-sharp"
+          style="color: var(--freefall-text-body); cursor: pointer;"
+          >more_vert</span
+        >
       </AppBar>
     </div>
   </div>
@@ -108,20 +103,44 @@ const navItems = [
     <h2>Dimensions</h2>
     <table class="demo-label" style="border-collapse: collapse; width: 100%;">
       <tr>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);">Height</td>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);">calc(8 * var(--freefall-space-1))</td>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);">64px</td>
+        <td
+          style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
+          >Height</td
+        >
+        <td
+          style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
+          >calc(8 * var(--freefall-space-1))</td
+        >
+        <td
+          style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
+          >64px</td
+        >
       </tr>
       <tr>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);">Left margin</td>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);">calc(10 * var(--freefall-space-1))</td>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);">80px</td>
+        <td
+          style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
+          >Left margin</td
+        >
+        <td
+          style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
+          >calc(10 * var(--freefall-space-1))</td
+        >
+        <td
+          style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
+          >80px</td
+        >
       </tr>
       <tr>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2);">Background</td>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2);">transparent</td>
-        <td style="padding: var(--freefall-space-1) var(--freefall-space-2);">—</td>
+        <td style="padding: var(--freefall-space-1) var(--freefall-space-2);"
+          >Background</td
+        >
+        <td style="padding: var(--freefall-space-1) var(--freefall-space-2);"
+          >transparent</td
+        >
+        <td style="padding: var(--freefall-space-1) var(--freefall-space-2);"
+          >—</td
+        >
       </tr>
     </table>
   </div>
-</AppShell>
+</BaseLayout>

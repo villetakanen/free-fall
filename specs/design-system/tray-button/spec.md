@@ -21,6 +21,7 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 **Visual Design & Sizing:**
 
 - **Layout**: Flexbox container (`display: flex; align-items: center;`) to perfectly align the icon and text vertically.
+- **Typography**: Uses high-emphasis text color (`var(--freefall-text-display)`) to ensure good visibility against the rail background.
 - **Spacing**: Adequate padding ensuring a safe, accessible touch target. Gap between icon and label uses a standard spacing token.
 - **Label presentation**: Handled as a single line (`white-space: nowrap`). During tray minimization, the label is visually hidden seamlessly without breaking layout.
 - **Interactive States**: Clear visual feedback for hover (`:hover`), focus (`:focus-visible`), and active/selected/current-page states.

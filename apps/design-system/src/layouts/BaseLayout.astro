@@ -1,0 +1,93 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
+
+interface Props {
+  title?: string;
+  frontmatter?: { title?: string };
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const title =
+  Astro.props.title ||
+  Astro.props.frontmatter?.title ||
+  "FREE//FALL Design System";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const navItems = [
+  {
+    icon: "home",
+    label: "Home",
+    href: "/",
+    active: Astro.url.pathname === "/",
+  },
+  {
+    icon: "palette",
+    label: "Design Tokens",
+    href: "/tokens/",
+    active: Astro.url.pathname.startsWith("/tokens"),
+  },
+  {
+    icon: "text_fields",
+    label: "Typography",
+    href: "/typography/",
+    active: Astro.url.pathname.startsWith("/typography"),
+  },
+  {
+    icon: "emoji_symbols",
+    label: "Iconography",
+    href: "/iconography/",
+    active: Astro.url.pathname.startsWith("/iconography"),
+  },
+  {
+    icon: "web_asset",
+    label: "App Shell",
+    href: "/app-bar/",
+    active: [
+      "/app-bar",
+      "/app-tray",
+      "/drawer-brand",
+      "/hamburger-button",
+      "/tray-button",
+      "/tray-link-group",
+    ].some((path) => Astro.url.pathname.startsWith(path)),
+    subItems: [
+      {
+        label: "App Bar",
+        href: "/app-bar/",
+        active: Astro.url.pathname.startsWith("/app-bar"),
+      },
+      {
+        label: "App Tray",
+        href: "/app-tray/",
+        active: Astro.url.pathname.startsWith("/app-tray"),
+      },
+      {
+        label: "Drawer Brand",
+        href: "/drawer-brand/",
+        active: Astro.url.pathname.startsWith("/drawer-brand"),
+      },
+      {
+        label: "Hamburger Button",
+        href: "/hamburger-button/",
+        active: Astro.url.pathname.startsWith("/hamburger-button"),
+      },
+      {
+        label: "Tray Button",
+        href: "/tray-button/",
+        active: Astro.url.pathname.startsWith("/tray-button"),
+      },
+      {
+        label: "Tray Link Group",
+        href: "/tray-link-group/",
+        active: Astro.url.pathname.startsWith("/tray-link-group"),
+      },
+    ],
+  },
+];
+---
+
+<AppShell title={title} navItems={navItems} brandHref="/drawer-brand/">
+  <slot name="head" slot="head" />
+  <slot />
+</AppShell>

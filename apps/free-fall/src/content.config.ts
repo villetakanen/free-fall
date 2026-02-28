@@ -9,4 +9,16 @@ const rules = defineCollection({
   }),
 });
 
-export const collections = { rules };
+const coreRulebook = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "../../packages/free-fall-core-rulebook/src/content/rules",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    order: z.number().optional(),
+  }),
+});
+
+export const collections = { rules, "core-rulebook": coreRulebook };

@@ -2,28 +2,10 @@
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import { typography } from "@free-fall/design-system";
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppShell from "@free-fall/design-system/components/AppShell.astro";
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [
-  { icon: "home", label: "Home", href: "/" },
-  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
-  {
-    icon: "text_fields",
-    label: "Typography",
-    href: "/typography/",
-    active: true,
-  },
-  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
-  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
-  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
-  { icon: "buttons_alt", label: "Tray Button", href: "/tray-button/" },
-  { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
-  { icon: "branding_watermark", label: "Drawer Brand", href: "/drawer-brand/" },
-];
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<AppShell title="Typography" navItems={navItems} brandHref="/drawer-brand/">
+<BaseLayout title="Typography">
   <div class="test-container" style="padding: 2rem;">
     <h1 class="text-chapter" style="margin-bottom: 2rem;">Typography System</h1>
 
@@ -119,6 +101,31 @@ const navItems = [
             line-height: var(--freefall-space-1) * 2
           </div>
         </div>
+        <div>
+          <div class="text-ui" style="margin-bottom: 0.5rem; margin-top: 0;">
+            UI Standard / .text-ui
+          </div>
+          <div
+            style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
+          >
+            font-size: 1rem<br />
+            line-height: var(--freefall-space-1) * 3
+          </div>
+        </div>
+        <div>
+          <div
+            class="text-ui-small"
+            style="margin-bottom: 0.5rem; margin-top: 0;"
+          >
+            UI Small / .text-ui-small
+          </div>
+          <div
+            style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
+          >
+            font-size: var(--freefall-space-1) * 1.75<br />
+            line-height: var(--freefall-space-1) * 3
+          </div>
+        </div>
       </div>
     </section>
 
@@ -179,4 +186,4 @@ const navItems = [
       </div>
     </section>
   </div>
-</AppShell>
+</BaseLayout>

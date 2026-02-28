@@ -1,0 +1,98 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import TrayButton from "@free-fall/design-system/components/TrayButton.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import TrayLink from "@free-fall/design-system/components/TrayLink.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import TrayLinkGroup from "@free-fall/design-system/components/TrayLinkGroup.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const _mockLinks = [
+  { label: "01. Character Creation", href: "#" },
+  { label: "02. Core Mechanics", href: "#" },
+  { label: "03. Combat & Engagement", href: "#" },
+  {
+    label:
+      "04. A very long rule title that will definitely need to truncate using ellipsis because it is too long",
+    href: "#",
+  },
+];
+---
+
+<BaseLayout title="Tray Link Group — FREE//FALL Design System">
+    <Fragment slot="head">
+        <style>
+            .demo-section {
+                margin-bottom: calc(4 * var(--freefall-space-1));
+            }
+            .demo-container {
+                border: calc(var(--freefall-space-1) / 4) dashed
+                    var(--freefall-border-subtle);
+                border-radius: calc(var(--freefall-space-1));
+                padding: var(--freefall-space-2);
+                margin-top: var(--freefall-space-2);
+                container-type: inline-size;
+            }
+            .demo-container--minimized {
+                width: calc(10 * var(--freefall-space-1));
+            }
+            .demo-container--open {
+                width: calc(40 * var(--freefall-space-1));
+            }
+            .demo-label {
+                font-size: calc(1.5 * var(--freefall-space-1));
+                font-family: var(--freefall-font-mono);
+                color: var(--freefall-text-muted);
+                margin-bottom: var(--freefall-space-1);
+            }
+        </style>
+    </Fragment>
+
+    <h1>Tray Link Group</h1>
+    <p>
+        Renders secondary nested navigation links underneath a primary Tray
+        location. It leverages CSS container queries to hide in minimized rail
+        views, and expand iteratively in fully opened tray situations. No
+        JavaScript required.
+    </p>
+
+    <div class="demo-section">
+        <h2>Open State</h2>
+        <p class="demo-label">
+            container width: calc(40 * var(--freefall-space-1))
+        </p>
+        <div class="demo-container demo-container--open" data-tray-state="open">
+            <TrayButton icon="menu_book" label="Core Rules" href="#" />
+
+            <TrayLinkGroup>
+                {
+                    _mockLinks.map((link) => (
+                        <TrayLink href={link.href} label={link.label} />
+                    ))
+                }
+            </TrayLinkGroup>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Minimized State</h2>
+        <p class="demo-label">
+            container width: calc(10 * var(--freefall-space-1))
+        </p>
+        <div
+            class="demo-container demo-container--minimized"
+            data-tray-state="minimized"
+        >
+            <TrayButton icon="menu_book" label="Core Rules" href="#" />
+
+            <TrayLinkGroup>
+                {
+                    _mockLinks.map((link) => (
+                        <TrayLink href={link.href} label={link.label} />
+                    ))
+                }
+            </TrayLinkGroup>
+        </div>
+    </div>
+</BaseLayout>

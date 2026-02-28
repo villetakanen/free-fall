@@ -10,7 +10,11 @@ interface Props {
 const { icon, label, href, active } = Astro.props;
 ---
 
-<a class="tray-button" href={href} aria-current={active ? "page" : undefined}>
+<a
+  class="tray-button text-ui"
+  href={href}
+  aria-current={active ? "page" : undefined}
+>
   <span class="tray-button__icon material-symbols-sharp" aria-hidden="true">
     {icon}
   </span>

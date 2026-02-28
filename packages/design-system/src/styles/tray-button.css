@@ -9,7 +9,7 @@
   align-items: center;
   gap: calc(2 * var(--freefall-space-1));
   padding: calc(2 * var(--freefall-space-1));
-  color: var(--freefall-text-body);
+  color: var(--freefall-text-display);
   text-decoration: none;
   cursor: pointer;
   border-radius: 9999px;

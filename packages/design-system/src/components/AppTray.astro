@@ -5,6 +5,10 @@ import DrawerBrand from "./DrawerBrand.astro";
 import HamburgerButton from "./HamburgerButton.astro";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import TrayButton from "./TrayButton.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import TrayLink from "./TrayLink.astro";
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import TrayLinkGroup from "./TrayLinkGroup.astro";
 
 /**
  * app-tray-drawer
@@ -18,6 +22,11 @@ interface NavItem {
   label: string;
   href: string;
   active?: boolean;
+  subItems?: {
+    label: string;
+    href: string;
+    active?: boolean;
+  }[];
 }
 
 interface Props {
@@ -39,12 +48,25 @@ const { items, brandHref } = Astro.props;
     <nav id="app-tray-nav" class="app-tray__nav" aria-label="Main navigation">
       {
         items.map((item: NavItem) => (
-          <TrayButton
-            icon={item.icon}
-            label={item.label}
-            href={item.href}
-            active={item.active}
-          />
+          <>
+            <TrayButton
+              icon={item.icon}
+              label={item.label}
+              href={item.href}
+              active={item.active}
+            />
+            {item.subItems && (
+              <TrayLinkGroup>
+                {item.subItems.map((subItem) => (
+                  <TrayLink
+                    href={subItem.href}
+                    label={subItem.label}
+                    active={subItem.active}
+                  />
+                ))}
+              </TrayLinkGroup>
+            )}
+          </>
         ))
       }
       <div style="flex-grow: 1"></div>

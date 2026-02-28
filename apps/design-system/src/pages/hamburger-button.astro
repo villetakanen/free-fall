@@ -1,34 +1,11 @@
 ---
 // biome-ignore lint/correctness/noUnusedImports: used in template
-import AppShell from "@free-fall/design-system/components/AppShell.astro";
-// biome-ignore lint/correctness/noUnusedImports: used in template
 import HamburgerButton from "@free-fall/design-system/components/HamburgerButton.astro";
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const navItems = [
-  { icon: "home", label: "Home", href: "/" },
-  { icon: "palette", label: "Design Tokens", href: "/tokens/" },
-  { icon: "text_fields", label: "Typography", href: "/typography/" },
-  { icon: "emoji_symbols", label: "Iconography", href: "/iconography/" },
-  { icon: "menu_open", label: "App Tray", href: "/app-tray/" },
-  {
-    icon: "menu",
-    label: "Hamburger Button",
-    href: "/hamburger-button/",
-    active: true,
-  },
-  { icon: "menu", label: "Hamburger Button", href: "/hamburger-button/" },
-  { icon: "buttons_alt", label: "Tray Button", href: "/tray-button/" },
-  { icon: "web_asset", label: "App Bar", href: "/app-bar/" },
-  { icon: "branding_watermark", label: "Drawer Brand", href: "/drawer-brand/" },
-];
+// biome-ignore lint/correctness/noUnusedImports: used in template
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<AppShell
-    title="Hamburger Button — FREE//FALL Design System"
-    navItems={navItems}
-    brandHref="/drawer-brand/"
->
+<BaseLayout title="Hamburger Button — FREE//FALL Design System">
     <h1>Hamburger Button (CSS Skew Variant)</h1>
     <p>
         An interactive toggle button managing its animated state purely via CSS
@@ -52,4 +29,4 @@ const navItems = [
             &larr; Click me to toggle state
         </label>
     </div>
-</AppShell>
+</BaseLayout>
