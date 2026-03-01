@@ -65,6 +65,12 @@ importers:
         specifier: ^14.2.0
         version: 14.2.5
 
+  content/core-rulebook:
+    devDependencies:
+      '@biomejs/biome':
+        specifier: ^1.9.4
+        version: 1.9.4
+
   packages/design-system:
     devDependencies:
       svelte:

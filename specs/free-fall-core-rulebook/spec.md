@@ -1,5 +1,8 @@
 # Feature: Core Rulebook
 
+> **Superseded by:** `specs/content-workspace/spec.md`
+> This spec describes the original `packages/free-fall-core-rulebook` layout. The content workspace migration (ADR-002) moves the package to `content/core-rulebook` with a simplified structure. See the content workspace spec for the current architecture.
+
 ## Blueprint
 
 ### Context
