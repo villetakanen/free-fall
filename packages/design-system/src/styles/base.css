@@ -27,3 +27,16 @@ h5,
 h6 {
   color: var(--freefall-text-display);
 }
+
+main a {
+  color: var(--freefall-text-link);
+  background-color: color-mix(
+    var(--freefall-color-primary-300),
+    transparent 75%
+  );
+  padding-inline: 4px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
