@@ -32,11 +32,12 @@ Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FR
 
 **Navigation items:**
 
-| Icon | Label | Href | Sub-items |
-|---|---|---|---|
-| `public` | Home | `/` | Dynamic — populated from `core-rulebook` collection via `getCoreRulebookNavItems()` helper in `src/lib/nav.ts` |
+| Icon | Label | Href | Active when | Sub-items |
+|---|---|---|---|---|
+| `public` | Home | `/` | `pathname === "/"` | None |
+| `book_5` | Core Rules v7 | `/core-rulebook/00-intro/` | `pathname.startsWith("/core-rulebook/")` | Dynamic — populated from `core-rulebook` collection via `getCoreRulebookNavItems()` helper in `src/lib/nav.ts` |
 
-The globe icon (`public`) represents the app's home. Home is active on `/` and all `/core-rulebook/*` routes. Sub-items are generated at build time from the `core-rulebook` content collection (see `specs/free-fall/core-rulebook-nav/spec.md`).
+The globe icon (`public`) represents the app's home and is active only on `/`. The book icon (`book_5`) represents the core rulebook section and is active on all `/core-rulebook/*` routes. Sub-items are generated at build time from the `core-rulebook` content collection (see `specs/free-fall/core-rulebook-nav/spec.md`).
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.
 
@@ -74,7 +75,8 @@ title: About — FREE//FALL
 ### Definition of Done
 
 - [ ] `apps/free-fall/src/layouts/BaseLayout.astro` wraps AppShell with navItems and brandHref
-- [ ] NavItems contains Home (`public` icon, `/`) with dynamic `subItems` from `core-rulebook` collection
+- [ ] NavItems contains Home (`public` icon, `/`) with no sub-items
+- [ ] NavItems contains Core Rules v7 (`book_5` icon, `/core-rulebook/00-intro/`) with dynamic `subItems` from `core-rulebook` collection
 - [ ] brandHref is `/about/`
 - [ ] `about.md` page exists at `/about/` with placeholder content and frontmatter layout
 - [ ] `index.astro` uses BaseLayout, no longer hides navigation, no inline navItems
@@ -100,10 +102,10 @@ Scenario: Home nav item is active on index
   When: The rail or drawer is visible
   Then: The "Home" item with globe icon is marked active
 
-Scenario: Home nav item is active on core rulebook pages
+Scenario: Core Rules nav item is active on core rulebook pages
   Given: A user is on `/core-rulebook/core-mechanics/`
   When: The rail or drawer is visible
-  Then: The "Home" item with globe icon is marked active
+  Then: The "Core Rules v7" item with book icon is marked active
 
 Scenario: DrawerBrand links to about page
   Given: A user opens the navigation drawer

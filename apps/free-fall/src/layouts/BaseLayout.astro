@@ -17,9 +17,13 @@ const navItems = [
     icon: "public",
     label: "Home",
     href: "/",
-    active:
-      Astro.url.pathname === "/" ||
-      Astro.url.pathname.startsWith("/core-rulebook/"),
+    active: Astro.url.pathname === "/",
+  },
+  {
+    icon: "book_5",
+    label: "Core Rules v7",
+    href: "/core-rulebook/00-intro/",
+    active: Astro.url.pathname.startsWith("/core-rulebook/"),
     subItems: coreRulebookSubItems,
   },
 ];

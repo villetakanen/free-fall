@@ -67,7 +67,7 @@ export async function getCoreRulebookNavItems(pathname: string) {
 }
 ```
 
-BaseLayout consumes it:
+BaseLayout consumes it as a dedicated top-level nav item:
 
 ```ts
 // BaseLayout.astro frontmatter
@@ -80,14 +80,19 @@ const navItems = [
     icon: "public",
     label: "Home",
     href: "/",
-    active: Astro.url.pathname === "/" ||
-            Astro.url.pathname.startsWith("/core-rulebook/"),
+    active: Astro.url.pathname === "/",
+  },
+  {
+    icon: "book_5",
+    label: "Core Rules v7",
+    href: "/core-rulebook/00-intro/",
+    active: Astro.url.pathname.startsWith("/core-rulebook/"),
     subItems: coreRulebookSubItems,
   },
 ];
 ```
 
-The Home tray button is marked active when the user is on `/` or any `/core-rulebook/*` page, since the submenu is conceptually nested under Home.
+Core Rules has its own top-level rail icon (`book_5`) and is active on any `/core-rulebook/*` page. Home is active only on `/` and has no sub-items.
 
 > **Technical debt:** BaseLayout currently owns the `navItems` array and calls the helper to build `subItems` as data. This works because AppTray accepts `subItems` as a data prop, not as slotted components. When multiple content packages exist, this should be revisited — ideally AppTray would accept slotted `TrayLinkGroup` children so each content domain can own its own query and rendering. Tracked as design-system tech debt.
 
@@ -111,8 +116,9 @@ The Home tray button is marked active when the user is on `/` or any `/core-rule
 - [ ] `apps/free-fall/src/pages/core-rulebook/[id].astro` generates pages from the collection
 - [ ] Each core rulebook entry is reachable at `/core-rulebook/{id}/`
 - [ ] `apps/free-fall/src/lib/nav.ts` exports `getCoreRulebookNavItems()` that queries the collection and returns sorted `subItems`
-- [ ] BaseLayout calls the helper and passes the result as Home's `subItems`
-- [ ] Home tray button is active on `/` and all `/core-rulebook/*` routes
+- [ ] BaseLayout calls the helper and passes the result as Core Rules v7's `subItems`
+- [ ] Core Rules v7 tray button (`book_5` icon) is active on all `/core-rulebook/*` routes
+- [ ] Home tray button is active only on `/` and has no sub-items
 - [ ] Each sub-item is active when its route matches the current pathname
 - [ ] TrayLinkGroup and TrayLink render the submenu in the expanded tray and hide it in the minimized rail (per `specs/design-system/tray-link-group/spec.md`)
 - [ ] Adding a new `.md` file to `content/core-rulebook/chapters/` automatically produces a new route and nav entry without code changes
@@ -145,10 +151,10 @@ Scenario: Submenu hidden in minimized rail
 Scenario: Sub-item active state
   Given: a user is on `/core-rulebook/registry/`
   When: the tray is expanded
-  Then: the "Registry" sub-link has `aria-current="page"` and the Home tray button is also marked active
+  Then: the "Registry" sub-link has `aria-current="page"` and the Core Rules v7 tray button is also marked active
 
 Scenario: New content auto-discovered
   Given: a new file `weapons.md` is added to `content/core-rulebook/chapters/` with frontmatter title "Weapons" and order 3
   When: the app is rebuilt
-  Then: `/core-rulebook/weapons/` is a valid route and "Weapons" appears as the third sub-link under Home
+  Then: `/core-rulebook/weapons/` is a valid route and "Weapons" appears as the third sub-link under Core Rules v7
 ```
