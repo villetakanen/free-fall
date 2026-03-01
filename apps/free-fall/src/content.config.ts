@@ -12,7 +12,7 @@ const rules = defineCollection({
 const coreRulebook = defineCollection({
   loader: glob({
     pattern: "**/*.md",
-    base: "../../packages/free-fall-core-rulebook/src/content/rules",
+    base: "../../content/core-rulebook/chapters",
   }),
   schema: z.object({
     title: z.string(),

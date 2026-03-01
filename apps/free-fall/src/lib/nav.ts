@@ -9,7 +9,7 @@ export async function getCoreRulebookNavItems(pathname: string) {
 
   return entries.map((entry) => ({
     label: entry.data.title,
-    href: `/free-fall-core-rulebook/${entry.id}/`,
-    active: pathname === `/free-fall-core-rulebook/${entry.id}/`,
+    href: `/core-rulebook/${entry.id}/`,
+    active: pathname === `/core-rulebook/${entry.id}/`,
   }));
 }

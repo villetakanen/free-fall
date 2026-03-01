@@ -77,15 +77,6 @@ importers:
         specifier: ^5.53.5
         version: 5.53.5
 
-  packages/free-fall-core-rulebook:
-    devDependencies:
-      '@biomejs/biome':
-        specifier: ^1.9.4
-        version: 1.9.4
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-
 packages:
 
   '@astrojs/check@0.9.6':

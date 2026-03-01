@@ -36,7 +36,7 @@ Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FR
 |---|---|---|---|
 | `public` | Home | `/` | Dynamic — populated from `core-rulebook` collection via `getCoreRulebookNavItems()` helper in `src/lib/nav.ts` |
 
-The globe icon (`public`) represents the app's home. Home is active on `/` and all `/free-fall-core-rulebook/*` routes. Sub-items are generated at build time from the `core-rulebook` content collection (see `specs/free-fall/core-rulebook-nav/spec.md`).
+The globe icon (`public`) represents the app's home. Home is active on `/` and all `/core-rulebook/*` routes. Sub-items are generated at build time from the `core-rulebook` content collection (see `specs/free-fall/core-rulebook-nav/spec.md`).
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.
 
@@ -101,7 +101,7 @@ Scenario: Home nav item is active on index
   Then: The "Home" item with globe icon is marked active
 
 Scenario: Home nav item is active on core rulebook pages
-  Given: A user is on `/free-fall-core-rulebook/core-mechanics/`
+  Given: A user is on `/core-rulebook/core-mechanics/`
   When: The rail or drawer is visible
   Then: The "Home" item with globe icon is marked active
 

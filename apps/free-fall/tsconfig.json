@@ -11,13 +11,7 @@
     "jsxImportSource": "svelte",
     "paths": {
       "@free-fall/design-system/*": ["../../packages/design-system/src/*"],
-      "@free-fall/design-system": ["../../packages/design-system/src/index.ts"],
-      "@free-fall/core-rulebook/*": [
-        "../../packages/free-fall-core-rulebook/src/*"
-      ],
-      "@free-fall/core-rulebook": [
-        "../../packages/free-fall-core-rulebook/src/index.ts"
-      ]
+      "@free-fall/design-system": ["../../packages/design-system/src/index.ts"]
     }
   },
   "include": ["src/**/*", "astro.config.ts"]
