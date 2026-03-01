@@ -1,6 +1,6 @@
 {
   "name": "@free-fall/core-rulebook",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "type": "module",
   "description": "The FREE//FALL core rules — game content package.",
   "scripts": {
