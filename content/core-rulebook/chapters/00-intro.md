@@ -29,7 +29,7 @@ _In FREE//FALL, capability is bought, spliced, or installed. But power is never 
 
 *Heat, humidity, biological decay, repurposed trash (Bricolage), scarcity, and the desperate hustle of millions trying not to fall.*
 
-Earth is a testament to survival amidst collapse. The Mediterranean is a stagnant, algae-choked graveyard trapped behind the massive Gibraltar Dam. Fortress Europe guards its borders with automated lethal indifference. Third Orleans is the last free city of the Corporate States of America. China, Brazil, and all the great powers cling to what they can salvage.
+Earth is a testament to survival amidst collapse. The equator is an uninhabitable kill-zone, pushing humanity into fortified mega-cities in the extreme northern and southern latitudes. From the vertical slums of the Al Presa dam-city and the toxic sands of the Black Sahara, to the hyper-industrialized arcologies of the Pan-Asian Coalition and the militarized borders of the Corporate States of America. Every remaining nation and corporate state clings to what they can salvage, fighting the relentless heat.
 
 ### The Void
 

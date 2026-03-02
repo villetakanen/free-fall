@@ -1,7 +1,7 @@
 ---
 title: "Registry"
 description: "A curated glossary of FREE//FALL game terminology with short definitions and links to the relevant rules sections."
-order: 2
+order: 91
 ---
 
 # Registry
