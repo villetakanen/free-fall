@@ -85,4 +85,8 @@
   /* Alerts & Emphasis */
   --freefall-alert-base: var(--freefall-color-accent-400);
   --freefall-alert-bg: var(--freefall-color-accent-900);
+
+  /* Astro overrides */
+  --astro-code-background: var(--freefall-color-primary-800);
+  --astro-code-foreground: var(--freefall-color-primary-200);
 }

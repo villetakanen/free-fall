@@ -46,24 +46,27 @@ FREE//FALL v7 is a cinematic, highly tactical RPG built on resource management, 
 
 To survive the sprawl, remember the three principles of play:
 
-1. **Optionality:** The rules are in place to support you. *Say yes, or...* roll the dice.
-2. **Equality:** If a roll results in a draw, the players decide the order of resolution. The GM only arbitrates if the crew is divided.
+1. **Optionality:** The rules are in place to support play. *Say yes, or...* roll the dice.
+2. **Equality:** In a draw, the players decide the order of resolution. 
 3. **Specificity:** Specific rules (gear, augmentations, scenario effects) always beat general rules.
 
-### The Action Pool: Split Focus
+### Tactical Action Resolution
 
 When chaos erupts, you roll an **Action Pool of 2 to 5 twenty-sided dice (d20)**.
 
-- **Divide and Conquer:** You can split these dice across multiple goals or vectors. Need to sprint to cover (2 dice) while simultaneously hacking a corporate drone (3 dice)? You can try.
-- **Simultaneous Resolution:** Actions are declared in order (NPCs, then Characters, then Bosses). Once declared, *everything happens at once*. In contested actions, the highest individual die rolled happens first.
-- **Target Numbers:** You are looking for dice that equal or beat the GM's Target Number (TN). A Normal task requires no roll. Challenging is **11+**, Hard is **16+**, and Near Impossible is **21+**. A natural 20 is always a success.
+<span class="underline">Divide and Conquer:</span> You can split these dice across multiple goals or vectors. Need to sprint to cover (2 dice) while simultaneously hacking a corporate drone (3 dice)? You can try.
 
-### Power Has a Cost: Attributes & Skills
+<span class="underline">Simultaneous Resolution:</span> Actions are declared in order (NPCs, then Characters, then Bosses). Once declared, *everything happens at once*. In contested actions, the highest individual die rolled happens first.
 
-Your core Attributes measure your physical and mental bandwidth. You spend them on:
+<span class="underline">Target Numbers:</span> You are looking for dice that equal or beat the GM's Target Number (TN). A Normal task requires no roll. Challenging is **11+**, Hard is **16+**, and Near Impossible is **21+**. A natural 20 is always a success.
 
-- **Bind Gear:** Powerful armor or cybernetics must be *Bound*. Wearing heavy plating might bind your physical attributes; running military-grade ice-breakers might bind your mental capacity. This locks down your maximum capacity.
-- **Push the Limits:** Don't have the required Skill to hotwire a rover? You can still try, but it will cost you a point of a relevant Attribute—or require you to take immediate Harm to brute-force it.
+### Power Has a Cost
+
+Your core Attributes measure your social, physical and mental bandwidth. You spend them on:
+
+<span class="underline">Bind Gear</span> Powerful armor or cybernetics must be *Bound*. Wearing heavy plating might bind your physical attributes; running military-grade ice-breakers might bind your mental capacity. This locks down your maximum capacity.
+
+<span class="underline">Push</span> the Limits:** Don't have the required Skill to hotwire a rover? You can still try, but it will cost you a point of a relevant Attribute—or require you to take immediate Harm to brute-force it.
 
 ### Survival: The Sacrifice
 
@@ -90,9 +93,10 @@ They are the boogeymen. They are the cleaners. And sometimes, if you're unlucky,
 ```
 Incoming Encrypted Transmission...
 
-SOURCE: $$REDACTED$$ // PROTOCOL: BLACK TARGET: 
-Transport Vessel Njord's Whisper, drifting near 
-the Jovian Trojan belts.
+SOURCE: $$REDACTED$$ // PROTOCOL: BLACK 
+
+TARGET: Transport Vessel Njord's Whisper, 
+drifting near the Jovian Trojan belts.
 
 OBJECTIVE: Board the vessel.
 - Extract hard-line data logs regarding the 
