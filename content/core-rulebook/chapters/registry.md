@@ -12,7 +12,10 @@ order: 91
 
 ### A
 
-<span class="underline">**ACTION RESOLUTION**</span> Roll dice from the pool against a Target Number; each die meeting or exceeding the TN is a success.
+<span class="underline">**ACTION POOL**</span> A pool of 2 to 5 twenty-sided dice (d20). Allocated each turn to actions the character wants to take.
+
+* [Action resolution](system-reference#action-resolution), in SRD
+
 
 <span class="underline">**ATTRIBUTE**</span> A resource representing a capability a character can exploit.
 
