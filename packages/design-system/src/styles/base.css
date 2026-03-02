@@ -6,6 +6,7 @@
 @import "./app-tray.css";
 @import "./app-shell.css";
 @import "./tray-link-group.css";
+@import "./pre.css";
 
 html,
 body {

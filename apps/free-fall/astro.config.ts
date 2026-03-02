@@ -4,6 +4,11 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   output: "static",
+  markdown: {
+    shikiConfig: {
+      theme: "css-variables",
+    },
+  },
   integrations: [
     svelte(),
     {
@@ -12,10 +17,7 @@ export default defineConfig({
         "astro:server:setup": ({ server }) => {
           server.watcher.add(
             fileURLToPath(
-              new URL(
-                "../../packages/free-fall-core-rulebook/src",
-                import.meta.url,
-              ),
+              new URL("../../content/core-rulebook/chapters", import.meta.url),
             ),
           );
         },
@@ -27,12 +29,6 @@ export default defineConfig({
       alias: {
         "@free-fall/design-system": fileURLToPath(
           new URL("../../packages/design-system/src", import.meta.url),
-        ),
-        "@free-fall/core-rulebook": fileURLToPath(
-          new URL(
-            "../../packages/free-fall-core-rulebook/src",
-            import.meta.url,
-          ),
         ),
       },
     },

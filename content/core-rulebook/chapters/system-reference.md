@@ -22,7 +22,7 @@ The rules of FREE//FALL are based on 3 core principles, that will help the Playe
 
 ## Action resolution
 
-Every roll begins with an **Action Pool** of 3 to 5 twenty-sided dice (d20). These are divided between one or more axes, allowing the character to spread their focus to multiple aspects of the situation at once.
+Every roll begins with an **Action Pool** of 2 to 5 twenty-sided dice (d20). These are divided between one or more axes, allowing the character to spread their focus to multiple aspects of the situation at once.
 
 > **Example**
 >
@@ -78,7 +78,7 @@ _N.B. Taking a **Harm** or spending a point of a relevant Attribute only allows 
 
 When not fatal or ousting, all negative and harmfull consequences to a character are recorded as **Harm**. A harm can be transient, or permanent, it has a short narrative description, and it can be _typed_.
 
-A character has 3 **Harm** slots.
+A character has 3 **Harm** slots. Each filled slot, removes a Die from the **Action Pool**.
 
 When a character suffers harm from any source, the player has to decide how the **Harm** is resolved. 
 
