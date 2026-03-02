@@ -6,145 +6,90 @@
 
 The FREE//FALL core rulebook content is authored in Markdown within the `content/core-rulebook/chapters/` directory. Authors use standard relative Markdown links (e.g., `[Action resolution](system-reference#action-resolution)`) to link between different sections and chapters.
 
-However, when Astro renders these Markdown files via `src/pages/core-rulebook/[id].astro`, the resulting site URLs reflect the routing structure (e.g., `/core-rulebook/registry/` and `/core-rulebook/system-reference/`). Because the Astro dev server and production builds might use trailing slashes or different base paths, standard relative browser resolution for these Markdown links often fails, resulting in broken links or 404 errors (e.g., resolving to `/core-rulebook/registry/system-reference#action-resolution` instead of `/core-rulebook/system-reference/#action-resolution`).
+However, when Astro renders these Markdown files via `src/pages/core-rulebook/[id].astro`, the resulting site URLs reflect the routing structure. Astro's default behavior generates cleanly nested URLs (e.g. `/core-rulebook/system-reference/`). If standard HTML anchor tags are emitted identically to the markdown relative paths, the browser's relative link resolution often constructs broken paths (like appending `system-reference` to the current folder). 
+
+To ensure authors can write intuitive relative markdown paths without coupling content to the SSG routing layer, we need an interception layer.
 
 ### Architecture
 
-To fix this, we will introduce a custom **Rehype plugin** (`rehype-content-url-rewrite`) that intercepts the HTML AST after Markdown conversion but before final rendering. This plugin will find all `<a>` tags and rewrite their `href` attributes to correctly map against the actual Astro site routing.
+We will introduce a custom **Rehype plugin** (`rehype-content-url-rewrite`) that intercepts the HTML AST after Markdown conversion but before final rendering. The plugin finds all `<a>` tags and normalizes their `href` attributes against the Astro site routing architecture.
 
-**1. Plugin Location:**
-The plugin will logically reside in a utility folder. For example, `packages/utils/src/rehype-content-url-rewrite.ts` (if a utils package exists) or directly within the app at `apps/free-fall/src/lib/rehype-content-url-rewrite.ts`. Given the current structure, let's place it in `apps/free-fall/src/lib/rehype/rehype-content-url-rewrite.ts`.
+**Plugin Location:** `apps/free-fall/src/lib/rehype/rehype-content-url-rewrite.ts`
 
-**2. Plugin Implementation:**
-The plugin will adhere to the unified/rehype ecosystem surface API.
-It will utilize `unist-util-visit` to traverse the AST.
+**Plugin Configuration Options:**
+*   `basePath`: The routing prefix to prepend to rewritten URLs (e.g., `/core-rulebook/`).
+*   `contentPath`: A guard path ensuring only documents originating from this real filesystem path are processed (e.g., `/content/core-rulebook/`). This prevents rewriting links on standard UI pages (like `src/pages/about.md`).
 
-```typescript
-import { visit } from 'unist-util-visit';
-import type { Plugin } from 'unified';
-import type { Root, Element } from 'hast';
-
-export interface ContentUrlRewriteOptions {
-  /**
-   * The base path to prepend to the rewritten URLs.
-   * e.g., '/core-rulebook/'
-   */
-  basePath: string;
-}
-
-export const rehypeContentUrlRewrite: Plugin<[ContentUrlRewriteOptions], Root> = (options) => {
-  const { basePath } = options;
-
-  return (tree: Root) => {
-    visit(tree, 'element', (node: Element) => {
-      // 1. Only process <a> tags
-      if (node.tagName !== 'a') return;
-      
-      const href = node.properties?.href;
-      
-      // 2. Ignore non-string hrefs, absolute URLs (http://), absolute paths (/), and mailto/tel
-      if (
-        typeof href !== 'string' ||
-        href.startsWith('http') ||
-        href.startsWith('/') ||
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:')
-      ) {
-        return;
-      }
-
-      // 3. Process relative links.
-      // E.g., href = 'system-reference#action-resolution'
-      // We need to resolve this against the basePath.
-      
-      // If it's just a hash link (e.g., '#action-resolution'), leave it alone to jump within the same page
-      if (href.startsWith('#')) return;
-
-      // Ensure basePath ends with a slash for consistent joining
-      const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
-      
-      // Clean up the href to remove leading '.\/' or '..\/' if authors used them, 
-      // though typically in this specific content structure they just use the filename.
-      // For simplicity in this v1, we assume the href is just the target markdown filename (without .md) + optional hash,
-      // because that's how it's authored in the content/ folder.
-      
-      const newHref = `${normalizedBasePath}${href}`;
-      
-      // Update the property
-      node.properties.href = newHref;
-    });
-  };
-};
-```
-
-**3. Astro Configuration Integration:**
-Update `apps/free-fall/astro.config.ts` to register the rehype plugin.
-
-```typescript
-// apps/free-fall/astro.config.ts
-import { defineConfig } from "astro/config";
-import { rehypeContentUrlRewrite } from "./src/lib/rehype/rehype-content-url-rewrite";
-
-export default defineConfig({
-  // ... existing config
-  markdown: {
-    // ... existing shikiConfig
-    rehypePlugins: [
-      [rehypeContentUrlRewrite, { basePath: '/core-rulebook' }]
-    ],
-  },
-  // ...
-});
-```
-
-### Edge Cases to Handle
-
-*   **Same-page hash links:** Links like `[Top](#top)` should remain `#top` and not be prefixed, so they jump around the current page correctly.
-*   **External links:** Links starting with `http://` or `https://` must be ignored.
-*   **Root-absolute links:** Links authored as `/about` must be ignored as they are already absolute to the site root.
-*   **Trailing slashes in Astro:** By default, Astro's `build.format: 'directory'` creates `[id]/index.html`. If the href is rewritten to `/core-rulebook/system-reference#action-resolution`, Astro's router / browser will still handle this correctly, eventually landing on `/core-rulebook/system-reference/#action-resolution`. The plugin doesn't strictly need to add the trailing slash before the hash, but it could be more robust to do so depending on Astro's exact trailingSlash config. For this spec, simply prefixing the `basePath` is sufficient.
+**Desired Behavior & Edge Cases:**
+- **URL Normalization:** Relative links pointing to peer markdown files must be prefixed with the `basePath` (e.g., `registry` -> `/core-rulebook/registry/`).
+- **File Extension Stripping:** Authors often write links containing the `.md` extension out of habit (e.g., `registry.md`). The plugin must strip this extension before generating the ultimate site URL.
+- **Current Directory Stripping:** Authors sometimes explicitly declare relative current paths (e.g., `./registry`). The plugin must strip `./` before prefixing the `basePath`.
+- **Intra-page Anchors:** Anchors referencing the current page (e.g., `#top`) must be left entirely untouched.
+- **Cross-page Anchors:** Anchors attaching to a different page (e.g., `registry#tables`) must be normalized, retaining the hash but ensuring the base path ends in a trailing slash immediately preceding the hash (`/core-rulebook/registry/#tables`) to behave consistently with Astro's routing.
+- **External/Absolute Ignoral:** The plugin must ignore absolute URLs (`http://`, `https://`), absolute paths (`/`), and protocol references (`mailto:`, `tel:`). Only pure relative paths are processed.
 
 ### Anti-Patterns
 
-*   **Requiring authors to write absolute paths:** The markdown files in `content/` should remain pure and unaware of the final site routing. Do not force authors to write `[Action resolution](/core-rulebook/system-reference#...)`.
-*   **Using client-side JS to fix links:** This must be done at build-time / render-time in the Astro pipeline, not via a `<script>` tag running in the browser.
+*   **Requiring authors to write absolute paths:** The markdown files in `content/` should remain pure and unaware of the final site routing.
+*   **Assuming file paths are always present:** If the Unified processor fails to pass a file path to the transformer (which can happen natively in the pipeline), the plugin must fail safely (by opting *out* of processing), rather than rewriting potentially invalid content.
 
 ## Contract
 
 ### Definition of Done
 
-- [ ] Reype plugin `rehypeContentUrlRewrite` is implemented in `apps/free-fall/src/lib/rehype/rehype-content-url-rewrite.ts`.
-- [ ] Dependencies (e.g., `unist-util-visit`, `@types/hast`) are added to the workspace if not already present.
-- [ ] Plugin ignores absolute URLs (`http://`, `https://`), mailto links, and absolute paths (`/`).
+- [ ] Rehype plugin `rehypeContentUrlRewrite` is implemented in `apps/free-fall/src/lib/rehype/rehype-content-url-rewrite.ts`.
+- [ ] Dependencies (e.g., `unist-util-visit`, `@types/hast`, `vfile`) are added to the workspace.
+- [ ] Plugin ignores documents that do not securely match the `contentPath` option, or documents where the path is undefined.
+- [ ] Plugin ignores absolute URLs, absolute paths, and standard protocols.
 - [ ] Plugin ignores pure hash links (`#section`).
-- [ ] Plugin successfully prepends the configured `basePath` to relative links.
-- [ ] `apps/free-fall/astro.config.ts` is updated to include `rehypeContentUrlRewrite` in its `markdown.rehypePlugins` array, passing `{ basePath: '/core-rulebook' }`.
-- [ ] The core rulebook pages build successfully.
-- [ ] Clicking a relative link (like `system-reference#action-resolution`) from `/core-rulebook/registry` successfully navigates to the correct target page instead of a 404 path.
+- [ ] Plugin correctly strips `.md` extensions and `./` prefixes.
+- [ ] Plugin guarantees a trailing slash before any appended hashes.
+- [ ] Comprehensive unit tests cover all behavioral edge cases.
+- [ ] `apps/free-fall/astro.config.ts` is updated to include `rehypeContentUrlRewrite` in its `markdown.rehypePlugins` array.
 
 ### Regression Guardrails
 
 -   The plugin must not crash the build if an `<a>` tag lacks an `href` attribute.
--   The plugin must only run on Markdown content processed by Astro's standard pipeline.
+-   The plugin must only run on Markdown content matching the `contentPath` parameter.
 
 ### Scenarios
 
 Scenario: Relative link to another chapter
   Given: A markdown file contains `[System Reference](system-reference)`
   When: Astro renders the page
-  Then: The resulting HTML contains `<a href="/core-rulebook/system-reference">...</a>`
+  Then: The resulting HTML contains `<a href="/core-rulebook/system-reference/">...</a>`
+
+Scenario: Relative link referencing explicit file extensions
+  Given: A markdown file contains `[System Reference](system-reference.md)`
+  When: Astro renders the page
+  Then: The resulting HTML contains `<a href="/core-rulebook/system-reference/">...</a>`
+
+Scenario: Relative link defining explicit current directory
+  Given: A markdown file contains `[System Reference](./system-reference)`
+  When: Astro renders the page
+  Then: The resulting HTML contains `<a href="/core-rulebook/system-reference/">...</a>`
 
 Scenario: Relative link to a specific section in another chapter
   Given: A markdown file contains `[Action resolution](system-reference#action-resolution)`
   When: Astro renders the page
-  Then: The resulting HTML contains `<a href="/core-rulebook/system-reference#action-resolution">...</a>`
+  Then: The HTML contains `<a href="/core-rulebook/system-reference/#action-resolution">...</a>`
 
 Scenario: Same-page anchor link
   Given: A markdown file contains `[Back to top](#intro)`
   When: Astro renders the page
   Then: The resulting HTML remains `<a href="#intro">...</a>`
 
+Scenario: Link attempting to name a chapter "https-rules"
+  Given: A markdown file contains `[HTTPS details](https-rules)`
+  When: Astro renders the page
+  Then: URL correctly resolves to `<a href="/core-rulebook/https-rules/">...</a>` (not skipped as external)
+
 Scenario: External link
   Given: A markdown file contains `[Wikipedia](https://wikipedia.org)`
   When: Astro renders the page
   Then: The HTML remains `<a href="https://wikipedia.org">...</a>`
+
+Scenario: Markdown page from outside the content path
+  Given: A markdown file in `src/pages/about.md` contains `[Home](../)`
+  When: Astro renders the page
+  Then: The plugin skips the file completely and the HTML remains `<a href="../">...</a>`
