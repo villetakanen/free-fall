@@ -18,7 +18,7 @@ samp {
 p,
 .text-copy {
   color: var(--freefall-text-body);
-  font-size: 1rem;
+  font-size: var(--freefall-type-base);
   line-height: calc(3 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
 }
@@ -33,27 +33,27 @@ p:last-child,
    ========================================= */
 
 .text-chapter {
-  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
-  line-height: calc(9 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base));
+  line-height: calc(10 * var(--freefall-space-1));
   letter-spacing: -0.02em;
   /* Tighter tracking for massive headers */
   color: var(--freefall-text-display);
 }
 
 .text-section {
-  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
-  line-height: calc(6 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base));
+  line-height: calc(7 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }
 
 .text-subsection {
-  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base));
   line-height: calc(5 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }
 
 .text-body-lead {
-  font-size: calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-base));
   line-height: calc(4 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }
@@ -67,7 +67,7 @@ p:last-child,
 }
 
 .text-ui {
-  font-size: 1rem;
+  font-size: var(--freefall-type-base);
   line-height: calc(3 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }
@@ -116,7 +116,7 @@ p:last-child,
 /* Base Paragraphs in Prose */
 .freefall-prose p {
   color: var(--freefall-text-body);
-  font-size: 1rem;
+  font-size: var(--freefall-type-base);
   line-height: calc(3 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
 }
@@ -127,8 +127,8 @@ p:last-child,
 
 /* Headings mapped to Editorial Scale */
 .freefall-prose h1 {
-  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
-  line-height: calc(9 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base));
+  line-height: calc(10 * var(--freefall-space-1));
   letter-spacing: -0.02em;
   color: var(--freefall-text-display);
   margin-top: calc(8 * var(--freefall-space-1));
@@ -136,15 +136,15 @@ p:last-child,
 }
 
 .freefall-prose h2 {
-  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
-  line-height: calc(6 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base));
+  line-height: calc(7 * var(--freefall-space-1));
   color: var(--freefall-text-display);
   margin-top: calc(6 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
 }
 
 .freefall-prose h3 {
-  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1));
+  font-size: calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base));
   line-height: calc(5 * var(--freefall-space-1));
   color: var(--freefall-text-display);
   margin-top: calc(4 * var(--freefall-space-1));
@@ -155,7 +155,7 @@ p:last-child,
 .freefall-prose ul,
 .freefall-prose ol {
   color: var(--freefall-text-body);
-  font-size: 1rem;
+  font-size: var(--freefall-type-base);
   line-height: calc(3 * var(--freefall-space-1));
   margin-top: calc(2 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
@@ -184,7 +184,7 @@ p:last-child,
   border-collapse: collapse;
   margin-top: calc(3 * var(--freefall-space-1));
   margin-bottom: calc(3 * var(--freefall-space-1));
-  font-size: 1rem;
+  font-size: var(--freefall-type-base);
   line-height: calc(3 * var(--freefall-space-1));
 }
 

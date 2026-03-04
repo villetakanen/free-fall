@@ -16,12 +16,13 @@ export const typography = {
   },
   scale: {
     chapter:
-      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base))",
     section:
-      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base))",
     subsection:
-      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
-    bodyLead: "calc(var(--freefall-type-ratio) * 2 * var(--freefall-space-1))",
+      "calc(var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-base))",
+    bodyLead: "calc(var(--freefall-type-ratio) * var(--freefall-type-base))",
+    body: "var(--freefall-type-base)",
     caption: "calc(2 * var(--freefall-space-1))",
   },
 } as const;
