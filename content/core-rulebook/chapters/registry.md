@@ -17,13 +17,28 @@ order: 91
 * [Action resolution](system-reference#action-resolution), in SRD
 
 
+<span class="underline">**ARMOR VALUE (AV)**</span> Gear rating that reduces the number of incoming Harm levels suffered.
+
 <span class="underline">**ATTRIBUTE**</span> A resource representing a capability a character can exploit.
+
+### B
+
+<span class="underline">**BINDING**</span> The cost of equipping powerful gear, which reduces a character's current Attribute pool.
+* [Gear & Augmentations](02-characters-and-crews#i-gear--augmentations-the-chrome)
 
 ### C
 
 <span class="underline">**CHALLENGING**</span> A challenge rating with TN 11+.
 
+<span class="underline">**CLASS**</span> A mercenary's role or archetype, defining their approach and granting a specific Skill.
+* [Class & Skills](02-characters-and-crews#iii-class--skills-the-edge)
+
+<span class="underline">**CREW**</span> The mercenary team and their shared assets, acting as a life support system in the harsh environment of 2048.
+* [Crews](02-characters-and-crews#4-crews)
+
 ### D
+
+<span class="underline">**DAMAGE VALUE (DV)**</span> The number of Harm levels an attack or hazard inflicts.
 
 <span class="underline">**DICE POOL**</span> A pool of 5 dice, each with 20 sides.
 
@@ -59,7 +74,7 @@ order: 91
 
 <span class="underline">**TARGET NUMBER (TN)**</span> The difficulty threshold for a roll, set by the GM.
 
-<span class="underline">**TEMPORARY HARM**</span> A Harm slot entry that clears during Downtime.
+<span class="underline">**TRANSIENT HARM**</span> A Harm slot entry that clears during Downtime.
 
 ## Templates
 
