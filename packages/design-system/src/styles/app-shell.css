@@ -3,12 +3,10 @@
    Flex row: AppTray + body (bar + content).
    ========================================= */
 
-.app-shell {
-  display: flex;
-  flex-direction: row;
-  height: 100dvh;
-  width: 100vw;
-  overflow: hidden;
+.app-shell > .app-shell-row {
+  flex-grow: 1;
+  width: 100%;
+  background: blue;
 }
 
 .app-shell__body {
@@ -23,20 +21,8 @@
    CONTENT PANE
    ========================================= */
 
-.app-shell__content {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--freefall-space-2);
-}
-
 @media (min-width: 620px) {
   .app-shell__content {
-    padding: var(--freefall-space-4);
-  }
-}
-
-@media (min-width: 780px) {
-  .app-shell__content {
-    max-width: calc(120 * var(--freefall-space-1));
+    padding-block: var(--freefall-space-4);
   }
 }

@@ -7,12 +7,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="FREE//FALL">
   <VersionInfo />
-  <div class="landing">
-    <section class="freefall-prose">
-      <blockquote>
-        <Hero />
-      </blockquote>
-      <Intro />
-    </section>
-  </div>
+  <section>
+    <Hero />
+  </section>
+  <section class="content-side">
+    <Intro />
+  </section>
 </BaseLayout>

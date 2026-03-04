@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Content Grid">
+  <div class="content-grid">
+    <h1 class="text-chapter" style="margin-bottom: var(--freefall-space-4);">
+      Content Grid
+    </h1>
+
+    <p style="margin-bottom: var(--freefall-space-2);">
+      Three-tier responsive grid driven by container queries on
+      <code>.app-shell__content</code>. Resize the browser or toggle the nav
+      tray to see tier transitions.
+    </p>
+
+    <!-- Main column content -->
+    <section style="margin-bottom: var(--freefall-space-4);">
+      <h2 class="text-section" style="margin-bottom: var(--freefall-space-2);">
+        Main Column (default)
+      </h2>
+      <div
+        class="freefall-prose"
+        style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-1); border-radius: 4px;"
+      >
+        <p>
+          This content sits in the main column (67ch). All grid children land
+          here by default. The main column provides an optimal reading measure
+          for prose and rules text.
+        </p>
+        <p>
+          The orbital mechanics of free-fall combat require pilots to maintain
+          constant spatial awareness. Thrust vectoring in zero-gravity
+          environments follows Newtonian principles — every action produces an
+          equal and opposite reaction.
+        </p>
+      </div>
+    </section>
+
+    <!-- Side column content -->
+    <aside
+      class="content-side"
+      style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-2); border: 1px solid var(--freefall-border-subtle); border-radius: 4px; margin-bottom: var(--freefall-space-4);"
+    >
+      <h3
+        class="text-subsection"
+        style="margin-top: 0; margin-bottom: var(--freefall-space-1);"
+      >
+        .content-side
+      </h3>
+      <p style="margin: 0;">
+        This block targets the side column. At the base tier (single column) it
+        falls into the main column. At narrow-side it occupies 25.6ch. At
+        wide-side it occupies 42.5ch.
+      </p>
+    </aside>
+
+    <!-- More main column content after the side item -->
+    <section style="margin-bottom: var(--freefall-space-4);">
+      <h2 class="text-section" style="margin-bottom: var(--freefall-space-2);">
+        Main After Side
+      </h2>
+      <div
+        style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-1); border-radius: 4px;"
+      >
+        <p>
+          This section follows the side item and stays in the main column.
+          Notice how the side content sits alongside the main column in
+          two-column tiers.
+        </p>
+      </div>
+    </section>
+
+    <!-- Wide content spanning both columns -->
+    <section class="content-wide" style="margin-bottom: var(--freefall-space-4);">
+      <h2 class="text-section" style="margin-bottom: var(--freefall-space-2);">
+        .content-wide (spans main + side)
+      </h2>
+      <div
+        style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-2); border: 1px solid var(--freefall-border-subtle); border-radius: 4px;"
+      >
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">System</th>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">Class</th>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">Mass (kt)</th>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">Crew</th>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">Armament</th>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">Range</th>
+              <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-strong);">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Vanguard</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Corvette</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">12.4</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">8</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">2× railgun, PDC array</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Short</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Active</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Sentinel</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Frigate</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">48.7</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">35</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">4× torpedo, 6× PDC</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Medium</td>
+              <td style="padding: 0.5rem; border-bottom: 1px solid var(--freefall-border-subtle);">Active</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;">Leviathan</td>
+              <td style="padding: 0.5rem;">Battlecruiser</td>
+              <td style="padding: 0.5rem;">215.0</td>
+              <td style="padding: 0.5rem;">180</td>
+              <td style="padding: 0.5rem;">8× railgun, 12× torpedo, 24× PDC</td>
+              <td style="padding: 0.5rem;">Long</td>
+              <td style="padding: 0.5rem;">Commissioned</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Placement class reference -->
+    <section style="margin-bottom: var(--freefall-space-4);">
+      <h2 class="text-section" style="margin-bottom: var(--freefall-space-2);">
+        Placement Reference
+      </h2>
+      <div
+        style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-1); border-radius: 4px; font-family: var(--freefall-font-mono); font-size: var(--freefall-text-body-small);"
+      >
+        <p style="margin-bottom: 0.5rem;">
+          <strong>(default)</strong> → grid-column: main
+        </p>
+        <p style="margin-bottom: 0.5rem;">
+          <strong>.content-side</strong> → grid-column: side (falls back to main)
+        </p>
+        <p style="margin: 0;">
+          <strong>.content-wide</strong> → grid-column: main-start / side-end
+        </p>
+      </div>
+    </section>
+
+    <aside
+      class="content-side"
+      style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-2); border: 1px solid var(--freefall-border-subtle); border-radius: 4px; margin-bottom: var(--freefall-space-4);"
+    >
+      <h3
+        class="text-subsection"
+        style="margin-top: 0; margin-bottom: var(--freefall-space-1);"
+      >
+        Side Infobox
+      </h3>
+      <p style="margin: 0;">
+        Another side-column item demonstrating multiple <code>.content-side</code>
+        elements on the same page. Each one independently targets the side column.
+      </p>
+    </aside>
+  </div>
+</BaseLayout>

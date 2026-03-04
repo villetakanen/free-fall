@@ -58,6 +58,14 @@
   --freefall-type-base: 1.125rem;
 
   /* =========================================
+     CONTENT GRID
+     ========================================= */
+
+  --freefall-content-main: 67ch;
+  --freefall-content-side-narrow: 25.6ch;
+  --freefall-content-side-wide: 42.5ch;
+
+  /* =========================================
      SEMANTIC TOKENS
      ========================================= */
 

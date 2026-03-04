@@ -22,7 +22,18 @@ Parent spec: `specs/design-system/spec.md`
 |  gutter  |  67ch main  |  N side  |  gutter  |  extra  |
 ```
 
-Five implicit regions. Gutters provide edge spacing. The main column holds primary content. The side column holds supplementary content. Extra space fills the remainder.
+Five implicit regions. Gutters provide edge spacing on both sides of the content columns. The main column holds primary content. The side column holds supplementary content. Extra space fills the remainder.
+
+**Responsive gutters:**
+
+Gutters adapt to container width via a private custom property (`--_gutter`):
+
+| Container inline size | Gutter | Value |
+|---|---|---|
+| < 40rem | `var(--freefall-space-2)` | 1rem |
+| ≥ 40rem | `var(--freefall-space-4)` | 2rem |
+
+This matches the previous app-shell behavior where horizontal padding was 1rem on narrow viewports and 2rem on tablet+. The base tier grid template includes both left and right gutters.
 
 **Responsive tiers (container-query driven):**
 
@@ -34,7 +45,7 @@ The grid adapts based on the content pane's inline size. The app-shell content p
 | **Narrow side** | 25.6ch | Available inline size fits main + 25.6ch + overhead |
 | **Wide side** | 42.5ch | Available inline size fits main + 42.5ch + overhead |
 
-*Overhead = 2 gutters + 1 column gap = `3 × var(--freefall-space-4)` = 6rem.*
+*Overhead = 2 gutters + 1 column gap = `3 × var(--freefall-space-4)` = 6rem.* (At the two-column breakpoints, gutters are always `--freefall-space-4`.)
 
 Gutters and gap are grid-derived (rem); column widths are type-derived (ch). Container query `calc()` mixes both — the browser resolves each unit in its proper context.
 
@@ -76,7 +87,7 @@ At the base tier, `.content-side` and `.content-wide` items stay in the main col
 | `--freefall-content-side-wide` | `42.5ch` | Wide side column |
 | `--freefall-content-side-narrow` | `25.6ch` | Narrow side column |
 
-Gutters and gap reuse existing spacing tokens (`--freefall-space-4`). No new spacing tokens needed.
+Gutters and gap reuse existing spacing tokens (`--freefall-space-2` and `--freefall-space-4`). No new spacing tokens needed. The gutter size is managed via a private custom property `--_gutter` on `.content-grid` that switches from `space-2` to `space-4` at 40rem container width.
 
 **Token duality:**
 
@@ -149,7 +160,7 @@ The design system demo app gets a `content-grid` page (`apps/design-system/src/p
 - Side column must not appear when the container is too narrow to fit it alongside the main column
 - Placement fallback: `.content-side` and `.content-wide` items must be visible (not hidden, clipped, or overflowing) at all tiers
 - Grid gutters must use spacing tokens, never raw values
-- Gutters must remain wider than the browser scrollbar (~15–17px); current `--freefall-space-4` (2rem / 32px) satisfies this
+- Gutters must remain wider than the browser scrollbar (~15–17px); even the narrow gutter `--freefall-space-2` (1rem / 16px) satisfies this
 - Container query breakpoints must account for gutters and gap — no content clipping at tier boundaries
 - Token values in CSS and TypeScript must match
 
