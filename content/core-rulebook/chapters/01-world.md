@@ -8,14 +8,14 @@ order: 1
 
 <span class="text-caption">A FRACTURED SOLAR SYSTEM</span>
 
-The year is 2048. The world didn't end with a nuclear bang. It ended with a rising temperature and a failing algorithm. Today, the apocalypse is boring. Global catastrophic events are just another push notification; "apocalypse fatigue" is the prevailing cultural mood where survival is simply a bureaucratic reality and air conditioning is the ultimate leverage.
+The year is 2048. The world didn't end with a nuclear bang. It ended with a rising temperature and a failing algorithm. Today, the apocalypse is boring. Global catastrophic events are just another push notification; _apocalypse fatigue_ is the prevailing cultural mood where survival is simply a bureaucratic reality and air conditioning is the ultimate leverage.
 
-Humanity is now bifurcated. Down the well, on Earth, civilization creates a chaotic, sweltering mosaic of survival amidst ecological collapse. Up the stalk, in the vacuum, humanity is a product owned by corporate fiefdoms and orbital nations.
+Humanity is now bifurcated. Down the well, on **Earth**, civilization creates a chaotic, sweltering mosaic of survival amidst ecological collapse. Up the stalk, in the vacuum, humanity is a product owned by corporate fiefdoms and orbital nations.
 
-Connecting them is the fragile thread of commerce, coercion, and the shadowed oversight of the THESEUS Foundation.
+Connecting them is the fragile thread of commerce, coercion, and the shadowed oversight of the **THESEUS** Foundation.
 
-## 1. THE GRAVITY WELL
-<span class="text-caption">ICE & SWEAT</span>
+## 1. THE BROKEN CRADLE
+<span class="text-caption">EARTH</span>
 
 Earth is no longer the cradle of humanity; it is its nursing home and its prison. The climate tipping points of the 2030s shattered the old geopolitical maps. The equator is an uninhabitable kill-zone, leaving only the extreme northern and southern latitudes as fortresses against the heat.
 

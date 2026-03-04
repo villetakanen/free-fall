@@ -72,6 +72,7 @@
   --freefall-text-body: var(--freefall-color-primary-100);
   --freefall-text-body-small: 0.875rem;
   --freefall-text-muted: var(--freefall-color-primary-300);
+  --freefall-text-high: var(--freefall-color-primary-50);
 
   --freefall-text-link: var(--freefall-color-accent-500);
 

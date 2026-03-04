@@ -19,7 +19,8 @@ p,
 .text-copy {
   color: var(--freefall-text-body);
   font-size: var(--freefall-type-base);
-  line-height: calc(3 * var(--freefall-space-1));
+  letter-spacing: 0.0138em;
+  line-height: calc(4 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
 }
 
@@ -117,7 +118,8 @@ p:last-child,
 .freefall-prose p {
   color: var(--freefall-text-body);
   font-size: var(--freefall-type-base);
-  line-height: calc(3 * var(--freefall-space-1));
+  letter-spacing: 0.0138em;
+  line-height: calc(4 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
 }
 
@@ -156,7 +158,7 @@ p:last-child,
 .freefall-prose ol {
   color: var(--freefall-text-body);
   font-size: var(--freefall-type-base);
-  line-height: calc(3 * var(--freefall-space-1));
+  line-height: calc(4 * var(--freefall-space-1));
   margin-top: calc(2 * var(--freefall-space-1));
   margin-bottom: calc(2 * var(--freefall-space-1));
   padding-left: calc(3 * var(--freefall-space-1));
@@ -185,7 +187,7 @@ p:last-child,
   margin-top: calc(3 * var(--freefall-space-1));
   margin-bottom: calc(3 * var(--freefall-space-1));
   font-size: var(--freefall-type-base);
-  line-height: calc(3 * var(--freefall-space-1));
+  line-height: calc(4 * var(--freefall-space-1));
 }
 
 .freefall-prose th {

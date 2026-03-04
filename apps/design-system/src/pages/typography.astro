@@ -24,9 +24,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div
             style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
           >
-            font-size: var(--freefall-type-ratio) ^ 4 * 2 *
-            var(--freefall-space-1)<br />
-            line-height: var(--freefall-space-1) * 9
+            font-size: var(--freefall-type-ratio) ^ 4 *
+            var(--freefall-type-base)<br />
+            line-height: var(--freefall-space-1) * 10
           </div>
         </div>
         <div>
@@ -39,9 +39,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div
             style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
           >
-            font-size: var(--freefall-type-ratio) ^ 3 * 2 *
-            var(--freefall-space-1)<br />
-            line-height: var(--freefall-space-1) * 6
+            font-size: var(--freefall-type-ratio) ^ 3 *
+            var(--freefall-type-base)<br />
+            line-height: var(--freefall-space-1) * 7
           </div>
         </div>
         <div>
@@ -54,8 +54,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div
             style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
           >
-            font-size: var(--freefall-type-ratio) ^ 2 * 2 *
-            var(--freefall-space-1)<br />
+            font-size: var(--freefall-type-ratio) ^ 2 *
+            var(--freefall-type-base)<br />
             line-height: var(--freefall-space-1) * 5
           </div>
         </div>
@@ -69,7 +69,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div
             style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
           >
-            font-size: var(--freefall-type-ratio) * 2 * var(--freefall-space-1)<br
+            font-size: var(--freefall-type-ratio) * var(--freefall-type-base)<br
             />
             line-height: var(--freefall-space-1) * 4
           </div>
@@ -81,8 +81,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div
             style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
           >
-            font-size: 1rem<br />
-            line-height: var(--freefall-space-1) * 3
+            font-size: var(--freefall-type-base) &rarr; 1.125rem<br />
+            letter-spacing: 0.0138em (~0.25px, relative to font size)<br />
+            line-height: var(--freefall-space-1) * 4
           </div>
         </div>
         <div>
@@ -106,7 +107,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div
             style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;"
           >
-            font-size: 1rem<br />
+            font-size: var(--freefall-type-base) &rarr; 1.125rem<br />
             line-height: var(--freefall-space-1) * 3
           </div>
         </div>
@@ -122,6 +123,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           >
             font-size: var(--freefall-space-1) * 1.75<br />
             line-height: var(--freefall-space-1) * 3
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1rem;">
+        Body Text Tuning
+      </h2>
+      <div
+        style="padding: 2rem; background: var(--freefall-bg-surface-1); border-radius: 4px;"
+      >
+        <p style="margin-bottom: 1rem;">
+          Body text uses <code>font-size: var(--freefall-type-base)</code>
+          (1.125rem) with <code>letter-spacing: 0.0138em</code> (~0.25px
+          relative to font size). The tracking compensation improves legibility
+          of Lato on dark backgrounds, where light-on-dark text appears
+          perceptually tighter than the same tracking on light backgrounds.
+        </p>
+        <div
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;"
+        >
+          <div>
+            <div
+              class="text-ui-small"
+              style="margin-bottom: 0.5rem; color: var(--freefall-text-muted);"
+            >
+              With tracking (default)
+            </div>
+            <p>
+              The orbital mechanics of free-fall combat require pilots to
+              maintain constant spatial awareness. Thrust vectoring in
+              zero-gravity environments follows Newtonian principles — every
+              action produces an equal and opposite reaction.
+            </p>
+          </div>
+          <div>
+            <div
+              class="text-ui-small"
+              style="margin-bottom: 0.5rem; color: var(--freefall-text-muted);"
+            >
+              Without tracking (comparison)
+            </div>
+            <p style="letter-spacing: 0;">
+              The orbital mechanics of free-fall combat require pilots to
+              maintain constant spatial awareness. Thrust vectoring in
+              zero-gravity environments follows Newtonian principles — every
+              action produces an equal and opposite reaction.
+            </p>
           </div>
         </div>
       </div>
