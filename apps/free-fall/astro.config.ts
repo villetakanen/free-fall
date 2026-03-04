@@ -1,6 +1,7 @@
 import { fileURLToPath } from "node:url";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
+import { rehypeContentUrlRewrite } from "./src/lib/rehype/rehype-content-url-rewrite";
 
 export default defineConfig({
   output: "static",
@@ -8,6 +9,12 @@ export default defineConfig({
     shikiConfig: {
       theme: "css-variables",
     },
+    rehypePlugins: [
+      [
+        rehypeContentUrlRewrite,
+        { basePath: "/core-rulebook/", contentPath: "/content/core-rulebook/" },
+      ],
+    ],
   },
   integrations: [
     svelte(),
