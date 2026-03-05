@@ -8,34 +8,99 @@ order: 2
 
 <span class="text-caption">Building your deniable asset in 2048</span>
 
-## 1. The Core Concept: Defined by Chrome
+<section>
+In FREE//FALL, capability is bought, spliced, or installed. A character is a deniable asset shaped by three facets:
+
+1. <em>The Chrome</em> – Gear, Assets and Augmentatons the character can utilize.
+2. <em>The Resources</em> – :term[Body], :term[Mind], and :term[Ghost] of the character; Structure, OS of the Exo; Systems of an Augmentation can be exploited to cheat fate.
+3. <em>The Spark</em> – A lingering spark of inherent knack tied to your :term[Class], granting the character an unique :term[Skill] they can utilize instead of Chrome.
+
+</section>
+<section class="content-side surface">
+
+### Defined by Chrome
 
 In the fractured future of 2048, you are not defined by a hero’s journey or an arbitrary level. You are defined by your Gear, your Augmentations, and your willingness to bleed.
 
-In FREE//FALL, capability is bought, spliced, or installed. A character is a deniable asset shaped by three design pillars:
+</section>
 
-### I. Gear & Augmentations (The Chrome)
+## The Chrome
 
-This is the primary source of capability. Tools, weapons, armor, and cybernetics grant specific skills, but they extract a toll called **[Binding](registry#binding)**.
+<span class="text-caption">Gear, Assets, and Augmentations</span>
 
-**The Rule:** "Having the right tool IS the skill."
+This is the primary source of capability. Tools, weapons, armor, and cybernetics grant specific skills, but they extract a toll called :term[Binding].
+
+**The Rule:** "Having the right tool IS the skill." - Having a knife, means you can use it to do knife things, within fictions context. Having a cybernetic sensory suite, you can use it to spy on the enemies, if any.
 
 **The Cost:** You don't just equip heavy armor; you support its weight with your spine (Binding Body). You don't just run a Black Ice breaker; you dedicate neural bandwidth to controlling it (Binding Mind).
 
-### II. Attributes (The Resource)
+## The Resources
+
+<span class="text-caption">Mind, Body, Ghost</span>
 
 Body, Mind, and Ghost represent your innate capacity. These are finite resources with an Initial rating and a Current rating. They are used to:
 
-*   **Power your Gear:** The higher your Initial Attribute, the more tech you can Bind.
-*   **Resist Harm:** You can replace Transient [Harm](registry#harm) with [Permanent Harm](registry#permanent-harm) in an Attribute to stay in the fight.
-*   **Operational Capacity:** Once your Current pool is empty, you are exhausted, vulnerable, and unable to attempt actions outside your Skills or reduce incoming Harm through effort.
-*   **Push the Limits:** Spend a point of an Attribute to attempt an action as though you had a [Skill](registry#skill) for it.
+<em>Power your Gear:</em> The higher your Initial Attribute, the more tech you can Bind.
 
-### III. Class & Skills (The Edge)
+<em>Resist Harm:</em> You can replace Transient [Harm](registry#harm) with [Permanent Harm](registry#permanent-harm) in an Attribute to stay in the fight.
+
+<em>Operational Capacity:</em> Once your Current pool is empty, you are exhausted, vulnerable, and unable to attempt actions outside your Skills or reduce incoming Harm through effort.
+
+<em>Push the Limits:</em> Spend a point of an Attribute to attempt an action as though you had a [Skill](registry#skill) for it.
+
+In addition to the innate Resources the character has, some gear or augmentations might grant the Character additional Resources. The additional resources are often 1-1 replacapble with a specific innate Resource.
+
+## The Spark
+
+<span class="text-caption">Class and Skill</span>
 
 A lingering spark of inherent knack tied to your [Class](registry#class). It grants you a specific [Skill](registry#skill).
 
 **Effect:** A Skill enables a character to attempt an action governed by the skill, without needing specific gear, spending an Attribute point, or taking Harm just to make the attempt. It represents years of muscle memory or intuition that tech cannot replicate.
+
+Very experienced characters might have an additional Skill from their Class list, or an extra "knack" from another Classes list.
+
+### Classes and Skills
+
+<section>
+
+| Class | Skill | Definition |
+| --- | --- | --- |
+| The Vanguard | Breaching | Forcing entry through barriers, doors, and fortified positions |
+| The Vanguard | Close Combat Tactics | Hand-to-hand fighting and melee weapon proficiency |
+| The Vanguard | Tactical Defense | Holding ground, providing cover, and protecting allies |
+| The Spectre | Infiltration | Bypassing security and moving undetected through hostile territory |
+| The Spectre | Sabotage | Disabling systems, planting charges, and destroying infrastructure |
+| The Spectre | Surveillance | Monitoring targets, gathering intel, and counter-surveillance |
+| The Wirehead | System Cracking | Breaking into secure networks and overriding digital defenses |
+| The Wirehead | Data Mining | Extracting, decrypting, and analyzing information from systems |
+| The Wirehead | Cybernetics Intrusion | Hacking augmentations and neural implants in hostile targets |
+| The Fixer | Human Systems | Field medicine, trauma care, and biological repair |
+| The Fixer | Field Systems Tech | Repairing gear, jury-rigging equipment, and Bricolage |
+| The Fixer | Clocksmith (AI) | Programming, maintaining, and negotiating with artificial intelligences |
+| The Operator | Deadeye | Precision shooting at range, called shots, and overwatch |
+| The Operator | Target Acquisition | Marking targets, calculating trajectories, and coordinating fire |
+| The Operator | Field Support | Providing suppressive fire, area denial, and tactical coordination |
+| The Broker | Negotiation | Brokering deals, extracting concessions, and defusing standoffs |
+| The Broker | Impersonation | Assuming false identities and blending into hostile social environments |
+| The Broker | Influence Peddling | Leveraging contacts, favors, and blackmail to move the needle |
+| The Pilot | Vehicle Handling | Operating ground, air, and space vehicles under combat conditions |
+| The Pilot | Logistics | Managing supply chains, routes, and extraction plans |
+| The Pilot | Sensors & Countermeasures | Operating detection systems and deploying electronic warfare |
+
+</section>
+
+<section class="content-side surface">
+
+### Using Class Skills
+
+Note that unlike Gear, the class skills are strictly situational. In game terms, this means the character is able to do any actions required to succeed in the skill's situational context. But the skill Breaching f.ex. does not grant universal ability to fight with weapons. 
+
+Similarly: close combat tactics, will allow character to utilize ranged weapons, etc. in close combat situations, but will not let the use knives for interrogation.
+
+This also means the characters are able to use improvised means to achieve things in fiction. A Wirehead with Cybernetics Intrusion is able to cheat eye implants of an adversary, without specific electronic gear - f.ex. with makeup, mirrors or some other completely improvised tools, that are available in fiction.
+
+</section>
 
 ## 2. Character Creation Pipeline
 

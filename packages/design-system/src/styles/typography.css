@@ -222,8 +222,15 @@ main tbody tr:nth-child(even) {
   background-color: var(--freefall-bg-surface-1);
 }
 
-.underline {
+main p:has(dfn) + ul,
+main p:has(dfn) + ol {
+  margin-top: 0;
+}
+
+.underline,
+dfn {
   font-weight: 900;
   color: var(--freefall-color-primary-50);
   border-bottom: solid 2px var(--freefall-color-accent-500);
+  font-style: normal;
 }

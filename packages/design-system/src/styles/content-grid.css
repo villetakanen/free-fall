@@ -23,6 +23,7 @@
   grid-column: main;
 }
 
+
 /* Placement classes — base tier fallbacks */
 .content-grid > .content-side {
   grid-column: main;
