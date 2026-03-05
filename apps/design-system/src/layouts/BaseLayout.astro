@@ -37,6 +37,12 @@ const navItems = [
     active: Astro.url.pathname.startsWith("/iconography"),
   },
   {
+    icon: "grid_view",
+    label: "Content Grid",
+    href: "/content-grid/",
+    active: Astro.url.pathname.startsWith("/content-grid"),
+  },
+  {
     icon: "web_asset",
     label: "App Shell",
     href: "/app-bar/",
@@ -85,6 +91,8 @@ const navItems = [
 ---
 
 <AppShell title={title} navItems={navItems} brandHref="/drawer-brand/">
-  <slot name="head" slot="head" />
-  <slot />
+  <div class="content-grid">
+    <slot name="head" slot="head" />
+    <slot />
+  </div>
 </AppShell>

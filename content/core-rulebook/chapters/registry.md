@@ -5,78 +5,90 @@ order: 91
 ---
 
 # Registry
+<span class="text-caption">An alphabetic listing of game concepts and terms</span>
 
-<span class="text-caption">Quick reference for FREE//FALL v7 game terms</span>
+## A
 
-## Tokens
-
-### A
-
-<span class="underline">**ACTION POOL**</span> A pool of 2 to 5 twenty-sided dice (d20). Allocated each turn to actions the character wants to take.
+<dfn id="action-pool">Action Pool</dfn> A pool of 2 to 5 twenty-sided dice (d20). Allocated each turn to actions the character wants to take.
 
 * [Action resolution](system-reference#action-resolution), in SRD
 
+<dfn id="armor-value">Armor Value (AV)</dfn> Gear rating that reduces the number of incoming Harm levels suffered.
 
-<span class="underline">**ARMOR VALUE (AV)**</span> Gear rating that reduces the number of incoming Harm levels suffered.
+<dfn id="attribute">Attribute</dfn> A resource representing a capability a character can exploit.
 
-<span class="underline">**ATTRIBUTE**</span> A resource representing a capability a character can exploit.
+* [Attributes](system-reference#attributes), in SRD
 
-### B
+## B
 
-<span class="underline">**BINDING**</span> The cost of equipping powerful gear, which reduces a character's current Attribute pool.
+<dfn id="binding">Binding</dfn> The cost of equipping powerful gear, which reduces a character's current Attribute pool.
+
 * [Gear & Augmentations](02-characters-and-crews#i-gear--augmentations-the-chrome)
 
-### C
+<dfn id="body">Body</dfn> A character Attribute representing physical capability — strength, endurance, and reflexes.
 
-<span class="underline">**CHALLENGING**</span> A challenge rating with TN 11+.
+## C
 
-<span class="underline">**CLASS**</span> A mercenary's role or archetype, defining their approach and granting a specific Skill.
+<dfn id="challenging">Challenging</dfn> A challenge rating with TN 11+.
+
+<dfn id="class">Class</dfn> A mercenary's role or archetype, defining their approach and granting a specific Skill.
+
 * [Class & Skills](02-characters-and-crews#iii-class--skills-the-edge)
 
-<span class="underline">**CREW**</span> The mercenary team and their shared assets, acting as a life support system in the harsh environment of 2048.
+<dfn id="crew">Crew</dfn> The mercenary team and their shared assets, acting as a life support system in the harsh environment of 2048.
+
 * [Crews](02-characters-and-crews#4-crews)
 
-### D
+## D
 
-<span class="underline">**DAMAGE VALUE (DV)**</span> The number of Harm levels an attack or hazard inflicts.
+<dfn id="damage-value">Damage Value (DV)</dfn> The number of Harm levels an attack or hazard inflicts.
 
-<span class="underline">**DICE POOL**</span> A pool of 5 dice, each with 20 sides.
+<dfn id="dice-pool">Dice Pool</dfn> A pool of 5 dice, each with 20 sides.
 
-<span class="underline">**DOWNTIME**</span> A rest period during which all Temporary Harm is removed and broken gear can be repaired.
+<dfn id="downtime">Downtime</dfn> A rest period during which all Temporary Harm is removed and broken gear can be repaired.
 
-### H
+## G
 
-<span class="underline">**HARD**</span> A challenge rating with TN 16+.
+<dfn id="ghost">Ghost</dfn> A character Attribute representing willpower, intuition, and mental resilience.
 
-<span class="underline">**HARM**</span> Consequence suffered by a character, absorbed by filling Harm Slots, converting Temporary Harm, or breaking bound items.
+## H
 
-<span class="underline">**HARM SLOT**</span> One of 3 slots a character has for absorbing Harm. When all options are exhausted, the character is Ousted.
+<dfn id="hard">Hard</dfn> A challenge rating with TN 16+.
 
-### N
+<dfn id="harm">Harm</dfn> Consequence suffered by a character, absorbed by filling Harm Slots, converting Temporary Harm, or breaking bound items.
 
-<span class="underline">**NEAR IMPOSSIBLE**</span> A challenge rating with TN 21+, achievable only with a natural 20.
+* [Harm & Consequences](system-reference#harm--consequences), in SRD
 
-### O
+<dfn id="harm-slot">Harm Slot</dfn> One of 3 slots a character has for absorbing Harm. When all options are exhausted, the character is Ousted.
 
-<span class="underline">**OUSTED**</span> A character state reached when Harm cannot be absorbed by any available means.
+## M
 
-### P
+<dfn id="mind">Mind</dfn> A character Attribute representing intellect, perception, and technical aptitude.
 
-<span class="underline">**PERMANENT HARM**</span> A Harm slot entry that persists beyond Downtime, created by converting an existing Temporary Harm.
+## N
 
-### S
+<dfn id="near-impossible">Near Impossible</dfn> A challenge rating with TN 21+, achievable only with a natural 20.
 
-<span class="underline">**SKILL**</span> An ability that enables a character to attempt an action governed by that skill.
+## O
 
-<span class="underline">**SUCCESSES**</span> Dice results meeting or exceeding the Target Number. One success is needed by default.
+<dfn id="ousted">Ousted</dfn> A character state reached when Harm cannot be absorbed by any available means.
 
-### T
+## P
 
-<span class="underline">**TARGET NUMBER (TN)**</span> The difficulty threshold for a roll, set by the GM.
+<dfn id="permanent-harm">Permanent Harm</dfn> A Harm slot entry that persists beyond Downtime, created by converting an existing Temporary Harm.
 
-<span class="underline">**TRANSIENT HARM**</span> A Harm slot entry that clears during Downtime.
+## S
 
-## Templates
+<dfn id="skill">Skill</dfn> An ability that enables a character to attempt an action governed by that skill.
 
-> <span class="underline">**GAME TERM**</span> A short and concise definition of a game term.
-> 1. SRD: [SRD link to relevant anchor](https://example.com/srd)
+* [Skills](system-reference#skills), in SRD
+
+<dfn id="successes">Successes</dfn> Dice results meeting or exceeding the Target Number. One success is needed by default.
+
+## T
+
+<dfn id="target-number">Target Number (TN)</dfn> The difficulty threshold for a roll, set by the GM.
+
+* [Action resolution](system-reference#action-resolution), in SRD
+
+<dfn id="transient-harm">Transient Harm</dfn> A Harm slot entry that clears during Downtime.

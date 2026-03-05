@@ -8,28 +8,18 @@ order: 1
 
 <span class="text-caption">A FRACTURED SOLAR SYSTEM</span>
 
-The year is 2048. The world didn't end with a nuclear bang. It ended with a rising temperature and a failing algorithm. Today, the apocalypse is boring. Global catastrophic events are just another push notification; "apocalypse fatigue" is the prevailing cultural mood where survival is simply a bureaucratic reality and air conditioning is the ultimate leverage.
+The year is 2048. The world didn't end with a nuclear bang. It ended with a rising temperature and a failing algorithm. Today, the apocalypse is boring. Global catastrophic events are just another push notification; _apocalypse fatigue_ is the prevailing cultural mood where survival is simply a bureaucratic reality and air conditioning is the ultimate leverage.
 
-Humanity is now bifurcated. Down the well, on Earth, civilization creates a chaotic, sweltering mosaic of survival amidst ecological collapse. Up the stalk, in the vacuum, humanity is a product owned by corporate fiefdoms and orbital nations.
+Humanity is now bifurcated. Down the well, on **Earth**, civilization creates a chaotic, sweltering mosaic of survival amidst ecological collapse. Up the stalk, in the vacuum, humanity is a product owned by corporate fiefdoms and orbital nations.
 
-Connecting them is the fragile thread of commerce, coercion, and the shadowed oversight of the THESEUS Foundation.
+Connecting them is the fragile thread of commerce, coercion, and the shadowed oversight of the **THESEUS** Foundation.
 
-## 1. THE GRAVITY WELL
-<span class="text-caption">ICE & SWEAT</span>
+## 1. THE BROKEN CRADLE
+<span class="text-caption">EARTH</span>
 
 Earth is no longer the cradle of humanity; it is its nursing home and its prison. The climate tipping points of the 2030s shattered the old geopolitical maps. The equator is an uninhabitable kill-zone, leaving only the extreme northern and southern latitudes as fortresses against the heat.
 
-### The Great Stratification
-
-In 2048, the defining currency is not the Credit—it is Comfort. 
-
-At the apex of society sits **The 1‰ (The Board)**. These ultra-elites don't just survive; they transcend. Residing in private orbital rings or deep-earth bunkers appointed with real mahogany, real beef, and vintage Pinot, they are the gods of the new age. 
-
-Below them are **The 5% (Citizens)**—the managers, specialists, and useful functionaries who inhabit the safe "Green Zones." They enjoy healthcare, stable currency, and the ultimate luxury of Air Conditioning, though their citizenship is a subscription service; lose your job, and you lose the cold. 
-
-For the remaining **95%, known simply as The Rest (The Heat)**, life in the ruined zones is a constant battle against extreme elements. While hyperthermia and toxic weather define the equatorial belt, the shattered atmospheric patterns unleash diverse hazards: unpredictable flash-freezes in former temperate zones, permanent hyper-monsoons, and continent-spanning dust storms. 
-
-Yet, life persists and adapts in the "Specks"—vibrant micro-climates where billions still live. In these pockets, humanity builds anew: deep-canyon settlements thriving on seasonal flash-floods, nomadic aerostat communities riding the storm fronts, and dense, bio-luminescent vertical farms carved into the ruins of old mega-cities. Earth is wounded, but it teems with stubborn, resilient life.
+<div>
 
 ### The Black Sahara & the Slime Sea
 
@@ -148,3 +138,20 @@ Because Quantum Decryption renders most wireless transfers transparent to Theseu
 Cybernetics are defined by Attribute Binding. High-performance gear requires a significant support structure within the user; you don't just wear armor, you support it with your spine and nerves. This binds your maximum capacity, extracting a brutal toll on your body and mind.
 
 Most available tech is Recycler-Grade. These second-hand cybernetics hum, leak heat, and cause chronic pain. A high-end arm costs as much as a sports car, so most operators settle for a rusted claw that jitters when it rains.
+</div>
+
+<div class="content-side">
+
+### The Great Stratification
+
+In 2048, the defining currency is not the Credit—it is Comfort. 
+
+At the apex of society sits **The 1‰ (The Board)**. These ultra-elites don't just survive; they transcend. Residing in private orbital rings or deep-earth bunkers appointed with real mahogany, real beef, and vintage Pinot, they are the gods of the new age. 
+
+Below them are **The 5% (Citizens)**—the managers, specialists, and useful functionaries who inhabit the safe "Green Zones." They enjoy healthcare, stable currency, and the ultimate luxury of Air Conditioning, though their citizenship is a subscription service; lose your job, and you lose the cold. 
+
+For the remaining **95%, known simply as The Rest (The Heat)**, life in the ruined zones is a constant battle against extreme elements. While hyperthermia and toxic weather define the equatorial belt, the shattered atmospheric patterns unleash diverse hazards: unpredictable flash-freezes in former temperate zones, permanent hyper-monsoons, and continent-spanning dust storms. 
+
+Yet, life persists and adapts in the "Specks"—vibrant micro-climates where billions still live. In these pockets, humanity builds anew: deep-canyon settlements thriving on seasonal flash-floods, nomadic aerostat communities riding the storm fronts, and dense, bio-luminescent vertical farms carved into the ruins of old mega-cities. Earth is wounded, but it teems with stubborn, resilient life.
+
+</div>

@@ -30,6 +30,8 @@ const navItems = [
 ---
 
 <AppShell title={title} navItems={navItems} brandHref="/about/">
-  <slot name="head" slot="head" />
-  <slot />
+  <div class="content-grid">
+    <slot name="head" slot="head" />
+    <slot />
+  </div>
 </AppShell>

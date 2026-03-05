@@ -1,0 +1,85 @@
+/* =========================================
+   CONTENT GRID — Three-tier responsive layout
+   Container-query driven: base → narrow side → wide side.
+
+   Gutters adapt to container width:
+     narrow  → var(--freefall-space-2)  (1rem)
+     ≥ 40rem → var(--freefall-space-4)  (2rem)
+   ========================================= */
+
+.content-grid {
+  --_gutter: var(--freefall-space-2);
+
+  display: grid;
+  grid-template-columns:
+    var(--_gutter)
+    [main-start] minmax(0, var(--freefall-content-main)) [main-end]
+    var(--_gutter);
+  column-gap: 0;
+}
+
+/* Default: all items land in the main column */
+.content-grid > * {
+  grid-column: main;
+}
+
+
+/* Placement classes — base tier fallbacks */
+.content-grid > .content-side {
+  grid-column: main;
+  align-self: start;
+}
+
+.content-grid > .content-wide {
+  grid-column: main;
+  overflow-x: auto;
+}
+
+/* Widen gutters once the container has room */
+@container content (inline-size >= 40rem) {
+  .content-grid {
+    --_gutter: var(--freefall-space-4);
+  }
+}
+
+/* =========================================
+   NARROW SIDE TIER
+   67ch + 25.6ch + 3 × 2rem = 92.6ch + 6rem
+   ========================================= */
+
+@container content (inline-size >= calc(92.6ch + 6rem)) {
+  .content-grid {
+    grid-template-columns:
+      var(--_gutter)
+      [main-start] var(--freefall-content-main) [main-end]
+      var(--freefall-space-4)
+      [side-start] var(--freefall-content-side-narrow) [side-end]
+      var(--_gutter);
+  }
+
+  .content-grid > .content-side {
+    grid-column: side;
+  }
+
+  .content-grid > .content-wide {
+    grid-column: main-start / side-end;
+    overflow-x: visible;
+  }
+}
+
+/* =========================================
+   WIDE SIDE TIER
+   67ch + 42.5ch + 3 × 2rem = 109.5ch + 6rem
+   ========================================= */
+
+@container content (inline-size >= calc(109.5ch + 6rem)) {
+  .content-grid {
+    --_gutter: var(--freefall-space-4);
+    grid-template-columns:
+      1fr
+      [main-start] var(--freefall-content-main) [main-end]
+      var(--freefall-space-4)
+      [side-start] var(--freefall-content-side-wide) [side-end]
+      1fr;
+  }
+}

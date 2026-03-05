@@ -15,17 +15,5 @@ const { Content } = await render(entry);
 ---
 
 <BaseLayout title={`${entry.data.title} — FREE//FALL`}>
-  <div class="rulebook-container">
-    <div class="freefall-prose">
-      <Content />
-    </div>
-  </div>
+  <Content />
 </BaseLayout>
-
-<style>
-  .rulebook-container {
-    padding: calc(4 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
-    max-width: 800px;
-    margin: 0 auto;
-  }
-</style>

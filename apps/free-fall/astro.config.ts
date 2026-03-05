@@ -1,7 +1,9 @@
 import { fileURLToPath } from "node:url";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
+import remarkDirective from "remark-directive";
 import { rehypeContentUrlRewrite } from "./src/lib/rehype/rehype-content-url-rewrite";
+import { remarkTermResolution } from "./src/lib/remark/remark-term-resolution";
 
 export default defineConfig({
   output: "static",
@@ -9,6 +11,16 @@ export default defineConfig({
     shikiConfig: {
       theme: "css-variables",
     },
+    remarkPlugins: [
+      remarkDirective,
+      [
+        remarkTermResolution,
+        {
+          registryPath: "../../content/core-rulebook/chapters/registry.md",
+          contentPath: "/content/core-rulebook/",
+        },
+      ],
+    ],
     rehypePlugins: [
       [
         rehypeContentUrlRewrite,
