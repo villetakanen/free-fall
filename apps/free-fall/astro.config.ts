@@ -31,13 +31,16 @@ export default defineConfig({
   integrations: [
     svelte(),
     {
-      name: "watch-rulebook",
+      name: "watch-content",
       hooks: {
         "astro:server:setup": ({ server }) => {
           server.watcher.add(
             fileURLToPath(
               new URL("../../content/core-rulebook/chapters", import.meta.url),
             ),
+          );
+          server.watcher.add(
+            fileURLToPath(new URL("../../content/gear/items", import.meta.url)),
           );
         },
       },
