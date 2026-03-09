@@ -98,6 +98,12 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
 
+  content/gear:
+    devDependencies:
+      '@biomejs/biome':
+        specifier: ^1.9.4
+        version: 1.9.4
+
   packages/design-system:
     devDependencies:
       svelte:
