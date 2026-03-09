@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { gearCategories } from "../../lib/nav.ts";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("gear");
+
+  return gearCategories
+    .filter((c) => entries.some((e) => e.data.category === c.category))
+    .map((c) => ({
+      params: { category: c.slug },
+      props: {
+        label: c.label,
+        items: entries
+          .filter((e) => e.data.category === c.category)
+          .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+      },
+    }));
+}
+
+const { label, items } = Astro.props;
+const rendered = await Promise.all(
+  items.map(async (entry: (typeof items)[number]) => ({
+    title: entry.data.title,
+    Content: (await render(entry)).Content,
+  })),
+);
+---
+
+<BaseLayout title={`${label} — FREE//FALL`}>
+  {
+    rendered.map(({ title, Content }) => (
+      <article>
+        <h2>{title}</h2>
+        <Content />
+      </article>
+    ))
+  }
+</BaseLayout>
