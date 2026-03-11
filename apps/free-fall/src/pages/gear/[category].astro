@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import EquipmentCard from "@free-fall/design-system/components/EquipmentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { gearCategories } from "../../lib/nav.ts";
 
@@ -22,19 +23,220 @@ export async function getStaticPaths() {
 const { label, items } = Astro.props;
 const rendered = await Promise.all(
   items.map(async (entry: (typeof items)[number]) => ({
-    title: entry.data.title,
+    id: entry.id,
+    data: entry.data,
     Content: (await render(entry)).Content,
   })),
 );
 ---
 
 <BaseLayout title={`${label} — FREE//FALL`}>
-  {
-    rendered.map(({ title, Content }) => (
-      <article>
-        <h2>{title}</h2>
-        <Content />
-      </article>
-    ))
-  }
+  <div class="gear-listing">
+    {
+      rendered.map(({ id, data, Content }) => (
+        <article class="gear-item">
+          <div class="gear-item__card-wrap">
+            <EquipmentCard data={data} />
+            <input
+              type="checkbox"
+              id={`modal-${id}`}
+              class="modal-toggle"
+              aria-hidden="true"
+            />
+            <label
+              for={`modal-${id}`}
+              class="expand-btn"
+              aria-label={`Show details for ${data.title}`}
+            >
+              <span class="material-symbols-sharp" aria-hidden="true">
+                add_circle
+              </span>
+            </label>
+
+            <div class="modal-overlay">
+              <label
+                for={`modal-${id}`}
+                class="modal-scrim"
+                aria-label="Close details"
+              />
+              <div class="modal-content" role="dialog" aria-label={data.title}>
+                <label
+                  for={`modal-${id}`}
+                  class="modal-close"
+                  aria-label="Close details"
+                >
+                  <span class="material-symbols-sharp" aria-hidden="true">
+                    close
+                  </span>
+                </label>
+                <div class="modal-prose">
+                  <h2>{data.title}</h2>
+                  <Content />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gear-item__description">
+            <h2>{data.title}</h2>
+            <Content />
+          </div>
+        </article>
+      ))
+    }
+  </div>
 </BaseLayout>
+
+<style>
+  /* ── Listing container ────────────────────────── */
+
+  .gear-listing {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4 * var(--freefall-space-1));
+  }
+
+  /* ── Item row ─────────────────────────────────── */
+
+  .gear-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(3 * var(--freefall-space-1));
+  }
+
+  /* ── Card wrapper (holds card + expand button + modal) */
+
+  .gear-item__card-wrap {
+    position: relative;
+  }
+
+  /* ── Description pane (desktop only) ──────────── */
+
+  .gear-item__description {
+    display: none;
+  }
+
+  /* ── Expand button (mobile only) ──────────────── */
+
+  .modal-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .expand-btn {
+    position: absolute;
+    top: calc(1 * var(--freefall-space-1));
+    right: calc(1 * var(--freefall-space-1));
+    z-index: 2;
+    cursor: pointer;
+    color: var(--freefall-color-primary-50);
+    font-size: calc(4 * var(--freefall-space-1));
+    line-height: 1;
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.4),
+      0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .expand-btn .material-symbols-sharp {
+    font-size: inherit;
+  }
+
+  /* ── Modal overlay ────────────────────────────── */
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-toggle:checked ~ .modal-overlay {
+    display: flex;
+  }
+
+  .modal-scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+  }
+
+  .modal-content {
+    position: relative;
+    z-index: 1;
+    background: var(--freefall-bg-surface-1);
+    border-radius: calc(2 * var(--freefall-space-1));
+    border: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-strong);
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: calc(3 * var(--freefall-space-1));
+  }
+
+  .modal-close {
+    position: absolute;
+    top: calc(1.5 * var(--freefall-space-1));
+    right: calc(1.5 * var(--freefall-space-1));
+    cursor: pointer;
+    color: var(--freefall-text-muted);
+    font-size: calc(3 * var(--freefall-space-1));
+    line-height: 1;
+    z-index: 2;
+  }
+
+  .modal-close:hover {
+    color: var(--freefall-text-display);
+  }
+
+  .modal-prose {
+    color: var(--freefall-text-body);
+  }
+
+  /* ── Desktop: side-by-side ────────────────────── */
+
+  @media (min-width: 780px) {
+    .gear-item {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .gear-item__description {
+      display: block;
+      flex: 1;
+      min-width: 0;
+      color: var(--freefall-text-body);
+    }
+
+    .expand-btn {
+      display: none;
+    }
+
+    .modal-toggle:checked ~ .modal-overlay {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Progressive enhancement: Escape key closes modal, focus management
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const open = document.querySelector(
+        ".modal-toggle:checked",
+      ) as HTMLInputElement | null;
+      if (open) {
+        open.checked = false;
+        // Return focus to the expand button
+        const label = open
+          .closest(".gear-item__card-wrap")
+          ?.querySelector<HTMLLabelElement>(".expand-btn");
+        label?.focus();
+      }
+    }
+  });
+</script>

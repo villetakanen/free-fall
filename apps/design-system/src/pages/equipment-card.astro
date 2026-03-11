@@ -1,0 +1,139 @@
+---
+import EquipmentCard from "@free-fall/design-system/components/EquipmentCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const sampleWeapon = {
+  category: "weapon" as const,
+  title: "Kinetic Carbine",
+  nickname: "Standard-issue rifle",
+  binding: { body: 1, mind: 0, ghost: 0 },
+  qualities: ["Range (Medium)", "Ammo (Standard)", "Burst Fire"],
+  dv: 2,
+  harm_type: "Physical" as const,
+};
+
+const sampleArmor = {
+  category: "armor" as const,
+  title: "Ballistic Vest",
+  nickname: "Light body armor",
+  binding: { body: 1, mind: 0, ghost: 0 },
+  qualities: ["AV 1 (Physical)"],
+  av: 1,
+  av_type: "Physical",
+};
+
+const sampleAugmentation = {
+  category: "augmentation" as const,
+  title: "Neural Link",
+  nickname: "Standard data port",
+  binding: { body: 0, mind: 0, ghost: 3 },
+  qualities: ["Load Bearing (Mind 8 – Software/Systems Only)"],
+  augmentation_category: "Cybernetic" as const,
+  integration: "Invasive" as const,
+};
+
+const sampleUtility = {
+  category: "utility" as const,
+  title: "Ghost Link",
+  nickname: "Operator's slate",
+  binding: { body: 0, mind: 0, ghost: 2 },
+  qualities: [
+    "Integrated System (AI Assistant Access)",
+    "Load Bearing (6 Mind – Software Only)",
+  ],
+};
+
+const sampleVehicle = {
+  category: "vehicle" as const,
+  title: "Hardshell Combat Exo",
+  nickname: "Heavy combat exo",
+  binding: { body: 0, mind: 0, ghost: 0 },
+  qualities: [
+    "Movement System (EVA Thrusters, Walker Legs)",
+    "Hardpoints (2 Assault, 1 Support)",
+    "Integrated System (Combat Targeting Suite)",
+    "Integrated System (Reinforced Cockpit)",
+    "Hardened (Vehicle/Exo)",
+    "Load Bearing (5 Any)",
+    "Environmental Sealing",
+    "Life Support (8 hours)",
+  ],
+  frame: 24,
+  systems: 6,
+  pilot_binding: { body: 0, mind: 0, ghost: 3 },
+  vehicle_av: 4,
+  size_category: "Medium" as const,
+};
+
+const sampleMultiBinding = {
+  category: "weapon" as const,
+  title: "Arc Caster",
+  nickname: "Lightning gun",
+  binding: { body: 1, mind: 1, ghost: 1 },
+  qualities: ["Range (Short)", "Area (Cone)", "Stun"],
+  dv: 1,
+  harm_type: "Physical" as const,
+};
+
+const sampleNoBinding = {
+  category: "utility" as const,
+  title: "Trauma Kit",
+  nickname: "Field medkit",
+  binding: { body: 0, mind: 0, ghost: 0 },
+  qualities: ["Healing (1 Physical Harm)", "Single Use"],
+};
+---
+
+<BaseLayout title="Equipment Card — FREE//FALL Design System">
+  <Fragment slot="head">
+    <style>
+      .demo-section {
+        margin-bottom: calc(4 * var(--freefall-space-1));
+      }
+      .demo-label {
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-bottom: var(--freefall-space-2);
+      }
+      .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc(3 * var(--freefall-space-1));
+        margin-top: var(--freefall-space-2);
+      }
+    </style>
+  </Fragment>
+
+  <h1>Equipment Card</h1>
+  <p>
+    Poker-sized card (5:7 ratio) for displaying gear stats at a glance.
+    Shows binding costs, category-specific stats, and qualities.
+    No markdown prose — structured data only.
+  </p>
+
+  <div class="demo-section">
+    <h2>All Categories</h2>
+    <p class="demo-label">
+      One card per gear category: weapon, armor, augmentation, utility, vehicle
+    </p>
+    <div class="card-grid">
+      <EquipmentCard data={sampleWeapon} />
+      <EquipmentCard data={sampleArmor} />
+      <EquipmentCard data={sampleAugmentation} />
+      <EquipmentCard data={sampleUtility} />
+      <EquipmentCard data={sampleVehicle} />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Binding Variations</h2>
+    <p class="demo-label">
+      All three binding types · no binding (zero cost)
+    </p>
+    <div class="card-grid">
+      <EquipmentCard data={sampleMultiBinding} />
+      <EquipmentCard data={sampleNoBinding} />
+    </div>
+  </div>
+</BaseLayout>
