@@ -7,9 +7,9 @@ test.describe("AppTray Component interactions", () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("/app-tray/");
 
-    const tray = page.locator(".app-tray__rail-column");
-    const hamburger = page.locator(".hamburger-btn__label");
-    const scrim = page.locator(".app-tray__scrim");
+    const tray = page.locator(".app-tray .drawer");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const scrim = page.locator(".app-tray .scrim");
 
     // Wait for page to settle
     await page.waitForLoadState("networkidle");
@@ -37,7 +37,7 @@ test.describe("AppTray Component interactions", () => {
 
     // Verify it closed (Wait for it to leave the viewport)
     await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray__rail-column");
+      const el = document.querySelector(".app-tray .drawer");
       if (!el) return false;
       return el.getBoundingClientRect().right <= 0;
     });
@@ -50,9 +50,9 @@ test.describe("AppTray Component interactions", () => {
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
-    const tray = page.locator(".app-tray__rail-column");
-    const hamburger = page.locator(".hamburger-btn__label");
-    const testButtonLabel = page.locator(".tray-button__label").first();
+    const tray = page.locator(".app-tray .drawer");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const testButtonLabel = page.locator(".tray-button .label").first();
 
     // Default: Rail visible, compact
     await expect(tray).toBeInViewport();
@@ -69,7 +69,7 @@ test.describe("AppTray Component interactions", () => {
 
     // Verify tray expanded to 320px
     await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray__rail-column");
+      const el = document.querySelector(".app-tray .drawer");
       return el && el.getBoundingClientRect().width === 320;
     });
 
@@ -78,7 +78,7 @@ test.describe("AppTray Component interactions", () => {
     expect(labelBox?.width).toBeGreaterThan(1);
 
     // Scrim should be present on tablet as an overlay
-    await expect(page.locator(".app-tray__scrim")).toBeVisible();
+    await expect(page.locator(".app-tray .scrim")).toBeVisible();
   });
 
   test("Desktop viewport (>=780px): Rail visible, expands and pushes content", async ({
@@ -88,8 +88,8 @@ test.describe("AppTray Component interactions", () => {
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
-    const tray = page.locator(".app-tray__rail-column");
-    const hamburger = page.locator(".hamburger-btn__label");
+    const tray = page.locator(".app-tray .drawer");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
     const main = page.locator("main");
 
     // Default: Rail visible
@@ -104,12 +104,12 @@ test.describe("AppTray Component interactions", () => {
 
     // Verify tray expanded
     await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray__rail-column");
+      const el = document.querySelector(".app-tray .drawer");
       return el && el.getBoundingClientRect().width === 320;
     });
 
     // Scrim should NOT be visible on desktop
-    await expect(page.locator(".app-tray__scrim")).toBeHidden();
+    await expect(page.locator(".app-tray .scrim")).toBeHidden();
 
     // The content width should have shrunk to accommodate the 320px tray
     const expandedMainBox = await main.boundingBox();
@@ -121,14 +121,14 @@ test.describe("AppTray Component interactions", () => {
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
-    const _tray = page.locator(".app-tray__rail-column");
-    const hamburger = page.locator(".hamburger-btn__label");
+    const _tray = page.locator(".app-tray .drawer");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
 
     // Open tray
     await hamburger.click();
 
     await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray__rail-column");
+      const el = document.querySelector(".app-tray .drawer");
       return el && el.getBoundingClientRect().width === 320;
     });
 
@@ -137,7 +137,7 @@ test.describe("AppTray Component interactions", () => {
 
     // Verify it closed back to rail mode
     await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray__rail-column");
+      const el = document.querySelector(".app-tray .drawer");
       return el && el.getBoundingClientRect().width === 80;
     });
   });

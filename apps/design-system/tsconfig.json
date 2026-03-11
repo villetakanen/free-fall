@@ -3,7 +3,6 @@
   "compilerOptions": {
     "jsx": "preserve",
     "paths": {
-      "@free-fall/design-system": ["../../packages/design-system/src"],
       "@free-fall/design-system/*": ["../../packages/design-system/src/*"]
     }
   },

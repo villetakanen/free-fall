@@ -1,0 +1,12 @@
+{
+  "name": "@free-fall/gear",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "FREE//FALL gear catalog — structured equipment data.",
+  "scripts": {
+    "lint": "biome check ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  }
+}

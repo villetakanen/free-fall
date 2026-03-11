@@ -68,9 +68,7 @@ Components and styles consume **semantic tokens only**. Base palette tokens exis
 
 | File | Contents |
 |---|---|
-| `src/styles/tokens.css` | All CSS custom properties (base palette + semantic) |
-| `src/tokens/colors.ts` | TypeScript constants mirroring the base palette |
-| `src/tokens/breakpoints.ts` | Breakpoint constants (already exists) |
+| `src/styles/tokens.css` | All CSS custom properties (base palette + semantic + breakpoints) |
 
 **Breakpoints** (defined in platform spec, owned here):
 
@@ -91,17 +89,13 @@ Components and styles consume **semantic tokens only**. Base palette tokens exis
 ### Definition of Done
 
 - [ ] `src/styles/tokens.css` defines all base palette and semantic custom properties listed above
-- [ ] `src/tokens/colors.ts` exports base palette values as TypeScript constants
-- [ ] HSL values in CSS and TypeScript match exactly for every base palette token
 - [ ] Semantic tokens reference base palette tokens via `var()` — no hardcoded values
 - [ ] `src/styles/base.css` imports `tokens.css`
-- [ ] Unit tests verify all TypeScript token values
 - [ ] Demo app has a token reference page showing all colors with their names and values
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
-- Token CSS and TypeScript values must stay in sync — a change to one without the other is a bug
 - Semantic tokens must only reference base palette custom properties
 - No color value may appear in a component or style file that isn't a `var(--freefall-*)` reference
 
@@ -111,11 +105,6 @@ Scenario: Base palette renders correctly
   Given: `tokens.css` is imported via `base.css`
   When: An element uses `var(--freefall-bg-canvas)`
   Then: The element background is `hsl(220, 43%, 3%)`
-
-Scenario: Token duality holds
-  Given: `colors.ts` defines `primary500` as `hsl(213, 29%, 28%)`
-  When: `tokens.css` defines `--freefall-color-primary-500`
-  Then: Both values are identical HSL strings
 
 Scenario: Demo page shows full palette
   Given: The demo app is built
