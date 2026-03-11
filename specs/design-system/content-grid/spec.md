@@ -10,7 +10,7 @@ The app shell's content pane currently has basic padding and a `max-width` cap. 
 2. An optional **side column** for supplementary content (tables, infoboxes, images)
 3. Responsive behavior that collapses the side column when space is insufficient
 
-The content grid is a CSS Grid layout applied inside `.app-shell__content`. It replaces the current `max-width` constraint with a grid-based content measure, and its main column (67ch) supersedes `.freefall-prose`'s `max-width: 65ch`.
+The content grid is a CSS Grid layout applied inside `<main>` (in `AppShell.astro`). It replaces the current `max-width` constraint with a grid-based content measure, and its main column (67ch) supersedes `.freefall-prose`'s `max-width: 65ch`.
 
 Parent spec: `specs/design-system/spec.md`
 
@@ -37,7 +37,7 @@ This matches the previous app-shell behavior where horizontal padding was 1rem o
 
 **Responsive tiers (container-query driven):**
 
-The grid adapts based on the content pane's inline size. The app-shell content pane (`.app-shell__content`) declares itself as a size container. The content grid responds via `@container` queries.
+The grid adapts based on the content pane's inline size. The app-shell content pane (`<main>` (in `AppShell.astro`)) declares itself as a size container. The content grid responds via `@container` queries.
 
 | Tier | Side column | Condition |
 |---|---|---|
@@ -100,21 +100,21 @@ CSS custom properties in `tokens.css`. TypeScript constants in `src/tokens/conte
 | `src/styles/content-grid.css` | Grid layout, container query tiers, placement classes |
 | `src/styles/tokens.css` | Content grid dimension tokens (`--freefall-content-*`) |
 | `src/tokens/content-grid.ts` | TypeScript constants mirroring the CSS tokens |
-| `src/styles/app-shell.css` | Container declaration on `.app-shell__content` |
+| `src/components/AppShell.astro` | Container declaration on `<main>` (scoped styles) |
 
 `content-grid.css` is imported via `base.css`.
 
 **Container query setup:**
 
-`.app-shell__content` gains `container-type: inline-size` and `container-name: content`. The content grid CSS uses `@container content (inline-size >= ...)` to switch between tiers. Container queries are required (not media queries) because the content pane's available width depends on the nav tray state, not just viewport width.
+`<main>` (in `AppShell.astro`) gains `container-type: inline-size` and `container-name: content`. The content grid CSS uses `@container content (inline-size >= ...)` to switch between tiers. Container queries are required (not media queries) because the content pane's available width depends on the nav tray state, not just viewport width.
 
 **Changes to app-shell:**
 
 | Current | After |
 |---|---|
-| `max-width: calc(120 * var(--freefall-space-1))` on `.app-shell__content` | Removed — the grid template defines width constraints |
-| Horizontal padding on `.app-shell__content` | Removed — the grid's gutter columns handle edge spacing |
-| Vertical padding on `.app-shell__content` | Unchanged |
+| `max-width: calc(120 * var(--freefall-space-1))` on `<main>` (in `AppShell.astro`) | Removed — the grid template defines width constraints |
+| Horizontal padding on `<main>` (in `AppShell.astro`) | Removed — the grid's gutter columns handle edge spacing |
+| Vertical padding on `<main>` (in `AppShell.astro`) | Unchanged |
 | No container declaration | `container-type: inline-size; container-name: content` |
 
 **Relationship to `.freefall-prose`:**
@@ -148,8 +148,8 @@ The design system demo app gets a `content-grid` page (`apps/design-system/src/p
 - [ ] Placement classes (`.content-side`, `.content-wide`) work in all three tiers
 - [ ] At base tier, side-targeted content falls back to the main column without overflow or hidden content
 - [ ] `.content-wide` has `overflow-x: auto` so oversized content (e.g., wide tables) scrolls horizontally at base tier
-- [ ] `.app-shell__content` declares `container-type: inline-size` in `app-shell.css`
-- [ ] Current `max-width` and horizontal padding on `.app-shell__content` removed
+- [ ] `<main>` (in `AppShell.astro`) declares `container-type: inline-size` in `AppShell.astro` scoped styles
+- [ ] Current `max-width` and horizontal padding on `<main>` (in `AppShell.astro`) removed
 - [ ] `content-grid.css` imported via `base.css`
 - [ ] Design system demo app has a `content-grid` page demonstrating all tiers and placement classes
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
