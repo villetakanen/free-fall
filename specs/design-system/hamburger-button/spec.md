@@ -44,8 +44,7 @@ All animations use an `ease-in-out` timing function stretching across 270ms.
 
 | File | Contents |
 |---|---|
-| `src/components/HamburgerButton.astro` | Astro markup: hidden checkbox, accessible label, animated bars. |
-| `src/styles/hamburger-button.css` | Component styles, sizing, rounded flexbox container styling, and the `:checked` skew layout logic. |
+| `src/components/HamburgerButton.astro` | Astro markup: hidden checkbox, accessible label, animated bars. Co-located `<style>` block owns sizing, rounded flexbox container styling, and the `:checked` skew layout logic. |
 
 ### Anti-Patterns
 
@@ -60,7 +59,7 @@ All animations use an `ease-in-out` timing function stretching across 270ms.
 ### Definition of Done
 
 - [ ] `HamburgerButton.astro` provides the HTML scaffold for a pure-CSS boolean toggle.
-- [ ] `hamburger-button.css` manages the 48px rounded M3 target container and nested bars.
+- [ ] Co-located `<style>` block manages the 48px rounded M3 target container and nested bars.
 - [ ] Checkbox `:checked` CSS handles the transition to the close state.
 - [ ] Middle bar compresses horizontally to the right via `transform-origin: right` and `scaleX(0.15)` bounding, shifting to the accent color.
 - [ ] Top and bottom bars form an X using `translateY` offset and `skewY` (45deg / -45deg).

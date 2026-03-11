@@ -66,9 +66,9 @@ The scaffold has four regions:
   <body>
     <div class="app-shell">
       <AppTray items={navItems} brandHref={brandHref} />
-      <div class="app-shell__body">
+      <div class="app">
         <AppBar title={title} />
-        <main class="app-shell__content">
+        <main>
           <slot />
         </main>
       </div>
@@ -85,7 +85,7 @@ The scaffold has four regions:
 | Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
 | Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width, max-width constrained |
 
-The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app-shell__body` (bar + content) takes remaining space via `flex: 1`.
+The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app` div (bar + content) takes remaining space via `flex-grow: 1`.
 
 **Dimensions (grid-derived):**
 
@@ -109,14 +109,9 @@ Top bar dimensions and styling are defined in the app-bar spec (`specs/design-sy
 
 | File | Contents |
 |---|---|
-| `src/components/AppShell.astro` | Astro layout — html, head, body, AppTray, AppBar, content slot |
-| `src/styles/app-shell.css` | Flex layout, content area sizing, responsive padding |
+| `src/components/AppShell.astro` | Astro layout — html, head, body, AppTray, AppBar, content slot. Scoped `<style>` owns flex layout, content area sizing, and container query setup. |
 
 The shell imports `base.css`. Pages using the shell do not need to import it.
-
-**Relationship to base.css:**
-
-The current body padding and max-width rules in `base.css` are shell concerns. They should move into `app-shell.css`. The `body` in `base.css` should only set `background`, `color`, and `overflow-x`. This avoids conflicts — the shell controls content spacing, not `body`.
 
 ### Anti-Patterns
 
@@ -134,10 +129,9 @@ The current body padding and max-width rules in `base.css` are shell concerns. T
 - [ ] `AppShell.astro` provides full document skeleton with AppBar, AppTray, and content slot
 - [ ] Both apps use the shell as their base layout on all pages
 - [ ] Top app bar is rendered via the `AppBar` component (see app-bar spec)
-- [ ] Content pane has responsive padding and max-width via spacing tokens
+- [ ] Content pane (`<main>`) declares `container-type: inline-size` and `container-name: content` for content-grid container queries
 - [ ] Content area shifts when rail is visible (medium+) and when tray pushes (desktop)
 - [ ] Named `head` slot allows page-specific `<head>` content
-- [ ] Body padding/max-width moved from `base.css` to `app-shell.css`
 - [ ] No duplicate `<html>`, `<head>`, or `base.css` imports across pages
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 

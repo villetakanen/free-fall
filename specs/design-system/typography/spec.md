@@ -29,7 +29,6 @@ Parent spec: `specs/design-system/spec.md`
 | File | Contents |
 |---|---|
 | `src/styles/typography.css` | Font-family custom properties and typographic base styles |
-| `src/tokens/typography.ts` | TypeScript constants for font families and weights |
 | `src/components/FontLinks.astro` | `<link>` tags for Google Fonts preconnect + stylesheet |
 
 **FontLinks component:**
@@ -105,10 +104,14 @@ The `.freefall-prose` scope automatically:
 - Enforces an ergonomic `max-width: 65ch` measure to prevent unreadable widescreen text walls.
 - Applies the correct vertical rhythm (margins that map to the `8px` base grid) between paragraphs and headings.
 - Automatically styles all naked `<h1>`, `<h2>`, and `<h3>` tags to the `.text-chapter`, `.text-section`, and `.text-subsection` scales respectively.
+- Styles `<pre>` with padding and a dark background (`--freefall-color-primary-700`) within `main`.
+- Styles `<em>` with high-emphasis color (`--freefall-text-high`) and semi-bold weight within `main`.
 - Deep-styles TTRPG-specific nested structures natively:
   - **Lists**: Strictly indented padding for `<ul>` and `<ol>`, with unified vertical spacing for complex nested rules exceptions.
   - **Tables**: Robust zebra striping, distinct header bottom-borders, and cell padding for readability in data-dense stat blocks and roll tables.
   - **Blockquotes**: Left-indented, italicized rendering for narrative flavor text, visually distinct from mechanical rules text.
+
+Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` — bare elements outside content areas receive no special styling. This prevents design system styles from leaking into non-content UI areas.
 
 ### Anti-Patterns
 
@@ -126,8 +129,6 @@ The `.freefall-prose` scope automatically:
 - [ ] `src/styles/typography.css` implements the detailed editorial scale utility classes (`.text-chapter`, `.text-section`, etc.) and the `.freefall-prose` comprehensive scope styles.
 - [ ] `src/styles/typography.css` adheres strictly to baseline rhythm (`line-height` evaluates to multiples of `var(--freefall-space-1)`).
 - [ ] `src/styles/base.css` imports `typography.css`
-- [ ] `src/tokens/typography.ts` exports font family constants and the mapped editorial scale values.
-- [ ] Unit tests verify TypeScript token values mapped to the editorial hierarchy.
 - [ ] Both apps use `FontLinks` in their layouts
 - [ ] Demo app has a typography reference page showing both fonts, the editorial scales, and a mock `.freefall-prose` Markdown output.
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
@@ -135,8 +136,6 @@ The `.freefall-prose` scope automatically:
 
 ### Regression Guardrails
 
-- Font family values in CSS and TypeScript must match
-- CSS utility modifier token sizes must strictly map back to TypeScript typography size constants.
 - Line heights across all typographic nodes must always mathematically equate to a multiple of `8px` (`--freefall-space-1`).
 
 ### Scenarios

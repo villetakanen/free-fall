@@ -30,8 +30,7 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 
 | File | Contents |
 |---|---|
-| `src/components/TrayButton.astro` | Astro markup: flex container, icon injection (slot or prop), and text label. Provides fallback accessibility traits. |
-| `src/styles/tray-button.css` | Flexbox layout, interaction states, and a `@container` query that manages the responsive hiding logic and geometry reset for the minimized label. |
+| `src/components/TrayButton.astro` | Astro markup: flex container, icon injection (slot or prop), and text label. Co-located `<style>` block owns flexbox layout, interaction states, and a `@container` query that manages the responsive hiding logic and geometry reset for the minimized label. |
 
 ### Anti-Patterns
 
@@ -44,7 +43,7 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 ### Definition of Done
 
 - [ ] `TrayButton.astro` provides the HTML scaffold for rendering an icon and text label.
-- [ ] `tray-button.css` manages the flex layout, gaps, and padding using design system tokens.
+- [ ] Co-located `<style>` block manages the flex layout, gaps, and padding using design system tokens.
 - [ ] When the parent context dictates a minimized tray, the text label is visually hidden, centering the icon.
 - [ ] Implements `white-space: nowrap` and `overflow: hidden` to handle text bounds strictly.
 - [ ] Employs accessible labeling so screen readers recognize the button context regardless of visual layout.

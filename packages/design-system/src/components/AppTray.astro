@@ -90,7 +90,7 @@ const { items, brandHref } = Astro.props;
     width: 0;
   }
   .app-tray:has(#app-tray-toggle:checked) {
-    width: 100dvh;
+    width: 0;
   }
 
   /* ── Hamburger (child component, needs :global) ───── */
@@ -112,6 +112,7 @@ const { items, brandHref } = Astro.props;
     height: 100%;
     width: var(--app-tray-tray-width);
     max-width: 100vw;
+    background: var(--freefall-bg-surface-1);
     transform: translateX(-100%);
     transition:
       transform 150ms ease-in,
@@ -149,13 +150,14 @@ const { items, brandHref } = Astro.props;
     position: fixed;
     inset: 0;
     z-index: var(--app-tray-z-scrim);
+    background: var(--freefall-bg-canvas);
     opacity: 0;
     transition: opacity 150ms ease-in;
     cursor: pointer;
   }
   .app-tray:has(#app-tray-toggle:checked) .scrim {
     display: block;
-    opacity: 1;
+    opacity: 0.6;
     transition: opacity 200ms ease-out;
   }
 

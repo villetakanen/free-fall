@@ -107,11 +107,19 @@ Component stylesheets (`hamburger-button.css`, `tray-button.css`, `tray-link-gro
 
 **Phases** (each phase is one PR, independently shippable):
 
-1. **Delete dead code.** Remove `app-shell.css` (targets classes no component renders) and its `@import` from `base.css`. Update e2e tests and specs that reference its class names.
+1. **Delete dead code.** Remove `app-shell.css` (targets classes no component renders) and its `@import` from `base.css`. Update e2e tests that reference its class names.
+   - Spec updates (same-commit): `app-shell/spec.md` (remove `app-shell.css` from file table, replace `.app-shell__body`/`.app-shell__content` class names in HTML examples and DoD), `content-grid/spec.md` (replace `app-shell.css` and `.app-shell__content` references with actual container declaration location).
+
 2. **Inline component styles.** Migrate `hamburger-button.css`, `tray-button.css`, `tray-link-group.css`, `app-bar.css` into their Astro components. Flatten BEM class names. One component per commit.
+   - Spec updates (same-commit, per component): `app-bar/spec.md` (remove `app-bar.css` from file table, flatten BEM class names in integration section), `hamburger-button/spec.md` (remove `hamburger-button.css` from file table), `tray-button/spec.md` (remove `tray-button.css` from file table), `tray-link-group/spec.md` (remove `tray-link-group.css` from file table).
+
 3. **Scope element styles.** Move `pre.css` and `em.css` into `.freefall-prose` in `typography.css`.
+   - Spec updates (same-commit): `typography/spec.md` (document `pre` and `em` styling as scoped under `.freefall-prose`).
+
 4. **Reclassify `surface.css` as Layout Primitive.** Change selector to `main > .surface`, keep in `styles/`, ensure `base.css` imports it with other Layer 2 files.
+
 5. **Delete TS token layer.** Remove `tokens/` directory, `index.ts` barrel, and rewrite design-system-docs token pages.
+   - Spec updates (same-commit): `design-system/spec.md` (remove "Token duality" from Architecture, update layer table, remove TS sync guardrail), `design-tokens/spec.md` (remove TS file references, remove "Token duality holds" scenario, remove CSS↔TS sync guardrails), `typography/spec.md` (remove `typography.ts` from file table, remove TS sync guardrails), `content-grid/spec.md` (remove `content-grid.ts` references, token duality section, barrel export from DoD).
 
 **Verification:** Each phase must pass `pnpm typecheck && pnpm lint && pnpm test && pnpm test:e2e` plus manual visual inspection of both apps before merging.
 

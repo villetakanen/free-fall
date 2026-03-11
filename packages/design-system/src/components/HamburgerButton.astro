@@ -11,13 +11,106 @@ const { id = "hamburger-toggle" } = Astro.props;
 ---
 
 <div class="hamburger-btn">
-    <input type="checkbox" id={id} class="hamburger-btn__toggle" />
+    <input type="checkbox" id={id} class="toggle" />
 
-    <label for={id} class="hamburger-btn__label" aria-label="Toggle menu">
-        <div class="hamburger-btn__bars" aria-hidden="true">
-            <span class="hamburger-btn__bar hamburger-btn__bar--top"></span>
-            <span class="hamburger-btn__bar hamburger-btn__bar--middle"></span>
-            <span class="hamburger-btn__bar hamburger-btn__bar--bottom"></span>
+    <label for={id} class="target" aria-label="Toggle menu">
+        <div class="bars" aria-hidden="true">
+            <span class="bar top"></span>
+            <span class="bar middle"></span>
+            <span class="bar bottom"></span>
         </div>
     </label>
 </div>
+
+<style>
+  .hamburger-btn {
+    --hamburger-size: calc(6 * var(--freefall-space-1));
+    --hamburger-bar-width: calc(2.25 * var(--freefall-space-1));
+    --hamburger-bar-height: calc(0.25 * var(--freefall-space-1));
+    --hamburger-bar-gap: calc(0.5 * var(--freefall-space-1));
+    --hamburger-transition: 270ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    position: relative;
+    display: inline-flex;
+  }
+
+  .toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--hamburger-size);
+    height: var(--hamburger-size);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color var(--hamburger-transition);
+  }
+
+  .target:hover {
+    background: var(--freefall-action-hover);
+  }
+
+  .bars {
+    position: relative;
+    width: var(--hamburger-bar-width);
+    height: calc(
+      (var(--hamburger-bar-height) * 3) + (var(--hamburger-bar-gap) * 2)
+    );
+  }
+
+  .bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: var(--hamburger-bar-height);
+    background-color: var(--freefall-text-body);
+    border-radius: 0;
+    transition:
+      transform var(--hamburger-transition),
+      opacity var(--hamburger-transition),
+      background-color var(--hamburger-transition);
+  }
+
+  .top {
+    top: 0;
+    transform-origin: center;
+  }
+
+  .middle {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: right center;
+  }
+
+  .bottom {
+    bottom: 0;
+    transform-origin: center;
+  }
+
+  /* Animated :checked state ("X" cross) */
+
+  .hamburger-btn:has(.toggle:checked) .middle {
+    transform: translateY(-50%) scaleX(0.15);
+    background-color: var(--freefall-color-accent-500);
+  }
+
+  .hamburger-btn:has(.toggle:checked) .top {
+    transform: translateY(
+        calc(var(--hamburger-bar-height) + var(--hamburger-bar-gap))
+      )
+      skewY(45deg) scaleY(1.4142);
+  }
+
+  .hamburger-btn:has(.toggle:checked) .bottom {
+    transform: translateY(
+        calc((var(--hamburger-bar-height) + var(--hamburger-bar-gap)) * -1)
+      )
+      skewY(-45deg) scaleY(1.4142);
+  }
+</style>

@@ -55,12 +55,11 @@ The default `<slot />` renders inside a flex container with `margin-left: auto`,
 
 | File | Contents |
 |---|---|
-| `src/components/AppBar.astro` | Astro component — `<header>` with title and trailing action slot |
-| `src/styles/app-bar.css` | Flex layout, dimensions, transparent background, slot alignment |
+| `src/components/AppBar.astro` | Astro component — `<header>` with title and trailing action slot. Co-located `<style>` block owns flex layout, dimensions, transparent background, slot alignment. |
 
 **Integration with AppShell:**
 
-The AppShell replaces its inline `<header class="app-shell__bar">` with `<AppBar title={title}>`. The top bar styles move from `app-shell.css` to `app-bar.css`. The `app-shell__bar` and `app-shell__title` CSS rules are removed.
+The AppShell renders `<AppBar title={title}>`. The top bar styles are co-located in AppBar's scoped `<style>` block.
 
 **Dependencies:**
 
@@ -87,7 +86,7 @@ The AppShell replaces its inline `<header class="app-shell__bar">` with `<AppBar
 - [ ] Slot container is a flex row with `align-items: center` and `gap: var(--freefall-space-1)`
 - [ ] All dimensions use `calc()` with `--freefall-space-1` — no raw px/rem
 - [ ] `AppShell.astro` uses `AppBar` instead of inline header markup
-- [ ] `app-shell.css` no longer contains top bar styles (moved to `app-bar.css`)
+- [ ] Top bar styles are co-located in AppBar's scoped `<style>` block
 - [ ] Design system demo app has an `/app-bar/` page demonstrating the title prop and slotted actions
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 

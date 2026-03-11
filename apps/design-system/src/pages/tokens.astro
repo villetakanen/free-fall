@@ -1,6 +1,34 @@
 ---
-import { colors, spacing } from "@free-fall/design-system";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const colors = {
+  primary: {
+    50: "hsl(210, 36%, 96%)",
+    100: "hsl(210, 37%, 88%)",
+    200: "hsl(210, 32%, 78%)",
+    300: "hsl(211, 23%, 44%)",
+    400: "hsl(212, 26%, 36%)",
+    500: "hsl(213, 29%, 28%)",
+    600: "hsl(213, 32%, 22%)",
+    700: "hsl(214, 34%, 16%)",
+    800: "hsl(216, 36%, 11%)",
+    900: "hsl(219, 41%, 7%)",
+    950: "hsl(220, 43%, 3%)",
+  },
+  accent: {
+    400: "hsl(64, 80%, 54%)",
+    500: "hsl(64, 90%, 45%)",
+    900: "hsl(64, 70%, 15%)",
+  },
+} as const;
+
+const spacing = {
+  1: "0.5rem",
+  2: "1rem",
+  4: "2rem",
+  8: "4rem",
+  16: "8rem",
+} as const;
 
 const primarySteps = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,

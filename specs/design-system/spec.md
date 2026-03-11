@@ -12,8 +12,7 @@ The design system is the single source of styling truth for FREE//FALL. It provi
 
 | Layer | Format | Purpose |
 |---|---|---|
-| Tokens | TypeScript constants | Breakpoints, colors, spacing — importable by both TS and Astro |
-| Styles | Plain CSS files | Global resets, base styles, component styles — mobile-first |
+| Styles | Plain CSS files | Tokens (custom properties), resets, base styles, component styles — mobile-first |
 | Components | `.astro` files | Composition wrappers only when plain HTML + CSS is insufficient |
 
 No build step. Source is distributed directly to consuming apps via Vite aliases.
@@ -47,7 +46,6 @@ import "@free-fall/design-system/styles/base.css";
 ---
 // Page — import components where used
 import Heading from "@free-fall/design-system/components/Heading.astro";
-import { breakpoints } from "@free-fall/design-system";
 ---
 ```
 
@@ -80,13 +78,6 @@ A modern preflight inspired by Tailwind/modern-normalize, applied globally via `
 
 The preflight lives in `src/styles/preflight.css` and is imported first in `base.css`.
 
-**Token duality:**
-
-Design tokens exist in two forms that must stay in sync:
-
-- **TypeScript** (`src/tokens/*.ts`) — for use in Astro frontmatter, tests, and build-time logic
-- **CSS custom properties** (`src/styles/*.css`) — for use in stylesheets and inline styles
-
 ### Anti-Patterns
 
 - **No CSS frameworks** — The design system owns all styling. No Tailwind, Bootstrap, or similar.
@@ -111,7 +102,6 @@ Design tokens exist in two forms that must stay in sync:
 ### Regression Guardrails
 
 - Adding a new export to `packages/design-system` without a demo page in `apps/design-system` is a failing review
-- Token values in TypeScript and CSS custom properties must match
 - Dependency direction is one-way: apps → `packages/design-system`, never the reverse
 
 ### Architecture
@@ -151,9 +141,9 @@ Scenario: New Astro component added
   Then: Vite alias resolves it, the demo app renders it, and no JS is shipped
 
 Scenario: Token added
-  Given: A new token is added to `packages/design-system/src/tokens/`
-  When: It is exported from the barrel (`src/index.ts`) and has a CSS counterpart
-  Then: Both values match, a unit test covers the token, and the demo app displays it
+  Given: A new CSS custom property is added to `packages/design-system/src/styles/tokens.css`
+  When: The demo app is built
+  Then: The demo app displays the new token
 
 Scenario: Demo app serves as living reference
   Given: The demo app is built
