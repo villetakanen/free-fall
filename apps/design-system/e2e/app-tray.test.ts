@@ -8,7 +8,7 @@ test.describe("AppTray Component interactions", () => {
     await page.goto("/app-tray/");
 
     const tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator(".hamburger-btn__label");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
     const scrim = page.locator(".app-tray .scrim");
 
     // Wait for page to settle
@@ -51,8 +51,8 @@ test.describe("AppTray Component interactions", () => {
     await page.waitForLoadState("networkidle");
 
     const tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator(".hamburger-btn__label");
-    const testButtonLabel = page.locator(".tray-button__label").first();
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const testButtonLabel = page.locator(".tray-button .label").first();
 
     // Default: Rail visible, compact
     await expect(tray).toBeInViewport();
@@ -89,7 +89,7 @@ test.describe("AppTray Component interactions", () => {
     await page.waitForLoadState("networkidle");
 
     const tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator(".hamburger-btn__label");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
     const main = page.locator("main");
 
     // Default: Rail visible
@@ -122,7 +122,7 @@ test.describe("AppTray Component interactions", () => {
     await page.waitForLoadState("networkidle");
 
     const _tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator(".hamburger-btn__label");
+    const hamburger = page.locator('label[aria-label="Toggle menu"]');
 
     // Open tray
     await hamburger.click();

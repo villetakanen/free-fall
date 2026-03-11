@@ -30,9 +30,8 @@ Similar to `TrayButton`, the visibility of `TrayLinkGroup` is strictly driven by
 
 | File | Contents |
 |---|---|
-| `packages/design-system/src/components/TrayLinkGroup.astro` | Renders a semantic nested list structure (`<ul>`, `<li>`) that houses the secondary links. |
-| `packages/design-system/src/components/TrayLink.astro` | Individual link component within the group, providing semantic `<a>` tags and localized text truncation. |
-| `packages/design-system/src/styles/tray-link-group.css` | Handles visibility via `@container` query logic, hierarchical typography rules, indentation, and interaction states. |
+| `packages/design-system/src/components/TrayLinkGroup.astro` | Renders a semantic nested list structure (`<ul>`, `<li>`) that houses the secondary links. Co-located `<style>` block owns visibility via `@container` query logic, indentation. |
+| `packages/design-system/src/components/TrayLink.astro` | Individual link component within the group, providing semantic `<a>` tags and localized text truncation. Co-located `<style>` block owns hierarchical typography rules and interaction states. |
 
 ### Anti-Patterns
 

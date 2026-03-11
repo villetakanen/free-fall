@@ -14,6 +14,50 @@ const { href, label, active } = Astro.props;
     href={href}
     aria-current={active ? "page" : undefined}
   >
-    <span class="tray-link__label">{label}</span>
+    <span class="label">{label}</span>
   </a>
 </li>
+
+<style>
+  .tray-link-item {
+    display: flex;
+    min-width: 0;
+  }
+
+  .tray-link {
+    display: flex;
+    align-items: center;
+    padding-block: var(--freefall-space-1);
+    padding-inline: calc(1.5 * var(--freefall-space-1));
+    margin-block: calc(0.25 * var(--freefall-space-1));
+    color: var(--freefall-text-display);
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    width: 100%;
+  }
+
+  .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.875rem;
+  }
+
+  .tray-link:hover {
+    background: var(--freefall-action-hover);
+  }
+
+  .tray-link:focus-visible {
+    outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-alert-base);
+    outline-offset: calc(var(--freefall-space-1) / -4);
+  }
+
+  .tray-link[aria-current="page"] {
+    color: var(--freefall-text-display);
+    background: var(--freefall-bg-surface-2);
+  }
+</style>

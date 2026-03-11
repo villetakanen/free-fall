@@ -76,7 +76,7 @@ test.describe("TrayLinkGroup Component", () => {
     );
     // The last link has a very long label
     const longLink = openContainer.locator(".tray-link").last();
-    const label = longLink.locator(".tray-link__label");
+    const label = longLink.locator(".label");
 
     // Check that no wrapping occurs (white-space: nowrap)
     const cssWhiteSpace = await label.evaluate((el) => {

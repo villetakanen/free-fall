@@ -9,3 +9,20 @@ const { ariaLabel = "Secondary Navigation" } = Astro.props;
 <ul class="tray-link-group" aria-label={ariaLabel}>
     <slot />
 </ul>
+
+<style>
+  .tray-link-group {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-inline-start: calc(6 * var(--freefall-space-1) + var(--freefall-space-2));
+  }
+
+  @container (max-width: 64px) {
+    .tray-link-group {
+      display: none;
+    }
+  }
+</style>
