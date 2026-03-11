@@ -2,11 +2,7 @@
   "name": "@free-fall/design-system",
   "private": true,
   "type": "module",
-  "scripts": {
-    "test": "vitest run"
-  },
   "exports": {
-    ".": "./src/index.ts",
     "./*": "./src/*"
   },
   "devDependencies": {

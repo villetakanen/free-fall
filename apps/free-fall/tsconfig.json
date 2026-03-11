@@ -10,8 +10,7 @@
     "jsx": "preserve",
     "jsxImportSource": "svelte",
     "paths": {
-      "@free-fall/design-system/*": ["../../packages/design-system/src/*"],
-      "@free-fall/design-system": ["../../packages/design-system/src/index.ts"]
+      "@free-fall/design-system/*": ["../../packages/design-system/src/*"]
     }
   },
   "include": ["src/**/*", "astro.config.ts"]

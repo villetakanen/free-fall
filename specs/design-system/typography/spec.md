@@ -29,7 +29,6 @@ Parent spec: `specs/design-system/spec.md`
 | File | Contents |
 |---|---|
 | `src/styles/typography.css` | Font-family custom properties and typographic base styles |
-| `src/tokens/typography.ts` | TypeScript constants for font families and weights |
 | `src/components/FontLinks.astro` | `<link>` tags for Google Fonts preconnect + stylesheet |
 
 **FontLinks component:**
@@ -130,8 +129,6 @@ Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` â€
 - [ ] `src/styles/typography.css` implements the detailed editorial scale utility classes (`.text-chapter`, `.text-section`, etc.) and the `.freefall-prose` comprehensive scope styles.
 - [ ] `src/styles/typography.css` adheres strictly to baseline rhythm (`line-height` evaluates to multiples of `var(--freefall-space-1)`).
 - [ ] `src/styles/base.css` imports `typography.css`
-- [ ] `src/tokens/typography.ts` exports font family constants and the mapped editorial scale values.
-- [ ] Unit tests verify TypeScript token values mapped to the editorial hierarchy.
 - [ ] Both apps use `FontLinks` in their layouts
 - [ ] Demo app has a typography reference page showing both fonts, the editorial scales, and a mock `.freefall-prose` Markdown output.
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
@@ -139,8 +136,6 @@ Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` â€
 
 ### Regression Guardrails
 
-- Font family values in CSS and TypeScript must match
-- CSS utility modifier token sizes must strictly map back to TypeScript typography size constants.
 - Line heights across all typographic nodes must always mathematically equate to a multiple of `8px` (`--freefall-space-1`).
 
 ### Scenarios

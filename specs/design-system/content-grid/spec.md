@@ -89,17 +89,12 @@ At the base tier, `.content-side` and `.content-wide` items stay in the main col
 
 Gutters and gap reuse existing spacing tokens (`--freefall-space-2` and `--freefall-space-4`). No new spacing tokens needed. The gutter size is managed via a private custom property `--_gutter` on `.content-grid` that switches from `space-2` to `space-4` at 40rem container width.
 
-**Token duality:**
-
-CSS custom properties in `tokens.css`. TypeScript constants in `src/tokens/content-grid.ts`. Values must stay in sync.
-
 **File locations:**
 
 | File | Contents |
 |---|---|
 | `src/styles/content-grid.css` | Grid layout, container query tiers, placement classes |
 | `src/styles/tokens.css` | Content grid dimension tokens (`--freefall-content-*`) |
-| `src/tokens/content-grid.ts` | TypeScript constants mirroring the CSS tokens |
 | `src/components/AppShell.astro` | Container declaration on `<main>` (scoped styles) |
 
 `content-grid.css` is imported via `base.css`.
@@ -141,9 +136,6 @@ The design system demo app gets a `content-grid` page (`apps/design-system/src/p
 ### Definition of Done
 
 - [ ] `src/styles/tokens.css` defines `--freefall-content-main`, `--freefall-content-side-wide`, `--freefall-content-side-narrow`
-- [ ] `src/tokens/content-grid.ts` exports TypeScript constants matching the CSS tokens
-- [ ] `src/index.ts` barrel exports the content-grid tokens
-- [ ] Unit tests verify TypeScript token values
 - [ ] `src/styles/content-grid.css` implements the three-tier responsive grid with container queries
 - [ ] Placement classes (`.content-side`, `.content-wide`) work in all three tiers
 - [ ] At base tier, side-targeted content falls back to the main column without overflow or hidden content
@@ -162,7 +154,6 @@ The design system demo app gets a `content-grid` page (`apps/design-system/src/p
 - Grid gutters must use spacing tokens, never raw values
 - Gutters must remain wider than the browser scrollbar (~15–17px); even the narrow gutter `--freefall-space-2` (1rem / 16px) satisfies this
 - Container query breakpoints must account for gutters and gap — no content clipping at tier boundaries
-- Token values in CSS and TypeScript must match
 
 ### Scenarios
 
