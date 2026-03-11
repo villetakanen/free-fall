@@ -105,10 +105,14 @@ The `.freefall-prose` scope automatically:
 - Enforces an ergonomic `max-width: 65ch` measure to prevent unreadable widescreen text walls.
 - Applies the correct vertical rhythm (margins that map to the `8px` base grid) between paragraphs and headings.
 - Automatically styles all naked `<h1>`, `<h2>`, and `<h3>` tags to the `.text-chapter`, `.text-section`, and `.text-subsection` scales respectively.
+- Styles `<pre>` with padding and a dark background (`--freefall-color-primary-700`) within `main`.
+- Styles `<em>` with high-emphasis color (`--freefall-text-high`) and semi-bold weight within `main`.
 - Deep-styles TTRPG-specific nested structures natively:
   - **Lists**: Strictly indented padding for `<ul>` and `<ol>`, with unified vertical spacing for complex nested rules exceptions.
   - **Tables**: Robust zebra striping, distinct header bottom-borders, and cell padding for readability in data-dense stat blocks and roll tables.
   - **Blockquotes**: Left-indented, italicized rendering for narrative flavor text, visually distinct from mechanical rules text.
+
+Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` — bare elements outside content areas receive no special styling. This prevents design system styles from leaking into non-content UI areas.
 
 ### Anti-Patterns
 

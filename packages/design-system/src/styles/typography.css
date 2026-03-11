@@ -234,3 +234,14 @@ dfn {
   border-bottom: solid 2px var(--freefall-color-accent-500);
   font-style: normal;
 }
+
+/* Prose-scoped element styles */
+main pre {
+  padding: var(--freefall-space-1);
+  background: var(--freefall-color-primary-700);
+}
+
+main em {
+  color: var(--freefall-text-high);
+  font-weight: 600;
+}
