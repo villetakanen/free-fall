@@ -1,0 +1,115 @@
+---
+interface Props {
+  type: "body" | "mind" | "ghost";
+  attribute?: string;
+  value: number | null;
+  disabled?: boolean;
+  bound?: boolean;
+}
+
+const { type, attribute, value, disabled, bound } = Astro.props;
+
+const isDisabled = disabled || value === null;
+const isBound = !isDisabled && bound;
+const displayLabel = attribute
+  ? attribute.slice(0, 5).toUpperCase()
+  : undefined;
+---
+
+<span
+  class={`stat-circle-wrap ${attribute ? "stat-circle-wrap--labeled" : ""}`}
+>
+  <span
+    class={`stat-circle ${isDisabled ? "stat-circle--disabled" : `stat-circle--${type}`} ${isBound ? "stat-circle--bound" : ""}`}
+    title={attribute ?? type}
+  >
+    <span class="stat-circle__value">{isDisabled ? "\u2205" : value}</span>
+  </span>
+  {
+    displayLabel && (
+      <span class="stat-circle__label text-ui-small">{displayLabel}</span>
+    )
+  }
+</span>
+
+<style>
+  .stat-circle-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .stat-circle-wrap--labeled {
+    gap: calc(0.5 * var(--freefall-space-1));
+  }
+
+  .stat-circle {
+    --_stat-circle-size: var(--freefall-stat-circle-size, 5);
+    --_sc-bg: var(--freefall-color-primary-700);
+    --_sc-fg: var(--freefall-color-primary-500);
+    --_sc-text: var(--freefall-color-primary-50);
+    --_sc-slice: 75%;
+
+    width: calc(var(--_stat-circle-size) * var(--freefall-space-1));
+    height: calc(var(--_stat-circle-size) * var(--freefall-space-1));
+    border-radius: 9999px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+    background: linear-gradient(
+      150deg,
+      var(--_sc-bg) var(--_sc-slice),
+      var(--_sc-fg) var(--_sc-slice)
+    );
+    color: var(--_sc-text);
+  }
+
+  .stat-circle__value {
+    font-size: calc(var(--_stat-circle-size) * 0.55 * var(--freefall-space-1));
+    font-weight: 700;
+    color: var(--freefall-color-primary-50);
+    text-shadow:
+      0 2px 4px var(--freefall-color-primary-800),
+      0 4px 8px var(--freefall-color-primary-800),
+      0 8px 16px var(--freefall-color-primary-800);
+  }
+
+  .stat-circle__label {
+    color: var(--freefall-text-muted);
+  }
+
+  /* ── Type colors ───────────────────────────────── */
+
+  .stat-circle--body {
+    --_sc-bg: var(--freefall-attr-body-bg);
+    --_sc-fg: var(--freefall-attr-body);
+  }
+
+  .stat-circle--mind {
+    --_sc-bg: var(--freefall-attr-mind-bg);
+    --_sc-fg: var(--freefall-attr-mind);
+  }
+
+  .stat-circle--ghost {
+    --_sc-bg: var(--freefall-attr-ghost-bg);
+    --_sc-fg: var(--freefall-attr-ghost);
+  }
+
+  .stat-circle--disabled {
+    --_sc-bg: var(--freefall-color-primary-700);
+    --_sc-fg: var(--freefall-color-primary-500);
+    --_sc-text: var(--freefall-color-primary-200);
+  }
+
+  /* ── Bound: solid foreground color ─────────────── */
+
+  .stat-circle--bound {
+    background: var(--_sc-fg);
+    color: var(--freefall-color-primary-950);
+    box-shadow: 0 0 calc(var(--freefall-space-1)) rgba(255, 255, 255, 0.3);
+  }
+</style>
