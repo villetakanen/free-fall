@@ -1,0 +1,143 @@
+---
+import StatCircle from "@free-fall/design-system/components/StatCircle.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Stat Circle — FREE//FALL Design System">
+  <Fragment slot="head">
+    <style>
+      .demo-section {
+        margin-bottom: calc(4 * var(--freefall-space-1));
+      }
+      .demo-label {
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-bottom: var(--freefall-space-2);
+      }
+      .circle-row {
+        display: flex;
+        gap: calc(2 * var(--freefall-space-1));
+        align-items: center;
+        margin-top: var(--freefall-space-2);
+      }
+      .circle-row-label {
+        font-size: var(--freefall-text-body-small);
+        color: var(--freefall-text-muted);
+        min-width: calc(16 * var(--freefall-space-1));
+      }
+      .demo-surface {
+        display: flex;
+        gap: calc(2 * var(--freefall-space-1));
+        align-items: center;
+        padding: calc(2 * var(--freefall-space-1));
+        border-radius: calc(var(--freefall-space-1));
+        margin-top: var(--freefall-space-2);
+      }
+      .demo-surface--canvas {
+        background: var(--freefall-bg-canvas);
+      }
+      .demo-surface--surface-1 {
+        background: var(--freefall-bg-surface-1);
+      }
+      .demo-surface--surface-2 {
+        background: var(--freefall-bg-surface-2);
+      }
+    </style>
+  </Fragment>
+
+  <h1>Stat Circle</h1>
+  <p>
+    Compact circle indicator for character attributes (Body, Mind, Ghost).
+    Used in equipment cards and anywhere binding costs need to be shown at a glance.
+    Accepts an <code>attribute</code> (body, mind, ghost) and a numeric <code>value</code>.
+  </p>
+
+  <div class="demo-section">
+    <h2>Attributes</h2>
+    <p class="demo-label">Each attribute has a distinct color from the attribute token palette</p>
+
+    <div class="circle-row">
+      <span class="circle-row-label">Body (Flare Orange)</span>
+      <StatCircle attribute="body" value={1} />
+      <StatCircle attribute="body" value={2} />
+      <StatCircle attribute="body" value={3} />
+    </div>
+
+    <div class="circle-row">
+      <span class="circle-row-label">Mind (Tritium Green)</span>
+      <StatCircle attribute="mind" value={1} />
+      <StatCircle attribute="mind" value={2} />
+      <StatCircle attribute="mind" value={3} />
+    </div>
+
+    <div class="circle-row">
+      <span class="circle-row-label">Ghost (Isotope Neon)</span>
+      <StatCircle attribute="ghost" value={1} />
+      <StatCircle attribute="ghost" value={2} />
+      <StatCircle attribute="ghost" value={3} />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Empty State (value = 0)</h2>
+    <p class="demo-label">Zero-cost circles render at 0.35 opacity with no number</p>
+    <div class="circle-row">
+      <StatCircle attribute="body" value={0} />
+      <StatCircle attribute="mind" value={0} />
+      <StatCircle attribute="ghost" value={0} />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Mixed Binding Costs</h2>
+    <p class="demo-label">Typical gear binding patterns — filled and empty together</p>
+
+    <div class="circle-row">
+      <span class="circle-row-label">Body 1 only</span>
+      <StatCircle attribute="body" value={1} />
+      <StatCircle attribute="mind" value={0} />
+      <StatCircle attribute="ghost" value={0} />
+    </div>
+
+    <div class="circle-row">
+      <span class="circle-row-label">Ghost 3 only</span>
+      <StatCircle attribute="body" value={0} />
+      <StatCircle attribute="mind" value={0} />
+      <StatCircle attribute="ghost" value={3} />
+    </div>
+
+    <div class="circle-row">
+      <span class="circle-row-label">All three</span>
+      <StatCircle attribute="body" value={2} />
+      <StatCircle attribute="mind" value={1} />
+      <StatCircle attribute="ghost" value={1} />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>On Different Surfaces</h2>
+    <p class="demo-label">Contrast check across background levels</p>
+
+    <div class="demo-surface demo-surface--canvas">
+      <StatCircle attribute="body" value={2} />
+      <StatCircle attribute="mind" value={1} />
+      <StatCircle attribute="ghost" value={3} />
+      <span class="circle-row-label">bg-canvas</span>
+    </div>
+
+    <div class="demo-surface demo-surface--surface-1">
+      <StatCircle attribute="body" value={2} />
+      <StatCircle attribute="mind" value={1} />
+      <StatCircle attribute="ghost" value={3} />
+      <span class="circle-row-label">bg-surface-1</span>
+    </div>
+
+    <div class="demo-surface demo-surface--surface-2">
+      <StatCircle attribute="body" value={2} />
+      <StatCircle attribute="mind" value={1} />
+      <StatCircle attribute="ghost" value={3} />
+      <span class="circle-row-label">bg-surface-2</span>
+    </div>
+  </div>
+</BaseLayout>

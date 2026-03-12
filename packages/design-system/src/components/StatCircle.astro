@@ -1,0 +1,71 @@
+---
+interface Props {
+  attribute: "body" | "mind" | "ghost";
+  value: number;
+}
+
+const { attribute, value } = Astro.props;
+
+const config: Record<string, { label: string; className: string }> = {
+  body: { label: "B", className: "stat-circle--body" },
+  mind: { label: "M", className: "stat-circle--mind" },
+  ghost: { label: "G", className: "stat-circle--ghost" },
+};
+
+const { label, className } = config[attribute];
+const empty = value === 0;
+---
+
+<span
+  class={`stat-circle ${className} ${empty ? "stat-circle--empty" : ""}`}
+  title={attribute}
+>
+  <span class="stat-circle__value">{value > 0 ? value : ""}</span>
+  <span class="stat-circle__label">{label}</span>
+</span>
+
+<style>
+  .stat-circle {
+    width: calc(5 * var(--freefall-space-1));
+    height: calc(5 * var(--freefall-space-1));
+    border-radius: 9999px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: calc(var(--freefall-space-1) / 4) solid
+      color-mix(in srgb, transparent, white 20%);
+    flex-shrink: 0;
+  }
+
+  .stat-circle__value {
+    font-size: calc(2 * var(--freefall-space-1));
+    font-weight: 700;
+  }
+
+  .stat-circle__label {
+    font-size: calc(1.25 * var(--freefall-space-1));
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .stat-circle--empty {
+    opacity: 0.35;
+  }
+
+  .stat-circle--body {
+    background: var(--freefall-attr-body);
+    color: var(--freefall-color-primary-950);
+  }
+
+  .stat-circle--mind {
+    background: var(--freefall-attr-mind);
+    color: var(--freefall-color-primary-950);
+  }
+
+  .stat-circle--ghost {
+    background: var(--freefall-attr-ghost);
+    color: var(--freefall-color-primary-950);
+  }
+</style>

@@ -1,4 +1,6 @@
 ---
+import StatCircle from "./StatCircle.astro";
+
 interface Binding {
   body: number;
   mind: number;
@@ -57,27 +59,6 @@ interface Props {
 
 const { data, image } = Astro.props;
 
-const bindingEntries = [
-  {
-    key: "body",
-    label: "B",
-    value: data.binding.body,
-    className: "binding--body",
-  },
-  {
-    key: "mind",
-    label: "M",
-    value: data.binding.mind,
-    className: "binding--mind",
-  },
-  {
-    key: "ghost",
-    label: "G",
-    value: data.binding.ghost,
-    className: "binding--ghost",
-  },
-];
-
 const categoryIcon: Record<string, string> = {
   weapon: "swords",
   armor: "shield",
@@ -103,17 +84,9 @@ const categoryIcon: Record<string, string> = {
       )}
     </div>
     <div class="binding-row">
-      {bindingEntries.map((entry) => (
-        <span
-          class={`binding-circle ${entry.className} ${entry.value === 0 ? "binding--empty" : ""}`}
-          title={entry.key}
-        >
-          <span class="binding-circle__value">
-            {entry.value > 0 ? entry.value : ""}
-          </span>
-          <span class="binding-circle__label">{entry.label}</span>
-        </span>
-      ))}
+      <StatCircle attribute="body" value={data.binding.body} />
+      <StatCircle attribute="mind" value={data.binding.mind} />
+      <StatCircle attribute="ghost" value={data.binding.ghost} />
     </div>
   </div>
 
@@ -208,49 +181,6 @@ const categoryIcon: Record<string, string> = {
     display: flex;
     justify-content: center;
     gap: calc(1.5 * var(--freefall-space-1));
-  }
-
-  .binding-circle {
-    width: calc(5 * var(--freefall-space-1));
-    height: calc(5 * var(--freefall-space-1));
-    border-radius: 9999px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    border: calc(var(--freefall-space-1) / 4) solid
-      color-mix(in srgb, transparent, white 20%);
-  }
-
-  .binding-circle__value {
-    font-size: calc(2 * var(--freefall-space-1));
-    font-weight: 700;
-  }
-
-  .binding-circle__label {
-    font-size: calc(1.25 * var(--freefall-space-1));
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-
-  .binding--empty {
-    opacity: 0.35;
-  }
-
-  .binding--body {
-    background: var(--freefall-attr-body);
-    color: var(--freefall-color-primary-950);
-  }
-
-  .binding--mind {
-    background: var(--freefall-attr-mind);
-    color: var(--freefall-color-primary-950);
-  }
-
-  .binding--ghost {
-    background: var(--freefall-attr-ghost);
-    color: var(--freefall-color-primary-950);
   }
 
   /* ── Title overlay ────────────────────────────── */
