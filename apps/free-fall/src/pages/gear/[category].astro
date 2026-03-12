@@ -197,6 +197,10 @@ const rendered = await Promise.all(
     color: var(--freefall-text-body);
   }
 
+  .modal-prose > h2:first-child {
+    margin-top: 0;
+  }
+
   /* ── Desktop: side-by-side ────────────────────── */
 
   @media (min-width: 780px) {
@@ -210,6 +214,10 @@ const rendered = await Promise.all(
       flex: 1;
       min-width: 0;
       color: var(--freefall-text-body);
+    }
+
+    .gear-item__description > h2:first-child {
+      margin-top: 0;
     }
 
     .expand-btn {
