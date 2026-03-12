@@ -34,6 +34,20 @@
   --freefall-color-accent-900: hsl(64, 70%, 15%);
 
   /* =========================================
+     BASE PALETTE: FLARE ORANGE (Body)
+     ========================================= */
+
+  --freefall-color-body-400: hsl(18, 90%, 55%);
+  --freefall-color-body-900: hsl(18, 60%, 15%);
+
+  /* =========================================
+     BASE PALETTE: TRITIUM GREEN (Mind)
+     ========================================= */
+
+  --freefall-color-mind-400: hsl(158, 85%, 65%);
+  --freefall-color-mind-900: hsl(158, 60%, 15%);
+
+  /* =========================================
      BREAKPOINTS
      ========================================= */
 
@@ -95,6 +109,14 @@
   /* Alerts & Emphasis */
   --freefall-alert-base: var(--freefall-color-accent-400);
   --freefall-alert-bg: var(--freefall-color-accent-900);
+
+  /* Attribute Colors */
+  --freefall-attr-body: var(--freefall-color-body-400);
+  --freefall-attr-body-bg: var(--freefall-color-body-900);
+  --freefall-attr-mind: var(--freefall-color-mind-400);
+  --freefall-attr-mind-bg: var(--freefall-color-mind-900);
+  --freefall-attr-ghost: var(--freefall-color-accent-400);
+  --freefall-attr-ghost-bg: var(--freefall-color-accent-900);
 
   /* Astro overrides */
   --astro-code-background: var(--freefall-color-primary-800);

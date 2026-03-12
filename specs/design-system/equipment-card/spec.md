@@ -45,7 +45,7 @@ All internal spacing derives from `--freefall-space-1`.
 
 3. **Binding cost overlay** — Row of 3 circles (Body, Mind, Ghost) pinned to the bottom of the image zone via `position: absolute`. **All three circles are always rendered.** Each circle:
    - Size: `calc(5 * var(--freefall-space-1))` (2.5 rem diameter)
-   - Background: semantic color per type — Body: `--freefall-color-primary-600`, Mind: `--freefall-color-accent-400`, Ghost: `--freefall-color-primary-200`
+   - Background: semantic attribute tokens — Body: `--freefall-attr-body` (Flare Orange), Mind: `--freefall-attr-mind` (Tritium Green), Ghost: `--freefall-attr-ghost` (Isotope Neon)
    - Non-zero costs display the numeric value; zero-cost circles show the label only at reduced opacity (0.35)
    - Arranged left-to-right: Body → Mind → Ghost, centered horizontally
 

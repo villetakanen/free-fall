@@ -20,6 +20,14 @@ const colors = {
     500: "hsl(64, 90%, 45%)",
     900: "hsl(64, 70%, 15%)",
   },
+  body: {
+    400: "hsl(18, 90%, 55%)",
+    900: "hsl(18, 60%, 15%)",
+  },
+  mind: {
+    400: "hsl(158, 85%, 65%)",
+    900: "hsl(158, 60%, 15%)",
+  },
 } as const;
 
 const spacing = {
@@ -34,6 +42,7 @@ const primarySteps = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 ] as const;
 const accentSteps = [400, 500, 900] as const;
+const attrSteps = [400, 900] as const;
 
 const semanticTokens = [
   { name: "--freefall-bg-canvas", role: "Page background", ref: "primary-950" },
@@ -86,6 +95,36 @@ const semanticTokens = [
   {
     name: "--freefall-alert-bg",
     role: "Alert panel background",
+    ref: "accent-900",
+  },
+  {
+    name: "--freefall-attr-body",
+    role: "Body attribute foreground",
+    ref: "body-400",
+  },
+  {
+    name: "--freefall-attr-body-bg",
+    role: "Body attribute background",
+    ref: "body-900",
+  },
+  {
+    name: "--freefall-attr-mind",
+    role: "Mind attribute foreground",
+    ref: "mind-400",
+  },
+  {
+    name: "--freefall-attr-mind-bg",
+    role: "Mind attribute background",
+    ref: "mind-900",
+  },
+  {
+    name: "--freefall-attr-ghost",
+    role: "Ghost attribute foreground",
+    ref: "accent-400",
+  },
+  {
+    name: "--freefall-attr-ghost-bg",
+    role: "Ghost attribute background",
     ref: "accent-900",
   },
 ];
@@ -202,6 +241,42 @@ const semanticTokens = [
           <div class="swatch-label">
             <strong>{step}</strong>
             {colors.accent[step]}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2>Body Palette — Flare Orange</h2>
+  <div class="swatch-grid">
+    {
+      attrSteps.map((step) => (
+        <div class="swatch">
+          <div
+            class="swatch-color"
+            style={`background: var(--freefall-color-body-${step})`}
+          />
+          <div class="swatch-label">
+            <strong>{step}</strong>
+            {colors.body[step]}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2>Mind Palette — Tritium Green</h2>
+  <div class="swatch-grid">
+    {
+      attrSteps.map((step) => (
+        <div class="swatch">
+          <div
+            class="swatch-color"
+            style={`background: var(--freefall-color-mind-${step})`}
+          />
+          <div class="swatch-label">
+            <strong>{step}</strong>
+            {colors.mind[step]}
           </div>
         </div>
       ))
