@@ -43,11 +43,7 @@ All internal spacing derives from `--freefall-space-1`.
 
 2. **Title overlay** — Positioned at the top of the image zone via `position: absolute`. Title in `.text-ui` (bold) and optional nickname in `.text-ui-small`. Both use `--freefall-color-primary-50` with a 3-layer text shadow (2px, 4px, 8px blur at decreasing opacity) for legibility over any background. Both truncate with ellipsis on overflow.
 
-3. **Binding cost overlay** — Row of 3 circles (Body, Mind, Ghost) pinned to the bottom of the image zone via `position: absolute`. **All three circles are always rendered.** Each circle:
-   - Size: `calc(5 * var(--freefall-space-1))` (2.5 rem diameter)
-   - Background: semantic attribute tokens — Body: `--freefall-attr-body` (Flare Orange), Mind: `--freefall-attr-mind` (Tritium Green), Ghost: `--freefall-attr-ghost` (Isotope Neon)
-   - Non-zero costs display the numeric value; zero-cost circles show the label only at reduced opacity (0.35)
-   - Arranged left-to-right: Body → Mind → Ghost, centered horizontally
+3. **Binding cost overlay** — Row of 3 `StatCircle` components (Body, Mind, Ghost) pinned to the bottom of the image zone via `position: absolute`. **All three circles are always rendered.** Zero-cost bindings pass `null` as value (`value || null`), rendering the circle in disabled state (∅). Arranged left-to-right: Body → Mind → Ghost, centered horizontally. See `specs/design-system/stat-circle/spec.md` for circle rendering details.
 
 4. **Stats zone** — Remaining space, scrolls if overflow.
    - **Category stats row** (conditional per category):
@@ -77,7 +73,7 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 
 ### Dependencies
 
-- **Depends on:** Design tokens (`tokens.css`), typography classes (`typography.css`), gear Zod schema
+- **Depends on:** Design tokens (`tokens.css`), typography classes (`typography.css`), `StatCircle.astro` (binding cost display), gear Zod schema
 - **Depended on by:** Gear catalog pages (future card-grid view)
 
 ### Anti-Patterns
@@ -92,7 +88,7 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 ### Definition of Done
 
 - [ ] `EquipmentCard.astro` renders all 5 gear categories correctly (weapon, armor, augmentation, utility, vehicle)
-- [ ] All three binding circles (Body, Mind, Ghost) always render; zero-cost circles appear at reduced opacity
+- [ ] All three binding StatCircles (Body, Mind, Ghost) always render; zero-cost circles appear as disabled (∅)
 - [ ] Card dimensions maintain 5:7 ratio at all viewport widths (does not reflow — fixed size)
 - [ ] Fallback icon displays when no `image` prop is provided
 - [ ] `.text-ui-small` qualities list does not overflow the card (scrolls or truncates)
@@ -112,7 +108,7 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 Scenario: Weapon card
   Given: A gear item with category "weapon", binding { body: 1, mind: 0, ghost: 0 }, DV 2, harm_type "Physical", qualities ["Range (Medium)", "Burst Fire"]
   When: Rendered as EquipmentCard
-  Then: Three binding circles are shown: Body (1) at full opacity, Mind and Ghost empty at 0.35 opacity
+  Then: Three StatCircles are shown: Body (1) active, Mind and Ghost disabled (∅ in cobalt colors)
   And: Title and nickname overlay the image zone in color-primary-50 with text shadow
   And: Stats zone shows "DV 2 · Physical"
   And: Two quality bullets are listed

@@ -6,6 +6,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Stat Circle — FREE//FALL Design System">
   <Fragment slot="head">
     <style>
+      .showcase {
+        display: flex;
+        gap: calc(3 * var(--freefall-space-1));
+        align-items: flex-start;
+        padding: calc(3 * var(--freefall-space-1));
+        background: var(--freefall-bg-surface-2);
+        border-radius: calc(2 * var(--freefall-space-1));
+        margin-bottom: calc(4 * var(--freefall-space-1));
+      }
       .demo-section {
         margin-bottom: calc(4 * var(--freefall-space-1));
       }
@@ -48,70 +57,187 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <h1>Stat Circle</h1>
   <p>
-    Compact circle indicator for character attributes (Body, Mind, Ghost).
-    Used in equipment cards and anywhere binding costs need to be shown at a glance.
-    Accepts an <code>attribute</code> (body, mind, ghost) and a numeric <code>value</code>.
+    Compact circle indicator for character attributes. Accepts a
+    <code>type</code> (body, mind, ghost) for color, an optional
+    <code>attribute</code> string for the label (localizable), and a <code
+      >value</code
+    > (number or null).
   </p>
 
+  <h2>Examples</h2>
+  <div class="showcase">
+    <StatCircle type="body" attribute="Body" value={2} />
+    <StatCircle type="mind" attribute="Mind" value={1} />
+    <StatCircle type="ghost" attribute="Ghost" value={3} />
+    <StatCircle type="body" attribute="Body" value={null} disabled />
+    <StatCircle type="body" attribute="Frm" value={36} bound />
+  </div>
+
   <div class="demo-section">
-    <h2>Attributes</h2>
-    <p class="demo-label">Each attribute has a distinct color from the attribute token palette</p>
+    <h2>Types</h2>
+    <p class="demo-label">
+      Each type has a distinct color from the attribute token palette
+    </p>
 
     <div class="circle-row">
       <span class="circle-row-label">Body (Flare Orange)</span>
-      <StatCircle attribute="body" value={1} />
-      <StatCircle attribute="body" value={2} />
-      <StatCircle attribute="body" value={3} />
+      <StatCircle type="body" value={1} />
+      <StatCircle type="body" value={2} />
+      <StatCircle type="body" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">Mind (Tritium Green)</span>
-      <StatCircle attribute="mind" value={1} />
-      <StatCircle attribute="mind" value={2} />
-      <StatCircle attribute="mind" value={3} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="mind" value={2} />
+      <StatCircle type="mind" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">Ghost (Isotope Neon)</span>
-      <StatCircle attribute="ghost" value={1} />
-      <StatCircle attribute="ghost" value={2} />
-      <StatCircle attribute="ghost" value={3} />
+      <StatCircle type="ghost" value={1} />
+      <StatCircle type="ghost" value={2} />
+      <StatCircle type="ghost" value={3} />
     </div>
   </div>
 
   <div class="demo-section">
-    <h2>Empty State (value = 0)</h2>
-    <p class="demo-label">Zero-cost circles render at 0.35 opacity with no number</p>
+    <h2>Disabled / Null</h2>
+    <p class="demo-label">
+      disabled and value=null are equivalent — both render &#x2205; in cobalt
+      colors. value=0 is an explicit zero, shown with attribute color.
+    </p>
     <div class="circle-row">
-      <StatCircle attribute="body" value={0} />
-      <StatCircle attribute="mind" value={0} />
-      <StatCircle attribute="ghost" value={0} />
+      <span class="circle-row-label">value=null</span>
+      <StatCircle type="body" value={null} />
+      <StatCircle type="mind" value={null} />
+      <StatCircle type="ghost" value={null} />
+    </div>
+    <div class="circle-row">
+      <span class="circle-row-label">disabled</span>
+      <StatCircle type="body" value={2} disabled />
+      <StatCircle type="mind" value={1} disabled />
+      <StatCircle type="ghost" value={3} disabled />
+    </div>
+    <div class="circle-row">
+      <span class="circle-row-label">value=0 (not disabled)</span>
+      <StatCircle type="body" value={0} />
+      <StatCircle type="mind" value={0} />
+      <StatCircle type="ghost" value={0} />
+    </div>
+    <div class="circle-row">
+      <span class="circle-row-label">disabled + label</span>
+      <StatCircle type="body" attribute="Body" value={2} disabled />
+      <StatCircle type="mind" attribute="Sys" value={6} disabled />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Bound State</h2>
+    <p class="demo-label">
+      Active binding — highlighted ring. Disabled circles cannot be bound.
+    </p>
+    <div class="circle-row">
+      <span class="circle-row-label">bound</span>
+      <StatCircle type="body" value={2} bound />
+      <StatCircle type="mind" value={1} bound />
+      <StatCircle type="ghost" value={3} bound />
+    </div>
+    <div class="circle-row">
+      <span class="circle-row-label">bound + label</span>
+      <StatCircle type="body" attribute="Body" value={2} bound />
+      <StatCircle type="mind" attribute="Mind" value={1} bound />
+      <StatCircle type="ghost" attribute="Ghost" value={3} bound />
+    </div>
+    <div class="circle-row">
+      <span class="circle-row-label">disabled ignores bound</span>
+      <StatCircle type="body" value={null} bound />
+      <StatCircle type="mind" value={2} disabled bound />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Custom Attribute Labels</h2>
+    <p class="demo-label">
+      Override the default B/M/G label with any string (localization, domain
+      aliases)
+    </p>
+    <div class="circle-row">
+      <span class="circle-row-label">Default labels</span>
+      <StatCircle type="body" attribute="Body" value={2} />
+      <StatCircle type="mind" attribute="Mind" value={1} />
+      <StatCircle type="ghost" attribute="Ghost" value={3} />
+    </div>
+    <div class="circle-row">
+      <span class="circle-row-label">Domain aliases</span>
+      <StatCircle type="mind" attribute="Sys" value={6} />
+      <StatCircle type="body" attribute="Frm" value={24} />
     </div>
   </div>
 
   <div class="demo-section">
     <h2>Mixed Binding Costs</h2>
-    <p class="demo-label">Typical gear binding patterns — filled and empty together</p>
+    <p class="demo-label">
+      Typical gear binding patterns — filled and empty together
+    </p>
 
     <div class="circle-row">
       <span class="circle-row-label">Body 1 only</span>
-      <StatCircle attribute="body" value={1} />
-      <StatCircle attribute="mind" value={0} />
-      <StatCircle attribute="ghost" value={0} />
+      <StatCircle type="body" value={1} />
+      <StatCircle type="mind" value={null} />
+      <StatCircle type="ghost" value={null} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">Ghost 3 only</span>
-      <StatCircle attribute="body" value={0} />
-      <StatCircle attribute="mind" value={0} />
-      <StatCircle attribute="ghost" value={3} />
+      <StatCircle type="body" value={null} />
+      <StatCircle type="mind" value={null} />
+      <StatCircle type="ghost" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">All three</span>
-      <StatCircle attribute="body" value={2} />
-      <StatCircle attribute="mind" value={1} />
-      <StatCircle attribute="ghost" value={1} />
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={1} />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Custom Sizing</h2>
+    <p class="demo-label">
+      Set <code>--freefall-stat-circle-size</code> on a parent element to override
+      the default size (5 grid units). Value is unitless — multiplied by <code
+        >--freefall-space-1</code
+      >. Inner text scales proportionally.
+    </p>
+
+    <div class="circle-row" style="--freefall-stat-circle-size: 4;">
+      <span class="circle-row-label">size: 4</span>
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
+    </div>
+
+    <div class="circle-row">
+      <span class="circle-row-label">size: 5 (default)</span>
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
+    </div>
+
+    <div class="circle-row" style="--freefall-stat-circle-size: 7;">
+      <span class="circle-row-label">size: 7</span>
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
+    </div>
+
+    <div class="circle-row" style="--freefall-stat-circle-size: 10;">
+      <span class="circle-row-label">size: 10</span>
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
     </div>
   </div>
 
@@ -120,23 +246,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <p class="demo-label">Contrast check across background levels</p>
 
     <div class="demo-surface demo-surface--canvas">
-      <StatCircle attribute="body" value={2} />
-      <StatCircle attribute="mind" value={1} />
-      <StatCircle attribute="ghost" value={3} />
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
       <span class="circle-row-label">bg-canvas</span>
     </div>
 
     <div class="demo-surface demo-surface--surface-1">
-      <StatCircle attribute="body" value={2} />
-      <StatCircle attribute="mind" value={1} />
-      <StatCircle attribute="ghost" value={3} />
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
       <span class="circle-row-label">bg-surface-1</span>
     </div>
 
     <div class="demo-surface demo-surface--surface-2">
-      <StatCircle attribute="body" value={2} />
-      <StatCircle attribute="mind" value={1} />
-      <StatCircle attribute="ghost" value={3} />
+      <StatCircle type="body" value={2} />
+      <StatCircle type="mind" value={1} />
+      <StatCircle type="ghost" value={3} />
       <span class="circle-row-label">bg-surface-2</span>
     </div>
   </div>

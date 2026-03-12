@@ -84,9 +84,9 @@ const categoryIcon: Record<string, string> = {
       )}
     </div>
     <div class="binding-row">
-      <StatCircle attribute="body" value={data.binding.body} />
-      <StatCircle attribute="mind" value={data.binding.mind} />
-      <StatCircle attribute="ghost" value={data.binding.ghost} />
+      <StatCircle type="body" value={data.binding.body || null} />
+      <StatCircle type="mind" value={data.binding.mind || null} />
+      <StatCircle type="ghost" value={data.binding.ghost || null} />
     </div>
   </div>
 
