@@ -41,7 +41,9 @@ The wrapper `.stat-circle-wrap` is an inline-flex column. When `attribute` is pr
 
 **Bound:** Solid `--_sc-fg` background. Text color switches to `--freefall-color-primary-950`. Subtle white glow via `box-shadow`.
 
-**Disabled:** Triggered when `disabled` is true OR `value` is null. Uses default cobalt palette (`primary-700` / `primary-500`). Value displays as `∅` (U+2205). Text color is `primary-200`. A disabled circle cannot be bound — `isBound = !isDisabled && bound`.
+**Void:** Triggered when `value` is null and `disabled` is not explicitly set. Uses default cobalt palette (`primary-700` / `primary-500`). Value displays as `∅` (U+2205). **Label is hidden** — only the circle renders. A void circle cannot be bound.
+
+**Disabled:** Triggered when `disabled` is explicitly true. Uses default cobalt palette (`primary-700` / `primary-500`). Value displays as `∅` (U+2205). Text color is `primary-200`. **Label is shown** (unlike void). A disabled circle cannot be bound — `isBound = !isDisabled && bound`.
 
 #### Type Colors
 
@@ -61,7 +63,7 @@ Value text scales proportionally: `0.55 * size * --freefall-space-1`. Always bol
 
 #### Label Rules
 
-- Rendered only when `attribute` prop is provided.
+- Rendered only when `attribute` prop is provided **and** the circle is not in void state (`value === null` without `disabled`).
 - Truncated to 5 characters max, forced uppercase: `attribute.slice(0, 5).toUpperCase()`.
 - Uses DS typography class `.text-ui-small` — no custom font sizing.
 - Color: `--freefall-text-muted`.
@@ -111,7 +113,8 @@ Type modifier classes (`.stat-circle--body`, etc.) override only `--_sc-bg` and 
 - Circle must never contain letters — only numeric value or `∅`
 - No borders on any variant
 - Disabled always wins over bound: `isBound = !isDisabled && bound`
-- `value === null` and `disabled === true` must produce identical visual output
+- `value === null` (void) hides the label; `disabled === true` shows the label — these are distinct states
+- Both void and disabled show `∅` in cobalt colors for the circle itself
 - Gradient declared exactly once in base `.stat-circle` — type classes override tokens only
 
 ### Scenarios
@@ -122,25 +125,25 @@ Scenario: Body type with value
   When: Rendered as StatCircle
   Then: Circle shows "2" with Flare Orange gradient (body-bg → body), no label
 
-Scenario: Null value equals disabled
-  Given: type="mind", value=null
+Scenario: Null value is void (no label)
+  Given: type="mind", attribute="Mind", value=null
   When: Rendered as StatCircle
-  Then: Circle shows "∅" in cobalt colors (primary-700/500), text in primary-200
+  Then: Circle shows "∅" in cobalt colors (primary-700/500), label is hidden
 
-Scenario: Explicit disabled with value
-  Given: type="ghost", value=3, disabled=true
+Scenario: Explicit disabled with value (label shown)
+  Given: type="ghost", attribute="Ghost", value=3, disabled=true
   When: Rendered as StatCircle
-  Then: Circle shows "∅" in cobalt colors, value 3 is ignored
+  Then: Circle shows "∅" in cobalt colors, value 3 is ignored, label "GHOST" is shown
 
 Scenario: Bound state
   Given: type="body", value=2, bound=true
   When: Rendered as StatCircle
   Then: Circle has solid --freefall-attr-body background, primary-950 text, white glow
 
-Scenario: Disabled ignores bound
+Scenario: Void ignores bound
   Given: type="mind", value=null, bound=true
   When: Rendered as StatCircle
-  Then: Circle shows "∅" in cobalt colors, bound is ignored
+  Then: Circle shows "∅" in cobalt colors, bound is ignored, no label
 
 Scenario: Attribute label
   Given: type="body", attribute="Frame", value=24

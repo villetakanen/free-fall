@@ -27,12 +27,14 @@ All internal spacing derives from `--freefall-space-1`.
 │  Title                   │  ← .text-ui, overlaid top-left, color-primary-50
 │  Subtitle (nickname)     │  ← .text-ui-small, overlaid, optional
 │  [Image / Gear Icon]     │  ← 16:9 aspect ratio, shader overlay
-│  ◉ Body  ◉ Mind  ◉ Ghost │  ← Binding cost row, overlaid on image bottom
 ├──────────────────────────┤
 │  Category-specific stats │  ← DV, Harm Type, AV, etc.
 │  ● Quality 1             │  ← Compact list (scrolls on overflow)
 │  ● Quality 2             │
 │  ● ...                   │
+├──────────────────────────┤
+│  ◉ Body  ◉ Mind  ◉ Ghost │  ← Binding row, straddles card bottom border
+│  BODY    MIND    GHOST   │  ← Labels (hidden when void)
 └──────────────────────────┘
 ```
 
@@ -44,7 +46,7 @@ All internal spacing derives from `--freefall-space-1`.
 
 2. **Title overlay** — Positioned at the top of the image zone via `position: absolute` (`z-index: 1`, above shader). Title in `.text-ui` (bold) and optional nickname in `.text-ui-small`. Both use `--freefall-color-primary-50` with `--freefall-text-shadow-overlay` for legibility over any background. Both truncate with ellipsis on overflow.
 
-3. **Binding cost overlay** — Row of 3 `StatCircle` components (Body, Mind, Ghost) pinned to the bottom of the image zone via `position: absolute` (`z-index: 1`, above shader). **All three circles are always rendered.** Binding values come from the top-level `body`, `mind`, `ghost` props. Omitted or zero-value props render the circle in disabled state (∅). Arranged left-to-right: Body → Mind → Ghost, centered horizontally. See `specs/design-system/stat-circle/spec.md` for circle rendering details.
+3. **Binding cost row** — Row of 3 labeled `StatCircle` components (Body, Mind, Ghost) positioned at the **bottom border of the card** via a wrapper element (`.gear-card-wrap`) with `position: relative`. The row uses `position: absolute; bottom: 0; transform: translateY(50%)` so circles straddle the card's outer border — half inside, half outside. Each circle receives its `attribute` label ("Body", "Mind", "Ghost"). **All three circles are always rendered.** Binding values come from the top-level `body`, `mind`, `ghost` props. Omitted or zero-value props render the circle in void state (∅, no label). Arranged left-to-right: Body → Mind → Ghost, centered horizontally. See `specs/design-system/stat-circle/spec.md` for circle rendering details.
 
 4. **Stats zone** — Remaining space, scrolls if overflow.
    - **Category stats row** (conditional per category):
@@ -108,7 +110,8 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 - Card width/height ratio must stay within 5:7 ± 1%
 - Title must overlay the image zone, never be a separate section below it
 - Shader overlay must always be present on the image zone (both image and icon fallback)
-- Title overlay, binding row, and icon must have `z-index` above the shader
+- Title overlay and icon must have `z-index` above the shader
+- Binding row must straddle the card's bottom border (not the image zone border)
 
 ### Scenarios
 
@@ -116,7 +119,8 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 Scenario: Weapon card with body binding
   Given: <GearCard data={weapon} body={1} /> where weapon has DV 2, harm_type "Physical", qualities ["Range (Medium)", "Burst Fire"]
   When: Rendered
-  Then: Three StatCircles are shown: Body (1) active, Mind and Ghost disabled (∅)
+  Then: Three StatCircles straddle the card's bottom border
+  And: Body (1) is active with "BODY" label; Mind and Ghost show ∅ with no labels (void)
   And: Title and nickname overlay the image zone with --freefall-text-shadow-overlay
   And: Stats zone shows "DV 2 · Physical"
   And: Two quality bullets are listed
@@ -136,12 +140,12 @@ Scenario: Optimized image via ImageMetadata
 Scenario: All three binding costs
   Given: <GearCard data={weapon} body={2} mind={1} ghost={1} />
   When: Rendered
-  Then: Three circles are shown: Body (2), Mind (1), Ghost (1), centered horizontally
+  Then: Three circles straddle card bottom: Body (2), Mind (1), Ghost (1), all with labels
 
-Scenario: Omitted binding props render as disabled
+Scenario: Omitted binding props render as void
   Given: <GearCard data={weapon} body={1} />
   When: Rendered
-  Then: Body circle shows 1, Mind and Ghost circles show ∅ in cobalt colors
+  Then: Body circle shows 1 with "BODY" label; Mind and Ghost show ∅ with no labels
 
 Scenario: Vehicle card stats
   Given: <GearCard data={vehicle} /> where vehicle has frame 3, systems 2, vehicle_av 1, size_category "Medium"

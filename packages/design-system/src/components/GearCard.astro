@@ -73,6 +73,7 @@ const categoryIcon: Record<string, string> = {
 };
 ---
 
+<div class="gear-card-wrap">
 <article class="gear-card">
   <div class="image-zone" style={`--_shader-start: ${shaderStart}`}>
     {
@@ -98,11 +99,6 @@ const categoryIcon: Record<string, string> = {
           </span>
         )
       }
-    </div>
-    <div class="binding-row">
-      <StatCircle type="body" value={body || null} />
-      <StatCircle type="mind" value={mind || null} />
-      <StatCircle type="ghost" value={ghost || null} />
     </div>
   </div>
 
@@ -159,6 +155,12 @@ const categoryIcon: Record<string, string> = {
     }
   </div>
 </article>
+<div class="binding-row">
+  <StatCircle type="body" attribute="Body" value={body || null} />
+  <StatCircle type="mind" attribute="Mind" value={mind || null} />
+  <StatCircle type="ghost" attribute="Ghost" value={ghost || null} />
+</div>
+</div>
 
 <style>
   .gear-card {
@@ -216,14 +218,20 @@ const categoryIcon: Record<string, string> = {
 
   /* ── Binding cost circles ───────────────────── */
 
+  .gear-card-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
   .binding-row {
     position: absolute;
-    bottom: calc(1 * var(--freefall-space-1));
+    bottom: 0;
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
     gap: calc(1.5 * var(--freefall-space-1));
+    transform: translateY(50%);
     z-index: 1;
   }
 
