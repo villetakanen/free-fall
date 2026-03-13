@@ -41,9 +41,9 @@ All internal spacing derives from `--freefall-space-1`.
 
 1. **Image zone** — Top portion (~45% height). Displays an optional `<img>` or falls back to a centered Material Symbol icon (category-specific). Background: `--freefall-bg-surface-2`. Image uses `object-fit: cover`.
 
-2. **Title overlay** — Positioned at the top of the image zone via `position: absolute`. Title in `.text-ui` (bold) and optional nickname in `.text-ui-small`. Both use `--freefall-color-primary-50` with a 3-layer text shadow (2px, 4px, 8px blur at decreasing opacity) for legibility over any background. Both truncate with ellipsis on overflow.
+2. **Title overlay** — Positioned at the top of the image zone via `position: absolute`. Title in `.text-ui` (bold) and optional nickname in `.text-ui-small`. Both use `--freefall-color-primary-50` with `--freefall-text-shadow-overlay` for legibility over any background. Both truncate with ellipsis on overflow.
 
-3. **Binding cost overlay** — Row of 3 `StatCircle` components (Body, Mind, Ghost) pinned to the bottom of the image zone via `position: absolute`. **All three circles are always rendered.** Zero-cost bindings pass `null` as value (`value || null`), rendering the circle in disabled state (∅). Arranged left-to-right: Body → Mind → Ghost, centered horizontally. See `specs/design-system/stat-circle/spec.md` for circle rendering details.
+3. **Binding cost overlay** — Row of 3 `StatCircle` components (Body, Mind, Ghost) pinned to the bottom of the image zone via `position: absolute`. **All three circles are always rendered.** Binding values come from the top-level `body`, `mind`, `ghost` props. Omitted or zero-value props render the circle in disabled state (∅). Arranged left-to-right: Body → Mind → Ghost, centered horizontally. See `specs/design-system/stat-circle/spec.md` for circle rendering details.
 
 4. **Stats zone** — Remaining space, scrolls if overflow.
    - **Category stats row** (conditional per category):
@@ -56,14 +56,17 @@ All internal spacing derives from `--freefall-space-1`.
 
 #### Data Contract
 
-The component consumes a gear item's `data` object as defined by the Zod schema in `apps/free-fall/src/content.config.ts`. No transformation layer — the component reads `data.title`, `data.binding`, `data.qualities`, and category-discriminated fields directly.
+The component takes category-specific data via `data` and binding costs as separate top-level props. The `data` prop is a discriminated union on `data.category` matching the Zod schema in `apps/free-fall/src/content.config.ts`. Binding costs are **not** read from `data` — they are passed as independent props so the card can be used without a content collection entry.
 
 Props:
 
-| Prop | Type | Required | Notes |
-|---|---|---|---|
-| `item` | Gear collection entry (`data` + `id`) | Yes | Discriminated union — component narrows on `data.category` |
-| `image` | `string \| undefined` | No | URL/path to card art. Falls back to icon. |
+| Prop | Type | Required | Default | Notes |
+|---|---|---|---|---|
+| `data` | `GearData` | Yes | — | Discriminated union — component narrows on `data.category` |
+| `body` | `number` | No | `undefined` | Body binding cost. Omitted or `0` → disabled (∅) |
+| `mind` | `number` | No | `undefined` | Mind binding cost. Omitted or `0` → disabled (∅) |
+| `ghost` | `number` | No | `undefined` | Ghost binding cost. Omitted or `0` → disabled (∅) |
+| `image` | `string` | No | `undefined` | URL/path to card art. Falls back to category icon. |
 
 #### Component Location
 
@@ -88,7 +91,7 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 ### Definition of Done
 
 - [ ] `GearCard.astro` renders all 5 gear categories correctly (weapon, armor, augmentation, utility, vehicle)
-- [ ] All three binding StatCircles (Body, Mind, Ghost) always render; zero-cost circles appear as disabled (∅)
+- [ ] All three binding StatCircles (Body, Mind, Ghost) always render; omitted or zero-value props appear as disabled (∅)
 - [ ] Card dimensions maintain 5:7 ratio at all viewport widths (does not reflow — fixed size)
 - [ ] Fallback icon displays when no `image` prop is provided
 - [ ] `.text-ui-small` qualities list does not overflow the card (scrolls or truncates)
@@ -105,27 +108,32 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 ### Scenarios
 
 ```
-Scenario: Weapon card
-  Given: A gear item with category "weapon", binding { body: 1, mind: 0, ghost: 0 }, DV 2, harm_type "Physical", qualities ["Range (Medium)", "Burst Fire"]
-  When: Rendered as GearCard
-  Then: Three StatCircles are shown: Body (1) active, Mind and Ghost disabled (∅ in cobalt colors)
-  And: Title and nickname overlay the image zone in color-primary-50 with text shadow
+Scenario: Weapon card with body binding
+  Given: <GearCard data={weapon} body={1} /> where weapon has DV 2, harm_type "Physical", qualities ["Range (Medium)", "Burst Fire"]
+  When: Rendered
+  Then: Three StatCircles are shown: Body (1) active, Mind and Ghost disabled (∅)
+  And: Title and nickname overlay the image zone with --freefall-text-shadow-overlay
   And: Stats zone shows "DV 2 · Physical"
   And: Two quality bullets are listed
 
 Scenario: No image fallback
-  Given: A gear item with no image prop
-  When: Rendered as GearCard
-  Then: Image zone shows a centered gear icon on --freefall-bg-surface-2 background
+  Given: <GearCard data={utility} /> with no image prop
+  When: Rendered
+  Then: Image zone shows a centered category icon on --freefall-bg-surface-2
 
 Scenario: All three binding costs
-  Given: A gear item with binding { body: 2, mind: 1, ghost: 1 }
-  When: Rendered as GearCard
+  Given: <GearCard data={weapon} body={2} mind={1} ghost={1} />
+  When: Rendered
   Then: Three circles are shown: Body (2), Mind (1), Ghost (1), centered horizontally
 
+Scenario: Omitted binding props render as disabled
+  Given: <GearCard data={weapon} body={1} />
+  When: Rendered
+  Then: Body circle shows 1, Mind and Ghost circles show ∅ in cobalt colors
+
 Scenario: Vehicle card stats
-  Given: A gear item with category "vehicle", frame 3, systems 2, vehicle_av 1, size_category "Medium"
-  When: Rendered as GearCard
-  Then: Stats zone shows Frame 3, Systems 2, AV 1, Size: Medium
+  Given: <GearCard data={vehicle} /> where vehicle has frame 3, systems 2, vehicle_av 1, size_category "Medium"
+  When: Rendered
+  Then: Stats zone shows "Frame 3 · Sys 2 · AV 1 · Medium"
 
 ```
