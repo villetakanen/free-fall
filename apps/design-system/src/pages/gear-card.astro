@@ -1,5 +1,6 @@
 ---
 import GearCard from "@free-fall/design-system/components/GearCard.astro";
+import kineticCarbineImg from "../assets/demo/kinetic-carbine-gemini-generated.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const sampleWeapon = {
@@ -121,7 +122,7 @@ const sampleNoBinding = {
   <h2>Examples</h2>
   <p>All basic features of a card visualized in a simple view.</p>
   <div class="breakout border p-2">
-    <GearCard data={sampleWeapon} body={1} />
+    <GearCard data={sampleWeapon} body={1} image={kineticCarbineImg} />
     <GearCard data={sampleAugmentation} ghost={3} />
     <GearCard data={sampleVehicle} />
   </div>

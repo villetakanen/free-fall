@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import StatCircle from "./StatCircle.astro";
 
 interface GearBase {
@@ -50,10 +51,18 @@ interface Props {
   body?: number;
   mind?: number;
   ghost?: number;
-  image?: string;
+  image?: ImageMetadata | string;
 }
 
 const { data, body, mind, ghost, image } = Astro.props;
+
+const boundAttrs = [body && "body", mind && "mind", ghost && "ghost"].filter(
+  Boolean,
+);
+const shaderStart =
+  boundAttrs.length === 1
+    ? `var(--freefall-attr-${boundAttrs[0]}-bg)`
+    : "var(--freefall-color-primary-500)";
 
 const categoryIcon: Record<string, string> = {
   weapon: "swords",
@@ -65,19 +74,30 @@ const categoryIcon: Record<string, string> = {
 ---
 
 <article class="gear-card">
-  <div class="image-zone">
-    {image ? (
-      <img src={image} alt="" class="image-zone__img" />
-    ) : (
-      <span class="image-zone__icon material-symbols-sharp" aria-hidden="true">
-        {categoryIcon[data.category]}
-      </span>
-    )}
+  <div class="image-zone" style={`--_shader-start: ${shaderStart}`}>
+    {
+      image && typeof image === "object" ? (
+        <Image src={image} alt="" class="image-zone__img" />
+      ) : image ? (
+        <img src={image} alt="" class="image-zone__img" />
+      ) : (
+        <span
+          class="image-zone__icon material-symbols-sharp"
+          aria-hidden="true"
+        >
+          {categoryIcon[data.category]}
+        </span>
+      )
+    }
     <div class="title-overlay">
       <span class="title-overlay__title text-ui">{data.title}</span>
-      {data.nickname && (
-        <span class="title-overlay__nickname text-ui-small">{data.nickname}</span>
-      )}
+      {
+        data.nickname && (
+          <span class="title-overlay__nickname text-ui-small">
+            {data.nickname}
+          </span>
+        )
+      }
     </div>
     <div class="binding-row">
       <StatCircle type="body" value={body || null} />
@@ -87,46 +107,56 @@ const categoryIcon: Record<string, string> = {
   </div>
 
   <div class="stats-zone">
-    {data.category === "weapon" && (
-      <div class="category-stats text-ui-small">
-        <span>DV {data.dv}</span>
-        <span class="category-stats__sep">&middot;</span>
-        <span>{data.harm_type}</span>
-      </div>
-    )}
-    {data.category === "armor" && (
-      <div class="category-stats text-ui-small">
-        <span>AV {data.av}</span>
-        <span class="category-stats__sep">&middot;</span>
-        <span>{data.av_type}</span>
-      </div>
-    )}
-    {data.category === "augmentation" && (
-      <div class="category-stats text-ui-small">
-        <span>{data.augmentation_category}</span>
-        <span class="category-stats__sep">&middot;</span>
-        <span>{data.integration}</span>
-      </div>
-    )}
-    {data.category === "vehicle" && (
-      <div class="category-stats text-ui-small">
-        <span>Frame {data.frame}</span>
-        <span class="category-stats__sep">&middot;</span>
-        <span>Sys {data.systems}</span>
-        <span class="category-stats__sep">&middot;</span>
-        <span>AV {data.vehicle_av}</span>
-        <span class="category-stats__sep">&middot;</span>
-        <span>{data.size_category}</span>
-      </div>
-    )}
+    {
+      data.category === "weapon" && (
+        <div class="category-stats text-ui-small">
+          <span>DV {data.dv}</span>
+          <span class="category-stats__sep">&middot;</span>
+          <span>{data.harm_type}</span>
+        </div>
+      )
+    }
+    {
+      data.category === "armor" && (
+        <div class="category-stats text-ui-small">
+          <span>AV {data.av}</span>
+          <span class="category-stats__sep">&middot;</span>
+          <span>{data.av_type}</span>
+        </div>
+      )
+    }
+    {
+      data.category === "augmentation" && (
+        <div class="category-stats text-ui-small">
+          <span>{data.augmentation_category}</span>
+          <span class="category-stats__sep">&middot;</span>
+          <span>{data.integration}</span>
+        </div>
+      )
+    }
+    {
+      data.category === "vehicle" && (
+        <div class="category-stats text-ui-small">
+          <span>Frame {data.frame}</span>
+          <span class="category-stats__sep">&middot;</span>
+          <span>Sys {data.systems}</span>
+          <span class="category-stats__sep">&middot;</span>
+          <span>AV {data.vehicle_av}</span>
+          <span class="category-stats__sep">&middot;</span>
+          <span>{data.size_category}</span>
+        </div>
+      )
+    }
 
-    {data.qualities.length > 0 && (
-      <ul class="qualities">
-        {data.qualities.map((q) => (
-          <li class="qualities__item text-ui-small">{q}</li>
-        ))}
-      </ul>
-    )}
+    {
+      data.qualities.length > 0 && (
+        <ul class="qualities">
+          {data.qualities.map((q) => (
+            <li class="qualities__item text-ui-small">{q}</li>
+          ))}
+        </ul>
+      )
+    }
   </div>
 </article>
 
@@ -136,7 +166,8 @@ const categoryIcon: Record<string, string> = {
     height: calc(44.5 * var(--freefall-space-1));
     border-radius: calc(2 * var(--freefall-space-1));
     background: var(--freefall-bg-surface-1);
-    border: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-strong);
+    border: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-border-strong);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -147,12 +178,27 @@ const categoryIcon: Record<string, string> = {
 
   .image-zone {
     position: relative;
-    height: 45%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
     background: var(--freefall-bg-surface-2);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+  }
+
+  .image-zone::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      140deg,
+      oklch(from var(--_shader-start) l c h / 0.55),
+      oklch(from var(--freefall-color-primary-900) l c h / 0.75)
+    );
+    pointer-events: none;
+    z-index: 0;
   }
 
   .image-zone__img {
@@ -165,6 +211,7 @@ const categoryIcon: Record<string, string> = {
     font-size: calc(10 * var(--freefall-space-1));
     color: var(--freefall-color-primary-600);
     line-height: 1;
+    z-index: 1;
   }
 
   /* ── Binding cost circles ───────────────────── */
@@ -177,6 +224,7 @@ const categoryIcon: Record<string, string> = {
     display: flex;
     justify-content: center;
     gap: calc(1.5 * var(--freefall-space-1));
+    z-index: 1;
   }
 
   /* ── Title overlay ────────────────────────────── */
@@ -186,7 +234,8 @@ const categoryIcon: Record<string, string> = {
     top: 0;
     left: 0;
     right: 0;
-    padding: calc(1.5 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+    padding: calc(1.5 * var(--freefall-space-1))
+      calc(2 * var(--freefall-space-1));
     display: flex;
     flex-direction: column;
     gap: calc(0.25 * var(--freefall-space-1));
@@ -215,7 +264,8 @@ const categoryIcon: Record<string, string> = {
 
   .stats-zone {
     flex: 1;
-    padding: calc(1.5 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
+    padding: calc(1.5 * var(--freefall-space-1))
+      calc(2 * var(--freefall-space-1));
     overflow-y: auto;
     display: flex;
     flex-direction: column;
