@@ -36,7 +36,7 @@ const rendered = await Promise.all(
       rendered.map(({ id, data, Content }) => (
         <article class="gear-item">
           <div class="gear-item__card-wrap">
-            <GearCard data={data} />
+            <GearCard data={data} {...data.binding} />
             <input
               type="checkbox"
               id={`modal-${id}`}

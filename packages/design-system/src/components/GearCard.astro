@@ -1,16 +1,9 @@
 ---
 import StatCircle from "./StatCircle.astro";
 
-interface Binding {
-  body: number;
-  mind: number;
-  ghost: number;
-}
-
 interface GearBase {
   title: string;
   nickname?: string;
-  binding: Binding;
   qualities: string[];
 }
 
@@ -54,10 +47,13 @@ type GearData =
 
 interface Props {
   data: GearData;
+  body?: number;
+  mind?: number;
+  ghost?: number;
   image?: string;
 }
 
-const { data, image } = Astro.props;
+const { data, body, mind, ghost, image } = Astro.props;
 
 const categoryIcon: Record<string, string> = {
   weapon: "swords",
@@ -84,9 +80,9 @@ const categoryIcon: Record<string, string> = {
       )}
     </div>
     <div class="binding-row">
-      <StatCircle type="body" value={data.binding.body || null} />
-      <StatCircle type="mind" value={data.binding.mind || null} />
-      <StatCircle type="ghost" value={data.binding.ghost || null} />
+      <StatCircle type="body" value={body || null} />
+      <StatCircle type="mind" value={mind || null} />
+      <StatCircle type="ghost" value={ghost || null} />
     </div>
   </div>
 

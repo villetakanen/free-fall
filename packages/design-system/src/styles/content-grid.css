@@ -35,6 +35,10 @@
   overflow-x: auto;
 }
 
+.content-grid > .breakout {
+  grid-column: main;
+}
+
 /* Widen gutters once the container has room */
 @container content (inline-size >= 40rem) {
   .content-grid {
@@ -64,6 +68,10 @@
   .content-grid > .content-wide {
     grid-column: main-start / side-end;
     overflow-x: visible;
+  }
+
+  .content-grid > .breakout {
+    grid-column: main-start / side-end;
   }
 }
 

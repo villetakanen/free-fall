@@ -3,6 +3,7 @@
 @import "./typography.css";
 @import "./content-grid.css";
 @import "./surface.css";
+@import "./utilities.css";
 
 html,
 body {

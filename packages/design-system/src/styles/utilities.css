@@ -1,0 +1,18 @@
+/* ── Atomic utility classes ──────────────────────────────────────── */
+
+.border {
+  border: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);
+  border-radius: calc(var(--freefall-space-1));
+}
+
+.p-1 {
+  padding: var(--freefall-space-1);
+}
+
+.p-2 {
+  padding: var(--freefall-space-2);
+}
+
+.p-4 {
+  padding: var(--freefall-space-4);
+}
