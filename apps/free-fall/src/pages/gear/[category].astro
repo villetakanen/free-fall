@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import EquipmentCard from "@free-fall/design-system/components/EquipmentCard.astro";
+import GearCard from "@free-fall/design-system/components/GearCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { gearCategories } from "../../lib/nav.ts";
 
@@ -31,12 +31,12 @@ const rendered = await Promise.all(
 ---
 
 <BaseLayout title={`${label} — FREE//FALL`}>
-  <div class="gear-listing">
+  <div class="gear-listing breakout">
     {
       rendered.map(({ id, data, Content }) => (
         <article class="gear-item">
           <div class="gear-item__card-wrap">
-            <EquipmentCard data={data} />
+            <GearCard data={data} {...data.binding} />
             <input
               type="checkbox"
               id={`modal-${id}`}
@@ -134,10 +134,7 @@ const rendered = await Promise.all(
     color: var(--freefall-color-primary-50);
     font-size: calc(4 * var(--freefall-space-1));
     line-height: 1;
-    text-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.6),
-      0 4px 8px rgba(0, 0, 0, 0.4),
-      0 8px 16px rgba(0, 0, 0, 0.2);
+    text-shadow: var(--freefall-text-shadow-overlay);
   }
 
   .expand-btn .material-symbols-sharp {

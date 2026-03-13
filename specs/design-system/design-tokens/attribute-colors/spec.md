@@ -4,7 +4,7 @@
 
 ### Context
 
-FREE//FALL has three core character attributes — **Body**, **Mind**, and **Ghost** — that appear throughout the UI: binding cost circles on equipment cards, character sheets, dice roll results, and status indicators. Each attribute needs a dedicated color identity that is instantly recognizable across all contexts.
+FREE//FALL has three core character attributes — **Body**, **Mind**, and **Ghost** — that appear throughout the UI: binding cost circles on gear cards, character sheets, dice roll results, and status indicators. Each attribute needs a dedicated color identity that is instantly recognizable across all contexts.
 
 These colors also extend beyond character attributes to thematic domains that share the same conceptual space:
 
@@ -61,12 +61,12 @@ Parent spec: `specs/design-system/design-tokens/spec.md`
 | `--freefall-attr-ghost` | `accent-400` | Ghost attribute foreground |
 | `--freefall-attr-ghost-bg` | `accent-900` | Ghost attribute background |
 
-**Consumer update:** `EquipmentCard.astro` binding circles should migrate from hardcoded palette references (`--freefall-color-primary-600`, `--freefall-color-accent-400`, `--freefall-color-primary-200`) to the new semantic tokens (`--freefall-attr-body`, `--freefall-attr-mind`, `--freefall-attr-ghost`). Text color on each circle should be chosen for contrast against the new backgrounds.
+**Consumer update:** `GearCard.astro` binding circles should migrate from hardcoded palette references (`--freefall-color-primary-600`, `--freefall-color-accent-400`, `--freefall-color-primary-200`) to the new semantic tokens (`--freefall-attr-body`, `--freefall-attr-mind`, `--freefall-attr-ghost`). Text color on each circle should be chosen for contrast against the new backgrounds.
 
 ### Dependencies
 
 - **Depends on:** Existing token architecture (`tokens.css`)
-- **Depended on by:** EquipmentCard binding circles, future character sheet UI, dice roll displays
+- **Depended on by:** GearCard binding circles, future character sheet UI, dice roll displays
 
 ### Anti-Patterns
 
@@ -79,7 +79,7 @@ Parent spec: `specs/design-system/design-tokens/spec.md`
 
 - [ ] `tokens.css` defines `--freefall-color-body-{400,900}` and `--freefall-color-mind-{400,900}` base palette tokens
 - [ ] `tokens.css` defines all 6 `--freefall-attr-*` semantic tokens referencing the correct base palette values
-- [ ] EquipmentCard binding circles use `--freefall-attr-body`, `--freefall-attr-mind`, `--freefall-attr-ghost` semantic tokens
+- [ ] GearCard binding circles use `--freefall-attr-body`, `--freefall-attr-mind`, `--freefall-attr-ghost` semantic tokens
 - [ ] DS docs token page shows the new attribute color swatches
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm typecheck` pass
 
@@ -93,12 +93,12 @@ Parent spec: `specs/design-system/design-tokens/spec.md`
 
 ```
 Scenario: Body binding circle uses Flare Orange
-  Given: An EquipmentCard with binding { body: 2 }
+  Given: An GearCard with binding { body: 2 }
   When: Rendered
   Then: The Body circle background resolves to hsl(18, 90%, 55%)
 
 Scenario: Ghost attribute matches existing accent
-  Given: An EquipmentCard with binding { ghost: 1 }
+  Given: An GearCard with binding { ghost: 1 }
   When: Rendered
   Then: The Ghost circle background resolves to hsl(64, 80%, 54%) — same as accent-400
 

@@ -181,6 +181,30 @@ const semanticTokens = [
         font-size: 0.75rem;
         color: var(--freefall-text-muted);
       }
+      .shadow-demo {
+        display: flex;
+        gap: 1.5rem;
+        margin: 1rem 0 2rem;
+      }
+      .shadow-sample {
+        width: 200px;
+        height: 80px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: var(--freefall-color-primary-50);
+      }
+      .shadow-sample--overlay {
+        background: linear-gradient(135deg, var(--freefall-color-primary-600), var(--freefall-color-primary-300));
+        text-shadow: var(--freefall-text-shadow-overlay);
+      }
+      .shadow-sample--none {
+        background: linear-gradient(135deg, var(--freefall-color-primary-600), var(--freefall-color-primary-300));
+        text-shadow: none;
+      }
       .spacing-list {
         list-style: none;
         padding: 0;
@@ -302,6 +326,18 @@ const semanticTokens = [
       ))
     }
   </ul>
+
+  <h2>Text Shadows</h2>
+  <div class="shadow-demo">
+    <div>
+      <div class="shadow-sample shadow-sample--overlay">Overlay shadow</div>
+      <div class="spacing-label" style="margin-top: 0.5rem;">--freefall-text-shadow-overlay</div>
+    </div>
+    <div>
+      <div class="shadow-sample shadow-sample--none">No shadow</div>
+      <div class="spacing-label" style="margin-top: 0.5rem;">comparison</div>
+    </div>
+  </div>
 
   <h2>Spacing — 0.5rem base (1rem = 16px)</h2>
   <ul class="spacing-list">

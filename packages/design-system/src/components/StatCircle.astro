@@ -9,11 +9,11 @@ interface Props {
 
 const { type, attribute, value, disabled, bound } = Astro.props;
 
+const isVoid = value === null && !disabled;
 const isDisabled = disabled || value === null;
 const isBound = !isDisabled && bound;
-const displayLabel = attribute
-  ? attribute.slice(0, 5).toUpperCase()
-  : undefined;
+const displayLabel =
+  attribute && !isVoid ? attribute.slice(0, 5).toUpperCase() : undefined;
 ---
 
 <span

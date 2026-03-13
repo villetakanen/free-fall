@@ -63,6 +63,7 @@ Components and styles consume **semantic tokens only**. Base palette tokens exis
 | `--freefall-action-hover` | `primary-400` | Buttons, links (hover) |
 | `--freefall-alert-base` | `accent-400` | Alert text, emphasis |
 | `--freefall-alert-bg` | `accent-900` | Alert panel background |
+| `--freefall-text-shadow-overlay` | *(composite)* | 3-layer text shadow for legibility over images/backgrounds |
 
 **File locations:**
 
