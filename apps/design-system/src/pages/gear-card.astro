@@ -1,5 +1,5 @@
 ---
-import EquipmentCard from "@free-fall/design-system/components/EquipmentCard.astro";
+import GearCard from "@free-fall/design-system/components/GearCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const sampleWeapon = {
@@ -84,7 +84,7 @@ const sampleNoBinding = {
 };
 ---
 
-<BaseLayout title="Equipment Card — FREE//FALL Design System">
+<BaseLayout title="Gear Card — FREE//FALL Design System">
   <Fragment slot="head">
     <style>
       .demo-section {
@@ -105,7 +105,7 @@ const sampleNoBinding = {
     </style>
   </Fragment>
 
-  <h1>Equipment Card</h1>
+  <h1>Gear Card</h1>
   <p>
     Poker-sized card (5:7 ratio) for displaying gear stats at a glance.
     Shows binding costs, category-specific stats, and qualities.
@@ -118,11 +118,11 @@ const sampleNoBinding = {
       One card per gear category: weapon, armor, augmentation, utility, vehicle
     </p>
     <div class="card-grid">
-      <EquipmentCard data={sampleWeapon} />
-      <EquipmentCard data={sampleArmor} />
-      <EquipmentCard data={sampleAugmentation} />
-      <EquipmentCard data={sampleUtility} />
-      <EquipmentCard data={sampleVehicle} />
+      <GearCard data={sampleWeapon} />
+      <GearCard data={sampleArmor} />
+      <GearCard data={sampleAugmentation} />
+      <GearCard data={sampleUtility} />
+      <GearCard data={sampleVehicle} />
     </div>
   </div>
 
@@ -132,8 +132,8 @@ const sampleNoBinding = {
       All three binding types · no binding (zero cost)
     </p>
     <div class="card-grid">
-      <EquipmentCard data={sampleMultiBinding} />
-      <EquipmentCard data={sampleNoBinding} />
+      <GearCard data={sampleMultiBinding} />
+      <GearCard data={sampleNoBinding} />
     </div>
   </div>
 </BaseLayout>

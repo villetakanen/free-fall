@@ -45,15 +45,15 @@ const navItems = [
   {
     icon: "style",
     label: "Gear Cards",
-    href: "/equipment-card/",
-    active: ["/equipment-card", "/stat-circle"].some((path) =>
+    href: "/gear-card/",
+    active: ["/gear-card", "/stat-circle"].some((path) =>
       Astro.url.pathname.startsWith(path),
     ),
     subItems: [
       {
-        label: "Equipment Card",
-        href: "/equipment-card/",
-        active: Astro.url.pathname.startsWith("/equipment-card"),
+        label: "Gear Card",
+        href: "/gear-card/",
+        active: Astro.url.pathname.startsWith("/gear-card"),
       },
       {
         label: "Stat Circle",

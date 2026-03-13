@@ -1,4 +1,4 @@
-# Feature: Equipment Card
+# Feature: Gear Card
 
 ## Blueprint
 
@@ -67,7 +67,7 @@ Props:
 
 #### Component Location
 
-`packages/design-system/src/components/EquipmentCard.astro`
+`packages/design-system/src/components/GearCard.astro`
 
 Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contained.
 
@@ -87,7 +87,7 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 
 ### Definition of Done
 
-- [ ] `EquipmentCard.astro` renders all 5 gear categories correctly (weapon, armor, augmentation, utility, vehicle)
+- [ ] `GearCard.astro` renders all 5 gear categories correctly (weapon, armor, augmentation, utility, vehicle)
 - [ ] All three binding StatCircles (Body, Mind, Ghost) always render; zero-cost circles appear as disabled (∅)
 - [ ] Card dimensions maintain 5:7 ratio at all viewport widths (does not reflow — fixed size)
 - [ ] Fallback icon displays when no `image` prop is provided
@@ -107,7 +107,7 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 ```
 Scenario: Weapon card
   Given: A gear item with category "weapon", binding { body: 1, mind: 0, ghost: 0 }, DV 2, harm_type "Physical", qualities ["Range (Medium)", "Burst Fire"]
-  When: Rendered as EquipmentCard
+  When: Rendered as GearCard
   Then: Three StatCircles are shown: Body (1) active, Mind and Ghost disabled (∅ in cobalt colors)
   And: Title and nickname overlay the image zone in color-primary-50 with text shadow
   And: Stats zone shows "DV 2 · Physical"
@@ -115,17 +115,17 @@ Scenario: Weapon card
 
 Scenario: No image fallback
   Given: A gear item with no image prop
-  When: Rendered as EquipmentCard
+  When: Rendered as GearCard
   Then: Image zone shows a centered gear icon on --freefall-bg-surface-2 background
 
 Scenario: All three binding costs
   Given: A gear item with binding { body: 2, mind: 1, ghost: 1 }
-  When: Rendered as EquipmentCard
+  When: Rendered as GearCard
   Then: Three circles are shown: Body (2), Mind (1), Ghost (1), centered horizontally
 
 Scenario: Vehicle card stats
   Given: A gear item with category "vehicle", frame 3, systems 2, vehicle_av 1, size_category "Medium"
-  When: Rendered as EquipmentCard
+  When: Rendered as GearCard
   Then: Stats zone shows Frame 3, Systems 2, AV 1, Size: Medium
 
 ```

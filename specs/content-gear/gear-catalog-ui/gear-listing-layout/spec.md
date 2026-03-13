@@ -4,7 +4,7 @@
 
 ### Context
 
-The gear category pages (`/gear/weapons/`, `/gear/armor/`, etc.) currently render each item as a heading + markdown prose in a linear list. With the `EquipmentCard` component now available, each listing should pair the card with the item's markdown description side-by-side on desktop, and provide a compact card-only view with expandable description on mobile.
+The gear category pages (`/gear/weapons/`, `/gear/armor/`, etc.) currently render each item as a heading + markdown prose in a linear list. With the `GearCard` component now available, each listing should pair the card with the item's markdown description side-by-side on desktop, and provide a compact card-only view with expandable description on mobile.
 
 This gives players two complementary views of the same item: the card for at-a-glance stats during play, and the prose for context and flavor when they want to read more.
 
@@ -27,7 +27,7 @@ Each gear item renders as a horizontal row:
 ```
 
 - Card and description pane sit side by side using CSS flexbox
-- Card is fixed-size (per equipment-card spec: 32 × 44.5 space-1 units)
+- Card is fixed-size (per gear-card spec: 32 × 44.5 space-1 units)
 - Description pane fills remaining width, with prose-scoped styling
 - Gap between card and pane: `calc(3 * var(--freefall-space-1))`
 - Items separated by `calc(4 * var(--freefall-space-1))` vertical gap
@@ -40,7 +40,7 @@ Each gear item renders as the card alone. A **(+)** expand button in the top-lef
 ┌──────────────────┐
 │ [+]              │
 │                  │
-│  Equipment Card  │
+│  Gear Card       │
 │                  │
 │                  │
 └──────────────────┘
@@ -66,17 +66,17 @@ Uses `@media (min-width: 780px)` — the existing `--breakpoint-desktop` value. 
 
 #### Component structure
 
-This is **not** a new design-system component. The layout is implemented directly in the gear category page (`src/pages/gear/[category].astro`) using scoped styles or a page-level `<style>` block. The page imports `EquipmentCard` from the design system and composes the layout around it.
+This is **not** a new design-system component. The layout is implemented directly in the gear category page (`src/pages/gear/[category].astro`) using scoped styles or a page-level `<style>` block. The page imports `GearCard` from the design system and composes the layout around it.
 
 **Rationale:** The card/description pairing is specific to gear catalog pages. It doesn't belong in the design system as a generic component — it's page-level composition.
 
 #### Data flow
 
-The existing `getStaticPaths()` already provides the full item array with `data` and renderable `Content`. The page now additionally passes `item.data` to `EquipmentCard` alongside the rendered `Content`.
+The existing `getStaticPaths()` already provides the full item array with `data` and renderable `Content`. The page now additionally passes `item.data` to `GearCard` alongside the rendered `Content`.
 
 ### Dependencies
 
-- **Depends on:** `EquipmentCard.astro` (design system), gear content collection, existing category page routing
+- **Depends on:** `GearCard.astro` (design system), gear content collection, existing category page routing
 - **Depended on by:** Nothing — this is a leaf UI feature
 
 ### Anti-Patterns
@@ -90,8 +90,8 @@ The existing `getStaticPaths()` already provides the full item array with `data`
 
 ### Definition of Done
 
-- [ ] Desktop (≥ 780px): each gear item shows EquipmentCard + markdown description side by side
-- [ ] Mobile (< 780px): each gear item shows EquipmentCard only, with (+) button
+- [ ] Desktop (≥ 780px): each gear item shows GearCard + markdown description side by side
+- [ ] Mobile (< 780px): each gear item shows GearCard only, with (+) button
 - [ ] Mobile (+) button opens a modal containing the item's markdown description
 - [ ] Modal closes via close button, Escape key, and scrim click
 - [ ] Modal uses checkbox `:has()` pattern — no framework JS
@@ -112,14 +112,14 @@ The existing `getStaticPaths()` already provides the full item array with `data`
 Scenario: Desktop side-by-side layout
   Given: A user views /gear/weapons/ on a ≥ 780px viewport
   When: The page renders
-  Then: Each weapon shows an EquipmentCard on the left and markdown description on the right
+  Then: Each weapon shows an GearCard on the left and markdown description on the right
   And: The card displays binding costs, DV, harm type, and qualities from frontmatter
   And: The description pane shows the full markdown body
 
 Scenario: Mobile card-only with expand
   Given: A user views /gear/weapons/ on a < 780px viewport
   When: The page renders
-  Then: Each weapon shows only the EquipmentCard
+  Then: Each weapon shows only the GearCard
   And: A (+) button appears in the top-left corner of each card
 
 Scenario: Mobile modal opens

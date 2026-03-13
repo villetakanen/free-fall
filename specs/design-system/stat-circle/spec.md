@@ -84,7 +84,7 @@ Type modifier classes (`.stat-circle--body`, etc.) override only `--_sc-bg` and 
 ### Dependencies
 
 - **Depends on:** Design tokens (`tokens.css` — attribute color tokens, primary palette, spacing), typography classes (`typography.css` — `.text-ui-small`)
-- **Depended on by:** `EquipmentCard.astro` (binding cost row), future character sheet components
+- **Depended on by:** `GearCard.astro` (binding cost row), future character sheet components
 
 ### Anti-Patterns
 
