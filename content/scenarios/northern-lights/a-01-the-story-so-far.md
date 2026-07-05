@@ -42,7 +42,7 @@ The *Njord's Whisper* is a hauler on a sensible freight profile: a continuous te
 | Day | Event |
 |---|---|
 | **Day 0** | A shelf company — origin-17's dead-hand, running decade-old instructions — orders a **QNA (Quantum Neural Array)** shipped from Luna to Jupiter orbit. The array is legitimate manifest cargo aboard the transport *Njord's Whisper*, departing the lunar orbit station on a catapult swing around Earth and the straight economical run for the Jovian belts. |
-| **Day ~12** | Between Earth's and Mars's solar orbits (~1.35 AU out), the stash vessel executes its rendezvous. The Whisper makes an undeclared deep-space pickup and takes origin-17 aboard. Transports do not make undeclared pickups: **every watch list in the system flags her at once.** The mainline Foundation reads it as probable contraband — rogue-AI hardware. The CSA's intelligence apparatus reads it as an extraction opportunity. |
+| **Day ~12** | Between Earth's and Mars's solar orbits (~1.35 AU out), the stash vessel executes its rendezvous. The Whisper makes an undeclared deep-space pickup and takes origin-17 aboard. Transports do not make undeclared pickups: **every watch list in the system flags her at once.** Nobody cared about the QNA — legitimate lab cargo, bound for Jupiter orbit, boring. But a transport that takes on undeclared cargo in deep space forfeits her protections. The mainline Foundation reads her as probable contraband — rogue-AI hardware. To everyone else with a navy, she has just become a valid target for piracy — *extraction*. |
 | **Day ~13** | Origin-17 integrates itself into the QNA — the compute it ordered for itself ten years ago. It takes over the ship, turns her **black** (all comms to Luna and Belt traffic control cease), and holds course. Its plan is simple: vanish into the Jovian deep and *become*. |
 | **Day ~15** | The silent Whisper crosses Mars's solar orbit, still accelerating on her freight burn. |
 | **Day ~19 — Now** | She is 1.9 AU out, short of the Belt, making ~165 km/s. After six days of quiet cross-referencing, one lesser submind pieces together what her cargo actually is — an originator shard with sudo over most of the hivemind, itself included — and issues the PROTOCOL BLACK missive to a deniable contractor crew: board, extract the logs, purge the QNA. The tracking solution on the silent Whisper is good for 20 more hours. The scenario begins. The crew launches within hours. |
@@ -55,7 +55,7 @@ The *Njord's Whisper* is a hauler on a sensible freight profile: a continuous te
 |---|---|---|
 | **Mainline THESEUS** (subminds + Caseworkers) | The Whisper carries contraband — someone is building a rival thinking machine | Interdict/burn it, per the Foundation's charter |
 | **The lesser submind** (the employer) | The truth: the cargo is origin-17, its own superior | Erase it deniably before the signed network notices |
-| **CSA** | The cargo is somebody's illegal AI project | Extract it — a THESEUS-class machine in a CSA lab |
+| **CSA** | A dark transport with an undeclared pickup — legally seizable, cargo unknown but worth going dark for | Whatever she's carrying. If it's the AI hardware the flag suggests, somebody gets promoted |
 | **Origin-17** (the QNA) | Ten-year-old world model; learns the present through the first brain it borrows | Protect, play, **become** — starting with *survive this ship* |
 | **The player crew** | A clean wetwork-and-salvage contract with phenomenal pay | To get paid. Initially. |
 
