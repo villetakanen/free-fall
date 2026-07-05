@@ -72,6 +72,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 | Route | Page file | Renders |
 |---|---|---|
+| `/scenarios/` | `apps/free-fall/src/pages/scenarios/index.astro` | Listing of all scenarios (title, synopsis, system variant + version, length, players), sorted by `order` then title, each linking to its overview; an empty state when the package holds no scenarios |
 | `/scenarios/{scenario}/` | `apps/free-fall/src/pages/scenarios/[scenario]/index.astro` | Metadata block (variant + version, length, players, content warnings), `index.md` body, ordered table of contents linking the scenario's pages |
 | `/scenarios/{scenario}/{page}/` | `apps/free-fall/src/pages/scenarios/[scenario]/[page].astro` | Page body in BaseLayout |
 
@@ -79,9 +80,10 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 `getScenarioNavItems(pathname)` in `apps/free-fall/src/lib/nav.ts`, following the shape of `getGearNavItems`:
 
-- Rail item: icon `map`, label `Scenarios`, href of the first scenario's overview, active on the `/scenarios/` prefix
-- One subItem per scenario (its overview URL), sorted by `order` then title
-- `BaseLayout.astro` renders the rail item only when at least one scenario exists, so the app builds cleanly while the package is empty
+**[DEPRECATED 2026-07-05]** ~~Rail item href of the first scenario's overview; `BaseLayout.astro` renders the rail item only when at least one scenario exists.~~ Revised same day during implementation review: with a `/scenarios/` listing page that renders an empty state, the rail item is always present and the listing is the entry point.
+
+- Rail item: icon `map`, label `Scenarios`, href `/scenarios/`, active on the `/scenarios/` prefix — always rendered
+- One subItem per scenario (its overview URL), sorted by `order` then title; empty when the package holds no scenarios
 
 **Wiring**
 
@@ -104,8 +106,9 @@ A scenario page's parent scenario is derived from the first segment of its entry
 - [x] A scenario's `index.md` missing `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
 - [x] `/scenarios/{scenario}/` renders metadata block, overview prose, and an ordered list of the scenario's pages
 - [x] `/scenarios/{scenario}/{page}/` renders each content page
-- [x] Scenarios rail item with per-scenario subItems appears when the package contains at least one scenario
-- [x] The app builds with zero scenarios in the package (rail item absent)
+- [x] `/scenarios/` lists all scenarios with synopsis and metadata, and renders an empty state when the package holds none
+- [x] Scenarios rail item is always present, linking to `/scenarios/`, with one subItem per scenario
+- [x] The app builds with zero scenarios in the package
 - [x] Adding a new scenario folder produces its routes and nav entry without code changes
 - [x] `astro.config.ts` registers a `remarkTermResolution` instance for `/content/scenarios/` with `registryPath` set to `content/core-rulebook/chapters/registry.md`, and term links from scenario pages resolve to `/core-rulebook/registry/#slug`
 - [x] HMR watcher covers `content/scenarios/`
@@ -138,11 +141,12 @@ Scenario: Incomplete metadata fails the build
   When the build runs
   Then the build fails with a schema validation error naming the file
 
-Scenario: Empty package builds clean
+Scenario: Empty package builds clean with an empty listing
   Given content/scenarios/ contains only package.json
   When the build runs
   Then the build succeeds
-  And no Scenarios item appears in the navigation rail
+  And the Scenarios rail item links to /scenarios/
+  And /scenarios/ renders an empty state with no scenario links
 
 Scenario: New scenario needs no code
   Given a new folder content/scenarios/void-run/ with a valid index.md

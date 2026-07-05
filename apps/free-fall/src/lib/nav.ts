@@ -24,9 +24,8 @@ export const gearCategories = [
 ] as const;
 
 /**
- * Rail item for the scenarios collection, one subItem per scenario.
- * Returns null when the package holds no scenarios so BaseLayout can
- * omit the rail item entirely.
+ * Rail item for the scenarios collection: always present, linking to the
+ * /scenarios/ listing, with one subItem per scenario.
  * Spec: specs/content-scenarios/spec.md#navigation
  */
 export async function getScenarioNavItems(pathname: string) {
@@ -36,8 +35,6 @@ export async function getScenarioNavItems(pathname: string) {
         (b.data.order ?? Number.POSITIVE_INFINITY) ||
       a.data.title.localeCompare(b.data.title),
   );
-
-  if (entries.length === 0) return null;
 
   const subItems = entries.map((entry) => {
     const slug = entry.id.split("/")[0];
@@ -51,7 +48,7 @@ export async function getScenarioNavItems(pathname: string) {
   return {
     icon: "map",
     label: "Scenarios",
-    href: subItems[0].href,
+    href: "/scenarios/",
     active: pathname.startsWith("/scenarios/"),
     subItems,
   };

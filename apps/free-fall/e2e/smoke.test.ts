@@ -20,9 +20,14 @@ test("legacy /rules URL redirects to core rulebook", async ({ page }) => {
   await expect(page).toHaveURL(/\/core-rulebook\/00-intro/);
 });
 
-test("empty scenarios package shows no Scenarios rail item", async ({
+test("scenarios listing is reachable from the rail and renders empty state", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(page.locator("body")).not.toContainText("Scenarios");
+  await expect(page.locator("body")).toContainText("Scenarios");
+  await page.goto("/scenarios/");
+  await expect(page.locator("main h1")).toContainText("Scenarios");
+  await expect(page.locator("body")).toContainText(
+    "No scenarios published yet",
+  );
 });

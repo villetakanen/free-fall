@@ -1,0 +1,94 @@
+---
+// Spec: specs/content-scenarios/spec.md#routes
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const scenarios = (await getCollection("scenarios"))
+  .sort(
+    (a, b) =>
+      (a.data.order ?? Number.POSITIVE_INFINITY) -
+        (b.data.order ?? Number.POSITIVE_INFINITY) ||
+      a.data.title.localeCompare(b.data.title),
+  )
+  .map((entry) => ({
+    href: `/scenarios/${entry.id.split("/")[0]}/`,
+    ...entry.data,
+  }));
+---
+
+<BaseLayout title="Scenarios — FREE//FALL">
+  <h1>Scenarios</h1>
+
+  {
+    scenarios.length === 0 ? (
+      <p class="scenario-list-empty">
+        No scenarios published yet. The first job is being prepped — check
+        back soon.
+      </p>
+    ) : (
+      <ul class="scenario-list">
+        {scenarios.map((s) => (
+          <li>
+            <article>
+              <h2>
+                <a href={s.href}>{s.title}</a>
+              </h2>
+              <p>{s.synopsis}</p>
+              <dl class="scenario-list-meta">
+                <div>
+                  <dt>System</dt>
+                  <dd>
+                    {s.system.variant} {s.system.version}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Length</dt>
+                  <dd>{s.length}</dd>
+                </div>
+                <div>
+                  <dt>Players</dt>
+                  <dd>
+                    {s.players.min}–{s.players.max}
+                  </dd>
+                </div>
+              </dl>
+            </article>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .scenario-list-empty {
+    color: var(--freefall-text-muted);
+  }
+  .scenario-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(3 * var(--freefall-space-1));
+  }
+  .scenario-list li {
+    padding-bottom: calc(2 * var(--freefall-space-1));
+    border-bottom: 1px solid var(--freefall-border-subtle);
+  }
+  .scenario-list-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(2 * var(--freefall-space-1));
+    margin: 0;
+  }
+  .scenario-list-meta dt {
+    font-family: var(--freefall-font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--freefall-text-muted);
+  }
+  .scenario-list-meta dd {
+    margin: 0;
+  }
+</style>
