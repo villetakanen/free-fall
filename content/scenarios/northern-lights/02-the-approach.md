@@ -5,7 +5,7 @@ order: 2
 
 # Scene 1: The Approach
 
-Open *in media res*. Skip the forty-three hours of burn — they happened, the crew is aching, foamed out of their couches, and the tanks are dry. (If a player wants the numbers, the whole intercept is Appendix 2.) The scene starts on a single line from the ship:
+Open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home. (If a player wants the numbers, the whole intercept is Appendix 2.) The scene starts on a single discussion from the ship:
 
 > **"Lock. Target vessel, dead ahead, forty thousand kilometers and closing. Njord's Whisper. She's exactly where the math said she'd be."**
 

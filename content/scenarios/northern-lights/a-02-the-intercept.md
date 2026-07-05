@@ -23,7 +23,7 @@ Tracking solution:      DEGRADES H+20:00
 Updates after H+20:     NONE. Dead reckoning only.
 ```
 
-The physics, for the table's engineers: *t = 2·√(d/a)*. At 3 g over 1.2 AU that is a shade under 44 hours, half of it decelerating. The total delta-v is obscene — this is what the fuel tanks are *for* — and the crew arrives with dry tanks and no margin for a second approach. **One pass. That's the job.**
+The physics, for the table's engineers: *t = 2·√(d/a)*. At 3 g over 1.2 AU that is a shade under 44 hours, half of it decelerating. The total delta-v is obscene — this is what the fuel tanks are *for* — and the crew arrives near-dry: no margin for a second hard approach, just enough left for a slow, low-thrust crawl home. **One pass. That's the job.**
 
 ## Two facts the burn creates
 
@@ -40,7 +40,7 @@ The Whisper keeps burning her freight profile the whole time the crew is in tran
 |---|---|
 | H+0 | Solution locked. The 20-hour window opens. |
 | H+0 → launch | Prep, gear checks, questions nobody answers. Every hour here is an hour less of tracked flight. |
-| Launch → H+20:00 | Full burn. Three gravities, nano-medicined, foamed into couches. Nobody walks; the exoskeletons carry what has to move. |
+| Launch → H+20:00 | Full burn. Three gravities, nano-medicined, strapped into couches. Nobody walks; the exoskeletons carry what has to move. |
 | H+20:00 | Tracking degrades. The Whisper's echo freezes on the plot and never updates again. |
 | H+21:45 | Flip — on dead reckoning. Minutes of blessed free fall. The torch swings around to point *at the target*. |
 | H+43:30 | Contact — if the math was right. **Scene 1 begins here.** |
