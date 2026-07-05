@@ -22,7 +22,7 @@ She has no name on the registry, just a hull code. Let the crew name her. They'l
 
 ## The Burn Plan
 
-The Whisper's route is a matter of public record up to a point: Luna departure, a catapult swing around Earth, then the straight economical run for Jupiter. She held that line for weeks. She is now **outside Mars's solar orbit, short of the Belt** — about 1.9 AU from the sun — while Earth has moved on along its own orbit. The intercept solution has to cross the long diagonal: **1.2 AU, gate to gate.**
+The Whisper's route is a matter of public record up to a point: departure from **the same lunar orbit station the crew is standing in**, a catapult swing around Earth, then the straight economical run for Jupiter. Weeks ago her crew walked these same docks. Somewhere past Earth but short of Mars's orbit she made an unscheduled rendezvous — the pickup that put her on every watch list in the system — and not long after, she went silent. She held her line for Jupiter regardless. She is now **outside Mars's solar orbit, short of the Belt** — about 1.9 AU from the sun — while Earth has moved on along its own orbit. The intercept solution has to cross the long diagonal: **1.2 AU, gate to gate.**
 
 The specialist AI presents it like a menu with one item:
 
