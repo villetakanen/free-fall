@@ -6,7 +6,7 @@
 
 The FREE//FALL app serves two distinct kinds of content:
 
-1. **Game content** — rules, lore, character creation — owned by packages (e.g., `@free-fall/core-rulebook`) and consumed by the app via package imports.
+1. **Game content** — rules, lore, character creation — owned by content workspaces (e.g., `content/core-rulebook`) and consumed by the app via Content Collections.
 2. **Site content** — landing page copy, product descriptions, CTAs, alpha-status messaging — owned exclusively by the app itself, with no external consumers.
 
 This spec defines the architectural pattern for category 2: content that belongs to the site, is authored as plain Markdown, and is imported into structural `.astro` pages as named content blocks.
@@ -22,7 +22,6 @@ All site-owned content lives under `apps/free-fall/src/content/` in directories 
 ```
 apps/free-fall/src/content/
 ├── landing/          # content blocks for index.astro
-├── rules/            # (existing) app-specific rules content
 └── {page-name}/      # future pages follow the same pattern
 ```
 
@@ -66,11 +65,11 @@ Site content is owned by and scoped to `apps/free-fall`. It must never be extrac
 
 ### Definition of Done
 
-- [ ] `apps/free-fall/src/content/` directory exists with at least one page-scoped subdirectory
-- [ ] Content files are plain `.md` with no frontmatter
-- [ ] Consuming `.astro` pages import content via `{ Content as Name }` pattern
-- [ ] No `src/content/config.ts` or Content Collections configuration for site content
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `apps/free-fall/src/content/` directory exists with at least one page-scoped subdirectory
+- [x] Content files are plain `.md` with no frontmatter
+- [x] Consuming `.astro` pages import content via `{ Content as Name }` pattern
+- [x] No `src/content/config.ts` or Content Collections configuration for site content
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 

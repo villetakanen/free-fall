@@ -188,18 +188,18 @@ When a second content package is added (e.g., `content/campaign-primer/`), a sec
 
 ### Definition of Done
 
-- [ ] `remark-directive` added as a dependency to `apps/free-fall`
-- [ ] `remark-term-resolution.ts` implemented in `apps/free-fall/src/lib/remark/`
-- [ ] Plugin parses `registry.md` at initialization and builds a term index from `<dfn id="...">` elements
-- [ ] `:term[Term Name]` directives produce `<a>` tags with `href`, `class`, `data-term-key`, and `rel` attributes as specified
-- [ ] Build fails with a clear error when a `:term` slug has no match in the registry
-- [ ] Build fails with a clear error when `registryPath` does not exist
-- [ ] Files outside `contentPath` are skipped entirely
-- [ ] `astro.config.ts` registers `remarkDirective` and `remarkTermResolution` in the remark pipeline
-- [ ] URL rewrite plugin correctly normalizes `./registry#slug` hrefs produced by term resolution
-- [ ] Unit tests cover: basic transformation, slugification edge cases, orphaned term error, missing registry error, content path guard, multiple terms in one file
-- [ ] `registry.md` migrated to `<dfn id="...">` format
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `remark-directive` added as a dependency to `apps/free-fall`
+- [x] `remark-term-resolution.ts` implemented in `apps/free-fall/src/lib/remark/`
+- [x] Plugin parses `registry.md` at initialization and builds a term index from `<dfn id="...">` elements
+- [x] `:term[Term Name]` directives produce `<a>` tags with `href`, `class`, `data-term-key`, and `rel` attributes as specified
+- [x] Build fails with a clear error when a `:term` slug has no match in the registry
+- [x] Build fails with a clear error when `registryPath` does not exist
+- [x] Files outside `contentPath` are skipped entirely
+- [x] `astro.config.ts` registers `remarkDirective` and `remarkTermResolution` in the remark pipeline
+- [x] URL rewrite plugin correctly normalizes `./registry#slug` hrefs produced by term resolution
+- [x] Unit tests cover: basic transformation, slugification edge cases, orphaned term error, missing registry error, content path guard, multiple terms in one file
+- [x] `registry.md` migrated to `<dfn id="...">` format
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 

@@ -21,9 +21,9 @@ Parent spec: `specs/free-fall/site-content/spec.md`
 | File | Responsibility |
 |---|---|
 | `src/pages/index.astro` | Structural skeleton — sections, layout, scoped styles, meta tags |
-| `src/content/landing/hero.md` | Hero section prose — tagline, one-liner description |
-| `src/content/landing/features.md` | Feature highlights / value proposition prose |
-| `src/content/landing/alpha-status.md` | Current project status, expectations, alpha disclaimer |
+| `src/content/landing/hero.md` | Hero section prose — setting hook, one-liner description |
+| `src/content/landing/intro.md` | What the project is, current state, pointers into the content |
+| `src/components/landing/VersionInfo.astro` | Alpha badge SVG plus app and rules version numbers |
 
 The set of content blocks may evolve. The pattern is stable: one `.md` file per logical section, imported into `index.astro` by name.
 
@@ -33,20 +33,18 @@ The set of content blocks may evolve. The pattern is stable: one `.md` file per 
 
 ```astro
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import VersionInfo from "../components/landing/VersionInfo.astro";
 import { Content as Hero } from "../content/landing/hero.md";
-import { Content as Features } from "../content/landing/features.md";
-import { Content as AlphaStatus } from "../content/landing/alpha-status.md";
+import { Content as Intro } from "../content/landing/intro.md";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="FREE//FALL">
-  <section class="landing-hero">
+  <VersionInfo />
+  <section>
     <Hero />
   </section>
-  <section class="landing-features">
-    <Features />
-  </section>
-  <section class="landing-status">
-    <AlphaStatus />
+  <section class="content-side">
+    <Intro />
   </section>
 </BaseLayout>
 ```
@@ -55,8 +53,8 @@ Scoped `<style>` in `index.astro` owns all layout and visual treatment of the se
 
 **What stays in `.astro`:**
 
-- The alpha badge SVG (`@free-fall/design-system/assets/v7-alpha.svg?raw`) — this is a visual asset, not prose. It is imported and rendered with `set:html` in the page, not in a Markdown file.
-- Version display (`VERSION` from `@free-fall/core-rulebook`) — programmatic data, not content.
+- The alpha badge SVG (`@free-fall/design-system/assets/v7-alpha.svg?raw`) — this is a visual asset, not prose. It is imported and rendered with `set:html` in `VersionInfo.astro`, not in a Markdown file.
+- Version display — programmatic data, not content. `VersionInfo.astro` reads the app version from the root `package.json` and the rules version from `content/core-rulebook/package.json`.
 - Section structure, ordering, and styling.
 
 **What moves to Markdown:**
@@ -79,14 +77,14 @@ Scoped `<style>` in `index.astro` owns all layout and visual treatment of the se
 
 ### Definition of Done
 
-- [ ] `src/content/landing/` directory exists with content block `.md` files
-- [ ] `src/pages/index.astro` imports content blocks from `src/content/landing/`
-- [ ] `index.astro` no longer imports `CoreMechanics` from `@free-fall/core-rulebook`
-- [ ] `index.astro` uses `BaseLayout`
-- [ ] Content blocks are plain Markdown with no frontmatter
-- [ ] Page renders semantic `<section>` elements for each content block
-- [ ] Alpha badge SVG and VERSION remain in `.astro` (not in Markdown)
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `src/content/landing/` directory exists with content block `.md` files
+- [x] `src/pages/index.astro` imports content blocks from `src/content/landing/`
+- [x] `index.astro` no longer imports `CoreMechanics` from `@free-fall/core-rulebook`
+- [x] `index.astro` uses `BaseLayout`
+- [x] Content blocks are plain Markdown with no frontmatter
+- [x] Page renders semantic `<section>` elements for each content block
+- [x] Alpha badge SVG and VERSION remain in `.astro` (not in Markdown)
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
@@ -100,7 +98,7 @@ Scoped `<style>` in `index.astro` owns all layout and visual treatment of the se
 Scenario: Landing page renders content blocks
   Given the app is built
   When a user visits /
-  Then they see the hero, features, and alpha-status content
+  Then they see the version info, hero, and intro content
   And the page uses semantic <section> elements
 
 Scenario: Editing landing page copy
