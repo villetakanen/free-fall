@@ -7,6 +7,17 @@ order: 100
 
 **The crew's ship — and the thing that holds them together.** Five operators who have run her together for the better part of a year: same five, same ship, no churn. That is rare — crews rotate constantly, people burn out, cash out, or don't come back, because deaths happen even to professionals. This crew hasn't lost anyone. They know the ship and each other the way a hand knows a glove, and that cohesion is their real asset, more than the titanium prow, more than the AI. It is also what the scenario spends the evening pulling apart.
 
+## Naming her
+
+She carries only a hull code on the registry. Crews name their own ships, and this crew has earned the right. Offer the players one of these, or let them coin their own — the name tells you who they think they are:
+
+- **Best Offer** — because that's who they work for, every time. No pretense.
+- **Due Diligence** — dry, corporate, faintly menacing. The name of a ship that reads your contract before it reads your rights.
+- **Angel's Share** — the portion lost to the void on every burn. Poetic, fatalistic, and a little too honest about what this work costs.
+- **Repossession** — they don't steal. They *collect*. Somebody, somewhere, signed for this.
+
+Whatever they pick, write it into the scene: the assistant should address them by the ship's name from the first line, and the ship should feel like the sixth member of the crew — right up until the scenario starts teaching them what a ship's mind can actually be.
+
 Statted below as an example FREE//FALL vessel — an aggressive privateer boarding craft. Ship types are countless; treat her as a working template as much as a scenario prop.
 
 ## Stat block
@@ -59,13 +70,3 @@ Offered as a complete, playable example of a FREE//FALL vessel — frame, system
 
 </div>
 
-## Naming her
-
-She carries only a hull code on the registry. Crews name their own ships, and this crew has earned the right. Offer the players one of these, or let them coin their own — the name tells you who they think they are:
-
-- **Best Offer** — because that's who they work for, every time. No pretense.
-- **Due Diligence** — dry, corporate, faintly menacing. The name of a ship that reads your contract before it reads your rights.
-- **Angel's Share** — the portion lost to the void on every burn. Poetic, fatalistic, and a little too honest about what this work costs.
-- **Repossession** — they don't steal. They *collect*. Somebody, somewhere, signed for this.
-
-Whatever they pick, write it into the scene: the assistant should address them by the ship's name from the first line, and the ship should feel like the sixth member of the crew — right up until the scenario starts teaching them what a ship's mind can actually be.
