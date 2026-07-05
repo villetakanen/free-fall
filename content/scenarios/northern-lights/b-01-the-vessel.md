@@ -5,11 +5,9 @@ order: 100
 
 # B.01 — The Vessel
 
-**The crew's ship — and the thing that holds the crew together.** It is not a rental the employer threw in; it is *theirs*, the shared asset five operators built a life around. They have run it together for the better part of a year now: same five, same ship, no churn. That is rare. Contract crews rotate constantly — people burn out, cash out, or simply don't come back from a job, because deaths happen even to professionals. This crew hasn't lost anyone. They are good, they are experienced, and they know the ship and each other the way a hand knows a glove. That cohesion is their real asset — more than the titanium prow, more than the AI — and, this being the kind of story it is, it is exactly what the scenario will spend the evening pulling apart.
+**The crew's ship — and the thing that holds them together.** Five operators who have run her together for the better part of a year: same five, same ship, no churn. That is rare — crews rotate constantly, people burn out, cash out, or don't come back, because deaths happen even to professionals. This crew hasn't lost anyone. They know the ship and each other the way a hand knows a glove, and that cohesion is their real asset, more than the titanium prow, more than the AI. It is also what the scenario spends the evening pulling apart.
 
-They are a **registered contract crew on a public platform** — a supercharged, cynical descendant of the gig apps, where a job posts, a smart contract escrows the pay, verified crews bid, and the algorithm matches muscle to money. Somebody with PROTOCOL BLACK clearance posted a wetwork-and-salvage gig with a phenomenal rate; the crew's rating and their ship's spec sheet won them the ping. They accepted with a thumbprint. Northern Lights is not their first job off the platform, and it will not be their last, if they're careful. The ship is how they eat.
-
-Statted as FREE//FALL gear — a complete, usable example vessel, and an aggressive privateer boarding craft at that. Ship types are countless; treat her as a working template as much as a scenario prop.
+Statted below as an example FREE//FALL vessel — an aggressive privateer boarding craft. Ship types are countless; treat her as a working template as much as a scenario prop.
 
 ## Stat block
 
