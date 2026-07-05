@@ -8,9 +8,14 @@ test("index page renders", async ({ page }) => {
 });
 
 test("markdown content page renders", async ({ page }) => {
-  await page.goto("/rules/getting-started/");
+  await page.goto("/core-rulebook/00-intro/");
   await expect(page.locator("header .title").first()).toContainText(
-    "Getting Started",
+    "Introduction",
   );
-  await expect(page.locator("body")).toContainText("tabletop RPG");
+  await expect(page.locator("body")).toContainText("FREE//FALL");
+});
+
+test("legacy /rules URL redirects to core rulebook", async ({ page }) => {
+  await page.goto("/rules/getting-started/");
+  await expect(page).toHaveURL(/\/core-rulebook\/00-intro/);
 });

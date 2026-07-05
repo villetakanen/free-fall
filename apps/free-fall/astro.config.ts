@@ -7,6 +7,10 @@ import { remarkTermResolution } from "./src/lib/remark/remark-term-resolution";
 
 export default defineConfig({
   output: "static",
+  redirects: {
+    "/rules": "/core-rulebook/00-intro",
+    "/rules/getting-started": "/core-rulebook/00-intro",
+  },
   markdown: {
     shikiConfig: {
       theme: "css-variables",
