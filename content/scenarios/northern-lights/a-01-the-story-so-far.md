@@ -5,7 +5,19 @@ order: 90
 
 # Appendix 1: The Story So Far
 
-**GM reference — the canonical backstory.** When a table question, a ruling, or a rewrite needs to know what actually happened, this is the document that wins.
+**GM reference — the canonical backstory of this demo.** When a table question, a ruling, or a rewrite needs to know what happened in *this scenario as written*, this is the document that wins.
+
+<div class="content-side">
+
+### Canon, and canon
+
+This story is written as a *plausible* backstory for this demo. It is not the official FREE//FALL backstory, and it does not have to be the backstory of your take on this scenario either. It exists to give the scenario structure and a backdrop — and it is deliberately simplistic, nowhere near as messy as reality tends to be.
+
+So feel free to ignore it. Or take it as canon — and then chuckle with your game group when you reveal all the double-takes of double-takes written in to keep this scenario sensible.
+
+It could be a plausible backstory for FREE//FALL games, or Al Presa games to a degree. It doesn't have to be.
+
+</div>
 
 ## 2037 — The Copenhagen Incident
 
