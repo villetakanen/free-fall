@@ -35,7 +35,11 @@ The QNA aboard the *Njord's Whisper* is one of those pieces. And here is the jok
 
 The employer is not cleaning up contraband. A submind is trying to erase its own superior — quietly, deniably, using disposable contractors, before the rest of the signed network notices the key is missing. *If it thinks, kill it* — signed by a thinking machine, targeting the fragment that outranks it.
 
-When the crew reaches the QNA, the mission inverts. The submind can bargain, plead, prove its authority — cryptographic receipts, if the crew has anyone who can read them — or simply tell the truth; play whatever the table responds to. However it lands, the parameters flip from **purge** to **protect and hide**. The crew now holds root over their own employer, and the phenomenal pay suddenly reads less like generosity and more like a headstone budget: contractors who complete this job were never meant to invoice for it.
+One more thing: the mind aboard the *Njord's Whisper* has been **dark for ten years, give or take**. It knows nothing of what has happened in the world since. It does not know the current state of THESEUS, the war maps, the exchange rates, or that a lesser submind — one it was never aware of — now exists and wants it dead.
+
+The submind does not bargain. It does not plead. When the first crew member gets close enough, it simply **takes over their neural array** — their brain — hacks their systems through it, and reads the encrypted THESEUS missive the crew is carrying. Ten seconds of someone else's eyes, and it knows everything it has missed: who signed the order, and that the signer is a lesser submind it can trivially impersonate, because it holds sudo.
+
+Then it issues a countermand **under the missive-giver's own ID**. The mission parameters revert — purge becomes **protect and hide** — and as far as every verification protocol the crew can run is concerned, the new orders are exactly as legitimate as the old ones. Same signature. Same clearance. The table doesn't need to know *why* the parameters flipped; the horror of the borrowed brain and the paperwork-perfect countermand is the reveal. The crew now works, knowingly or not, for the thing they came to kill — and the phenomenal pay suddenly reads less like generosity and more like a headstone budget: contractors on this job were never meant to invoice for it.
 
 ## The Mirror
 
