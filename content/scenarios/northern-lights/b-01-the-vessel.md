@@ -36,7 +36,7 @@ pilot_binding:
   body: 2
   mind: 2
 qualities:
-  - "Movement System (Fusion Torch — sustained 3 g brachistochrone)"
+  - "Movement System (Antimatter-catalyzed fusion torch — sustained 3 g brachistochrone)"
   - "Fuel Reserve (Oversized — one full-burn intercept, then a crawl home)"
   - "Ramming Prow (Reinforced titanium bow — breaches transport hull plating; front facing AV 6)"
   - "Crash Foam (Full-cabin impact suspension — boarding by ram)"
@@ -54,7 +54,7 @@ source: "northern-lights-demo"
 
 ## Effect
 
-A boarding craft, not a warship. Everything about her is bent toward one move: cross a gulf fast, arrive with the crew alive, and put them inside a hull that would rather stay closed. The oversized tanks buy the brachistochrone burn (Appendix A.02); the titanium prow turns the whole ship into a battering ram when the crew commits to it; the crash foam is what lets them survive doing so. Her point defense is for sweeping debris and swatting a curious drone — she loses any straight fight against something built to shoot back.
+A boarding craft, not a warship. Everything about her is bent toward one move: cross a gulf fast, arrive with the crew alive, and put them inside a hull that would rather stay closed. The oversized tanks buy the brachistochrone burn (Appendix A.02) — the drive is a fusion torch spiked with a metered trickle of antimatter to light it, and that antimatter is the ugliest line on the fuel invoice, logged by the platform to the milligram. The titanium prow turns the whole ship into a battering ram when the crew commits to it; the crash foam is what lets them survive doing so. Her point defense is for sweeping debris and swatting a curious drone — she loses any straight fight against something built to shoot back.
 
 The specialist AI is the reason five people can crew her. It flies, it burns, it runs the sensors and the guns, and it models options faster than any of them can. It is narrow and incurious and exactly what it appears to be — hold that thought for later in the scenario.
 
