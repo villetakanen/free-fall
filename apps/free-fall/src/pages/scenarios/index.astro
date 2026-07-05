@@ -29,30 +29,11 @@ const scenarios = (await getCollection("scenarios"))
       <ul class="scenario-list">
         {scenarios.map((s) => (
           <li>
-            <article>
-              <h2>
-                <a href={s.href}>{s.title}</a>
-              </h2>
-              <p>{s.synopsis}</p>
-              <dl class="scenario-list-meta">
-                <div>
-                  <dt>System</dt>
-                  <dd>
-                    {s.system.variant} {s.system.version}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Length</dt>
-                  <dd>{s.length}</dd>
-                </div>
-                <div>
-                  <dt>Players</dt>
-                  <dd>
-                    {s.players.min}–{s.players.max}
-                  </dd>
-                </div>
-              </dl>
-            </article>
+            <a href={s.href}>{s.title}</a>
+            <span class="scenario-list-meta">
+              {s.system.variant} {s.system.version} · {s.length} ·{" "}
+              {s.players.min}–{s.players.max} players
+            </span>
           </li>
         ))}
       </ul>
@@ -69,26 +50,18 @@ const scenarios = (await getCollection("scenarios"))
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: calc(3 * var(--freefall-space-1));
+    gap: var(--freefall-space-1);
   }
   .scenario-list li {
-    padding-bottom: calc(2 * var(--freefall-space-1));
-    border-bottom: 1px solid var(--freefall-border-subtle);
-  }
-  .scenario-list-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(2 * var(--freefall-space-1));
-    margin: 0;
+    align-items: baseline;
+    column-gap: calc(2 * var(--freefall-space-1));
   }
-  .scenario-list-meta dt {
+  .scenario-list-meta {
     font-family: var(--freefall-font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.05em;
-    text-transform: uppercase;
     color: var(--freefall-text-muted);
-  }
-  .scenario-list-meta dd {
-    margin: 0;
   }
 </style>

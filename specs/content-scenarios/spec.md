@@ -38,7 +38,7 @@ Scenario overview (`index.md`):
 
 ```yaml
 title: "..."                # display name
-synopsis: "..."             # one-paragraph pitch, shown in listings
+synopsis: "..."             # one-paragraph pitch; reserved for SEO/description and future listing detail (not rendered in the compact list)
 system:
   variant: "..."            # rules variant: "FREE//FALL", "Al Presa", "3rd Orleas", "SRD", …
   version: "..."            # variant version the scenario is written against, e.g. "7.0.0-alpha"
@@ -72,7 +72,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 | Route | Page file | Renders |
 |---|---|---|
-| `/scenarios/` | `apps/free-fall/src/pages/scenarios/index.astro` | Listing of all scenarios (title, synopsis, system variant + version, length, players), sorted by `order` then title, each linking to its overview; an empty state when the package holds no scenarios |
+| `/scenarios/` | `apps/free-fall/src/pages/scenarios/index.astro` | Compact list of all scenarios — title linking to the overview plus a one-line metadata summary (system variant + version, length, players) — sorted by `order` then title; an empty state when the package holds no scenarios |
 | `/scenarios/{scenario}/` | `apps/free-fall/src/pages/scenarios/[scenario]/index.astro` | Metadata block (variant + version, length, players, content warnings), `index.md` body, ordered table of contents linking the scenario's pages |
 | `/scenarios/{scenario}/{page}/` | `apps/free-fall/src/pages/scenarios/[scenario]/[page].astro` | Page body in BaseLayout |
 
@@ -106,7 +106,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 - [x] A scenario's `index.md` missing `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
 - [x] `/scenarios/{scenario}/` renders metadata block, overview prose, and an ordered list of the scenario's pages
 - [x] `/scenarios/{scenario}/{page}/` renders each content page
-- [x] `/scenarios/` lists all scenarios with synopsis and metadata, and renders an empty state when the package holds none
+- [x] `/scenarios/` lists all scenarios as a compact list (title + metadata line), and renders an empty state when the package holds none
 - [x] Scenarios rail item is always present, linking to `/scenarios/`, with one subItem per scenario
 - [x] The app builds with zero scenarios in the package
 - [x] Adding a new scenario folder produces its routes and nav entry without code changes
