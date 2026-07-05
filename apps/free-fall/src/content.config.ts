@@ -76,4 +76,45 @@ const gear = defineCollection({
   schema: gearSchema,
 });
 
-export const collections = { "core-rulebook": coreRulebook, gear };
+// ── Scenarios (folder per scenario; index.md carries the metadata) ──
+// Spec: specs/content-scenarios/spec.md
+
+const scenarios = defineCollection({
+  loader: glob({
+    pattern: "*/index.md",
+    base: "../../content/scenarios",
+  }),
+  schema: z.object({
+    title: z.string(),
+    synopsis: z.string().min(1),
+    system: z.object({
+      variant: z.string().min(1),
+      version: z.string().min(1),
+    }),
+    length: z.string().min(1),
+    players: z.object({
+      min: z.number().int().positive(),
+      max: z.number().int().positive(),
+    }),
+    content_warnings: z.array(z.string()).default([]),
+    order: z.number().optional(),
+  }),
+});
+
+const scenarioPages = defineCollection({
+  loader: glob({
+    pattern: ["*/*.md", "!*/index.md"],
+    base: "../../content/scenarios",
+  }),
+  schema: z.object({
+    title: z.string(),
+    order: z.number().optional(),
+  }),
+});
+
+export const collections = {
+  "core-rulebook": coreRulebook,
+  gear,
+  scenarios,
+  "scenario-pages": scenarioPages,
+};

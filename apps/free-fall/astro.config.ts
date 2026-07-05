@@ -24,11 +24,24 @@ export default defineConfig({
           contentPath: "/content/core-rulebook/",
         },
       ],
+      // Scenarios are dependent content: terms resolve against the parent
+      // variant's registry. Spec: specs/content-scenarios/spec.md#constraints
+      [
+        remarkTermResolution,
+        {
+          registryPath: "../../content/core-rulebook/chapters/registry.md",
+          contentPath: "/content/scenarios/",
+        },
+      ],
     ],
     rehypePlugins: [
       [
         rehypeContentUrlRewrite,
         { basePath: "/core-rulebook/", contentPath: "/content/core-rulebook/" },
+      ],
+      [
+        rehypeContentUrlRewrite,
+        { basePath: "/core-rulebook/", contentPath: "/content/scenarios/" },
       ],
     ],
   },
@@ -45,6 +58,9 @@ export default defineConfig({
           );
           server.watcher.add(
             fileURLToPath(new URL("../../content/gear/items", import.meta.url)),
+          );
+          server.watcher.add(
+            fileURLToPath(new URL("../../content/scenarios", import.meta.url)),
           );
         },
       },

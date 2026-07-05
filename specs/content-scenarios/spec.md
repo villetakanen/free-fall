@@ -20,7 +20,7 @@ One folder per scenario inside the shared package. Every scenario folder contain
 
 ```
 content/scenarios/
-├── package.json                # name: @free-fall/scenarios, version only — no scripts, no TS
+├── package.json                # name: @free-fall/scenarios — lint script only, no build tooling, no TS (matches sibling packages)
 └── {scenario-slug}/
     ├── index.md                # scenario overview + full metadata frontmatter
     ├── 01-{page}.md            # ordered content pages (acts, locations, NPCs…)
@@ -93,21 +93,22 @@ A scenario page's parent scenario is derived from the first segment of its entry
 - Scenarios introduce no terms of their own. A scenario's `:term[]` directives resolve against the registry of its target rules variant+version (`specs/content-workspace/term-resolution/spec.md`): the scenarios package has no `registry.md`, and its `remarkTermResolution` instance in `astro.config.ts` points `registryPath` at the parent variant's registry — initially `content/core-rulebook/chapters/registry.md`, with term links resolving to `/core-rulebook/registry/#slug`. When scenarios target multiple variants, registry selection follows `system.variant`.
 - Scenario metadata lives in `index.md` frontmatter only. Content pages carry `title` and `order`; everything the app queries about a scenario comes from one place.
 - `system.variant` and `system.version` are free-form strings validated as non-empty. The variant list grows with the game; the schema does not enumerate it.
+- All relative Markdown links in scenario prose rewrite to the parent variant's base path (`/core-rulebook/`) — the `rehypeContentUrlRewrite` instance for `/content/scenarios/` shares the term-link configuration. Links between a scenario's own pages use absolute `/scenarios/{scenario}/{page}/` paths. *(Discovered during #39: the rewrite plugin's `basePath` is static per instance.)*
 
 ## Contract
 
 ### Definition of Done
 
-- [ ] `content/scenarios/package.json` exists with a version and no build tooling
-- [ ] `scenarios` and `scenario-pages` collections defined in `apps/free-fall/src/content.config.ts` with the schemas above
-- [ ] A scenario's `index.md` missing `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
+- [x] `content/scenarios/package.json` exists with a version and no build tooling
+- [x] `scenarios` and `scenario-pages` collections defined in `apps/free-fall/src/content.config.ts` with the schemas above
+- [x] A scenario's `index.md` missing `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
 - [ ] `/scenarios/{scenario}/` renders metadata block, overview prose, and an ordered list of the scenario's pages
 - [ ] `/scenarios/{scenario}/{page}/` renders each content page
 - [ ] Scenarios rail item with per-scenario subItems appears when the package contains at least one scenario
 - [ ] The app builds with zero scenarios in the package (rail item absent)
 - [ ] Adding a new scenario folder produces its routes and nav entry without code changes
-- [ ] `astro.config.ts` registers a `remarkTermResolution` instance for `/content/scenarios/` with `registryPath` set to `content/core-rulebook/chapters/registry.md`, and term links from scenario pages resolve to `/core-rulebook/registry/#slug`
-- [ ] HMR watcher covers `content/scenarios/`
+- [x] `astro.config.ts` registers a `remarkTermResolution` instance for `/content/scenarios/` with `registryPath` set to `content/core-rulebook/chapters/registry.md`, and term links from scenario pages resolve to `/core-rulebook/registry/#slug`
+- [x] HMR watcher covers `content/scenarios/`
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
@@ -150,7 +151,8 @@ Scenario: New scenario needs no code
   And "Void Run" appears as a subItem under Scenarios in the rail
 
 Scenario: Scenario terms resolve to the parent variant's registry
-  Given content/core-rulebook/chapters/registry.md contains <dfn id="action-pool">
+  Given content/core-rulebook/chapte
+  rs/registry.md contains <dfn id="action-pool">
   And a scenario page contains :term[Action Pool]
   When the build runs
   Then the rendered link points to /core-rulebook/registry/#action-pool
