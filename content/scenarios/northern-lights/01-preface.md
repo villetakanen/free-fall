@@ -55,13 +55,13 @@ That's the whole mechanism. The tag says N/A, the player has a secret, and the t
 
 ## The Mirror
 
-And that is when the second elimination crew arrives.
+And that is when the second crew arrives — and nobody sent them.
 
-The employer saw its own signature answered back at it, and it has stopped trusting the network entirely. The second crew is its answer: **analog, no uplink, unrecallable.** Sealed orders, hard copies, comms blackout by design. The QNA's forged authority — the trick that turned the PCs — is worthless against people who cannot receive a countermand and would not honor one if they could.
+They are **CSA military**, there entirely on their own initiative. The Corporate States of America maintain **NHA extraction crews** — Non-Human Asset teams, mostly earning their keep in industrial espionage — and a transport running dark on a contraband flag is exactly the kind of loud silence their intelligence apparatus listens for. Where THESEUS wants the cargo purged, the CSA wants it *extracted*. A thinking machine on par with THESEUS, in a CSA lab? Somebody got promoted just for writing the proposal.
 
-They are not THESEUS assets. They are **CSA military** — a black tasking routed through Corporate States of America channels, flying a CSA military-grade ship and carrying military-grade gear. Everything the PCs bought, spliced, or salvaged, the second crew was *issued*, one grade better.
+They fly a CSA military-grade ship and carry military-grade gear. Everything the PCs bought, spliced, or salvaged, this crew was *issued*, one grade better. And they run deniable-ops doctrine as a matter of course: **analog, no uplink, unrecallable.** Sealed orders and comms blackout — not because anyone was burned, but because that is how you do industrial espionage in a system where Quantum Decryption makes wireless transparent. The side effect is the same: the QNA's forged authority, the trick that turned the PCs, is worthless against people who cannot receive a countermand.
 
-But they are following the same mission parameters the PCs did — the same brief, the same RoE, the same *tactics*. Whatever approach the players used on the civilian crew, it comes back at them now: their breach points, their comms discipline, their no-witnesses clause. The players spent the first half of the session writing the playbook that gets used against them in the second half — executed by professionals with better hardware.
+And their parameters are the PCs' parameters, almost word for word: board the vessel, eliminate the crew while suited, no witnesses, take the hardware. Here is the mirror in full: the PCs boarded a ship to kill its crew and take its cargo — and by the time the CSA arrives, **they *are* the ship's crew**. Whatever approach the players used in act one — their breach points, their comms discipline, their no-witnesses clause — comes back at them now, executed by professionals with better hardware. The players spent the first half of the session writing the playbook that gets used against them in the second half.
 
 This is the heart of the scenario. The crew gets to experience their own professionalism from the receiving end — and realize, mid-firefight, that the people shooting at them are not villains either. Just the next line item.
 
