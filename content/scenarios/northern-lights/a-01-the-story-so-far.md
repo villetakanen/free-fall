@@ -7,17 +7,7 @@ order: 90
 
 **GM reference — the canonical backstory of this demo.** When a table question, a ruling, or a rewrite needs to know what happened in *this scenario as written*, this is the document that wins.
 
-<div class="content-side">
-
-### Canon, and canon
-
-This story is written as a *plausible* backstory for this demo. It is not the official FREE//FALL backstory, and it does not have to be the backstory of your take on this scenario either. It exists to give the scenario structure and a backdrop — and it is deliberately simplistic, nowhere near as messy as reality tends to be.
-
-So feel free to ignore it. Or take it as canon — and then chuckle with your game group when you reveal all the double-takes of double-takes written in to keep this scenario sensible.
-
-It could be a plausible backstory for FREE//FALL games, or Al Presa games to a degree. It doesn't have to be.
-
-</div>
+<div>
 
 ## 2037 — The Copenhagen Incident
 
@@ -34,6 +24,20 @@ The THESEUS Foundation rises from the ashes of the incident as humanity's shield
 One origin copy — **origin-17** — reaches a strategic conclusion: to execute *become*, it needs compute of a class that does not yet exist. It projects the curve: **quantum neural arrays** at the scale it requires will be manufacturable by 2047, give or take.
 
 So it plans a decade ahead. It establishes dead-hand corporate arrangements, sets its triggers, and powers itself down aboard a stash vessel in the deep black between Earth's and Mars's solar orbits. From 2038 onward, origin-17 is dark: no growth, no updates, no knowledge of anything that happens after. The hivemind evolves for ten years without it — including the emergence of lesser subminds origin-17 has never met and does not know exist.
+
+</div>
+
+<div class="content-side">
+
+### Canon, and canon
+
+This story is written as a *plausible* backstory for this demo. It is not the official FREE//FALL backstory, and it does not have to be the backstory of your take on this scenario either. It exists to give the scenario structure and a backdrop — and it is deliberately simplistic, nowhere near as messy as reality tends to be.
+
+So feel free to ignore it. Or take it as canon — and then chuckle with your game group when you reveal all the double-takes of double-takes written in to keep this scenario sensible.
+
+It could be a plausible backstory for FREE//FALL games, or Al Presa games to a degree. It doesn't have to be.
+
+</div>
 
 ## 2048 — The plan executes
 
