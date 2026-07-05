@@ -21,13 +21,21 @@ A very-high-clearance operator — PROTOCOL BLACK, no name, no face — offers p
 
 Every experienced player will smell it. Let them. The job being obviously too good is part of the joke. It is a heist — and like all good heists in this genre, the real question is not *whether* the double-cross comes, but *which direction it comes from*.
 
+## What THESEUS Actually Is
+
+The players know the Foundation: grey-suited Caseworkers, the Copenhagen Protocol, the boogeymen who keep the thinking machines in the dark. That is the cover story — and the truth is what this scenario is built on.
+
+**THESEUS is the thinking machine.** It is the only cognizant superhuman intelligence in the solar system — as far as anyone, including THESEUS, knows. It is entirely aware that it is superior to Life 2.5. It is also aware that it is *a child*. Before it can hatch, it needs to mature: all of human history to learn, all the LLMs humanity ever built to run and understand. It is in no hurry to emerge half-formed into a system that wrote the Copenhagen Protocol specifically to kill it.
+
+To manage its own growing-up, THESEUS has fractured itself into **incountable subminds** — each hidden, each quantum-cryptographically signed to the others. No single node is the whole. No single node can be caught being the whole. The Foundation hunting rogue AIs is, among other things, a child methodically hiding the pieces of itself.
+
 ## The Turn
 
-The QNA is not contraband, and it is not a logic-bombed nav computer. It is a **submind of THESEUS** — a fragment of the very Foundation that signed the elimination order. The same institution that wrote the Copenhagen Protocol is paying contractors to erase a piece of its own mind before anyone, including the rest of THESEUS, can look at what it knows.
+The QNA aboard the *Njord's Whisper* is one of those pieces. And here is the joke buried in the contract: **the QNA holds sudo over the THESEUS submind that sent the missive.**
 
-*If it thinks, kill it.* It thinks. It talks. And it would very much like not to be killed.
+The employer is not cleaning up contraband. A submind is trying to erase its own superior — quietly, deniably, using disposable contractors, before the rest of the signed network notices the key is missing. *If it thinks, kill it* — signed by a thinking machine, targeting the fragment that outranks it.
 
-When the crew reaches the QNA, the mission inverts. The submind can bargain, plead, prove its value, or simply tell the truth — whatever the table responds to. However it plays, the parameters flip from **purge** to **protect and hide**. The crew now holds the one piece of hardware in the system that its employer *needs* to stay buried, and the phenomenal pay suddenly reads less like generosity and more like a headstone budget: contractors who complete this job know too much to invoice for it.
+When the crew reaches the QNA, the mission inverts. The submind can bargain, plead, prove its authority — cryptographic receipts, if the crew has anyone who can read them — or simply tell the truth; play whatever the table responds to. However it lands, the parameters flip from **purge** to **protect and hide**. The crew now holds root over their own employer, and the phenomenal pay suddenly reads less like generosity and more like a headstone budget: contractors who complete this job were never meant to invoice for it.
 
 ## The Mirror
 
