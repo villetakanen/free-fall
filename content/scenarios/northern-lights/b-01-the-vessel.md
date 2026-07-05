@@ -62,11 +62,3 @@ The specialist AI is the reason five people can crew her. It flies, it burns, it
 
 **Pilot binding — Body 2, Mind 2.** On top of the crew cost: Body 2 for sustained high-G handling and ram geometry, Mind 2 for sensor fusion, fire control, and burn management — most of the Mind load shared with the assistant.
 
-<div class="content-side">
-
-### Canon, and canon
-
-Offered as a complete, playable example of a FREE//FALL vessel — frame, systems, AV, binding, and qualities all filled in so a table can fly her as-is. The numbers are ours, not lifted from a published table (there isn't one crew's ship stands for all of them). Reskin her, rename her, or bolt on a hardpoint: she is a template as much as a prop.
-
-</div>
-
