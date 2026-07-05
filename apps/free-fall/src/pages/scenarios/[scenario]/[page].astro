@@ -1,0 +1,24 @@
+---
+// Spec: specs/content-scenarios/spec.md#routes
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("scenario-pages");
+
+  return entries.map((entry) => {
+    const [scenario, page] = entry.id.split("/");
+    return {
+      params: { scenario, page },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} — FREE//FALL`}>
+  <Content />
+</BaseLayout>

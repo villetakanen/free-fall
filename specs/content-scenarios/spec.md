@@ -102,14 +102,14 @@ A scenario page's parent scenario is derived from the first segment of its entry
 - [x] `content/scenarios/package.json` exists with a version and no build tooling
 - [x] `scenarios` and `scenario-pages` collections defined in `apps/free-fall/src/content.config.ts` with the schemas above
 - [x] A scenario's `index.md` missing `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
-- [ ] `/scenarios/{scenario}/` renders metadata block, overview prose, and an ordered list of the scenario's pages
-- [ ] `/scenarios/{scenario}/{page}/` renders each content page
-- [ ] Scenarios rail item with per-scenario subItems appears when the package contains at least one scenario
-- [ ] The app builds with zero scenarios in the package (rail item absent)
-- [ ] Adding a new scenario folder produces its routes and nav entry without code changes
+- [x] `/scenarios/{scenario}/` renders metadata block, overview prose, and an ordered list of the scenario's pages
+- [x] `/scenarios/{scenario}/{page}/` renders each content page
+- [x] Scenarios rail item with per-scenario subItems appears when the package contains at least one scenario
+- [x] The app builds with zero scenarios in the package (rail item absent)
+- [x] Adding a new scenario folder produces its routes and nav entry without code changes
 - [x] `astro.config.ts` registers a `remarkTermResolution` instance for `/content/scenarios/` with `registryPath` set to `content/core-rulebook/chapters/registry.md`, and term links from scenario pages resolve to `/core-rulebook/registry/#slug`
 - [x] HMR watcher covers `content/scenarios/`
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 

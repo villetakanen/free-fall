@@ -19,3 +19,10 @@ test("legacy /rules URL redirects to core rulebook", async ({ page }) => {
   await page.goto("/rules/getting-started/");
   await expect(page).toHaveURL(/\/core-rulebook\/00-intro/);
 });
+
+test("empty scenarios package shows no Scenarios rail item", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("body")).not.toContainText("Scenarios");
+});

@@ -1,6 +1,10 @@
 ---
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
-import { getCoreRulebookNavItems, getGearNavItems } from "../lib/nav.ts";
+import {
+  getCoreRulebookNavItems,
+  getGearNavItems,
+  getScenarioNavItems,
+} from "../lib/nav.ts";
 
 interface Props {
   title?: string;
@@ -12,6 +16,7 @@ const title =
 
 const coreRulebookSubItems = await getCoreRulebookNavItems(Astro.url.pathname);
 const gearNavItem = await getGearNavItems(Astro.url.pathname);
+const scenarioNavItem = await getScenarioNavItems(Astro.url.pathname);
 
 const navItems = [
   {
@@ -28,6 +33,7 @@ const navItems = [
     subItems: coreRulebookSubItems,
   },
   gearNavItem,
+  ...(scenarioNavItem ? [scenarioNavItem] : []),
 ];
 ---
 

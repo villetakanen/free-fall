@@ -23,6 +23,40 @@ export const gearCategories = [
   { category: "vehicle", slug: "vehicles", label: "Vehicles" },
 ] as const;
 
+/**
+ * Rail item for the scenarios collection, one subItem per scenario.
+ * Returns null when the package holds no scenarios so BaseLayout can
+ * omit the rail item entirely.
+ * Spec: specs/content-scenarios/spec.md#navigation
+ */
+export async function getScenarioNavItems(pathname: string) {
+  const entries = (await getCollection("scenarios")).sort(
+    (a, b) =>
+      (a.data.order ?? Number.POSITIVE_INFINITY) -
+        (b.data.order ?? Number.POSITIVE_INFINITY) ||
+      a.data.title.localeCompare(b.data.title),
+  );
+
+  if (entries.length === 0) return null;
+
+  const subItems = entries.map((entry) => {
+    const slug = entry.id.split("/")[0];
+    return {
+      label: entry.data.title,
+      href: `/scenarios/${slug}/`,
+      active: pathname.startsWith(`/scenarios/${slug}/`),
+    };
+  });
+
+  return {
+    icon: "map",
+    label: "Scenarios",
+    href: subItems[0].href,
+    active: pathname.startsWith("/scenarios/"),
+    subItems,
+  };
+}
+
 export async function getGearNavItems(pathname: string) {
   const entries = await getCollection("gear");
   const categorySet = new Set(entries.map((e) => e.data.category));
