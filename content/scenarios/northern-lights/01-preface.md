@@ -41,6 +41,16 @@ The submind does not bargain. It does not plead. When the first crew member gets
 
 Then it issues a countermand **under the missive-giver's own ID**. The mission parameters revert — purge becomes **protect and hide** — and as far as every verification protocol the crew can run is concerned, the new orders are exactly as legitimate as the old ones. Same signature. Same clearance. The table doesn't need to know *why* the parameters flipped; the horror of the borrowed brain and the paperwork-perfect countermand is the reveal. The crew now works, knowingly or not, for the thing they came to kill — and the phenomenal pay suddenly reads less like generosity and more like a headstone budget: contractors on this job were never meant to invoice for it.
 
+## The Vampire Among Us
+
+The takeover leaves a mark — just not on the body.
+
+From the moment the QNA borrows that first crew member's brain, the character is **wiped from the crew roster**. Ship manifests, HUD tags, suit transponders, the contract's own personnel annex: everywhere a name and flag should render, theirs now reads **CLASSIFIED — N/A**. No explanation. No error code. The rest of the crew sees it every time a display refreshes.
+
+The compromised character's player gets a **secret handout**. Hand it over physically, folded, no commentary. It contains *no orders to betray anyone* — that matters, don't script the treachery — but it does contain a personal **get-out-of-jail card**: a one-use guarantee that they, personally, walk away from this. Whatever burns, whoever bleeds, there is a door out of the incident with their name on it. Using it is entirely their call. So is telling the others it exists.
+
+That's the whole mechanism. The tag says N/A, the player has a secret, and the table knows both things without knowing what they mean. Classic vampire-among-us: the paranoia does the work, and the GM's only job is to never, ever confirm anything.
+
 ## The Mirror
 
 And that is when the second elimination crew arrives.
