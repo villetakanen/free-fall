@@ -11,10 +11,10 @@ order: 100
 
 She carries only a hull code on the registry. Crews name their own ships, and this crew has earned the right. Offer the players one of these, or let them coin their own — the name tells you who they think they are:
 
-- **Best Offer** — because that's who they work for, every time. No pretense.
 - **Due Diligence** — dry, corporate, faintly menacing. The name of a ship that reads your contract before it reads your rights.
-- **Angel's Share** — the portion lost to the void on every burn. Poetic, fatalistic, and a little too honest about what this work costs.
-- **Repossession** — they don't steal. They *collect*. Somebody, somewhere, signed for this.
+- **Pay Day** — blunt and cheerful about the only thing that matters. No pretense; they came for the money and they'll say so.
+- **Special Circumstances** — the polite phrase on the incident report, for the jobs nobody admits to. A crew that names her this thinks they're the deniable option, and rather likes it.
+- **Warhog** — unsubtle, ugly, and proud of it. A ship named for exactly what a titanium prow at ramming speed does to a hull.
 
 Whatever they pick, write it into the scene: the assistant should address them by the ship's name from the first line, and the ship should feel like the sixth member of the crew — right up until the scenario starts teaching them what a ship's mind can actually be.
 
