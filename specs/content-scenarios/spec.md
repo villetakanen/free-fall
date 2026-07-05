@@ -90,7 +90,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 ### Constraints
 
-- Term resolution is package-scoped (`specs/content-workspace/term-resolution/spec.md`). Scenario prose renders game terms as plain text; when the scenarios package ships its own `registry.md`, a second `remarkTermResolution` instance is registered in `astro.config.ts` for it.
+- Scenarios introduce no terms of their own. A scenario's `:term[]` directives resolve against the registry of its target rules variant+version (`specs/content-workspace/term-resolution/spec.md`): the scenarios package has no `registry.md`, and its `remarkTermResolution` instance in `astro.config.ts` points `registryPath` at the parent variant's registry — initially `content/core-rulebook/chapters/registry.md`, with term links resolving to `/core-rulebook/registry/#slug`. When scenarios target multiple variants, registry selection follows `system.variant`.
 - Scenario metadata lives in `index.md` frontmatter only. Content pages carry `title` and `order`; everything the app queries about a scenario comes from one place.
 - `system.variant` and `system.version` are free-form strings validated as non-empty. The variant list grows with the game; the schema does not enumerate it.
 
@@ -106,6 +106,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 - [ ] Scenarios rail item with per-scenario subItems appears when the package contains at least one scenario
 - [ ] The app builds with zero scenarios in the package (rail item absent)
 - [ ] Adding a new scenario folder produces its routes and nav entry without code changes
+- [ ] `astro.config.ts` registers a `remarkTermResolution` instance for `/content/scenarios/` with `registryPath` set to `content/core-rulebook/chapters/registry.md`, and term links from scenario pages resolve to `/core-rulebook/registry/#slug`
 - [ ] HMR watcher covers `content/scenarios/`
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
@@ -147,4 +148,16 @@ Scenario: New scenario needs no code
   When the build runs
   Then /scenarios/void-run/ exists
   And "Void Run" appears as a subItem under Scenarios in the rail
+
+Scenario: Scenario terms resolve to the parent variant's registry
+  Given content/core-rulebook/chapters/registry.md contains <dfn id="action-pool">
+  And a scenario page contains :term[Action Pool]
+  When the build runs
+  Then the rendered link points to /core-rulebook/registry/#action-pool
+
+Scenario: Scenario term missing from the parent registry fails the build
+  Given a scenario page contains :term[Imaginary Rule]
+  And no <dfn id="imaginary-rule"> exists in the parent variant's registry
+  When the build runs
+  Then the build fails identifying the file and the unresolved term
 ```

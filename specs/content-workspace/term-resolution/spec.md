@@ -174,11 +174,16 @@ Validation is per-file: when a `:term` directive is encountered and its slug is 
 
 **Scalability:**
 
-When a second content package is added (e.g., `content/campaign-primer/`), a second `remarkTermResolution` instance is registered in the Astro config with that package's `registryPath` and `contentPath`. Each instance indexes its own registry. Term resolution never crosses package boundaries.
+**[DEPRECATED 2026-07-05]** ~~When a second content package is added (e.g., `content/campaign-primer/`), a second `remarkTermResolution` instance is registered in the Astro config with that package's `registryPath` and `contentPath`. Each instance indexes its own registry. Term resolution never crosses package boundaries.~~ Superseded by the variant/dependent package distinction — dependent packages resolve against their parent variant's registry (see `specs/content-scenarios/spec.md`).
+
+**Current:** Content packages come in two kinds, and each gets its own plugin instance in the Astro config; what varies is which registry the instance indexes:
+
+- **Variant packages** (e.g., `content/core-rulebook/`) define a rules variant. Each ships its own `registry.md`, and terms in its prose resolve against it.
+- **Dependent packages** (e.g., `content/scenarios/`) target a rules variant and introduce no terms of their own. Their instance sets `contentPath` to the dependent package and `registryPath` to the parent variant's registry, so term links resolve to the variant's registry route.
 
 ### Anti-Patterns
 
-- **No cross-package term resolution** — A `:term` in `core-rulebook` must resolve to `core-rulebook/chapters/registry.md`, never to another package's registry. Package isolation is absolute.
+- **Terms resolve within their rules variant** — A `:term` in a variant package resolves to that package's own `registry.md`; a `:term` in a dependent package resolves to its parent variant's registry. No other cross-package resolution exists. *(Revised 2026-07-05: previously "package isolation is absolute"; scenarios established the dependent-package case.)*
 - **No auto-generated IDs in registry** — Term IDs are explicitly authored via `<dfn id="...">`. This prevents silent breakage from heading text changes.
 - **No fallback for missing terms** — An unresolved term is a build error, not a degraded link. Content integrity is enforced at build time.
 - **No rehype-stage term processing** — The directive must be resolved in the remark stage (before remark-to-rehype conversion). This ensures the URL rewrite plugin receives a standard `<a>` tag to normalize.
