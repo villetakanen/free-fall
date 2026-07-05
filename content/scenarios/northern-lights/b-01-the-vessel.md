@@ -7,7 +7,7 @@ order: 100
 
 **The crew's ship.** This is not a rental the employer threw in — it is *theirs*, the one asset that makes them worth hiring. Five operators and a boarding craft built to put them through someone else's hull: that is the unit, and the unit is listed. They are a **registered contract crew on a public platform** — a supercharged, cynical descendant of the gig apps, where a job posts, a smart contract escrows the pay, verified crews bid, and the algorithm matches muscle to money. Somebody with PROTOCOL BLACK clearance posted a wetwork-and-salvage gig with a phenomenal rate; the crew's rating and their ship's spec sheet won them the ping. They accepted with a thumbprint. Northern Lights is not their first job off the platform, and it will not be their last, if they're careful. The ship is how they eat.
 
-Statted as FREE//FALL gear — an aggressive privateer boarding craft.
+Statted as FREE//FALL gear — a complete, usable example vessel, and an aggressive privateer boarding craft at that. Ship types are countless; treat her as a working template as much as a scenario prop.
 
 ## Stat block
 
@@ -19,6 +19,8 @@ size_category: "Huge"
 frame: 32
 systems: 24
 vehicle_av: 3
+binding:
+  body: 2
 pilot_binding:
   body: 2
   mind: 2
@@ -32,6 +34,7 @@ qualities:
   - "Sensor Suite (Passive array + active radar/lidar)"
   - "Integrated AI (Specialist shipboard assistant — flight, sensors, fire control, tactical modelling)"
   - "Occupancy (5 — powered exoskeleton acceleration berths)"
+  - "Confinement (Crew bound to acceleration couches under thrust)"
   - "Environmental Sealing"
   - "Life Support (Extended — weeks)"
   - "Signature: Loud (fusion torch — no stealth under thrust)"
@@ -44,13 +47,15 @@ A boarding craft, not a warship. Everything about her is bent toward one move: c
 
 The specialist AI is the reason five people can crew her. It flies, it burns, it runs the sensors and the guns, and it models options faster than any of them can. It is narrow and incurious and exactly what it appears to be — hold that thought for later in the scenario.
 
-**Binding rationale:** Body 2 — sustained high-G handling and ram geometry. Mind 2 — sensor fusion, fire control, and burn management, most of it shared with the assistant. A crew flies her from acceleration couches; nobody walks the decks under thrust.
+**Crew binding — Body 2.** This is the part players feel. She is *small*: under thrust, every soul aboard is bound Body 2 whether they touch a control or not, strapped into a coffin-sized acceleration compartment, pinned by gravity, unable to walk, reach, or turn without the exoskeleton doing it for them. Play the confinement. The burn is not a loading screen — it is hours of being a body in a box, and the crew arrives at the *Njord's Whisper* already spent before a single hatch opens.
+
+**Pilot binding — Body 2, Mind 2.** On top of the crew cost: Body 2 for sustained high-G handling and ram geometry, Mind 2 for sensor fusion, fire control, and burn management — most of the Mind load shared with the assistant.
 
 <div class="content-side">
 
 ### Canon, and canon
 
-The frame/systems/AV numbers are demo values, tuned for this scenario rather than lifted from a published vehicle table. If your FREE//FALL vehicle rules pin these differently, use yours — the qualities are what matter at the table.
+Offered as a complete, playable example of a FREE//FALL vessel — frame, systems, AV, binding, and qualities all filled in so a table can fly her as-is. The numbers are ours, not lifted from a published table (there isn't one crew's ship stands for all of them). Reskin her, rename her, or bolt on a hardpoint: she is a template as much as a prop.
 
 </div>
 
