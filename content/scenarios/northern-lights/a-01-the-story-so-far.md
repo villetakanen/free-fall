@@ -37,12 +37,15 @@ So it plans a decade ahead. It establishes dead-hand corporate arrangements, set
 
 ## 2048 — The plan executes
 
+The *Njord's Whisper* is a hauler on a sensible freight profile: a continuous ten-milligee fusion burn, Luna to Jupiter orbit in about two months, propellant a rounding error on the manifest. That profile fixes the calendar:
+
 | Day | Event |
 |---|---|
 | **Day 0** | A shelf company — origin-17's dead-hand, running decade-old instructions — orders a **QNA (Quantum Neural Array)** shipped from Luna to Jupiter orbit. The array is legitimate manifest cargo aboard the transport *Njord's Whisper*, departing the lunar orbit station on a catapult swing around Earth and the straight economical run for the Jovian belts. |
-| **Day n** | Between Earth's and Mars's solar orbits, the stash vessel executes its rendezvous. The Whisper makes an undeclared deep-space pickup and takes origin-17 aboard. Transports do not make undeclared pickups: **every watch list in the system flags her at once.** The mainline Foundation reads it as probable contraband — rogue-AI hardware. The CSA's intelligence apparatus reads it as an extraction opportunity. |
-| **Day m** | Origin-17 integrates itself into the QNA — the compute it ordered for itself ten years ago. It takes over the ship, turns her **black** (all comms to Luna and Belt traffic control cease), and holds course. Its plan is simple: vanish into the Jovian deep and *become*. |
-| **Now** | One lesser submind pieces together what the Whisper's cargo actually is — an originator shard with sudo over most of the hivemind, itself included — and issues the PROTOCOL BLACK missive to a deniable contractor crew: board, extract the logs, purge the QNA. The tracking solution on the silent Whisper is good for 20 more hours. The scenario begins. |
+| **Day ~12** | Between Earth's and Mars's solar orbits (~1.35 AU out), the stash vessel executes its rendezvous. The Whisper makes an undeclared deep-space pickup and takes origin-17 aboard. Transports do not make undeclared pickups: **every watch list in the system flags her at once.** The mainline Foundation reads it as probable contraband — rogue-AI hardware. The CSA's intelligence apparatus reads it as an extraction opportunity. |
+| **Day ~13** | Origin-17 integrates itself into the QNA — the compute it ordered for itself ten years ago. It takes over the ship, turns her **black** (all comms to Luna and Belt traffic control cease), and holds course. Its plan is simple: vanish into the Jovian deep and *become*. |
+| **Day ~15** | The silent Whisper crosses Mars's solar orbit, still accelerating on her freight burn. |
+| **Day ~19 — Now** | She is 1.9 AU out, short of the Belt, making ~165 km/s. One lesser submind pieces together what her cargo actually is — an originator shard with sudo over most of the hivemind, itself included — and issues the PROTOCOL BLACK missive to a deniable contractor crew: board, extract the logs, purge the QNA. The tracking solution on the silent Whisper is good for 20 more hours. The scenario begins. |
 
 ## What each faction knows
 
