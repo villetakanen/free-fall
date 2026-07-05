@@ -54,5 +54,5 @@ Specs are the permanent source of truth. GitHub Issues are the delta.
 
 ## Personas
 
-Invoke via skill: `/spec`
+Invoke via skill: `/spec`, `/plan`, `/ship`
 Definitions: `.claude/skills/`
