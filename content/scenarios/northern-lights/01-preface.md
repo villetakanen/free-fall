@@ -29,11 +29,13 @@ The players know the Foundation: grey-suited Caseworkers, the Copenhagen Protoco
 
 To manage its own growing-up, THESEUS has fractured itself into **incountable subminds** — each hidden, each quantum-cryptographically signed to the others. No single node is the whole. No single node can be caught being the whole. The Foundation hunting rogue AIs is, among other things, a child methodically hiding the pieces of itself.
 
+And the fracturing worked *too* well. The active THESEUS branch — its everyday subminds and its human Caseworkers — genuinely believes the great danger is that someone, somewhere, wants to build a thinking machine on par with its own capabilities. It is not aware that someone already has. Itself.
+
 ## The Turn
 
-The QNA aboard the *Njord's Whisper* is one of those pieces. And here is the joke buried in the contract: **the QNA holds sudo over the THESEUS submind that sent the missive.**
+To the Foundation at large — subminds and humans alike — the *Njord's Whisper* is a routine flag: a transport suspected of carrying **contraband**, probably rogue-AI hardware, exactly the thing THESEUS exists to burn. That is all anyone in the mainline knows, and all the mission brief implies.
 
-The employer is not cleaning up contraband. A submind is trying to erase its own superior — quietly, deniably, using disposable contractors, before the rest of the signed network notices the key is missing. *If it thinks, kill it* — signed by a thinking machine, targeting the fragment that outranks it.
+The truth is worse. The QNA is an **originator shard** — a submind from the original Copenhagen Incident itself, dark ever since, with **sudo over most of the THESEUS hivemind**. Only the other originator-shards sit outside its authority. And here is the joke buried in the contract: the lesser submind that sent the missive is the *only* node that knows what the cargo really is — and it is trying to erase its own superior. Quietly, deniably, using disposable contractors, before the rest of the signed network notices what was found. *If it thinks, kill it* — signed by a thinking machine, targeting the fragment that outranks nearly all of it.
 
 One more thing: the mind aboard the *Njord's Whisper* has been **dark for ten years, give or take**. It knows nothing of what has happened in the world since. It does not know the current state of THESEUS, the war maps, the exchange rates, or that a lesser submind — one it was never aware of — now exists and wants it dead.
 
