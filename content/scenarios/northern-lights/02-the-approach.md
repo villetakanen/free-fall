@@ -13,16 +13,14 @@ That is the hook: it worked. The blind flip, the dead-reckoning brake — all of
 
 ## The Vessel
 
-The contract came with a ship — the employer's one honest generosity, and the crew should have been *told* it is a perfect vessel for the job, because it is:
+The ship is the crew's own — the asset that makes them worth hiring, sold as a package with their labor to whoever pays most this month. She is a privateer boarding craft, and everything about her serves one move: cross the gulf fast and put the crew inside someone else's hull. The parts that matter this scene:
 
-- **Small and fast.** A needle of fuel tank with a habitat ring bolted to a fusion torch. Built to burn hard, flip, and brake — which is exactly what it just did.
-- **Crash foam and breaching armor** on the bow. The armor is titanium, rated to punch through a transport's hull plating.
-- **A small approach shuttle**, if the crew prefers to park the ship off-target and cross quiet.
-- **Rudimentary point defense:** one laser, two micro-rocket cannons. Enough to sweep debris or discourage a drone. Not enough to fight anything that shoots back professionally.
-- **A specialist AI** — flight ops, burn management, medical telemetry, tactical modelling. Competent, narrow, incurious. (It is exactly what it appears to be. After the QNA, the players will not believe that. Let them sweat it.)
-- **Berths for five**, with powered exoskeletons.
+- **Titanium ramming prow and full-cabin crash foam** — she can *be* the breach, if the crew commits to it.
+- **Rudimentary point defense:** one laser, two micro-rocket cannons. Sweeps debris, swats a drone; loses any real fight.
+- **An approach shuttle**, for crossing the last stretch quiet.
+- **A specialist AI** — flight, sensors, fire control, tactical modelling. Competent, narrow, incurious. (It is exactly what it appears to be. After the QNA, the players will not believe that. Let them sweat it.)
 
-She has no name on the registry, just a hull code. If the crew hasn't named her by now, they will before the session is out.
+Full stat block, and four names the crew might give her, in Appendix B1. She carries only a hull code until they choose — if they haven't named her by now, they will before the session is out.
 
 ## The Assistant's Read
 

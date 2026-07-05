@@ -15,9 +15,9 @@ Run it in that spirit. Reward audacity. Let bad plans fail loudly and good plans
 
 ## The Shape of the Job
 
-On paper, this is the cleanest contract the crew will ever sign.
+On paper, this is the cleanest contract the crew will ever accept — and they accepted it the way they accept everything: off the platform, with a thumbprint.
 
-A very-high-clearance operator — PROTOCOL BLACK, no name, no face — offers phenomenal pay for a simple wetwork-and-salvage gig. The mission parameters are unusually good: solid intel, a clean intercept solution, a defined target. Board a silent transport, eliminate the civilian crew *while suited* (the contract is specific: the ship stays in vacuum, no witnesses, no survivors), and pull one piece of hardware — the QNA. Purge it. Get paid. Retire a little.
+The crew is a registered contract unit on a public job market — the cynical far end of the gig economy, where wetwork posts beside courier runs and a smart contract escrows the pay before anyone breaches a hull. The client is a very-high-clearance operator — **PROTOCOL BLACK**, no name, no face, just a clearance tier the platform is legally required not to look behind — offering phenomenal money for a simple wetwork-and-salvage gig. The parameters are unusually good: solid intel, a clean intercept solution, a defined target. Board a silent transport, eliminate the civilian crew *while suited* (the posting is specific: the ship stays in vacuum, no witnesses, no survivors), and pull one piece of hardware — the QNA. Purge it. Get paid. Retire a little. (The vessel that makes them eligible for work like this is Appendix B1.)
 
 Every experienced player will smell it. Let them. The job being obviously too good is part of the joke. It is a heist — and like all good heists in this genre, the real question is not *whether* the double-cross comes, but *which direction it comes from*.
 
