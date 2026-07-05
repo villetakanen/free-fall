@@ -95,8 +95,15 @@ Incoming Encrypted Transmission...
 
 SOURCE: $$REDACTED$$ // PROTOCOL: BLACK 
 
-TARGET: Transport Vessel Njord's Whisper, 
-drifting near the Jovian Trojan belts.
+TARGET: Transport Vessel Njord's Whisper,
+en route to the Jovian belts. Vessel has
+ceased all comms with Luna and Belt traffic
+control. Current position: deep space beyond
+the Belt. Intercept solution available by
+trajectory assessment.
+
+TIME CRITICAL: Tracking solution degrades in
+20 hours. After that, the Whisper is gone.
 
 OBJECTIVE: Board the vessel.
 - Extract hard-line data logs regarding the 

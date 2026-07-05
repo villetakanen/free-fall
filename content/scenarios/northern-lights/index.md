@@ -1,6 +1,6 @@
 ---
 title: "Northern Lights"
-synopsis: "A dark transport vessel drifts near the Jovian Trojan belts. Board the Njord's Whisper, extract the hard-line data logs on the Quantum Neural Array, and purge the unit. The crew is considered compromised. No witnesses."
+synopsis: "A transport bound for the Jovian belts has gone silent to Luna and Belt traffic control. She is in deep space, still reachable by trajectory intercept — for the next 20 hours. Board the Njord's Whisper, extract the hard-line data logs on the Quantum Neural Array, and purge the unit. The crew is considered compromised. No witnesses."
 system:
   variant: "FREE//FALL"
   version: "0.7.x"
@@ -23,7 +23,14 @@ Incoming Encrypted Transmission...
 SOURCE: $$REDACTED$$ // PROTOCOL: BLACK
 
 TARGET: Transport Vessel Njord's Whisper,
-drifting near the Jovian Trojan belts.
+en route to the Jovian belts. Vessel has
+ceased all comms with Luna and Belt traffic
+control. Current position: deep space beyond
+the Belt. Intercept solution available by
+trajectory assessment.
+
+TIME CRITICAL: Tracking solution degrades in
+20 hours. After that, the Whisper is gone.
 
 OBJECTIVE: Board the vessel.
 - Extract hard-line data logs regarding the
