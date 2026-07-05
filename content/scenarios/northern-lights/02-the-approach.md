@@ -42,6 +42,8 @@ Updates after H+20:     NONE. Dead reckoning only.
 
 The physics, for the table's engineers: constant-thrust brachistochrone, *t = 2·√(d/a)*. At 3 g over 1.2 AU that is a shade under 44 hours, half of it decelerating. The total delta-v is obscene — this is what the fuel tanks are *for* — and the crew arrives with dry tanks and no margin for a second approach. One pass. That's the job.
 
+And the deadline is made of rocks: the Whisper keeps burning the whole time the crew is in transit, and contact happens at ~2.05 AU — the doorstep of the Belt. Two days later she is inside it, a dark ship under quiet thrust behind a million radar echoes, and no solution ever finds her again. This intercept threads the last clean stretch of empty space she will ever cross.
+
 Note what the clock does: tracking dies at H+20, and the flip is not until almost two hours after that. The crew goes blind **while still accelerating** — the flip itself, the single most important maneuver of the trip, is executed on dead reckoning.
 
 **The timeline is the scene:**
