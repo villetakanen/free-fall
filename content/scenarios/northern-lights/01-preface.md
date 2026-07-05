@@ -45,7 +45,11 @@ Then it issues a countermand **under the missive-giver's own ID**. The mission p
 
 And that is when the second elimination crew arrives.
 
-They are following the same mission parameters the PCs did — the same brief, the same RoE, the same *tactics*. Whatever approach the players used on the civilian crew, it comes back at them now: their breach points, their comms discipline, their no-witnesses clause. The players spent the first half of the session writing the playbook that gets used against them in the second half.
+The employer saw its own signature answered back at it, and it has stopped trusting the network entirely. The second crew is its answer: **analog, no uplink, unrecallable.** Sealed orders, hard copies, comms blackout by design. The QNA's forged authority — the trick that turned the PCs — is worthless against people who cannot receive a countermand and would not honor one if they could.
+
+They are not THESEUS assets. They are **CSA military** — a black tasking routed through Corporate States of America channels, flying a CSA military-grade ship and carrying military-grade gear. Everything the PCs bought, spliced, or salvaged, the second crew was *issued*, one grade better.
+
+But they are following the same mission parameters the PCs did — the same brief, the same RoE, the same *tactics*. Whatever approach the players used on the civilian crew, it comes back at them now: their breach points, their comms discipline, their no-witnesses clause. The players spent the first half of the session writing the playbook that gets used against them in the second half — executed by professionals with better hardware.
 
 This is the heart of the scenario. The crew gets to experience their own professionalism from the receiving end — and realize, mid-firefight, that the people shooting at them are not villains either. Just the next line item.
 
