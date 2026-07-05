@@ -51,6 +51,16 @@ None of these is the "right" answer. Each buys something and spends something, a
 - **Ram (3)** is the audacious option, and the ship was literally built for it. No intel — the crew commits blind to a schematic that may be out of date — but it is *fast*, and it forecloses the CSA problem by simply being aboard before anyone else can arrive. Run the damage race as a real contest (Action Pool vs. the point defense's fire, the schematic granting the crew position); a clean run puts them inside the outer compartments in the crash foam, a bad one means a breached ram shield and a very exciting first five minutes aboard. This is the CP2020 option: loud, committed, gloriously stupid, frequently correct.
 - **Talk (4)** is not a wasted turn — it's characterization and foreshadowing. Let the assistant be helpful and confident and *wrong* about the one thing that matters. Its blind spot about the cargo is the first quiet note of the whole scenario's theme: the machines here are smarter than they look, and the one everyone underestimates is the one that eats you.
 
+### Why not perfect stealth? (GM note)
+
+If a player argues they should be able to arrive completely unseen, they are most of the way right — give them the honest answer.
+
+Guaranteed-invisible approach is off the table for exactly one reason: the clock. True silence means braking early and off-axis, far out, and coasting in cold for a very long time — and that is the time the Belt deadline won't give. Invisibility and speed are one dial turned opposite ways. To catch her before the rocks you arrive fast, and arriving fast means the coarse fusion flare of your brake, thrown down your own velocity vector, straight at her. She saw that. She can't un-see it.
+
+But "she saw a flare" is nothing like "she has you." A ship is tiny; resolving a cold hull against the void at tens of thousands of kilometres is very nearly impossible, and the Whisper is a dark hauler minding her own emissions, not a warship sweeping the sky. What she actually holds is coarse and stale: *something decelerated in my direction* — one vessel for certain, and, if the CSA's own burn has lit by now, a second flare inbound behind it. She knows she is being converged on. She does not know by whom, how many, how close, or in what. Ghost keeps it that way — a stale contact and no track.
+
+The residual on Ghost (P=0.03%) is not the crew being sloppy, and not the hauler's sensors being good. It is the one thing the crew cannot price in: the mind aboard is not the low-complexity automated target the assistant promised. Origin-17 is awake, alone, and paranoid, and it has every reason to watch its own back-trail. On the rare roll where Ghost fails, it fails because the cargo is smarter and more alert than a hauler has any right to be — the whole scenario, arriving early.
+
 However they go in — whichever mix of caution, speed, and nerve — the next scene is the *Njord's Whisper* herself: dark, silent, and not nearly as empty as the manifest claims.
 
 Check your seals.
