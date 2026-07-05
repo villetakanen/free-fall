@@ -109,6 +109,7 @@ The `.freefall-prose` scope automatically:
 - Deep-styles TTRPG-specific nested structures natively:
   - **Lists**: Strictly indented padding for `<ul>` and `<ol>`, with unified vertical spacing for complex nested rules exceptions.
   - **Tables**: Robust zebra striping, distinct header bottom-borders, and cell padding for readability in data-dense stat blocks and roll tables.
+  - **Definition lists**: `<dt>` renders as a mono uppercase caption (`--freefall-font-mono`, `0.75rem`, `--freefall-text-muted`); `<dd>` as body text with grid-derived bottom margin (last `<dd>` flush). Layout (stacked flow vs. inline strip) is owned by the consuming page — the design system styles the elements only. Used for labeled key-value data such as the scenario classification block.
   - **Blockquotes**: Left-indented, italicized rendering for narrative flavor text, visually distinct from mechanical rules text.
 
 Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` — bare elements outside content areas receive no special styling. This prevents design system styles from leaking into non-content UI areas.
@@ -131,6 +132,7 @@ Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` �
 - [ ] `src/styles/base.css` imports `typography.css`
 - [ ] Both apps use `FontLinks` in their layouts
 - [ ] Demo app has a typography reference page showing both fonts, the editorial scales, and a mock `.freefall-prose` Markdown output.
+- [x] Demo app has a definition-list reference page (`/definition-list/`) showing the stacked and inline-strip variants, with e2e coverage (`apps/design-system/e2e/definition-list.test.ts`)
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 - [ ] Built HTML contains Google Fonts `<link>` tags and zero `<script>` tags
 

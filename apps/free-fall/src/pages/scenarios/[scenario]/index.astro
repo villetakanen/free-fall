@@ -77,6 +77,8 @@ const { system, length, players, content_warnings } = entry.data;
 </BaseLayout>
 
 <style>
+  /* Inline strip layout; dt/dd element look comes from the design system
+     (packages/design-system/src/styles/typography.css) */
   .scenario-meta {
     display: flex;
     flex-wrap: wrap;
@@ -84,13 +86,6 @@ const { system, length, players, content_warnings } = entry.data;
     margin: 0;
     padding-bottom: calc(2 * var(--freefall-space-1));
     border-bottom: 1px solid var(--freefall-border-subtle);
-  }
-  .scenario-meta dt {
-    font-family: var(--freefall-font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--freefall-text-muted);
   }
   .scenario-meta dd {
     margin: 0;

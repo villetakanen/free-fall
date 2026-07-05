@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Definition Lists">
+  <div class="test-container" style="padding: 2rem;">
+    <h1 class="text-chapter" style="margin-bottom: 2rem;">Definition Lists</h1>
+
+    <p style="max-width: 60ch;">
+      Element styles for <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and
+      <code>&lt;dd&gt;</code>, scoped under <code>main</code>. Terms render as
+      mono uppercase captions; definitions as body text. Layout (stacked vs.
+      inline strip) is owned by the consuming page — the design system styles
+      only the elements.
+    </p>
+
+    <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1rem;">
+        Stacked (default flow)
+      </h2>
+      <div
+        style="padding: 2rem; border: 1px solid var(--freefall-border-subtle); border-radius: 4px;"
+      >
+        <dl>
+          <dt>System</dt>
+          <dd>FREE//FALL 0.7.x</dd>
+          <dt>Length</dt>
+          <dd>One-shot, 3–5 hours</dd>
+          <dt>Players</dt>
+          <dd>3–5</dd>
+          <dt>Content warnings</dt>
+          <dd>Violence, body horror, isolation &amp; confinement</dd>
+        </dl>
+      </div>
+      <div
+        style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5; margin-top: 0.5rem;"
+      >
+        dt: var(--freefall-font-mono) 0.75rem uppercase
+        var(--freefall-text-muted)<br />
+        dd: var(--freefall-text-body), margin-bottom 2 *
+        var(--freefall-space-1)
+      </div>
+    </section>
+
+    <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1rem;">
+        Inline strip (page-level flex layout)
+      </h2>
+      <div
+        style="padding: 2rem; border: 1px solid var(--freefall-border-subtle); border-radius: 4px;"
+      >
+        <dl style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 0;">
+          <div>
+            <dt>System</dt>
+            <dd>FREE//FALL 0.7.x</dd>
+          </div>
+          <div>
+            <dt>Length</dt>
+            <dd>One-shot, 3–5 hours</dd>
+          </div>
+          <div>
+            <dt>Players</dt>
+            <dd>3–5</dd>
+          </div>
+        </dl>
+      </div>
+      <div
+        style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5; margin-top: 0.5rem;"
+      >
+        Wrapper divs group each pair; the flex layout is inline page style,
+        not a design-system rule. Used by the scenario classification block
+        in apps/free-fall.
+      </div>
+    </section>
+  </div>
+</BaseLayout>
