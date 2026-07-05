@@ -5,74 +5,54 @@ order: 2
 
 # Scene 1: The Approach
 
-The job starts with a countdown. The intercept solution is good for **20 hours** — after that, the *Njord's Whisper* is a cold speck on a ballistic guess, and the contract is void. Whatever the crew wants to do about gear, questions, or cold feet, they do it with a clock running.
+Open *in media res*. Skip the forty-three hours of burn — they happened, the crew is aching, foamed out of their couches, and the tanks are dry. (If a player wants the numbers, the whole intercept is Appendix 2.) The scene starts on a single line from the ship:
+
+> **"Lock. Target vessel, dead ahead, forty thousand kilometers and closing. Njord's Whisper. She's exactly where the math said she'd be."**
+
+That is the hook: it worked. The blind flip, the dead-reckoning brake — all of it landed. The Whisper is right there, dark and silent, coasting toward the Belt. And now the crew has to decide *how* they want to arrive.
 
 ## The Vessel
 
-The contract comes with a ship — the employer's one honest generosity, and the crew should be *told* it is a perfect vessel for the job, because it is:
+The contract came with a ship — the employer's one honest generosity, and the crew should have been *told* it is a perfect vessel for the job, because it is:
 
-- **Small and fast.** A needle of fuel tank with a habitat ring bolted to a fusion torch. Most of her wet mass is propellant: she is built to burn at maximum human tolerance the whole way, flip, and burn again.
-- **Crash foam and breaching armor** on the bow. The armor is rated to punch through a transport's hull plating — and during the burn it earns its mass twice, as the debris shield between the crew and interplanetary dust arriving at twenty-three hundred kilometers per second.
-- **A small approach shuttle**, if the crew prefers to park the ship off-target and cross the last stretch quiet.
-- **Rudimentary point defense:** one laser, two micro-rocket cannons. Enough to sweep approach debris or discourage a drone. Not enough to fight anything that shoots back professionally.
-- **A specialist AI** — flight operations, burn management, medical telemetry. Competent, narrow, incurious. (It is exactly what it appears to be. After the QNA, the players will not believe that. Let them sweat it.)
-- **Berths for five**, with powered exoskeletons — comfortable at cruise, survivable at full burn.
+- **Small and fast.** A needle of fuel tank with a habitat ring bolted to a fusion torch. Built to burn hard, flip, and brake — which is exactly what it just did.
+- **Crash foam and breaching armor** on the bow. The armor is titanium, rated to punch through a transport's hull plating.
+- **A small approach shuttle**, if the crew prefers to park the ship off-target and cross quiet.
+- **Rudimentary point defense:** one laser, two micro-rocket cannons. Enough to sweep debris or discourage a drone. Not enough to fight anything that shoots back professionally.
+- **A specialist AI** — flight ops, burn management, medical telemetry, tactical modelling. Competent, narrow, incurious. (It is exactly what it appears to be. After the QNA, the players will not believe that. Let them sweat it.)
+- **Berths for five**, with powered exoskeletons.
 
-She has no name on the registry, just a hull code. Let the crew name her. They'll want to, about thirty hours in.
+She has no name on the registry, just a hull code. If the crew hasn't named her by now, they will before the session is out.
 
-## The Burn Plan
+## The Assistant's Read
 
-The Whisper's route is a matter of public record up to a point: departure from **the same lunar orbit station the crew is standing in**, a catapult swing around Earth, then the straight economical ten-milligee freight burn for Jupiter — two months to the Jovian belts, the sensible way. Nineteen days ago her crew walked these same docks. On day twelve, past Earth but short of Mars's orbit, she made an unscheduled rendezvous — the pickup that put her on every watch list in the system — and a day later she went silent. She held her line for Jupiter regardless. She is now **outside Mars's solar orbit, short of the Belt** — about 1.9 AU from the sun, making 165 km/s — while Earth has moved on along its own orbit. The intercept solution has to cross the long diagonal: **1.2 AU, gate to gate.**
+The ship's assistant is a good shipboard AI — think a capable model wrapped in an agent harness with its hands on the helm, the sensors, and the guns. It talks like one: fluent, eager, faintly proud of its own precision. It has spent the whole brake leg modelling the approach, and the moment it has lock it lays the options out — with probabilities, because it cannot help itself.
 
-The specialist AI presents it like a menu with one item:
+Remember what the Whisper already knows: her defenses watched a fusion flare decelerate toward her for the better part of a day, so *something is coming* is not a secret. What the crew still controls is **detail** — whether the ship gets a clean, targetable, reactable picture of them before they're aboard. That is what these numbers are about.
 
-```
-INTERCEPT SOLUTION — NJORD'S WHISPER
-Route (target):         Luna dep. — Earth catapult — Jovian belts
-Target position:        1.9 AU heliocentric, inside the Belt
-Range at commit:        1.2 AU
-Profile:                Full burn / flip / full brake
-Acceleration:           3.0 g sustained, nano-med protocol
-Time of flight:         43 h 30 m
-Flip:                   H+21:45 after launch
-Peak velocity:          2,300 km/s
-Tracking solution:      DEGRADES H+20:00
-Updates after H+20:     NONE. Dead reckoning only.
-```
+> **"Three ways in. I've run them. Pick one, or talk it through — we have minutes, not hours."**
 
-The physics, for the table's engineers: constant-thrust brachistochrone, *t = 2·√(d/a)*. At 3 g over 1.2 AU that is a shade under 44 hours, half of it decelerating. The total delta-v is obscene — this is what the fuel tanks are *for* — and the crew arrives with dry tanks and no margin for a second approach. One pass. That's the job.
+**1 — Ghost approach.** *Passive sensors only, slow drift-in.* Read her by the light she leaks: thermal, comms, the shape of her hull. Best possible picture before contact, and she almost certainly never sees us do it.
+> `P(detection) = 0.03%`
+> Cost: time. And time is the one thing the Belt is eating.
 
-And the deadline is made of rocks: the Whisper keeps burning the whole time the crew is in transit, and contact happens at ~2.05 AU — the doorstep of the Belt. Two days later she is inside it, a dark ship under quiet thrust behind a million radar echoes, and no solution ever finds her again. This intercept threads the last clean stretch of empty space she will ever cross.
+**2 — Active sweep.** *Light her up. Radar, lidar, the works.* Faster, and a far sharper picture — internal layout, power plant state, where the defenses actually are. But an active ping is a shout, and she may shout back.
+> `P(detection) = 8.12%`
 
-Note what the clock does: tracking dies at H+20, and the flip is not until almost two hours after that. The crew goes blind **while still accelerating** — the flip itself, the single most important maneuver of the trip, is executed on dead reckoning.
+**3 — Ram.** *Foam up. Full attitude thrust, bow-on, straight down her throat before her point defense matters.* We have her schematic — I can plot the vector that keeps the breaching armor between us and her guns the whole way in. It becomes a race: her one laser and two rocket cannons against titanium, and we're through the hull before the titanium loses.
+> No detection roll — this *is* being detected, on purpose, at speed. The question isn't whether she sees us. It's whether her guns chew through the ram shield before we're inside her.
 
-**The timeline is the scene:**
+**4 — Talk it through.** The assistant will happily model anything the crew asks: "what if we shuttle across cold?", "what's behind the active-ping risk?", "can you spoof her transponder?" It answers in good faith and within its competence — which is real but *narrow*. It knows ships, sensors, and odds. It does not know what is actually aboard the Whisper, and it will cheerfully assure the crew that a dark automated hauler is a low-complexity target. Let that reassurance age badly.
 
-| Clock | Event |
-|---|---|
-| H+0 | Solution locked. The 20-hour window opens. |
-| H+0 → launch | Prep, gear checks, questions nobody answers. Every hour spent here is an hour less of tracked flight. |
-| Launch → H+20:00 | Full burn. Three gravities, nano-medicined, foamed into couches. Nobody walks; the exoskeletons carry what has to move. |
-| H+20:00 | Tracking degrades. The Whisper's echo freezes on the plot and never updates again. |
-| H+21:45 | Flip — on dead reckoning. Minutes of blessed free fall. The torch swings around to point *at the target*. |
-| H+43:30 | Contact — if the math was right. |
+## Reading the Choices
 
-## Running the Burn
+None of these is the "right" answer. Each buys something and spends something, and each colors how Scene 2 opens.
 
-Forty-three hours at three gravities is a scene, not a skip. The nano-med protocol keeps the crew *operational* — it does not make the ride pleasant. Ribs ache. Vision greys at the edges when anyone turns their head too fast. Talking is work. This is a good stretch for quiet characterization: five people, foamed into couches, nothing to do but talk, check gear telemetry for the fortieth time, and watch the Whisper's echo refuse to update after H+20.
+- **Ghost (1)** trades the clock for near-perfect safety and intel. The crew reaches the hull unseen and *informed* — they'll know the Whisper is running dark, that her crew signatures are wrong, that something is off before they cut in. It burns hours the Belt deadline can't spare, and every hour is an hour closer to the CSA arriving mid-boarding. Reward caution; price it in time.
+- **Active sweep (2)** is the middle path: sharp intel fast, a small but real chance the Whisper reacts. On a bad roll, her automated defenses wake early — the point-defense laser tracks the approach, a maintenance drone undocks to investigate — and Scene 2 opens hot instead of quiet. Origin-17, freshly awake and paranoid, has every reason to treat an active ping as a threat.
+- **Ram (3)** is the audacious option, and the ship was literally built for it. No intel — the crew commits blind to a schematic that may be out of date — but it is *fast*, and it forecloses the CSA problem by simply being aboard before anyone else can arrive. Run the damage race as a real contest (Action Pool vs. the point defense's fire, the schematic granting the crew position); a clean run puts them inside the outer compartments in the crash foam, a bad one means a breached ram shield and a very exciting first five minutes aboard. This is the CP2020 option: loud, committed, gloriously stupid, frequently correct.
+- **Talk (4)** is not a wasted turn — it's characterization and foreshadowing. Let the assistant be helpful and confident and *wrong* about the one thing that matters. Its blind spot about the cargo is the first quiet note of the whole scenario's theme: the machines here are smarter than they look, and the one everyone underestimates is the one that eats you.
 
-Two facts the GM should land during the leg:
+However they go in — whichever mix of caution, speed, and nerve — the next scene is the *Njord's Whisper* herself: dark, silent, and not nearly as empty as the manifest claims.
 
-1. **They are blind.** After H+20 there are no updates. If the Whisper has changed course, they find out by arriving at empty space with dry tanks. (She hasn't. They can't know that.)
-2. **They are loud.** A deceleration burn points a fusion flare at the destination for nearly twenty-two hours. Anything on the *Njord's Whisper* that can see — and anything else in the volume watching — knows something is coming, exactly where it will arrive, and roughly when. There is no stealth approach. There is only speed.
-
-## Final Approach
-
-At contact range the crew has the choice the ship was built around:
-
-- **Bow-first breach.** Ride the breaching armor straight into the hull at matched velocity — loud, fast, decisive. Crash foam takes the impact; the crew un-foams inside the Whisper's outer compartments. The dramatic option, and the one the contract's tactical annex politely recommends.
-- **Stand off and shuttle across.** Park the ship dark at a few hundred klicks, cross in the approach shuttle, pick an airlock or cut one. Slower, quieter, and it keeps the vessel — and its point defense — outside whatever happens on board.
-
-The Whisper's automated defenses are live (the advisory was honest about that much). What they are and how they answer each approach belongs to the next scene — but the point-defense laser earning its keep against a drifting debris field, or a drone that wakes up on final, makes a fine appetizer before anyone touches the hull.
-
-Whichever way they go in: check your seals. The next scene is the ship.
+Check your seals.
