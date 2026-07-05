@@ -1,9 +1,9 @@
 ---
-title: "Appendix 2: The Intercept, in Numbers"
+title: "A.02 — The Intercept, in Numbers"
 order: 91
 ---
 
-# Appendix 2: The Intercept, in Numbers
+# A.02 — The Intercept, in Numbers
 
 **GM reference — the burn math behind Scene 1.** The scene plays without any of this; reach for it only when a player wants the numbers, or when a table decision hinges on the clock.
 

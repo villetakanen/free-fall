@@ -1,9 +1,9 @@
 ---
-title: "Appendix 1: The Story So Far"
+title: "A.01 — The Story So Far"
 order: 90
 ---
 
-# Appendix 1: The Story So Far
+# A.01 — The Story So Far
 
 **GM reference — the canonical backstory of this demo.** When a table question, a ruling, or a rewrite needs to know what happened in *this scenario as written*, this is the document that wins.
 

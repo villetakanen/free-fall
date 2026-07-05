@@ -5,7 +5,7 @@ order: 2
 
 # Scene 1: The Approach
 
-Open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home. (If a player wants the numbers, the whole intercept is Appendix 2.) The scene starts on a single discussion from the ship:
+Open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home. (If a player wants the numbers, the whole intercept is Appendix A.02.) The scene starts on a single discussion from the ship:
 
 > **"Lock. Target vessel, dead ahead, forty thousand kilometers and closing. Njord's Whisper. She's exactly where the math said she'd be."**
 
@@ -20,7 +20,7 @@ The ship is the crew's own — the asset that makes them worth hiring, sold as a
 - **An approach shuttle**, for crossing the last stretch quiet.
 - **A specialist AI** — flight, sensors, fire control, tactical modelling. Competent, narrow, incurious. (It is exactly what it appears to be. After the QNA, the players will not believe that. Let them sweat it.)
 
-Full stat block, and four names the crew might give her, in Appendix B1. She carries only a hull code until they choose — if they haven't named her by now, they will before the session is out.
+Full stat block, and four names the crew might give her, in Appendix B.01. She carries only a hull code until they choose — if they haven't named her by now, they will before the session is out.
 
 ## The Assistant's Read
 
