@@ -1,10 +1,11 @@
 ---
 title: "Northern Lights"
 synopsis: "A transport bound for the Jovian belts has gone silent to Luna and Belt traffic control. She is in deep space, still reachable by trajectory intercept — for the next 20 hours. Board the Njord's Whisper, extract the hard-line data logs on the Quantum Neural Array, and purge the unit. The crew is considered compromised. No witnesses."
+type: "Demo (one-shot)"
 system:
   variant: "FREE//FALL"
   version: "0.7.x"
-length: "One-shot, 3–5 hours"
+length: "3–5 hours"
 players:
   min: 3
   max: 5
@@ -57,6 +58,8 @@ The job is written to teach the game by playing it. Over one session your :term[
 
 - **Players:** No prior knowledge required. Reading the core rulebook introduction is enough; the GM will handle the rest. Everything below this page's briefing is for the GM only — stay out if you want the ship to surprise you.
 - **GM:** Run it straight from the scenario pages. The scenario assumes the core rules of the FREE//FALL v7 playtest and uses gear from the standard catalog.
+
+*Northern Lights* is a demo: it ships with up to five ready-made operators and runs out of the box — no character creation, no prep beyond reading the GM pages. Pick a contractor, check your seals, and board.
 
 ## The Deal
 

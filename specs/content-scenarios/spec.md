@@ -39,10 +39,11 @@ Scenario overview (`index.md`):
 ```yaml
 title: "..."                # display name
 synopsis: "..."             # one-paragraph pitch; reserved for SEO/description and future listing detail (not rendered in the compact list)
+type: "..."                 # scenario format: "Demo (one-shot)", "One-shot", "Mini-campaign", …
 system:
   variant: "..."            # rules variant: "FREE//FALL", "Al Presa", "3rd Orleas", "SRD", …
   version: "..."            # variant version the scenario is written against, e.g. "7.0.0-alpha"
-length: "..."               # estimated play time, e.g. "One-shot, 3–4 hours"
+length: "..."               # estimated play time, e.g. "3–4 hours"
 players:
   min: 2
   max: 5
@@ -72,8 +73,8 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 | Route | Page file | Renders |
 |---|---|---|
-| `/scenarios/` | `apps/free-fall/src/pages/scenarios/index.astro` | Compact list of all scenarios — title linking to the overview plus a one-line metadata summary (system variant + version, length, players) — sorted by `order` then title; an empty state when the package holds no scenarios |
-| `/scenarios/{scenario}/` | `apps/free-fall/src/pages/scenarios/[scenario]/index.astro` | Metadata block (variant + version, length, players, content warnings), `index.md` body, ordered table of contents linking the scenario's pages |
+| `/scenarios/` | `apps/free-fall/src/pages/scenarios/index.astro` | Compact list of all scenarios — title linking to the overview plus a one-line metadata summary (type, system variant + version, length, players) — sorted by `order` then title; an empty state when the package holds no scenarios |
+| `/scenarios/{scenario}/` | `apps/free-fall/src/pages/scenarios/[scenario]/index.astro` | Metadata block (type, variant + version, length, players, content warnings), `index.md` body, ordered table of contents linking the scenario's pages |
 | `/scenarios/{scenario}/{page}/` | `apps/free-fall/src/pages/scenarios/[scenario]/[page].astro` | Page body in BaseLayout |
 
 **Navigation**
@@ -94,7 +95,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 - Scenarios introduce no terms of their own. A scenario's `:term[]` directives resolve against the registry of its target rules variant+version (`specs/content-workspace/term-resolution/spec.md`): the scenarios package has no `registry.md`, and its `remarkTermResolution` instance in `astro.config.ts` points `registryPath` at the parent variant's registry — initially `content/core-rulebook/chapters/registry.md`, with term links resolving to `/core-rulebook/registry/#slug`. When scenarios target multiple variants, registry selection follows `system.variant`.
 - Scenario metadata lives in `index.md` frontmatter only. Content pages carry `title` and `order`; everything the app queries about a scenario comes from one place.
-- `system.variant` and `system.version` are free-form strings validated as non-empty. The variant list grows with the game; the schema does not enumerate it.
+- `system.variant`, `system.version`, and `type` are free-form strings validated as non-empty. The variant and type vocabularies grow with the game; the schema does not enumerate them. `type` classifies the format — a *Demo* ships with ready-made characters and runs out of the box; duration belongs in `length`.
 - All relative Markdown links in scenario prose rewrite to the parent variant's base path (`/core-rulebook/`) — the `rehypeContentUrlRewrite` instance for `/content/scenarios/` shares the term-link configuration. Links between a scenario's own pages use absolute `/scenarios/{scenario}/{page}/` paths. *(Discovered during #39: the rewrite plugin's `basePath` is static per instance.)*
 
 ## Contract
@@ -103,7 +104,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 - [x] `content/scenarios/package.json` exists with a version and no build tooling
 - [x] `scenarios` and `scenario-pages` collections defined in `apps/free-fall/src/content.config.ts` with the schemas above
-- [x] A scenario's `index.md` missing `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
+- [x] A scenario's `index.md` missing `type`, `system.variant`, `system.version`, `length`, `players`, or `synopsis` fails the build with a schema error
 - [x] `/scenarios/{scenario}/` renders metadata block, overview prose, and an ordered list of the scenario's pages
 - [x] `/scenarios/{scenario}/{page}/` renders each content page
 - [x] `/scenarios/` lists all scenarios as a compact list (title + metadata line), and renders an empty state when the package holds none

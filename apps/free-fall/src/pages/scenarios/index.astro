@@ -31,7 +31,7 @@ const scenarios = (await getCollection("scenarios"))
           <li>
             <a href={s.href}>{s.title}</a>
             <span class="scenario-list-meta">
-              {s.system.variant} {s.system.version} · {s.length} ·{" "}
+              {s.type} · {s.system.variant} {s.system.version} · {s.length} ·{" "}
               {s.players.min}–{s.players.max} players
             </span>
           </li>

@@ -31,11 +31,15 @@ export async function getStaticPaths() {
 
 const { entry, pages } = Astro.props;
 const { Content } = await render(entry);
-const { system, length, players, content_warnings } = entry.data;
+const { type, system, length, players, content_warnings } = entry.data;
 ---
 
 <BaseLayout title={`${entry.data.title} — FREE//FALL`}>
   <dl class="scenario-meta">
+    <div>
+      <dt>Type</dt>
+      <dd>{type}</dd>
+    </div>
     <div>
       <dt>System</dt>
       <dd>{system.variant} {system.version}</dd>

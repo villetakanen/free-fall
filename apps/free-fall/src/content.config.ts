@@ -87,6 +87,7 @@ const scenarios = defineCollection({
   schema: z.object({
     title: z.string(),
     synopsis: z.string().min(1),
+    type: z.string().min(1),
     system: z.object({
       variant: z.string().min(1),
       version: z.string().min(1),
