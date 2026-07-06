@@ -113,6 +113,18 @@ When the tray is open on small or medium viewports (where it overlays content), 
 - Focus trap when tray is open as overlay (small + medium) — requires JS
 - `Escape` closes the tray when open — requires JS
 
+### Contextual navigation
+
+The tray is **context-agnostic**: it renders whatever `navItems` array the page owner supplies and holds no opinion about site structure. That indirection is the seam for section-scoped or *subsite* navigation — a layout can hand the tray a different `navItems` set depending on the current route, and the tray simply renders it.
+
+Pattern for a subsite (a self-contained section with its own pages, e.g. a scenario under `/scenarios/{slug}/`):
+
+- The consuming layout branches on the route and builds a scoped `navItems` array instead of the global one. The tray needs no change.
+- Include an **uplink** as the first item — a nav item with a back icon (`arrow_back`) pointing at the parent section — so the reader can always escape back to the global site.
+- Everything else in the array is the subsite's own pages, grouped with `subItems` as needed.
+
+Reference implementation: `apps/free-fall/src/layouts/BaseLayout.astro` swaps to `getScenarioSubsiteNav()` when the route is inside a scenario (spec: `specs/content-scenarios/spec.md#navigation`).
+
 ### Anti-Patterns
 
 - **No framework islands for toggle UI** — If the core interaction is a state toggle (open/close, show/hide, expand/collapse), use a CSS checkbox pattern, not a Svelte/React island. Reserve framework islands for genuinely complex reactive state.

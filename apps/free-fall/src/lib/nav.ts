@@ -54,6 +54,92 @@ export async function getScenarioNavItems(pathname: string) {
   };
 }
 
+/**
+ * Scenario subsite rail: uplink + the scenario's own pages, scoped to one
+ * scenario. Used by BaseLayout when the route is inside a scenario.
+ * Page classification is by filename prefix: index = overview, leading
+ * digit = body page (scenes), leading letter = appendix.
+ * Spec: specs/content-scenarios/spec.md#navigation
+ */
+export async function getScenarioSubsiteNav(slug: string, pathname: string) {
+  const scenario = (await getCollection("scenarios")).find(
+    (e) => e.id.split("/")[0] === slug,
+  );
+  const overviewHref = `/scenarios/${slug}/`;
+
+  const pages = (await getCollection("scenario-pages"))
+    .filter((p) => p.id.split("/")[0] === slug)
+    .sort(
+      (a, b) =>
+        (a.data.order ?? Number.POSITIVE_INFINITY) -
+          (b.data.order ?? Number.POSITIVE_INFINITY) ||
+        a.id.localeCompare(b.id),
+    )
+    .map((p) => {
+      const file = p.id.split("/")[1];
+      const href = `/scenarios/${slug}/${file}/`;
+      return {
+        file,
+        label: p.data.title,
+        href,
+        active: pathname === href,
+        isAppendix: /^[a-z]/i.test(file),
+      };
+    });
+
+  const bodyItems = pages
+    .filter((p) => !p.isAppendix)
+    .map((p) => ({
+      icon: "article",
+      label: p.label,
+      href: p.href,
+      active: p.active,
+    }));
+
+  const appendices = pages.filter((p) => p.isAppendix);
+
+  type SubItem = { label: string; href: string; active: boolean };
+  type NavItem = {
+    icon: string;
+    label: string;
+    href: string;
+    active: boolean;
+    subItems?: SubItem[];
+  };
+
+  const nav: NavItem[] = [
+    {
+      icon: "arrow_back",
+      label: "All Scenarios",
+      href: "/scenarios/",
+      active: false,
+    },
+    {
+      icon: "map",
+      label: scenario?.data.title ?? "Overview",
+      href: overviewHref,
+      active: pathname === overviewHref,
+    },
+    ...bodyItems,
+  ];
+
+  if (appendices.length > 0) {
+    nav.push({
+      icon: "menu_book",
+      label: "Appendices",
+      href: appendices[0].href,
+      active: appendices.some((p) => p.active),
+      subItems: appendices.map((p) => ({
+        label: p.label,
+        href: p.href,
+        active: p.active,
+      })),
+    });
+  }
+
+  return nav;
+}
+
 export async function getGearNavItems(pathname: string) {
   const entries = await getCollection("gear");
   const categorySet = new Set(entries.map((e) => e.data.category));

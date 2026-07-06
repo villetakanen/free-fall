@@ -4,6 +4,7 @@ import {
   getCoreRulebookNavItems,
   getGearNavItems,
   getScenarioNavItems,
+  getScenarioSubsiteNav,
 } from "../lib/nav.ts";
 
 interface Props {
@@ -14,27 +15,49 @@ interface Props {
 const title =
   Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL";
 
-const coreRulebookSubItems = await getCoreRulebookNavItems(Astro.url.pathname);
-const gearNavItem = await getGearNavItems(Astro.url.pathname);
-const scenarioNavItem = await getScenarioNavItems(Astro.url.pathname);
+const pathname = Astro.url.pathname;
 
-const navItems = [
-  {
-    icon: "public",
-    label: "Home",
-    href: "/",
-    active: Astro.url.pathname === "/",
-  },
-  {
-    icon: "book_5",
-    label: "Core Rules v7",
-    href: "/core-rulebook/00-intro/",
-    active: Astro.url.pathname.startsWith("/core-rulebook/"),
-    subItems: coreRulebookSubItems,
-  },
-  gearNavItem,
-  scenarioNavItem,
-];
+// A scenario is a subsite: inside one, the rail is scoped to that scenario.
+// Segments of "/scenarios/{slug}/…" — slug present means we are inside a
+// specific scenario (the "/scenarios/" listing has no slug).
+const segments = pathname.split("/").filter(Boolean);
+const scenarioSlug =
+  segments[0] === "scenarios" && segments.length >= 2 ? segments[1] : null;
+
+type NavItem = {
+  icon: string;
+  label: string;
+  href: string;
+  active: boolean;
+  subItems?: { label: string; href: string; active: boolean }[];
+};
+
+let navItems: NavItem[];
+if (scenarioSlug) {
+  navItems = await getScenarioSubsiteNav(scenarioSlug, pathname);
+} else {
+  const coreRulebookSubItems = await getCoreRulebookNavItems(pathname);
+  const gearNavItem = await getGearNavItems(pathname);
+  const scenarioNavItem = await getScenarioNavItems(pathname);
+
+  navItems = [
+    {
+      icon: "public",
+      label: "Home",
+      href: "/",
+      active: pathname === "/",
+    },
+    {
+      icon: "book_5",
+      label: "Core Rules v7",
+      href: "/core-rulebook/00-intro/",
+      active: pathname.startsWith("/core-rulebook/"),
+      subItems: coreRulebookSubItems,
+    },
+    gearNavItem,
+    scenarioNavItem,
+  ];
+}
 ---
 
 <AppShell title={title} navItems={navItems} brandHref="/about/">

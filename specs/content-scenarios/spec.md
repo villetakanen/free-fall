@@ -79,12 +79,20 @@ A scenario page's parent scenario is derived from the first segment of its entry
 
 **Navigation**
 
-`getScenarioNavItems(pathname)` in `apps/free-fall/src/lib/nav.ts`, following the shape of `getGearNavItems`:
+A scenario is a **subsite**: once the reader is inside one, the rail belongs to *that scenario*, not the whole app. `BaseLayout.astro` chooses the navigation mode from the route.
 
-**[DEPRECATED 2026-07-05]** ~~Rail item href of the first scenario's overview; `BaseLayout.astro` renders the rail item only when at least one scenario exists.~~ Revised same day during implementation review: with a `/scenarios/` listing page that renders an empty state, the rail item is always present and the listing is the entry point.
+*Global mode* — every route except a specific scenario (the app pages, and the `/scenarios/` listing itself). The rail carries the app-wide items, scenarios among them:
 
-- Rail item: icon `map`, label `Scenarios`, href `/scenarios/`, active on the `/scenarios/` prefix — always rendered
-- One subItem per scenario (its overview URL), sorted by `order` then title; empty when the package holds no scenarios
+- `getScenarioNavItems(pathname)` in `apps/free-fall/src/lib/nav.ts`, shaped like `getGearNavItems`: rail item icon `map`, label `Scenarios`, href `/scenarios/`, active on the `/scenarios/` prefix — always rendered; one subItem per scenario (its overview URL), sorted by `order` then title; empty when the package holds no scenarios.
+
+*Scenario mode* — any route matching `/scenarios/{scenario}/…` (deeper than the listing). The rail is replaced by `getScenarioSubsiteNav(slug, pathname)`, scoped to that scenario:
+
+- An **uplink** first item — icon `arrow_back`, label `All Scenarios`, href `/scenarios/` — the way back out to the global site.
+- The scenario **Overview** — the scenario's own title, icon `map`, href `/scenarios/{slug}/`.
+- One top-level item per **body page** (filenames beginning with a digit: preface, scenes), in `order`, so read-in-order pages are one click away.
+- An **Appendices** group (filenames beginning with a letter) collapsed under a single item, since appendices are reference, not read-through.
+
+Page classification is by filename prefix within the scenario folder: `index.md` is the overview, a leading digit marks a body page, a leading letter marks an appendix.
 
 **Wiring**
 
