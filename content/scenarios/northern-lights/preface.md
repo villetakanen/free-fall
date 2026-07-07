@@ -1,6 +1,5 @@
 ---
 title: "Preface (GM)"
-order: 1
 ---
 
 # Preface

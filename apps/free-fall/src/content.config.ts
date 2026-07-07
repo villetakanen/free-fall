@@ -99,6 +99,18 @@ const scenarios = defineCollection({
     }),
     content_warnings: z.array(z.string()).default([]),
     order: z.number().optional(),
+    // Optional navigation manifest: sections + page order, in author-declared
+    // order. Pages not listed here fall back to an alphabetical "Assorted"
+    // section. Spec: specs/content-scenarios/spec.md#navigation
+    contents: z
+      .array(
+        z.object({
+          section: z.string().min(1),
+          icon: z.string().min(1).optional(),
+          pages: z.array(z.string().min(1)).min(1),
+        }),
+      )
+      .optional(),
   }),
 });
 
@@ -109,7 +121,6 @@ const scenarioPages = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    order: z.number().optional(),
   }),
 });
 

@@ -1,9 +1,8 @@
 ---
-title: "B.02 — The Njord's Whisper"
-order: 101
+title: "The Njord's Whisper"
 ---
 
-# B.02 — The Njord's Whisper
+# The Njord's Whisper
 
 **The target.** A **"00"** — the classic freefall hauler, the ubiquitous small-crew workhorse docked at every station in the system, so common nobody looks twice. Cargo goes in the bow maw, the torch pushes it somewhere, months pass, cargo comes out the far end. Nothing fancy, nothing fast, nothing that fights. She is a long-haul truck for the space age — and like a truck, her cab is lived-in: strap-down bunks, a galley that works in freefall, a decade of somebody's clutter velcroed to the walls.
 

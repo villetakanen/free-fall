@@ -4,13 +4,23 @@ interface Props {
   label: string;
   href: string;
   active?: boolean;
+  /**
+   * "uplink" renders the exit from a subsite scope: muted until hovered and
+   * separated from the items below, so it reads as "up a level", not a
+   * sibling chapter. Spec: specs/design-system/tray-button/spec.md
+   */
+  variant?: "nav" | "uplink";
 }
 
-const { icon, label, href, active } = Astro.props;
+const { icon, label, href, active, variant = "nav" } = Astro.props;
 ---
 
 <a
-  class="tray-button text-ui"
+  class:list={[
+    "tray-button",
+    "text-ui",
+    { "tray-button--uplink": variant === "uplink" },
+  ]}
   href={href}
   aria-current={active ? "page" : undefined}
 >
@@ -62,6 +72,26 @@ const { icon, label, href, active } = Astro.props;
   .tray-button[aria-current="page"] {
     color: var(--freefall-text-display);
     background: var(--freefall-bg-surface-2);
+  }
+
+  /* Uplink: muted and separated so it reads as "up a level", not a sibling */
+  .tray-button--uplink {
+    position: relative;
+    color: var(--freefall-text-muted);
+    margin-bottom: var(--freefall-space-2);
+  }
+  .tray-button--uplink:hover,
+  .tray-button--uplink:focus-visible {
+    color: var(--freefall-text-display);
+  }
+  .tray-button--uplink::after {
+    content: "";
+    position: absolute;
+    left: calc(2 * var(--freefall-space-1));
+    right: calc(2 * var(--freefall-space-1));
+    bottom: calc(-1 * var(--freefall-space-1));
+    border-bottom: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-border-subtle);
   }
 
   .tray-button[aria-current="page"] .icon {

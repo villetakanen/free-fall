@@ -1,9 +1,8 @@
 ---
-title: "B.01 — The Vessel"
-order: 100
+title: "The Vessel"
 ---
 
-# B.01 — The Vessel
+# The Vessel
 
 **The thing that holds the crew together is a small, fast boarding craft: a privateer of the space age.** Five operators have run her together for the better part of a year — same five, same ship, no churn. That is rare; crews rotate constantly, people burn out, cash out, or don't come back, because deaths happen even to professionals. This crew hasn't lost anyone. They know the ship and each other the way a hand knows a glove, and that cohesion is their real asset, more than the titanium prow, more than the AI. It is also what the scenario spends the evening pulling apart.
 

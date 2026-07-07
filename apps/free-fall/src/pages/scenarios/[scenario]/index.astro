@@ -2,34 +2,26 @@
 // Spec: specs/content-scenarios/spec.md#routes
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getScenarioContents } from "../../../lib/nav.ts";
 
 export async function getStaticPaths() {
   const scenarios = await getCollection("scenarios");
-  const allPages = await getCollection("scenario-pages");
 
-  return scenarios.map((entry) => {
-    const slug = entry.id.split("/")[0];
-    const pages = allPages
-      .filter((p) => p.id.split("/")[0] === slug)
-      .sort(
-        (a, b) =>
-          (a.data.order ?? Number.POSITIVE_INFINITY) -
-            (b.data.order ?? Number.POSITIVE_INFINITY) ||
-          a.data.title.localeCompare(b.data.title),
-      )
-      .map((p) => ({
-        title: p.data.title,
-        href: `/scenarios/${slug}/${p.id.split("/")[1]}/`,
-      }));
+  return Promise.all(
+    scenarios.map(async (entry) => {
+      const slug = entry.id.split("/")[0];
+      // Shared with the scoped rail — spec: specs/content-scenarios/spec.md#navigation
+      const sections = await getScenarioContents(slug);
 
-    return {
-      params: { scenario: slug },
-      props: { entry, pages },
-    };
-  });
+      return {
+        params: { scenario: slug },
+        props: { entry, sections },
+      };
+    }),
+  );
 }
 
-const { entry, pages } = Astro.props;
+const { entry, sections } = Astro.props;
 const { Content } = await render(entry);
 const { type, system, length, players, content_warnings } = entry.data;
 ---
@@ -65,16 +57,21 @@ const { type, system, length, players, content_warnings } = entry.data;
   <Content />
 
   {
-    pages.length > 0 && (
+    sections.length > 0 && (
       <nav class="scenario-toc" aria-label="Scenario contents">
         <h2>Contents</h2>
-        <ol>
-          {pages.map((page) => (
-            <li>
-              <a href={page.href}>{page.title}</a>
-            </li>
-          ))}
-        </ol>
+        {sections.map((section) => (
+          <section>
+            <h3>{section.section}</h3>
+            <ol>
+              {section.pages.map((page) => (
+                <li>
+                  <a href={page.href}>{page.label}</a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
       </nav>
     )
   }

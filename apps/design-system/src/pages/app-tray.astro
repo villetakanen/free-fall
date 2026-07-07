@@ -77,6 +77,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </tr>
   </table>
 
+  <h2>Contextual navigation (subsite mode)</h2>
+  <p>
+    The tray is context-agnostic: it renders whatever <code>navItems</code>
+    array the layout supplies. A layout can swap in a scoped set for a
+    self-contained subsite — an <code>arrow_back</code> uplink first, then the
+    subsite's own pages.
+    <a href="/app-tray-subsite/">Enter the live subsite demo</a> to see the
+    tray switch.
+  </p>
+
   <h2>Interactions</h2>
   <ul>
     <li>Click the hamburger button to toggle (pure CSS — no JS)</li>

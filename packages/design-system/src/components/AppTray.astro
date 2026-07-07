@@ -17,6 +17,8 @@ interface NavItem {
   label: string;
   href: string;
   active?: boolean;
+  /** "uplink" marks the exit from a subsite scope — see TrayButton. */
+  variant?: "nav" | "uplink";
   subItems?: {
     label: string;
     href: string;
@@ -45,6 +47,7 @@ const { items, brandHref } = Astro.props;
               label={item.label}
               href={item.href}
               active={item.active}
+              variant={item.variant}
             />
             {item.subItems && (
               <TrayLinkGroup>

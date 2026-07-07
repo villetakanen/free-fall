@@ -1,6 +1,5 @@
 ---
 title: "Scene 1: The Approach"
-order: 2
 ---
 
 # Scene 1: The Approach

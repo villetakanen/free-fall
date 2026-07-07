@@ -120,10 +120,14 @@ The tray is **context-agnostic**: it renders whatever `navItems` array the page 
 Pattern for a subsite (a self-contained section with its own pages, e.g. a scenario under `/scenarios/{slug}/`):
 
 - The consuming layout branches on the route and builds a scoped `navItems` array instead of the global one. The tray needs no change.
-- Include an **uplink** as the first item — a nav item with a back icon (`arrow_back`) pointing at the parent section — so the reader can always escape back to the global site.
+- Include an **uplink** as the first item — a nav item with a back icon (`arrow_back`) and `variant: "uplink"`, pointing at the parent section — so the reader can always escape back to the global site. The variant renders it muted with a separator below (see `specs/design-system/tray-button/spec.md`), so the exit is discernible from the subsite's own pages.
+
+  **[DEPRECATED 2026-07-06]** ~~The uplink is an ordinary nav item requiring no tray-specific variant.~~ Visual review of the first implementation showed the uplink was indistinguishable from sibling chapters; `TrayButton` gained the `uplink` variant.
 - Everything else in the array is the subsite's own pages, grouped with `subItems` as needed.
 
 Reference implementation: `apps/free-fall/src/layouts/BaseLayout.astro` swaps to `getScenarioSubsiteNav()` when the route is inside a scenario (spec: `specs/content-scenarios/spec.md#navigation`).
+
+The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation *pattern* page, not a component reference: the styleguide nav lists it as "Subsite Navigation" under the **Layout** group (alongside Content Grid), and the App Tray reference page links to it — entering and leaving it is the demonstration. Its uplink exits to the styleguide home. (The Layout group is anchored on `/content-grid/` because top-level tray items must be links — tracked as issue #42.)
 
 ### Anti-Patterns
 
@@ -150,6 +154,7 @@ Reference implementation: `apps/free-fall/src/layouts/BaseLayout.astro` swaps to
 - [ ] `Escape` key closes the tray (progressive enhancement)
 - [ ] Transitions match specified durations
 - [ ] Demo app has an app-tray reference page showing the component at all breakpoints
+- [ ] Demo app shows a scoped ("subsite") `navItems` configuration whose first item is an `arrow_back` uplink, rendering with the same rail/overlay/push behavior as the global nav
 - [ ] Playwright e2e tests cover all Scenarios against build artifacts
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
@@ -210,3 +215,15 @@ Scenario: Hamburger micro-interaction
   Given: The tray is closed
   When: The user clicks the hamburger button
   Then: The icon crossfades from `menu` to `close` within 150ms
+
+Scenario: Tray renders a scoped subsite nav set
+  Given: The layout supplies a scoped `navItems` array whose first item is an `arrow_back` uplink
+  When: The page loads inside a subsite route
+  Then: The tray renders exactly those items, with no global items added or removed
+  And: The uplink is the first item in the rail
+  And: The rail, overlay, and push behaviors are identical to the global nav
+
+Scenario: Uplink is discernible from subsite pages
+  Given: A scoped `navItems` array with an uplink (variant "uplink") followed by page items
+  When: The tray renders the scoped set
+  Then: The uplink renders muted with a separator below it, visually distinct from the page items

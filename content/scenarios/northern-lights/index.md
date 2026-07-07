@@ -14,6 +14,21 @@ content_warnings:
   - "Body horror"
   - "Isolation & confinement"
 order: 1
+contents:
+  - section: "GM Materials"
+    pages:
+      - preface
+      - the-approach
+  - section: "Backstory"
+    icon: "history_edu"
+    pages:
+      - the-story-so-far
+      - the-intercept
+  - section: "Gear"
+    icon: "handyman"
+    pages:
+      - the-vessel
+      - njords-whisper
 ---
 
 # CODENAME: NORTHERN LIGHTS
