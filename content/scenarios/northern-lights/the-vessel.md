@@ -41,6 +41,7 @@ qualities:
   - "Crash Foam (Full-cabin impact suspension — boarding by ram)"
   - "Point Defense (1 Laser + 2 Micro-Rocket Cannons)"
   - "Carried Craft (Approach Shuttle — see Dart Courier Shuttle)"
+  - "Ship's Equipment (Cutter Light EVA Frame — work exo in the bay, mission pool gear: anyone binds it when the job calls for hauling or cutting)"
   - "Sensor Suite (Passive array + active radar/lidar)"
   - "Integrated AI (Specialist shipboard assistant — flight, sensors, fire control, tactical modelling)"
   - "Occupancy (5 — powered exoskeleton acceleration berths)"
