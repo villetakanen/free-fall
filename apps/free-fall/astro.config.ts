@@ -7,6 +7,10 @@ import { remarkTermResolution } from "./src/lib/remark/remark-term-resolution";
 
 export default defineConfig({
   output: "static",
+  redirects: {
+    "/rules": "/core-rulebook/00-intro",
+    "/rules/getting-started": "/core-rulebook/00-intro",
+  },
   markdown: {
     shikiConfig: {
       theme: "css-variables",
@@ -20,11 +24,24 @@ export default defineConfig({
           contentPath: "/content/core-rulebook/",
         },
       ],
+      // Scenarios are dependent content: terms resolve against the parent
+      // variant's registry. Spec: specs/content-scenarios/spec.md#constraints
+      [
+        remarkTermResolution,
+        {
+          registryPath: "../../content/core-rulebook/chapters/registry.md",
+          contentPath: "/content/scenarios/",
+        },
+      ],
     ],
     rehypePlugins: [
       [
         rehypeContentUrlRewrite,
         { basePath: "/core-rulebook/", contentPath: "/content/core-rulebook/" },
+      ],
+      [
+        rehypeContentUrlRewrite,
+        { basePath: "/core-rulebook/", contentPath: "/content/scenarios/" },
       ],
     ],
   },
@@ -41,6 +58,9 @@ export default defineConfig({
           );
           server.watcher.add(
             fileURLToPath(new URL("../../content/gear/items", import.meta.url)),
+          );
+          server.watcher.add(
+            fileURLToPath(new URL("../../content/scenarios", import.meta.url)),
           );
         },
       },

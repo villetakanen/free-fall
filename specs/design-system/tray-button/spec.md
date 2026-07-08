@@ -26,11 +26,15 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 - **Label presentation**: Handled as a single line (`white-space: nowrap`). During tray minimization, the label is visually hidden seamlessly without breaking layout.
 - **Interactive States**: Clear visual feedback for hover (`:hover`), focus (`:focus-visible`), and active/selected/current-page states.
 
+**Variants:**
+
+`variant?: "nav" | "uplink"` (default `"nav"`). The `uplink` variant renders the exit from a subsite scope (see `specs/design-system/app-tray/spec.md#contextual-navigation`): text and icon use `--freefall-text-muted` (restored to `--freefall-text-display` on hover/focus), and an `::after` hairline separator (`--freefall-border-subtle`) draws below the button so the uplink reads as "up a level" rather than a sibling page. Added 2026-07-06 after visual review: with uplink and chapters rendered identically, the two were indistinguishable in the rail.
+
 **Component structure:**
 
 | File | Contents |
 |---|---|
-| `src/components/TrayButton.astro` | Astro markup: flex container, icon injection (slot or prop), and text label. Co-located `<style>` block owns flexbox layout, interaction states, and a `@container` query that manages the responsive hiding logic and geometry reset for the minimized label. |
+| `src/components/TrayButton.astro` | Astro markup: flex container, icon injection (slot or prop), and text label. Co-located `<style>` block owns flexbox layout, interaction states, the uplink variant styling, and a `@container` query that manages the responsive hiding logic and geometry reset for the minimized label. |
 
 ### Anti-Patterns
 
@@ -68,3 +72,9 @@ Scenario: Screen Reader Accessibility in Minimized State
   Given: The Tray Button has its text label visually hidden
   When: A screen reader focuses on the button
   Then: The button's purpose is correctly announced (using aria-label or visually-hidden text), providing parity with the expanded state.
+
+Scenario: Uplink variant is visually distinct from sibling items
+  Given: A Tray Button with variant="uplink" above ordinary nav items
+  When: The user views the tray (open or rail state)
+  Then: The uplink renders muted with a separator below it, clearly distinct from the items that follow
+  And: Hover or focus restores full text emphasis

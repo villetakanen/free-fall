@@ -1,0 +1,120 @@
+---
+// Spec: specs/content-scenarios/spec.md#routes
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getScenarioContents } from "../../../lib/nav.ts";
+
+export async function getStaticPaths() {
+  const scenarios = await getCollection("scenarios");
+
+  return Promise.all(
+    scenarios.map(async (entry) => {
+      const slug = entry.id.split("/")[0];
+      // Shared with the scoped rail — spec: specs/content-scenarios/spec.md#navigation
+      const sections = await getScenarioContents(slug);
+
+      return {
+        params: { scenario: slug },
+        props: { entry, sections },
+      };
+    }),
+  );
+}
+
+const { entry, sections } = Astro.props;
+const { Content } = await render(entry);
+const { type, system, length, players, content_warnings } = entry.data;
+---
+
+<BaseLayout title={`${entry.data.title} — FREE//FALL`}>
+  <aside class="scenario-meta content-side" aria-label="Scenario details">
+    <dl>
+      <div>
+        <dt>Type</dt>
+        <dd>{type}</dd>
+      </div>
+      <div>
+        <dt>System</dt>
+        <dd>{system.variant} {system.version}</dd>
+      </div>
+      <div>
+        <dt>Length</dt>
+        <dd>{length}</dd>
+      </div>
+      <div>
+        <dt>Players</dt>
+        <dd>{players.min}–{players.max}</dd>
+      </div>
+      {
+        content_warnings.length > 0 && (
+          <div>
+            <dt>Content warnings</dt>
+            <dd>{content_warnings.join(", ")}</dd>
+          </div>
+        )
+      }
+    </dl>
+  </aside>
+
+  <Content />
+
+  {
+    sections.length > 0 && (
+      <nav class="scenario-toc" aria-label="Scenario contents">
+        <h2>Contents</h2>
+        {sections.map((section) => (
+          <section>
+            <h3>{section.section}</h3>
+            <ol>
+              {section.pages.map((page) => (
+                <li>
+                  <a href={page.href}>{page.label}</a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </nav>
+    )
+  }
+</BaseLayout>
+
+<style>
+  /* Stat aside: rides the content-grid side column when the container has
+     room; falls back to an inline strip above the prose on narrow layouts.
+     dt/dd element look comes from the design system
+     (packages/design-system/src/styles/typography.css) */
+  .scenario-meta dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(2 * var(--freefall-space-1));
+    margin: 0;
+  }
+  .scenario-meta dd {
+    margin: 0;
+  }
+  /* Base tier (side column not engaged): inline strip above the content */
+  .scenario-meta {
+    padding-bottom: calc(2 * var(--freefall-space-1));
+    border-bottom: 1px solid var(--freefall-border-subtle);
+  }
+  /* Side tiers — same thresholds as the content grid's side column
+     (packages/design-system/src/styles/content-grid.css) */
+  @container content (inline-size >= calc(92.6ch + 6rem)) {
+    .scenario-meta {
+      /* Pin to row 1 explicitly: a definitely-placed item is excluded from
+         grid auto-flow, so the page heading lands in row 1 of the main
+         column BESIDE the aside instead of below it (the auto-placement
+         cursor never backtracks past an auto-placed first child). */
+      grid-row: 1;
+      border-bottom: none;
+      border-left: 1px solid var(--freefall-border-subtle);
+      padding-bottom: 0;
+      padding-left: calc(2 * var(--freefall-space-1));
+    }
+    .scenario-meta dl {
+      flex-direction: column;
+      gap: var(--freefall-space-1);
+    }
+  }
+</style>

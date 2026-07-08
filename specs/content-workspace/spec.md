@@ -195,23 +195,23 @@ Future content packages follow the same pattern. Adding `content/campaign-primer
 
 ### Definition of Done
 
-- [ ] `pnpm-workspace.yaml` includes `"content/*"` as a workspace glob
-- [ ] `content/core-rulebook/` exists with `package.json`, `chapters/`, and `assets/` directories
-- [ ] `content/core-rulebook/package.json` has no TypeScript dependency, no `typecheck` script, no `exports`, and no `index.ts`
-- [ ] All existing markdown files are moved from `packages/free-fall-core-rulebook/src/content/rules/` to `content/core-rulebook/chapters/` with content and frontmatter intact
-- [ ] `packages/free-fall-core-rulebook/` is deleted
-- [ ] `apps/free-fall/src/content.config.ts` loader base path points to `../../content/core-rulebook/chapters`
-- [ ] Dynamic page is at `src/pages/core-rulebook/[id].astro` (old `free-fall-core-rulebook/` directory removed)
-- [ ] Nav helper generates hrefs as `/core-rulebook/{id}/`
-- [ ] BaseLayout active check uses `/core-rulebook/` prefix
-- [ ] HMR watcher path updated to `../../content/core-rulebook/chapters`
-- [ ] Vite alias for `@free-fall/core-rulebook` removed from `astro.config.ts`
-- [ ] tsconfig `paths` for `@free-fall/core-rulebook` removed
-- [ ] `env.d.ts` reference to rulebook `env.d.ts` removed
-- [ ] `VersionInfo.astro` imports version from `content/core-rulebook/package.json`
-- [ ] Content links in `apps/free-fall/src/content/landing/intro.md` updated to `/core-rulebook/` paths
-- [ ] Adding a new `.md` file to `content/core-rulebook/chapters/` automatically produces a new route and nav entry without code changes
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `pnpm-workspace.yaml` includes `"content/*"` as a workspace glob
+- [x] `content/core-rulebook/` exists with `package.json`, `chapters/`, and `assets/` directories
+- [x] `content/core-rulebook/package.json` has no TypeScript dependency, no `typecheck` script, no `exports`, and no `index.ts`
+- [x] All existing markdown files are moved from `packages/free-fall-core-rulebook/src/content/rules/` to `content/core-rulebook/chapters/` with content and frontmatter intact
+- [x] `packages/free-fall-core-rulebook/` is deleted
+- [x] `apps/free-fall/src/content.config.ts` loader base path points to `../../content/core-rulebook/chapters`
+- [x] Dynamic page is at `src/pages/core-rulebook/[id].astro` (old `free-fall-core-rulebook/` directory removed)
+- [x] Nav helper generates hrefs as `/core-rulebook/{id}/`
+- [x] BaseLayout active check uses `/core-rulebook/` prefix
+- [x] HMR watcher path updated to `../../content/core-rulebook/chapters`
+- [x] Vite alias for `@free-fall/core-rulebook` removed from `astro.config.ts`
+- [x] tsconfig `paths` for `@free-fall/core-rulebook` removed
+- [x] `env.d.ts` reference to rulebook `env.d.ts` removed
+- [x] `VersionInfo.astro` imports version from `content/core-rulebook/package.json`
+- [x] Content links in `apps/free-fall/src/content/landing/intro.md` updated to `/core-rulebook/` paths
+- [x] Adding a new `.md` file to `content/core-rulebook/chapters/` automatically produces a new route and nav entry without code changes
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 

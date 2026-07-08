@@ -52,12 +52,12 @@ title: About — FREE//FALL
 ---
 ```
 
-**Page type guidance:** Prefer `.md` files with frontmatter layout for content-focused pages (about, rules, legal). Use `.astro` files only when the page needs programmatic imports or dynamic data (e.g., `index.astro` importing VERSION and CoreMechanics).
+**Page type guidance:** Prefer `.md` files with frontmatter layout for content-focused pages (about, rules, legal). Use `.astro` files only when the page needs programmatic imports or dynamic data (e.g., `index.astro` importing content blocks and VersionInfo).
 
 **Migration from current state:**
 
 - `index.astro` — Remove the `display: none !important` style block that hides navigation. Switch from importing AppShell directly to using BaseLayout. Remove the inline `navItems = []`.
-- `rules/[...slug].astro` — Switch from importing AppShell directly to using BaseLayout. Remove the inline `navItems` array.
+- `rules/[...slug].astro` — Removed 2026-07-05. Rulebook content is served from `/core-rulebook/[id]/`; legacy `/rules/*` URLs redirect there via `astro.config.ts` redirects.
 
 **Dependencies:**
 
@@ -74,15 +74,15 @@ title: About — FREE//FALL
 
 ### Definition of Done
 
-- [ ] `apps/free-fall/src/layouts/BaseLayout.astro` wraps AppShell with navItems and brandHref
-- [ ] NavItems contains Home (`public` icon, `/`) with no sub-items
-- [ ] NavItems contains Core Rules v7 (`book_5` icon, `/core-rulebook/00-intro/`) with dynamic `subItems` from `core-rulebook` collection
-- [ ] brandHref is `/about/`
-- [ ] `about.md` page exists at `/about/` with placeholder content and frontmatter layout
-- [ ] `index.astro` uses BaseLayout, no longer hides navigation, no inline navItems
-- [ ] `rules/[...slug].astro` uses BaseLayout, no inline navItems
-- [ ] Navigation (hamburger, rail, drawer) is fully functional on all app pages
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `apps/free-fall/src/layouts/BaseLayout.astro` wraps AppShell with navItems and brandHref
+- [x] NavItems contains Home (`public` icon, `/`) with no sub-items
+- [x] NavItems contains Core Rules v7 (`book_5` icon, `/core-rulebook/00-intro/`) with dynamic `subItems` from `core-rulebook` collection
+- [x] brandHref is `/about/`
+- [x] `about.md` page exists at `/about/` with placeholder content and frontmatter layout
+- [x] `index.astro` uses BaseLayout, no longer hides navigation, no inline navItems
+- [x] Legacy `rules/[...slug].astro` route removed; `/rules/*` URLs redirect to `/core-rulebook/00-intro/`
+- [x] Navigation (hamburger, rail, drawer) is fully functional on all app pages
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
@@ -117,7 +117,12 @@ Scenario: About page renders
   When: The page loads
   Then: The page renders with BaseLayout, showing navigation and placeholder content
 
-Scenario: Rules page uses BaseLayout
-  Given: A user navigates to a rules page
+Scenario: Rulebook page uses BaseLayout
+  Given: A user navigates to a core rulebook page
   When: The page loads
   Then: Navigation is visible and functional (not hidden)
+
+Scenario: Legacy rules URL redirects
+  Given: A user navigates to `/rules/getting-started/`
+  When: The page loads
+  Then: They are redirected to `/core-rulebook/00-intro/`

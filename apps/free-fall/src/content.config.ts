@@ -1,14 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const rules = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/rules" }),
-  schema: z.object({
-    title: z.string(),
-    order: z.number().optional(),
-  }),
-});
-
 const coreRulebook = defineCollection({
   loader: glob({
     pattern: "**/*.md",
@@ -68,11 +60,23 @@ const vehicleSchema = gearBase.extend({
   size_category: z.enum(["Personal", "Small", "Medium", "Large", "Huge"]),
 });
 
+// Exoskeletons share the vehicle rules family (FRM/SYS, pilot binding)
+// but are their own gear category per the rules.
+const exoSchema = gearBase.extend({
+  category: z.literal("exo"),
+  frame: z.number(),
+  systems: z.number(),
+  pilot_binding: bindingSchema,
+  vehicle_av: z.number(),
+  size_category: z.enum(["Personal", "Small", "Medium", "Large", "Huge"]),
+});
+
 const gearSchema = z.discriminatedUnion("category", [
   weaponSchema,
   armorSchema,
   augmentationSchema,
   utilitySchema,
+  exoSchema,
   vehicleSchema,
 ]);
 
@@ -84,4 +88,57 @@ const gear = defineCollection({
   schema: gearSchema,
 });
 
-export const collections = { rules, "core-rulebook": coreRulebook, gear };
+// ── Scenarios (folder per scenario; index.md carries the metadata) ──
+// Spec: specs/content-scenarios/spec.md
+
+const scenarios = defineCollection({
+  loader: glob({
+    pattern: "*/index.md",
+    base: "../../content/scenarios",
+  }),
+  schema: z.object({
+    title: z.string(),
+    synopsis: z.string().min(1),
+    type: z.string().min(1),
+    system: z.object({
+      variant: z.string().min(1),
+      version: z.string().min(1),
+    }),
+    length: z.string().min(1),
+    players: z.object({
+      min: z.number().int().positive(),
+      max: z.number().int().positive(),
+    }),
+    content_warnings: z.array(z.string()).default([]),
+    order: z.number().optional(),
+    // Optional navigation manifest: sections + page order, in author-declared
+    // order. Pages not listed here fall back to an alphabetical "Assorted"
+    // section. Spec: specs/content-scenarios/spec.md#navigation
+    contents: z
+      .array(
+        z.object({
+          section: z.string().min(1),
+          icon: z.string().min(1).optional(),
+          pages: z.array(z.string().min(1)).min(1),
+        }),
+      )
+      .optional(),
+  }),
+});
+
+const scenarioPages = defineCollection({
+  loader: glob({
+    pattern: ["*/*.md", "!*/index.md"],
+    base: "../../content/scenarios",
+  }),
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = {
+  "core-rulebook": coreRulebook,
+  gear,
+  scenarios,
+  "scenario-pages": scenarioPages,
+};

@@ -95,15 +95,19 @@ Incoming Encrypted Transmission...
 
 SOURCE: $$REDACTED$$ // PROTOCOL: BLACK 
 
-TARGET: Transport Vessel Njord's Whisper, 
-drifting near the Jovian Trojan belts.
+TARGET: Transport Vessel Njord's Whisper,
+running silent en route to the Jovian
+Trojan belts. Intercept solution attached.
+
+TIME CRITICAL: Tracking solution degrades in
+20 hours. After that, the Whisper is gone.
 
 OBJECTIVE: Board the vessel.
 - Extract hard-line data logs regarding the 
   "QNA" (Quantum Neural Array).
 - Purge the QNA unit. Total neutralization.
 
-ADVISORY:** Vessel appears dark. Thermal 
+ADVISORY: Vessel appears dark. Thermal 
 signatures suggest automated defenses are active. 
 Crew considered compromised by Class-3 
 contaminants (AI/Logic Virus).

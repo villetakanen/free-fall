@@ -1,9 +1,20 @@
 ---
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
+interface NavItem {
+  icon: string;
+  label: string;
+  href: string;
+  active?: boolean;
+  variant?: "nav" | "uplink";
+  subItems?: { label: string; href: string; active?: boolean }[];
+}
+
 interface Props {
   title?: string;
   frontmatter?: { title?: string };
+  /** Override the global nav — used by the subsite tray demo. */
+  navItems?: NavItem[];
 }
 
 const title =
@@ -11,7 +22,7 @@ const title =
   Astro.props.frontmatter?.title ||
   "FREE//FALL Design System";
 
-const navItems = [
+const navItems = Astro.props.navItems ?? [
   {
     icon: "home",
     label: "Home",
@@ -31,6 +42,12 @@ const navItems = [
     active: Astro.url.pathname.startsWith("/typography"),
   },
   {
+    icon: "list",
+    label: "Definition Lists",
+    href: "/definition-list/",
+    active: Astro.url.pathname.startsWith("/definition-list"),
+  },
+  {
     icon: "emoji_symbols",
     label: "Iconography",
     href: "/iconography/",
@@ -38,9 +55,24 @@ const navItems = [
   },
   {
     icon: "grid_view",
-    label: "Content Grid",
+    label: "Layout",
+    // Group anchor must be a link for now — see issue #42
     href: "/content-grid/",
-    active: Astro.url.pathname.startsWith("/content-grid"),
+    active: ["/content-grid", "/app-tray-subsite"].some((path) =>
+      Astro.url.pathname.startsWith(path),
+    ),
+    subItems: [
+      {
+        label: "Content Grid",
+        href: "/content-grid/",
+        active: Astro.url.pathname.startsWith("/content-grid"),
+      },
+      {
+        label: "Subsite Navigation",
+        href: "/app-tray-subsite/",
+        active: Astro.url.pathname.startsWith("/app-tray-subsite"),
+      },
+    ],
   },
   {
     icon: "style",

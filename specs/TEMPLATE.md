@@ -10,6 +10,10 @@
   Same-commit rule: if code behavior changes, the spec MUST be updated
   in the same commit.
 
+  Deprecation over deletion: when updating, mark stale sections as
+  [DEPRECATED yyyy-mm-dd] with a one-line rationale instead of rewriting
+  them away. History explains *why* the system evolved.
+
   One spec per independently evolvable feature. Place at:
     specs/{domain}/{feature}/spec.md
 
@@ -36,15 +40,24 @@ Parent spec: `specs/{domain}/spec.md`
      - What JavaScript adds
      - Diagrams (ASCII or Mermaid) where they clarify structure
 
-     Be prescriptive — this is a contract, not a suggestion. -->
+     Be prescriptive — this is a contract, not a suggestion.
+     Reference real file paths; agents work with files, not concepts. -->
 
-### Anti-Patterns
+### Constraints
 
-<!-- What must an implementer NOT do? List concrete prohibitions with
-     brief rationale. Examples:
-     - No framework islands for toggle UI — use CSS checkbox pattern
-     - No raw px values — derive from grid tokens
-     - No wrapping page content in navigation components -->
+<!-- Architectural boundaries stated positively, as facts about the system.
+     Describe the one correct path, not the forbidden ones — negative
+     phrasing anchors the wrong approach in an agent's context.
+
+     "State toggles (open/close, show/hide) are implemented with the HTML
+      checkbox + CSS :has() pattern; framework islands are reserved for
+      multi-state reactive UI."
+     not
+     "Don't use framework islands for toggles."
+
+     Failure modes belong in Scenarios below as verifiable behavior, not
+     here as warnings. Only include constraints the architecture section
+     doesn't already express. -->
 
 ## Contract
 
@@ -59,7 +72,7 @@ Parent spec: `specs/{domain}/spec.md`
 
 ### Regression Guardrails
 
-<!-- Invariants that must NEVER break, even as the feature evolves.
+<!-- Invariants that must never break, even as the feature evolves.
      These protect against regressions during future changes.
      State them as imperatives: "X must never Y". -->
 
@@ -67,6 +80,8 @@ Parent spec: `specs/{domain}/spec.md`
 
 <!-- Behavioral specs in Gherkin-style Given/When/Then format.
      Cover the critical paths, edge cases, and progressive enhancement.
+     Scenarios absorb failure modes: instead of warning "don't require JS",
+     write "Given JavaScript is disabled ... Then the content renders".
      Delete this comment block before publishing. -->
 
 ```gherkin

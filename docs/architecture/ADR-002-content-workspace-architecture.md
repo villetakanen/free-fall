@@ -1,6 +1,6 @@
 # ADR-002: Monorepo Content Workspace and Rulebook Architecture
 
-**Status:** Proposed
+**Status:** Accepted (implemented 2026-03-02; status updated 2026-07-05)
 
 **Date:** 2026-03-01
 

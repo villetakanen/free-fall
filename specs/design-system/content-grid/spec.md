@@ -75,6 +75,12 @@ At the base tier, all content — including items targeting the side — flows i
 
 At the base tier, `.content-side` and `.content-wide` items stay in the main column since the side column does not exist.
 
+**Authoring pattern — pairing a side note with main content:**
+
+Every direct child of `.content-grid` is its own grid item on its own implicit row. A lone `.content-side` therefore occupies a row by itself: the side column shows the note, and the main column shows an empty hole of the same height.
+
+To place a side note *beside* flowing text, wrap the run of main content in a plain `<div>` (one grid item) and put the `.content-side` element **immediately after it** — the two items share a grid row, and the note top-aligns with the wrapped block (`align-self: start`). `content/core-rulebook/chapters/01-world.md` and `content/scenarios/northern-lights/a-01-the-story-so-far.md` are the reference uses. On the base tier the note falls into the main flow after the wrapped block.
+
 **Wide content overflow (base tier):**
 
 `.content-wide` elements (e.g., large tables) may exceed the 67ch main column at base tier. To prevent layout breakage, `.content-wide` gets `overflow-x: auto` so oversized content scrolls horizontally within the main column rather than overflowing the viewport.

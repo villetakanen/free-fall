@@ -222,6 +222,29 @@ main tbody tr:nth-child(even) {
   background-color: var(--freefall-bg-surface-1);
 }
 
+/* Definition lists for labeled data (classification blocks, key-value metadata) */
+main dl {
+  margin-top: calc(3 * var(--freefall-space-1));
+  margin-bottom: calc(3 * var(--freefall-space-1));
+}
+
+main dt {
+  font-family: var(--freefall-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--freefall-text-muted);
+}
+
+main dd {
+  margin: 0 0 calc(2 * var(--freefall-space-1));
+  color: var(--freefall-text-body);
+}
+
+main dd:last-child {
+  margin-bottom: 0;
+}
+
 main p:has(dfn) + ul,
 main p:has(dfn) + ol {
   margin-top: 0;

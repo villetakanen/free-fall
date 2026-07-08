@@ -41,6 +41,11 @@ Each issue must follow this structure:
 
 All deliverables are independent and done in parallel.
 
+## Scope
+
+- Touch only: {explicit file/directory boundaries for this phase}
+- Out of scope: {adjacent areas a later phase owns, if any}
+
 ## Deliverables
 
 {List every file to create or modify, with bullet points describing the changes.}
@@ -49,6 +54,13 @@ All deliverables are independent and done in parallel.
 
 - [ ] {Checkable criterion, matching or derived from the spec's Definition of Done}
 - [ ] `pnpm build`, `pnpm lint`, `pnpm test`, and `pnpm typecheck` pass
+
+## Refinement Protocol
+
+If implementation reveals the spec's Architecture or Contract is wrong or
+incomplete, update `specs/{path}/spec.md` in the same commit (same-commit
+rule). If the change alters the feature's direction, stop and flag for
+human review instead.
 ```
 
 ### Labels
@@ -67,6 +79,7 @@ Create labels if they don't exist yet using `gh label create`.
 - **Spec-complete** — Every item in the spec's Definition of Done must map to at least one issue. If something is missing, add an issue for it.
 - **No speculation** — Only plan work the spec requires. Do not add issues for "nice to haves" or future work.
 - **Gap-only** — Do not plan work for things that already exist in the codebase. Audit first, plan the delta.
+- **Pointers, not copies** — Reference spec sections for design decisions; never duplicate spec content into an issue. Copies go stale the moment the spec evolves.
 
 ## Boundaries
 
