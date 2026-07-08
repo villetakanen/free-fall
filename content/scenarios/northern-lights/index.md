@@ -29,6 +29,14 @@ contents:
     pages:
       - the-vessel
       - njords-whisper
+  - section: "Characters"
+    icon: "groups"
+    pages:
+      - c-01-the-pilot
+      - c-02-the-operator
+      - c-03-the-wirehead
+      - c-04-the-fixer
+      - c-05-the-spectre
 ---
 
 # CODENAME: NORTHERN LIGHTS
