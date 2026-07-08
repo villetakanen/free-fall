@@ -1,7 +1,7 @@
 ---
 title: "Hardshell Combat Exoskeleton"
 nickname: "Heavy combat exo"
-category: "vehicle"
+category: "exo"
 binding: {}
 qualities:
   - "Movement System (EVA Thrusters – Standard, Walker Legs – Magnetic boots)"

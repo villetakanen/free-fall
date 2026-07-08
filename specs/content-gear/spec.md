@@ -53,11 +53,13 @@ content/gear/
 │   │   ├── drone-swarm.md
 │   │   ├── combat-deck.md
 │   │   └── neural-scope.md
+│   ├── exos/
+│   │   ├── cutter-eva-frame.md
+│   │   ├── wraith-infiltration-frame.md
+│   │   ├── hardshell-combat-exo.md
+│   │   └── tgi-22-close-combat-exo.md
 │   └── vehicles/
 │       ├── void-jumper-pmu.md
-│       ├── cutter-eva-frame.md
-│       ├── wraith-infiltration-frame.md
-│       ├── hardshell-combat-exo.md
 │       └── dart-courier-shuttle.md
 └── assets/
 ```
@@ -90,7 +92,7 @@ All gear files share a common base with `category` as the discriminator. The Zod
 ```yaml
 title: "Kinetic Carbine"                  # Display name
 nickname: "Standard-issue rifle"          # Short flavor label (shown in lists)
-category: "weapon"                        # Discriminator: weapon | armor | augmentation | utility | vehicle
+category: "weapon"                        # Discriminator: weapon | armor | augmentation | utility | exo | vehicle
 binding:                                  # Attribute Binding cost (defaults to 0/0/0)
   body: 0
   mind: 0
@@ -107,6 +109,7 @@ source: "v5-tools-of-the-trade"           # Source tracking (optional)
 | `armor` | `av` (number), `av_type` (string, default "Physical") | — |
 | `augmentation` | `augmentation_category` (Spliced / Bionic / Cybernetic), `integration` (Invasive / Field-Operable) | — |
 | `utility` | *(none beyond base)* | — |
+| `exo` | same fields as `vehicle` | Exoskeletons share the vehicle rules family (FRM/SYS, pilot binding) but are their own gear category per the rules *(added 2026-07-08)* |
 | `vehicle` | `frame` (number), `systems` (number), `pilot_binding` (binding object), `vehicle_av` (number), `size_category` (Personal / Small / Medium / Large / Huge) | — |
 
 **Zod schema definition** (added to `content.config.ts`):
@@ -157,11 +160,22 @@ const vehicleSchema = gearBase.extend({
   size_category: z.enum(["Personal", "Small", "Medium", "Large", "Huge"]),
 });
 
+const exoSchema = gearBase.extend({
+  category: z.literal("exo"),
+  // same shape as vehicleSchema — shared rules family, own category
+  frame: z.number(),
+  systems: z.number(),
+  pilot_binding: bindingSchema,
+  vehicle_av: z.number(),
+  size_category: z.enum(["Personal", "Small", "Medium", "Large", "Huge"]),
+});
+
 const gearSchema = z.discriminatedUnion("category", [
   weaponSchema,
   armorSchema,
   augmentationSchema,
   utilitySchema,
+  exoSchema,
   vehicleSchema,
 ]);
 

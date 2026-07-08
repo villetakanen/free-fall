@@ -60,11 +60,23 @@ const vehicleSchema = gearBase.extend({
   size_category: z.enum(["Personal", "Small", "Medium", "Large", "Huge"]),
 });
 
+// Exoskeletons share the vehicle rules family (FRM/SYS, pilot binding)
+// but are their own gear category per the rules.
+const exoSchema = gearBase.extend({
+  category: z.literal("exo"),
+  frame: z.number(),
+  systems: z.number(),
+  pilot_binding: bindingSchema,
+  vehicle_av: z.number(),
+  size_category: z.enum(["Personal", "Small", "Medium", "Large", "Huge"]),
+});
+
 const gearSchema = z.discriminatedUnion("category", [
   weaponSchema,
   armorSchema,
   augmentationSchema,
   utilitySchema,
+  exoSchema,
   vehicleSchema,
 ]);
 

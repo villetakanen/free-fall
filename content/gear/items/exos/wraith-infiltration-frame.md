@@ -1,7 +1,7 @@
 ---
 title: "Wraith Infiltration Frame"
 nickname: "Stealth exoskeleton"
-category: "vehicle"
+category: "exo"
 binding: {}
 qualities:
   - "Movement System (Enhanced EVA Thrusters, Micro-servos)"

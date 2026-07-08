@@ -39,11 +39,17 @@ interface VehicleData extends GearBase {
   size_category: "Personal" | "Small" | "Medium" | "Large" | "Huge";
 }
 
+/** Same rules family as vehicles (FRM/SYS, pilot binding), own category. */
+interface ExoData extends Omit<VehicleData, "category"> {
+  category: "exo";
+}
+
 type GearData =
   | WeaponData
   | ArmorData
   | AugmentationData
   | UtilityData
+  | ExoData
   | VehicleData;
 
 interface Props {
@@ -131,7 +137,7 @@ const categoryIcon: Record<string, string> = {
       )
     }
     {
-      data.category === "vehicle" && (
+      (data.category === "vehicle" || data.category === "exo") && (
         <div class="category-stats text-ui-small">
           <span>Frame {data.frame}</span>
           <span class="category-stats__sep">&middot;</span>

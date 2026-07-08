@@ -1,7 +1,7 @@
 ---
 title: "Cutter Light EVA Frame"
 nickname: "Work exoskeleton"
-category: "vehicle"
+category: "exo"
 binding: {}
 qualities:
   - "Movement System (EVA Thrusters – Standard, Walker Legs – Magnetic boots)"

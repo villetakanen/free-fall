@@ -20,6 +20,7 @@ export const gearCategories = [
   { category: "armor", slug: "armor", label: "Armor" },
   { category: "augmentation", slug: "augmentations", label: "Augmentations" },
   { category: "utility", slug: "utility", label: "Utility" },
+  { category: "exo", slug: "exos", label: "Exoskeletons" },
   { category: "vehicle", slug: "vehicles", label: "Vehicles" },
 ] as const;
 
