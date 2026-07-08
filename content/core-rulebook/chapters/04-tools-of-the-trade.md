@@ -49,6 +49,10 @@ The gear includes a built-in system (e.g., Integrated Comms, Basic Medkit). May 
 
 Represents a finite resource. When making an action check using this item, if **any d20 rolled shows a '1'**, the item is considered fully expended after the action resolves. It cannot be used again until replenished or replaced.
 
+### Single Use
+
+The item is fully expended by one activation. It functions at full effect for that single action and is spent when the action resolves. Expended Single Use gear is replenished during Downtime, the same way Broken gear is repaired. Single Use gear may grant a [Skill](registry#skill) for the action it enables; the capability is the charge.
+
 ### Load Bearing (X)
 
 Helps distribute weight and power for attached equipment. Ignores up to X total points of Attribute Binding cost from weapons or other gear attached directly to this item. Can specify Attribute type (Body, Mind, Ghost) or Any. Applies even when attached gear is actively used.
