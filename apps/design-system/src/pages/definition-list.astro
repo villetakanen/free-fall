@@ -68,8 +68,59 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5; margin-top: 0.5rem;"
       >
         Wrapper divs group each pair; the flex layout is inline page style,
-        not a design-system rule. Used by the scenario classification block
-        in apps/free-fall.
+        not a design-system rule.
+      </div>
+    </section>
+
+    <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1rem;">
+        Stat aside (scenario metadata)
+      </h2>
+      <p style="max-width: 60ch;">
+        A stat table never sits on top of the page heading — it rides the
+        content grid's <code>content-side</code> column as an
+        <code>&lt;aside&gt;</code>, beside the prose. On layouts too narrow
+        for the side column it falls back to the inline strip above the
+        content (the grid places <code>.content-side</code> back in the main
+        column). Used by the scenario overview in apps/free-fall.
+      </p>
+      <div
+        style="padding: 2rem; border: 1px solid var(--freefall-border-subtle); border-radius: 4px; max-width: 28ch;"
+      >
+        <dl
+          style="display: flex; flex-direction: column; gap: 0.5rem; margin: 0; border-left: 1px solid var(--freefall-border-subtle); padding-left: 1rem;"
+        >
+          <div>
+            <dt>Type</dt>
+            <dd style="margin: 0;">Demo (one-shot)</dd>
+          </div>
+          <div>
+            <dt>System</dt>
+            <dd style="margin: 0;">FREE//FALL 0.7.x</dd>
+          </div>
+          <div>
+            <dt>Length</dt>
+            <dd style="margin: 0;">3–5 hours</dd>
+          </div>
+          <div>
+            <dt>Players</dt>
+            <dd style="margin: 0;">3–5</dd>
+          </div>
+        </dl>
+      </div>
+      <div
+        style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5; margin-top: 0.5rem;"
+      >
+        &lt;aside class="content-side"&gt; direct child of .content-grid ·
+        side tier: stacked pairs, border-left var(--freefall-border-subtle)
+        · base tier fallback: the inline strip above, border-bottom instead.
+        Tier thresholds come from content-grid.css, not this component.
+        <br /><br />
+        Foot-gun: an aside placed BEFORE the content it flanks must pin
+        itself with grid-row: 1 in the side tier — an auto-placed first
+        child claims row 1 and the auto-flow cursor never backtracks, so
+        everything after it starts on row 2, below the aside instead of
+        beside it.
       </div>
     </section>
   </div>

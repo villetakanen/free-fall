@@ -84,7 +84,7 @@ A scenario page's parent scenario is derived from the first segment of its entry
 | Route | Page file | Renders |
 |---|---|---|
 | `/scenarios/` | `apps/free-fall/src/pages/scenarios/index.astro` | Compact list of all scenarios — title linking to the overview plus a one-line metadata summary (type, system variant + version, length, players) — sorted by `order` then title; an empty state when the package holds no scenarios |
-| `/scenarios/{scenario}/` | `apps/free-fall/src/pages/scenarios/[scenario]/index.astro` | Metadata block (type, variant + version, length, players, content warnings), `index.md` body, table of contents grouped by section linking the scenario's pages |
+| `/scenarios/{scenario}/` | `apps/free-fall/src/pages/scenarios/[scenario]/index.astro` | Metadata aside (type, variant + version, length, players, content warnings) riding the content grid's `content-side` column beside the prose — never above the heading; inline-strip fallback when the side column is not engaged. Then `index.md` body and a table of contents grouped by section linking the scenario's pages |
 | `/scenarios/{scenario}/{page}/` | `apps/free-fall/src/pages/scenarios/[scenario]/[page].astro` | Page body in BaseLayout |
 
 **[DEPRECATED 2026-07-07]** ~~`/scenarios/{scenario}/appendices/` — generated appendices index grouped by series letter.~~ Lived one day: it depended on filename-prefix classification, which the `contents` manifest replaced; with uniform section groups in the rail, a separate appendices landing page has no role.
