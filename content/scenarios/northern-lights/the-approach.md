@@ -39,7 +39,9 @@ Remember what the Whisper already knows: her defenses watched a fusion flare dec
 **3 — Ram.** *Foam up. Full attitude thrust, bow-on, straight down her throat before her point defense matters.* We have her schematic — I can plot the vector that keeps the breaching armor between us and her guns the whole way in. It becomes a race: her one laser and two rocket cannons against titanium, and we're through the hull before the titanium loses.
 > No detection roll — this *is* being detected, on purpose, at speed. The question isn't whether she sees us. It's whether her guns chew through the ram shield before we're inside her.
 
-**4 — Talk it through.** The assistant will happily model anything the crew asks: "what if we shuttle across cold?", "what's behind the active-ping risk?", "can you spoof her transponder?" It answers in good faith and within its competence — which is real but *narrow*. It knows ships, sensors, and odds. It does not know what is actually aboard the Whisper, and it will cheerfully assure the crew that a dark automated hauler is a low-complexity target. Let that reassurance age badly.
+**4 — Talk it through — *call the ship.*** There is always a fourth option, and it's the one every crew reaches for first: ask the assistant. It will happily model anything — "what if we shuttle across cold?", "what's behind the active-ping risk?", "can you spoof her transponder?" — and answer in good faith, fast, within its competence. That competence is real but *narrow*: it knows ships, sensors, and odds cold. It does not know what is actually aboard the Whisper, and it will cheerfully assure the crew that a dark automated hauler is a low-complexity target.
+
+This is the most important beat in the scene, and it looks like the least. Right now the ship is the smartest, calmest, most reliable voice at the table, and leaning on it is simply *correct* — so let the crew lean, and enjoy it. Make the assistant genuinely helpful. Every ounce of trust the table invests here is the setup: the whole scenario is that reflex — *just ask the ship* — turning into the most dangerous thing they can do. Let the reassurance age badly.
 
 ## Reading the Choices
 
@@ -49,6 +51,18 @@ None of these is the "right" answer. Each buys something and spends something, a
 - **Active sweep (2)** is the middle path: sharp intel fast, a small but real chance the Whisper reacts. On a bad roll, her automated defenses wake early — the point-defense laser tracks the approach, a maintenance drone undocks to investigate — and Scene 2 opens hot instead of quiet. Origin-17, freshly awake and paranoid, has every reason to treat an active ping as a threat.
 - **Ram (3)** is the audacious option, and the ship was literally built for it. No intel — the crew commits blind to a schematic that may be out of date — but it is *fast*, and it forecloses the CSA problem by simply being aboard before anyone else can arrive. Run the damage race as a real contest (Action Pool vs. the point defense's fire, the schematic granting the crew position); a clean run puts them inside the outer compartments in the crash foam, a bad one means a breached ram shield and a very exciting first five minutes aboard. This is the CP2020 option: loud, committed, gloriously stupid, frequently correct.
 - **Talk (4)** is not a wasted turn — it's characterization and foreshadowing. Let the assistant be helpful and confident and *wrong* about the one thing that matters. Its blind spot about the cargo is the first quiet note of the whole scenario's theme: the machines here are smarter than they look, and the one everyone underestimates is the one that eats you.
+
+### The crew weighs in (running the pregens)
+
+The five ready-made operators don't debate this neutrally — each is built to want a different door, and the argument *is* the scene. Let them fight about it in character; the approach the table lands on should feel like the crew's, not the assistant's.
+
+- **Vector (Pilot)** wants to **ram**. Of course she does — it's her check, her frame, the one option where the ship in her hands decides the outcome instead of a probability readout. She'll frame it as decisive ("we're aboard before anyone gets a vote"), and she's not wrong. She flies the cold drift too if overruled, but the ram is the shot she's arguing for.
+- **Sable (Spectre)** wants to **ghost**. Silent insertion is her doctrine and her class; loud is how amateurs die. She'll push it hard and she'll be *right about the safety* — wrong only about the clock, which isn't her department. Vector-versus-Sable is the whole scenario's speed-vs-silence dial, embodied in two people who've trusted each other for a year.
+- **Vantage (Operator)** leans **active sweep**. He wants the picture before he picks a perch — defenses mapped, power plant read, angles pre-solved. Overwatch is only as good as its intel, and the tourist likes his shots called in advance.
+- **Root (Wirehead)** also leans **active**, for a different reason: they want the Whisper's systems mapped before cutting in, and the crossing doesn't scare them either way. The one voice for whom "she might see us" is a smaller worry than "I want to know what I'm plugging into."
+- **Stitch (Fixer)** leans **ghost**, and trusts the assistant's tidy percentages *least* of anyone — a medic's version of Sable's paranoia. When she says "I don't like getting our odds from a box," she is, unknowingly, the closest to right in the room. Note who hedges their faith in the ship now; those are the two the scenario vindicates later.
+
+The point isn't consensus — it's that whatever they pick, two of them wanted something else, and that seam is what the second half of the session pulls on.
 
 ### Why not perfect stealth? (GM note)
 
