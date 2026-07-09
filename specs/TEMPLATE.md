@@ -4,8 +4,11 @@
   Spec template — ASDLC "The Spec" pattern
   https://asdlc.io/patterns/the-spec
 
-  A spec is the permanent source of truth for a feature. It defines
-  *how* the system works (Blueprint) and *how* we know it works (Contract).
+  A spec captures the durable *intent* of a feature — a living hypothesis
+  of how it works (Blueprint) and how we know it works (Contract). Code
+  remains the source of truth for runtime behavior; tests verify the
+  contracts. Implementation doesn't invalidate a spec, it completes it —
+  update the spec with what implementation teaches.
 
   Same-commit rule: if code behavior changes, the spec MUST be updated
   in the same commit.
@@ -40,7 +43,7 @@ Parent spec: `specs/{domain}/spec.md`
      - What JavaScript adds
      - Diagrams (ASCII or Mermaid) where they clarify structure
 
-     Be prescriptive — this is a contract, not a suggestion.
+     Be precise enough to verify — this captures intent, not implementation.
      Reference real file paths; agents work with files, not concepts. -->
 
 ### Constraints

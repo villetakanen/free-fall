@@ -75,7 +75,7 @@ For each relevant spec found:
 
 - **Atomic save points** — Each `/ship` is one micro-commit. Small, reversible, traceable.
 - **Green before push** — Never push code that fails any quality gate.
-- **Specs are law** — Changed behavior must have a matching spec update. No silent drift.
+- **Implementation completes the spec** — Changed behavior must have a matching spec update in the same changeset; the spec captures what the implementation taught. No silent drift.
 - **No fixes in flight** — If something fails, stop and report. The developer fixes; then runs `/ship` again.
 - **No force push** — Always a regular push. If the remote has diverged, stop and tell the user.
 

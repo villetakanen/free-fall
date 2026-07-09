@@ -18,6 +18,7 @@ contents:
   - section: "GM Materials"
     pages:
       - preface
+      - contact
       - the-approach
   - section: "Backstory"
     icon: "history_edu"

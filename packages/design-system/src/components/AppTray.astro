@@ -50,7 +50,7 @@ const { items, brandHref } = Astro.props;
               variant={item.variant}
             />
             {item.subItems && (
-              <TrayLinkGroup>
+              <TrayLinkGroup active={item.active}>
                 {item.subItems.map((subItem) => (
                   <TrayLink
                     href={subItem.href}

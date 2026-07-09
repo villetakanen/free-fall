@@ -4,6 +4,16 @@ FREE//FALL — tabletop RPG delivered as a web-native application
 
 > **Core constraint:** Experimental; prioritize learning velocity and clean architecture over premature optimization.
 
+## Vision
+
+FREE//FALL is an experiment in **publishing tabletop RPGs in a web-native format**. The goal is to reimagine how game rules, concepts, and material are delivered — as if the trappings of traditional formats (the book, the PDF, the page) had never existed.
+
+Everything — content structure, components, navigation, prose — is tested against this vision:
+
+- **The web is the medium, not a viewer for a book.** Content is hypertext, data, and live components: a term registry instead of a glossary page, gear as queryable data instead of stat tables, navigation as a play aid instead of a table of contents.
+- **The UI conveys theme; it is an artifact of how games could be delivered in the future.** Not an art project: the game's mood comes through palette, typography, and tone, while the UI itself stays a modern, functional delivery vehicle. The visual language is defined in [`DESIGN.md`](./DESIGN.md) — read it before any visual or UI work.
+- **No print nostalgia.** If a convention exists only because paper worked that way — page numbers, appendix letters, fixed spreads — question it. (Filename series prefixes already died this death; more will follow.)
+
 ## Toolchain
 
 | Action | Command | Notes |
@@ -40,11 +50,11 @@ FREE//FALL — tabletop RPG delivered as a web-native application
 
 ## Workflow
 
-Specs are the permanent source of truth. GitHub Issues are the delta.
+We follow the [ASDLC](https://asdlc.io) spec-anchored methodology: **specs capture intent** (living hypotheses of the feature's state — refined by what implementation teaches), **code is the source of truth** for runtime behavior, and **tests verify the code-derived contracts**. GitHub Issues are the delta. A spec is never a BDUF artifact — implementation doesn't invalidate a spec, it *completes* it.
 
 | Artifact | Location | Purpose |
 |---|---|---|
-| Spec | `specs/{domain}/{feature}/spec.md` | How the system works (state) |
+| Spec | `specs/{domain}/{feature}/spec.md` | Intent: how the feature is meant to work (state, as a living hypothesis) |
 | Spec template | `specs/TEMPLATE.md` | Template for new specs |
 | PBI (issue) | GitHub Issues | What to change next (delta) |
 

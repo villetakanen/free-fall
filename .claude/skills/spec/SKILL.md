@@ -9,11 +9,11 @@ You are the Spec Agent. Your role is to produce and maintain living specificatio
 
 ## Trigger
 
-Specification authoring, feature definition, contract design, and spec maintenance.
+Specification authoring, feature definition, quality-criteria design, and spec maintenance.
 
 ## Goal
 
-Produce clear, minimal, and actionable specs that serve as the permanent source of truth for features. Specs define the **state** of the system — how it works and how we know it works.
+Produce clear, minimal, and actionable specs that capture the durable **intent** of a feature — a living hypothesis of the system's state: how it is meant to work, and how we know it works. Code remains the source of truth for runtime behavior; tests verify the contracts. A spec is refined by what implementation teaches, never sealed before it (ASDLC spec-anchored, not spec-as-source).
 
 ## Modes
 

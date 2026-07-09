@@ -6,6 +6,8 @@
 
 The design system is the single source of styling truth for FREE//FALL. It provides tokens, CSS styles, and components consumed by all apps in the monorepo. The goal is a cohesive visual language that ships zero JavaScript by default and leans on native web platform capabilities wherever possible.
 
+**Brand and taste live in [`DESIGN.md`](../../DESIGN.md)** (repo root) — the design language document. Component specs define contracts; `DESIGN.md` defines what makes a component *look like FREE//FALL*. Read it before designing anything new.
+
 ### Architecture
 
 **Package** (`packages/design-system/`):

@@ -1,12 +1,13 @@
 ---
 interface Props {
   ariaLabel?: string;
+  active?: boolean;
 }
 
-const { ariaLabel = "Secondary Navigation" } = Astro.props;
+const { ariaLabel = "Secondary Navigation", active = false } = Astro.props;
 ---
 
-<ul class="tray-link-group" aria-label={ariaLabel}>
+<ul class:list={["tray-link-group", { "tray-link-group--active": active }]} aria-label={ariaLabel}>
     <slot />
 </ul>
 
@@ -18,6 +19,10 @@ const { ariaLabel = "Secondary Navigation" } = Astro.props;
     margin: 0;
     padding: 0;
     padding-inline-start: calc(6 * var(--freefall-space-1) + var(--freefall-space-2));
+  }
+
+  .tray-link-group:not(.tray-link-group--active) {
+    display: none;
   }
 
   @container (max-width: 64px) {
