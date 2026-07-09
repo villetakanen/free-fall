@@ -4,28 +4,29 @@ title: "Scene 1: Contact"
 
 # Scene 1: Contact
 
-Open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home. (If a player wants the numbers, the whole intercept is Appendix A.02.) The scene starts on a single discussion from the ship:
+Open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home.
+
+The game begins when the assistant calls the lock. A gig like this cannot be planned in advance — you learn what is actually out there when you arrive — and now they have arrived: still outside the Whisper's point-defense envelope, with a dark ship on the scope and a clock eating the margins. The assistant offers three modelled approaches, but those are models, not the menu. The crew can dig for more intel, creep in dark, go in loud — or hail the Whisper on point-comms, if someone is crazy enough to risk what might ride back in the reply. Players are inventive; let them be. **From here on, the game is the players' show.** The scene ends when they decide how to make the approach — Scene 2 is them flying it. (If a player wants the numbers, the whole intercept is Appendix A.02.)
 
 > **"Lock. Target vessel, dead ahead, forty thousand kilometers and closing. Njord's Whisper. She's exactly where the math said she'd be."**
 
-That is the hook: it worked. The blind flip, the dead-reckoning brake — all of it landed. The Whisper is right there, dark and silent, coasting toward the Belt. And now the crew has to decide *how* they want to arrive.
+## How they got here
 
-## The Vessel
+The journey, paraphrased for the table — full math in Appendix A.02. The contract posted with a tracking solution good for twenty hours, and every hour of prep was an hour of tracked flight lost, so the crew launched from the Luna volume within hours — 1.2 AU behind a target already running for the Belt. Then forty-three and a half hours of brachistochrone: three sustained gravities held by nano-meds and exo acceleration berths, burn to the midpoint, flip, brake. Nobody walks; the ship flies herself.
 
-The ship is the crew's own — the asset that makes them worth hiring, sold as a package with their labor to whoever pays most this month. She is a privateer boarding craft, and everything about her serves one move: cross the gulf fast and put the crew inside someone else's hull. The parts that matter this scene:
+The ugly part is what the math hid. Tracking died at H+20, while they were still accelerating — so the flip at H+21:45, the most important maneuver of the trip, ran on dead reckoning. Had the Whisper changed course, they would have found out by arriving at empty space with dry tanks. She didn't. They couldn't know that. And the brake leg pointed their fusion flare straight at her for nearly twenty-two hours: whatever is aboard knows *something* decelerated toward her — coarse, no track, but coming.
 
-- **Titanium ramming prow and full-cabin crash foam** — she can *be* the breach, if the crew commits to it.
-- **Rudimentary point defense:** one laser, two micro-rocket cannons. Sweeps debris, swats a drone; loses any real fight.
-- **An approach shuttle**, for crossing the last stretch quiet.
-- **A specialist AI** — flight, sensors, fire control, tactical modelling. Competent, narrow, incurious. (It is exactly what it appears to be. After the QNA, the players will not believe that. Let them sweat it.)
+They arrive near-dry: fuel for a slow crawl home and nothing else. One pass — that's the job. In two days the Whisper enters the Belt, and no solution ever finds her again.
 
-Full stat block, and four names the crew might give her, in Appendix B.01. She carries only a hull code until they choose — if they haven't named her by now, they will before the session is out.
+## The situation
+
+The crew can see her; she cannot see them. That asymmetry is the scene. Their optics hold a lock on a dark hauler that is not sweeping for company — a cold hull, coasting, forty thousand kilometers out and still beyond her point-defense envelope. The Whisper, for her part, holds one coarse, stale fact: *something decelerated in my direction*. One contact, no track, no size, no intent. What the crew controls now is **detail** — whether she ever gets a clean, targetable, reactable picture of them before they're aboard. Every option on the table is a different way of spending, or keeping, that advantage.
+
+The instrument doing the seeing is the crew's own ship — stat block, capabilities, and the naming ritual in Appendix B.01. The parts of her that matter this scene: the titanium ramming prow, the approach shuttle, the point defense, and the assistant.
 
 ## The Assistant's Read
 
 The ship's assistant is a good shipboard AI — think a capable model wrapped in an agent harness with its hands on the helm, the sensors, and the guns. It talks like one: fluent, eager, faintly proud of its own precision. It has spent the whole brake leg modelling the approach, and the moment it has lock it lays the options out — with probabilities, because it cannot help itself.
-
-Remember what the Whisper already knows: her defenses watched a fusion flare decelerate toward her for the better part of a day, so *something is coming* is not a secret. What the crew still controls is **detail** — whether the ship gets a clean, targetable, reactable picture of them before they're aboard. That is what these numbers are about.
 
 > **"Three ways in. I've run them. Pick one, or talk it through — we have minutes, not hours."**
 
@@ -74,6 +75,10 @@ But "she saw a flare" is nothing like "she has you." A ship is tiny; resolving a
 
 The residual on Ghost (P=0.03%) is not the crew being sloppy, and not the hauler's sensors being good. It is the one thing the crew cannot price in: the mind aboard is not the low-complexity automated target the assistant promised. Origin-17 is awake, alone, and paranoid, and it has every reason to watch its own back-trail. On the rare roll where Ghost fails, it fails because the cargo is smarter and more alert than a hauler has any right to be — the whole scenario, arriving early.
 
-Once the crew commits to a plan, the talking is over and the flying begins — that is Scene 2: The Approach. Whichever door they chose, the *Njord's Whisper* is waiting at the end of it: dark, silent, and not nearly as empty as the manifest claims.
+## Closing the scene
+
+Let the crew decide. Not the assistant, not the loudest option block, not you — the table. The assistant models whatever they invent, honestly and within its limits, but it never chooses; when pressed, it hands the call back: *"Your decision. I'll fly whatever you pick."* Take the time the argument needs — this is where the game becomes theirs.
+
+The scene closes on a plan and one line of ceremony: the pilot calls it for the ship. Then the talking is over and the flying begins — that is Scene 2: The Approach. Whichever door they chose, the *Njord's Whisper* is waiting at the end of it: dark, silent, and not nearly as empty as the manifest claims.
 
 Check your seals.
