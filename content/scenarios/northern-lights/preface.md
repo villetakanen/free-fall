@@ -5,9 +5,9 @@ title: "Preface (GM)"
 # Preface
 
 <div class="callout" data-icon="visibility">
-  <div class="callout-header">GM EYES ONLY</div>
+  <div class="callout-header">NOTE: GM ONLY</div>
   <div class="callout-body">
-    If you're playing in this one, close the tab. The ship is better when it surprises you.
+    The following pages contain the GM material for this demo scenario. Reading them will spoil the fun for a player.
   </div>
 </div>
 
