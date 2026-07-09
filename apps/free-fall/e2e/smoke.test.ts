@@ -40,12 +40,12 @@ test("scenario overview renders classification metadata", async ({ page }) => {
 test("inside a scenario the rail is scoped to that scenario", async ({
   page,
 }) => {
-  await page.goto("/scenarios/northern-lights/02-the-approach/");
+  await page.goto("/scenarios/northern-lights/the-approach/");
   const nav = page.locator("#app-tray-nav");
   // Subsite rail: uplink + the scenario's own pages
   await expect(nav).toContainText("All Scenarios");
-  await expect(nav).toContainText("Scene 1: The Approach");
+  await expect(nav).toContainText("Scene 2: The Approach");
   // Global items are gone while inside the subsite
   await expect(nav).not.toContainText("Core Rules");
-  await expect(nav).not.toContainText("Gear");
+  await expect(nav.locator('a[href^="/gear/"]')).toHaveCount(0);
 });

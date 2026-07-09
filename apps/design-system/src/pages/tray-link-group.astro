@@ -61,7 +61,7 @@ const _mockLinks = [
         <div class="demo-container demo-container--open" data-tray-state="open">
             <TrayButton icon="menu_book" label="Core Rules" href="#" />
 
-            <TrayLinkGroup>
+            <TrayLinkGroup active={true}>
                 {
                     _mockLinks.map((link) => (
                         <TrayLink href={link.href} label={link.label} />
@@ -82,7 +82,7 @@ const _mockLinks = [
         >
             <TrayButton icon="menu_book" label="Core Rules" href="#" />
 
-            <TrayLinkGroup>
+            <TrayLinkGroup active={true}>
                 {
                     _mockLinks.map((link) => (
                         <TrayLink href={link.href} label={link.label} />

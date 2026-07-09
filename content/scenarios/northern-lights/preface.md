@@ -4,7 +4,12 @@ title: "Preface (GM)"
 
 # Preface
 
-**GM eyes only from here on.** If you're playing in this one, close the tab. The ship is better when it surprises you.
+<div class="callout" data-icon="visibility">
+  <div class="callout-header">GM EYES ONLY</div>
+  <div class="callout-body">
+    If you're playing in this one, close the tab. The ship is better when it surprises you.
+  </div>
+</div>
 
 ## What This Is
 

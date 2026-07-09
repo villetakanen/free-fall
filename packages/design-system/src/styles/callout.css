@@ -1,0 +1,62 @@
+/* =========================================
+   CALLOUTS — Structural text highlighting
+   ========================================= */
+
+.callout {
+  position: relative;
+  overflow: hidden;
+  background: var(--freefall-bg-surface-1);
+  padding: calc(3 * var(--freefall-space-1));
+  margin-top: calc(4 * var(--freefall-space-1));
+  margin-bottom: calc(4 * var(--freefall-space-1));
+  border-radius: 0;
+}
+
+.callout::after {
+  content: "priority_high";
+  position: absolute;
+  left: calc(-2 * var(--freefall-space-1));
+  top: calc(-3 * var(--freefall-space-1));
+  font-family: "Material Symbols Sharp";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga";
+  font-size: 7.5rem;
+  line-height: 1;
+  color: var(--freefall-color-primary-700); /* higher contrast step */
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  opacity: 0.35;
+}
+
+.callout[data-icon]::after {
+  content: attr(data-icon);
+}
+
+.callout-header {
+  position: relative;
+  z-index: 2;
+  font-family: var(--freefall-font-mono);
+  font-size: calc(1.75 * var(--freefall-space-1)); /* 0.875rem */
+  line-height: calc(2 * var(--freefall-space-1));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--freefall-color-accent-400); /* isotope accent */
+  font-weight: 500;
+  margin-bottom: calc(2 * var(--freefall-space-1));
+}
+
+.callout-body {
+  position: relative;
+  z-index: 2;
+  font-family: var(--freefall-font-body);
+  font-size: var(--freefall-type-base);
+  line-height: calc(4 * var(--freefall-space-1));
+  color: var(--freefall-text-body);
+}
+
+.callout-body p:last-child {
+  margin-bottom: 0;
+}

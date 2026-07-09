@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Callouts — FREE//FALL Design System">
+  <div class="test-container" style="padding: 2rem;">
+    <h1 class="text-chapter" style="margin-bottom: 2rem;">Callouts</h1>
+
+    <p style="max-width: 60ch; margin-bottom: 3rem;">
+      The <code>Callout</code> primitive highlights critical meta-information in text, such as GM instructions, play-aids, warnings, or boundaries.
+    </p>
+
+    <!-- Demo Section -->
+    <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1rem;">Live Examples</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 2rem; padding: 2rem; border: 1px solid var(--freefall-border-subtle); border-radius: 4px; margin-bottom: 1.5rem;">
+        <div>
+          <div class="text-caption" style="margin-bottom: 0.5rem; color: var(--freefall-text-muted);">Standard Callout with Title & Watermark</div>
+          <div class="callout" data-icon="visibility">
+            <div class="callout-header">GM EYES ONLY</div>
+            <div class="callout-body">
+              If you're playing in this one, close the tab. The ship is better when it surprises you.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-caption" style="margin-bottom: 0.5rem; color: var(--freefall-text-muted);">Callout with Default Icon (no data-icon attribute)</div>
+          <div class="callout">
+            <div class="callout-body">
+              This is a plain callout block. Use it when the context is already established by the surrounding rules prose, but visual isolation is still required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 0.75rem; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); line-height: 1.5;">
+        CSS classes: <code>.callout</code>, <code>.callout-header</code>, <code>.callout-body</code><br />
+        Attributes: <code>data-icon</code> (optional, matches any Material Symbol name to render as a background watermark; defaults to <code>priority_high</code>)<br />
+        Markdown: raw HTML block structure using classes and optional <code>data-icon</code>.
+      </div>
+    </section>
+
+    <!-- Usage Guidelines -->
+    <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1.5rem;">Guidelines for Authors & Designers</h2>
+      
+      <div class="freefall-prose">
+        <h3>When to Use Callouts</h3>
+        <p>
+          Callouts should be used selectively by rules and fiction authors to highlight information that exists outside the main reading flow:
+        </p>
+        <ul>
+          <li><strong>GM Materials & Spoilers:</strong> Isolating instructions, advice, or plot details meant only for the Game Master (e.g. "GM Eyes Only").</li>
+          <li><strong>Play-Aids & Mechanics:</strong> Separating mathematical formulas, checklists, or quick-reference tables that are queryable during play.</li>
+          <li><strong>Rules Variants:</strong> Setting apart optional rules or specific module campaign tweaks.</li>
+        </ul>
+
+        <h3>Cohesive Design Intent</h3>
+        <p>
+          Callouts maintain a unified aesthetic across all rulebooks and scenarios. To ensure visual alignment, they follow these core design rules:
+        </p>
+        <ul>
+          <li><strong>Monospace Headers for System State:</strong> The callout header (<code>.callout-header</code>) represents a structural category, label, or warning state, and is always formatted in uppercase monospace to convey a "data readout" voice.</li>
+          <li><strong>Editorial Body for Rules Prose:</strong> Narrative rules explanations and description text (<code>.callout-body</code>) are kept in the clean, readable sans-serif typeface to avoid reader fatigue.</li>
+          <li><strong>Depth Elevation for Visual Structure:</strong> Rather than using soft rounded cards, callout containers use a sharp, rectangular dark fill (<code>var(--freefall-bg-surface-1)</code>) to step up in visual elevation against the canvas.</li>
+          <li><strong>Faint Watermarks for Classification:</strong> Instead of small decorative icons next to header text, a large, faint background watermark symbol can be set via <code>data-icon</code> to categorize the callout type (e.g. an eye symbol for GM eyes).</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

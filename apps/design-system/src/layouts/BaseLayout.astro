@@ -39,13 +39,26 @@ const navItems = Astro.props.navItems ?? [
     icon: "text_fields",
     label: "Typography",
     href: "/typography/",
-    active: Astro.url.pathname.startsWith("/typography"),
-  },
-  {
-    icon: "list",
-    label: "Definition Lists",
-    href: "/definition-list/",
-    active: Astro.url.pathname.startsWith("/definition-list"),
+    active: ["/typography", "/definition-list", "/callout"].some((path) =>
+      Astro.url.pathname.startsWith(path),
+    ),
+    subItems: [
+      {
+        label: "Type Scale & Styles",
+        href: "/typography/",
+        active: Astro.url.pathname.startsWith("/typography"),
+      },
+      {
+        label: "Definition Lists",
+        href: "/definition-list/",
+        active: Astro.url.pathname.startsWith("/definition-list"),
+      },
+      {
+        label: "Callouts",
+        href: "/callout/",
+        active: Astro.url.pathname.startsWith("/callout"),
+      },
+    ],
   },
   {
     icon: "emoji_symbols",
