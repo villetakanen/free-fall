@@ -85,7 +85,7 @@ The scaffold has four regions:
 | Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
 | Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width, max-width constrained |
 
-The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app` div (bar + content) takes remaining space via `flex-grow: 1`.
+The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app` region is a bounded column: the app bar keeps its intrinsic height and `<main>` owns the remaining viewport height and vertical scrolling. The shell does not use compensating padding or fixed content heights.
 
 **Dimensions (grid-derived):**
 
@@ -130,6 +130,7 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 - [ ] Both apps use the shell as their base layout on all pages
 - [ ] Top app bar is rendered via the `AppBar` component (see app-bar spec)
 - [ ] Content pane (`<main>`) declares `container-type: inline-size` and `container-name: content` for content-grid container queries
+- [ ] Content pane fills the viewport below the app bar and is the shell's only vertical scroll owner
 - [ ] Content area shifts when rail is visible (medium+) and when tray pushes (desktop)
 - [ ] Named `head` slot allows page-specific `<head>` content
 - [ ] No duplicate `<html>`, `<head>`, or `base.css` imports across pages
@@ -140,6 +141,7 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 - Shell must always render AppTray — navigation is not optional
 - Content pane must never overlap with the rail on medium+ viewports
 - Content pane must never be hidden behind the app bar or burger
+- The final content remains reachable without compensating or magic bottom padding
 - Pages must not contain `<html>` or `<body>` tags when using the shell
 - Top bar title must be visible at all breakpoints
 
@@ -154,6 +156,11 @@ Scenario: Content responds to tray on desktop
   Given: Viewport is 780px or above
   When: The user opens the tray
   Then: The top bar and content pane shift right as the tray pushes into the flex row
+
+Scenario: Content owns remaining viewport height
+  Given: A page contains more content than fits below the app bar
+  When: The page is viewed at any supported viewport size
+  Then: The content pane fills the remaining height, scrolls vertically, and exposes its final content
 
 Scenario: App bar clears navigation at all breakpoints
   Given: The shell renders with AppBar and AppTray

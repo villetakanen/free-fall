@@ -46,7 +46,7 @@ test.describe("AppTray Component interactions", () => {
   test("Tablet viewport (620px - 779px): Rail visible, expands as overlay", async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 700, height: 800 });
+    await page.setViewportSize({ width: 620, height: 800 });
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 

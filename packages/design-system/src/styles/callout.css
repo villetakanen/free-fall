@@ -22,9 +22,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: "liga";
-  font-size: 7.5rem;
+  font-size: calc(15 * var(--freefall-space-1));
   line-height: 1;
-  color: var(--freefall-color-primary-700); /* higher contrast step */
+  color: var(--freefall-border-strong);
   pointer-events: none;
   user-select: none;
   z-index: 1;
@@ -43,7 +43,7 @@
   line-height: calc(2 * var(--freefall-space-1));
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--freefall-color-accent-400); /* isotope accent */
+  color: var(--freefall-alert-base);
   font-weight: 500;
   margin-bottom: calc(2 * var(--freefall-space-1));
 }

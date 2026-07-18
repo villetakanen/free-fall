@@ -187,7 +187,8 @@ main li {
 main blockquote {
   font-style: italic;
   color: var(--freefall-text-muted);
-  border-left: 2px solid var(--freefall-border-strong);
+  border-left: calc(var(--freefall-space-1) / 4) solid
+    var(--freefall-border-strong);
   padding-left: calc(2 * var(--freefall-space-1));
   margin-left: 0;
   margin-right: 0;
@@ -207,14 +208,16 @@ main table {
 
 main th {
   color: var(--freefall-text-display);
-  border-bottom: 2px solid var(--freefall-border-strong);
+  border-bottom: calc(var(--freefall-space-1) / 4) solid
+    var(--freefall-border-strong);
   padding: calc(1 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
   text-align: left;
 }
 
 main td {
   color: var(--freefall-text-body);
-  border-bottom: 1px solid var(--freefall-border-subtle);
+  border-bottom: calc(var(--freefall-space-1) / 8) solid
+    var(--freefall-border-subtle);
   padding: calc(1 * var(--freefall-space-1)) calc(2 * var(--freefall-space-1));
 }
 
@@ -230,7 +233,7 @@ main dl {
 
 main dt {
   font-family: var(--freefall-font-mono);
-  font-size: 0.75rem;
+  font-size: calc(1.5 * var(--freefall-space-1));
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--freefall-text-muted);
@@ -253,15 +256,16 @@ main p:has(dfn) + ol {
 .underline,
 dfn {
   font-weight: 900;
-  color: var(--freefall-color-primary-50);
-  border-bottom: solid 2px var(--freefall-color-accent-500);
+  color: var(--freefall-text-display);
+  border-bottom: solid calc(var(--freefall-space-1) / 4)
+    var(--freefall-text-link);
   font-style: normal;
 }
 
 /* Prose-scoped element styles */
 main pre {
   padding: var(--freefall-space-1);
-  background: var(--freefall-color-primary-700);
+  background: var(--freefall-bg-surface-2);
 }
 
 main em {

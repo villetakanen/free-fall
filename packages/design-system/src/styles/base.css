@@ -30,10 +30,11 @@ h6 {
 main a {
   color: var(--freefall-text-link);
   background-color: color-mix(
-    var(--freefall-color-primary-300),
-    transparent 75%
+    in srgb,
+    var(--freefall-text-link) 25%,
+    transparent
   );
-  padding-inline: 4px;
+  padding-inline: calc(var(--freefall-space-1) / 2);
 }
 
 a:hover {
