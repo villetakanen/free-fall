@@ -1,12 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Definition list element styles", () => {
-  test("demo page renders both variants", async ({ page }) => {
+  test("demo page renders all documented variants", async ({ page }) => {
     await page.goto("/definition-list/");
     await page.waitForLoadState("networkidle");
 
     const lists = page.locator("main dl");
-    await expect(lists).toHaveCount(2);
+    await expect(lists).toHaveCount(3);
     await expect(page.locator("main dt").first()).toContainText("System");
   });
 

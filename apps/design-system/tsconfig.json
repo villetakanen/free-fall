@@ -1,10 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "jsx": "preserve",
     "paths": {
       "@free-fall/design-system/*": ["../../packages/design-system/src/*"]
     }
   },
-  "include": ["src/**/*", "astro.config.ts"]
+  "include": ["src/**/*"]
 }

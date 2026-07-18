@@ -1,5 +1,5 @@
 ---
-import AppBar from "@free-fall/design-system/components/AppBar.astro";
+import AppBarDemo from "@free-fall/design-system/components/AppBar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -51,7 +51,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h2>Title Only</h2>
     <p class="demo-label">No slotted content — title fills the bar.</p>
     <div class="demo-container">
-      <AppBar title="Page Title" />
+      <AppBarDemo title="Page Title" />
     </div>
   </div>
 
@@ -61,7 +61,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       Slotted children align to the right via margin-left: auto.
     </p>
     <div class="demo-container">
-      <AppBar title="Dashboard">
+      <AppBarDemo title="Dashboard">
         <button class="demo-action">
           <span class="material-symbols-sharp" aria-hidden="true">search</span>
           Search
@@ -70,7 +70,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <span class="material-symbols-sharp" aria-hidden="true">settings</span
           >
         </button>
-      </AppBar>
+      </AppBarDemo>
     </div>
   </div>
 
@@ -78,7 +78,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h2>Multiple Icon Actions</h2>
     <p class="demo-label">Actions spaced with gap: var(--freefall-space-1).</p>
     <div class="demo-container">
-      <AppBar title="Character Sheet">
+      <AppBarDemo title="Character Sheet">
         <span
           class="material-symbols-sharp"
           style="color: var(--freefall-text-body); cursor: pointer;"
@@ -93,7 +93,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           style="color: var(--freefall-text-body); cursor: pointer;"
           >more_vert</span
         >
-      </AppBar>
+      </AppBarDemo>
     </div>
   </div>
 

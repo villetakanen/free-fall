@@ -1,5 +1,5 @@
 ---
-import GearCard from "@free-fall/design-system/components/GearCard.astro";
+import GearCardDemo from "@free-fall/design-system/components/GearCard.astro";
 import kineticCarbineImg from "../assets/demo/kinetic-carbine-gemini-generated.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -122,9 +122,9 @@ const sampleNoBinding = {
   <h2>Examples</h2>
   <p>All basic features of a card visualized in a simple view.</p>
   <div class="breakout border p-2">
-    <GearCard data={sampleWeapon} body={1} image={kineticCarbineImg} />
-    <GearCard data={sampleAugmentation} ghost={3} />
-    <GearCard data={sampleVehicle} />
+    <GearCardDemo data={sampleWeapon} body={1} image={kineticCarbineImg} />
+    <GearCardDemo data={sampleAugmentation} ghost={3} />
+    <GearCardDemo data={sampleVehicle} />
   </div>
 
   <div class="demo-section">
@@ -133,11 +133,11 @@ const sampleNoBinding = {
       One card per gear category: weapon, armor, augmentation, utility, vehicle
     </p>
     <div class="card-grid">
-      <GearCard data={sampleWeapon} body={1} />
-      <GearCard data={sampleArmor} body={1} />
-      <GearCard data={sampleAugmentation} ghost={3} />
-      <GearCard data={sampleUtility} ghost={2} />
-      <GearCard data={sampleVehicle} />
+      <GearCardDemo data={sampleWeapon} body={1} />
+      <GearCardDemo data={sampleArmor} body={1} />
+      <GearCardDemo data={sampleAugmentation} ghost={3} />
+      <GearCardDemo data={sampleUtility} ghost={2} />
+      <GearCardDemo data={sampleVehicle} />
     </div>
   </div>
 
@@ -145,8 +145,8 @@ const sampleNoBinding = {
     <h2>Binding Variations</h2>
     <p class="demo-label">All three binding types · no binding (zero cost)</p>
     <div class="card-grid">
-      <GearCard data={sampleMultiBinding} body={1} mind={1} ghost={1} />
-      <GearCard data={sampleNoBinding} />
+      <GearCardDemo data={sampleMultiBinding} body={1} mind={1} ghost={1} />
+      <GearCardDemo data={sampleNoBinding} />
     </div>
   </div>
 </BaseLayout>

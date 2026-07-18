@@ -18,6 +18,8 @@ The design system is the single source of styling truth for FREE//FALL. It provi
 | Components | `.astro` files | Composition wrappers only when plain HTML + CSS is insufficient |
 
 No build step. Source is distributed directly to consuming apps via Vite aliases.
+The package owns an `astro check` script so source-distributed components are
+typechecked directly rather than relying on a consumer build to discover errors.
 
 **Demo app** (`apps/design-system/`):
 
@@ -96,7 +98,9 @@ The preflight lives in `src/styles/preflight.css` and is imported first in `base
 - [ ] `packages/design-system` exports at least one token, one CSS file, and one component
 - [ ] `apps/design-system` demos every exported feature on at least one page
 - [ ] `pnpm build` succeeds for both `apps/free-fall` and `apps/design-system`
+- [ ] `pnpm typecheck` checks `packages/design-system` Astro source and both apps
 - [ ] `pnpm test` passes all design system unit tests
+- [ ] `pnpm test:e2e` passes both app and living-styleguide Playwright suites
 - [ ] No `workspace:*` references in any `package.json`
 - [ ] Zero JavaScript in the demo app build output (unless a Svelte island is present)
 - [ ] Design system package has no dependency on any app
@@ -105,6 +109,7 @@ The preflight lives in `src/styles/preflight.css` and is imported first in `base
 
 - Adding a new export to `packages/design-system` without a demo page in `apps/design-system` is a failing review
 - Dependency direction is one-way: apps → `packages/design-system`, never the reverse
+- The static app builds contain no framework client runtime unless an explicit island is present
 
 ### Architecture
 

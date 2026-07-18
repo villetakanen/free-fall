@@ -1,5 +1,4 @@
 import { fileURLToPath } from "node:url";
-import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
 import { rehypeContentUrlRewrite } from "./src/lib/rehype/rehype-content-url-rewrite";
@@ -46,7 +45,6 @@ export default defineConfig({
     ],
   },
   integrations: [
-    svelte(),
     {
       name: "watch-content",
       hooks: {

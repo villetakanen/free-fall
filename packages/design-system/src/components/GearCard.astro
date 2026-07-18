@@ -8,6 +8,12 @@ interface GearBase {
   qualities: string[];
 }
 
+interface Binding {
+  body: number;
+  mind: number;
+  ghost: number;
+}
+
 interface WeaponData extends GearBase {
   category: "weapon";
   dv: number;
