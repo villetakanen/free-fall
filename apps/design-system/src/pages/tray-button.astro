@@ -1,5 +1,5 @@
 ---
-import TrayButton from "@free-fall/design-system/components/TrayButton.astro";
+import TrayButtonDemo from "@free-fall/design-system/components/TrayButton.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -46,15 +46,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       data-tray-state="open" · width: calc(40 * var(--freefall-space-1))
     </p>
     <div class="demo-container demo-container--open" data-tray-state="open">
-      <TrayButton icon="home" label="Home" href="/" />
-      <TrayButton icon="palette" label="Design Tokens" href="/tokens/" />
-      <TrayButton
+      <TrayButtonDemo icon="home" label="Home" href="/" />
+      <TrayButtonDemo icon="palette" label="Design Tokens" href="/tokens/" />
+      <TrayButtonDemo
         icon="text_fields"
         label="Typography"
         href="/typography/"
         active
       />
-      <TrayButton
+      <TrayButtonDemo
         icon="emoji_symbols"
         label="Iconography"
         href="/iconography/"
@@ -71,15 +71,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       class="demo-container demo-container--minimized"
       data-tray-state="minimized"
     >
-      <TrayButton icon="home" label="Home" href="/" />
-      <TrayButton icon="palette" label="Design Tokens" href="/tokens/" />
-      <TrayButton
+      <TrayButtonDemo icon="home" label="Home" href="/" />
+      <TrayButtonDemo icon="palette" label="Design Tokens" href="/tokens/" />
+      <TrayButtonDemo
         icon="text_fields"
         label="Typography"
         href="/typography/"
         active
       />
-      <TrayButton
+      <TrayButtonDemo
         icon="emoji_symbols"
         label="Iconography"
         href="/iconography/"
@@ -96,8 +96,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <h3>Active / Selected</h3>
     <div class="demo-container demo-container--open" data-tray-state="open">
-      <TrayButton icon="home" label="Home (default)" href="/" />
-      <TrayButton icon="home" label="Home (active)" href="/" active />
+      <TrayButtonDemo icon="home" label="Home (default)" href="/" />
+      <TrayButtonDemo icon="home" label="Home (active)" href="/" active />
     </div>
   </div>
 
@@ -109,7 +109,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       data-tray-state="open"
       style={`width: calc(24 * var(--freefall-space-1));`}
     >
-      <TrayButton
+      <TrayButtonDemo
         icon="settings"
         label="A very long navigation label that should truncate"
         href="/"

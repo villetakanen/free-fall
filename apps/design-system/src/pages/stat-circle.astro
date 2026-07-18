@@ -1,5 +1,5 @@
 ---
-import StatCircle from "@free-fall/design-system/components/StatCircle.astro";
+import StatCircleDemo from "@free-fall/design-system/components/StatCircle.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -66,11 +66,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <h2>Examples</h2>
   <div class="showcase">
-    <StatCircle type="body" attribute="Body" value={2} />
-    <StatCircle type="mind" attribute="Mind" value={1} />
-    <StatCircle type="ghost" attribute="Ghost" value={3} />
-    <StatCircle type="body" attribute="Body" value={null} disabled />
-    <StatCircle type="body" attribute="Frm" value={36} bound />
+    <StatCircleDemo type="body" attribute="Body" value={2} />
+    <StatCircleDemo type="mind" attribute="Mind" value={1} />
+    <StatCircleDemo type="ghost" attribute="Ghost" value={3} />
+    <StatCircleDemo type="body" attribute="Body" value={null} disabled />
+    <StatCircleDemo type="body" attribute="Frm" value={36} bound />
   </div>
 
   <div class="demo-section">
@@ -81,23 +81,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <div class="circle-row">
       <span class="circle-row-label">Body (Flare Orange)</span>
-      <StatCircle type="body" value={1} />
-      <StatCircle type="body" value={2} />
-      <StatCircle type="body" value={3} />
+      <StatCircleDemo type="body" value={1} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="body" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">Mind (Tritium Green)</span>
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="mind" value={2} />
-      <StatCircle type="mind" value={3} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="mind" value={2} />
+      <StatCircleDemo type="mind" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">Ghost (Isotope Neon)</span>
-      <StatCircle type="ghost" value={1} />
-      <StatCircle type="ghost" value={2} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="ghost" value={1} />
+      <StatCircleDemo type="ghost" value={2} />
+      <StatCircleDemo type="ghost" value={3} />
     </div>
   </div>
 
@@ -109,26 +109,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </p>
     <div class="circle-row">
       <span class="circle-row-label">value=null</span>
-      <StatCircle type="body" value={null} />
-      <StatCircle type="mind" value={null} />
-      <StatCircle type="ghost" value={null} />
+      <StatCircleDemo type="body" value={null} />
+      <StatCircleDemo type="mind" value={null} />
+      <StatCircleDemo type="ghost" value={null} />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">disabled</span>
-      <StatCircle type="body" value={2} disabled />
-      <StatCircle type="mind" value={1} disabled />
-      <StatCircle type="ghost" value={3} disabled />
+      <StatCircleDemo type="body" value={2} disabled />
+      <StatCircleDemo type="mind" value={1} disabled />
+      <StatCircleDemo type="ghost" value={3} disabled />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">value=0 (not disabled)</span>
-      <StatCircle type="body" value={0} />
-      <StatCircle type="mind" value={0} />
-      <StatCircle type="ghost" value={0} />
+      <StatCircleDemo type="body" value={0} />
+      <StatCircleDemo type="mind" value={0} />
+      <StatCircleDemo type="ghost" value={0} />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">disabled + label</span>
-      <StatCircle type="body" attribute="Body" value={2} disabled />
-      <StatCircle type="mind" attribute="Sys" value={6} disabled />
+      <StatCircleDemo type="body" attribute="Body" value={2} disabled />
+      <StatCircleDemo type="mind" attribute="Sys" value={6} disabled />
     </div>
   </div>
 
@@ -139,20 +139,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </p>
     <div class="circle-row">
       <span class="circle-row-label">bound</span>
-      <StatCircle type="body" value={2} bound />
-      <StatCircle type="mind" value={1} bound />
-      <StatCircle type="ghost" value={3} bound />
+      <StatCircleDemo type="body" value={2} bound />
+      <StatCircleDemo type="mind" value={1} bound />
+      <StatCircleDemo type="ghost" value={3} bound />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">bound + label</span>
-      <StatCircle type="body" attribute="Body" value={2} bound />
-      <StatCircle type="mind" attribute="Mind" value={1} bound />
-      <StatCircle type="ghost" attribute="Ghost" value={3} bound />
+      <StatCircleDemo type="body" attribute="Body" value={2} bound />
+      <StatCircleDemo type="mind" attribute="Mind" value={1} bound />
+      <StatCircleDemo type="ghost" attribute="Ghost" value={3} bound />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">disabled ignores bound</span>
-      <StatCircle type="body" value={null} bound />
-      <StatCircle type="mind" value={2} disabled bound />
+      <StatCircleDemo type="body" value={null} bound />
+      <StatCircleDemo type="mind" value={2} disabled bound />
     </div>
   </div>
 
@@ -164,14 +164,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </p>
     <div class="circle-row">
       <span class="circle-row-label">Default labels</span>
-      <StatCircle type="body" attribute="Body" value={2} />
-      <StatCircle type="mind" attribute="Mind" value={1} />
-      <StatCircle type="ghost" attribute="Ghost" value={3} />
+      <StatCircleDemo type="body" attribute="Body" value={2} />
+      <StatCircleDemo type="mind" attribute="Mind" value={1} />
+      <StatCircleDemo type="ghost" attribute="Ghost" value={3} />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">Domain aliases</span>
-      <StatCircle type="mind" attribute="Sys" value={6} />
-      <StatCircle type="body" attribute="Frm" value={24} />
+      <StatCircleDemo type="mind" attribute="Sys" value={6} />
+      <StatCircleDemo type="body" attribute="Frm" value={24} />
     </div>
   </div>
 
@@ -183,23 +183,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <div class="circle-row">
       <span class="circle-row-label">Body 1 only</span>
-      <StatCircle type="body" value={1} />
-      <StatCircle type="mind" value={null} />
-      <StatCircle type="ghost" value={null} />
+      <StatCircleDemo type="body" value={1} />
+      <StatCircleDemo type="mind" value={null} />
+      <StatCircleDemo type="ghost" value={null} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">Ghost 3 only</span>
-      <StatCircle type="body" value={null} />
-      <StatCircle type="mind" value={null} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={null} />
+      <StatCircleDemo type="mind" value={null} />
+      <StatCircleDemo type="ghost" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">All three</span>
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={1} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={1} />
     </div>
   </div>
 
@@ -214,30 +214,30 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <div class="circle-row" style="--freefall-stat-circle-size: 4;">
       <span class="circle-row-label">size: 4</span>
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
     </div>
 
     <div class="circle-row">
       <span class="circle-row-label">size: 5 (default)</span>
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
     </div>
 
     <div class="circle-row" style="--freefall-stat-circle-size: 7;">
       <span class="circle-row-label">size: 7</span>
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
     </div>
 
     <div class="circle-row" style="--freefall-stat-circle-size: 10;">
       <span class="circle-row-label">size: 10</span>
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
     </div>
   </div>
 
@@ -246,23 +246,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <p class="demo-label">Contrast check across background levels</p>
 
     <div class="demo-surface demo-surface--canvas">
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
       <span class="circle-row-label">bg-canvas</span>
     </div>
 
     <div class="demo-surface demo-surface--surface-1">
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
       <span class="circle-row-label">bg-surface-1</span>
     </div>
 
     <div class="demo-surface demo-surface--surface-2">
-      <StatCircle type="body" value={2} />
-      <StatCircle type="mind" value={1} />
-      <StatCircle type="ghost" value={3} />
+      <StatCircleDemo type="body" value={2} />
+      <StatCircleDemo type="mind" value={1} />
+      <StatCircleDemo type="ghost" value={3} />
       <span class="circle-row-label">bg-surface-2</span>
     </div>
   </div>

@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
@@ -8,7 +8,6 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "jsx": "preserve",
-    "jsxImportSource": "svelte",
     "paths": {
       "@free-fall/design-system/*": ["../../packages/design-system/src/*"]
     }

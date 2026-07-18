@@ -8,7 +8,7 @@ test.describe("AppTray Component interactions", () => {
     await page.goto("/app-tray/");
 
     const tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const hamburger = page.getByRole("button", { name: "Toggle navigation" });
     const scrim = page.locator(".app-tray .scrim");
 
     // Wait for page to settle
@@ -46,12 +46,12 @@ test.describe("AppTray Component interactions", () => {
   test("Tablet viewport (620px - 779px): Rail visible, expands as overlay", async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 700, height: 800 });
+    await page.setViewportSize({ width: 620, height: 800 });
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
     const tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const hamburger = page.getByRole("button", { name: "Toggle navigation" });
     const testButtonLabel = page.locator(".tray-button .label").first();
 
     // Default: Rail visible, compact
@@ -89,7 +89,7 @@ test.describe("AppTray Component interactions", () => {
     await page.waitForLoadState("networkidle");
 
     const tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const hamburger = page.getByRole("button", { name: "Toggle navigation" });
     const main = page.locator("main");
 
     // Default: Rail visible
@@ -116,29 +116,64 @@ test.describe("AppTray Component interactions", () => {
     expect(expandedMainBox?.width).toBeLessThan(initialMainBox?.width || 0);
   });
 
-  test("Keyboard Access: Escape key closes the tray", async ({ page }) => {
-    await page.setViewportSize({ width: 1024, height: 800 });
+  test("keyboard state, focus trap, and restoration work in overlay mode", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
-    const _tray = page.locator(".app-tray .drawer");
-    const hamburger = page.locator('label[aria-label="Toggle menu"]');
+    const drawer = page.locator("#app-tray-drawer");
+    const hamburger = page.getByRole("button", { name: "Toggle navigation" });
+    const focusable = drawer.locator(
+      'a, button, [tabindex]:not([tabindex="-1"])',
+    );
 
-    // Open tray
-    await hamburger.click();
+    await hamburger.focus();
+    await page.keyboard.press("Enter");
+    await expect(hamburger).toHaveAttribute("aria-expanded", "true");
+    await expect(focusable.first()).toBeFocused();
 
-    await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray .drawer");
-      return el && el.getBoundingClientRect().width === 320;
-    });
+    await focusable.last().focus();
+    await page.keyboard.press("Tab");
+    await expect(focusable.first()).toBeFocused();
 
-    // Hit escape
+    await focusable.first().focus();
+    await page.keyboard.press("Shift+Tab");
+    await expect(focusable.last()).toBeFocused();
+
     await page.keyboard.press("Escape");
+    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+    await expect(hamburger).toBeFocused();
+  });
 
-    // Verify it closed back to rail mode
-    await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray .drawer");
-      return el && el.getBoundingClientRect().width === 80;
+  test("reduced motion suppresses tray transitions", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/app-tray/");
+
+    const duration = await page
+      .locator("#app-tray-drawer")
+      .evaluate((element) => getComputedStyle(element).transitionDuration);
+    expect(Number.parseFloat(duration)).toBeLessThan(0.001);
+  });
+
+  test("pointer toggle and scrim dismissal work without JavaScript", async ({
+    browser,
+  }) => {
+    const page = await browser.newPage({
+      javaScriptEnabled: false,
+      viewport: { width: 375, height: 667 },
     });
+    await page.goto("/app-tray/");
+
+    const drawer = page.locator("#app-tray-drawer");
+    await page.getByRole("button", { name: "Toggle navigation" }).click();
+    await expect(drawer).toBeInViewport();
+    await page.locator(".app-tray .scrim").click({
+      position: { x: 350, y: 350 },
+    });
+    await expect(page.locator("#app-tray-toggle")).not.toBeChecked();
+    await expect(drawer).not.toBeInViewport();
+    await page.close();
   });
 });

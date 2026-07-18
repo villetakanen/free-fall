@@ -72,22 +72,13 @@ Physical damage is local. Destroying one laser does nothing to the other two. A 
 
 ## The Whisper's crew
 
-All six are civilian spacers. All six can fight.
+All six are civilian spacers. All six can fight. Use [The Whisper's Crew](/scenarios/northern-lights/the-whispers-crew/) for their canonical profiles, knowledge, and morale.
 
 - **Two pilots** handle sensors, attitude changes, communications, and point-defense authorization. Once the attack begins, they rotate the Whisper to bring a second laser into arc and keep the expert system fed with a clean picture.
 - **Two security personnel** suit up and deploy to the hull when they identify an open approach. They protect mounts, flush attackers out of cover, mark targets for the expert system, and occupy the projected breach point.
 - **Two stevedores** perform damage control, isolate compromised systems, move cargo across likely approaches, and prepare the interior against boarding. If the crew reaches them, they fight with the tools and weapons at hand.
 
-The defenders act through human hands and human-scale tactics, whatever "compromised" ultimately means aboard. Origin-17 has no system path into their weapons, and it does not care which side wins.
-
-```yaml
-HULL SECURITY (2)
-Action Pool: 5d20 each
-Armor: AV 2, sealed EVA
-Weapon: DV 2 Physical, Long range
-Movement: Magnetic boots and maneuver pack
-Role: Mark targets, protect mounts, deny the breach
-```
+The defenders act through human hands and human-scale tactics. The contract calls them compromised; in truth, they remain autonomous. Origin-17 has no system path into their weapons, and it does not care which side wins.
 
 Use :term[Challenging] TN 11 for a professional action under pressure. Raise it to :term[Hard] TN 16 when two lasers hold the target, damaged equipment matters, or the character attempts the action from a genuinely bad position. Position changes the problem before it changes the number: masking a laser removes its attack rather than merely granting a bonus against it.
 

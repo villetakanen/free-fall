@@ -52,5 +52,5 @@ The stat block is the ship her manifest describes. It is not the ship the crew w
 
 - **Navigation is compromised.** Origin-17 controls the committed trajectory, drive, and flight computer. The human crew retains the rest of the ship and can command defensive attitude changes that do not threaten its destination.
 - **The defenses are separate.** Three leased laser mounts share a proprietary expert system void-gapped from navigation, the QNA, and every other ship system. The crew authorizes **ATTACK** or **DEFER**; the network handles acquisition and fire. Origin-17 cannot operate it.
-- **The crew is still aboard.** Two pilots, two security personnel, and two stevedores control the ship around the compromised navigation. All six can fight. Open approach brings security onto the hull while the pilots rotate the Whisper and authorize point defense.
+- **The crew is still aboard.** [Two pilots, two security personnel, and two stevedores](/scenarios/northern-lights/the-whispers-crew/) control the ship around the compromised navigation. All six can fight. Open approach brings security onto the hull while the pilots rotate the Whisper and authorize point defense.
 - **The way in is the bow.** The cargo maw origin-17 used to take itself aboard is the same maw the crew will most naturally breach or dock. She was built to open at the front. She still will.

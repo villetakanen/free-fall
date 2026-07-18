@@ -1,11 +1,9 @@
 import { fileURLToPath } from "node:url";
-import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
   output: "static",
   image: { service: { entrypoint: "astro/assets/services/noop" } },
-  integrations: [svelte()],
   vite: {
     resolve: {
       alias: {

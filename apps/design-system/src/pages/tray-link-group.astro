@@ -1,7 +1,7 @@
 ---
 import TrayButton from "@free-fall/design-system/components/TrayButton.astro";
 import TrayLink from "@free-fall/design-system/components/TrayLink.astro";
-import TrayLinkGroup from "@free-fall/design-system/components/TrayLinkGroup.astro";
+import TrayLinkGroupDemo from "@free-fall/design-system/components/TrayLinkGroup.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const _mockLinks = [
@@ -61,13 +61,13 @@ const _mockLinks = [
         <div class="demo-container demo-container--open" data-tray-state="open">
             <TrayButton icon="menu_book" label="Core Rules" href="#" />
 
-            <TrayLinkGroup active={true}>
+            <TrayLinkGroupDemo active={true}>
                 {
                     _mockLinks.map((link) => (
                         <TrayLink href={link.href} label={link.label} />
                     ))
                 }
-            </TrayLinkGroup>
+            </TrayLinkGroupDemo>
         </div>
     </div>
 
@@ -82,13 +82,13 @@ const _mockLinks = [
         >
             <TrayButton icon="menu_book" label="Core Rules" href="#" />
 
-            <TrayLinkGroup active={true}>
+            <TrayLinkGroupDemo active={true}>
                 {
                     _mockLinks.map((link) => (
                         <TrayLink href={link.href} label={link.label} />
                     ))
                 }
-            </TrayLinkGroup>
+            </TrayLinkGroupDemo>
         </div>
     </div>
 </BaseLayout>

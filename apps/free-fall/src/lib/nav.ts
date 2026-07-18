@@ -149,7 +149,7 @@ export async function getScenarioSubsiteNav(slug: string, pathname: string) {
       label: "All Scenarios",
       href: "/scenarios/",
       active: false,
-      variant: "uplink",
+      variant: "uplink" as const,
     },
     {
       icon: "map",

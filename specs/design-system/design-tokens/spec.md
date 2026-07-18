@@ -19,6 +19,11 @@ Parent spec: `specs/design-system/spec.md`
 
 Components and styles consume **semantic tokens only**. Base palette tokens exist to define the palette and to be referenced by semantic tokens — they should not appear in component CSS.
 
+Production component dimensions derive from design tokens. Literal lengths remain
+only where CSS cannot consume custom properties in a query condition, where a
+large radius encodes a circle or pill, and where the standard visually-hidden
+clipping technique requires one-pixel geometry.
+
 **Base palette: Deep Space Cobalt** (`primary`)
 
 11-step scale from ceramic white to absolute void:
@@ -56,7 +61,7 @@ Components and styles consume **semantic tokens only**. Base palette tokens exis
 | `--freefall-bg-surface-2` | `primary-800` | Elevated surface |
 | `--freefall-text-display` | `primary-50` | Headings, hero text |
 | `--freefall-text-body` | `primary-100` | Body copy |
-| `--freefall-text-muted` | `primary-300` | Secondary / disabled text |
+| `--freefall-text-muted` | `primary-200` | Secondary / disabled text with normal-text contrast |
 | `--freefall-border-subtle` | `primary-800` | Dividers, low-contrast borders |
 | `--freefall-border-strong` | `primary-700` | High-contrast borders |
 | `--freefall-action-base` | `primary-500` | Buttons, links (default) |
@@ -93,12 +98,14 @@ Components and styles consume **semantic tokens only**. Base palette tokens exis
 - [ ] Semantic tokens reference base palette tokens via `var()` — no hardcoded values
 - [ ] `src/styles/base.css` imports `tokens.css`
 - [ ] Demo app has a token reference page showing all colors with their names and values
+- [ ] `--freefall-text-muted` meets WCAG AA for normal text on canvas and supported surfaces
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
 - Semantic tokens must only reference base palette custom properties
 - No color value may appear in a component or style file that isn't a `var(--freefall-*)` reference
+- Normal-size semantic text tokens maintain at least 4.5:1 contrast on their supported backgrounds
 
 ### Scenarios
 

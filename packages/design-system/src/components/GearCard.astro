@@ -8,6 +8,12 @@ interface GearBase {
   qualities: string[];
 }
 
+interface Binding {
+  body: number;
+  mind: number;
+  ghost: number;
+}
+
 interface WeaponData extends GearBase {
   category: "weapon";
   dv: number;
@@ -68,7 +74,7 @@ const boundAttrs = [body && "body", mind && "mind", ghost && "ghost"].filter(
 const shaderStart =
   boundAttrs.length === 1
     ? `var(--freefall-attr-${boundAttrs[0]}-bg)`
-    : "var(--freefall-color-primary-500)";
+    : "var(--freefall-action-base)";
 
 const categoryIcon: Record<string, string> = {
   weapon: "swords",
@@ -203,7 +209,7 @@ const categoryIcon: Record<string, string> = {
     background: linear-gradient(
       140deg,
       oklch(from var(--_shader-start) l c h / 0.55),
-      oklch(from var(--freefall-color-primary-900) l c h / 0.75)
+      oklch(from var(--freefall-bg-surface-1) l c h / 0.75)
     );
     pointer-events: none;
     z-index: 0;
@@ -217,7 +223,7 @@ const categoryIcon: Record<string, string> = {
 
   .image-zone__icon {
     font-size: calc(10 * var(--freefall-space-1));
-    color: var(--freefall-color-primary-600);
+    color: var(--freefall-border-strong);
     line-height: 1;
     z-index: 1;
   }
@@ -258,7 +264,7 @@ const categoryIcon: Record<string, string> = {
 
   .title-overlay__title {
     font-weight: 700;
-    color: var(--freefall-color-primary-50);
+    color: var(--freefall-text-display);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -266,7 +272,7 @@ const categoryIcon: Record<string, string> = {
   }
 
   .title-overlay__nickname {
-    color: var(--freefall-color-primary-50);
+    color: var(--freefall-text-display);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

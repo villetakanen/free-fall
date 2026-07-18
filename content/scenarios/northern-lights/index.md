@@ -20,6 +20,10 @@ contents:
       - preface
       - contact
       - the-approach
+  - section: "Opposition"
+    icon: "security"
+    pages:
+      - the-whispers-crew
   - section: "Backstory"
     icon: "history_edu"
     pages:

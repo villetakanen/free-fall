@@ -1,7 +1,7 @@
-main > .surface {
+main > .content-grid > .surface {
   background: var(--freefall-bg-surface-1);
   padding: var(--freefall-space-2);
 }
-main > .surface > *:first-child {
+main > .content-grid > .surface > :first-child {
   margin-top: 0;
 }

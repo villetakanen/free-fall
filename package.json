@@ -7,9 +7,9 @@
     "build": "pnpm -r run build",
     "lint": "biome check .",
     "format": "biome check --write .",
-    "typecheck": "tsc --noEmit && pnpm -r --filter './apps/*' run typecheck",
+    "typecheck": "tsc --noEmit && pnpm -r --filter './apps/*' --filter @free-fall/design-system run typecheck",
     "test": "pnpm -r run test",
-    "test:e2e": "pnpm --filter @free-fall/app run test:e2e",
+    "test:e2e": "pnpm --parallel --filter @free-fall/app --filter @free-fall/design-system-docs run test:e2e",
     "dev": "pnpm -r --parallel run dev"
   },
   "devDependencies": {

@@ -4,6 +4,11 @@
 
 **Date:** 2026-03-11
 
+**Amendment 2026-07-18:** The surface primitive targets direct `.surface`
+placement items inside `main > .content-grid`. Every app wraps page content in
+that grid, so the earlier `main > .surface` selector excluded the production
+structure while a broad descendant selector would weaken the layout contract.
+
 ## Context
 
 The FREE//FALL design system (`packages/design-system`) has grown organically during alpha development. It now contains 5 token modules, 13 CSS files, and 9 Astro components. Two consuming apps exist: the main application (`apps/free-fall`) and the design system documentation site (`apps/design-system`).

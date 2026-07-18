@@ -46,9 +46,9 @@ const displayLabel =
 
   .stat-circle {
     --_stat-circle-size: var(--freefall-stat-circle-size, 5);
-    --_sc-bg: var(--freefall-color-primary-700);
-    --_sc-fg: var(--freefall-color-primary-500);
-    --_sc-text: var(--freefall-color-primary-50);
+    --_sc-bg: var(--freefall-border-strong);
+    --_sc-fg: var(--freefall-action-base);
+    --_sc-text: var(--freefall-text-display);
     --_sc-slice: 75%;
 
     width: calc(var(--_stat-circle-size) * var(--freefall-space-1));
@@ -71,11 +71,8 @@ const displayLabel =
   .stat-circle__value {
     font-size: calc(var(--_stat-circle-size) * 0.55 * var(--freefall-space-1));
     font-weight: 700;
-    color: var(--freefall-color-primary-50);
-    text-shadow:
-      0 2px 4px var(--freefall-color-primary-800),
-      0 4px 8px var(--freefall-color-primary-800),
-      0 8px 16px var(--freefall-color-primary-800);
+    color: var(--_sc-text);
+    text-shadow: var(--freefall-text-shadow-overlay);
   }
 
   .stat-circle__label {
@@ -100,16 +97,17 @@ const displayLabel =
   }
 
   .stat-circle--disabled {
-    --_sc-bg: var(--freefall-color-primary-700);
-    --_sc-fg: var(--freefall-color-primary-500);
-    --_sc-text: var(--freefall-color-primary-200);
+    --_sc-bg: var(--freefall-border-strong);
+    --_sc-fg: var(--freefall-action-base);
+    --_sc-text: var(--freefall-text-muted);
   }
 
   /* ── Bound: solid foreground color ─────────────── */
 
   .stat-circle--bound {
     background: var(--_sc-fg);
-    color: var(--freefall-color-primary-950);
-    box-shadow: 0 0 calc(var(--freefall-space-1)) rgba(255, 255, 255, 0.3);
+    --_sc-text: var(--freefall-bg-canvas);
+    box-shadow: 0 0 var(--freefall-space-1)
+      color-mix(in srgb, var(--freefall-text-display) 30%, transparent);
   }
 </style>

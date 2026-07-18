@@ -80,7 +80,7 @@ Styles are authored mobile-first: base styles apply to all sizes, `@media (min-w
 - [ ] Vite aliases resolve cross-package imports in both apps
 - [ ] A sample Markdown file renders as a page on the Astro site
 - [ ] `pnpm test` runs Vitest across all packages with zero failures
-- [ ] `pnpm test:e2e` runs Playwright against the built `dist/` output
+- [ ] `pnpm test:e2e` runs both Playwright suites against their built `dist/` output
 
 ### Regression Guardrails
 
@@ -116,9 +116,9 @@ Scenario: Component tests pass
   Then: Vitest executes the test and reports pass/fail
 
 Scenario: E2E test validates built site
-  Given: `apps/free-fall` has been built to `dist/`
+  Given: both apps have been built to `dist/`
   When: `pnpm test:e2e` is run
-  Then: Playwright serves the static `dist/` and runs tests against it
+  Then: Playwright serves both static outputs and runs both applications' tests
 
 Scenario: Mobile-first responsive layout
   Given: A page with responsive styles
