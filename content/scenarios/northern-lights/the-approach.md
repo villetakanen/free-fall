@@ -4,60 +4,200 @@ title: "Scene 2: The Approach"
 
 # Scene 2: The Approach
 
-The plan is made; now they fly it. Scene 1 was the crew and the computer talking; Scene 2 is the gulf actually closing. And here the assistant quietly steps back — it flew them to the decision, but from the crossing on, the ship's competence runs out at the Whisper's skin. Whatever happens against that hull, the crew does it on their own instruments.
+The crew chose a plan in [Contact](/scenarios/northern-lights/contact/). Now make them fly it.
 
-There are really only **two shapes of scene** here, not three. Silent and Active are the same approach with a dial turned — a careful, chosen crossing, differing only in what the crew knows and whether the Whisper stirs. The Ram is not that scene at all: nobody crosses, nobody picks a door — the ship *makes* the door, at speed, and the crew arrives already inside and already loud. Run whichever the table chose; they are genuinely different evenings.
+The *Njord's Whisper* is not helpless. Three leased point-defense lasers sit at equal points around her hull, their fields of fire overlapping across the ship's surface. Coast through their envelope and they cut the crew's vessel apart one patient layer at a time. Go outside to stop them and two mounts with a clean angle can cut a person apart much faster.
 
----
+Run the approach in **Action Time** while the crew acts through their vessel: piloting, hacking, firing rockets, finding angles, and managing damage. Escalate to **Bullet Time** when operators and the Whisper's security personnel meet outside the hull. The scene ends when the crew has made and secured an entry, not merely when they reach the ship.
 
-## Path A — The quiet crossing (Silent & Active)
+## What controls what (GM)
 
-The ship holds off at a distance and the crew crosses the last stretch themselves — the approach shuttle flown cold, or suits and a tether if they're feeling lean. This is the plan working: they reach the hull unseen, on their own terms, and choose where to open her.
+Keep the systems separate. The distinction is load-bearing.
 
-**Play the crossing as the vulnerable part.** For long minutes the crew is out in the open between two ships, small and cold and slow, with nothing to hide behind but the dark. Nothing is shooting — but everyone *feels* shot at, and that is the scene. This is where the pregens earn their sheets:
+- **Origin-17 controls navigation only:** the Whisper's committed trajectory, drive, and flight computer.
+- **The six-person crew controls the ship:** sensors, communications, attitude commands, doors, airlocks, life support, cargo systems, and the authorization to use point defense.
+- **The lasers control themselves:** the three leased mounts share a proprietary expert system, void-gapped from every other system aboard. The crew can tell it **ATTACK** or **DEFER**. It handles acquisition, aim, and fire.
 
-- **Vector** flies the shuttle in on attitude thrust, or hand-flies the crossing if they left the shuttle behind — quiet, patient, no torch.
-- **Root** doesn't fear the gap: no rated EVA suit needed, minutes of hard vacuum are just Tuesday. Good point for the one who can drift ahead and read the hull by hand.
-- **Sable** runs point by instinct — the crossing is an infiltration, and infiltration is what she is.
+Origin-17 permits the crew to rotate the Whisper for defense. A changed attitude does not threaten its destination. It does not fire the lasers, direct the defenders, or help the attackers. From its perspective, either crew can repair the damage later, and a freighter written off as piracy may disappear more cleanly than one merely missing. If an attacker reaches neural-interface range, origin-17 expects to take them over. Until then, it waits.
 
-**What Silent and Active change is only two things:**
+Compromising navigation does not stop the guns. Compromising the guns does not stop the ship.
 
-- **What they know.** *Silent* gave them the strategic read — she runs dark, her crew signatures are wrong, something is off before they cut in. *Active* gave them the tactical map — interior layout, power-plant state, where the defenses sit — but not the wrongness. Lean the crossing dialogue on whichever picture they carry.
-- **Whether she's stirring.** On a clean Silent or Active run, the Whisper is quiet and the crew works unhurried. On the Active *bad roll* from Scene 1, she woke: a point-defense mount tracks lazily, a maintenance drone has undocked and is nosing along the hull. The crossing is now a held breath — avoid the drone's cone, freeze when the mount sweeps, and get inside before either resolves what it's looking at.
+## The defense network
 
-**The door.** They pick their entry, and it's a real choice:
+The three laser mounts are identical and linked only to one another.
 
-- **An airlock** — quiet, but locked. Root cracks it (System Cracking), which takes time and is the cleanest way in: a working lock is also a working way *back out*.
-- **A cut** — anywhere they like, but slower and warmer, and it leaves a hole where a door should be. Vector's plasma lance opens a hull in one shot (Single Use, grants Breaching) — decisive, but that is a loud, bright, one-time *bang*, and it announces them the instant they use it. Save it, or spend it and accept that the quiet approach just ended on the threshold.
+```yaml
+POINT-DEFENSE NETWORK
+Mounts: 3 leased laser units
+Control: Independent expert system
+Crew authorization: ATTACK / DEFER
+Security: Hacking 2
+Attack Pool: 5d20, divided between firing mounts in Bullet Time
+Laser: DV 2 Physical
+```
 
-**Where it leaves them:** inside, on their terms, with a way back they chose and (usually) their stealth intact. Scene 3 opens slow — the dread is the point. Cost already paid: hours, if they went Silent, and the CSA merge (A.02) is that much closer.
+### Fields of fire
 
----
+Hull geometry decides how many lasers can see a target. A careful line usually exposes the target to one mount. A bad line or a defensive rotation exposes it to two. Moving around the hull changes the answer.
 
-## Path B — The Ram (foam)
+Make that geometry legible. Tell the players when a second mount is coming around the curve before it fires. Let them break line of sight by moving, rotating their vessel, or putting the Whisper itself between them and a gun.
 
-A completely different scene, and much shorter. There is no crossing and no door. Vector lines the titanium prow down the Whisper's flank, the crew blows the crash foam and disappears into it, and the ship becomes a battering ram travelling several hundred metres a second at another ship's hull.
+### ATTACK or DEFER
 
-**Run it as a single violent contest, not a journey.** The assistant plots the vector that keeps the breaching prow between the crew and the Whisper's guns; then it's a race, and you roll it as one:
+Before the crew identifies a threat, the network is on **DEFER**: tracking, solving, not firing. An unmistakably hostile act or an openly approaching boarding craft gives the Whisper's crew every reason to authorize **ATTACK**.
 
-- The crew's Action Pool — **Vector piloting**, the schematic granting position — against the Whisper's point defense (one laser, two rocket cannons) chewing at the ram shield.
-- **Win the race:** the prow punches through, the foam takes the shock, and the crew is spilled — battered, alive — into the Whisper's outer compartments before anyone in the system could have stopped them. The Ram *forecloses the CSA problem* by simply being aboard first (A.02).
-- **Lose it:** the shield breaches before the hull does. The prow still goes in, but the crew takes the impact raw — Harm all round, gear rattled loose, a very exciting first five minutes clawing out of a half-crushed foam cell into a hull that is now venting around them.
+Once authorized, the expert system follows one doctrine:
 
-**What the Ram costs, always:**
+1. If two lasers can reach an exposed crew member, both target that person.
+2. Otherwise, the lasers concentrate on the crew vessel's rocket cannons and point defense.
+3. With no better target, they hold one patch of hull and ablate it until something fails.
 
-- **No intel.** They committed blind to a schematic that may be stale, and they'll learn the ship's interior the hard way.
-- **No quiet, ever.** origin-17 felt that. It is fully awake now and treats the crew as exactly what they are — a hull-breach and a boarding party. Scene 3 opens *hot*, no ramp-up.
-- **No clean exit.** Their own ship is now a wrecked prow lodged in the Whisper's flank, tangled hull-to-hull. Leaving is its own problem, and the assistant — flying a ship impaled in another ship — has its hands full. When the CSA arrives (Scene 6), the crew is welded to their target by their own prow.
+The lasers do not spread damage politely. One mount is pressure. Two are a kill solution.
 
-**Where it leaves them:** inside, loud, committed, and blind — the CP2020 door. Frequently the right one anyway.
+At Action Time, resolve every active laser with line of sight at the end of the exchange. If a crew action contested that mount, the roll decides whether it fires cleanly. If nobody dealt with it, it hits. Apply its DV against the vessel normally: the crew chooses where the machine pays, but the expert system prefers rocket cannons and point defense before holding its beam on the hull. Two mounts on the same target produce two hits. Repeated exposure threatens the return trip, not just this approach.
 
----
+At Bullet Time, the network is one actor with a 5d20 :term[Action Pool]. Divide its dice between the mounts that can fire. When two mounts can see one exposed person, declare that concentrated attack before the players declare their actions. They know what is about to happen and can reach cover, break the track, disable a mount, or accept the fire to buy someone else an opening.
 
-## Both paths end the same place
+### Stopping a mount
 
-However they came through the skin — a cracked lock, a cut, or a prow through the flank — the crew is now *aboard* the *Njord's Whisper*, and the ship's assistant has nothing left to offer: it can fly the outside of a problem, not the inside of this one. Its last useful line is some version of *"I've lost your telemetry past the hull. You're on your own in there. …Good hunting."*
+The players do not need one prescribed tool.
 
-That silence is the door to Scene 3.
+- **Hack the network:** Root can attack the proprietary mount network with System Cracking. Useful effects include forcing **DEFER**, spoofing a non-hostile classification, delaying an **ATTACK** authorization, or breaking coordination so two mounts cannot concentrate fire. The network is separate from every other ship system; this access goes nowhere else.
+- **Take the shot:** A long-range precision weapon can disable an exposed mount. Vantage's Light Lance or Rail Gun is built for this work. The shooter needs a stable line and becomes the network's first personal target if the shot reveals them.
+- **Fire the rockets:** The crew vessel's two micro-rocket cannons can destroy mounts quickly. Rockets are overt. The first launch ends any pretense that this is traffic.
+- **Reach the hardware:** An operator on the hull can sabotage a mount or use its service access. This avoids shooting through the ship they intend to board, but puts a body inside overlapping fields of fire.
+- **Mask it:** A pilot can keep the Whisper's hull between the crew and a mount. Masking buys an exchange; rotation or movement can bring the gun back.
+
+Physical damage is local. Destroying one laser does nothing to the other two. A network intrusion can affect all three, but the human crew can recognize an impossible **DEFER** and try to regain control.
+
+## The Whisper's crew
+
+All six are civilian spacers. All six can fight.
+
+- **Two pilots** handle sensors, attitude changes, communications, and point-defense authorization. Once the attack begins, they rotate the Whisper to bring a second laser into arc and keep the expert system fed with a clean picture.
+- **Two security personnel** suit up and deploy to the hull when they identify an open approach. They protect mounts, flush attackers out of cover, mark targets for the expert system, and occupy the projected breach point.
+- **Two stevedores** perform damage control, isolate compromised systems, move cargo across likely approaches, and prepare the interior against boarding. If the crew reaches them, they fight with the tools and weapons at hand.
+
+The defenders act through human hands and human-scale tactics, whatever "compromised" ultimately means aboard. Origin-17 has no system path into their weapons, and it does not care which side wins.
+
+```yaml
+HULL SECURITY (2)
+Action Pool: 5d20 each
+Armor: AV 2, sealed EVA
+Weapon: DV 2 Physical, Long range
+Movement: Magnetic boots and maneuver pack
+Role: Mark targets, protect mounts, deny the breach
+```
+
+Use :term[Challenging] TN 11 for a professional action under pressure. Raise it to :term[Hard] TN 16 when two lasers hold the target, damaged equipment matters, or the character attempts the action from a genuinely bad position. Position changes the problem before it changes the number: masking a laser removes its attack rather than merely granting a bonus against it.
+
+## Path A: High-velocity ram
+
+The crew foams up and commits the whole vessel. The Whisper authorizes **ATTACK**; security deploys to the hull, but the closing velocity gives them little time to do more than identify the projected impact and get clear of it.
+
+Run the ram as three Action Time exchanges. Vector makes one Vehicle Handling roll in each. Between those rolls, every other player gets one consequential action through the vessel: hack the network, fire a rocket cannon, take a precision shot, operate point defense, manage damage, refine the impact solution, or invent something better.
+
+### 1. Choose the line
+
+The Whisper begins rotating. Vector puts the titanium prow toward the target and chooses which part of the laser envelope to cross.
+
+- **Success:** One mount has a clean opening shot. The crew chooses the intended impact area.
+- **Greater success:** One mount can see them, and it acquires late. Give the crew the first action before it fires.
+- **Failure:** The rotation catches them between arcs. Two mounts can fire, and the crew must disable one, break the geometry, or take concentrated attrition.
+
+Ask everyone else what they do with the seconds Vector bought. The rockets can remove a mount. Root can force a brief **DEFER**. Vantage can brace a long gun against the hull and shoot. Stitch can keep damaged systems alive. Sable can read where the security pair is moving and call a breach they cannot cover in time.
+
+### 2. Hold the run
+
+The range collapses. The assistant can still calculate; only Vector can keep the prow between the crew and the beams while the Whisper rolls under them.
+
+- **Success:** The prow holds. Apply any laser damage to the ram shield or a declared external system.
+- **Greater success:** Vector breaks one mount's track or presents a firing solution to an ally. The next action against that mount has the advantage of surprise and position.
+- **Failure:** A beam walks off the prow. Break or damage a weapon, sensor, thruster, or another system that matters. If the same hull section has already been hit, the damage reaches the crew compartment.
+
+Do not make a failed roll end the ram. It makes arrival worse.
+
+### 3. Place the impact
+
+The Whisper fills the forward view. Crash foam fires. Everyone disappears into white.
+
+- **Success:** The prow enters the chosen compartment. The crew arrives together, protected by the shield, with the breach where they wanted it.
+- **Greater success:** As above, and the wrecked prow leaves a defensible route back into their vessel.
+- **Failure:** They still breach. Put them somewhere costly: the wrong compartment, a partially collapsed access, a venting cargo space, or directly beside the security pair. Inflict appropriate :term[Harm] for any protection the lasers already stripped away.
+
+The ram always costs stealth and a clean separation. Their vessel is now lodged in the Whisper. What the players decide is how much of it still works, where it lands, and how many defenders are waiting at the hole.
+
+## Path B: Infiltrate, then strike
+
+Ghost, active sweep, a cold shuttle, suited operators on lines, a false transponder: these are variations of one plan. Get close enough to neutralize the lasers before the lasers can dismantle the approach.
+
+### 1. Establish position
+
+Carry forward what Scene 1 bought.
+
+- **Ghost approach:** The defense network remains on **DEFER**. The crew chooses its first angle and acts before the Whisper understands what has arrived. They have less detail about the mounts and defenders.
+- **Active sweep, undetected:** The crew knows all three mount positions and the likely breach points. The network remains on **DEFER**, but any overt move will resolve the contact immediately.
+- **Active sweep, detected:** The Whisper has authorized **ATTACK**. Security is already moving onto the hull. Start in an active firing arc.
+
+For another plan, state the same bargain: what does it reveal, what does it conceal, and what causes the Whisper to choose **ATTACK**?
+
+### 2. Assign the first strike
+
+Show the players the three mounts and ask how they divide the work. They can hack the shared network, shoot individual lasers, launch rockets, move physically to the hardware, or combine methods.
+
+Resolve the first strike simultaneously. Reward coordination honestly:
+
+- Every disabled mount changes the hull geometry for the rest of the scene.
+- A successful network intrusion can hold all three on **DEFER**, but only while the crew maintains the lie or lockout.
+- A missed shot, failed intrusion, rocket launch, or clearly hostile crossing triggers **ATTACK**.
+
+Do not turn partial success into no success. If they disable one mount and wake the ship, one mount is still gone.
+
+### 3. The hull fight
+
+Once the approach is open, the security pair deploys. If the players stay inside their craft and continue solving the problem with piloting, hacking, and vehicle weapons, remain in Action Time.
+
+If players leave the craft in EVA gear or exos with long-range weapons, and security moves to oppose them, escalate to Bullet Time.
+
+> **"Two figures just came over the curve. Suited. Mag-locked. One is marking Vantage. Both lasers are rotating with the mark."**
+
+The security pair uses the ship, not empty space:
+
+- Move below the hull's curve to break sight, then reappear somewhere useful.
+- Force a sniper to move so the expert system can reacquire them.
+- Protect a damaged laser until the pilots restore control.
+- Mark one exposed operator so two mounts concentrate on them.
+- Fall back toward the breach rather than die for a replaceable leased unit.
+
+Let players use the same geometry. A mount blocks its own line of fire. The hull is cover. A disabled laser is a position. An airlock, antenna root, cargo ridge, or maintenance recess can keep one beam off them while leaving another in play.
+
+Return to Action Time when the exposed tactical fight is decided and the remaining problem is reaching or opening the ship.
+
+### 4. Make the entry
+
+With a route through the lasers, the crew still needs a door.
+
+- **Airlock:** Root cracks a system controlled by the human crew, not origin-17. Quiet if the defenders have lost the picture; defensible and reusable if taken intact.
+- **Hull cut:** Slow and visible, but the crew chooses the compartment. The plasma lance opens one decisive hole and is then spent.
+- **Cargo maw:** Built to open, built to move large loads, and obvious to both sides. The stevedores have had time to make it hostile.
+
+The defenders can seal doors, vent compartments, and move through their own ship. Origin-17 does not interfere. Getting through the skin wins Scene 2; it does not make the interior safe.
+
+## Carry the approach forward
+
+Before moving on, record what the players changed:
+
+- Which of the three lasers still works?
+- Is the defense network on **ATTACK**, **DEFER**, or compromised?
+- What is broken or damaged on the crew's vessel?
+- Can their vessel still separate, maneuver, and make the slow trip home?
+- Where is the entry, and can it be used as an exit?
+- Where are the two security personnel?
+- What do the pilots and stevedores know about the attackers?
+- Did the approach cost minutes or hours?
+
+Those facts are the opening situation aboard. Do not reset them because the scene changed.
+
+The crew crosses the skin. Their assistant loses the interior picture. Origin-17, patient through all the shooting, finally has something close enough to touch.
 
 Check your seals.
