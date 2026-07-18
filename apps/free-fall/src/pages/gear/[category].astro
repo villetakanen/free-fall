@@ -42,11 +42,17 @@ const rendered = await Promise.all(
               id={`modal-${id}`}
               class="modal-toggle"
               aria-hidden="true"
+              tabindex="-1"
             />
             <label
               for={`modal-${id}`}
               class="expand-btn"
+              role="button"
+              tabindex="0"
               aria-label={`Show details for ${data.title}`}
+              aria-controls={`details-${id}`}
+              aria-expanded="false"
+              data-modal-trigger
             >
               <span class="material-symbols-sharp" aria-hidden="true">
                 add_circle
@@ -57,20 +63,30 @@ const rendered = await Promise.all(
               <label
                 for={`modal-${id}`}
                 class="modal-scrim"
-                aria-label="Close details"
+                aria-hidden="true"
               />
-              <div class="modal-content" role="dialog" aria-label={data.title}>
+              <div
+                id={`details-${id}`}
+                class="modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={`details-title-${id}`}
+                tabindex="-1"
+              >
                 <label
                   for={`modal-${id}`}
                   class="modal-close"
+                  role="button"
+                  tabindex="0"
                   aria-label="Close details"
+                  data-modal-close
                 >
                   <span class="material-symbols-sharp" aria-hidden="true">
                     close
                   </span>
                 </label>
                 <div class="modal-prose">
-                  <h2>{data.title}</h2>
+                  <h2 id={`details-title-${id}`}>{data.title}</h2>
                   <Content />
                 </div>
               </div>
@@ -139,6 +155,13 @@ const rendered = await Promise.all(
 
   .expand-btn .material-symbols-sharp {
     font-size: inherit;
+  }
+
+  .expand-btn:focus-visible,
+  .modal-close:focus-visible {
+    outline: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-color-accent-400);
+    outline-offset: calc(var(--freefall-space-1) / 2);
   }
 
   /* ── Modal overlay ────────────────────────────── */
@@ -228,20 +251,89 @@ const rendered = await Promise.all(
 </style>
 
 <script>
-  // Progressive enhancement: Escape key closes modal, focus management
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      const open = document.querySelector(
-        ".modal-toggle:checked",
-      ) as HTMLInputElement | null;
-      if (open) {
-        open.checked = false;
-        // Return focus to the expand button
-        const label = open
-          .closest(".gear-item__card-wrap")
-          ?.querySelector<HTMLLabelElement>(".expand-btn");
-        label?.focus();
-      }
+  const toggles = document.querySelectorAll<HTMLInputElement>(".modal-toggle");
+
+  const getParts = (toggle: HTMLInputElement) => {
+    const wrapper = toggle.closest(".gear-item__card-wrap");
+    return {
+      trigger: wrapper?.querySelector<HTMLElement>("[data-modal-trigger]"),
+      dialog: wrapper?.querySelector<HTMLElement>('[role="dialog"]'),
+      close: wrapper?.querySelector<HTMLElement>("[data-modal-close]"),
+    };
+  };
+
+  const setModalOpen = (
+    toggle: HTMLInputElement,
+    open: boolean,
+    restoreFocus = true,
+  ) => {
+    const { trigger, close } = getParts(toggle);
+    toggle.checked = open;
+    trigger?.setAttribute("aria-expanded", String(open));
+
+    if (open) {
+      toggles.forEach((other) => {
+        if (other !== toggle && other.checked) {
+          setModalOpen(other, false, false);
+        }
+      });
+      requestAnimationFrame(() => close?.focus());
+    } else if (restoreFocus) {
+      trigger?.focus();
+    }
+  };
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("change", () => {
+      setModalOpen(toggle, toggle.checked);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const control = (event.target as Element | null)?.closest<HTMLElement>(
+      "[data-modal-trigger], [data-modal-close]",
+    );
+    if (control && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      control.click();
+      return;
+    }
+
+    const open = document.querySelector<HTMLInputElement>(
+      ".modal-toggle:checked",
+    );
+    if (!open) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setModalOpen(open, false);
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+    const { dialog } = getParts(open);
+    if (!dialog) return;
+
+    const focusable = dialog.querySelectorAll<HTMLElement>(
+      'a, button, [tabindex]:not([tabindex="-1"])',
+    );
+    if (focusable.length === 0) {
+      event.preventDefault();
+      dialog.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!dialog.contains(document.activeElement)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first).focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 </script>

@@ -5,15 +5,31 @@ interface Props {
    * Useful if you need to control or query the state externally.
    */
   id?: string;
+  controls?: string;
+  label?: string;
 }
 
-const { id = "hamburger-toggle" } = Astro.props;
+const {
+  id = "hamburger-toggle",
+  controls,
+  label = "Toggle navigation",
+} = Astro.props;
 ---
 
 <div class="hamburger-btn">
-    <input type="checkbox" id={id} class="toggle" />
+    <input type="checkbox" id={id} class="toggle" aria-hidden="true" tabindex="-1" />
 
-    <label for={id} class="target" aria-label="Toggle menu">
+    <label
+      id={`${id}-trigger`}
+      for={id}
+      class="target"
+      role="button"
+      tabindex="0"
+      aria-label={label}
+      aria-controls={controls}
+      aria-expanded="false"
+      data-hamburger-trigger
+    >
         <div class="bars" aria-hidden="true">
             <span class="bar top"></span>
             <span class="bar middle"></span>
@@ -54,6 +70,12 @@ const { id = "hamburger-toggle" } = Astro.props;
 
   .target:hover {
     background: var(--freefall-action-hover);
+  }
+
+  .target:focus-visible {
+    outline: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-color-accent-400);
+    outline-offset: calc(var(--freefall-space-1) / 2);
   }
 
   .bars {
@@ -113,4 +135,34 @@ const { id = "hamburger-toggle" } = Astro.props;
       )
       skewY(-45deg) scaleY(1.4142);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .target,
+    .bar {
+      transition-duration: 0.01ms;
+    }
+  }
 </style>
+
+<script>
+  document
+    .querySelectorAll<HTMLLabelElement>("[data-hamburger-trigger]")
+    .forEach((trigger) => {
+      const toggle = document.getElementById(
+        trigger.htmlFor,
+      ) as HTMLInputElement | null;
+      if (!toggle) return;
+
+      const syncExpanded = () => {
+        trigger.setAttribute("aria-expanded", String(toggle.checked));
+      };
+
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        trigger.click();
+      });
+      toggle.addEventListener("change", syncExpanded);
+      syncExpanded();
+    });
+</script>

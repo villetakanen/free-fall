@@ -6,15 +6,15 @@
 
 The Hamburger Button is an interactive UI component used to toggle navigation sidebars and trays (such as the AppTray). It provides an animated micro-interaction that cleanly transitions between a "menu" (three parallel horizontal bars) and a "close" (cross) state.
 
-In keeping with the FREE//FALL design system constraints, the visual state is managed entirely through pure CSS — shipping zero JavaScript to the client. The component also enforces the Material Design 3 (M3) spatial layout, adhering strictly to global spacing tokens while introducing a highly specific visual character.
+In keeping with the FREE//FALL design system constraints, the visual state and pointer interaction work without JavaScript. Progressive enhancement supplies keyboard button semantics and synchronizes expanded state for assistive technology. The control keeps the Material Design 3 (M3) target size while using FREE//FALL's sharp visual character.
 
 Parent spec: `specs/design-system/spec.md`
 
 ### Architecture
 
-**State management:**
+**Interaction contract:**
 
-The open/close interactive state is managed via the **CSS Checkbox Hack**. A visually hidden `<input type="checkbox">` stores the state, while the visible button container acts as an associated `<label>`. CSS sibling combinators (e.g., `input:checked + .bars-container`) trigger the animation. 
+The component owns a persistent boolean state control and a visible 48px trigger. Pointer activation and visual state work without JavaScript. With JavaScript available, the trigger behaves as a keyboard-operable button, references the region it controls, and exposes whether that region is expanded.
 
 **Visual Design & Sizing:**
 
@@ -22,15 +22,9 @@ The open/close interactive state is managed via the **CSS Checkbox Hack**. A vis
 - **Touch target size**: Matches M3 accessible targets utilizing existing layout grid tokens (`calc(6 * var(--freefall-space-1))` evaluates to 48px).
 - **Bars**: Three inner `<span>` pseudo-elements. The bars feature completely straight, non-rounded edges (`border-radius: 0`).
 
-**Animation Choreography:**
+**Visual transition:**
 
-Traditionally, CSS hamburger menus rotate their top and bottom bars to form an "X". To create a distinct, modern identity, **this component uses `skewY()` instead of `rotate()`**. Because the skew operation transforms the Y axis without altering the X plane bounds, the left and right outer vertical edges of the bars remain perfectly straight and vertical, creating a sharp stylized cross.
-
-1. **Top Bar**: Translates down to the Y-center, and applies `transform: skewY(45deg)`.
-2. **Bottom Bar**: Translates up to the Y-center, and applies `transform: skewY(-45deg)`.
-3. **Middle Bar**: Animates out purely via horizontal compression anchored entirely to the right edge. Specifically, width compresses using `transform-origin: right center; transform: scaleX(0.15);` alongside a neon yellow background color fade.
-
-All animations use an `ease-in-out` timing function stretching across 270ms.
+The parallel bars become a sharp skewed cross rather than a soft rotated icon. The transition preserves straight outer cuts and is suppressed when the user requests reduced motion. Exact transforms and timing are implementation details owned by `HamburgerButton.astro`.
 
 **Tokens used:**
 
@@ -44,11 +38,11 @@ All animations use an `ease-in-out` timing function stretching across 270ms.
 
 | File | Contents |
 |---|---|
-| `src/components/HamburgerButton.astro` | Astro markup: hidden checkbox, accessible label, animated bars. Co-located `<style>` block owns sizing, rounded flexbox container styling, and the `:checked` skew layout logic. |
+| `src/components/HamburgerButton.astro` | State, semantic trigger, animated bars, co-located styling, and progressive keyboard/ARIA enhancement. |
 
 ### Anti-Patterns
 
-- **No JavaScript**: The open/close core state and transition animation must not require JS or Svelte. No event listeners on the client.
+- **CSS baseline**: Pointer operation and visual state remain available without JavaScript or a framework island.
 - **No rotation for the X**: The top and bottom crossbars must exclusively use `skewY()` instead of `rotate()`. If horizontal lines become slanted but the vertical edges tilt, the specification is broken. The vertical outer cuts must stay completely vertical.
 - **No rounded edges on bars**: Bars must have sharp `border-radius: 0` geometry.
 - **No center-collapse on middle bar**: The middle bar must collapse strictly towards the absolute right, rather than scaling evenly toward the horizontal center. 
@@ -65,13 +59,16 @@ All animations use an `ease-in-out` timing function stretching across 270ms.
 - [ ] Top and bottom bars form an X using `translateY` offset and `skewY` (45deg / -45deg).
 - [ ] Left and right limits of all expanding/skewing bars act as perfectly vertical bounds.
 - [ ] Bars utilize sharp 0px border-radius edges.
+- [ ] The visible trigger exposes button semantics, its controlled region, and synchronized expanded state when JavaScript is available.
+- [ ] Enter and Space activate the focused trigger; focus remains visibly indicated.
+- [ ] Motion is suppressed when the user requests reduced motion.
 - [ ] Demo app mounts a reference subpage testing the toggle in standalone isolation.
 - [ ] Playwright e2e tests cover all Scenarios against build artifacts.
 - [ ] `pnpm build`, `pnpm lint`, and `pnpm test` tasks pass cleanly.
 
 ### Regression Guardrails
 
-- The component enforces 100% operation with client JavaScript explicitly disabled.
+- Pointer operation and visual state remain functional with client JavaScript disabled.
 - The visual vertical edges of the horizontal top and bottom bars must never become slanted at any point during or after the tween frame animation.
 
 ### Scenarios
@@ -85,6 +82,16 @@ Scenario: Toggle to open state
   Given: The hamburger button rests in its default parallel state
   When: The user clicks the round label target
   Then: The middle bar scales out of view toward the rigid right edge. The top and bottom bars snap to the collective center coordinates and skew oppositely at 45 degrees, establishing a sharply cut "X" formation.
+
+Scenario: Keyboard activation exposes state
+  Given: JavaScript is enabled and focus is on the trigger
+  When: The user presses Enter or Space
+  Then: The controlled region toggles and the trigger reports the resulting expanded state
+
+Scenario: Reduced motion
+  Given: The user requests reduced motion
+  When: The control changes state
+  Then: The visual state changes without a decorative transition
 
 Scenario: Hover state interactions
   Given: The user views the button

@@ -46,19 +46,11 @@ Each gear item renders as the card alone. A **(+)** expand button in the top-lef
 └──────────────────┘
 ```
 
-**Expand button:**
-- Position: absolute, top-left of the card wrapper
-- Size: `calc(5 * var(--freefall-space-1))` (matches binding circle diameter)
-- Visual: `+` icon (Material Symbol `add_circle`) on semi-transparent background
-- Color: `--freefall-color-primary-50` with same text-shadow treatment as card title
-
-**Modal:**
-- Full-viewport overlay with scrim (`rgba(0,0,0,0.6)`)
-- Content pane: `--freefall-bg-surface-1` background, max-width `90vw`, max-height `85vh`, overflow-y scroll
-- Close button (Material Symbol `close`) top-right of modal content
-- **CSS-driven** using the checkbox `:checked` + `:has()` pattern (consistent with AppTray) — no framework island
-- Each item gets its own checkbox (unique `id` per item)
-- Focus trap via progressive enhancement `<script>` (same pattern as AppTray)
+**Expand control and modal:**
+- Each card has its own visible, labeled detail trigger and controlled dialog.
+- Pointer opening, close control, and scrim dismissal remain functional without JavaScript.
+- Progressive enhancement adds Enter/Space activation, synchronized expanded state, modal semantics, focus entry and containment, Escape dismissal, and focus restoration.
+- The dialog remains within the viewport and scrolls internally when its prose is taller than the available space.
 
 #### Responsive breakpoint
 
@@ -81,7 +73,7 @@ The existing `getStaticPaths()` already provides the full item array with `data`
 
 ### Anti-Patterns
 
-- **No JS framework for the modal.** The checkbox + `:has()` pattern handles open/close. Progressive enhancement adds Escape key and focus trap.
+- **HTML/CSS baseline.** Pointer open/close behavior remains available without a framework island. JavaScript enhances semantics and focus behavior.
 - **No separate detail routes.** The description lives inline (desktop) or in a modal (mobile) — not on a new page.
 - **No layout component in design-system.** This layout is page-specific composition, not a reusable pattern.
 - **No hiding the card on desktop.** Both card and description are always visible on desktop — the card is not collapsed or replaced by the prose.
@@ -94,7 +86,10 @@ The existing `getStaticPaths()` already provides the full item array with `data`
 - [ ] Mobile (< 780px): each gear item shows GearCard only, with (+) button
 - [ ] Mobile (+) button opens a modal containing the item's markdown description
 - [ ] Modal closes via close button, Escape key, and scrim click
-- [ ] Modal uses checkbox `:has()` pattern — no framework JS
+- [ ] Pointer open/close controls work without JavaScript or a framework island
+- [ ] Trigger exposes its controlled dialog and synchronized expanded state
+- [ ] Dialog exposes modal semantics and an accessible title
+- [ ] Opening moves focus into the dialog; Tab remains contained; closing restores focus to the trigger
 - [ ] Each item's modal operates independently (opening one does not affect others)
 - [ ] Card receives correct `data` prop with category-specific fields
 - [ ] All 5 category pages render correctly with the new layout
@@ -104,7 +99,7 @@ The existing `getStaticPaths()` already provides the full item array with `data`
 
 - Gear content (titles, markdown bodies, frontmatter data) must render identically to before — only the layout changes
 - Navigation active states must still work on gear category pages
-- The page must remain functional with JavaScript disabled (modal simply doesn't open; description is accessible via the card's context)
+- Pointer opening, close control, and scrim dismissal remain functional with JavaScript disabled.
 
 ### Scenarios
 
@@ -132,6 +127,16 @@ Scenario: Modal closes via Escape
   Given: A modal is open showing a gear item's description
   When: The user presses Escape
   Then: The modal closes and focus returns to the (+) button
+
+Scenario: Modal contains keyboard focus
+  Given: A gear detail modal is open
+  When: The user tabs beyond its first or final control
+  Then: Focus wraps within the modal
+
+Scenario: Assistive technology receives dialog state
+  Given: JavaScript is enabled
+  When: A user opens a gear detail modal
+  Then: The trigger reports expanded state and the modal exposes its title and modal semantics
 
 Scenario: Multiple items independent
   Given: The weapons page shows 10 items

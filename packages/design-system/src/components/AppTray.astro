@@ -35,9 +35,9 @@ const { items, brandHref } = Astro.props;
 ---
 
 <div class="app-tray">
-  <HamburgerButton id="app-tray-toggle" />
+  <HamburgerButton id="app-tray-toggle" controls="app-tray-drawer" />
 
-  <div class="drawer">
+  <div id="app-tray-drawer" class="drawer">
     <nav id="app-tray-nav" class="nav" aria-label="Main navigation">
       {
         items.map((item: NavItem) => (
@@ -70,7 +70,7 @@ const { items, brandHref } = Astro.props;
   <label
     for="app-tray-toggle"
     class="scrim"
-    aria-label="Close navigation"></label>
+    aria-hidden="true"></label>
 </div>
 
 <style>
@@ -200,32 +200,64 @@ const { items, brandHref } = Astro.props;
       width: var(--app-tray-tray-width);
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .app-tray,
+    .drawer,
+    .scrim {
+      transition-duration: 0.01ms;
+    }
+  }
 </style>
 
 <script>
   const toggle = document.getElementById(
     "app-tray-toggle",
   ) as HTMLInputElement | null;
-  const drawer = document.getElementById("app-tray-nav");
+  const trigger = document.getElementById("app-tray-toggle-trigger");
+  const drawer = document.getElementById("app-tray-drawer");
 
-  if (toggle && drawer) {
+  if (toggle && trigger && drawer) {
     const isOverlay = () => !window.matchMedia("(min-width: 780px)").matches;
+    const getFocusable = () =>
+      drawer.querySelectorAll<HTMLElement>(
+        'a, button, [tabindex]:not([tabindex="-1"])',
+      );
+
+    const closeTray = () => {
+      toggle.checked = false;
+      toggle.dispatchEvent(new Event("change", { bubbles: true }));
+      trigger.focus();
+    };
+
+    toggle.addEventListener("change", () => {
+      trigger.setAttribute("aria-expanded", String(toggle.checked));
+      if (!toggle.checked) {
+        trigger.focus();
+        return;
+      }
+      if (!isOverlay()) return;
+
+      requestAnimationFrame(() => getFocusable()[0]?.focus());
+    });
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && toggle.checked) {
-        toggle.checked = false;
+        closeTray();
+        return;
       }
 
       if (e.key === "Tab" && toggle.checked && isOverlay()) {
-        const focusable = drawer.querySelectorAll<HTMLElement>(
-          'a, button, [tabindex]:not([tabindex="-1"])',
-        );
+        const focusable = getFocusable();
         if (focusable.length === 0) return;
 
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
 
-        if (e.shiftKey && document.activeElement === first) {
+        if (!drawer.contains(document.activeElement)) {
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+        } else if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();
           last.focus();
         } else if (!e.shiftKey && document.activeElement === last) {

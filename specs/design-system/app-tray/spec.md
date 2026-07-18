@@ -44,7 +44,7 @@ The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-deskt
 
 **Toggle mechanism:**
 
-A hidden `<input type="checkbox">` drives the open/closed state. The hamburger button and scrim are both `<label>` elements for the checkbox. CSS `:has(.app-tray__toggle:checked)` selectors control all visual state changes. No JavaScript is required for toggle, transitions, or scrim dismiss.
+The tray has a persistent HTML open/closed state with associated pointer controls, so opening, closing, responsive layout, and scrim dismissal remain available without JavaScript. Progressive enhancement adds keyboard button behavior, synchronized expanded state, and focus management. The concrete DOM and selectors are owned by `AppTray.astro` and `HamburgerButton.astro`.
 
 **Dimensions (grid-derived):**
 
@@ -94,6 +94,8 @@ The tray is an Astro component — server-rendered HTML + CSS with a small inlin
 
 **What JavaScript adds (progressive enhancement):**
 
+- Enter and Space activation with synchronized `aria-expanded` state
+- Focus moves into an opened overlay and returns to the trigger when it closes
 - `Escape` key closes the tray
 - Focus trap when tray overlays content (small + medium viewports)
 
@@ -110,8 +112,11 @@ When the tray is open on small or medium viewports (where it overlays content), 
 **Keyboard and accessibility (progressive enhancement):**
 
 - Tray container: `<nav>` with `aria-label="Main navigation"`
+- Toggle identifies the drawer it controls and reports expanded state
+- Opening an overlay moves focus to its first available destination
 - Focus trap when tray is open as overlay (small + medium) — requires JS
-- `Escape` closes the tray when open — requires JS
+- Closing by toggle, scrim, or `Escape` restores focus to the toggle
+- Reduced-motion preference suppresses tray and toggle transitions
 
 ### Contextual navigation
 
@@ -151,7 +156,10 @@ The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation
 - [ ] All dimensions use `calc()` with `--freefall-space-1` — no raw px/rem
 - [ ] Scrim renders on small + medium when tray is open; click-to-close works without JS
 - [ ] Focus trap active when tray overlays content (progressive enhancement)
+- [ ] Keyboard activation and expanded state remain synchronized (progressive enhancement)
+- [ ] Opening an overlay moves focus inside; closing by any supported method restores focus to the trigger
 - [ ] `Escape` key closes the tray (progressive enhancement)
+- [ ] Reduced-motion preference suppresses decorative transitions
 - [ ] Transitions match specified durations
 - [ ] Demo app has an app-tray reference page showing the component at all breakpoints
 - [ ] Demo app shows a scoped ("subsite") `navItems` configuration whose first item is an `arrow_back` uplink, rendering with the same rail/overlay/push behavior as the global nav
@@ -204,7 +212,17 @@ Scenario: No-JS baseline works
 Scenario: Escape closes the tray (JS enhancement)
   Given: JavaScript is enabled and the tray is open
   When: The user presses Escape
-  Then: The tray closes
+  Then: The tray closes and focus returns to its trigger
+
+Scenario: Keyboard focus stays in an overlay
+  Given: JavaScript is enabled and the tray is open below the desktop breakpoint
+  When: The user tabs forward or backward past the final destination
+  Then: Focus wraps to the opposite end of the tray
+
+Scenario: Reduced motion
+  Given: The user requests reduced motion
+  When: The tray opens or closes
+  Then: Its state changes without decorative transitions
 
 Scenario: Scrim click closes the tray
   Given: The tray is open on small or medium viewport
