@@ -1,6 +1,6 @@
 {
-  "last_active_skill": "scenario-content-creator",
+  "last_active_skill": "next-task",
   "status": "completed",
-  "handoff_required": false,
+  "handoff_required": true,
   "next_recommended_skill": ""
 }
