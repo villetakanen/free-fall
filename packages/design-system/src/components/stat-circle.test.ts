@@ -22,11 +22,11 @@ interface Props {
 
 function deriveState(props: Props) {
   const { type, attribute, value, disabled, bound } = props;
+  const isVoid = value === null && !disabled;
   const isDisabled = disabled || value === null;
   const isBound = !isDisabled && bound;
-  const displayLabel = attribute
-    ? attribute.slice(0, 5).toUpperCase()
-    : undefined;
+  const displayLabel =
+    attribute && !isVoid ? attribute.slice(0, 5).toUpperCase() : undefined;
   const displayValue = isDisabled ? "\u2205" : value;
 
   const circleClass = [
@@ -145,11 +145,21 @@ describe("StatCircle state derivation", () => {
       expect(s.displayLabel).toBe("GHOST");
     });
 
-    it("label renders even when disabled", () => {
+    it("void hides the label", () => {
       const s = deriveState({
         type: "body",
         attribute: "Body",
         value: null,
+      });
+      expect(s.displayLabel).toBeUndefined();
+    });
+
+    it("explicit disabled shows the label", () => {
+      const s = deriveState({
+        type: "body",
+        attribute: "Body",
+        value: 2,
+        disabled: true,
       });
       expect(s.displayLabel).toBe("BODY");
     });

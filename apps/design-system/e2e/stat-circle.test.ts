@@ -80,7 +80,7 @@ test.describe("StatCircle demo page", () => {
     test("value=null renders empty-set symbol", async ({ page }) => {
       const section = page
         .locator(".demo-section")
-        .filter({ hasText: "Disabled / Null" });
+        .filter({ hasText: "Void / Disabled" });
       const nullRow = section
         .locator(".circle-row")
         .filter({ hasText: "value=null" });
@@ -94,7 +94,7 @@ test.describe("StatCircle demo page", () => {
     test("value=null uses disabled class", async ({ page }) => {
       const section = page
         .locator(".demo-section")
-        .filter({ hasText: "Disabled / Null" });
+        .filter({ hasText: "Void / Disabled" });
       const nullRow = section
         .locator(".circle-row")
         .filter({ hasText: "value=null" });
@@ -105,7 +105,7 @@ test.describe("StatCircle demo page", () => {
     test("explicit disabled renders empty-set symbol", async ({ page }) => {
       const section = page
         .locator(".demo-section")
-        .filter({ hasText: "Disabled / Null" });
+        .filter({ hasText: "Void / Disabled" });
       const disabledRow = section
         .locator(".circle-row")
         .filter({
@@ -123,7 +123,7 @@ test.describe("StatCircle demo page", () => {
     test("value=0 is NOT disabled", async ({ page }) => {
       const section = page
         .locator(".demo-section")
-        .filter({ hasText: "Disabled / Null" });
+        .filter({ hasText: "Void / Disabled" });
       const zeroRow = section
         .locator(".circle-row")
         .filter({ hasText: "value=0" });
@@ -136,7 +136,7 @@ test.describe("StatCircle demo page", () => {
     test("value=0 uses type class, not disabled", async ({ page }) => {
       const section = page
         .locator(".demo-section")
-        .filter({ hasText: "Disabled / Null" });
+        .filter({ hasText: "Void / Disabled" });
       const zeroRow = section
         .locator(".circle-row")
         .filter({ hasText: "value=0" });
