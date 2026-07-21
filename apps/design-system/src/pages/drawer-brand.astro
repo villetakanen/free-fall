@@ -11,11 +11,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
       .demo-container {
         container-type: inline-size;
+        box-sizing: content-box;
         border: calc(var(--freefall-space-1) / 4) dashed white;
         padding: 0;
       }
       .demo-container--rail {
-        width: calc(10 * var(--freefall-space-1));
+        width: calc(8 * var(--freefall-space-1));
       }
       .demo-container--open {
         width: calc(40 * var(--freefall-space-1));
@@ -51,7 +52,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <div class="demo-section">
     <h2>Rail State</h2>
     <p class="demo-label">
-      container width: calc(10 * var(--freefall-space-1)) · 80px
+       query container width: calc(8 * var(--freefall-space-1)) · 64px
     </p>
     <div class="demo-container demo-container--rail">
       <DrawerBrandDemo href="/drawer-brand/" />

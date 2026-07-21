@@ -33,25 +33,29 @@ The entire strip is a single `<a>` element wrapping the logo and caption. This k
 
 **Responsive behaviour — CSS Container Query:**
 
-The component reuses the same container-query pattern as `TrayButton`. The `app-tray__rail-column` already declares `container-type: inline-size`. When the container is narrow (rail), the caption text is hidden; when the container is wide (tray open), the caption is revealed.
+The component reuses the same container-query pattern as `TrayButton`. The
+AppTray `.drawer` declares `container-type: inline-size`. When its query box is
+narrow, the caption is visually hidden; when it is wider, the caption appears.
 
 ```
-@container (max-width: 160px) → hide caption, center logo
-@container (min-width: 161px) → show caption beside logo
+@container (max-width: 64px) → hide caption, center logo
+@container (min-width: 64.01px) → show caption beside logo
 ```
 
 No media queries — all layout shifts are driven by the parent container width.
 
 **Placement inside AppTray:**
 
-The component renders as the last child inside `.app-tray__rail-column`, below the `<nav>`. It is pushed to the bottom via `margin-top: auto` on the component's root element (the `.app-tray__rail-column` is already `display: flex; flex-direction: column`).
+The component renders as the last child of AppTray's flex-column `.drawer`.
+The preceding `.nav` uses `flex: 1`, so the brand occupies the drawer's bottom
+position while navigation owns and scrolls the remaining space.
 
 **Component structure:**
 
 | File | Contents |
 |---|---|
 | `src/components/DrawerBrand.astro` | Astro component — `<a>` wrapper, inline SVG logo, caption text |
-| `src/styles/drawer-brand.css` | Layout, container-query rules, spacing, link reset |
+Styles are co-located in `DrawerBrand.astro`.
 
 **Props:**
 
@@ -63,25 +67,29 @@ The component renders as the last child inside `.app-tray__rail-column`, below t
 
 | Dimension | Formula | Resolves to |
 |---|---|---|
-| Logo size | `calc(6 * var(--freefall-space-1))` | 3rem (48px) |
+| Logo size | `calc(4 * var(--freefall-space-1))` | 2rem (32px) |
 | Strip padding | `var(--freefall-space-2)` | 1rem (16px) |
 | Gap (logo ↔ text) | `var(--freefall-space-2)` | 1rem (16px) |
-| Bottom margin | `var(--freefall-space-2)` | 1rem (16px) |
 
 **Logo rendering:**
 
-The Myrrys logo SVG (`src/assets/myrrys-logo.svg`) is imported with `?raw` and rendered inline via `set:html`. The SVG contains two `<path>` elements with gradient fills (yellow-to-orange, `#ccda0b` → `#eda01b`) that define the brand identity. CSS must not override these fills — the logo renders with its native gradients at all times.
+The Myrrys logo SVG (`src/assets/myrrys-logo.svg`) is imported with `?raw` and
+rendered inline via `set:html`. Its two paths use the same solid `#EDA01B` fill.
+CSS does not override that native fill. The mark has a thin link-colored border
+and token-derived inset padding.
 
 **Caption text:**
 
 Two lines inside a `<span>`, styled with the `.text-caption` editorial class:
 
 ```
-© Kustannusosakeyhtiö Myrrys
+© Myrrys 2026
 MIT / CC-BY
 ```
 
 The text uses `var(--freefall-text-muted)` colour and `letter-spacing: 0.05em` (inherited from `.text-caption`). The line break is a `<br>` — no dynamic layout.
+The fixed accessible name is `Kustannusosakeyhtiö Myrrys`, preserving
+the full publisher name independently of the compact visible copy.
 
 **Link styling:**
 
@@ -94,30 +102,30 @@ The `<a>` wrapper resets text-decoration and inherits colour. On `:hover` / `:fo
 - **No separate rail/tray DOM** — One set of elements adapts via container query. Do not duplicate the logo or conditionally render different markup for rail vs tray.
 - **No raw px/rem values** — All dimensions derive from `--freefall-space-1`.
 - **No framework island** — Astro component, server-rendered. No client-side JS.
-- **No CSS fill overrides on the logo** — The Myrrys logo uses intentional brand gradients. Do not override `fill` with `currentColor` or any other value.
+- **No CSS fill overrides on the logo** — Preserve the source SVG's solid fill.
 - **No content duplication** — The licence text lives only in this component. The about page explains the terms; the component merely links to it.
 
 ## Contract
 
 ### Definition of Done
 
-- [ ] `DrawerBrand.astro` renders inside `AppTray` as the last child of `.app-tray__rail-column`
-- [ ] `href` prop defaults to `"/about"` and is configurable by consuming apps
-- [ ] Rail mode (container ≤ 160px): only the nine-tail logo is visible, centered
-- [ ] Open mode (container > 160px): logo and caption text appear side-by-side
-- [ ] Caption reads "© Kustannusosakeyhtiö Myrrys" / "MIT / CC-BY" with `.text-caption` styling
-- [ ] The entire strip is a single `<a>` element — accessible click target
-- [ ] Logo renders with its native gradient fills (yellow-to-orange brand colours preserved)
-- [ ] All dimensions use `calc()` with `--freefall-space-1` — no raw px/rem
-- [ ] Container-query driven — no media queries in `drawer-brand.css`
-- [ ] Hover/focus states provide visible feedback with accent outline
-- [ ] `drawer-brand.css` is imported via `base.css`
-- [ ] Design-system demo app has a `/drawer-brand` reference page
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `DrawerBrand.astro` renders inside `AppTray` as the final child after the flexible nav
+- [x] `href` prop defaults to `"/about"` and is configurable by consuming apps
+- [x] Rail mode (query box ≤ 64px): only the logo is visible and centered
+- [x] Open mode (query box > 64px): logo and caption text appear side-by-side
+- [x] Caption reads "© Myrrys 2026" / "MIT / CC-BY" with `.text-caption` styling
+- [x] The entire strip is a single `<a>` element
+- [x] Logo renders with its native solid fill
+- [x] Dimensions derive from spacing tokens
+- [x] Container-query driven with no component media query
+- [x] Hover and keyboard focus provide visible feedback; focus has an accent outline
+- [x] Styles are co-located in `DrawerBrand.astro`
+- [x] Design-system demo app has a `/drawer-brand/` reference page with real query containers
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
-- The branding strip must never overlap or push nav items out of view — it sits below them with `margin-top: auto`
+- The branding strip must never overlap nav items; the flexible, scrollable nav precedes it
 - Logo must remain visible in rail mode — do not hide the entire component when the tray is collapsed
 - Link must be keyboard-focusable and have a visible focus indicator
 - Caption must not wrap to a third line at tray width (320px) — verify the Finnish publisher name fits
@@ -133,7 +141,7 @@ Scenario: Rail mode — logo only
 Scenario: Open mode — logo and caption
   Given: The AppTray is open (full tray width)
   When: The drawer expands
-  Then: The caption text "© Kustannusosakeyhtiö Myrrys" / "MIT / CC-BY" appears to the right of the logo
+  Then: The caption text "© Myrrys 2026" / "MIT / CC-BY" appears to the right of the logo
 
 Scenario: Link navigates to about page (app)
   Given: The DrawerBrand is rendered in `@free-fall/app` with default `href`
