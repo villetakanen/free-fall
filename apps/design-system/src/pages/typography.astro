@@ -7,6 +7,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h1 class="text-chapter" style="margin-bottom: 2rem;">Typography System</h1>
 
     <section style="margin-bottom: 4rem;">
+      <h2 class="text-section" style="margin-bottom: 1rem;">Typefaces</h2>
+      <p style="font-family: var(--freefall-font-body);">
+        Lato carries editorial prose and product copy in weights 300, 400, 700,
+        and 900.
+      </p>
+      <p style="font-family: var(--freefall-font-mono);">
+        IBM Plex Mono carries structured data and system labels in weights 400
+        and 500.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 4rem;">
       <h2 class="text-section" style="margin-bottom: 1rem;">
         Editorial Class Hierarchy
       </h2>
@@ -178,18 +190,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <section style="margin-bottom: 4rem;">
       <h2 class="text-section" style="margin-bottom: 1rem;">
-        .freefall-prose Scope Integration
+        Rich Text in main
       </h2>
       <div
-        class="freefall-prose"
         style="padding: 2rem; background: var(--freefall-bg-surface-1); border-radius: 4px;"
       >
         <!-- Simulating markdown output -->
         <h1 id="chapter">Chapter 1: The Void</h1>
         <p>
-          This is a standard paragraph showing body text within the prose scope.
-          Notice how it strictly adheres to a maximum layout measure of 65
-          characters to remain highly legible and comfortable to read.
+          This standard paragraph shows naked rich text under the document's
+          main scope. The surrounding content grid, not typography, owns the
+          67-character reading measure.
         </p>
 
         <h2 id="section">Mechanical Systems</h2>
@@ -197,7 +208,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <h3 id="subsection">Granular Rulings</h3>
         <ul>
-          <li>This is a list item inside a prose scope.</li>
+          <li>This is a list item inside the main rich-text scope.</li>
           <li>It should inherit proper line-height and tight indentation.</li>
         </ul>
 

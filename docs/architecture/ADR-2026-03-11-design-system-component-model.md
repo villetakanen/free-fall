@@ -1,6 +1,6 @@
 # ADR-2026-03-11: Design System Component Model and CSS Architecture
 
-**Status:** Accepted (implemented 2026-03-11; status updated 2026-07-05)
+**Status:** Superseded by [ADR-2026-07-19](./ADR-2026-07-19-design-system-contract-boundaries.md)
 
 **Date:** 2026-03-11
 

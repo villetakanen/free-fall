@@ -6,7 +6,9 @@
 
 The Tray Link Group specifies the pattern for secondary/nested navigation links in the AppTray. As seen in interfaces like the Gemini web UI and other Material 3 implementations, these inner links appear dynamically when the tray is opened and are hidden when the tray operates as a minimized rail. On mobile viewports (where the tray is fully expanded as an overlay), they are visible by default. 
 
-In FREE//FALL, this pattern will be used to display an index of `core-rules` articles directly within the opened drawer, allowing immediate navigation without loading an intermediate index page. It relies entirely on CSS and progressive enhancement, fitting into the existing design system architecture cleanly.
+In FREE//FALL, the group is gated by both navigation context and geometry. The
+consumer sets `active` only for the current primary location; CSS then hides
+that active group's links in a rail-sized query box.
 
 Parent spec: `specs/design-system/spec.md`
 
@@ -15,8 +17,9 @@ Parent spec: `specs/design-system/spec.md`
 **State management:**
 
 Similar to `TrayButton`, the visibility of `TrayLinkGroup` is strictly driven by CSS Container Queries (`@container`) targeting the parent container's `inline-size`.
-- **Minimized (Rail):** When the tray is collapsed (e.g. width `<= 64px`), the secondary links are removed from the layout context (e.g., `display: none` or `visibility: hidden`) or structurally collapsed to avoid clutter and prevent them from being reachable by keyboard.
-- **Open (Tray):** When the container fluidly expands, the links are revealed.
+- **Inactive primary location:** `active` defaults false and the group is `display: none` at every width.
+- **Minimized (Rail):** At query box width `<= 64px`, even an active group is `display: none`.
+- **Open (Tray):** Above 64px, an active group is displayed.
 
 **Visual Design & Sizing:**
 
@@ -33,6 +36,25 @@ Similar to `TrayButton`, the visibility of `TrayLinkGroup` is strictly driven by
 | `packages/design-system/src/components/TrayLinkGroup.astro` | Renders a semantic nested list structure (`<ul>`, `<li>`) that houses the secondary links. Co-located `<style>` block owns visibility via `@container` query logic, indentation. |
 | `packages/design-system/src/components/TrayLink.astro` | Individual link component within the group, providing semantic `<a>` tags and localized text truncation. Co-located `<style>` block owns hierarchical typography rules and interaction states. |
 
+**Props:**
+
+TrayLinkGroup:
+
+| Prop | Type | Required | Default | Purpose |
+|---|---|---|---|---|
+| `ariaLabel` | `string` | no | `"Secondary Navigation"` | Accessible list label |
+| `active` | `boolean` | no | `false` | Allows the group to display for the current primary location |
+
+Its default slot accepts list-item content, normally TrayLink instances.
+
+TrayLink:
+
+| Prop | Type | Required | Default | Purpose |
+|---|---|---|---|---|
+| `href` | `string` | yes | — | Link destination |
+| `label` | `string` | yes | — | Visible destination label |
+| `active` | `boolean` | no | falsy | Sets `aria-current="page"` |
+
 ### Anti-Patterns
 
 - **JavaScript Observer Dependencies:** Do not depend on JavaScript event listeners to toggle visibility when resizing or opening the tray. All geometric layout shifts must be CSS-driven via `@container`.
@@ -44,14 +66,15 @@ Similar to `TrayButton`, the visibility of `TrayLinkGroup` is strictly driven by
 
 ### Definition of Done
 
-- [ ] `TrayLinkGroup.astro` and `TrayLink.astro` are implemented.
-- [ ] Component renders a semantic nested list of secondary links.
-- [ ] CSS Container Queries (`@container`) are exclusively used to show the links in expanded mode and collapse them entirely (hiding from view and layout) in minimized rail mode.
-- [ ] Links are styled with smaller typography and clear truncation (ellipsis) preventing layout warp on long article titles.
-- [ ] Nested links are unreachable via keyboard (tab order) when the tray is minimized.
-- [ ] Demo app mounts a reference page (`tray-link-group.astro`) that tests the group within simulated `<div data-tray-state="open">` and `<div data-tray-state="minimized">` contexts.
+- [x] `TrayLinkGroup.astro` and `TrayLink.astro` are implemented.
+- [x] Components render a semantic list with list items and links.
+- [x] `active` gates group visibility before geometry is considered.
+- [x] A `64px` query-box threshold hides active groups in rail mode.
+- [x] Links use smaller typography and truncate long labels with ellipsis.
+- [x] Hidden groups use `display: none`, removing links from tab order.
+- [x] Demo uses real inline-size query containers rather than inert state attributes.
 - [ ] Playwright e2e tests cover all specified Scenarios.
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass optimally.
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass.
 
 ### Regression Guardrails
 

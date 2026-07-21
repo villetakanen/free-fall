@@ -10,6 +10,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         margin-bottom: calc(4 * var(--freefall-space-1));
       }
       .demo-container {
+        container-type: inline-size;
+        box-sizing: content-box;
         border: calc(var(--freefall-space-1) / 4) dashed
           var(--freefall-border-subtle);
         border-radius: calc(var(--freefall-space-1));
@@ -17,7 +19,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         margin-top: var(--freefall-space-2);
       }
       .demo-container--minimized {
-        width: calc(10 * var(--freefall-space-1));
+        width: calc(8 * var(--freefall-space-1));
       }
       .demo-container--open {
         width: calc(40 * var(--freefall-space-1));
@@ -35,17 +37,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <p>
     An adaptive navigation button for the AppTray. Displays an icon and text
     label in the expanded state, and collapses to icon-only when its parent
-    container signals minimized state via
-    <code>data-tray-state="minimized"</code>. No JavaScript required — layout
-    adapts entirely through CSS.
+    query is 64px or narrower. No JavaScript or state attribute is required:
+    layout adapts entirely from the nearest inline-size query container.
   </p>
 
   <div class="demo-section">
     <h2>Open State</h2>
     <p class="demo-label">
-      data-tray-state="open" · width: calc(40 * var(--freefall-space-1))
+      query container width: calc(40 * var(--freefall-space-1))
     </p>
-    <div class="demo-container demo-container--open" data-tray-state="open">
+    <div class="demo-container demo-container--open">
       <TrayButtonDemo icon="home" label="Home" href="/" />
       <TrayButtonDemo icon="palette" label="Design Tokens" href="/tokens/" />
       <TrayButtonDemo
@@ -53,6 +54,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         label="Typography"
         href="/typography/"
         active
+      />
+      <TrayButtonDemo
+        icon="arrow_back"
+        label="Back to catalog"
+        href="/"
+        variant="uplink"
       />
       <TrayButtonDemo
         icon="emoji_symbols"
@@ -65,11 +72,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <div class="demo-section">
     <h2>Minimized State</h2>
     <p class="demo-label">
-      data-tray-state="minimized" · width: calc(10 * var(--freefall-space-1))
+      query container width: calc(8 * var(--freefall-space-1)) · 64px
     </p>
     <div
       class="demo-container demo-container--minimized"
-      data-tray-state="minimized"
     >
       <TrayButtonDemo icon="home" label="Home" href="/" />
       <TrayButtonDemo icon="palette" label="Design Tokens" href="/tokens/" />
@@ -95,7 +101,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </p>
 
     <h3>Active / Selected</h3>
-    <div class="demo-container demo-container--open" data-tray-state="open">
+    <div class="demo-container demo-container--open">
       <TrayButtonDemo icon="home" label="Home (default)" href="/" />
       <TrayButtonDemo icon="home" label="Home (active)" href="/" active />
     </div>
@@ -106,7 +112,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <p class="demo-label">Label truncates with ellipsis when constrained.</p>
     <div
       class="demo-container"
-      data-tray-state="open"
       style={`width: calc(24 * var(--freefall-space-1));`}
     >
       <TrayButtonDemo

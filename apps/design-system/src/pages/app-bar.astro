@@ -42,9 +42,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <h1>App Bar</h1>
   <p>
-    M3-style top app bar. Transparent background, 80px left margin to clear the
-    navigation rail / hamburger button. Accepts a <code>title</code> prop and a default
-    slot for trailing actions pushed to the right.
+    M3-style top app bar. Transparent background, with 64px mobile clearance
+    for the hamburger button and zero left margin at tablet sizes and above.
+    Accepts a <code>title</code> prop and a default slot for trailing actions pushed
+    to the right.
   </p>
 
   <div class="demo-section">
@@ -121,11 +122,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         >
         <td
           style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
-          >calc(10 * var(--freefall-space-1))</td
+          >calc(8 * var(--freefall-space-1)) mobile; 0 tablet+</td
         >
         <td
           style="padding: var(--freefall-space-1) var(--freefall-space-2); border-bottom: calc(var(--freefall-space-1) / 4) solid var(--freefall-border-subtle);"
-          >80px</td
+          >64px mobile; 0 tablet+</td
         >
       </tr>
       <tr>

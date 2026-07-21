@@ -100,13 +100,14 @@ Type modifier classes (`.stat-circle--body`, etc.) override only `--_sc-bg` and 
 
 ### Definition of Done
 
-- [ ] StatCircle renders all three types (body, mind, ghost) with correct attribute colors
-- [ ] Disabled state renders `∅` in cobalt colors when `disabled` is true or `value` is null
-- [ ] Bound state shows solid foreground color with glow; disabled circles ignore `bound`
-- [ ] Optional `attribute` label renders below the circle, uppercase, max 5 chars, `.text-ui-small`
-- [ ] Custom sizing via `--freefall-stat-circle-size` scales circle and value text proportionally
-- [ ] Component passes `pnpm typecheck`
-- [ ] Design system demo page at `/stat-circle/` exercises all variants
+- [x] StatCircle renders all three types with their attribute colors
+- [x] Void and disabled states render `∅` in neutral colors
+- [x] Void hides an attribute label while explicit disabled preserves it
+- [x] Bound state shows solid foreground color with glow; disabled circles ignore `bound`
+- [x] Optional visible label is uppercase, max 5 chars, and `.text-ui-small`
+- [x] Custom sizing via `--freefall-stat-circle-size` scales circle and value text proportionally
+- [x] Component passes `pnpm typecheck`
+- [x] Design system demo page at `/stat-circle/` exercises void, disabled, bound, zero, labels, and sizing
 
 ### Regression Guardrails
 

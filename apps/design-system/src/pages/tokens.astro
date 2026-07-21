@@ -68,6 +68,16 @@ const semanticTokens = [
     ref: "primary-200",
   },
   {
+    name: "--freefall-text-high",
+    role: "Explicit high-emphasis text",
+    ref: "primary-50",
+  },
+  {
+    name: "--freefall-text-link",
+    role: "Links and definition emphasis",
+    ref: "accent-500",
+  },
+  {
     name: "--freefall-border-subtle",
     role: "Dividers, low-contrast",
     ref: "primary-800",
@@ -235,6 +245,13 @@ const semanticTokens = [
 
   <h1>Design Tokens</h1>
 
+  <p>
+    This page covers every base palette and public semantic color token, plus
+    the text-shadow and spacing families. Typography and content dimensions are
+    demonstrated on their owning reference pages; responsive behavior exercises
+    the breakpoint and content-grid tokens.
+  </p>
+
   <h2>Primary Palette — Deep Space Cobalt</h2>
   <div class="swatch-grid">
     {
@@ -307,7 +324,7 @@ const semanticTokens = [
     }
   </div>
 
-  <h2>Semantic Tokens</h2>
+  <h2>Semantic Color Tokens</h2>
   <ul class="semantic-list">
     {
       semanticTokens.map((token) => (

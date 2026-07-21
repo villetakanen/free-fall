@@ -61,7 +61,7 @@ Parent spec: `specs/design-system/design-tokens/spec.md`
 | `--freefall-attr-ghost` | `accent-400` | Ghost attribute foreground |
 | `--freefall-attr-ghost-bg` | `accent-900` | Ghost attribute background |
 
-**Consumer update:** `GearCard.astro` binding circles should migrate from hardcoded palette references (`--freefall-color-primary-600`, `--freefall-color-accent-400`, `--freefall-color-primary-200`) to the new semantic tokens (`--freefall-attr-body`, `--freefall-attr-mind`, `--freefall-attr-ghost`). Text color on each circle should be chosen for contrast against the new backgrounds.
+**Consumer:** `GearCard.astro` delegates binding circles to `StatCircle.astro`, which consumes the foreground and background attribute tokens. Text color on each circle is chosen from the paired semantic tokens.
 
 ### Dependencies
 
@@ -77,11 +77,11 @@ Parent spec: `specs/design-system/design-tokens/spec.md`
 
 ### Definition of Done
 
-- [ ] `tokens.css` defines `--freefall-color-body-{400,900}` and `--freefall-color-mind-{400,900}` base palette tokens
-- [ ] `tokens.css` defines all 6 `--freefall-attr-*` semantic tokens referencing the correct base palette values
-- [ ] GearCard binding circles use `--freefall-attr-body`, `--freefall-attr-mind`, `--freefall-attr-ghost` semantic tokens
-- [ ] DS docs token page shows the new attribute color swatches
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm typecheck` pass
+- [x] `tokens.css` defines `--freefall-color-body-{400,900}` and `--freefall-color-mind-{400,900}` base palette tokens
+- [x] `tokens.css` defines all 6 `--freefall-attr-*` semantic tokens referencing the correct base palette values
+- [x] `StatCircle` uses the paired Body, Mind, and Ghost semantic tokens for GearCard binding circles
+- [x] DS docs token page shows the attribute color swatches
+- [x] `pnpm build`, `pnpm lint`, and `pnpm typecheck` pass
 
 ### Regression Guardrails
 
@@ -93,7 +93,7 @@ Parent spec: `specs/design-system/design-tokens/spec.md`
 
 ```
 Scenario: Body binding circle uses Flare Orange
-  Given: An GearCard with binding { body: 2 }
+  Given: A GearCard with binding { body: 2 }
   When: Rendered
   Then: The Body circle background resolves to hsl(18, 90%, 55%)
 

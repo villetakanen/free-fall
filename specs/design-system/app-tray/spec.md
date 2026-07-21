@@ -4,7 +4,7 @@
 
 ### Context
 
-The app tray is the primary navigation surface for FREE//FALL. It follows the Material 3 navigation drawer pattern — a collapsible side panel that adapts across breakpoints from a full-screen modal on small viewports to a persistent rail + tray on large ones. A hamburger button with a micro-interaction animation (menu/close morph) controls the open/closed state at every breakpoint.
+The app tray is the primary navigation surface for FREE//FALL. It follows the Material 3 navigation drawer pattern: a collapsible side panel that adapts from a viewport-capped modal drawer on small viewports to a persistent rail and tray on larger ones. A hamburger button with a bar-to-cross micro-interaction controls the open/closed state at every breakpoint.
 
 The component is built with progressive enhancement: all layout, toggle, transitions, and scrim work with pure HTML + CSS. A small inline script adds keyboard support (Escape to close) and focus trap (modal overlay mode) as enhancements.
 
@@ -16,7 +16,7 @@ Parent spec: `specs/design-system/spec.md`
 
 | Viewport | Breakpoint | Closed state | Open state |
 |---|---|---|---|
-| Small (default) | < 620px | Hidden (off-screen) | Full-screen overlay |
+| Small (default) | < 620px | Hidden (off-screen) | Modal drawer, 320px wide and capped by viewport |
 | Medium (tablet) | >= 620px | Navigation rail | Full drawer (overlay on content) |
 | Large (desktop) | >= 780px | Navigation rail | Tray (pushes content) |
 
@@ -58,11 +58,14 @@ The tray has a persistent HTML open/closed state with associated pointer control
 | Tray item rail padding | `calc(1.5 * var(--freefall-space-1))` | 12px horizontal |
 | Minimized Button Size | `calc(6 * var(--freefall-space-1))` | 48px square |
 
-*Math note on perfect center alignment*: To ensure the `TrayButton` icons align perfectly under the center axis of the `HamburgerButton` (which sits at `16px` left + `24px` radius = `40px` center), the `.app-tray__nav` enforces a precisely matching `12px` horizontal boundary padding. In minimized state, buttons force a `48px` absolute square using an auto-margin that resolves to `4px`. (`12px` nav padding + `4px` margin = `16px` button left edge, mirroring the Hamburger button perfectly).
+The drawer itself is the inline-size query container. Its horizontal padding
+leaves a query box at or below the shared `64px` threshold in rail mode, so
+TrayButton and DrawerBrand collapse without receiving expanded state.
 
 **Hamburger button micro-interaction:**
 
-The hamburger icon animates between `menu` and `close` states using a CSS transition. Uses the Material Symbols Sharp `menu` and `close` ligatures. The transition morphs between the two glyphs via opacity crossfade — no custom SVG path animation. Driven entirely by checkbox `:checked` state.
+Three structural bars morph into a sharp skewed cross from checkbox `:checked`
+state. See the HamburgerButton spec for its prop and motion contract.
 
 **Surface styling:**
 
@@ -81,14 +84,13 @@ The tray is an Astro component — server-rendered HTML + CSS with a small inlin
 
 | File | Contents |
 |---|---|
-| `src/components/AppTray.astro` | Astro component — checkbox toggle, main container acting as both rail and tray, scrim, inline script |
-| `src/styles/app-tray.css` | Layout, dimensions, responsive rules, width transitions — all driven by `:has(:checked)` |
+| `src/components/AppTray.astro` | Astro component — AppTray composition, co-located layout/styles, scrim, and progressive enhancement script |
 
 **What works without JavaScript:**
 
 - Hamburger toggle (checkbox + label)
 - Drawer slide-in/out transitions
-- Hamburger icon crossfade
+- Hamburger bar morph
 - Scrim display and click-to-close (label for same checkbox)
 - All responsive modes (rail, overlay, push)
 
@@ -107,7 +109,7 @@ When the tray is open on small or medium viewports (where it overlays content), 
 
 - Tray slide: `transform` with `200ms ease-out` (open), `150ms ease-in` (close)
 - Scrim fade: `opacity` with matching duration
-- Hamburger crossfade: `150ms`
+- Hamburger bar transition: `270ms` (see HamburgerButton)
 
 **Keyboard and accessibility (progressive enhancement):**
 
@@ -117,6 +119,18 @@ When the tray is open on small or medium viewports (where it overlays content), 
 - Focus trap when tray is open as overlay (small + medium) — requires JS
 - Closing by toggle, scrim, or `Escape` restores focus to the toggle
 - Reduced-motion preference suppresses tray and toggle transitions
+
+**Props:**
+
+| Prop | Type | Required | Default | Purpose |
+|---|---|---|---|---|
+| `items` | `NavItem[]` | yes | — | Ordered primary navigation items |
+| `brandHref` | `string` | no | DrawerBrand default | Publisher link destination |
+
+Each `NavItem` requires `icon`, `label`, and `href`; accepts `active`,
+`variant: "nav" | "uplink"`, and `subItems`. Each sub-item requires `label` and
+`href` and accepts `active`. Active primary items set `aria-current` and gate
+their TrayLinkGroup; active sub-items set `aria-current` on TrayLink.
 
 ### Contextual navigation
 
@@ -140,31 +154,30 @@ The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation
 - **No fixed pixel widths** — All dimensions derive from `--freefall-space-1`. No raw px or rem values in the CSS.
 - **No z-index wars** — Define tray and scrim z-index as component-scoped custom properties, not global magic numbers.
 - **No content-aware logic** — The tray is a navigation component. It accepts nav items via props but does not own page layout or wrap page content.
-- **No custom hamburger SVG** — Use Material Symbols Sharp ligatures (`menu` / `close`).
+- **No custom hamburger SVG or icon glyph swap** — HamburgerButton uses structural bars.
 - **No wrapping page content** — The tray renders alongside page content, not around it. The Astro page owns its layout.
 
 ## Contract
 
 ### Definition of Done
 
-- [ ] `AppTray.astro` renders a responsive navigation tray with rail, full drawer, and hamburger toggle
-- [ ] Toggle, transitions, and scrim work without JavaScript
-- [ ] Small viewport: tray is hidden by default, opens as full-screen overlay
-- [ ] Medium viewport: rail visible by default, tray opens as overlay
-- [ ] Large viewport: rail visible by default, tray opens and pushes content
-- [ ] Hamburger button animates between menu/close states
-- [ ] All dimensions use `calc()` with `--freefall-space-1` — no raw px/rem
-- [ ] Scrim renders on small + medium when tray is open; click-to-close works without JS
-- [ ] Focus trap active when tray overlays content (progressive enhancement)
-- [ ] Keyboard activation and expanded state remain synchronized (progressive enhancement)
-- [ ] Opening an overlay moves focus inside; closing by any supported method restores focus to the trigger
-- [ ] `Escape` key closes the tray (progressive enhancement)
-- [ ] Reduced-motion preference suppresses decorative transitions
-- [ ] Transitions match specified durations
-- [ ] Demo app has an app-tray reference page showing the component at all breakpoints
-- [ ] Demo app shows a scoped ("subsite") `navItems` configuration whose first item is an `arrow_back` uplink, rendering with the same rail/overlay/push behavior as the global nav
+- [x] `AppTray.astro` renders a responsive navigation tray with rail, drawer, and hamburger toggle
+- [x] Toggle, transitions, and scrim work without JavaScript
+- [x] Small viewport: tray is hidden by default and opens as a 320px capped modal drawer
+- [x] Medium viewport: rail visible by default, tray opens with overlay and scrim
+- [x] Large viewport: rail visible by default, tray opens in flex flow and pushes content
+- [x] Hamburger button morphs structural bars between menu and cross states
+- [x] Component dimensions derive from spacing tokens
+- [x] Scrim renders on small + medium when tray is open; click-to-close works without JS
+- [x] Focus trap active when tray overlays content (progressive enhancement)
+- [x] Keyboard activation and expanded state remain synchronized (progressive enhancement)
+- [x] Opening an overlay moves focus inside; closing by supported controls restores focus to the trigger
+- [x] `Escape` key closes the tray (progressive enhancement)
+- [x] Reduced-motion preference suppresses decorative transitions
+- [x] Demo app has an app-tray reference page documenting all breakpoints
+- [x] Demo app links to a scoped navigation pattern with an `arrow_back` uplink
 - [ ] Playwright e2e tests cover all Scenarios against build artifacts
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
@@ -174,7 +187,7 @@ The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation
 - Scrim must not render on desktop (tray pushes content instead of overlaying)
 - Core toggle must work without JavaScript — do not introduce JS dependencies for open/close state
 - Do not duplicate DOM nodes for rail icons and drawer icons — use the unified `TrayButton` to handle responsive states
-- **State Logic**: Do not use `[data-state]` attributes to pass the expanded state down to buttons. Use CSS Container Queries (`@container`) pointing at `.app-tray__rail-column`'s `inline-size` to allow fluid geometric expansion.
+- **State Logic**: Do not pass expanded state to child components. Use the drawer's inline-size query container and the current `64px` threshold.
 - **Icon Alignment**: Do not use arbitrary margin values to align icons. Rely on strict math equating the exact center axis computed from the fixed `HamburgerButton`'s radius + absolute left positioning.
 
 ### Scenarios
@@ -184,10 +197,10 @@ Scenario: Small viewport — tray hidden by default
   When: The page loads
   Then: No tray or rail is visible; only the hamburger button is rendered
 
-Scenario: Small viewport — tray opens as full-screen overlay
+Scenario: Small viewport — tray opens as capped modal drawer
   Given: Viewport width is below 620px
   When: The user clicks the hamburger button
-  Then: The tray slides in as a full-screen overlay with scrim behind it
+  Then: A 320px-wide drawer capped by the viewport slides in with a scrim behind it
 
 Scenario: Medium viewport — rail visible by default
   Given: Viewport width is between 620px and 779px
@@ -198,6 +211,7 @@ Scenario: Medium viewport — tray opens as overlay
   Given: Viewport width is between 620px and 779px
   When: The user clicks the hamburger button
   Then: The tray expands from the rail to full width (20rem) as an overlay with scrim
+  And: Overlay describes stacking and modality; it does not establish a push-behavior guarantee
 
 Scenario: Large viewport — rail visible, tray pushes content
   Given: Viewport width is 780px or above
@@ -232,7 +246,7 @@ Scenario: Scrim click closes the tray
 Scenario: Hamburger micro-interaction
   Given: The tray is closed
   When: The user clicks the hamburger button
-  Then: The icon crossfades from `menu` to `close` within 150ms
+  Then: Three structural bars morph into a sharp cross
 
 Scenario: Tray renders a scoped subsite nav set
   Given: The layout supplies a scoped `navItems` array whose first item is an `arrow_back` uplink

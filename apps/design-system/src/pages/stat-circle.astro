@@ -102,16 +102,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </div>
 
   <div class="demo-section">
-    <h2>Disabled / Null</h2>
+    <h2>Void / Disabled</h2>
     <p class="demo-label">
-      disabled and value=null are equivalent — both render &#x2205; in cobalt
-      colors. value=0 is an explicit zero, shown with attribute color.
+      Both states render &#x2205; in neutral colors. A null value is void and hides
+      its label; explicit disabled preserves its label. value=0 is an explicit
+      zero shown with attribute color.
     </p>
     <div class="circle-row">
       <span class="circle-row-label">value=null</span>
-      <StatCircleDemo type="body" value={null} />
-      <StatCircleDemo type="mind" value={null} />
-      <StatCircleDemo type="ghost" value={null} />
+      <StatCircleDemo type="body" attribute="Body" value={null} />
+      <StatCircleDemo type="mind" attribute="Mind" value={null} />
+      <StatCircleDemo type="ghost" attribute="Ghost" value={null} />
     </div>
     <div class="circle-row">
       <span class="circle-row-label">disabled</span>
@@ -135,7 +136,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <div class="demo-section">
     <h2>Bound State</h2>
     <p class="demo-label">
-      Active binding — highlighted ring. Disabled circles cannot be bound.
+      Active binding uses a solid attribute fill and glow. Disabled circles
+      cannot be bound.
     </p>
     <div class="circle-row">
       <span class="circle-row-label">bound</span>

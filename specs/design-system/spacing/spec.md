@@ -28,12 +28,9 @@ Token names use the multiplier, not the computed value — `space-4` means "4 ba
 
 | File | Contents |
 |---|---|
-| `src/styles/tokens.css` | Spacing CSS custom properties (added to existing token file) |
-| `src/tokens/spacing.ts` | TypeScript constants for spacing values |
+| `src/styles/tokens.css` | Canonical spacing CSS custom properties |
 
-**Token duality:**
-
-CSS and TypeScript values must stay in sync, following the same pattern as colors and breakpoints.
+CSS custom properties are the sole token source. There is no TypeScript token module, barrel export, or parity test.
 
 ### Anti-Patterns
 
@@ -45,19 +42,15 @@ CSS and TypeScript values must stay in sync, following the same pattern as color
 
 ### Definition of Done
 
-- [ ] `src/styles/tokens.css` defines `--freefall-space-1` through `--freefall-space-16`
-- [ ] `src/tokens/spacing.ts` exports spacing values as TypeScript constants
-- [ ] Rem values in CSS and TypeScript match exactly
-- [ ] `src/index.ts` barrel exports the spacing tokens
-- [ ] Unit tests verify all TypeScript spacing values
-- [ ] Demo app has a spacing reference page showing all steps with visual rulers
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `src/styles/tokens.css` defines `--freefall-space-1` through `--freefall-space-16`
+- [x] CSS custom properties are the sole source for spacing tokens
+- [x] Demo app has a spacing reference showing all steps with visual rulers
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
-- Spacing CSS and TypeScript values must stay in sync
 - Token names use the multiplier (1, 2, 4, 8, 16), not the computed rem value
-- No spacing value may appear in a component or style file that isn't a `var(--freefall-space-*)` reference
+- Production dimensions derive from spacing tokens, subject to the literal-length exceptions in the design-token spec
 
 ### Scenarios
 
@@ -65,11 +58,6 @@ Scenario: Spacing tokens resolve correctly
   Given: `tokens.css` is imported via `base.css`
   When: An element uses `padding: var(--freefall-space-4)`
   Then: The computed padding is `2rem`
-
-Scenario: Token duality holds
-  Given: `spacing.ts` defines `space4` as `"2rem"`
-  When: `tokens.css` defines `--freefall-space-4`
-  Then: Both values are identical rem strings
 
 Scenario: Demo page shows spacing scale
   Given: The demo app is built

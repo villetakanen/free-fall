@@ -60,7 +60,7 @@ here. Keep it that way.
 
 ## Structure and hardware
 
-- **The grid is 0.5rem and non-negotiable.** Every dimension is `calc(N * var(--freefall-space-1))`. No raw px, no raw rem.
+- **The grid is 0.5rem and non-negotiable.** Production dimensions derive from spacing tokens. The narrow literal-length exceptions are the ones documented in the design-token contract: CSS query conditions, deliberately circular or pill-shaped radii, and standard visually-hidden one-pixel geometry.
 - **Sharp, not soft.** Icons are Material Symbols *Sharp*. Corners are square or barely eased; the one deliberate exception is the pill-shaped tray button (M3 heritage). Do not introduce friendly rounded cards.
 - **Structure encodes the concept.** The best existing components work because their structure *is* their meaning — and the meaning is a *delivery* idea, not a prop: the gear card works because gear is **queryable data** with its bindings and qualities exposed as fields; the term registry works because rules are **hypertext**; the scenario rail works because navigation is a **play aid**. When designing something new, ask: *what game concept does this deliver, and what does the web let it be that paper couldn't?* Design that — not a book feature, and not a movie prop.
 

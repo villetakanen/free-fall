@@ -6,7 +6,8 @@
 
 The Tray Button is an interactive navigation component specifically designed for use within the application's sidebar (AppTray). It dynamically adapts its layout based on the parent tray's state: showing just an icon when the tray is minimized (on tablet/desktop), and an icon alongside a text label when the tray is fully open (across all screen sizes). This behavior mirrors modern dashboard and chat interfaces (e.g., Gemini).
 
-In aligning with the FREE//FALL design system, the transition between minimized and open states should be managed as gracefully as possible, favoring CSS-driven layout changes based on the parent container's state (e.g., via CSS container queries or parent data attributes).
+The minimized/open presentation is CSS-driven from the parent query box. No
+expanded-state prop or data attribute is part of the contract.
 
 Parent spec: `specs/design-system/spec.md`
 
@@ -15,7 +16,7 @@ Parent spec: `specs/design-system/spec.md`
 **State management:**
 
 The component's visual presentation (minimized vs. open) is strictly dictated by the width of its parent container using CSS Container Queries (`@container`).
-- When the parent container is narrow (e.g., `<= 160px` during the AppTray minimized rail state), the button hides its text label and removes internal flex gaps, shrinking down to display only the geometrically centered icon.
+- When the nearest inline-size query container is `<= 64px`, the button visually hides its text label, removes the gap, and renders a centered 48px target.
 - When the parent container expands, the button natively expands into its fluid geometry, displaying both its icon and the text label.
 
 **Visual Design & Sizing:**
@@ -30,6 +31,16 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 
 `variant?: "nav" | "uplink"` (default `"nav"`). The `uplink` variant renders the exit from a subsite scope (see `specs/design-system/app-tray/spec.md#contextual-navigation`): text and icon use `--freefall-text-muted` (restored to `--freefall-text-display` on hover/focus), and an `::after` hairline separator (`--freefall-border-subtle`) draws below the button so the uplink reads as "up a level" rather than a sibling page. Added 2026-07-06 after visual review: with uplink and chapters rendered identically, the two were indistinguishable in the rail.
 
+**Props:**
+
+| Prop | Type | Required | Default | Purpose |
+|---|---|---|---|---|
+| `icon` | `string` | yes | — | Material Symbols Sharp ligature |
+| `label` | `string` | yes | — | Visible and accessible destination label |
+| `href` | `string` | yes | — | Link destination |
+| `active` | `boolean` | no | falsy | Sets `aria-current="page"` and filled icon styling |
+| `variant` | `"nav" \| "uplink"` | no | `"nav"` | Selects ordinary destination or scope-exit presentation |
+
 **Component structure:**
 
 | File | Contents |
@@ -38,7 +49,7 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 
 ### Anti-Patterns
 
-- **Hardcoded JavaScript Resize Checks**: The component should not observe window width via JavaScript to toggle the label, nor rely on data attribute toggles (`[data-state]`) that CSS cannot naturally animate. Rely entirely on fluid CSS logic (CSS Container Queries `@container`).
+- **Hardcoded JavaScript Resize Checks**: The component must not observe window width or consume inert state attributes. Rely on the nearest inline-size query container.
 - **Text Wrapping**: Text should not wrap to a second line when the container width diminishes. Overflows must be aggressively controlled (`overflow: hidden; text-overflow: ellipsis; white-space: nowrap;`).
 - **Inaccessible Icon-only States**: When the label is visually hidden in minimized mode, the button must still expose its intent to screen readers (e.g., using `aria-label` or visually-hidden utility classes), ensuring it does not become an unlabeled icon button.
 
@@ -46,15 +57,15 @@ The component's visual presentation (minimized vs. open) is strictly dictated by
 
 ### Definition of Done
 
-- [ ] `TrayButton.astro` provides the HTML scaffold for rendering an icon and text label.
-- [ ] Co-located `<style>` block manages the flex layout, gaps, and padding using design system tokens.
-- [ ] When the parent context dictates a minimized tray, the text label is visually hidden, centering the icon.
-- [ ] Implements `white-space: nowrap` and `overflow: hidden` to handle text bounds strictly.
-- [ ] Employs accessible labeling so screen readers recognize the button context regardless of visual layout.
-- [ ] Defines interactive state styling (hover/focus/active) mirroring other interactive components.
-- [ ] Demo app mounts a reference section testing the button in simulated open and closed tray environments.
+- [x] `TrayButton.astro` renders an icon and text label inside a link.
+- [x] Co-located style manages flex layout, gaps, and token-derived padding.
+- [x] At a query box width of 64px or less, the label is visually hidden and the icon target is centered.
+- [x] Label uses no-wrap, overflow hiding, and ellipsis.
+- [x] Visually hidden label remains in the accessibility tree.
+- [x] Hover, focus, current-page, and uplink states have distinct styling.
+- [x] Demo uses real inline-size query containers and includes uplink and current-page states.
 - [ ] Playwright e2e tests cover all Scenarios against build artifacts.
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` tasks pass cleanly.
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` tasks pass cleanly.
 
 ### Scenarios
 
@@ -64,7 +75,7 @@ Scenario: Open Tray State
   Then: The button prominently displays both the icon and the text label adjacent to each other.
 
 Scenario: Minimized Tray State (Desktop/Tablet)
-  Given: The AppTray is collapsed to its minimized state (narrow container width)
+  Given: The nearest inline-size query container is 64px or narrower
   When: The user views the Tray Button
   Then: Only the icon is visible, the container gap is `0`, and the button forces a strict `48px` width/height to perfectly align center with external toggles.
 

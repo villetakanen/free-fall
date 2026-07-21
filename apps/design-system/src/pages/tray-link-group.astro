@@ -49,8 +49,9 @@ const _mockLinks = [
     <p>
         Renders secondary nested navigation links underneath a primary Tray
         location. It leverages CSS container queries to hide in minimized rail
-        views, and expand iteratively in fully opened tray situations. No
-        JavaScript required.
+        views at a 64px query-container threshold. The group also requires its
+        <code>active</code> prop; inactive primary locations do not expose nested
+        links. No JavaScript or state attribute is required.
     </p>
 
     <div class="demo-section">
@@ -58,7 +59,7 @@ const _mockLinks = [
         <p class="demo-label">
             container width: calc(40 * var(--freefall-space-1))
         </p>
-        <div class="demo-container demo-container--open" data-tray-state="open">
+        <div class="demo-container demo-container--open">
             <TrayButton icon="menu_book" label="Core Rules" href="#" />
 
             <TrayLinkGroupDemo active={true}>
@@ -78,7 +79,6 @@ const _mockLinks = [
         </p>
         <div
             class="demo-container demo-container--minimized"
-            data-tray-state="minimized"
         >
             <TrayButton icon="menu_book" label="Core Rules" href="#" />
 

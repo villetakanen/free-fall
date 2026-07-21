@@ -8,9 +8,7 @@ test.describe("TrayLinkGroup Component", () => {
     await page.waitForLoadState("networkidle");
 
     // The open state container
-    const openContainer = page.locator(
-      '.demo-container[data-tray-state="open"]',
-    );
+    const openContainer = page.locator(".demo-container--open");
     const group = openContainer.locator(".tray-link-group");
     const links = group.locator(".tray-link");
 
@@ -44,9 +42,7 @@ test.describe("TrayLinkGroup Component", () => {
     await page.goto("/tray-link-group/");
     await page.waitForLoadState("networkidle");
 
-    const minimizedContainer = page.locator(
-      '.demo-container[data-tray-state="minimized"]',
-    );
+    const minimizedContainer = page.locator(".demo-container--minimized");
     const group = minimizedContainer.locator(".tray-link-group");
     const firstLink = group.locator(".tray-link").first();
 
@@ -71,9 +67,7 @@ test.describe("TrayLinkGroup Component", () => {
     await page.goto("/tray-link-group/");
     await page.waitForLoadState("networkidle");
 
-    const openContainer = page.locator(
-      '.demo-container[data-tray-state="open"]',
-    );
+    const openContainer = page.locator(".demo-container--open");
     // The last link has a very long label
     const longLink = openContainer.locator(".tray-link").last();
     const label = longLink.locator(".label");

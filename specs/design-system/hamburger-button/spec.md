@@ -34,6 +34,14 @@ The parallel bars become a sharp skewed cross rather than a soft rotated icon. T
 | Icon lines color | `--freefall-text-body` |
 | Hover surface background | `--freefall-action-hover` |
 
+**Props:**
+
+| Prop | Type | Required | Default | Purpose |
+|---|---|---|---|---|
+| `id` | `string` | no | `"hamburger-toggle"` | Internal checkbox id and trigger id prefix |
+| `controls` | `string` | no | — | Id exposed through `aria-controls` |
+| `label` | `string` | no | `"Toggle navigation"` | Trigger accessible name |
+
 **Component structure:**
 
 | File | Contents |
@@ -52,19 +60,18 @@ The parallel bars become a sharp skewed cross rather than a soft rotated icon. T
 
 ### Definition of Done
 
-- [ ] `HamburgerButton.astro` provides the HTML scaffold for a pure-CSS boolean toggle.
-- [ ] Co-located `<style>` block manages the 48px rounded M3 target container and nested bars.
-- [ ] Checkbox `:checked` CSS handles the transition to the close state.
-- [ ] Middle bar compresses horizontally to the right via `transform-origin: right` and `scaleX(0.15)` bounding, shifting to the accent color.
-- [ ] Top and bottom bars form an X using `translateY` offset and `skewY` (45deg / -45deg).
-- [ ] Left and right limits of all expanding/skewing bars act as perfectly vertical bounds.
-- [ ] Bars utilize sharp 0px border-radius edges.
-- [ ] The visible trigger exposes button semantics, its controlled region, and synchronized expanded state when JavaScript is available.
-- [ ] Enter and Space activate the focused trigger; focus remains visibly indicated.
-- [ ] Motion is suppressed when the user requests reduced motion.
-- [ ] Demo app mounts a reference subpage testing the toggle in standalone isolation.
+- [x] `HamburgerButton.astro` provides the HTML scaffold for a CSS boolean toggle.
+- [x] Co-located style manages the 48px rounded target and nested bars.
+- [x] Checkbox `:checked` CSS handles the transition to the close state.
+- [x] Middle bar compresses toward the right and shifts to the link color.
+- [x] Top and bottom bars form a cross using translate and skew transforms.
+- [x] Bars use sharp zero-radius edges.
+- [x] The visible trigger exposes button semantics, controlled region, and synchronized expanded state with JavaScript.
+- [x] Enter and Space activate the focused trigger; focus remains visibly indicated.
+- [x] Reduced motion reduces transition duration.
+- [x] Demo app mounts a standalone reference page.
 - [ ] Playwright e2e tests cover all Scenarios against build artifacts.
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` tasks pass cleanly.
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` tasks pass cleanly.
 
 ### Regression Guardrails
 

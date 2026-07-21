@@ -41,7 +41,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <tr><th>Viewport</th><th>Closed</th><th>Open</th></tr>
     <tr>
       <td>Small (&lt; 620px)</td><td>Hidden</td>
-      <td>Full-screen overlay</td>
+      <td>320px capped modal drawer</td>
     </tr>
     <tr><td>Medium (620–779px)</td><td>Rail</td><td>Overlay drawer</td></tr>
     <tr><td>Large (≥ 780px)</td><td>Rail</td><td>Push drawer</td></tr>
@@ -96,7 +96,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </ul>
 
   <p class="token-info">
-    Transitions: slide 200ms ease-out (open) / 150ms ease-in (close) · crossfade
-    150ms
+    Transitions: drawer slide 200ms ease-out (open) / 150ms ease-in (close).
+    The hamburger's three bars morph into a sharp cross.
   </p>
 </BaseLayout>

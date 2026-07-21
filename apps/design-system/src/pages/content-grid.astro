@@ -3,15 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Content Grid">
-  <div class="content-grid">
     <h1 class="text-chapter" style="margin-bottom: var(--freefall-space-4);">
       Content Grid
     </h1>
 
     <p style="margin-bottom: var(--freefall-space-2);">
       Three-tier responsive grid driven by container queries on
-      <code>.app-shell__content</code>. Resize the browser or toggle the nav
-      tray to see tier transitions.
+      <code>AppShell</code>'s <code>main</code> element. This page itself is the
+      live fixture: resize the browser or toggle the nav tray to see whichever
+      responsive tier the available width supports.
     </p>
 
     <!-- Main column content -->
@@ -20,7 +20,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         Main Column (default)
       </h2>
       <div
-        class="freefall-prose"
         style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-1); border-radius: 4px;"
       >
         <p>
@@ -35,6 +34,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           equal and opposite reaction.
         </p>
       </div>
+    </section>
+
+    <section class="breakout" style="margin-bottom: var(--freefall-space-4);">
+      <h2 class="text-section" style="margin-bottom: var(--freefall-space-2);">
+        .breakout (spans main + side)
+      </h2>
+      <p
+        style="padding: var(--freefall-space-2); background: var(--freefall-bg-surface-1);"
+      >
+        Breakout content stays in the main column at the base tier and spans
+        through the side column at two-column tiers. Unlike
+        <code>.content-wide</code>, it does not opt into horizontal overflow
+        containment.
+      </p>
     </section>
 
     <!-- Side column content -->
@@ -141,6 +154,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <p style="margin: 0;">
           <strong>.content-wide</strong> → grid-column: main-start / side-end
         </p>
+        <p style="margin: 0;">
+          <strong>.breakout</strong> → main at base; main-start / side-end at
+          two-column tiers
+        </p>
       </div>
     </section>
 
@@ -159,5 +176,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         elements on the same page. Each one independently targets the side column.
       </p>
     </aside>
-  </div>
 </BaseLayout>

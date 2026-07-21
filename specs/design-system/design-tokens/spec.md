@@ -4,7 +4,7 @@
 
 ### Context
 
-Design tokens define the visual vocabulary of FREE//FALL: colors, breakpoints, and (eventually) spacing, typography, and elevation. They are the lowest layer of the design system — consumed by styles, components, and apps. The theme is "deep space cobalt" — ceramic surfaces, void darks, and harsh neon contrast.
+Design tokens define the visual vocabulary of FREE//FALL: colors, breakpoints, spacing, typography, and content dimensions. They are the lowest layer of the design system, consumed by styles, components, and apps. CSS custom properties in `tokens.css` are the sole token source; there is no TypeScript token layer, barrel export, or parity requirement.
 
 Parent spec: `specs/design-system/spec.md`
 
@@ -62,6 +62,8 @@ clipping technique requires one-pixel geometry.
 | `--freefall-text-display` | `primary-50` | Headings, hero text |
 | `--freefall-text-body` | `primary-100` | Body copy |
 | `--freefall-text-muted` | `primary-200` | Secondary / disabled text with normal-text contrast |
+| `--freefall-text-high` | `primary-50` | Explicit high-emphasis text |
+| `--freefall-text-link` | `accent-500` | Link marker and definition emphasis |
 | `--freefall-border-subtle` | `primary-800` | Dividers, low-contrast borders |
 | `--freefall-border-strong` | `primary-700` | High-contrast borders |
 | `--freefall-action-base` | `primary-500` | Buttons, links (default) |
@@ -85,7 +87,7 @@ clipping technique requires one-pixel geometry.
 
 ### Anti-Patterns
 
-- **No semantic tokens referencing other semantic tokens** — Semantic tokens alias base palette values only. No indirection chains.
+- **No semantic color aliases referencing other semantic tokens** — Semantic color aliases reference base palette values only. Composite non-color tokens such as text shadows are documented separately.
 - **No base palette in component CSS** — Components use semantic tokens. The palette is an internal detail.
 - **No hardcoded color values in components** — Every color must come from a token. If a needed color doesn't exist, add a token first.
 - **No opacity hacks for color variants** — Each needed shade gets its own palette step. Do not use `rgba()` or `opacity` to derive variants from existing tokens.
@@ -94,16 +96,16 @@ clipping technique requires one-pixel geometry.
 
 ### Definition of Done
 
-- [ ] `src/styles/tokens.css` defines all base palette and semantic custom properties listed above
-- [ ] Semantic tokens reference base palette tokens via `var()` — no hardcoded values
-- [ ] `src/styles/base.css` imports `tokens.css`
-- [ ] Demo app has a token reference page showing all colors with their names and values
+- [x] `src/styles/tokens.css` defines all base palette and semantic custom properties listed above
+- [x] Semantic color tokens reference base palette tokens via `var()`
+- [x] `src/styles/base.css` imports `tokens.css`
+- [x] Demo app shows every base palette and public semantic color token listed above; other token families have representative demos on their owning pages
 - [ ] `--freefall-text-muted` meets WCAG AA for normal text on canvas and supported surfaces
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
-- Semantic tokens must only reference base palette custom properties
+- Semantic color aliases must only reference base palette custom properties
 - No color value may appear in a component or style file that isn't a `var(--freefall-*)` reference
 - Normal-size semantic text tokens maintain at least 4.5:1 contrast on their supported backgrounds
 
@@ -114,7 +116,7 @@ Scenario: Base palette renders correctly
   When: An element uses `var(--freefall-bg-canvas)`
   Then: The element background is `hsl(220, 43%, 3%)`
 
-Scenario: Demo page shows full palette
+Scenario: Demo page shows color tokens
   Given: The demo app is built
   When: A developer navigates to the tokens page
-  Then: All base palette and semantic tokens are rendered as labeled color swatches
+  Then: All base palette and public semantic color tokens listed in this spec are rendered as labeled color swatches

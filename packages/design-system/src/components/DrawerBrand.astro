@@ -11,7 +11,7 @@ const { href = "/about" } = Astro.props;
 <a
   class="drawer-brand"
   href={href}
-  aria-label="Kustannusosakeyhtiö Myrrys — about"
+  aria-label="Kustannusosakeyhtiö Myrrys"
 >
   <span class="logo" set:html={myrrysLogoRaw} />
   <span class="drawer-brand__caption text-caption">
@@ -31,6 +31,20 @@ const { href = "/about" } = Astro.props;
     text-decoration: none;
     border-radius: calc(var(--freefall-space-1));
     transition: color 0.2s ease;
+  }
+
+  .drawer-brand:hover > .drawer-brand__caption {
+    color: var(--freefall-text-body);
+  }
+
+  .drawer-brand:focus-visible {
+    outline: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-action-base);
+    outline-offset: calc(var(--freefall-space-1) / 4);
+  }
+
+  .drawer-brand:focus-visible > .drawer-brand__caption {
+    color: var(--freefall-text-body);
   }
 
   .logo {

@@ -81,21 +81,17 @@ The scaffold has four regions:
 
 | Viewport | Navigation | Top bar | Content pane |
 |---|---|---|---|
-| Small (< 620px) | Hidden (burger fixed top-left) | Full width, 64px left margin clears burger | Full width, padded |
+| Small (< 620px) | Hidden (burger fixed top-left) | Full width, 64px left margin clears burger | Fills remaining shell width |
 | Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
-| Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width, max-width constrained |
+| Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width |
 
 The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app` region is a bounded column: the app bar keeps its intrinsic height and `<main>` owns the remaining viewport height and vertical scrolling. The shell does not use compensating padding or fixed content heights.
 
-**Dimensions (grid-derived):**
-
-| Dimension | Formula | Resolves to |
-|---|---|---|
-| Content padding (small) | `var(--freefall-space-2)` | 1rem |
-| Content padding (medium+) | `var(--freefall-space-4)` | 2rem |
-| Content max-width (large) | `calc(120 * var(--freefall-space-1))` | 60rem |
-
-Top bar dimensions and styling are defined in the app-bar spec (`specs/design-system/app-bar/spec.md`).
+AppShell owns the scaffold, viewport bounding, `<main>` scroll ownership, and
+the named `content` inline-size query container. It intentionally does not add
+content padding, gutters, columns, or readable measure. A consumer-provided
+ContentGrid owns those content-layout concerns. Top bar dimensions and styling
+are defined in the app-bar spec (`specs/design-system/app-bar/spec.md`).
 
 **Props:**
 
@@ -104,6 +100,14 @@ Top bar dimensions and styling are defined in the app-bar spec (`specs/design-sy
 | `title` | `string` | yes | Page `<title>` and top bar title |
 | `navItems` | `NavItem[]` | yes | Passed through to AppTray |
 | `brandHref` | `string` | no | Passed through to AppTray for brand logo link |
+
+`NavItem` requires `icon`, `label`, and `href`; accepts optional `active`,
+`variant: "nav" | "uplink"`, and `subItems`. Each sub-item requires `label` and
+`href` and accepts optional `active`. AppShell currently passes the navigation
+fields understood by AppTray; AppTray's full contract is documented in its spec.
+
+**Slots:** the default slot is page content rendered directly in `<main>`. The
+named `head` slot appends page-specific elements to `<head>` after the title.
 
 **Component structure:**
 
@@ -120,21 +124,23 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 - **No content-aware shell** — The shell does not know what page it renders. It provides structure and slots.
 - **No fixed pixel dimensions** — All padding and sizing derive from spacing tokens.
 - **No shell without navigation** — The shell always includes AppTray. Pages without navigation should not use the shell.
-- **No layout logic in pages** — Padding, max-width, and content positioning are shell concerns. Pages provide content, not structure.
+- **No content layout in the shell** — Consumers provide ContentGrid or another content wrapper for gutters, measure, columns, and breakouts.
 
 ## Contract
 
 ### Definition of Done
 
-- [ ] `AppShell.astro` provides full document skeleton with AppBar, AppTray, and content slot
+- [x] `AppShell.astro` provides full document skeleton with AppBar, AppTray, and content slot
 - [ ] Both apps use the shell as their base layout on all pages
-- [ ] Top app bar is rendered via the `AppBar` component (see app-bar spec)
-- [ ] Content pane (`<main>`) declares `container-type: inline-size` and `container-name: content` for content-grid container queries
-- [ ] Content pane fills the viewport below the app bar and is the shell's only vertical scroll owner
-- [ ] Content area shifts when rail is visible (medium+) and when tray pushes (desktop)
-- [ ] Named `head` slot allows page-specific `<head>` content
+- [x] Top app bar is rendered via the `AppBar` component (see app-bar spec)
+- [x] Content pane (`<main>`) declares `container-type: inline-size` and `container-name: content` for consumer queries
+- [x] Content pane fills the viewport below the app bar and is the shell's vertical scroll owner
+- [x] Content area participates in the scaffold flex geometry when rail/tray width changes
+- [x] Named `head` slot allows page-specific `<head>` content
+- [x] AppShell leaves gutters and readable measure to a consumer ContentGrid
+- [x] Design-system demo has a representative `/app-shell/` page
 - [ ] No duplicate `<html>`, `<head>`, or `base.css` imports across pages
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
@@ -156,6 +162,12 @@ Scenario: Content responds to tray on desktop
   Given: Viewport is 780px or above
   When: The user opens the tray
   Then: The top bar and content pane shift right as the tray pushes into the flex row
+
+Scenario: Medium overlay does not define push behavior
+  Given: Viewport is between 620px and 779px
+  When: The user opens the tray
+  Then: The drawer and scrim establish an overlay contract
+  And: The overlay contract makes no promise that content geometry remains fixed or is pushed
 
 Scenario: Content owns remaining viewport height
   Given: A page contains more content than fits below the app bar

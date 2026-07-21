@@ -62,6 +62,11 @@ Icons inherit `color` and scale with `font-size` from their parent.
 | `src/styles/typography.css` | Updated — adds `.material-symbols-sharp` base class |
 
 No separate `IconLinks` component — icons load through the same `FontLinks` component since both are Google Fonts resources.
+`FontLinks` accepts no props and exposes no slots; consumers render icon
+ligature markup directly.
+Rendering an icon adds no component JavaScript: it is text styled by the loaded
+font. Pages and layouts may still contain scripts for unrelated interactive
+components.
 
 ### Anti-Patterns
 
@@ -75,13 +80,14 @@ No separate `IconLinks` component — icons load through the same `FontLinks` co
 
 ### Definition of Done
 
-- [ ] `FontLinks.astro` includes the Material Symbols Sharp stylesheet `<link>` tag with `display=block`
-- [ ] `typography.css` defines the `.material-symbols-sharp` base class
-- [ ] Demo app has an iconography reference page showing sample icons at various sizes
-- [ ] Icons are accessible — ligature text is readable by screen readers
-- [ ] Icons inherit color and scale with font-size
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
-- [ ] Built HTML contains the Material Symbols stylesheet `<link>` tag and zero `<script>` tags
+- [x] `FontLinks.astro` includes the Material Symbols Sharp stylesheet `<link>` tag with `display=block`
+- [x] `typography.css` defines the `.material-symbols-sharp` base class
+- [x] Demo app has an iconography reference page showing sample icons at various sizes
+- [x] Standalone ligature text remains available to assistive technology; decorative icons can be hidden
+- [x] Icons inherit color and scale with font-size
+- [x] Icon rendering itself adds no JavaScript
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [ ] Built HTML contains the Material Symbols stylesheet `<link>` tag
 
 ### Regression Guardrails
 
