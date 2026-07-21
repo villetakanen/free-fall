@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="App Shell — FREE//FALL Design System">
+  <h1>App Shell</h1>
+  <p>
+    The document scaffold used by this page: AppTray, AppBar, and a single
+    scrollable <code>&lt;main&gt;</code> region.
+  </p>
+
+  <h2>Ownership</h2>
+  <dl>
+    <dt>AppShell</dt>
+    <dd>
+      Owns the document skeleton, viewport-bounded flex scaffold, vertical
+      scrolling, and the named <code>content</code> inline-size query container.
+    </dd>
+    <dt>Consumer content grid</dt>
+    <dd>
+      Owns content gutters, readable measure, columns, and breakout placement.
+      The wrapper around this page is supplied by the design-system docs layout,
+      not by AppShell.
+    </dd>
+  </dl>
+
+  <h2>Responsive Navigation</h2>
+  <p>
+    Mobile uses a modal drawer capped at 320px. Medium uses the existing rail
+    and overlay contract; overlay describes stacking and a scrim, not push
+    behavior. Desktop opens the tray in flex flow and pushes the app region.
+  </p>
+
+  <section class="surface border">
+    <h2>Global Primitives</h2>
+    <p class="p-1">
+      This direct content-grid item demonstrates the elevated
+      <code>.surface</code> contract together with the documented
+      <code>.border</code> and spacing utilities.
+    </p>
+  </section>
+</BaseLayout>
