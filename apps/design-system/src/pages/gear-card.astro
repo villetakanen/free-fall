@@ -42,8 +42,24 @@ const sampleUtility = {
 
 const sampleVehicle = {
   category: "vehicle" as const,
+  title: "Needle Courier",
+  nickname: "Fast interorbital shuttle",
+  qualities: [
+    "Movement System (Fusion Torch)",
+    "Cargo (Light)",
+    "Life Support",
+  ],
+  frame: 12,
+  systems: 10,
+  pilot_binding: { body: 0, mind: 2, ghost: 0 },
+  vehicle_av: 2,
+  size_category: "Medium" as const,
+};
+
+const sampleExo = {
+  category: "exo" as const,
   title: "Hardshell Combat Exo",
-  nickname: "Heavy combat exo",
+  nickname: "Heavy combat exoskeleton",
   qualities: [
     "Movement System (EVA Thrusters, Walker Legs)",
     "Hardpoints (2 Assault, 1 Support)",
@@ -130,13 +146,15 @@ const sampleNoBinding = {
   <div class="demo-section">
     <h2>All Categories</h2>
     <p class="demo-label">
-      One card per gear category: weapon, armor, augmentation, utility, vehicle
+       One card per gear category: weapon, armor, augmentation, utility, exo,
+       vehicle
     </p>
     <div class="card-grid">
       <GearCardDemo data={sampleWeapon} body={1} />
       <GearCardDemo data={sampleArmor} body={1} />
       <GearCardDemo data={sampleAugmentation} ghost={3} />
       <GearCardDemo data={sampleUtility} ghost={2} />
+      <GearCardDemo data={sampleExo} />
       <GearCardDemo data={sampleVehicle} />
     </div>
   </div>

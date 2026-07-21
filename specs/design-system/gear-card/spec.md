@@ -53,7 +53,8 @@ All internal spacing derives from `--freefall-space-1`.
      - Weapon: `DV {n}` + `{harm_type}`
      - Armor: `AV {n}` + `{av_type}`
      - Augmentation: `{augmentation_category}` + `{integration}`
-     - Vehicle: `Frame {n}` / `Systems {n}` / `AV {n}` / `Size: {size_category}`
+      - Exo: `Frame {n}` / `Sys {n}` / `AV {n}` / `{size_category}`
+      - Vehicle: `Frame {n}` / `Sys {n}` / `AV {n}` / `{size_category}`
      - Utility: (no category stats row)
    - **Qualities list** — Each quality as a single line, preceded by a bullet. `.text-ui-small`.
 
@@ -70,6 +71,24 @@ Props:
 | `mind` | `number` | No | `undefined` | Mind binding cost. Omitted or `0` → disabled (∅) |
 | `ghost` | `number` | No | `undefined` | Ghost binding cost. Omitted or `0` → disabled (∅) |
 | `image` | `ImageMetadata \| string` | No | `undefined` | Astro `ImageMetadata` for optimized images, or string URL for passthrough. Falls back to category icon. |
+
+`GearData` always requires `title`, `qualities: string[]`, and a category;
+`nickname` is optional. Category-specific fields are:
+
+| Category | Required fields |
+|---|---|
+| `weapon` | `dv`, `harm_type: "Physical" \| "Psychic"` |
+| `armor` | `av`, `av_type` |
+| `augmentation` | `augmentation_category: "Spliced" \| "Bionic" \| "Cybernetic"`, `integration: "Invasive" \| "Field-Operable"` |
+| `utility` | no additional fields |
+| `exo` | `frame`, `systems`, `pilot_binding`, `vehicle_av`, `size_category` |
+| `vehicle` | `frame`, `systems`, `pilot_binding`, `vehicle_av`, `size_category` |
+
+`pilot_binding` contains numeric `body`, `mind`, and `ghost` values.
+`size_category` is `"Personal" | "Small" | "Medium" | "Large" | "Huge"`.
+Fallback icons are `swords`, `shield`, `biotech`, `handyman`, and
+`rocket_launch`; exo intentionally shares `rocket_launch` with vehicle until a
+distinct approved symbol exists.
 
 #### Component Location
 
@@ -93,14 +112,14 @@ Scoped `<style>` block — no new CSS file in `styles/`. The card is self-contai
 
 ### Definition of Done
 
-- [ ] `GearCard.astro` renders all 5 gear categories correctly (weapon, armor, augmentation, utility, vehicle)
-- [ ] All three binding StatCircles (Body, Mind, Ghost) always render; omitted or zero-value props appear as disabled (∅)
-- [ ] Card dimensions maintain 5:7 ratio at all viewport widths (does not reflow — fixed size)
-- [ ] Image zone uses `aspect-ratio: 16 / 9`; accepts `ImageMetadata` (Astro optimized) or string URL
-- [ ] Fallback icon displays when no `image` prop is provided
-- [ ] Shader overlay covers entire image zone with attribute-tinted gradient (single binding) or primary fallback
-- [ ] `.text-ui-small` qualities list does not overflow the card (scrolls or truncates)
-- [ ] Component passes `pnpm typecheck` with strict category narrowing (no `any` casts)
+- [x] `GearCard.astro` renders all 6 categories (weapon, armor, augmentation, utility, exo, vehicle)
+- [x] All three binding StatCircles always render; omitted or zero-value props appear as void (∅)
+- [x] Card uses fixed 32 by 44.5 spacing-unit dimensions
+- [x] Image zone uses `aspect-ratio: 16 / 9`; accepts `ImageMetadata` or string URL
+- [x] Every category has an intentional fallback icon, with exo sharing vehicle's icon
+- [x] Shader overlay covers the image zone with a single-binding tint or action-base fallback
+- [x] Qualities live in the scrolling stats zone
+- [x] Component passes `pnpm typecheck` with strict category narrowing (no `any` casts)
 - [ ] Visual regression: card renders identically in Chromium and Firefox
 
 ### Regression Guardrails
@@ -151,6 +170,12 @@ Scenario: Vehicle card stats
   Given: <GearCard data={vehicle} /> where vehicle has frame 3, systems 2, vehicle_av 1, size_category "Medium"
   When: Rendered
   Then: Stats zone shows "Frame 3 · Sys 2 · AV 1 · Medium"
+
+Scenario: Exo card and fallback
+  Given: <GearCard data={exo} /> where exo has category "exo" and no image
+  When: Rendered
+  Then: Stats zone renders the exo FRM/SYS/AV/size data
+  And: Image zone renders the intentional rocket_launch fallback icon
 
 Scenario: Single-attribute shader tint
   Given: <GearCard data={augmentation} ghost={3} />
