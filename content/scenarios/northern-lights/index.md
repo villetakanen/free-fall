@@ -20,6 +20,7 @@ contents:
       - preface
       - contact
       - the-approach
+      - onboarding
   - section: "Opposition"
     icon: "security"
     pages:
