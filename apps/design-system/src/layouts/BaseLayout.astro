@@ -110,8 +110,9 @@ const navItems = Astro.props.navItems ?? [
   {
     icon: "web_asset",
     label: "App Shell",
-    href: "/app-bar/",
+    href: "/app-shell/",
     active: [
+      "/app-shell",
       "/app-bar",
       "/app-tray",
       "/drawer-brand",
@@ -120,6 +121,11 @@ const navItems = Astro.props.navItems ?? [
       "/tray-link-group",
     ].some((path) => Astro.url.pathname.startsWith(path)),
     subItems: [
+      {
+        label: "App Shell",
+        href: "/app-shell/",
+        active: Astro.url.pathname.startsWith("/app-shell"),
+      },
       {
         label: "App Bar",
         href: "/app-bar/",

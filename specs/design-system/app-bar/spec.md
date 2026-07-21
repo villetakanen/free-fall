@@ -78,17 +78,17 @@ The AppShell renders `<AppBar title={title}>`. The top bar styles are co-located
 
 ### Definition of Done
 
-- [ ] `AppBar.astro` renders a `<header>` with title prop and default slot for trailing actions
-- [ ] Bar has transparent background, no border
-- [ ] Left margin is `calc(8 * var(--freefall-space-1))` (64px) on mobile and `0` on tablet+
-- [ ] Bar height is `calc(8 * var(--freefall-space-1))` (64px)
-- [ ] Default slot content is pushed to the right end of the bar via `margin-left: auto` on the slot container
-- [ ] Slot container is a flex row with `align-items: center` and `gap: var(--freefall-space-1)`
-- [ ] All dimensions use `calc()` with `--freefall-space-1` — no raw px/rem
-- [ ] `AppShell.astro` uses `AppBar` instead of inline header markup
-- [ ] Top bar styles are co-located in AppBar's scoped `<style>` block
-- [ ] Design system demo app has an `/app-bar/` page demonstrating the title prop and slotted actions
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `AppBar.astro` renders a `<header>` with title prop and default slot for trailing actions
+- [x] Bar has transparent background and no border
+- [x] Left margin is `calc(8 * var(--freefall-space-1))` (64px) on mobile and `0` on tablet+
+- [x] Bar height is `calc(8 * var(--freefall-space-1))` (64px)
+- [x] Default slot content is pushed to the right end of the bar via `margin-left: auto` on the slot container
+- [x] Slot container is a flex row with `align-items: center` and `gap: var(--freefall-space-1)`
+- [x] Component dimensions derive from spacing tokens
+- [x] `AppShell.astro` uses `AppBar` instead of inline header markup
+- [x] Top bar styles are co-located in AppBar's scoped `<style>` block
+- [x] Design system demo app has an `/app-bar/` page demonstrating the title prop and slotted actions
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 

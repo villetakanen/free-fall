@@ -4,13 +4,13 @@
 
 ### Context
 
-The app shell's content pane currently has basic padding and a `max-width` cap. Game content — particularly the core rulebook — needs a structured layout that provides:
+The app shell's content pane originally had basic padding and a `max-width` cap. The content grid replaced that arrangement with a structured layout that provides:
 
 1. A **main column** (67ch) for primary content (prose, rules text)
 2. An optional **side column** for supplementary content (tables, infoboxes, images)
 3. Responsive behavior that collapses the side column when space is insufficient
 
-The content grid is a CSS Grid layout applied inside `<main>` (in `AppShell.astro`). It replaces the current `max-width` constraint with a grid-based content measure, and its main column (67ch) supersedes `.freefall-prose`'s `max-width: 65ch`.
+The content grid is a CSS Grid layout applied inside `<main>` (in `AppShell.astro`). It owns the 67ch rich-text measure; typography contributes element styling under `main` but no competing wrapper or measure.
 
 Parent spec: `specs/design-system/spec.md`
 
@@ -72,18 +72,19 @@ At the base tier, all content — including items targeting the side — flows i
 | *(default)* | `main` | Main column |
 | `.content-side` | `side` | Falls into main column |
 | `.content-wide` | `main-start / side-end` | Full main column |
+| `.breakout` | `main-start / side-end` | Main column |
 
-At the base tier, `.content-side` and `.content-wide` items stay in the main column since the side column does not exist.
+At the base tier, `.content-side`, `.content-wide`, and `.breakout` items stay in the main column since the side column does not exist. At two-column tiers `.content-wide` and `.breakout` both span the main and side columns; `.content-wide` additionally opts into horizontal overflow containment at the base tier.
 
 **Authoring pattern — pairing a side note with main content:**
 
-Every direct child of `.content-grid` is its own grid item on its own implicit row. A lone `.content-side` therefore occupies a row by itself: the side column shows the note, and the main column shows an empty hole of the same height.
+Every direct child of `.content-grid` is a grid item. Auto-placement can place an adjacent main-column item and `.content-side` item on the same implicit row; a side item without paired main content leaves the main cell on its row empty.
 
 To place a side note *beside* flowing text, wrap the run of main content in a plain `<div>` (one grid item) and put the `.content-side` element **immediately after it** — the two items share a grid row, and the note top-aligns with the wrapped block (`align-self: start`). `content/core-rulebook/chapters/01-world.md` and `content/scenarios/northern-lights/a-01-the-story-so-far.md` are the reference uses. On the base tier the note falls into the main flow after the wrapped block.
 
 **Wide content overflow (base tier):**
 
-`.content-wide` elements (e.g., large tables) may exceed the 67ch main column at base tier. To prevent layout breakage, `.content-wide` gets `overflow-x: auto` so oversized content scrolls horizontally within the main column rather than overflowing the viewport.
+`.content-wide` elements (e.g., large tables) may exceed the 67ch main column at base tier. `.content-wide` gets `overflow-x: auto`, making horizontal scrolling available when its contents actually overflow. Browser and platform scrollbar presentation varies, so a permanently visible scrollbar is not guaranteed.
 
 **Tokens (CSS custom properties):**
 
@@ -109,25 +110,25 @@ Gutters and gap reuse existing spacing tokens (`--freefall-space-2` and `--freef
 
 `<main>` (in `AppShell.astro`) gains `container-type: inline-size` and `container-name: content`. The content grid CSS uses `@container content (inline-size >= ...)` to switch between tiers. Container queries are required (not media queries) because the content pane's available width depends on the nav tray state, not just viewport width.
 
-**Changes to app-shell:**
+**App-shell integration:**
 
-| Current | After |
+| Before content grid | Current |
 |---|---|
 | `max-width: calc(120 * var(--freefall-space-1))` on `<main>` (in `AppShell.astro`) | Removed — the grid template defines width constraints |
 | Horizontal padding on `<main>` (in `AppShell.astro`) | Removed — the grid's gutter columns handle edge spacing |
 | Vertical padding on `<main>` (in `AppShell.astro`) | Unchanged |
 | No container declaration | `container-type: inline-size; container-name: content` |
 
-**Relationship to `.freefall-prose`:**
+**Relationship to typography:**
 
-The content grid's 67ch main column replaces `.freefall-prose`'s `max-width: 65ch` as the content measure. `.freefall-prose` will be removed in a future pass once the main content grid is active on all content pages.
+The content grid's 67ch main column is the sole rich-text measure. Typography scopes naked rich-text element styles to `main`; no prose wrapper class is part of the contract.
 
 **Demo page:**
 
 The design system demo app gets a `content-grid` page (`apps/design-system/src/pages/content-grid.astro`) showing:
 
-- All three tiers with sample content in main and side columns
-- Each placement class (default, `.content-side`, `.content-wide`)
+- Responsive main and side content whose live tier follows the available page width
+- Each placement class (default, `.content-side`, `.content-wide`, `.breakout`)
 - How tier transitions look when the viewport / tray state changes
 
 ### Anti-Patterns
@@ -141,24 +142,23 @@ The design system demo app gets a `content-grid` page (`apps/design-system/src/p
 
 ### Definition of Done
 
-- [ ] `src/styles/tokens.css` defines `--freefall-content-main`, `--freefall-content-side-wide`, `--freefall-content-side-narrow`
-- [ ] `src/styles/content-grid.css` implements the three-tier responsive grid with container queries
-- [ ] Placement classes (`.content-side`, `.content-wide`) work in all three tiers
-- [ ] At base tier, side-targeted content falls back to the main column without overflow or hidden content
-- [ ] `.content-wide` has `overflow-x: auto` so oversized content (e.g., wide tables) scrolls horizontally at base tier
-- [ ] `<main>` (in `AppShell.astro`) declares `container-type: inline-size` in `AppShell.astro` scoped styles
-- [ ] Current `max-width` and horizontal padding on `<main>` (in `AppShell.astro`) removed
-- [ ] `content-grid.css` imported via `base.css`
-- [ ] Design system demo app has a `content-grid` page demonstrating all tiers and placement classes
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] `src/styles/tokens.css` defines `--freefall-content-main`, `--freefall-content-side-wide`, `--freefall-content-side-narrow`
+- [x] `src/styles/content-grid.css` implements the three-tier responsive grid with container queries
+- [x] Placement classes (`.content-side`, `.content-wide`, `.breakout`) work across responsive tiers
+- [x] At base tier, side-targeted content falls back to the main column without hidden content
+- [x] `.content-wide` has `overflow-x: auto` so oversized content can scroll horizontally at base tier
+- [x] `<main>` declares `container-type: inline-size` in `AppShell.astro` scoped styles
+- [x] `<main>` has no competing `max-width` or horizontal padding
+- [x] `content-grid.css` is imported via `base.css`
+- [x] Design system demo app has a live responsive `content-grid` page demonstrating all placement classes
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
 
 - Main column must never exceed 67ch at any tier
 - Side column must not appear when the container is too narrow to fit it alongside the main column
-- Placement fallback: `.content-side` and `.content-wide` items must be visible (not hidden, clipped, or overflowing) at all tiers
+- Placement fallback: `.content-side`, `.content-wide`, and `.breakout` items must remain visible at all tiers; overflowing `.content-wide` content must remain horizontally reachable
 - Grid gutters must use spacing tokens, never raw values
-- Gutters must remain wider than the browser scrollbar (~15–17px); even the narrow gutter `--freefall-space-2` (1rem / 16px) satisfies this
 - Container query breakpoints must account for gutters and gap — no content clipping at tier boundaries
 
 ### Scenarios
@@ -192,11 +192,11 @@ Scenario: Wide content spans both columns
 Scenario: Wide content scrolls at base tier
   Given the grid is in the base (single-column) tier
   When a .content-wide element (e.g., a wide table) exceeds 67ch
-  Then the element shows a horizontal scrollbar within the main column
+  Then horizontal scrolling is available within the main column when the content overflows
   And the page layout does not overflow horizontally
 
-Scenario: Demo page shows all tiers
+Scenario: Demo page responds through all tiers
   Given the design system demo app is built
   When a developer navigates to the content-grid page
-  Then all three tiers are demonstrated with sample content in main and side placements
+  Then resizing the content pane demonstrates the applicable base, narrow-side, and wide-side tiers with main, side, wide, and breakout placements
 ```

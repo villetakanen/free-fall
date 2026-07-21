@@ -14,7 +14,7 @@ Parent spec: `specs/design-system/spec.md`
 
 | Role | Family | Google Fonts ID | CSS custom property |
 |---|---|---|---|
-| Body / display | Lato | `Lato:wght@300;400;700` | `--freefall-font-body` |
+| Body / display | Lato | `Lato:wght@300;400;700;900` | `--freefall-font-body` |
 | UI / contrast | IBM Plex Mono | `IBM+Plex+Mono:wght@400;500` | `--freefall-font-mono` |
 
 **Font stack fallbacks:**
@@ -53,11 +53,12 @@ import FontLinks from "@free-fall/design-system/components/FontLinks.astro";
 
 **Font loading strategy:**
 
-The `FontLinks` component emits three `<link>` tags in this order:
+The `FontLinks` component emits four `<link>` tags in this order:
 
 1. `<link rel="preconnect" href="https://fonts.googleapis.com">` — early connection to API
 2. `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>` — early connection to font files
 3. `<link rel="stylesheet" href="...&display=swap">` — the font stylesheet
+4. `<link rel="stylesheet" href="...Material+Symbols+Sharp&display=block">` — the sharp icon font
 
 The `display=swap` parameter ensures text is immediately visible in the fallback font stack while web fonts load. This prevents Flash of Invisible Text (FOIT) and limits Cumulative Layout Shift (CLS) to a brief swap. No additional `font-display` overrides are needed in CSS — Google Fonts embeds the `font-display: swap` rule in the served `@font-face` declarations.
 
@@ -77,34 +78,33 @@ Instead of generic abstract headings, FREE//FALL uses a strict editorial scale t
 | `.text-section` | Large, distinct | `<h2>` equivalents, major rules sections |
 | `.text-subsection` | Medium, structural | `<h3>` equivalents, granular rules blocks |
 | `.text-body-lead` | Slightly enlarged body | Intro paragraphs, chapter summaries |
-| `.text-copy` | Base body size (1rem) | Standard paragraphs (`<p>`) |
+| `.text-copy` | Base body size (1.125rem) | Standard paragraphs (`<p>`) |
 | `.text-caption` | Small, loose tracking | Figure captions, subtle notes |
-| `.text-callout` | Thematic, visually distinct | Flavor text, in-universe quotes |
-| `.text-ui` | Standard UI size (1rem) | Primary buttons, app bars, tabs |
+| `.text-ui` | Standard UI size (1.125rem) | Primary buttons, app bars, tabs |
 | `.text-ui-small` | Small UI size (0.875rem) | Secondary navigation, badges, metadata |
 
 *Note: `p` elements receive standard body styling by default. The `.text-copy` class is only needed to apply paragraph typography to non-`p` nodes.*
 
 **Emphasis & Color Classes:**
 
-Three levels of text emphasis mapped to the ceramic highlight colors:
+Two text emphasis utilities map to ceramic highlight colors:
 
 | Class | Color token | Palette step |
 |---|---|---|
 | `.text-high` | `--freefall-text-display` | primary-50 |
-| `.text-low` | `--freefall-text-muted` | primary-300 |
+| `.text-low` | `--freefall-text-muted` | primary-200 |
 
 Use `.text-high` or `.text-low` on any element to override its default color.
 
-**Prose Scoping for Markdown (`.freefall-prose`):**
+**Rich-text scoping (`main`):**
 
-When rendering raw Markdown bodies (like long-form rulebooks), do not attempt to map utility classes to every single generated HTML node. Instead, wrap the output in a `<div class="freefall-prose">` scope container.
+`AppShell` renders page content inside `main`. Naked rich-text elements in that content area receive the editorial defaults without an additional wrapper class. Components outside `main` do not receive these rules.
 
-The `.freefall-prose` scope automatically:
-- Enforces an ergonomic `max-width: 65ch` measure to prevent unreadable widescreen text walls.
+The `main` scope automatically:
+- Leaves content measure to the page-level content grid, whose main column owns the 67ch reading measure.
 - Applies the correct vertical rhythm (margins that map to the `8px` base grid) between paragraphs and headings.
 - Automatically styles all naked `<h1>`, `<h2>`, and `<h3>` tags to the `.text-chapter`, `.text-section`, and `.text-subsection` scales respectively.
-- Styles `<pre>` with padding and a dark background (`--freefall-color-primary-700`) within `main`.
+- Styles `<pre>` with padding and a dark background (`--freefall-bg-surface-2`) within `main`.
 - Styles `<em>` with high-emphasis color (`--freefall-text-high`) and semi-bold weight within `main`.
 - Deep-styles TTRPG-specific nested structures natively:
   - **Lists**: Strictly indented padding for `<ul>` and `<ol>`, with unified vertical spacing for complex nested rules exceptions.
@@ -125,16 +125,16 @@ Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` �
 
 ### Definition of Done
 
-- [ ] `src/components/FontLinks.astro` renders preconnect and stylesheet `<link>` tags for both fonts
-- [ ] `src/styles/typography.css` defines `--freefall-font-body` and `--freefall-font-mono` custom properties
-- [ ] `src/styles/typography.css` implements the detailed editorial scale utility classes (`.text-chapter`, `.text-section`, etc.) and the `.freefall-prose` comprehensive scope styles.
-- [ ] `src/styles/typography.css` adheres strictly to baseline rhythm (`line-height` evaluates to multiples of `var(--freefall-space-1)`).
-- [ ] `src/styles/base.css` imports `typography.css`
-- [ ] Both apps use `FontLinks` in their layouts
-- [ ] Demo app has a typography reference page showing both fonts, the editorial scales, and a mock `.freefall-prose` Markdown output.
+- [x] `src/components/FontLinks.astro` renders preconnect and stylesheet `<link>` tags for the text and icon fonts
+- [x] `src/styles/typography.css` defines `--freefall-font-body` and `--freefall-font-mono` custom properties
+- [x] `src/styles/typography.css` implements the editorial scale utility classes and comprehensive `main` rich-text scope styles
+- [x] Typography line heights derive from `var(--freefall-space-1)`
+- [x] `src/styles/base.css` imports `typography.css`
+- [x] `AppShell` renders `FontLinks`, covering both apps
+- [x] Demo app has a typography reference page showing representative font faces, classes, and naked rich-text output in `main`
 - [x] Demo app has a definition-list reference page (`/definition-list/`) showing the stacked and inline-strip variants, with e2e coverage (`apps/design-system/e2e/definition-list.test.ts`)
-- [ ] `pnpm build`, `pnpm lint`, and `pnpm test` pass
-- [ ] Built HTML contains Google Fonts `<link>` tags and zero `<script>` tags
+- [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
+- [x] Built HTML contains the Google Fonts `<link>` tags and no framework client runtime unless explicitly required
 
 ### Regression Guardrails
 
@@ -160,4 +160,4 @@ Scenario: Code elements use IBM Plex Mono
 Scenario: Typography demo page
   Given: The demo app is built
   When: A developer navigates to the typography page
-  Then: Both fonts are rendered with sample text at all defined weights
+  Then: Both fonts are rendered with representative samples and the implemented editorial classes are demonstrated

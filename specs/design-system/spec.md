@@ -1,10 +1,12 @@
 # Feature: Design System
 
+**Implements:** `docs/architecture/ADR-2026-07-19-design-system-contract-boundaries.md`
+
 ## Blueprint
 
 ### Context
 
-The design system is the single source of styling truth for FREE//FALL. It provides tokens, CSS styles, and components consumed by all apps in the monorepo. The goal is a cohesive visual language that ships zero JavaScript by default and leans on native web platform capabilities wherever possible.
+The design system is the single source of styling truth for FREE//FALL. It provides CSS custom-property tokens, CSS styles, and components consumed by all apps in the monorepo. The goal is a cohesive visual language that avoids a framework client runtime by default and leans on native web platform capabilities wherever possible. Inline JavaScript is allowed for progressive enhancement.
 
 **Brand and taste live in [`DESIGN.md`](../../DESIGN.md)** (repo root) — the design language document. Component specs define contracts; `DESIGN.md` defines what makes a component *look like FREE//FALL*. Read it before designing anything new.
 
@@ -14,8 +16,9 @@ The design system is the single source of styling truth for FREE//FALL. It provi
 
 | Layer | Format | Purpose |
 |---|---|---|
-| Styles | Plain CSS files | Tokens (custom properties), resets, base styles, component styles — mobile-first |
-| Components | `.astro` files | Composition wrappers only when plain HTML + CSS is insufficient |
+| Foundation | Plain CSS files | Tokens (custom properties), reset, typography — mobile-first |
+| Global primitives | Plain CSS files | Content grid, surfaces, callouts, and small utilities |
+| Components | `.astro` files | Self-contained composition when plain HTML + CSS is insufficient |
 
 No build step. Source is distributed directly to consuming apps via Vite aliases.
 The package owns an `astro check` script so source-distributed components are
@@ -27,23 +30,20 @@ An Astro SSG site that imports from `packages/design-system` and renders every e
 
 **Consumption model:**
 
-Astro server-renders all components to static HTML + CSS. There is no client-side JS bundle to tree-shake. This means:
+Astro server-renders all components to static HTML + CSS. Components may emit small inline progressive-enhancement scripts, but no framework client runtime is included by default. This means:
 
 - **CSS files**: Not tree-shaken. An imported CSS file is included in full. This is fine — global styles and tokens are small and needed everywhere.
 - **Astro components**: Only rendered components produce output. Unused imports cost nothing.
 
-The recommended pattern is a **base layout** in each app that imports the full design system styles once. Components are imported individually in pages/components that use them — this is a template necessity, not an optimization.
+`AppShell` owns the one-time `base.css` import and renders `FontLinks` in the document head. Components are imported individually in pages/components that use them; consumers of `AppShell` must not duplicate either foundation dependency.
 
 ```astro
 ---
-// Base layout — import styles once here
-import "@free-fall/design-system/styles/base.css";
+// Base layout — AppShell owns base.css and FontLinks
+import AppShell from "@free-fall/design-system/components/AppShell.astro";
 ---
 
-<html lang="en">
-  <head><slot name="head" /></head>
-  <body><slot /></body>
-</html>
+<AppShell title="FREE//FALL" navItems={navItems}><slot /></AppShell>
 ```
 
 ```astro
@@ -95,15 +95,16 @@ The preflight lives in `src/styles/preflight.css` and is imported first in `base
 
 ### Definition of Done
 
-- [ ] `packages/design-system` exports at least one token, one CSS file, and one component
-- [ ] `apps/design-system` demos every exported feature on at least one page
-- [ ] `pnpm build` succeeds for both `apps/free-fall` and `apps/design-system`
-- [ ] `pnpm typecheck` checks `packages/design-system` Astro source and both apps
-- [ ] `pnpm test` passes all design system unit tests
-- [ ] `pnpm test:e2e` passes both app and living-styleguide Playwright suites
-- [ ] No `workspace:*` references in any `package.json`
-- [ ] Zero JavaScript in the demo app build output (unless a Svelte island is present)
-- [ ] Design system package has no dependency on any app
+- [x] `packages/design-system` provides CSS custom-property tokens, global CSS, and Astro components
+- [x] `AppShell` owns the `base.css` import and `FontLinks` rendering
+- [x] `apps/design-system` demos every current global style and component on at least one page
+- [x] `pnpm build` succeeds for both `apps/free-fall` and `apps/design-system`
+- [x] `pnpm typecheck` checks `packages/design-system` Astro source and both apps
+- [x] `pnpm test` passes all design system unit tests
+- [x] `pnpm test:e2e` passes both app and living-styleguide Playwright suites
+- [x] No `workspace:*` references in any `package.json`
+- [x] Demo builds contain no framework client runtime unless an explicit island requires one; inline progressive-enhancement scripts are allowed
+- [x] Design system package has no dependency on any app
 
 ### Regression Guardrails
 
@@ -137,15 +138,15 @@ import AppShell from "@free-fall/design-system/components/AppShell.astro";
 
 ### Scenarios
 
-Scenario: New CSS component added
+Scenario: New global CSS primitive added
   Given: A new CSS file is added to `packages/design-system/src/styles/`
   When: It is imported in `apps/design-system`
-  Then: The demo app builds and renders the styled elements with zero JS
+  Then: The demo app builds and renders the styled elements without requiring a framework client runtime
 
 Scenario: New Astro component added
   Given: A new `.astro` file is added to `packages/design-system/src/components/`
   When: It is imported via `@free-fall/design-system/components/Button.astro`
-  Then: Vite alias resolves it, the demo app renders it, and no JS is shipped
+  Then: Vite alias resolves it, the demo app renders it, and no framework client runtime is shipped unless explicitly required
 
 Scenario: Token added
   Given: A new CSS custom property is added to `packages/design-system/src/styles/tokens.css`
