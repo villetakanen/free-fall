@@ -28,6 +28,21 @@ typechecked directly rather than relying on a consumer build to discover errors.
 
 An Astro SSG site that imports from `packages/design-system` and renders every exported token, style, and component as a live reference. This is the living styleguide — if it's not demoed here, it doesn't exist.
 
+**Documentation taxonomy:**
+
+Every styleguide page belongs to exactly one of four categories, mirroring the package layering above. Placement is decided by *what kind of thing the page documents* — not by feature or theme:
+
+| Category | What belongs | Placement rule |
+|---|---|---|
+| **Foundations** | Design decisions expressed as tokens, not markup — color, typography, iconography. | A token-level design primitive with no DOM of its own. |
+| **Primitives** | Global CSS applied to native elements or utility classes, *not* importable — Content Grid, Callout, Definition List. | Styling you get from a class or element, with no `.astro` import. |
+| **Components** | Importable `.astro` components, rendered live — App Bar, App Shell, App Tray, Drawer Brand, Gear Card, Hamburger Button, Stat Circle, Tray Button, Tray Link, Tray Link Group. | You `import` it and render it. |
+| **Patterns** | Composition and data-model guides that are not a single component — Navigation Model, Subsite Navigation. | Teaches how to compose pieces or model data, not one widget. |
+
+The rule is mechanical: importable component → Components; CSS-only element/utility → Primitives; token-level decision → Foundations; a composition or data model → Patterns. A page that seems to fit two categories is documenting two things and should be split.
+
+The sidebar renders these categories as non-link `group` headings — it is a *reference index by kind*, deliberately unlike a product app's navigation. The product (`apps/free-fall`) navigates by destination (Core Rules, Gear, Scenarios) as top-level links with rail icons; the styleguide groups reference material by category and is browsed with the tray open (category groups have no collapsed-rail presence, by design).
+
 **Consumption model:**
 
 Astro server-renders all components to static HTML + CSS. Components may emit small inline progressive-enhancement scripts, but no framework client runtime is included by default. This means:
@@ -109,6 +124,7 @@ The preflight lives in `src/styles/preflight.css` and is imported first in `base
 ### Regression Guardrails
 
 - Adding a new export to `packages/design-system` without a demo page in `apps/design-system` is a failing review
+- Every styleguide page belongs to exactly one documentation-taxonomy category (Foundations / Primitives / Components / Patterns); the category is derived by the placement rule, never by feature or theme. A page that fits two is documenting two things and must be split
 - Dependency direction is one-way: apps → `packages/design-system`, never the reverse
 - The static app builds contain no framework client runtime unless an explicit island is present
 

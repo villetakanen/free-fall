@@ -4,7 +4,7 @@
 
 ### Context
 
-The app tray is the primary navigation surface for FREE//FALL. It follows the Material 3 navigation drawer pattern: a collapsible side panel that adapts from a viewport-capped modal drawer on small viewports to a persistent rail and tray on larger ones. A hamburger button with a bar-to-cross micro-interaction controls the open/closed state at every breakpoint.
+The app tray is the primary navigation surface for FREE//FALL. It offers modern, no-frills navigation across mobile, pad, and desktop: a viewport-capped modal drawer on small viewports, a navigation rail that expands on pad, and a persistent expanded sidebar on desktop that the reader can collapse to a rail. A hamburger button with a bar-to-cross micro-interaction controls the state at every breakpoint.
 
 The component is built with progressive enhancement: all layout, toggle, transitions, and scrim work with pure HTML + CSS. A small inline script adds keyboard support (Escape to close) and focus trap (modal overlay mode) as enhancements.
 
@@ -14,13 +14,15 @@ Parent spec: `specs/design-system/spec.md`
 
 **Responsive modes:**
 
-| Viewport | Breakpoint | Closed state | Open state |
-|---|---|---|---|
-| Small (default) | < 620px | Hidden (off-screen) | Modal drawer, 320px wide and capped by viewport |
-| Medium (tablet) | >= 620px | Navigation rail | Full drawer (overlay on content) |
-| Large (desktop) | >= 780px | Navigation rail | Tray (pushes content) |
+Each breakpoint has a **default state** and a **toggled state**. The toggle follows the default: it *opens* the tray where the default is hidden or a rail (mobile, pad), and *collapses* it where the default is expanded (desktop). So the reader always gets a usable default without touching the control — full navigation on desktop, a compact rail on pad, out of the way on mobile.
 
-The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-desktop` (780px).
+| Viewport | Breakpoint | Default state | Toggled state |
+|---|---|---|---|
+| Small (mobile) | < 620px | Hidden (off-screen) | Modal drawer, 320px wide, viewport-capped (overlay) |
+| Medium (pad) | >= 620px | Navigation rail | Full drawer (overlay on content) |
+| Large (desktop) | >= 780px | Expanded tray (320px, pushes content) | Collapsed to the navigation rail |
+
+Rationale: the desktop default is the expanded sidebar because navigation whose top level is not icon-worthy (e.g. the styleguide's category groups) is useless as a rail-only default. Content-heavy apps (the rulebook) may still collapse to the rail to reclaim reading width. The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-desktop` (780px).
 
 **Anatomy:**
 
@@ -146,7 +148,7 @@ Pattern for a subsite (a self-contained section with its own pages, e.g. a scena
 
 Reference implementation: `apps/free-fall/src/layouts/BaseLayout.astro` swaps to `getScenarioSubsiteNav()` when the route is inside a scenario (spec: `specs/content-scenarios/spec.md#navigation`).
 
-The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation *pattern* page, not a component reference: the styleguide nav lists it as "Subsite Navigation" under the **Layout** group (alongside Content Grid), and the App Tray reference page links to it — entering and leaving it is the demonstration. Its uplink exits to the styleguide home. (The Layout group is anchored on `/content-grid/` because top-level tray items must be links — tracked as issue #42.)
+The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation *pattern* page, not a component reference: the styleguide lists it as "Subsite Navigation" under the **Patterns** category (alongside Navigation Model), and the App Tray reference page links to it — entering and leaving it is the demonstration. Its uplink exits to the styleguide home. See the documentation taxonomy in `specs/design-system/spec.md` for how pattern pages, component references, and primitives are categorized. (Content Grid is a **Primitive**, not part of this pattern.)
 
 ### Anti-Patterns
 
@@ -165,7 +167,7 @@ The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation
 - [x] Toggle, transitions, and scrim work without JavaScript
 - [x] Small viewport: tray is hidden by default and opens as a 320px capped modal drawer
 - [x] Medium viewport: rail visible by default, tray opens with overlay and scrim
-- [x] Large viewport: rail visible by default, tray opens in flex flow and pushes content
+- [x] Large viewport: expanded tray (20rem) is the default and pushes content; toggling collapses it to the rail
 - [x] Hamburger button morphs structural bars between menu and cross states
 - [x] Component dimensions derive from spacing tokens
 - [x] Scrim renders on small + medium when tray is open; click-to-close works without JS
@@ -213,10 +215,11 @@ Scenario: Medium viewport — tray opens as overlay
   Then: The tray expands from the rail to full width (20rem) as an overlay with scrim
   And: Overlay describes stacking and modality; it does not establish a push-behavior guarantee
 
-Scenario: Large viewport — rail visible, tray pushes content
+Scenario: Large viewport — expanded by default, collapses to rail
   Given: Viewport width is 780px or above
-  When: The user clicks the hamburger button
-  Then: The tray expands and content area shifts right — no scrim, no overlay
+  When: The page loads
+  Then: The expanded tray (20rem) is visible and content is pushed right — no scrim, no overlay
+  And: Clicking the hamburger collapses the tray to the rail (5rem), giving content more width
 
 Scenario: No-JS baseline works
   Given: JavaScript is disabled

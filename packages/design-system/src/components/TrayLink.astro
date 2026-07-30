@@ -16,11 +16,13 @@ const { href, label, active } = Astro.props;
   >
     <span class="label">{label}</span>
   </a>
+  <slot />
 </li>
 
 <style>
   .tray-link-item {
     display: flex;
+    flex-direction: column;
     min-width: 0;
   }
 

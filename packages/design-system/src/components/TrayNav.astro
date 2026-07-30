@@ -1,0 +1,79 @@
+---
+import type { RenderNavModel } from "../navigation";
+import TrayButton from "./TrayButton.astro";
+import TrayLinkGroup from "./TrayLinkGroup.astro";
+
+/**
+ * tray-nav
+ *
+ * The presentational nav-item list of the AppTray: it turns a normalized
+ * RenderNavModel into TrayButtons, uplinks, and TrayLinkGroups. It owns no
+ * drawer chrome, scrim, or open/close behavior, so it can be rendered as a
+ * live specimen inside a bounded container in the styleguide as well as inside
+ * the real AppTray drawer.
+ *
+ * It deliberately does NOT declare `container-type`: the 64px rail-collapse of
+ * the child primitives resolves against the nearest container ancestor, which
+ * is the AppTray `.drawer` in the app and the `.demo-container` in the docs.
+ */
+interface Props {
+  navigation: RenderNavModel;
+  /** DOM id for the real tray; omitted for docs specimens to avoid dupes. */
+  id?: string;
+}
+
+const { navigation, id } = Astro.props;
+---
+
+<nav id={id} class="nav" aria-label={navigation.label}>
+  {
+    navigation.items.map((item) => {
+      if (item.kind === "group") {
+        return (
+          <TrayLinkGroup
+            heading={item.label}
+            icon={item.icon}
+            items={item.children}
+            active={true}
+          />
+        );
+      }
+
+      if (item.kind === "uplink") {
+        return (
+          <TrayButton
+            icon={item.icon ?? "arrow_back"}
+            label={item.label}
+            href={item.href}
+            variant="uplink"
+          />
+        );
+      }
+
+      return (
+        <>
+          <TrayButton
+            icon={item.icon}
+            label={item.label}
+            href={item.href}
+            active={item.current}
+          />
+          {item.children && item.children.length > 0 && (
+            <TrayLinkGroup items={item.children} active={item.active} />
+          )}
+        </>
+      );
+    })
+  }
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--freefall-space-1);
+    align-items: flex-start;
+    flex: 1;
+    overflow-y: auto;
+  }
+</style>

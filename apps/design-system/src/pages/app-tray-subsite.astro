@@ -1,57 +1,60 @@
 ---
+import type { NavModel } from "@free-fall/design-system/navigation";
 // Spec: specs/design-system/app-tray/spec.md#contextual-navigation
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// A scoped ("subsite") navItems set: the layout swaps the global nav for
-// this array when the reader enters the subsite. The uplink is a TrayButton
-// with variant="uplink" — muted and separated so it reads as "up a level".
-const subsiteNavItems = [
-  {
-    icon: "arrow_back",
-    label: "Back to Design System",
-    href: "/",
-    active: false,
-    variant: "uplink" as const,
-  },
-  {
-    icon: "map",
-    label: "Demo Subsite",
-    href: "/app-tray-subsite/",
-    active: true,
-  },
-  {
-    icon: "article",
-    label: "Body Page One",
-    href: "/app-tray-subsite/#body-pages",
-    active: false,
-  },
-  {
-    icon: "article",
-    label: "Body Page Two",
-    href: "/app-tray-subsite/#body-pages",
-    active: false,
-  },
-];
+const navigation: NavModel = {
+  scope: "subsite",
+  label: "Demo subsite navigation",
+  items: [
+    {
+      kind: "uplink",
+      label: "Design System",
+      href: "/navigation/",
+    },
+    {
+      kind: "link",
+      icon: "map",
+      label: "Demo Subsite",
+      href: "/app-tray-subsite/",
+    },
+    {
+      kind: "group",
+      label: "Body Pages",
+      children: [
+        {
+          kind: "link",
+          icon: "article",
+          label: "Body Page One",
+          href: "/app-tray-subsite/#body-page-one",
+        },
+        {
+          kind: "link",
+          icon: "article",
+          label: "Body Page Two",
+          href: "/app-tray-subsite/#body-page-two",
+        },
+      ],
+    },
+  ],
+};
 ---
 
 <BaseLayout
   title="App Tray: Subsite Mode — FREE//FALL Design System"
-  navItems={subsiteNavItems}
+  navigation={navigation}
 >
   <h1>App Tray: Subsite Mode</h1>
   <p>
     You are inside a <strong>subsite</strong> right now — look at the tray. The
     global design-system nav is gone; the tray renders a scoped set instead:
-    an <em>uplink</em> first (a TrayButton with
-    <code>variant="uplink"</code> — muted, with a separator below), then the
-    subsite's own pages.
+    an <em>uplink</em> first, then the subsite's own destinations and groups.
   </p>
   <p>
     The tray itself is unchanged and context-agnostic: it renders whatever
-    <code>navItems</code> array the layout supplies. The layout branches on the
-    route and builds a scoped array instead of the global one. Rail, overlay,
-    and push behavior are identical to the global nav — resize the browser to
-    verify.
+    <code>NavModel</code> the layout supplies. The model declares a subsite
+    scope; rail, overlay, and push behavior stay identical to global
+    navigation. Resize the browser to verify.
   </p>
   <p>
     This page is a <strong>navigation pattern</strong> demo, not a component
@@ -67,6 +70,12 @@ const subsiteNavItems = [
     reached through the subsite's own overview page, keeping the rail to the
     read-through spine.
   </p>
+
+  <h3 id="body-page-one">Body Page One</h3>
+  <p>A local destination grouped under the scenario's read-through spine.</p>
+
+  <h3 id="body-page-two">Body Page Two</h3>
+  <p>Another local destination without a synthetic group route.</p>
 
   <p>
     <a href="/app-tray/">← To the App Tray reference page</a> — or leave

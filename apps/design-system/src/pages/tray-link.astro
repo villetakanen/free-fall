@@ -1,0 +1,72 @@
+---
+import TrayLinkDemo from "@free-fall/design-system/components/TrayLink.astro";
+import TrayLinkGroupDemo from "@free-fall/design-system/components/TrayLinkGroup.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Tray Link — FREE//FALL Design System">
+    <Fragment slot="head">
+        <style>
+            .demo-section {
+                margin-bottom: calc(4 * var(--freefall-space-1));
+            }
+            .demo-container {
+                border: calc(var(--freefall-space-1) / 4) dashed
+                    var(--freefall-border-subtle);
+                border-radius: var(--freefall-space-1);
+                padding: var(--freefall-space-2);
+                margin-top: var(--freefall-space-2);
+                background: var(--freefall-bg-surface-1);
+                container-type: inline-size;
+            }
+            .demo-container--open {
+                width: calc(40 * var(--freefall-space-1));
+                max-width: 100%;
+            }
+            .demo-label {
+                font-size: calc(1.5 * var(--freefall-space-1));
+                font-family: var(--freefall-font-mono);
+                color: var(--freefall-text-muted);
+                margin-bottom: var(--freefall-space-1);
+            }
+        </style>
+    </Fragment>
+
+    <h1>Tray Link</h1>
+    <p>
+        The secondary navigation link used for descendant destinations inside a
+        <a href="/tray-link-group/">Tray Link Group</a>. It is a compact,
+        icon-less pill taking <code>href</code>, <code>label</code>, and an
+        <code>active</code> flag; when active it renders
+        <code>aria-current="page"</code> and the selected pill fill. It is
+        always a list item, so it must live inside a group's list — the
+        specimens below wrap it in an active group to render it.
+    </p>
+
+    <div class="demo-section">
+        <h2>Default &amp; Active</h2>
+        <p class="demo-label">
+            active renders aria-current="page" + selected fill
+        </p>
+        <div class="demo-container demo-container--open">
+            <TrayLinkGroupDemo active={true}>
+                <TrayLinkDemo href="#" label="01. Character Creation" />
+                <TrayLinkDemo href="#" label="02. Core Mechanics" active={true} />
+                <TrayLinkDemo href="#" label="03. Combat & Engagement" />
+            </TrayLinkGroupDemo>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Text Overflow</h2>
+        <p class="demo-label">long labels truncate with an ellipsis</p>
+        <div class="demo-container demo-container--open">
+            <TrayLinkGroupDemo active={true}>
+                <TrayLinkDemo
+                    href="#"
+                    label="04. A very long rule title that will definitely need to truncate using an ellipsis because it is too long"
+                />
+            </TrayLinkGroupDemo>
+        </div>
+    </div>
+</BaseLayout>

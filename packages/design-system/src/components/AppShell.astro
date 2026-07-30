@@ -1,10 +1,15 @@
 ---
+import {
+  type NavModel,
+  normalizeNavigation,
+  type RenderNavModel,
+} from "../navigation";
 import AppBar from "./AppBar.astro";
 import AppTray from "./AppTray.astro";
 import FontLinks from "./FontLinks.astro";
 import "../styles/base.css";
 
-interface NavItem {
+interface LegacyNavItem {
   icon: string;
   label: string;
   href: string;
@@ -19,11 +24,55 @@ interface NavItem {
 
 interface Props {
   title: string;
-  navItems: NavItem[];
+  navigation?: NavModel;
+  /** Temporary compatibility input while consuming apps migrate to NavModel. */
+  navItems?: LegacyNavItem[];
   brandHref?: string;
 }
 
-const { title, navItems, brandHref } = Astro.props;
+const { title, navigation, navItems, brandHref } = Astro.props;
+
+const legacyRenderModel = (items: LegacyNavItem[]): RenderNavModel => ({
+  scope: items[0]?.variant === "uplink" ? "subsite" : "global",
+  label: "Main navigation",
+  items: items.map((item) => {
+    if (item.variant === "uplink") {
+      return {
+        kind: "uplink" as const,
+        icon: item.icon,
+        label: item.label,
+        href: item.href,
+        active: false as const,
+        current: false as const,
+      };
+    }
+
+    return {
+      kind: "link" as const,
+      icon: item.icon,
+      label: item.label,
+      href: item.href,
+      active: item.active ?? false,
+      current: item.active ?? false,
+      children: item.subItems?.map((subItem) => ({
+        kind: "link" as const,
+        icon: "",
+        label: subItem.label,
+        href: subItem.href,
+        active: subItem.active ?? false,
+        current: subItem.active ?? false,
+      })),
+    };
+  }),
+});
+
+if (!navigation && !navItems) {
+  throw new Error("AppShell requires a navigation model");
+}
+
+const renderNavigation = navigation
+  ? normalizeNavigation(navigation, Astro.url.pathname)
+  : legacyRenderModel(navItems ?? []);
 ---
 
 <html lang="en">
@@ -36,7 +85,7 @@ const { title, navItems, brandHref } = Astro.props;
   </head>
   <body>
     <div class="app-shell">
-      <AppTray items={navItems} brandHref={brandHref} />
+      <AppTray navigation={renderNavigation} brandHref={brandHref} />
       <div class="app">
         <AppBar title={title} />
         <main>

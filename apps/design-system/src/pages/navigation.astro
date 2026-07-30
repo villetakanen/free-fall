@@ -1,0 +1,401 @@
+---
+import TrayNav from "@free-fall/design-system/components/TrayNav.astro";
+import {
+  type NavModel,
+  normalizeNavigation,
+} from "@free-fall/design-system/navigation";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Global: flat, app-wide destinations. Core Rules and Gear match a whole
+// route family via prefix; Home matches exactly.
+const globalModel: NavModel = {
+  scope: "global",
+  label: "Global navigation example",
+  items: [
+    { kind: "link", icon: "home", label: "Home", href: "/" },
+    {
+      kind: "link",
+      icon: "book",
+      label: "Core Rules",
+      href: "/core-rulebook/00-intro/",
+      matchPath: "/core-rulebook/",
+      match: "prefix",
+    },
+    {
+      kind: "link",
+      icon: "handyman",
+      label: "Gear",
+      href: "/gear/weapons/",
+      matchPath: "/gear/",
+      match: "prefix",
+    },
+    { kind: "link", icon: "map", label: "Scenarios", href: "/scenarios/" },
+  ],
+};
+
+// Content section: a destination that owns content-derived children. The
+// parent matches its own route exactly, so a child route activates the parent
+// for disclosure without marking it the current page.
+const sectionModel: NavModel = {
+  scope: "global",
+  label: "Content section example",
+  items: [
+    {
+      kind: "link",
+      icon: "book",
+      label: "Core Rules",
+      href: "/core-rulebook/",
+      children: [
+        {
+          kind: "link",
+          icon: "article",
+          label: "00 · Introduction",
+          href: "/core-rulebook/00-intro/",
+        },
+        {
+          kind: "link",
+          icon: "article",
+          label: "01 · Character Creation",
+          href: "/core-rulebook/01-characters/",
+        },
+        {
+          kind: "link",
+          icon: "article",
+          label: "03 · Combat & Engagement",
+          href: "/core-rulebook/03-combat/",
+        },
+      ],
+    },
+  ],
+};
+
+// Subsite: a self-contained scope. It begins with an uplink out, then owns
+// local destinations and a non-link group heading.
+const subsiteModel: NavModel = {
+  scope: "subsite",
+  label: "Scenario subsite example",
+  items: [
+    { kind: "uplink", label: "All Scenarios", href: "/scenarios/" },
+    {
+      kind: "link",
+      icon: "map",
+      label: "Northern Lights",
+      href: "/scenarios/northern-lights/",
+    },
+    {
+      kind: "group",
+      label: "Mission",
+      children: [
+        {
+          kind: "link",
+          icon: "article",
+          label: "The Approach",
+          href: "/scenarios/northern-lights/the-approach/",
+        },
+        {
+          kind: "link",
+          icon: "article",
+          label: "The Vault",
+          href: "/scenarios/northern-lights/the-vault/",
+        },
+      ],
+    },
+  ],
+};
+
+// Prefix: a single link whose destination is one page but whose match covers a
+// whole route family.
+const prefixModel: NavModel = {
+  scope: "global",
+  label: "Prefix match example",
+  items: [
+    {
+      kind: "link",
+      icon: "book",
+      label: "Core Rules",
+      href: "/core-rulebook/00-intro/",
+      matchPath: "/core-rulebook/",
+      match: "prefix",
+    },
+  ],
+};
+
+// Same content as the section, reused to show rail-vs-open behavior. Distinct
+// labels keep the two navigation landmarks uniquely named.
+const railItems = sectionModel.items;
+
+const globalNav = normalizeNavigation(globalModel, "/");
+const sectionNav = normalizeNavigation(
+  sectionModel,
+  "/core-rulebook/03-combat/",
+);
+const subsiteNav = normalizeNavigation(
+  subsiteModel,
+  "/scenarios/northern-lights/the-approach/",
+);
+const exactNav = normalizeNavigation(globalModel, "/scenarios/");
+const prefixNav = normalizeNavigation(prefixModel, "/core-rulebook/03-combat/");
+const railOpenNav = normalizeNavigation(
+  { scope: "global", label: "Expanded tray example", items: railItems },
+  "/core-rulebook/03-combat/",
+);
+const railMinNav = normalizeNavigation(
+  { scope: "global", label: "Collapsed rail example", items: railItems },
+  "/core-rulebook/03-combat/",
+);
+---
+
+<BaseLayout title="Navigation Model — FREE//FALL Design System">
+  <Fragment slot="head">
+    <style>
+      .principle-list,
+      .node-list {
+        display: grid;
+        gap: var(--freefall-space-3);
+        margin-block: var(--freefall-space-4);
+      }
+
+      .principle-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .principle-list strong,
+      .node-list dt {
+        color: var(--freefall-text-display);
+      }
+
+      .principle-list p,
+      .node-list dd {
+        margin: var(--freefall-space-1) 0 0;
+      }
+
+      .node-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      /* Live-specimen containers, matching the tray primitive doc pages. The
+         container owns `container-type`, so the tray's 64px rail-collapse
+         resolves against the specimen width — never set it on TrayNav. */
+      .demo-container {
+        border: calc(var(--freefall-space-1) / 4) dashed
+          var(--freefall-border-subtle);
+        border-radius: var(--freefall-space-1);
+        padding: var(--freefall-space-2);
+        margin-top: var(--freefall-space-2);
+        background: var(--freefall-bg-surface-1);
+        container-type: inline-size;
+      }
+
+      .demo-container--open {
+        width: calc(40 * var(--freefall-space-1));
+        max-width: 100%;
+      }
+
+      .demo-container--minimized {
+        width: calc(10 * var(--freefall-space-1));
+      }
+
+      .demo-label {
+        font-size: calc(1.5 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        margin-bottom: var(--freefall-space-1);
+      }
+
+      .specimen-pair {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--freefall-space-3);
+        align-items: start;
+      }
+
+      .specimen {
+        flex: 1 1 calc(18 * var(--freefall-space-1));
+        min-width: calc(16 * var(--freefall-space-1));
+      }
+
+      @container content (min-width: 48rem) {
+        .node-list {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+      }
+    </style>
+  </Fragment>
+
+  <h1>Navigation Model</h1>
+  <p>
+    The tray — the sidebar on every screen — is built from one description of an
+    app's structure, instead of a menu hand-written on each page. A section
+    describes itself as a plain list: destinations, group headings, and an
+    optional "up a level" link out of a self-contained subsite. The design
+    system reads the current URL and highlights the page you are on — nothing
+    marks "you are here" by hand.
+  </p>
+  <p>
+    The examples below are the situations that list has to cover: an app's top
+    level, a section that owns its own pages, a self-contained subsite, and how
+    "current" is decided. Each is rendered from a real model, so you see exactly
+    what an app produces.
+  </p>
+
+  <h2>Principles</h2>
+  <ul class="principle-list">
+    <li>
+      <strong>One scope at a time.</strong>
+      <p>
+        Global navigation connects product areas. A subsite owns the tray while
+        the reader is inside it; global destinations do not leak into that
+        local play aid.
+      </p>
+    </li>
+    <li>
+      <strong>Structure is not a destination.</strong>
+      <p>
+        A group labels related routes without inventing an overview page or
+        borrowing its first child's destination.
+      </p>
+    </li>
+    <li>
+      <strong>Location is derived once.</strong>
+      <p>
+        Exact, prefix, and descendant activity come from the request path. Page
+        layouts do not hand-code competing active states.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Model Guide</h2>
+  <dl class="node-list">
+    <div>
+      <dt><code>link</code></dt>
+      <dd>
+        A destination with a rail icon. It may own descendants and can match
+        either its destination or a separate route prefix.
+      </dd>
+    </div>
+    <div>
+      <dt><code>group</code></dt>
+      <dd>
+        An editorial heading for child destinations. It has no <code>href</code>,
+        hover state, or rail control.
+      </dd>
+    </div>
+    <div>
+      <dt><code>uplink</code></dt>
+      <dd>
+        The first exit from subsite scope. It is always a link, defaults to
+        <code>arrow_back</code>, and is never current.
+      </dd>
+    </div>
+  </dl>
+
+  <h2>Global Navigation</h2>
+  <p>
+    App-wide destinations sit side by side. Normalized against <code>/</code>,
+    Home is the current page — an <strong>exact</strong> match — while the
+    prefix-matched sections stay at rest.
+  </p>
+  <p class="demo-label">normalizeNavigation(globalModel, "/")</p>
+  <div class="demo-container demo-container--open">
+    <TrayNav navigation={globalNav} />
+  </div>
+
+  <h2>Content Section</h2>
+  <p>
+    A destination can own content-derived children (the app queries a
+    collection and sorts them before they enter the model). Normalized against
+    a chapter route, the child is current and its parent is
+    <strong>active for disclosure but not marked current</strong> — the
+    descendant rule.
+  </p>
+  <p class="demo-label">
+    normalizeNavigation(sectionModel, "/core-rulebook/03-combat/")
+  </p>
+  <div class="demo-container demo-container--open">
+    <TrayNav navigation={sectionNav} />
+  </div>
+
+  <h2>Subsite &amp; Uplink</h2>
+  <p>
+    Inside a subsite the global set gives way to a scoped one: an
+    <strong>uplink</strong> out (muted, hairline-separated, never current),
+    the local overview, and a <strong>group</strong> heading. The group labels
+    its pages without being a link itself — structure is not a destination.
+    <a href="/app-tray-subsite/">The subsite demo</a> lets you enter and leave the
+    scope for real.
+  </p>
+  <p class="demo-label">
+    normalizeNavigation(subsiteModel, "/scenarios/northern-lights/the-approach/")
+  </p>
+  <div class="demo-container demo-container--open">
+    <TrayNav navigation={subsiteNav} />
+  </div>
+
+  <h2>Active Matching</h2>
+  <p>
+    All three activity kinds come from the request path alone. Each specimen is
+    the same model rule normalized against a different sample path.
+  </p>
+  <div class="specimen-pair">
+    <div class="specimen">
+      <p class="demo-label">exact · path "/scenarios/"</p>
+      <div class="demo-container demo-container--open">
+        <TrayNav navigation={exactNav} />
+      </div>
+      <p>Only the exactly matched destination is current.</p>
+    </div>
+    <div class="specimen">
+      <p class="demo-label">prefix · path "/core-rulebook/03-combat/"</p>
+      <div class="demo-container demo-container--open">
+        <TrayNav navigation={prefixNav} />
+      </div>
+      <p>
+        The link opens <code>/core-rulebook/00-intro/</code> yet stays current
+        across the whole <code>/core-rulebook/</code> family.
+      </p>
+    </div>
+    <div class="specimen">
+      <p class="demo-label">descendant · path "/core-rulebook/03-combat/"</p>
+      <div class="demo-container demo-container--open">
+        <TrayNav navigation={sectionNav} />
+      </div>
+      <p>
+        The matching child is current; its parent is highlighted for
+        disclosure only.
+      </p>
+    </div>
+  </div>
+
+  <h2>Rail vs. Open</h2>
+  <p>
+    The same model, two widths. In the open tray, groups and descendant links
+    are present; in the minimized rail (a query container narrower than 64px)
+    they leave both layout and tab order, so only actionable icon controls
+    remain.
+  </p>
+  <div class="specimen-pair">
+    <div class="specimen">
+      <p class="demo-label">expanded · 40 × space-1</p>
+      <div class="demo-container demo-container--open">
+        <TrayNav navigation={railOpenNav} />
+      </div>
+    </div>
+    <div class="specimen">
+      <p class="demo-label">collapsed rail · 10 × space-1</p>
+      <div class="demo-container demo-container--minimized">
+        <TrayNav navigation={railMinNav} />
+      </div>
+    </div>
+  </div>
+
+  <h2>Visual Semantics</h2>
+  <p>
+    Destinations use the established pill interaction and editorial type.
+    Groups use a promoted, hairline-separated section eyebrow without control
+    affordances. Uplinks are muted at rest and separated by a hairline, so
+    leaving a scope reads differently from moving within it. In rail mode,
+    groups and descendants leave both layout and tab order; only actionable
+    icon controls remain.
+  </p>
+</BaseLayout>

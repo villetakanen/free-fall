@@ -2,48 +2,108 @@
 import nineTailRaw from "@free-fall/design-system/assets/nine-tail.svg?raw";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const breakpoints = { tablet: "620px", desktop: "780px" };
+// Mirrors the sidebar taxonomy in BaseLayout.astro and the rule in
+// specs/design-system/spec.md. Keep the two in sync.
+const categories = [
+  {
+    name: "Foundations",
+    blurb: "Design decisions expressed as tokens, not markup.",
+    pages: [
+      { label: "Design Tokens", href: "/tokens/" },
+      { label: "Typography", href: "/typography/" },
+      { label: "Iconography", href: "/iconography/" },
+    ],
+  },
+  {
+    name: "Primitives",
+    blurb:
+      "Global CSS applied to native elements and utility classes — nothing to import.",
+    pages: [
+      { label: "Content Grid", href: "/content-grid/" },
+      { label: "Callout", href: "/callout/" },
+      { label: "Definition List", href: "/definition-list/" },
+    ],
+  },
+  {
+    name: "Components",
+    blurb: "Importable .astro components, rendered live.",
+    pages: [
+      { label: "App Bar", href: "/app-bar/" },
+      { label: "App Shell", href: "/app-shell/" },
+      { label: "App Tray", href: "/app-tray/" },
+      { label: "Drawer Brand", href: "/drawer-brand/" },
+      { label: "Gear Card", href: "/gear-card/" },
+      { label: "Hamburger Button", href: "/hamburger-button/" },
+      { label: "Stat Circle", href: "/stat-circle/" },
+      { label: "Tray Button", href: "/tray-button/" },
+      { label: "Tray Link", href: "/tray-link/" },
+      { label: "Tray Link Group", href: "/tray-link-group/" },
+    ],
+  },
+  {
+    name: "Patterns",
+    blurb: "How to compose pieces or model data — not a single component.",
+    pages: [
+      { label: "Navigation Model", href: "/navigation/" },
+      { label: "Subsite Navigation", href: "/app-tray-subsite/" },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="FREE//FALL Design System">
-  <div class="test-container" style="padding: 2rem;">
-    <div
-      style="display: flex; justify-content: center;width:96px; opacity:0.44"
-      set:html={nineTailRaw}
-    />
-    <h1 class="text-chapter">FREE//FALL Design System</h1>
-    <h2 class="text-section">Component Reference</h2>
-  </div>
-  <h2>Breakpoints</h2>
-  <ul>
-    <li>Tablet: {breakpoints.tablet}</li>
-    <li>Desktop: {breakpoints.desktop}</li>
-  </ul>
-  <h2>Pages</h2>
-  <ul>
-    <li>
-      <a href="/tokens/" style="color: var(--freefall-alert-base)"
-        >Design Tokens</a
-      >
-    </li>
-    <li>
-      <a href="/typography/" style="color: var(--freefall-alert-base)"
-        >Typography</a
-      >
-    </li>
-    <li>
-      <a href="/callout/" style="color: var(--freefall-alert-base)"
-        >Callouts</a
-      >
-    </li>
-    <li>
-      <a href="/iconography/" style="color: var(--freefall-alert-base)"
-        >Iconography</a
-      >
-    </li>
-    <li>
-      <a href="/app-tray/" style="color: var(--freefall-alert-base)">App Tray</a
-      >
-    </li>
-  </ul>
+  <Fragment slot="head">
+    <style>
+      .hero {
+        display: flex;
+        justify-content: center;
+        width: 96px;
+        opacity: 0.44;
+        margin-inline: auto;
+      }
+      .index-cat {
+        margin-block: var(--freefall-space-4);
+      }
+      .index-cat > p {
+        color: var(--freefall-text-muted);
+        margin-block: var(--freefall-space-1) var(--freefall-space-2);
+      }
+      .index-cat ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        gap: var(--freefall-space-1) var(--freefall-space-3);
+        list-style: none;
+        padding: 0;
+      }
+      .index-cat a {
+        color: var(--freefall-text-display);
+        text-decoration: underline;
+      }
+    </style>
+  </Fragment>
+
+  <div class="hero" set:html={nineTailRaw} />
+  <h1 class="text-chapter">FREE//FALL Design System</h1>
+  <p>
+    The living styleguide. Every page documents one thing, filed by kind under
+    the four categories the design system defines — the same order as the
+    navigation tray. See <a href="/navigation/">Navigation Model</a> for how the
+    tray itself is built.
+  </p>
+
+  {
+    categories.map((cat) => (
+      <section class="index-cat">
+        <h2>{cat.name}</h2>
+        <p>{cat.blurb}</p>
+        <ul>
+          {cat.pages.map((page) => (
+            <li>
+              <a href={page.href}>{page.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
 </BaseLayout>

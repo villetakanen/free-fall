@@ -79,12 +79,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <h2>Contextual navigation (subsite mode)</h2>
   <p>
-    The tray is context-agnostic: it renders whatever <code>navItems</code>
-    array the layout supplies. A layout can swap in a scoped set for a
-    self-contained subsite — an <code>arrow_back</code> uplink first, then the
-    subsite's own pages.
+    The tray renders the normalized <code>NavModel</code> supplied by AppShell.
+    A layout can select a scoped model for a self-contained subsite: an uplink
+    first, then the subsite's own destinations.
     <a href="/app-tray-subsite/">Enter the live subsite demo</a> to see the
     tray switch.
+  </p>
+  <p>
+    Navigation principles, node semantics, and active matching belong to the
+    <a href="/navigation/">Navigation Model</a>. This page covers the tray's
+    responsive mechanics.
   </p>
 
   <h2>Interactions</h2>

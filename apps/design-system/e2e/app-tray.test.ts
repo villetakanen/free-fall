@@ -81,7 +81,7 @@ test.describe("AppTray Component interactions", () => {
     await expect(page.locator(".app-tray .scrim")).toBeVisible();
   });
 
-  test("Desktop viewport (>=780px): Rail visible, expands and pushes content", async ({
+  test("Desktop viewport (>=780px): Expanded by default, collapses to rail on toggle", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1024, height: 800 });
@@ -92,28 +92,27 @@ test.describe("AppTray Component interactions", () => {
     const hamburger = page.getByRole("button", { name: "Toggle navigation" });
     const main = page.locator("main");
 
-    // Default: Rail visible
+    // Default: expanded sidebar (320px), pushing content — no toggle needed
     const box = await tray.boundingBox();
-    expect(box?.width).toBe(80);
+    expect(box?.width).toBe(320);
 
-    // Content should have left margin accounting for the rail (~80px + padding)
-    const initialMainBox = await main.boundingBox();
-
-    // Click Hamburger to Open
-    await hamburger.click();
-
-    // Verify tray expanded
-    await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray .drawer");
-      return el && el.getBoundingClientRect().width === 320;
-    });
-
-    // Scrim should NOT be visible on desktop
+    // Scrim never renders on desktop
     await expect(page.locator(".app-tray .scrim")).toBeHidden();
 
-    // The content width should have shrunk to accommodate the 320px tray
     const expandedMainBox = await main.boundingBox();
-    expect(expandedMainBox?.width).toBeLessThan(initialMainBox?.width || 0);
+
+    // Click Hamburger to collapse to the rail
+    await hamburger.click();
+    await page.waitForFunction(() => {
+      const el = document.querySelector(".app-tray .drawer");
+      return el && el.getBoundingClientRect().width === 80;
+    });
+
+    // Collapsing to the rail gives content MORE width
+    const collapsedMainBox = await main.boundingBox();
+    expect(collapsedMainBox?.width).toBeGreaterThan(
+      expandedMainBox?.width || 0,
+    );
   });
 
   test("keyboard state, focus trap, and restoration work in overlay mode", async ({
