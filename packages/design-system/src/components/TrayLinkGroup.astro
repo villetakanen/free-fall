@@ -1,14 +1,93 @@
 ---
+import type { RenderNavNode } from "../navigation";
+import TrayLink from "./TrayLink.astro";
+
 interface Props {
   ariaLabel?: string;
   active?: boolean;
+  heading?: string;
+  icon?: string;
+  items?: RenderNavNode[];
+  nested?: boolean;
 }
 
-const { ariaLabel = "Secondary Navigation", active = false } = Astro.props;
+const {
+  ariaLabel = "Secondary navigation",
+  active = false,
+  heading,
+  icon,
+  items,
+  nested = false,
+} = Astro.props;
 ---
 
-<ul class:list={["tray-link-group", { "tray-link-group--active": active }]} aria-label={ariaLabel}>
-    <slot />
+<ul
+  class:list={[
+    "tray-link-group",
+    {
+      "tray-link-group--active": active,
+      "tray-link-group--nested": nested,
+    },
+  ]}
+  aria-label={heading ?? ariaLabel}
+>
+  {
+    heading && (
+      <li
+        class="tray-group-heading text-ui-small"
+        role="heading"
+        aria-level={nested ? "3" : "2"}
+      >
+        {icon && (
+          <span class="material-symbols-sharp" aria-hidden="true">
+            {icon}
+          </span>
+        )}
+        <span>{heading}</span>
+      </li>
+    )
+  }
+  {
+    items?.map((item) => {
+      if (item.kind === "group") {
+        return (
+          <li class="tray-nested-group">
+            <span
+              class="tray-nested-heading text-ui-small"
+              role="heading"
+              aria-level="3"
+            >
+              {item.label}
+            </span>
+            <Astro.self
+              items={item.children}
+              active={true}
+              nested={true}
+              ariaLabel={item.label}
+            />
+          </li>
+        );
+      }
+
+      return (
+        <TrayLink
+          href={item.href}
+          label={item.label}
+          active={item.kind === "link" ? item.current : false}
+        >
+          {item.kind === "link" && item.children && item.children.length > 0 && (
+            <Astro.self
+              items={item.children}
+              active={item.active}
+              nested={true}
+              ariaLabel={`${item.label} navigation`}
+            />
+          )}
+        </TrayLink>
+      );
+    })
+  }
+  {!items && <slot />}
 </ul>
 
 <style>
@@ -19,10 +98,53 @@ const { ariaLabel = "Secondary Navigation", active = false } = Astro.props;
     margin: 0;
     padding: 0;
     padding-inline-start: calc(6 * var(--freefall-space-1) + var(--freefall-space-2));
+    width: 100%;
   }
 
   .tray-link-group:not(.tray-link-group--active) {
     display: none;
+  }
+
+  .tray-group-heading,
+  .tray-nested-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--freefall-space-1);
+    color: var(--freefall-text-muted);
+    padding: var(--freefall-space-1) calc(1.5 * var(--freefall-space-1));
+  }
+
+  .tray-group-heading :global(.material-symbols-sharp) {
+    font-size: calc(2 * var(--freefall-space-1));
+  }
+
+  /*
+   * A top-level group heading labels a section of the tray. Cancel the child
+   * indent so it aligns with the rail icons above, promote it to display text
+   * as a section eyebrow, and separate it with a hairline — otherwise it reads
+   * as another child of the preceding link. Nested headings keep the muted,
+   * indented treatment set above.
+   */
+  .tray-link-group:not(.tray-link-group--nested) > .tray-group-heading {
+    margin-inline-start: calc(
+      -1 * (6 * var(--freefall-space-1) + var(--freefall-space-2))
+    );
+    padding-inline: calc(2 * var(--freefall-space-1));
+    margin-block-start: var(--freefall-space-2);
+    padding-block-start: var(--freefall-space-2);
+    border-top: calc(var(--freefall-space-1) / 4) solid
+      var(--freefall-border-subtle);
+    color: var(--freefall-text-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .tray-nested-group {
+    min-width: 0;
+  }
+
+  .tray-link-group--nested {
+    padding-inline-start: var(--freefall-space-2);
   }
 
   @container (max-width: 64px) {

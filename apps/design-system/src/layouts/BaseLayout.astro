@@ -1,20 +1,12 @@
 ---
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
-
-interface NavItem {
-  icon: string;
-  label: string;
-  href: string;
-  active?: boolean;
-  variant?: "nav" | "uplink";
-  subItems?: { label: string; href: string; active?: boolean }[];
-}
+import type { NavModel } from "@free-fall/design-system/navigation";
 
 interface Props {
   title?: string;
   frontmatter?: { title?: string };
-  /** Override the global nav — used by the subsite tray demo. */
-  navItems?: NavItem[];
+  /** Override global navigation for a scoped reference example. */
+  navigation?: NavModel;
 }
 
 const title =
@@ -22,146 +14,141 @@ const title =
   Astro.props.frontmatter?.title ||
   "FREE//FALL Design System";
 
-const navItems = Astro.props.navItems ?? [
-  {
-    icon: "home",
-    label: "Home",
-    href: "/",
-    active: Astro.url.pathname === "/",
-  },
-  {
-    icon: "palette",
-    label: "Design Tokens",
-    href: "/tokens/",
-    active: Astro.url.pathname.startsWith("/tokens"),
-  },
-  {
-    icon: "text_fields",
-    label: "Typography",
-    href: "/typography/",
-    active: ["/typography", "/definition-list", "/callout"].some((path) =>
-      Astro.url.pathname.startsWith(path),
-    ),
-    subItems: [
-      {
-        label: "Type Scale & Styles",
-        href: "/typography/",
-        active: Astro.url.pathname.startsWith("/typography"),
-      },
-      {
-        label: "Definition Lists",
-        href: "/definition-list/",
-        active: Astro.url.pathname.startsWith("/definition-list"),
-      },
-      {
-        label: "Callouts",
-        href: "/callout/",
-        active: Astro.url.pathname.startsWith("/callout"),
-      },
-    ],
-  },
-  {
-    icon: "emoji_symbols",
-    label: "Iconography",
-    href: "/iconography/",
-    active: Astro.url.pathname.startsWith("/iconography"),
-  },
-  {
-    icon: "grid_view",
-    label: "Layout",
-    // Group anchor must be a link for now — see issue #42
-    href: "/content-grid/",
-    active: ["/content-grid", "/app-tray-subsite"].some((path) =>
-      Astro.url.pathname.startsWith(path),
-    ),
-    subItems: [
-      {
-        label: "Content Grid",
-        href: "/content-grid/",
-        active: Astro.url.pathname.startsWith("/content-grid"),
-      },
-      {
-        label: "Subsite Navigation",
-        href: "/app-tray-subsite/",
-        active: Astro.url.pathname.startsWith("/app-tray-subsite"),
-      },
-    ],
-  },
-  {
-    icon: "style",
-    label: "Gear Cards",
-    href: "/gear-card/",
-    active: ["/gear-card", "/stat-circle"].some((path) =>
-      Astro.url.pathname.startsWith(path),
-    ),
-    subItems: [
-      {
-        label: "Gear Card",
-        href: "/gear-card/",
-        active: Astro.url.pathname.startsWith("/gear-card"),
-      },
-      {
-        label: "Stat Circle",
-        href: "/stat-circle/",
-        active: Astro.url.pathname.startsWith("/stat-circle"),
-      },
-    ],
-  },
-  {
-    icon: "web_asset",
-    label: "App Shell",
-    href: "/app-shell/",
-    active: [
-      "/app-shell",
-      "/app-bar",
-      "/app-tray",
-      "/drawer-brand",
-      "/hamburger-button",
-      "/tray-button",
-      "/tray-link-group",
-    ].some((path) => Astro.url.pathname.startsWith(path)),
-    subItems: [
-      {
-        label: "App Shell",
-        href: "/app-shell/",
-        active: Astro.url.pathname.startsWith("/app-shell"),
-      },
-      {
-        label: "App Bar",
-        href: "/app-bar/",
-        active: Astro.url.pathname.startsWith("/app-bar"),
-      },
-      {
-        label: "App Tray",
-        href: "/app-tray/",
-        active: Astro.url.pathname.startsWith("/app-tray"),
-      },
-      {
-        label: "Drawer Brand",
-        href: "/drawer-brand/",
-        active: Astro.url.pathname.startsWith("/drawer-brand"),
-      },
-      {
-        label: "Hamburger Button",
-        href: "/hamburger-button/",
-        active: Astro.url.pathname.startsWith("/hamburger-button"),
-      },
-      {
-        label: "Tray Button",
-        href: "/tray-button/",
-        active: Astro.url.pathname.startsWith("/tray-button"),
-      },
-      {
-        label: "Tray Link Group",
-        href: "/tray-link-group/",
-        active: Astro.url.pathname.startsWith("/tray-link-group"),
-      },
-    ],
-  },
-];
+/*
+ * The sidebar is a reference index organized by the documentation taxonomy
+ * (see specs/design-system/spec.md): Foundations, Primitives, Components,
+ * Patterns. Each category is a `group` heading whose children are always shown
+ * in the open tray. Home stays a top-level link so the collapsed rail has an
+ * entry; category groups are open-tray-only, by design.
+ */
+const navigation: NavModel = Astro.props.navigation ?? {
+  scope: "global",
+  label: "Design system navigation",
+  items: [
+    { kind: "link", icon: "home", label: "Home", href: "/" },
+    {
+      kind: "group",
+      label: "Foundations",
+      children: [
+        {
+          kind: "link",
+          icon: "palette",
+          label: "Design Tokens",
+          href: "/tokens/",
+          match: "prefix",
+        },
+        {
+          kind: "link",
+          icon: "text_fields",
+          label: "Typography",
+          href: "/typography/",
+        },
+        {
+          kind: "link",
+          icon: "emoji_symbols",
+          label: "Iconography",
+          href: "/iconography/",
+        },
+      ],
+    },
+    {
+      kind: "group",
+      label: "Primitives",
+      children: [
+        {
+          kind: "link",
+          icon: "grid_view",
+          label: "Content Grid",
+          href: "/content-grid/",
+        },
+        { kind: "link", icon: "campaign", label: "Callout", href: "/callout/" },
+        {
+          kind: "link",
+          icon: "list",
+          label: "Definition List",
+          href: "/definition-list/",
+        },
+      ],
+    },
+    {
+      kind: "group",
+      label: "Components",
+      children: [
+        {
+          kind: "link",
+          icon: "web_asset",
+          label: "App Bar",
+          href: "/app-bar/",
+        },
+        {
+          kind: "link",
+          icon: "dashboard",
+          label: "App Shell",
+          href: "/app-shell/",
+        },
+        { kind: "link", icon: "menu", label: "App Tray", href: "/app-tray/" },
+        {
+          kind: "link",
+          icon: "bookmark",
+          label: "Drawer Brand",
+          href: "/drawer-brand/",
+        },
+        {
+          kind: "link",
+          icon: "style",
+          label: "Gear Card",
+          href: "/gear-card/",
+        },
+        {
+          kind: "link",
+          icon: "menu_open",
+          label: "Hamburger Button",
+          href: "/hamburger-button/",
+        },
+        {
+          kind: "link",
+          icon: "data_usage",
+          label: "Stat Circle",
+          href: "/stat-circle/",
+        },
+        {
+          kind: "link",
+          icon: "smart_button",
+          label: "Tray Button",
+          href: "/tray-button/",
+        },
+        { kind: "link", icon: "link", label: "Tray Link", href: "/tray-link/" },
+        {
+          kind: "link",
+          icon: "format_list_bulleted",
+          label: "Tray Link Group",
+          href: "/tray-link-group/",
+        },
+      ],
+    },
+    {
+      kind: "group",
+      label: "Patterns",
+      children: [
+        {
+          kind: "link",
+          icon: "account_tree",
+          label: "Navigation Model",
+          href: "/navigation/",
+        },
+        {
+          kind: "link",
+          icon: "map",
+          label: "Subsite Navigation",
+          href: "/app-tray-subsite/",
+        },
+      ],
+    },
+  ],
+};
 ---
 
-<AppShell title={title} navItems={navItems} brandHref="/drawer-brand/">
+<AppShell title={title} navigation={navigation} brandHref="/drawer-brand/">
   <div class="content-grid">
     <slot name="head" slot="head" />
     <slot />

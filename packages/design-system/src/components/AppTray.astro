@@ -1,9 +1,8 @@
 ---
+import type { RenderNavModel } from "../navigation";
 import DrawerBrand from "./DrawerBrand.astro";
 import HamburgerButton from "./HamburgerButton.astro";
-import TrayButton from "./TrayButton.astro";
-import TrayLink from "./TrayLink.astro";
-import TrayLinkGroup from "./TrayLinkGroup.astro";
+import TrayNav from "./TrayNav.astro";
 
 /**
  * app-tray-drawer
@@ -12,58 +11,19 @@ import TrayLinkGroup from "./TrayLinkGroup.astro";
  * never be rendered in the AppShell, unless the Tray exists in the dom.
  */
 
-interface NavItem {
-  icon: string;
-  label: string;
-  href: string;
-  active?: boolean;
-  /** "uplink" marks the exit from a subsite scope — see TrayButton. */
-  variant?: "nav" | "uplink";
-  subItems?: {
-    label: string;
-    href: string;
-    active?: boolean;
-  }[];
-}
-
 interface Props {
-  items: NavItem[];
+  navigation: RenderNavModel;
   brandHref?: string;
 }
 
-const { items, brandHref } = Astro.props;
+const { navigation, brandHref } = Astro.props;
 ---
 
 <div class="app-tray">
   <HamburgerButton id="app-tray-toggle" controls="app-tray-drawer" />
 
   <div id="app-tray-drawer" class="drawer">
-    <nav id="app-tray-nav" class="nav" aria-label="Main navigation">
-      {
-        items.map((item: NavItem) => (
-          <>
-            <TrayButton
-              icon={item.icon}
-              label={item.label}
-              href={item.href}
-              active={item.active}
-              variant={item.variant}
-            />
-            {item.subItems && (
-              <TrayLinkGroup active={item.active}>
-                {item.subItems.map((subItem) => (
-                  <TrayLink
-                    href={subItem.href}
-                    label={subItem.label}
-                    active={subItem.active}
-                  />
-                ))}
-              </TrayLinkGroup>
-            )}
-          </>
-        ))
-      }
-    </nav>
+    <TrayNav id="app-tray-nav" navigation={navigation} />
     <DrawerBrand href={brandHref} />
   </div>
 
@@ -137,16 +97,6 @@ const { items, brandHref } = Astro.props;
       width 200ms ease-out;
   }
 
-  /* ── Nav (scrollable region) ───────────────────────── */
-  .nav {
-    display: flex;
-    flex-direction: column;
-    gap: var(--freefall-space-1);
-    align-items: flex-start;
-    flex: 1;
-    overflow-y: auto;
-  }
-
   /* ── Scrim ─────────────────────────────────────────── */
   .scrim {
     display: none;
@@ -190,14 +140,28 @@ const { items, brandHref } = Astro.props;
     }
   }
 
-  /* ── Desktop: rail + push tray ─────────────────────── */
+  /* ── Desktop: expanded by default; toggle collapses to a rail ─────── */
   @media (min-width: 780px) {
-    .app-tray:has(#app-tray-toggle:checked) .scrim {
-      display: none;
+    /* Default (unchecked): a persistent expanded sidebar that pushes content. */
+    .app-tray {
+      width: var(--app-tray-tray-width);
+    }
+    .drawer {
+      width: var(--app-tray-tray-width);
+    }
+
+    /* Checked: collapse to the rail — still in flow (pushes at rail width),
+       no overlay, no scrim. */
+    .app-tray:has(#app-tray-toggle:checked) {
+      width: var(--app-tray-rail-width);
     }
     .app-tray:has(#app-tray-toggle:checked) .drawer {
       position: relative;
-      width: var(--app-tray-tray-width);
+      height: 100%;
+      width: var(--app-tray-rail-width);
+    }
+    .app-tray:has(#app-tray-toggle:checked) .scrim {
+      display: none;
     }
   }
 
@@ -218,7 +182,13 @@ const { items, brandHref } = Astro.props;
   const drawer = document.getElementById("app-tray-drawer");
 
   if (toggle && trigger && drawer) {
-    const isOverlay = () => !window.matchMedia("(min-width: 780px)").matches;
+    const isDesktop = () => window.matchMedia("(min-width: 780px)").matches;
+    // On desktop the tray is expanded by default and the toggle collapses it,
+    // so "expanded" is the inverse of checked there; elsewhere checked === open.
+    const isOverlay = () => !isDesktop();
+    const isExpanded = () => (isDesktop() ? !toggle.checked : toggle.checked);
+    const syncExpanded = () =>
+      trigger.setAttribute("aria-expanded", String(isExpanded()));
     const getFocusable = () =>
       drawer.querySelectorAll<HTMLElement>(
         'a, button, [tabindex]:not([tabindex="-1"])',
@@ -230,8 +200,12 @@ const { items, brandHref } = Astro.props;
       trigger.focus();
     };
 
+    // Desktop loads expanded, so seed the correct state rather than trusting
+    // the checkbox's unchecked default.
+    syncExpanded();
+
     toggle.addEventListener("change", () => {
-      trigger.setAttribute("aria-expanded", String(toggle.checked));
+      syncExpanded();
       if (!toggle.checked) {
         trigger.focus();
         return;
