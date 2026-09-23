@@ -90,10 +90,6 @@ const { items, brandHref } = Astro.props;
     left: 0;
     height: 100%;
     background: var(--freefall-bg-surface-1);
-    width: 0;
-  }
-  .app-tray:has(#app-tray-toggle:checked) {
-    width: 0;
   }
 
   /* ── Hamburger (child component, needs :global) ───── */
@@ -106,21 +102,10 @@ const { items, brandHref } = Astro.props;
 
   /* ── Drawer column ─────────────────────────────────── */
   .drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--app-tray-z-tray);
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: var(--app-tray-tray-width);
-    max-width: 100vw;
     background: var(--freefall-bg-surface-1);
-    transform: translateX(-100%);
-    transition:
-      transform 150ms ease-in,
-      width 150ms ease-in;
-    border-right: none;
     container-type: inline-size;
     padding-top: calc(
       var(--app-tray-burger-size) + 2 * var(--freefall-space-2)
@@ -130,13 +115,6 @@ const { items, brandHref } = Astro.props;
     padding-right: calc(var(--freefall-space-1) * 1.5);
   }
 
-  .app-tray:has(#app-tray-toggle:checked) .drawer {
-    transform: translateX(0);
-    transition:
-      transform 200ms ease-out,
-      width 200ms ease-out;
-  }
-
   /* ── Nav (scrollable region) ───────────────────────── */
   .nav {
     display: flex;
@@ -144,7 +122,11 @@ const { items, brandHref } = Astro.props;
     gap: var(--freefall-space-1);
     align-items: flex-start;
     flex: 1;
+    min-height: 0;
+    width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
   }
 
   /* ── Scrim ─────────────────────────────────────────── */
@@ -158,20 +140,46 @@ const { items, brandHref } = Astro.props;
     transition: opacity 150ms ease-in;
     cursor: pointer;
   }
-  .app-tray:has(#app-tray-toggle:checked) .scrim {
-    display: block;
-    opacity: 0.6;
-    transition: opacity 200ms ease-out;
+
+  /* ── Mobile (< 620px): off-screen modal drawer + scrim ── */
+  @media (max-width: 619px) {
+    .app-tray {
+      width: 0;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: var(--app-tray-z-tray);
+      width: var(--app-tray-tray-width);
+      max-width: 100vw;
+      transform: translateX(-100%);
+      transition:
+        transform 150ms ease-in,
+        width 150ms ease-in;
+      border-right: none;
+    }
+
+    .app-tray:has(#app-tray-toggle:checked) .drawer {
+      transform: translateX(0);
+      transition:
+        transform 200ms ease-out,
+        width 200ms ease-out;
+    }
+
+    .app-tray:has(#app-tray-toggle:checked) .scrim {
+      display: block;
+      opacity: 0.6;
+      transition: opacity 200ms ease-out;
+    }
   }
 
-  /* ── Tablet: rail + overlay tray ───────────────────── */
-  @media (min-width: 620px) {
+  /* ── Tablet (620px – 1023px): rail + overlay tray ──── */
+  @media (min-width: 620px) and (max-width: 1023px) {
     .app-tray {
       width: var(--app-tray-rail-width);
       transition: 270ms width;
-    }
-    .app-tray:has(#app-tray-toggle:checked) {
-      width: var(--app-tray-tray-width);
     }
 
     .drawer {
@@ -183,29 +191,77 @@ const { items, brandHref } = Astro.props;
         var(--freefall-border-subtle);
       z-index: calc(var(--app-tray-z-tray) + 1);
     }
+
     .app-tray:has(#app-tray-toggle:checked) .drawer {
       position: absolute;
+      top: 0;
+      left: 0;
       height: 100vh;
       width: var(--app-tray-tray-width);
     }
+
+    .app-tray:has(#app-tray-toggle:checked) .scrim {
+      display: block;
+      opacity: 0.6;
+      transition: opacity 200ms ease-out;
+    }
   }
 
-  /* ── Desktop: rail + push tray ─────────────────────── */
-  @media (min-width: 780px) {
-    .app-tray:has(#app-tray-toggle:checked) .scrim {
-      display: none;
-    }
-    .app-tray:has(#app-tray-toggle:checked) .drawer {
-      position: relative;
+  /* ── Desktop (>= 1024px): Full site mode (open by default, pushes content) ── */
+  @media (min-width: 1024px) {
+    .app-tray {
       width: var(--app-tray-tray-width);
+      transition: 270ms width;
+    }
+
+    .drawer {
+      position: relative;
+      transform: translateX(0);
+      width: var(--app-tray-tray-width);
+      flex-shrink: 0;
+      border-right: calc(var(--freefall-space-1) / 4) solid
+        var(--freefall-border-subtle);
+      z-index: calc(var(--app-tray-z-tray) + 1);
+      transition: width 270ms ease-out;
+    }
+
+    .scrim {
+      display: none !important;
+    }
+
+    /* Collapsed state on desktop (persisted via html.tray-collapsed) */
+    :global(html.tray-collapsed) .app-tray {
+      width: var(--app-tray-rail-width);
+    }
+
+    :global(html.tray-collapsed) .app-tray .drawer {
+      width: var(--app-tray-rail-width);
+    }
+
+    /* Expanded state on desktop (persisted via html.tray-expanded) */
+    :global(html.tray-expanded) .app-tray {
+      width: var(--app-tray-tray-width);
+    }
+
+    :global(html.tray-expanded) .app-tray .drawer {
+      width: var(--app-tray-tray-width);
+    }
+
+    /* No-JS fallback on desktop: if checkbox is checked without html class, collapse */
+    :global(html:not(.tray-expanded):not(.tray-collapsed)) .app-tray:has(#app-tray-toggle:checked) {
+      width: var(--app-tray-rail-width);
+    }
+    :global(html:not(.tray-expanded):not(.tray-collapsed)) .app-tray:has(#app-tray-toggle:checked) .drawer {
+      width: var(--app-tray-rail-width);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .app-tray,
     .drawer,
+    .app-tray .drawer,
     .scrim {
-      transition-duration: 0.01ms;
+      transition-duration: 0.01ms !important;
     }
   }
 </style>
@@ -218,27 +274,57 @@ const { items, brandHref } = Astro.props;
   const drawer = document.getElementById("app-tray-drawer");
 
   if (toggle && trigger && drawer) {
-    const isOverlay = () => !window.matchMedia("(min-width: 780px)").matches;
+    const STORAGE_KEY = "freefall_tray_state";
+    const isOverlay = () => !window.matchMedia("(min-width: 1024px)").matches;
     const getFocusable = () =>
       drawer.querySelectorAll<HTMLElement>(
         'a, button, [tabindex]:not([tabindex="-1"])',
       );
 
-    const closeTray = () => {
+    // Sync toggle checkbox with initial html state
+    const isDesktop = !isOverlay();
+    const isExpanded = document.documentElement.classList.contains("tray-expanded");
+    if (isDesktop && isExpanded) {
+      toggle.checked = true;
+      trigger.setAttribute("aria-expanded", "true");
+    } else if (document.documentElement.classList.contains("tray-collapsed")) {
       toggle.checked = false;
-      toggle.dispatchEvent(new Event("change", { bubbles: true }));
-      trigger.focus();
+      trigger.setAttribute("aria-expanded", "false");
+    }
+
+    const setTrayState = (expanded: boolean, persist = true) => {
+      toggle.checked = expanded;
+      trigger.setAttribute("aria-expanded", String(expanded));
+
+      if (expanded) {
+        document.documentElement.classList.remove("tray-collapsed");
+        document.documentElement.classList.add("tray-expanded");
+        if (persist && !isOverlay()) {
+          try {
+            localStorage.setItem(STORAGE_KEY, "expanded");
+          } catch {}
+        }
+        if (isOverlay()) {
+          requestAnimationFrame(() => getFocusable()[0]?.focus());
+        }
+      } else {
+        document.documentElement.classList.remove("tray-expanded");
+        document.documentElement.classList.add("tray-collapsed");
+        if (persist && !isOverlay()) {
+          try {
+            localStorage.setItem(STORAGE_KEY, "collapsed");
+          } catch {}
+        }
+        trigger.focus();
+      }
+    };
+
+    const closeTray = () => {
+      setTrayState(false);
     };
 
     toggle.addEventListener("change", () => {
-      trigger.setAttribute("aria-expanded", String(toggle.checked));
-      if (!toggle.checked) {
-        trigger.focus();
-        return;
-      }
-      if (!isOverlay()) return;
-
-      requestAnimationFrame(() => getFocusable()[0]?.focus());
+      setTrayState(toggle.checked);
     });
 
     document.addEventListener("keydown", (e) => {
@@ -264,6 +350,17 @@ const { items, brandHref } = Astro.props;
           e.preventDefault();
           first.focus();
         }
+      }
+    });
+
+    const mql = window.matchMedia("(min-width: 1024px)");
+    mql.addEventListener("change", (e) => {
+      if (e.matches) {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        const shouldExpand = stored !== "collapsed";
+        setTrayState(shouldExpand, false);
+      } else {
+        setTrayState(false, false);
       }
     });
   }

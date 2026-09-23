@@ -17,9 +17,10 @@ Parent spec: `specs/design-system/spec.md`
 **State management:**
 
 Similar to `TrayButton`, the visibility of `TrayLinkGroup` is strictly driven by CSS Container Queries (`@container`) targeting the parent container's `inline-size`.
-- **Inactive primary location:** `active` defaults false and the group is `display: none` at every width.
-- **Minimized (Rail):** At query box width `<= 64px`, even an active group is `display: none`.
-- **Open (Tray):** Above 64px, an active group is displayed.
+- **Minimized (Rail):** At query box width `<= 64px`, the group is `display: none` to keep the rail icon column clean.
+- **Open (Tray):** Above 64px, secondary links are displayed, enabling discoverability across sections without forcing blind navigation.
+
+**[DEPRECATED 2026-09-23]** Hiding inactive groups (`active=false`) prevented discoverability of secondary pages across sections. In the open tray, secondary links are rendered for browsing, while container queries handle rail suppression.
 
 **Visual Design & Sizing:**
 
@@ -68,8 +69,8 @@ TrayLink:
 
 - [x] `TrayLinkGroup.astro` and `TrayLink.astro` are implemented.
 - [x] Components render a semantic list with list items and links.
-- [x] `active` gates group visibility before geometry is considered.
-- [x] A `64px` query-box threshold hides active groups in rail mode.
+- [x] Secondary links are visible in the expanded tray (> 64px) for universal navigation.
+- [x] A `64px` query-box threshold hides groups in rail mode.
 - [x] Links use smaller typography and truncate long labels with ellipsis.
 - [x] Hidden groups use `display: none`, removing links from tab order.
 - [x] Demo uses real inline-size query containers rather than inert state attributes.

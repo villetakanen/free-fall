@@ -17,10 +17,12 @@ Parent spec: `specs/design-system/spec.md`
 | Viewport | Breakpoint | Closed state | Open state |
 |---|---|---|---|
 | Small (default) | < 620px | Hidden (off-screen) | Modal drawer, 320px wide and capped by viewport |
-| Medium (tablet) | >= 620px | Navigation rail | Full drawer (overlay on content) |
-| Large (desktop) | >= 780px | Navigation rail | Tray (pushes content) |
+| Medium (tablet) | 620px – 1023px | Navigation rail (80px) | Full drawer (overlay on content with scrim) |
+| Large (desktop) | >= 1024px | Navigation rail (when collapsed by user) | Tray (320px, pushes content, **open by default**) |
 
-The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-desktop` (780px).
+The breakpoints align with `--breakpoint-tablet` (620px) and `--breakpoint-desktop-full` (1024px).
+
+**[DEPRECATED 2026-09-23]** The previous 780px rail-first desktop mode resulted in mystery-meat navigation and repetitive drawer re-opening on desktop monitors. Desktop (>= 1024px) now defaults to an open tray pushing content, with user collapse preferences persisted in `localStorage` (`freefall_tray_state`) and pre-rendered via a synchronous inline `<head>` script to prevent layout flashes.
 
 **Anatomy:**
 
@@ -164,8 +166,8 @@ The demo (`apps/design-system/src/pages/app-tray-subsite.astro`) is a navigation
 - [x] `AppTray.astro` renders a responsive navigation tray with rail, drawer, and hamburger toggle
 - [x] Toggle, transitions, and scrim work without JavaScript
 - [x] Small viewport: tray is hidden by default and opens as a 320px capped modal drawer
-- [x] Medium viewport: rail visible by default, tray opens with overlay and scrim
-- [x] Large viewport: rail visible by default, tray opens in flex flow and pushes content
+- [x] Medium viewport (620px - 1023px): rail visible by default, tray opens with overlay and scrim
+- [x] Large viewport (>= 1024px): tray open by default, pushes content, collapsible to rail with localStorage persistence
 - [x] Hamburger button morphs structural bars between menu and cross states
 - [x] Component dimensions derive from spacing tokens
 - [x] Scrim renders on small + medium when tray is open; click-to-close works without JS
@@ -202,21 +204,29 @@ Scenario: Small viewport — tray opens as capped modal drawer
   When: The user clicks the hamburger button
   Then: A 320px-wide drawer capped by the viewport slides in with a scrim behind it
 
-Scenario: Medium viewport — rail visible by default
-  Given: Viewport width is between 620px and 779px
+Scenario: Medium viewport (tablet) — rail visible by default
+  Given: Viewport width is between 620px and 1023px
   When: The page loads
   Then: A navigation rail (icons only, 5rem wide) is visible; tray is closed
 
-Scenario: Medium viewport — tray opens as overlay
-  Given: Viewport width is between 620px and 779px
+Scenario: Medium viewport (tablet) — tray opens as overlay
+  Given: Viewport width is between 620px and 1023px
   When: The user clicks the hamburger button
   Then: The tray expands from the rail to full width (20rem) as an overlay with scrim
   And: Overlay describes stacking and modality; it does not establish a push-behavior guarantee
 
-Scenario: Large viewport — rail visible, tray pushes content
-  Given: Viewport width is 780px or above
+Scenario: Large viewport (desktop) — tray open by default, pushes content
+  Given: Viewport width is 1024px or above and no prior preference is stored
+  When: The page loads
+  Then: The tray is open at full width (20rem) pushing content, with no scrim
+
+Scenario: Large viewport (desktop) — user collapses tray and state persists
+  Given: Viewport width is 1024px or above
   When: The user clicks the hamburger button
-  Then: The tray expands and content area shifts right — no scrim, no overlay
+  Then: The tray collapses to the 5rem rail and content expands left
+  And: The collapsed state is recorded in localStorage
+  When: The user navigates to a new page
+  Then: The tray remains collapsed in rail mode without visual flash
 
 Scenario: No-JS baseline works
   Given: JavaScript is disabled

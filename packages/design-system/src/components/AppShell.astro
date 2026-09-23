@@ -32,6 +32,23 @@ const { title, navItems, brandHref } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <FontLinks />
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        try {
+          const isDesktop = window.innerWidth >= 1024;
+          const stored = localStorage.getItem("freefall_tray_state");
+          if (isDesktop) {
+            if (stored === "collapsed") {
+              document.documentElement.classList.add("tray-collapsed");
+            } else {
+              document.documentElement.classList.add("tray-expanded");
+            }
+          } else {
+            document.documentElement.classList.add("tray-collapsed");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <slot name="head" />
   </head>
   <body>
