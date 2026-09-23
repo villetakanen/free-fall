@@ -1,0 +1,339 @@
+---
+import TacticalHudComponent, {
+  type HudPaneDefinition,
+} from "@free-fall/design-system/components/TacticalHud.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const EXTENDED_PANES: HudPaneDefinition[] = [
+  {
+    id: "adjudicate",
+    title: "ADJUDICATE",
+    icon: "target",
+    badge: "CORE",
+  },
+  {
+    id: "combat",
+    title: "COMBAT",
+    icon: "timer",
+    badge: "SEQ",
+  },
+  {
+    id: "dice",
+    title: "DICE SIM",
+    icon: "casino",
+    badge: "ROLL",
+  },
+  {
+    id: "harm",
+    title: "HARM",
+    icon: "emergency",
+    badge: "POOL",
+  },
+  {
+    id: "crew",
+    title: "CREW ROSTER",
+    icon: "group",
+    badge: "SCENARIO",
+  },
+];
+---
+
+<BaseLayout title="Tactical HUD — FREE//FALL Design System">
+  <Fragment slot="head">
+    <style>
+      .hud-showcase-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(2 * var(--freefall-space-1));
+        margin: calc(2 * var(--freefall-space-1)) 0 calc(4 * var(--freefall-space-1));
+        width: 100%;
+      }
+
+      .hud-stage-frame {
+        width: 100%;
+        background: var(--freefall-bg-canvas);
+        border: 1px dashed var(--freefall-color-primary-800);
+        padding: calc(1.5 * var(--freefall-space-1));
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .hud-stage-caption {
+        font-family: var(--freefall-font-mono);
+        font-size: calc(1.2 * var(--freefall-space-1));
+        color: var(--freefall-text-muted);
+        text-align: center;
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: calc(2 * var(--freefall-space-1));
+        margin: calc(2 * var(--freefall-space-1)) 0;
+      }
+
+      .spec-card {
+        background: var(--freefall-bg-surface-1);
+        border: var(--freefall-border-hairline);
+        padding: calc(2 * var(--freefall-space-1));
+        border-radius: 2px;
+      }
+
+      .spec-card__title {
+        font-family: var(--freefall-font-mono);
+        font-size: calc(1.4 * var(--freefall-space-1));
+        color: var(--freefall-color-accent-400);
+        margin: 0 0 calc(1 * var(--freefall-space-1)) 0;
+        display: flex;
+        align-items: center;
+        gap: calc(0.75 * var(--freefall-space-1));
+      }
+
+      .api-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: calc(1.4 * var(--freefall-space-1));
+        margin: calc(2 * var(--freefall-space-1)) 0;
+      }
+
+      .api-table th {
+        text-align: left;
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        font-size: calc(1.2 * var(--freefall-space-1));
+        padding: calc(1 * var(--freefall-space-1)) 0;
+        border-bottom: 1px solid var(--freefall-color-primary-800);
+      }
+
+      .api-table td {
+        padding: calc(1 * var(--freefall-space-1)) 0;
+        border-bottom: 1px solid var(--freefall-color-primary-900);
+      }
+
+      .crew-card {
+        background: var(--freefall-bg-surface-2);
+        border: 1px solid var(--freefall-color-primary-800);
+        padding: calc(1 * var(--freefall-space-1));
+        border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        gap: calc(0.5 * var(--freefall-space-1));
+        margin-bottom: calc(0.75 * var(--freefall-space-1));
+      }
+
+      .crew-card__name {
+        font-family: var(--freefall-font-mono);
+        font-weight: 700;
+        color: var(--freefall-text-display);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .crew-card__stats {
+        display: flex;
+        gap: calc(1 * var(--freefall-space-1));
+        font-family: var(--freefall-font-mono);
+        font-size: calc(1.1 * var(--freefall-space-1));
+        color: var(--freefall-color-accent-400);
+      }
+
+      .mono {
+        font-family: var(--freefall-font-mono);
+      }
+
+      .accent {
+        color: var(--freefall-color-accent-400);
+      }
+    </style>
+  </Fragment>
+
+  <h1>Tactical HUD (Multi-Pane Inspector)</h1>
+  <p>
+    An always-accessible multi-pane inspector dock inspired by Adobe InDesign and
+    Illustrator workspaces. Instead of a single modal drawer, the HUD consists of
+    <strong>$N$ independent tactical panes</strong> that can be opened or closed
+    simultaneously side-by-side.
+  </p>
+
+  <!-- ── 1. Live Multi-Pane Interactive Showcase ────── -->
+  <h2>Multi-Pane Side-by-Side Showcase</h2>
+  <p>
+    In the stage below, test the multi-pane dock. Click icons in the right rail
+    (<code>[1] ADJUDICATE</code>, <code>[2] COMBAT</code>, <code>[3] DICE SIM</code>, <code>[4] HARM</code>, <code>[5] CREW</code>)
+    or close buttons (<code>[×]</code>). Notice how panes arrange side-by-side:
+  </p>
+
+  <div class="hud-showcase-container">
+    <div class="hud-stage-frame">
+      <TacticalHudComponent
+        mode="embedded"
+        panes={EXTENDED_PANES}
+        defaultOpenPanes={["adjudicate", "dice"]}
+      >
+        <!-- Slot 5: Custom Pluggable Scenario Pane Demonstration -->
+        <div slot="pane-crew" class="hud-panel-content">
+          <section class="hud-card">
+            <h4 class="hud-card__title">
+              <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">group</span>
+              SCENARIO CREW ROSTER
+            </h4>
+            <p class="hud-card__copy">
+              Example scenario-provided pane: active shipboard operatives from <em>Northern Lights</em>.
+            </p>
+
+            <div class="crew-card">
+              <div class="crew-card__name">
+                <span>KOROLEV</span>
+                <span class="mono accent">B3 M2 G1</span>
+              </div>
+              <div class="crew-card__stats">
+                <span>PILOT</span>
+                <span>EVA-SUIT (AV 4)</span>
+              </div>
+            </div>
+
+            <div class="crew-card">
+              <div class="crew-card__name">
+                <span>TAL</span>
+                <span class="mono accent">B1 M3 G2</span>
+              </div>
+              <div class="crew-card__stats">
+                <span>TECH // MEDIC</span>
+                <span>SEALED</span>
+              </div>
+            </div>
+
+            <div class="crew-card">
+              <div class="crew-card__name">
+                <span>VANCE</span>
+                <span class="mono accent">B2 M1 G3</span>
+              </div>
+              <div class="crew-card__stats">
+                <span>BREACH // HEAVY</span>
+                <span>CARBINE (DV 6)</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </TacticalHudComponent>
+    </div>
+    <div class="hud-stage-caption">
+      &uarr; Live interactive inspector. Try opening multiple panes simultaneously to see side-by-side arrangement.
+    </div>
+  </div>
+
+  <!-- ── 2. Spatial Responsibility Tiers ────────── -->
+  <h2>Spatial Responsibility &amp; Screen Tiers</h2>
+  <p>
+    The multi-pane dock adapts its layout behavior dynamically according to available real estate:
+  </p>
+
+  <div class="spec-grid">
+    <div class="spec-card">
+      <h3 class="spec-card__title">
+        <span class="material-symbols-sharp" aria-hidden="true">desktop_windows</span>
+        27" Display (&ge; 1800px)
+      </h3>
+      <p>
+        <strong>In-Flow Push</strong>: With ample canvas (&gt; 2000px), up to 4&ndash;5 panes sit
+        side-by-side in document flex flow, pushing the content area left while keeping the reading measure
+        clean and generous (&ge; 700px).
+      </p>
+    </div>
+
+    <div class="spec-card">
+      <h3 class="spec-card__title">
+        <span class="material-symbols-sharp" aria-hidden="true">laptop_mac</span>
+        MacBook (1024px &ndash; 1799px)
+      </h3>
+      <p>
+        <strong>Adaptive Overlay</strong>: 1 pane pushes in-flow. When 2 or more panes open, the container
+        automatically transitions into a <strong>Floating Overlay</strong> docked to the right rail,
+        preventing content from being squeezed into an unreadable column.
+      </p>
+    </div>
+
+    <div class="spec-card">
+      <h3 class="spec-card__title">
+        <span class="material-symbols-sharp" aria-hidden="true">tablet_mac</span>
+        Tablet (620px &ndash; 1023px)
+      </h3>
+      <p>
+        <strong>Single-Pane Overlay</strong>: Panes open as a floating overlay above text, capped at
+        1 pane at a time to keep the tablet display clear and focused.
+      </p>
+    </div>
+
+    <div class="spec-card">
+      <h3 class="spec-card__title">
+        <span class="material-symbols-sharp" aria-hidden="true">smartphone</span>
+        Mobile (&lt; 620px)
+      </h3>
+      <p>
+        <strong>Suppressed</strong>: The multi-pane dock does not render. Mobile uses touch-native term
+        inspection instead of desktop flight console emulation.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── 3. Pluggability & Extensibility ────────── -->
+  <h2>Ruleset &amp; Scenario Extensibility</h2>
+  <p>
+    The HUD is not a hardcoded monolith. Rulesets (Core Rules, SRD) or individual Scenarios can register
+    custom panes via the <code>panes</code> prop and slot injections:
+  </p>
+
+  <pre><code>{`// Example: A Scenario layout providing custom crew and countdown clock panes
+<TacticalHud panes={customPanes}>
+  <div slot="pane-clocks">
+    <h4>COUNTDOWN CLOCKS</h4>
+    <!-- Active clocks -->
+  </div>
+  <div slot="pane-crew">
+    <h4>CREW ROSTER</h4>
+    <!-- Operatives -->
+  </div>
+</TacticalHud>`}</code></pre>
+
+  <!-- ── 4. Component API ──────────────────────── -->
+  <h2>Component API</h2>
+  <table class="api-table">
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>mode</code></td>
+        <td><code>"dock" | "embedded"</code></td>
+        <td><code>"dock"</code></td>
+        <td>
+          <code>"dock"</code> mounts the right-side inspector dock; <code>"embedded"</code> renders inline.
+        </td>
+      </tr>
+      <tr>
+        <td><code>panes</code></td>
+        <td><code>HudPaneDefinition[]</code></td>
+        <td>Core 4 Panes</td>
+        <td>Array of pane definitions (<code>id</code>, <code>title</code>, <code>icon</code>, <code>badge</code>).</td>
+      </tr>
+      <tr>
+        <td><code>defaultOpenPanes</code></td>
+        <td><code>string[]</code></td>
+        <td><code>[]</code></td>
+        <td>Array of pane IDs to display as open on initial render.</td>
+      </tr>
+      <tr>
+        <td><code>id</code></td>
+        <td><code>string</code></td>
+        <td>Generated</td>
+        <td>DOM ID for the dock container.</td>
+      </tr>
+    </tbody>
+  </table>
+</BaseLayout>
