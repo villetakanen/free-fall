@@ -33,7 +33,21 @@ const navItems = Astro.props.navItems ?? [
     icon: "palette",
     label: "Design Tokens",
     href: "/tokens/",
-    active: Astro.url.pathname.startsWith("/tokens"),
+    active: ["/tokens", "/scrollbars"].some((path) =>
+      Astro.url.pathname.startsWith(path),
+    ),
+    subItems: [
+      {
+        label: "Color & Spacing Tokens",
+        href: "/tokens/",
+        active: Astro.url.pathname.startsWith("/tokens"),
+      },
+      {
+        label: "Custom Scrollbars",
+        href: "/scrollbars/",
+        active: Astro.url.pathname.startsWith("/scrollbars"),
+      },
+    ],
   },
   {
     icon: "text_fields",

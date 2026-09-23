@@ -12,9 +12,9 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const isSrd = entry.id === "system-reference";
 ---
 
-<BaseLayout title={`${entry.data.title} — FREE//FALL`} hasHud={isSrd}>
+<BaseLayout title={`${entry.data.title} — FREE//FALL`}>
   <Content />
 </BaseLayout>
+

@@ -1,7 +1,7 @@
 ---
 title: "System Reference Document"
-description: "The foundational resolution system, attributes, and resource economy of FREE//FALL v6."
-order: 90
+description: "The foundational resolution system, attributes, and resource economy of FREE//FALL v7."
+order: 1
 ---
 
 # System Reference

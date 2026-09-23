@@ -6,7 +6,7 @@ test.describe("SRD Tactical HUD Dock", () => {
   test("SRD page renders the Tactical HUD dock rail on desktop", async ({
     page,
   }) => {
-    await page.goto("/core-rulebook/system-reference/");
+    await page.goto("/srd/");
 
     const dock = page.locator(".tactical-dock");
     await expect(dock).toBeVisible();
@@ -24,7 +24,7 @@ test.describe("SRD Tactical HUD Dock", () => {
   test("rail buttons toggle side-by-side panes on the SRD", async ({
     page,
   }) => {
-    await page.goto("/core-rulebook/system-reference/");
+    await page.goto("/srd/");
 
     const adjudicateBtn = page.locator('[data-toggle-pane="adjudicate"]');
     const diceBtn = page.locator('[data-toggle-pane="dice"]');
@@ -62,6 +62,19 @@ test.describe("SRD Tactical HUD Dock", () => {
     await expect(dicePane).toBeVisible();
   });
 
+  test("System Reference v7 is the bottom-most navigation item in the rail", async ({
+    page,
+  }) => {
+    await page.goto("/srd/");
+    const trayButtons = page.locator("#app-tray-nav .tray-button");
+    await expect(trayButtons).toHaveCount(5);
+
+    const lastButton = trayButtons.last();
+    await expect(lastButton).toHaveAttribute("href", "/srd/");
+    await expect(lastButton).toHaveAttribute("aria-current", "page");
+    await expect(lastButton).toContainText("System Reference v7");
+  });
+
   test("non-SRD pages do NOT render the Tactical HUD", async ({ page }) => {
     // Introduction page
     await page.goto("/core-rulebook/00-intro/");
@@ -71,16 +84,20 @@ test.describe("SRD Tactical HUD Dock", () => {
     await page.goto("/core-rulebook/01-world/");
     await expect(page.locator(".tactical-dock")).toHaveCount(0);
 
+    // Gear page
+    await page.goto("/gear/weapons/");
+    await expect(page.locator(".tactical-dock")).toHaveCount(0);
+
     // Landing page
     await page.goto("/");
     await expect(page.locator(".tactical-dock")).toHaveCount(0);
   });
 
-  test("/srd redirects to /core-rulebook/system-reference/", async ({
+  test("/core-rulebook/system-reference redirects to /srd", async ({
     page,
   }) => {
-    await page.goto("/srd");
-    await expect(page).toHaveURL(/\/core-rulebook\/system-reference/);
+    await page.goto("/core-rulebook/system-reference");
+    await expect(page).toHaveURL(/\/srd/);
     await expect(page.locator(".tactical-dock")).toBeVisible();
   });
 });

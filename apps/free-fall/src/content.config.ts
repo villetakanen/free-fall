@@ -136,9 +136,22 @@ const scenarioPages = defineCollection({
   }),
 });
 
+const srd = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "../../content/srd/chapters",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    order: z.number().optional(),
+  }),
+});
+
 export const collections = {
   "core-rulebook": coreRulebook,
   gear,
   scenarios,
   "scenario-pages": scenarioPages,
+  srd,
 };

@@ -112,6 +112,13 @@
   --freefall-action-base: var(--freefall-color-primary-500);
   --freefall-action-hover: var(--freefall-color-primary-400);
 
+  /* Scrollbars (Void Dark Theme) */
+  --freefall-scrollbar-track: transparent;
+  --freefall-scrollbar-thumb: var(--freefall-color-primary-700);
+  --freefall-scrollbar-thumb-hover: var(--freefall-color-primary-600);
+  --freefall-scrollbar-thumb-active: var(--freefall-color-accent-400);
+  --freefall-scrollbar-width: 6px;
+
   /* Alerts & Emphasis */
   --freefall-alert-base: var(--freefall-color-accent-400);
   --freefall-alert-bg: var(--freefall-color-accent-900);

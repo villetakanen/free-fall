@@ -1,0 +1,17 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const entries = await getCollection("srd");
+const entry = entries.find((e) => e.id === "index") ?? entries[0];
+
+if (!entry) {
+  throw new Error("No SRD content found in content/srd/chapters");
+}
+
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} — FREE//FALL`} hasHud={true}>
+  <Content />
+</BaseLayout>

@@ -40,3 +40,39 @@ main a {
 a:hover {
   text-decoration: underline;
 }
+
+/* =========================================
+   CUSTOM SCROLLBARS (Void Dark Theme)
+   ========================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--freefall-scrollbar-thumb) var(--freefall-scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: var(--freefall-scrollbar-width);
+  height: var(--freefall-scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--freefall-scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--freefall-scrollbar-thumb);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--freefall-scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--freefall-scrollbar-thumb-active);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+

@@ -195,3 +195,12 @@ export async function getGearNavItems(pathname: string) {
     subItems,
   };
 }
+
+export function getSrdNavItem(pathname: string) {
+  return {
+    icon: "terminal",
+    label: "System Reference v7",
+    href: "/srd/",
+    active: pathname.startsWith("/srd"),
+  };
+}

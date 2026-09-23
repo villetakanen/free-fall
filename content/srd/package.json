@@ -1,0 +1,12 @@
+{
+  "name": "@free-fall/srd",
+  "version": "0.7.0",
+  "type": "module",
+  "description": "The FREE//FALL System Reference Document (SRD) — game-agnostic foundational mechanics.",
+  "scripts": {
+    "lint": "biome check ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  }
+}

@@ -7,7 +7,7 @@ import { remarkTermResolution } from "./src/lib/remark/remark-term-resolution";
 export default defineConfig({
   output: "static",
   redirects: {
-    "/srd": "/core-rulebook/system-reference",
+    "/core-rulebook/system-reference": "/srd",
     "/rules": "/core-rulebook/00-intro",
     "/rules/getting-started": "/core-rulebook/00-intro",
   },
@@ -33,6 +33,13 @@ export default defineConfig({
           contentPath: "/content/scenarios/",
         },
       ],
+      [
+        remarkTermResolution,
+        {
+          registryPath: "../../content/core-rulebook/chapters/registry.md",
+          contentPath: "/content/srd/",
+        },
+      ],
     ],
     rehypePlugins: [
       [
@@ -42,6 +49,10 @@ export default defineConfig({
       [
         rehypeContentUrlRewrite,
         { basePath: "/core-rulebook/", contentPath: "/content/scenarios/" },
+      ],
+      [
+        rehypeContentUrlRewrite,
+        { basePath: "/core-rulebook/", contentPath: "/content/srd/" },
       ],
     ],
   },
@@ -53,6 +64,11 @@ export default defineConfig({
           server.watcher.add(
             fileURLToPath(
               new URL("../../content/core-rulebook/chapters", import.meta.url),
+            ),
+          );
+          server.watcher.add(
+            fileURLToPath(
+              new URL("../../content/srd/chapters", import.meta.url),
             ),
           );
           server.watcher.add(

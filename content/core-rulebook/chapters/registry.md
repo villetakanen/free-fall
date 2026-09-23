@@ -11,13 +11,13 @@ order: 91
 
 <dfn id="action-pool">Action Pool</dfn> A pool of 2 to 5 twenty-sided dice (d20). Allocated each turn to actions the character wants to take.
 
-* [Action resolution](system-reference#action-resolution), in SRD
+* [Action resolution](/srd/#action-resolution), in SRD
 
 <dfn id="armor-value">Armor Value (AV)</dfn> Gear rating that reduces the number of incoming Harm levels suffered.
 
 <dfn id="attribute">Attribute</dfn> A resource representing a capability a character can exploit.
 
-* [Attributes](system-reference#attributes), in SRD
+* [Attributes](/srd/#attributes), in SRD
 
 ## B
 
@@ -57,7 +57,7 @@ order: 91
 
 <dfn id="harm">Harm</dfn> Consequence suffered by a character, absorbed by filling Harm Slots, converting Temporary Harm, or breaking bound items.
 
-* [Harm & Consequences](system-reference#harm--consequences), in SRD
+* [Harm & Consequences](/srd/#harm--consequences), in SRD
 
 <dfn id="harm-slot">Harm Slot</dfn> One of 3 slots a character has for absorbing Harm. When all options are exhausted, the character is Ousted.
 
@@ -81,7 +81,7 @@ order: 91
 
 <dfn id="skill">Skill</dfn> An ability that enables a character to attempt an action governed by that skill.
 
-* [Skills](system-reference#skills), in SRD
+* [Skills](/srd/#skills), in SRD
 
 <dfn id="successes">Successes</dfn> Dice results meeting or exceeding the Target Number. One success is needed by default.
 
@@ -89,6 +89,6 @@ order: 91
 
 <dfn id="target-number">Target Number (TN)</dfn> The difficulty threshold for a roll, set by the GM.
 
-* [Action resolution](system-reference#action-resolution), in SRD
+* [Action resolution](/srd/#action-resolution), in SRD
 
 <dfn id="transient-harm">Transient Harm</dfn> A Harm slot entry that clears during Downtime.

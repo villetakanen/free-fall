@@ -6,6 +6,7 @@ import {
   getGearNavItems,
   getScenarioNavItems,
   getScenarioSubsiteNav,
+  getSrdNavItem,
 } from "../lib/nav.ts";
 
 interface Props {
@@ -43,6 +44,7 @@ if (scenarioSlug) {
   const coreRulebookSubItems = await getCoreRulebookNavItems(pathname);
   const gearNavItem = await getGearNavItems(pathname);
   const scenarioNavItem = await getScenarioNavItems(pathname);
+  const srdNavItem = getSrdNavItem(pathname);
 
   navItems = [
     {
@@ -60,6 +62,7 @@ if (scenarioSlug) {
     },
     gearNavItem,
     scenarioNavItem,
+    srdNavItem,
   ];
 }
 ---
