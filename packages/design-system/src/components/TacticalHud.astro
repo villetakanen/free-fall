@@ -25,16 +25,10 @@ interface Props {
 
 const DEFAULT_PANES: HudPaneDefinition[] = [
   {
-    id: "adjudicate",
-    title: "ADJUDICATE",
-    icon: "target",
+    id: "rules",
+    title: "RULES GLOSSARY",
+    icon: "menu_book",
     badge: "CORE",
-  },
-  {
-    id: "combat",
-    title: "COMBAT",
-    icon: "timer",
-    badge: "SEQ",
   },
   {
     id: "dice",
@@ -55,7 +49,7 @@ const {
   id = mode === "dock" ? "tactical-hud-dock" : "tactical-hud-embedded",
   class: className = "",
   panes = DEFAULT_PANES,
-  defaultOpenPanes = mode === "embedded" ? ["adjudicate", "dice"] : [],
+  defaultOpenPanes = mode === "embedded" ? ["rules", "dice"] : [],
 } = Astro.props;
 ---
 
@@ -109,8 +103,8 @@ const {
 
           <!-- Pane Content Body -->
           <div class="tactical-dock__pane-body">
-            {pane.id === "adjudicate" && (
-              <slot name="pane-adjudicate">
+            {pane.id === "rules" && (
+              <slot name="pane-rules">
                 <div class="hud-panel-content">
                   <section class="hud-card">
                     <h4 class="hud-card__title">
@@ -164,17 +158,6 @@ const {
                     </div>
                   </section>
 
-                  <div class="hud-note">
-                    <span class="hud-note__lead mono accent">&gt; GM RULE OF THUMB:</span>
-                    <p>If an action has no consequence for failure or time pressure, do not roll. Adjudicate as Normal (Auto).</p>
-                  </div>
-                </div>
-              </slot>
-            )}
-
-            {pane.id === "combat" && (
-              <slot name="pane-combat">
-                <div class="hud-panel-content">
                   <section class="hud-card">
                     <h4 class="hud-card__title">
                       <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">timer</span>
@@ -210,6 +193,11 @@ const {
                     </div>
                     <p class="hud-card__copy">Armor Value reduces incoming Damage Value point-for-point. Remaining DV fills Harm slots.</p>
                   </section>
+
+                  <div class="hud-note">
+                    <span class="hud-note__lead mono accent">&gt; GM RULE OF THUMB:</span>
+                    <p>If an action has no consequence for failure or time pressure, do not roll. Adjudicate as Normal (Auto).</p>
+                  </div>
                 </div>
               </slot>
             )}
@@ -360,7 +348,7 @@ const {
   /* ── Design Tokens & Geometry ────────────────── */
   .tactical-dock {
     --dock-rail-width: calc(6 * var(--freefall-space-1)); /* 48px */
-    --dock-pane-width: calc(35 * var(--freefall-space-1)); /* 280px */
+    --dock-pane-width: calc(40 * var(--freefall-space-1)); /* 320px (matches --app-tray-tray-width) */
     --dock-header-height: calc(5 * var(--freefall-space-1)); /* 40px */
     --dock-z-rail: 95;
     --dock-z-panes: 94;

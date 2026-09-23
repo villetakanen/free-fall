@@ -37,7 +37,7 @@ Parent spec: `specs/design-system/app-shell/spec.md`
 | Left    | Main Page Content            | Pane  | Pane  | R |
 | AppTray | (Rules, Scenario, or Tools)  | 1     | 2     | A |
 |         |                              |       |       | I |
-| 320px   | Flexible / In-flow           | 280px | 280px | L |
+| 320px   | Flexible / In-flow           | 320px | 320px | L |
 +---------+------------------------------+-------+-------+---+
 ```
 
@@ -48,7 +48,7 @@ Parent spec: `specs/design-system/app-shell/spec.md`
    - Active state: Isotope Neon vertical indicator bar (`--freefall-color-accent-400`).
 2. **Side-by-Side Panes Row (`.tactical-dock__panes`)**:
    - Horizontal flex container holding the active panes arranged side-by-side from left to right.
-   - Each pane has fixed width: `calc(35 * var(--freefall-space-1))` (280px).
+   - Each pane has fixed width: `calc(40 * var(--freefall-space-1))` (320px, matching the left navigation rail/tray width `--app-tray-tray-width`).
    - Surfaces stepped up to `var(--freefall-bg-surface-2)`.
    - Left hairline border: `var(--freefall-border-hairline)`.
 3. **Standard Pane Chrome**:
@@ -68,8 +68,8 @@ The dock adapts its layout behavior based on screen real estate to protect readi
 
 | Viewport Tier | Width | Left Tray | HUD Rail | Open Panes Layout Mode | Max Open Panes |
 |---|---|---|---|---|---|
-| **Large Desktop (27")** | $\ge 1800\text{px}$ | 320px tray | 48px rail | **In-Flow Push**: All open panes physically push the main content left. Content remains $\ge 700\text{px}$ wide. | Up to 5 side-by-side |
-| **Laptop / Medium Desktop** | $1024\text{px} - 1799\text{px}$ | 320px tray (or 80px rail) | 48px rail | **Hybrid**: 1 open pane pushes in-flow. When 2+ panes open, panes transition to a **Floating Overlay** docked to the right rail, preventing content crushing. | 1–4 side-by-side |
+| **Large Desktop (27")** | $\ge 1800\text{px}$ | 320px tray | 48px rail | **In-Flow Push**: All open panes physically push the main content left. Content remains $\ge 700\text{px}$ wide. | Up to 4 side-by-side |
+| **Laptop / Medium Desktop** | $1024\text{px} - 1799\text{px}$ | 320px tray (or 80px rail) | 48px rail | **Hybrid**: 1 open pane pushes in-flow. When 2+ panes open, panes transition to a **Floating Overlay** docked to the right rail, preventing content crushing. | 1–3 side-by-side |
 | **Tablet (iPad)** | $620\text{px} - 1023\text{px}$ | 80px rail | 48px rail | **Overlay**: Panes float above content docked to the rail, capped at 1 open pane at a time. | 1 pane |
 | **Mobile** | $< 620\text{px}$ | Drawer (hidden) | Hidden | Hidden entirely. | 0 |
 
@@ -77,7 +77,7 @@ The dock adapts its layout behavior based on screen real estate to protect readi
 
 #### 3. Core Tactical Panes & Ruleset Extensibility
 
-The standard HUD ships with four core tactical panes, but is architecturally open to ruleset and scenario extensions:
+The standard System Reference HUD ships with three core tactical panes (each 320px wide, equal to the left tray), and is architecturally open to ruleset and scenario extensions:
 
 ```typescript
 export interface HudPaneDefinition {
@@ -89,8 +89,8 @@ export interface HudPaneDefinition {
 }
 ```
 
-1. **`ADJUDICATE`** (`target` icon):
-   - **Target Numbers (TNs)**:
+1. **`RULES GLOSSARY`** (`rules`, `menu_book` icon):
+   - **Resolution Matrix**:
      - `Normal` — Automatic (no roll required)
      - `Challenging` — TN 11+
      - `Hard` — TN 16+
@@ -100,16 +100,18 @@ export interface HudPaneDefinition {
      - `1 Success` — Basic Success (baseline goal met)
      - `2+ Successes` — Greater Success (increased speed, scale, or bonus effect)
      - `Natural 20` — Always $\ge 1$ Success + Critical Effect.
-2. **`COMBAT`** (`timer` icon):
-   - Bullet Time sequence: 1. Declare $\rightarrow$ 2. Prereq $\rightarrow$ 3. Roll Pool $\rightarrow$ 4. Resolve.
-   - Damage mitigation: Damage Value (DV) reduced by Armor Value (AV).
-3. **`DICE SIM`** (`casino` icon):
-   - Interactive 2d20–5d20 dice pool sandbox with Isotope Neon success highlights and Nat 20 badges.
-4. **`HARM`** (`emergency` icon):
-   - Base Pool: 5d20. Each filled Harm slot reduces pool by -1d20 (floor 2d20).
-   - 4 valid prerequisites: Skill, Gear, Stat Spend (1 point), Harm (1 point).
-5. **Pluggable Panes**:
-   - Custom rulesets or scenarios can provide additional panes via slots or pane definitions (e.g. `CREW / ROSTER`, `COUNTDOWN CLOCKS`, or `VESSEL SYSTEMS`).
+   - **Bullet Time Sequence**:
+     - 1. Declare $\rightarrow$ 2. Prereqs $\rightarrow$ 3. Roll Pool $\rightarrow$ 4. Resolve.
+   - **Damage Mitigation**:
+     - Damage Value (DV) reduced by Armor Value (AV) point-for-point.
+   - **GM Rule of Thumb**:
+     - If no consequence for failure or time pressure, adjudicate as Normal without roll.
+2. **`DICE SIM`** (`dice`, `casino` icon):
+   - Interactive 2d20–5d20 dice pool sandbox with TN selection (TN 11, 16, 21), roll animation, Isotope Neon success highlights, and Nat 20 badges.
+3. **`HARM`** (`harm`, `emergency` icon):
+   - Interactive 3-slot harm tracker with slot states (Transient, Permanent, Broken Asset, Ousted), damage calculation, and downtime reset.
+4. **Pluggable Panes**:
+   - Custom rulesets or scenarios can provide additional panes via slots or pane definitions (e.g. `CREW ROSTER`, `COUNTDOWN CLOCKS`, or `VESSEL SYSTEMS`).
 
 ---
 

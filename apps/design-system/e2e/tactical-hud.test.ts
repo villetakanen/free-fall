@@ -11,14 +11,12 @@ test.describe("Tactical HUD Component (Multi-Pane Inspector Dock)", () => {
     const embeddedDock = page.locator(".tactical-dock--embedded");
     await expect(embeddedDock).toBeVisible();
 
-    // Default open panes are adjudicate and dice
-    await expect(
-      embeddedDock.locator('[data-pane-id="adjudicate"]'),
-    ).toBeVisible();
+    // Default open panes are rules and dice
+    await expect(embeddedDock.locator('[data-pane-id="rules"]')).toBeVisible();
     await expect(embeddedDock.locator('[data-pane-id="dice"]')).toBeVisible();
 
-    // Combat pane is closed by default
-    await expect(embeddedDock.locator('[data-pane-id="combat"]')).toBeHidden();
+    // Harm pane is closed by default
+    await expect(embeddedDock.locator('[data-pane-id="harm"]')).toBeHidden();
   });
 
   test("multi-pane toggle opens and closes side-by-side panes", async ({
@@ -29,31 +27,27 @@ test.describe("Tactical HUD Component (Multi-Pane Inspector Dock)", () => {
 
     const embeddedDock = page.locator(".tactical-dock--embedded");
 
-    // Initially 2 panes open (Adjudicate and Dice)
+    // Initially 2 panes open (Rules and Dice)
     const openPanesInitial = embeddedDock.locator(".tactical-dock__pane--open");
     await expect(openPanesInitial).toHaveCount(2);
 
-    // Toggle Combat pane open via rail button [2]
-    const combatRailBtn = embeddedDock.locator('[data-toggle-pane="combat"]');
-    await combatRailBtn.click();
+    // Toggle Harm pane open via rail button [3]
+    const harmRailBtn = embeddedDock.locator('[data-toggle-pane="harm"]');
+    await harmRailBtn.click();
 
     // Now 3 panes are open side-by-side
-    await expect(embeddedDock.locator('[data-pane-id="combat"]')).toBeVisible();
+    await expect(embeddedDock.locator('[data-pane-id="harm"]')).toBeVisible();
     await expect(
       embeddedDock.locator(".tactical-dock__pane--open"),
     ).toHaveCount(3);
 
-    // Close the Adjudicate pane via its header close button
-    const closeAdjudicateBtn = embeddedDock.locator(
-      '[data-close-pane="adjudicate"]',
-    );
-    await closeAdjudicateBtn.click();
+    // Close the Rules pane via its header close button
+    const closeRulesBtn = embeddedDock.locator('[data-close-pane="rules"]');
+    await closeRulesBtn.click();
 
-    // Adjudicate is now hidden, Combat and Dice remain open (2 open panes)
-    await expect(
-      embeddedDock.locator('[data-pane-id="adjudicate"]'),
-    ).toBeHidden();
-    await expect(embeddedDock.locator('[data-pane-id="combat"]')).toBeVisible();
+    // Rules is now hidden, Harm and Dice remain open (2 open panes)
+    await expect(embeddedDock.locator('[data-pane-id="rules"]')).toBeHidden();
+    await expect(embeddedDock.locator('[data-pane-id="harm"]')).toBeVisible();
     await expect(embeddedDock.locator('[data-pane-id="dice"]')).toBeVisible();
     await expect(
       embeddedDock.locator(".tactical-dock__pane--open"),

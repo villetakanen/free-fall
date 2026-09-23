@@ -11,14 +11,13 @@ test.describe("SRD Tactical HUD Dock", () => {
     const dock = page.locator(".tactical-dock");
     await expect(dock).toBeVisible();
 
-    // Dock rail buttons 1-4
+    // Dock rail buttons 1-3
     const railBtns = dock.locator(".tactical-dock__rail-btn");
-    await expect(railBtns).toHaveCount(4);
+    await expect(railBtns).toHaveCount(3);
 
-    await expect(railBtns.nth(0)).toHaveAttribute("title", /ADJUDICATE/);
-    await expect(railBtns.nth(1)).toHaveAttribute("title", /COMBAT/);
-    await expect(railBtns.nth(2)).toHaveAttribute("title", /DICE SIM/);
-    await expect(railBtns.nth(3)).toHaveAttribute("title", /HARM/);
+    await expect(railBtns.nth(0)).toHaveAttribute("title", /RULES GLOSSARY/);
+    await expect(railBtns.nth(1)).toHaveAttribute("title", /DICE SIM/);
+    await expect(railBtns.nth(2)).toHaveAttribute("title", /HARM/);
   });
 
   test("rail buttons toggle side-by-side panes on the SRD", async ({
@@ -26,26 +25,27 @@ test.describe("SRD Tactical HUD Dock", () => {
   }) => {
     await page.goto("/srd/");
 
-    const adjudicateBtn = page.locator('[data-toggle-pane="adjudicate"]');
+    const rulesBtn = page.locator('[data-toggle-pane="rules"]');
     const diceBtn = page.locator('[data-toggle-pane="dice"]');
 
-    const adjudicatePane = page.locator('[data-pane-id="adjudicate"]');
+    const rulesPane = page.locator('[data-pane-id="rules"]');
     const dicePane = page.locator('[data-pane-id="dice"]');
 
     // Initially panes are closed in dock mode
-    await expect(adjudicatePane).toBeHidden();
+    await expect(rulesPane).toBeHidden();
     await expect(dicePane).toBeHidden();
 
-    // Open Adjudicate pane
-    await adjudicateBtn.click();
-    await expect(adjudicatePane).toBeVisible();
-    await expect(adjudicatePane).toContainText("RESOLUTION MATRIX");
-    await expect(adjudicatePane).toContainText("TN 11+");
+    // Open Rules Glossary pane
+    await rulesBtn.click();
+    await expect(rulesPane).toBeVisible();
+    await expect(rulesPane).toContainText("RESOLUTION MATRIX");
+    await expect(rulesPane).toContainText("TN 11+");
+    await expect(rulesPane).toContainText("BULLET TIME SEQUENCE");
 
     // Open Dice Sim pane side-by-side
     await diceBtn.click();
     await expect(dicePane).toBeVisible();
-    await expect(adjudicatePane).toBeVisible(); // both open side-by-side
+    await expect(rulesPane).toBeVisible(); // both open side-by-side
 
     // Test dice rolling within the HUD
     const rollBtn = dicePane.locator("[data-roll-btn]");
@@ -53,12 +53,10 @@ test.describe("SRD Tactical HUD Dock", () => {
     const banner = dicePane.locator("[data-outcome-banner]");
     await expect(banner).not.toContainText("READY TO EXECUTE");
 
-    // Close Adjudicate pane via its close button
-    const closeAdjudicate = adjudicatePane.locator(
-      "[data-close-pane='adjudicate']",
-    );
-    await closeAdjudicate.click();
-    await expect(adjudicatePane).toBeHidden();
+    // Close Rules pane via its close button
+    const closeRules = rulesPane.locator("[data-close-pane='rules']");
+    await closeRules.click();
+    await expect(rulesPane).toBeHidden();
     await expect(dicePane).toBeVisible();
   });
 

@@ -67,6 +67,16 @@ const { Content } = await render(entry);
 </BaseLayout>
 ```
 
+**Tactical HUD Integration (`hasHud={true}`)**
+
+The SRD mounts the Tactical HUD dock with 3 core tactical panes:
+1. **Rules Glossary** (`rules`, `menu_book` icon): Resolution Matrix, Target Numbers, Success ladder, Bullet Time action sequence, Damage Mitigation formula, and GM Rule of Thumb.
+2. **Dice Sim** (`dice`, `casino` icon): Interactive Action Pool Simulator (2d20–5d20, TN 11/16/21).
+3. **Harm Calc** (`harm`, `emergency` icon): Interactive 3-slot harm tracker and damage calculation.
+
+Each pane is fixed at **320px width** (`calc(40 * var(--freefall-space-1))`), perfectly matching the width of the left navigation rail/tray (`--app-tray-tray-width`).
+
+
 **Navigation Rail Ordering** (`apps/free-fall/src/layouts/BaseLayout.astro`)
 
 The primary navigation rail displays 5 top-level items in strict order:

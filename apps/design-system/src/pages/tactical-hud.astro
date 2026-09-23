@@ -6,16 +6,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const EXTENDED_PANES: HudPaneDefinition[] = [
   {
-    id: "adjudicate",
-    title: "ADJUDICATE",
-    icon: "target",
+    id: "rules",
+    title: "RULES GLOSSARY",
+    icon: "menu_book",
     badge: "CORE",
-  },
-  {
-    id: "combat",
-    title: "COMBAT",
-    icon: "timer",
-    badge: "SEQ",
   },
   {
     id: "dice",
@@ -160,8 +154,10 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
   <h2>Multi-Pane Side-by-Side Showcase</h2>
   <p>
     In the stage below, test the multi-pane dock. Click icons in the right rail
-    (<code>[1] ADJUDICATE</code>, <code>[2] COMBAT</code>, <code>[3] DICE SIM</code>, <code>[4] HARM</code>, <code>[5] CREW</code>)
-    or close buttons (<code>[×]</code>). Notice how panes arrange side-by-side:
+    (<code>[1] RULES GLOSSARY</code>, <code>[2] DICE SIM</code>, <code>[3] HARM</code>, <code>[4] CREW</code>)
+    or close buttons (<code>[×]</code>). Each pane is <strong>320px wide</strong>, perfectly matching
+    the width of the left navigation rail/tray (<code>--app-tray-tray-width</code>). As panes open,
+    they arrange side-by-side as equal-width columns:
   </p>
 
   <div class="hud-showcase-container">
@@ -169,7 +165,7 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
       <TacticalHudComponent
         mode="embedded"
         panes={EXTENDED_PANES}
-        defaultOpenPanes={["adjudicate", "dice"]}
+        defaultOpenPanes={["rules", "dice"]}
       >
         <!-- Slot 5: Custom Pluggable Scenario Pane Demonstration -->
         <div slot="pane-crew" class="hud-panel-content">
@@ -319,8 +315,8 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
       <tr>
         <td><code>panes</code></td>
         <td><code>HudPaneDefinition[]</code></td>
-        <td>Core 4 Panes</td>
-        <td>Array of pane definitions (<code>id</code>, <code>title</code>, <code>icon</code>, <code>badge</code>).</td>
+        <td>Core 3 Panes</td>
+        <td>Array of pane definitions (<code>id</code>, <code>title</code>, <code>icon</code>, <code>badge</code>). Defaults to Rules Glossary, Dice Sim, and Harm Calc.</td>
       </tr>
       <tr>
         <td><code>defaultOpenPanes</code></td>
