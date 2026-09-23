@@ -43,10 +43,10 @@ test.describe("AppTray Component interactions", () => {
     });
   });
 
-  test("Tablet viewport (620px - 779px): Rail visible, expands as overlay", async ({
+  test("Tablet viewport (620px - 1023px): Rail visible, expands as overlay", async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 620, height: 800 });
+    await page.setViewportSize({ width: 768, height: 800 });
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
@@ -81,39 +81,104 @@ test.describe("AppTray Component interactions", () => {
     await expect(page.locator(".app-tray .scrim")).toBeVisible();
   });
 
-  test("Desktop viewport (>=780px): Rail visible, expands and pushes content", async ({
+  test("Desktop viewport (>=1024px): Open by default (320px), collapses to rail, and persists state", async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 1024, height: 800 });
+    await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/app-tray/");
     await page.waitForLoadState("networkidle");
 
-    const tray = page.locator(".app-tray .drawer");
     const hamburger = page.getByRole("button", { name: "Toggle navigation" });
-    const main = page.locator("main");
 
-    // Default: Rail visible
-    const box = await tray.boundingBox();
-    expect(box?.width).toBe(80);
-
-    // Content should have left margin accounting for the rail (~80px + padding)
-    const initialMainBox = await main.boundingBox();
-
-    // Click Hamburger to Open
-    await hamburger.click();
-
-    // Verify tray expanded
+    // Default: Open tray (320px), pushing content
     await page.waitForFunction(() => {
-      const el = document.querySelector(".app-tray .drawer");
-      return el && el.getBoundingClientRect().width === 320;
+      const drawer = document.querySelector(".app-tray .drawer");
+      const tray = document.querySelector(".app-tray");
+      const main = document.querySelector("main");
+      if (!drawer || !tray || !main) return false;
+      const trayRect = tray.getBoundingClientRect();
+      const drawerRect = drawer.getBoundingClientRect();
+      const mainRect = main.getBoundingClientRect();
+      return (
+        trayRect.width === 320 &&
+        drawerRect.width === 320 &&
+        mainRect.left >= 320
+      );
     });
 
     // Scrim should NOT be visible on desktop
     await expect(page.locator(".app-tray .scrim")).toBeHidden();
 
-    // The content width should have shrunk to accommodate the 320px tray
-    const expandedMainBox = await main.boundingBox();
-    expect(expandedMainBox?.width).toBeLessThan(initialMainBox?.width || 0);
+    // Click Hamburger to Collapse
+    await hamburger.click();
+
+    // Verify tray collapsed to rail (80px) and content expands
+    await page.waitForFunction(() => {
+      const drawer = document.querySelector(".app-tray .drawer");
+      const tray = document.querySelector(".app-tray");
+      const main = document.querySelector("main");
+      if (!drawer || !tray || !main) return false;
+      const trayRect = tray.getBoundingClientRect();
+      const drawerRect = drawer.getBoundingClientRect();
+      const mainRect = main.getBoundingClientRect();
+      return (
+        trayRect.width === 80 &&
+        drawerRect.width === 80 &&
+        mainRect.left >= 80 &&
+        mainRect.left < 100
+      );
+    });
+
+    // Navigate to another page and verify collapsed state persists
+    await page.goto("/tokens/");
+    await page.waitForLoadState("networkidle");
+
+    await page.waitForFunction(() => {
+      const el = document.querySelector(".app-tray .drawer");
+      const tray = document.querySelector(".app-tray");
+      return (
+        el &&
+        tray &&
+        el.getBoundingClientRect().width === 80 &&
+        tray.getBoundingClientRect().width === 80
+      );
+    });
+
+    // Click Hamburger to Re-expand
+    const hamburger2 = page.getByRole("button", { name: "Toggle navigation" });
+    await hamburger2.click();
+
+    await page.waitForFunction(() => {
+      const el = document.querySelector(".app-tray .drawer");
+      const tray = document.querySelector(".app-tray");
+      const main = document.querySelector("main");
+      return (
+        el &&
+        tray &&
+        main &&
+        el.getBoundingClientRect().width === 320 &&
+        tray.getBoundingClientRect().width === 320 &&
+        main.getBoundingClientRect().left >= 320
+      );
+    });
+
+    // Navigate back to /app-tray/ and verify expanded state persists
+    await page.goto("/app-tray/");
+    await page.waitForLoadState("networkidle");
+
+    await page.waitForFunction(() => {
+      const el = document.querySelector(".app-tray .drawer");
+      const tray = document.querySelector(".app-tray");
+      const main = document.querySelector("main");
+      return (
+        el &&
+        tray &&
+        main &&
+        el.getBoundingClientRect().width === 320 &&
+        tray.getBoundingClientRect().width === 320 &&
+        main.getBoundingClientRect().left >= 320
+      );
+    });
   });
 
   test("keyboard state, focus trap, and restoration work in overlay mode", async ({

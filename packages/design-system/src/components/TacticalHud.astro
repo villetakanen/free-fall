@@ -1,0 +1,1123 @@
+---
+/**
+ * TacticalHud.astro — Multi-Pane Inspector Dock & Tactical Rules Reference.
+ * Inspired by Adobe InDesign / Illustrator tool docks.
+ * Arranges 1 to N tactical panes side-by-side on the right side of the screen.
+ * Spec: specs/design-system/tactical-hud/spec.md
+ * Design: DESIGN.md (The Void, Ceramic, Isotope Neon, 0.5rem grid, strict data/editorial typography split)
+ */
+
+export interface HudPaneDefinition {
+  id: string;
+  title: string;
+  icon: string;
+  badge?: string;
+  defaultOpen?: boolean;
+}
+
+interface Props {
+  mode?: "dock" | "embedded";
+  id?: string;
+  class?: string;
+  panes?: HudPaneDefinition[];
+  defaultOpenPanes?: string[];
+}
+
+const DEFAULT_PANES: HudPaneDefinition[] = [
+  {
+    id: "rules",
+    title: "RULES GLOSSARY",
+    icon: "menu_book",
+    badge: "CORE",
+  },
+  {
+    id: "dice",
+    title: "DICE SIM",
+    icon: "casino",
+    badge: "ROLL",
+  },
+  {
+    id: "harm",
+    title: "HARM",
+    icon: "emergency",
+    badge: "POOL",
+  },
+];
+
+const {
+  mode = "dock",
+  id = mode === "dock" ? "tactical-hud-dock" : "tactical-hud-embedded",
+  class: className = "",
+  panes = DEFAULT_PANES,
+  defaultOpenPanes = mode === "embedded" ? ["rules", "dice"] : [],
+} = Astro.props;
+---
+
+<div
+  id={id}
+  class:list={[
+    "tactical-dock",
+    `tactical-dock--${mode}`,
+    className,
+  ]}
+  data-dock-root
+  data-mode={mode}
+  data-default-open={JSON.stringify(defaultOpenPanes)}
+  aria-label="Tactical HUD Inspector Dock"
+>
+  <!-- Panes Container (arranged side-by-side from left to right) -->
+  <div class="tactical-dock__panes" data-panes-container>
+    {panes.map((pane) => {
+      const isOpen = defaultOpenPanes.includes(pane.id);
+      return (
+        <section
+          id={`${id}-pane-${pane.id}`}
+          class:list={[
+            "tactical-dock__pane",
+            { "tactical-dock__pane--open": isOpen },
+          ]}
+          data-pane-id={pane.id}
+          aria-label={pane.title}
+          style={isOpen ? undefined : "display: none;"}
+        >
+          <!-- Pane Header -->
+          <header class="tactical-dock__pane-header">
+            <div class="tactical-dock__pane-title-group">
+              <span class="material-symbols-sharp tactical-dock__pane-icon" aria-hidden="true">
+                {pane.icon}
+              </span>
+              <span class="tactical-dock__pane-title mono">{pane.title}</span>
+              {pane.badge && (
+                <span class="tactical-dock__pane-badge mono">{pane.badge}</span>
+              )}
+            </div>
+            <button
+              class="tactical-dock__pane-close"
+              type="button"
+              data-close-pane={pane.id}
+              aria-label={`Close ${pane.title} pane`}
+            >
+              <span class="material-symbols-sharp" aria-hidden="true">close</span>
+            </button>
+          </header>
+
+          <!-- Pane Content Body -->
+          <div class="tactical-dock__pane-body">
+            {pane.id === "rules" && (
+              <slot name="pane-rules">
+                <div class="hud-panel-content">
+                  <section class="hud-card">
+                    <h4 class="hud-card__title">
+                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">target</span>
+                      RESOLUTION MATRIX
+                    </h4>
+                    <table class="hud-table">
+                      <thead>
+                        <tr>
+                          <th>Difficulty</th>
+                          <th>Target Number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Normal</td>
+                          <td class="mono">— Auto —</td>
+                        </tr>
+                        <tr>
+                          <td>Challenging</td>
+                          <td class="mono accent">TN 11+</td>
+                        </tr>
+                        <tr>
+                          <td>Hard</td>
+                          <td class="mono accent">TN 16+</td>
+                        </tr>
+                        <tr>
+                          <td>Near-Impossible</td>
+                          <td class="mono accent">TN 21+</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="hud-ladder">
+                      <div class="hud-ladder__item">
+                        <span class="mono muted">0 SUCCESS</span>
+                        <span>Failure &amp; Complication</span>
+                      </div>
+                      <div class="hud-ladder__item">
+                        <span class="mono accent">1 SUCCESS</span>
+                        <span>Basic Success</span>
+                      </div>
+                      <div class="hud-ladder__item">
+                        <span class="mono highlight">2+ SUCCESS</span>
+                        <span>Greater Success</span>
+                      </div>
+                      <div class="hud-ladder__item hud-ladder__item--crit">
+                        <span class="mono highlight">NAT 20</span>
+                        <span>Always &ge; 1 Success + Crit</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="hud-card">
+                    <h4 class="hud-card__title">
+                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">timer</span>
+                      BULLET TIME SEQUENCE
+                    </h4>
+                    <ol class="hud-stepper">
+                      <li>
+                        <span class="mono accent">1. DECLARE</span>
+                        <p>Declare tactical objective, target, and allocate pool.</p>
+                      </li>
+                      <li>
+                        <span class="mono accent">2. PREREQS</span>
+                        <p>Confirm Skill, Gear, Stat Spend, or take 1 Harm.</p>
+                      </li>
+                      <li>
+                        <span class="mono accent">3. ROLL POOL</span>
+                        <p>Roll action pool (2d20–5d20) vs TN (11+, 16+, 21+).</p>
+                      </li>
+                      <li>
+                        <span class="mono accent">4. RESOLVE</span>
+                        <p>Successes determine effect; AV reduces DV point-for-point.</p>
+                      </li>
+                    </ol>
+                  </section>
+
+                  <section class="hud-card">
+                    <h4 class="hud-card__title">
+                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">shield</span>
+                      DAMAGE MITIGATION
+                    </h4>
+                    <div class="hud-formula mono">
+                      <span class="accent">NET HARM</span> = <span class="highlight">DV</span> &minus; <span class="muted">AV</span>
+                    </div>
+                    <p class="hud-card__copy">Armor Value reduces incoming Damage Value point-for-point. Remaining DV fills Harm slots.</p>
+                  </section>
+
+                  <div class="hud-note">
+                    <span class="hud-note__lead mono accent">&gt; GM RULE OF THUMB:</span>
+                    <p>If an action has no consequence for failure or time pressure, do not roll. Adjudicate as Normal (Auto).</p>
+                  </div>
+                </div>
+              </slot>
+            )}
+
+            {pane.id === "dice" && (
+              <slot name="pane-dice">
+                <div class="hud-panel-content" data-dice-simulator>
+                  <section class="hud-card">
+                    <h4 class="hud-card__title">
+                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">casino</span>
+                      ACTION POOL SIMULATOR
+                    </h4>
+
+                    <div class="hud-sandbox-controls">
+                      <div class="hud-control-group">
+                        <span class="hud-control-group__label">POOL SIZE (d20)</span>
+                        <div class="hud-pill-group" role="radiogroup" aria-label="Dice pool size">
+                          <button class="hud-pill" type="button" data-dice="2">2d20</button>
+                          <button class="hud-pill" type="button" data-dice="3">3d20</button>
+                          <button class="hud-pill" type="button" data-dice="4">4d20</button>
+                          <button class="hud-pill hud-pill--active" type="button" data-dice="5">5d20</button>
+                        </div>
+                      </div>
+
+                      <div class="hud-control-group">
+                        <span class="hud-control-group__label">DIFFICULTY (TN)</span>
+                        <div class="hud-pill-group" role="radiogroup" aria-label="Target number">
+                          <button class="hud-pill hud-pill--active" type="button" data-tn="11">TN 11</button>
+                          <button class="hud-pill" type="button" data-tn="16">TN 16</button>
+                          <button class="hud-pill" type="button" data-tn="21">TN 21</button>
+                        </div>
+                      </div>
+
+                      <button class="hud-execute-btn" type="button" data-roll-btn>
+                        <span class="material-symbols-sharp" aria-hidden="true">play_arrow</span>
+                        EXECUTE ROLL
+                      </button>
+                    </div>
+
+                    <div class="hud-sandbox-output" data-output-container aria-live="polite">
+                      <div class="hud-dice-row" data-dice-row>
+                        <span class="hud-die mono">—</span>
+                        <span class="hud-die mono">—</span>
+                        <span class="hud-die mono">—</span>
+                        <span class="hud-die mono">—</span>
+                        <span class="hud-die mono">—</span>
+                      </div>
+                      <div class="hud-outcome-banner" data-outcome-banner>
+                        <span class="mono muted">READY TO EXECUTE</span>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </slot>
+            )}
+
+            {pane.id === "harm" && (
+              <slot name="pane-harm">
+                <div class="hud-panel-content">
+                  <section class="hud-card">
+                    <h4 class="hud-card__title">
+                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">emergency</span>
+                      POOL PENALTIES &amp; LIMITS
+                    </h4>
+                    <div class="hud-stats-grid">
+                      <div class="hud-stat-box">
+                        <span class="hud-stat-box__label">BASE POOL</span>
+                        <span class="hud-stat-box__value mono">5d20</span>
+                      </div>
+                      <div class="hud-stat-box">
+                        <span class="hud-stat-box__label">HARM PENALTY</span>
+                        <span class="hud-stat-box__value mono">-1d20</span>
+                        <span class="hud-stat-box__sub">Per Slot</span>
+                      </div>
+                      <div class="hud-stat-box">
+                        <span class="hud-stat-box__label">POOL FLOOR</span>
+                        <span class="hud-stat-box__value mono">2d20</span>
+                        <span class="hud-stat-box__sub">Absolute Min</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="hud-card">
+                    <h4 class="hud-card__title">
+                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">key</span>
+                      4 PREREQUISITES
+                    </h4>
+                    <ul class="hud-bullet-list">
+                      <li><strong>Skill</strong> — Relevant training</li>
+                      <li><strong>Gear</strong> — Functional hardware</li>
+                      <li><strong>Spend 1 Point</strong> — Body, Mind, or Ghost</li>
+                      <li><strong>Take 1 Harm</strong> — Absorb damage</li>
+                    </ul>
+                  </section>
+                </div>
+              </slot>
+            )}
+
+            {pane.id === "crew" && (
+              <slot name="pane-crew">
+                <div class="hud-panel-content">
+                  <p class="hud-card__copy">No crew data supplied.</p>
+                </div>
+              </slot>
+            )}
+
+            {pane.id === "custom" && (
+              <slot name="pane-custom">
+                <div class="hud-panel-content">
+                  <p class="hud-card__copy">Custom pane content.</p>
+                </div>
+              </slot>
+            )}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+
+  <!-- Dock Rail (Vertical icon column on far right) -->
+  <nav class="tactical-dock__rail" aria-label="Tactical HUD Dock Rail">
+    {panes.map((pane, idx) => {
+      const isOpen = defaultOpenPanes.includes(pane.id);
+      return (
+        <button
+          class:list={[
+            "tactical-dock__rail-btn",
+            { "tactical-dock__rail-btn--active": isOpen },
+          ]}
+          type="button"
+          data-toggle-pane={pane.id}
+          aria-controls={`${id}-pane-${pane.id}`}
+          aria-expanded={isOpen ? "true" : "false"}
+          title={`${pane.title} (Hot-key: ${idx + 1})`}
+        >
+          <span class="tactical-dock__rail-indicator" aria-hidden="true" />
+          <span class="material-symbols-sharp tactical-dock__rail-icon" aria-hidden="true">
+            {pane.icon}
+          </span>
+          <span class="tactical-dock__rail-kbd mono">{idx + 1}</span>
+        </button>
+      );
+    })}
+  </nav>
+</div>
+
+<style>
+  /* ── Design Tokens & Geometry ────────────────── */
+  .tactical-dock {
+    --dock-rail-width: calc(6 * var(--freefall-space-1)); /* 48px */
+    --dock-pane-width: calc(40 * var(--freefall-space-1)); /* 320px (matches --app-tray-tray-width) */
+    --dock-header-height: calc(5 * var(--freefall-space-1)); /* 40px */
+    --dock-z-rail: 95;
+    --dock-z-panes: 94;
+
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    color: var(--freefall-text-body);
+    font-family: var(--freefall-font-body);
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  /* ── Mode: Embedded (Preview in Documentation) ── */
+  .tactical-dock--embedded {
+    width: 100%;
+    max-width: 100%;
+    height: calc(65 * var(--freefall-space-1));
+    border: var(--freefall-border-hairline);
+    border-radius: 4px;
+    background: var(--freefall-bg-surface-1);
+    overflow: hidden;
+  }
+
+  /* ── Mode: Dock (Desktop Workspace Inspector) ─── */
+  .tactical-dock--dock {
+    display: none;
+  }
+
+  /* Tablet & Desktop: dock rail is visible */
+  @media (min-width: 620px) {
+    .tactical-dock--dock {
+      display: flex;
+      position: relative;
+      flex-shrink: 0;
+      height: 100%;
+    }
+  }
+
+  /* ── Dock Rail (Far Right Strip) ─────────────── */
+  .tactical-dock__rail {
+    width: var(--dock-rail-width);
+    flex-shrink: 0;
+    background: var(--freefall-bg-surface-1);
+    border-left: var(--freefall-border-hairline);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(0.5 * var(--freefall-space-1));
+    padding-top: calc(1 * var(--freefall-space-1));
+    z-index: var(--dock-z-rail);
+  }
+
+  .tactical-dock__rail-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(5 * var(--freefall-space-1));
+    height: calc(5 * var(--freefall-space-1));
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    color: var(--freefall-text-muted);
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease;
+  }
+
+  .tactical-dock__rail-btn:hover {
+    background: var(--freefall-bg-surface-2);
+    color: var(--freefall-text-display);
+  }
+
+  .tactical-dock__rail-btn--active {
+    background: var(--freefall-bg-surface-3);
+    color: var(--freefall-color-accent-400);
+  }
+
+  .tactical-dock__rail-indicator {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 2px;
+    background: transparent;
+    border-radius: 1px;
+    transition: background 120ms ease;
+  }
+
+  .tactical-dock__rail-btn--active .tactical-dock__rail-indicator {
+    background: var(--freefall-color-accent-400);
+    box-shadow: 0 0 6px var(--freefall-color-accent-400);
+  }
+
+  .tactical-dock__rail-icon {
+    font-size: calc(2.25 * var(--freefall-space-1));
+  }
+
+  .tactical-dock__rail-kbd {
+    font-size: calc(0.9 * var(--freefall-space-1));
+    opacity: 0.6;
+    margin-top: -2px;
+  }
+
+  /* ── Panes Row (Arranged Side-by-Side) ────────── */
+  .tactical-dock__panes {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100%;
+    z-index: var(--dock-z-panes);
+  }
+
+  /* ── Individual Pane ─────────────────────────── */
+  .tactical-dock__pane {
+    width: var(--dock-pane-width);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--freefall-bg-surface-2);
+    border-left: var(--freefall-border-hairline);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    animation: paneSlideIn 150ms ease-out;
+  }
+
+  @keyframes paneSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tactical-dock__pane {
+      animation: none;
+    }
+  }
+
+  /* ── Pane Header ─────────────────────────────── */
+  .tactical-dock__pane-header {
+    height: var(--dock-header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 calc(1.5 * var(--freefall-space-1));
+    background: var(--freefall-bg-surface-1);
+    border-bottom: var(--freefall-border-hairline);
+    flex-shrink: 0;
+  }
+
+  .tactical-dock__pane-title-group {
+    display: flex;
+    align-items: center;
+    gap: calc(0.75 * var(--freefall-space-1));
+  }
+
+  .tactical-dock__pane-icon {
+    color: var(--freefall-color-accent-400);
+    font-size: calc(1.8 * var(--freefall-space-1));
+  }
+
+  .tactical-dock__pane-title {
+    font-size: calc(1.3 * var(--freefall-space-1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--freefall-text-display);
+  }
+
+  .tactical-dock__pane-badge {
+    font-size: calc(0.9 * var(--freefall-space-1));
+    color: var(--freefall-text-muted);
+    background: var(--freefall-bg-surface-3);
+    padding: 1px calc(0.5 * var(--freefall-space-1));
+    border-radius: 2px;
+  }
+
+  .tactical-dock__pane-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--freefall-text-muted);
+    padding: calc(0.25 * var(--freefall-space-1));
+    cursor: pointer;
+    border-radius: 2px;
+    transition: color 120ms ease, background 120ms ease;
+  }
+
+  .tactical-dock__pane-close:hover {
+    color: var(--freefall-text-display);
+    background: var(--freefall-bg-surface-3);
+  }
+
+  /* ── Pane Body ───────────────────────────────── */
+  .tactical-dock__pane-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: calc(1.5 * var(--freefall-space-1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.5 * var(--freefall-space-1));
+    scrollbar-width: thin;
+  }
+
+  .hud-panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.5 * var(--freefall-space-1));
+  }
+
+  /* ── Floating Overlay Mode (Laptop / Tablet) ─── */
+  .tactical-dock--overlay .tactical-dock__panes {
+    position: fixed;
+    top: 0;
+    right: var(--dock-rail-width);
+    bottom: 0;
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.8);
+    z-index: calc(var(--dock-z-panes) + 2);
+    pointer-events: auto;
+  }
+
+  @media (max-width: 1023px) {
+    /* Tablet: Always overlay mode */
+    .tactical-dock--dock .tactical-dock__panes {
+      position: fixed;
+      top: 0;
+      right: var(--dock-rail-width);
+      bottom: 0;
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.8);
+      z-index: calc(var(--dock-z-panes) + 2);
+    }
+  }
+
+  /* ── Cards & Tactical Elements ───────────────── */
+  .hud-card {
+    background: var(--freefall-bg-surface-1);
+    border: var(--freefall-border-hairline);
+    border-radius: 2px;
+    padding: calc(1.25 * var(--freefall-space-1));
+  }
+
+  .hud-card__title {
+    display: flex;
+    align-items: center;
+    gap: calc(0.5 * var(--freefall-space-1));
+    font-family: var(--freefall-font-mono);
+    font-size: calc(1.25 * var(--freefall-space-1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--freefall-color-primary-100);
+    margin: 0 0 calc(1 * var(--freefall-space-1)) 0;
+    border-bottom: 1px solid var(--freefall-color-primary-800);
+    padding-bottom: calc(0.5 * var(--freefall-space-1));
+  }
+
+  .hud-card__icon {
+    font-size: calc(1.5 * var(--freefall-space-1));
+    color: var(--freefall-color-accent-400);
+  }
+
+  .hud-card__copy {
+    font-size: calc(1.25 * var(--freefall-space-1));
+    color: var(--freefall-text-body);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ── Table (Resolution) ──────────────────────── */
+  .hud-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: calc(1.25 * var(--freefall-space-1));
+    margin-bottom: calc(1 * var(--freefall-space-1));
+  }
+
+  .hud-table th {
+    text-align: left;
+    font-family: var(--freefall-font-mono);
+    color: var(--freefall-text-muted);
+    font-size: calc(1.1 * var(--freefall-space-1));
+    padding: calc(0.4 * var(--freefall-space-1)) 0;
+    border-bottom: 1px solid var(--freefall-color-primary-800);
+  }
+
+  .hud-table td {
+    padding: calc(0.5 * var(--freefall-space-1)) 0;
+    border-bottom: 1px solid var(--freefall-color-primary-900);
+    color: var(--freefall-text-body);
+  }
+
+  .hud-ladder {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.4 * var(--freefall-space-1));
+    font-size: calc(1.2 * var(--freefall-space-1));
+  }
+
+  .hud-ladder__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(0.3 * var(--freefall-space-1)) calc(0.6 * var(--freefall-space-1));
+    background: var(--freefall-bg-surface-2);
+    border-radius: 2px;
+  }
+
+  .hud-ladder__item--crit {
+    border-left: 2px solid var(--freefall-color-accent-400);
+  }
+
+  .hud-note {
+    background: var(--freefall-bg-surface-1);
+    border-left: 2px solid var(--freefall-color-accent-400);
+    padding: calc(0.75 * var(--freefall-space-1)) calc(1 * var(--freefall-space-1));
+    font-size: calc(1.2 * var(--freefall-space-1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.3 * var(--freefall-space-1));
+  }
+
+  .hud-note p {
+    margin: 0;
+    color: var(--freefall-text-body);
+    line-height: 1.35;
+  }
+
+  /* ── Stepper (Combat) ────────────────────────── */
+  .hud-stepper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.75 * var(--freefall-space-1));
+    font-size: calc(1.25 * var(--freefall-space-1));
+  }
+
+  .hud-stepper li {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.2 * var(--freefall-space-1));
+    padding-left: calc(0.75 * var(--freefall-space-1));
+    border-left: 2px solid var(--freefall-color-primary-700);
+  }
+
+  .hud-stepper p {
+    margin: 0;
+    color: var(--freefall-text-body);
+    line-height: 1.3;
+  }
+
+  .hud-formula {
+    background: var(--freefall-bg-surface-2);
+    border: 1px solid var(--freefall-color-primary-800);
+    padding: calc(0.6 * var(--freefall-space-1));
+    text-align: center;
+    font-size: calc(1.3 * var(--freefall-space-1));
+    margin-bottom: calc(0.75 * var(--freefall-space-1));
+    border-radius: 2px;
+  }
+
+  /* ── Stats Grid (Harm) ───────────────────────── */
+  .hud-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(0.5 * var(--freefall-space-1));
+    margin-bottom: calc(0.75 * var(--freefall-space-1));
+  }
+
+  .hud-stat-box {
+    background: var(--freefall-bg-surface-2);
+    border: 1px solid var(--freefall-color-primary-800);
+    border-radius: 2px;
+    padding: calc(0.6 * var(--freefall-space-1));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hud-stat-box__label {
+    font-family: var(--freefall-font-mono);
+    font-size: calc(0.9 * var(--freefall-space-1));
+    color: var(--freefall-text-muted);
+  }
+
+  .hud-stat-box__value {
+    font-size: calc(1.5 * var(--freefall-space-1));
+    font-weight: 700;
+    color: var(--freefall-color-accent-400);
+  }
+
+  .hud-stat-box__sub {
+    font-family: var(--freefall-font-mono);
+    font-size: calc(0.85 * var(--freefall-space-1));
+    color: var(--freefall-text-muted);
+  }
+
+  .hud-bullet-list {
+    margin: 0;
+    padding-left: calc(1.75 * var(--freefall-space-1));
+    font-size: calc(1.25 * var(--freefall-space-1));
+    color: var(--freefall-text-body);
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.35 * var(--freefall-space-1));
+  }
+
+  .hud-bullet-list li strong {
+    color: var(--freefall-color-primary-100);
+  }
+
+  /* ── Simulator / Sandbox ─────────────────────── */
+  .hud-sandbox-controls {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1 * var(--freefall-space-1));
+    margin-bottom: calc(1 * var(--freefall-space-1));
+  }
+
+  .hud-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.3 * var(--freefall-space-1));
+  }
+
+  .hud-control-group__label {
+    font-family: var(--freefall-font-mono);
+    font-size: calc(1 * var(--freefall-space-1));
+    color: var(--freefall-text-muted);
+  }
+
+  .hud-pill-group {
+    display: flex;
+    gap: calc(0.4 * var(--freefall-space-1));
+  }
+
+  .hud-pill {
+    flex: 1;
+    padding: calc(0.5 * var(--freefall-space-1)) 0;
+    font-family: var(--freefall-font-mono);
+    font-size: calc(1.2 * var(--freefall-space-1));
+    background: var(--freefall-bg-surface-2);
+    border: 1px solid var(--freefall-color-primary-800);
+    color: var(--freefall-text-muted);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease;
+  }
+
+  .hud-pill:hover {
+    background: var(--freefall-bg-surface-3);
+    color: var(--freefall-text-display);
+  }
+
+  .hud-pill--active {
+    background: var(--freefall-color-primary-800);
+    color: var(--freefall-color-accent-400);
+    border-color: var(--freefall-color-accent-400);
+    font-weight: 700;
+  }
+
+  .hud-execute-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(0.5 * var(--freefall-space-1));
+    padding: calc(0.75 * var(--freefall-space-1));
+    background: var(--freefall-color-accent-400);
+    color: var(--freefall-color-primary-950);
+    border: none;
+    border-radius: 2px;
+    font-family: var(--freefall-font-mono);
+    font-size: calc(1.2 * var(--freefall-space-1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: opacity 120ms ease;
+  }
+
+  .hud-execute-btn:hover {
+    opacity: 0.92;
+  }
+
+  .hud-sandbox-output {
+    background: var(--freefall-bg-surface-2);
+    border: 1px solid var(--freefall-color-primary-800);
+    border-radius: 2px;
+    padding: calc(1 * var(--freefall-space-1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.75 * var(--freefall-space-1));
+    align-items: center;
+  }
+
+  .hud-dice-row {
+    display: flex;
+    gap: calc(0.5 * var(--freefall-space-1));
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hud-die {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(4 * var(--freefall-space-1));
+    height: calc(4 * var(--freefall-space-1));
+    background: var(--freefall-bg-surface-1);
+    border: 1px solid var(--freefall-color-primary-700);
+    border-radius: 2px;
+    font-size: calc(1.5 * var(--freefall-space-1));
+    font-weight: 700;
+    color: var(--freefall-text-display);
+  }
+
+  .hud-die--success {
+    border-color: var(--freefall-color-accent-400);
+    color: var(--freefall-color-accent-400);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--freefall-color-accent-400) 40%, transparent);
+  }
+
+  .hud-die--crit {
+    border-color: var(--freefall-color-accent-400);
+    background: var(--freefall-color-accent-400);
+    color: var(--freefall-color-primary-950);
+    box-shadow: 0 0 10px var(--freefall-color-accent-400);
+  }
+
+  .hud-outcome-banner {
+    font-family: var(--freefall-font-mono);
+    font-size: calc(1.15 * var(--freefall-space-1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  /* ── Typography Helpers ──────────────────────── */
+  .mono {
+    font-family: var(--freefall-font-mono);
+  }
+
+  .accent {
+    color: var(--freefall-color-accent-400);
+  }
+
+  .highlight {
+    color: var(--freefall-color-primary-50);
+    font-weight: 700;
+  }
+
+  .muted {
+    color: var(--freefall-text-muted);
+  }
+</style>
+
+<script>
+  (() => {
+    const docks = document.querySelectorAll<HTMLElement>("[data-dock-root]");
+
+    docks.forEach((dock) => {
+      const mode = dock.dataset.mode || "dock";
+      const railBtns = dock.querySelectorAll<HTMLButtonElement>("[data-toggle-pane]");
+      const closeBtns = dock.querySelectorAll<HTMLButtonElement>("[data-close-pane]");
+      const defaultOpenStr = dock.dataset.defaultOpen || "[]";
+      let openPanes: Set<string> = new Set();
+
+      try {
+        const parsed = JSON.parse(defaultOpenStr);
+        if (Array.isArray(parsed)) {
+          openPanes = new Set(parsed);
+        }
+      } catch {}
+
+      // ── Adaptive Spatial Layout (Push vs. Overlay) ──
+      const updateAdaptiveMode = () => {
+        if (mode !== "dock") return;
+        const windowWidth = window.innerWidth;
+
+        // Tablet mode (< 1024px) is always overlay
+        if (windowWidth < 1024) {
+          dock.classList.add("tactical-dock--overlay");
+          return;
+        }
+
+        // Available width for content check
+        // Left tray takes 320px (or 80px), rail takes 48px, minimum content measure is 600px
+        const activeCount = openPanes.size;
+        const totalPanesWidth = activeCount * 280; // 280px per pane
+        const estimatedAvailableForContent = windowWidth - 320 - 48 - totalPanesWidth;
+
+        // If content would be squashed below 580px, switch to floating overlay
+        if (estimatedAvailableForContent < 580 && activeCount >= 2) {
+          dock.classList.add("tactical-dock--overlay");
+        } else {
+          dock.classList.remove("tactical-dock--overlay");
+        }
+      };
+
+      const setPaneState = (paneId: string, open: boolean) => {
+        const isTablet = window.innerWidth < 1024 && mode === "dock";
+
+        if (open) {
+          if (isTablet) {
+            // On tablet, cap at 1 open pane at a time
+            openPanes.clear();
+          }
+          openPanes.add(paneId);
+        } else {
+          openPanes.delete(paneId);
+        }
+
+        // Sync DOM panes
+        const allPanes = dock.querySelectorAll<HTMLElement>("[data-pane-id]");
+        allPanes.forEach((paneEl) => {
+          const id = paneEl.dataset.paneId;
+          const isOpen = id ? openPanes.has(id) : false;
+          paneEl.style.display = isOpen ? "flex" : "none";
+          paneEl.classList.toggle("tactical-dock__pane--open", isOpen);
+        });
+
+        // Sync rail buttons
+        railBtns.forEach((btn) => {
+          const id = btn.dataset.togglePane;
+          const isOpen = id ? openPanes.has(id) : false;
+          btn.classList.toggle("tactical-dock__rail-btn--active", isOpen);
+          btn.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        updateAdaptiveMode();
+      };
+
+      // Wire rail buttons
+      railBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const paneId = btn.dataset.togglePane;
+          if (!paneId) return;
+          const isCurrentlyOpen = openPanes.has(paneId);
+          setPaneState(paneId, !isCurrentlyOpen);
+        });
+      });
+
+      // Wire close buttons
+      closeBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const paneId = btn.dataset.closePane;
+          if (paneId) setPaneState(paneId, false);
+        });
+      });
+
+      // Initialize
+      openPanes.forEach((id) => setPaneState(id, true));
+      window.addEventListener("resize", updateAdaptiveMode);
+
+      // ── Hotkeys (1-5 toggle panes, Escape closes rightmost) ──
+      document.addEventListener("keydown", (e) => {
+        const activeTag = (document.activeElement?.tagName || "").toLowerCase();
+        if (activeTag === "input" || activeTag === "textarea" || activeTag === "select") return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+        if (e.key === "Escape" && openPanes.size > 0 && mode === "dock") {
+          e.preventDefault();
+          // Close the most recently added pane
+          const lastPane = Array.from(openPanes).pop();
+          if (lastPane) setPaneState(lastPane, false);
+          return;
+        }
+
+        const num = parseInt(e.key, 10);
+        if (num >= 1 && num <= railBtns.length && mode === "dock") {
+          const targetBtn = railBtns[num - 1];
+          const paneId = targetBtn?.dataset.togglePane;
+          if (paneId) {
+            e.preventDefault();
+            setPaneState(paneId, !openPanes.has(paneId));
+          }
+        }
+      });
+
+      // ── Dice Simulator Logic ──────────────────────
+      const diceSimContainers = dock.querySelectorAll<HTMLElement>("[data-dice-simulator]");
+      diceSimContainers.forEach((container) => {
+        let selectedDice = 5;
+        let selectedTn = 11;
+
+        const dicePills = container.querySelectorAll<HTMLButtonElement>("[data-dice]");
+        const tnPills = container.querySelectorAll<HTMLButtonElement>("[data-tn]");
+        const rollBtn = container.querySelector<HTMLButtonElement>("[data-roll-btn]");
+        const diceRow = container.querySelector<HTMLElement>("[data-dice-row]");
+        const banner = container.querySelector<HTMLElement>("[data-outcome-banner]");
+
+        dicePills.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            dicePills.forEach((p) => p.classList.remove("hud-pill--active"));
+            btn.classList.add("hud-pill--active");
+            selectedDice = parseInt(btn.dataset.dice || "5", 10);
+          });
+        });
+
+        tnPills.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            tnPills.forEach((p) => p.classList.remove("hud-pill--active"));
+            btn.classList.add("hud-pill--active");
+            selectedTn = parseInt(btn.dataset.tn || "11", 10);
+          });
+        });
+
+        rollBtn?.addEventListener("click", () => {
+          if (!diceRow || !banner) return;
+
+          const results: number[] = [];
+          let successes = 0;
+          let crits = 0;
+
+          for (let i = 0; i < selectedDice; i++) {
+            const roll = Math.floor(Math.random() * 20) + 1;
+            results.push(roll);
+            if (roll === 20) {
+              crits++;
+              successes++;
+            } else if (roll >= selectedTn) {
+              successes++;
+            }
+          }
+
+          diceRow.innerHTML = "";
+          results.forEach((val) => {
+            const span = document.createElement("span");
+            span.className = "hud-die mono";
+            span.textContent = String(val);
+            if (val === 20) {
+              span.classList.add("hud-die--crit");
+            } else if (val >= selectedTn) {
+              span.classList.add("hud-die--success");
+            }
+            diceRow.appendChild(span);
+          });
+
+          let label = "";
+          let colorClass = "muted";
+
+          if (successes === 0) {
+            label = "0 SUCCESSES // FAILURE & COMPLICATION";
+            colorClass = "muted";
+          } else if (successes === 1) {
+            label = "1 SUCCESS // BASIC SUCCESS";
+            colorClass = "accent";
+          } else {
+            label = `${successes} SUCCESSES // GREATER SUCCESS`;
+            colorClass = "highlight";
+          }
+
+          if (crits > 0) {
+            label += ` (CRIT x${crits})`;
+          }
+
+          banner.innerHTML = `<span class="mono ${colorClass}">${label}</span>`;
+        });
+      });
+    });
+  })();
+</script>

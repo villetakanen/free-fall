@@ -6,7 +6,7 @@ title: "The Njord's Whisper"
 
 **The target.** A **"00"** — the classic freefall hauler, the ubiquitous small-crew workhorse docked at every station in the system, so common nobody looks twice. Cargo goes in the bow maw, the torch pushes it somewhere, months pass, cargo comes out the far end. Nothing fancy, nothing fast, nothing that fights. She is a long-haul truck for the space age — and like a truck, her cab is lived-in: strap-down bunks, a galley that works in freefall, a decade of somebody's clutter velcroed to the walls.
 
-She does not spin, and she does not push hard enough to matter. Her continuous ten-milligee crawl gives her crew no felt gravity worth the name — they live, sleep, cook, and argue in **freefall**, for weeks at a stretch. Remember that in Scene 2: aboard the Whisper there is no *down*. Everything drifts.
+She does not spin, and she does not push hard enough to matter. Her continuous ten-milligee crawl — one hundredth of a g, aimed forward — gives her crew no felt gravity worth the name: they live, sleep, cook, and argue in what plays as **freefall**, for weeks at a stretch. But it is not quite zero. That hundredth of a g points *aft*, toward the torch, and everything loose obeys it eventually — nothing hangs, it *settles*. Release a wrench at head height and it takes roughly six seconds to drift the two metres to the deck; blood beads and coffee globes wander sternward and pool against the engine-side bulkhead; a decade of clutter has migrated the same way. Remember it aboard the Whisper: no *down* to stand on, but a slow down to drift toward.
 
 Statted below as an example FREE//FALL vessel — a slow civilian freighter, the mechanical opposite of the crew's boarding craft.
 
@@ -33,7 +33,7 @@ qualities:
   - "Environmental Sealing"
   - "Sensor Suite (Basic navigational / traffic-control)"
   - "Automated Defenses (Modest anti-piracy point defense — not built to fight anything determined)"
-  - "No Gravity (Freefall throughout — no spin, no meaningful thrust gravity)"
+  - "Negligible Gravity (0.01 g sternward from the freight crawl — plays as freefall; loose objects settle toward the engine over seconds, not instantly)"
   - "Signature: Dark (comms to Luna and Belt traffic control cut)"
 source: "northern-lights-demo"
 ```
@@ -53,4 +53,4 @@ The stat block is the ship her manifest describes. It is not the ship the crew w
 - **Navigation is compromised.** Origin-17 controls the committed trajectory, drive, and flight computer. The human crew retains the rest of the ship and can command defensive attitude changes that do not threaten its destination.
 - **The defenses are separate.** Three leased laser mounts share a proprietary expert system void-gapped from navigation, the QNA, and every other ship system. The crew authorizes **ATTACK** or **DEFER**; the network handles acquisition and fire. Origin-17 cannot operate it.
 - **The crew is still aboard.** [Two pilots, two security personnel, and two stevedores](/scenarios/northern-lights/the-whispers-crew/) control the ship around the compromised navigation. All six can fight. Open approach brings security onto the hull while the pilots rotate the Whisper and authorize point defense.
-- **The way in is the bow.** The cargo maw origin-17 used to take itself aboard is the same maw the crew will most naturally breach or dock. She was built to open at the front. She still will.
+- **Two ways in.** She was built to open at the front, and the cargo modules — origin-17's shard among them — came aboard through the bow **maw**; that maw is the obvious thing to ram or cut. But her crew airlocks are the **two docking points on the sleeping module**, amidships — a boarding craft that means to *dock* rather than *breach* mates there. The maw is how you force your way in; the airlocks are how you knock.

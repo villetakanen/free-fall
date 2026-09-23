@@ -17,10 +17,10 @@ They expected to repair it before the Belt. Then the contractors arrived.
 | Role | Crew | Start | Immediate job |
 |---|---:|---|---|
 | Pilots | 2 | Control deck | Identify the contact, rotate the Whisper, authorize point defense |
-| Security | 2 | Security station | Suit up, deploy to the hull, deny the breach |
+| Security | 2 | Security station | Hold the ship's thresholds; at most one goes EVA to fire or cover a mount, the other stays on the door |
 | Stevedores | 2 | Cargo deck | Damage control, protect the QNA, prepare the interior |
 
-All six can fight. None wants to die for the cargo.
+All six can fight. Most would rather not die for the cargo — but the stevedores will make the crew prove the ship is lost before they believe it.
 
 ## What they know
 
@@ -90,7 +90,7 @@ They surrender when attackers hold the control deck and can demonstrate that con
 
 ## Hull security
 
-Ana and Milo deploy when the Whisper identifies an open approach. Their combat EVA suits and carbines are ordinary anti-piracy equipment, not military issue.
+Ana and Milo are the ship's door, and they know the hull is the worst place to be — two mounts with a clean angle cut a suited person apart faster than they cut a ship. At most **one** of them goes EVA, and only to do what the interior cannot: fire on an exposed attacker, or cover a stevedore servicing a knocked-out mount. The other holds the airlock or cargo door, suited, and denies the threshold. Against a ram or a committed breach, neither goes out — they meet the crew inside, at the hole. Their combat EVA suits and carbines are ordinary anti-piracy equipment, not military issue.
 
 ```yaml
 HULL SECURITY (2)
@@ -112,7 +112,7 @@ Skills:
 4. Deny the projected breach.
 5. Recover one another and fall back inside.
 
-Ana handles Target Acquisition; Milo handles Tactical Defense. Together they expose a target and keep it exposed. Apart, each loses the other half of that method and fights to withdraw rather than hold ground alone.
+Ana handles Target Acquisition; Milo handles Tactical Defense — the method needs both, so it only comes together on the rare approach that puts both outside. The one working the hull alone loses the other half of it and fights to withdraw, not to hold ground.
 
 They abandon the hull when two lasers are destroyed, either security officer suffers serious Harm, or the attackers secure a breach elsewhere. Ana orders the withdrawal. Milo leaves only when everyone outside is moving with him.
 
@@ -120,7 +120,7 @@ If offered a credible ceasefire, they take cover and talk. Their job is to preve
 
 ## Stevedores
 
-Jo and Nadi begin around the cargo deck. They turn a working ship into difficult terrain while everyone else watches the sky.
+Jo and Nadi begin around the dock and the cargo modules. They turn a working ship into difficult terrain while everyone else watches the sky.
 
 ```yaml
 STEVEDORES (2)
@@ -141,11 +141,11 @@ Skills:
 2. Move cargo across the most likely entry route.
 3. Protect the QNA because it is the most valuable thing aboard.
 4. Pull wounded crew away from the breach.
-5. Escape rather than make a final stand.
+5. Make the crew fight for every metre; break only when the ship is plainly lost.
 
 Nadi handles Field Systems Tech. Jo handles Breaching and knows the pneumatic ram well enough to make a cargo hatch, suit, or person regret being in front of it.
 
-They surrender first. If cornered and offered survival, they drop weapons. If the attackers have already killed someone who surrendered, they believe the no-witnesses clause and fight for an exit instead.
+They surrender last, if at all. Stevedores are the toughest hands aboard — they move mass for a living, know every corner of the ship as a weapon, and do not spook. Cornered, Jo is as likely to swing the ram as drop it. They fold only when the ship is plainly lost and someone they trust says the fight is over; if the attackers have already killed someone who surrendered, they stop considering it and fight for an exit, or to take someone with them.
 
 ## ATTACK and DEFER
 

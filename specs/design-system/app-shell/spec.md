@@ -106,14 +106,16 @@ are defined in the app-bar spec (`specs/design-system/app-bar/spec.md`).
 `href` and accepts optional `active`. AppShell currently passes the navigation
 fields understood by AppTray; AppTray's full contract is documented in its spec.
 
-**Slots:** the default slot is page content rendered directly in `<main>`. The
-named `head` slot appends page-specific elements to `<head>` after the title.
+**Slots:**
+- **default slot**: page content rendered directly inside `<main>`.
+- **named `head` slot**: appends page-specific elements to `<head>` after the title.
+- **named `hud` slot**: positions docked inspector chrome (`TacticalHud`) on the right side of `.app-shell`, participating in the scaffold flex geometry alongside `AppTray` and `<main>`.
 
 **Component structure:**
 
 | File | Contents |
 |---|---|
-| `src/components/AppShell.astro` | Astro layout — html, head, body, AppTray, AppBar, content slot. Scoped `<style>` owns flex layout, content area sizing, and container query setup. |
+| `src/components/AppShell.astro` | Astro layout — html, head, body, AppTray, AppBar, content slot, and hud slot. Scoped `<style>` owns flex layout, content area sizing, and container query setup. |
 
 The shell imports `base.css`. Pages using the shell do not need to import it.
 
@@ -130,13 +132,14 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 
 ### Definition of Done
 
-- [x] `AppShell.astro` provides full document skeleton with AppBar, AppTray, and content slot
+- [x] `AppShell.astro` provides full document skeleton with AppBar, AppTray, content slot, and hud slot
 - [ ] Both apps use the shell as their base layout on all pages
 - [x] Top app bar is rendered via the `AppBar` component (see app-bar spec)
 - [x] Content pane (`<main>`) declares `container-type: inline-size` and `container-name: content` for consumer queries
 - [x] Content pane fills the viewport below the app bar and is the shell's vertical scroll owner
 - [x] Content area participates in the scaffold flex geometry when rail/tray width changes
 - [x] Named `head` slot allows page-specific `<head>` content
+- [x] Named `hud` slot mounts right-docked inspector tools (e.g., `TacticalHud`) into the scaffold flex flow
 - [x] AppShell leaves gutters and readable measure to a consumer ContentGrid
 - [x] Design-system demo has a representative `/app-shell/` page
 - [ ] No duplicate `<html>`, `<head>`, or `base.css` imports across pages

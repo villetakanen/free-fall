@@ -75,7 +75,7 @@ Physical damage is local. Destroying one laser does nothing to the other two. A 
 All six are civilian spacers. All six can fight. Use [The Whisper's Crew](/scenarios/northern-lights/the-whispers-crew/) for their canonical profiles, knowledge, and morale.
 
 - **Two pilots** handle sensors, attitude changes, communications, and point-defense authorization. Once the attack begins, they rotate the Whisper to bring a second laser into arc and keep the expert system fed with a clean picture.
-- **Two security personnel** suit up and deploy to the hull when they identify an open approach. They protect mounts, flush attackers out of cover, mark targets for the expert system, and occupy the projected breach point.
+- **Two security personnel** are the ship's door, not a hull picket. At most one suits up and goes onto the hull — to fire on an exposed attacker, or cover a stevedore working a mount — while the other holds the airlock or cargo door. When one is outside they protect mounts, flush attackers from cover, and mark targets for the expert system; otherwise they wait at the threshold and let the breach come to them.
 - **Two stevedores** perform damage control, isolate compromised systems, move cargo across likely approaches, and prepare the interior against boarding. If the crew reaches them, they fight with the tools and weapons at hand.
 
 The defenders act through human hands and human-scale tactics. The contract calls them compromised; in truth, they remain autonomous. Origin-17 has no system path into their weapons, and it does not care which side wins.
@@ -84,7 +84,13 @@ Use :term[Challenging] TN 11 for a professional action under pressure. Raise it 
 
 ## Path A: High-velocity ram
 
-The crew foams up and commits the whole vessel. The Whisper authorizes **ATTACK**; security deploys to the hull, but the closing velocity gives them little time to do more than identify the projected impact and get clear of it.
+The crew foams up and commits the whole vessel. The Whisper authorizes **ATTACK**, but a ram gives the defenders no reason to be on the hull and no time to get there — security stays inside, braces, and waits at the compartments to meet whoever survives the impact. The closing velocity leaves them only long enough to guess where the prow lands and pull people clear of it.
+
+The assistant has already chosen a target, and offers it with the same cheerful precision it brings to everything:
+
+> **"If we're ramming, ram people. Schematic puts the whole crew in the pressurized cab — take the sleeping compartment or the control deck. Either one caves and dumps to vacuum on impact; whoever's inside stops being a problem before you're unbuckled. The modules up front are cargo and don't shoot back — hitting those just spends the prow."**
+
+It is not wrong, and that is the trouble with it. Let the crew take the recommendation or override it; whatever impact area they commit to is where [Scene 3](/scenarios/northern-lights/onboarding/) opens. The one cost the assistant cannot price is the one thing it does not know is aboard — and the "inert cargo" it dismisses up front is exactly where that thing has been waiting.
 
 Run the ram as three Action Time exchanges. Vector makes one Vehicle Handling roll in each. Between those rolls, every other player gets one consequential action through the vessel: hack the network, fire a rocket cannon, take a precision shot, operate point defense, manage damage, refine the impact solution, or invent something better.
 
@@ -128,7 +134,7 @@ Carry forward what Scene 1 bought.
 
 - **Ghost approach:** The defense network remains on **DEFER**. The crew chooses its first angle and acts before the Whisper understands what has arrived. They have less detail about the mounts and defenders.
 - **Active sweep, undetected:** The crew knows all three mount positions and the likely breach points. The network remains on **DEFER**, but any overt move will resolve the contact immediately.
-- **Active sweep, detected:** The Whisper has authorized **ATTACK**. Security is already moving onto the hull. Start in an active firing arc.
+- **Active sweep, detected:** The Whisper has authorized **ATTACK**. One security officer is moving onto the hull, the other to the nearest door; a stevedore may be out servicing a mount. Start in an active firing arc.
 
 For another plan, state the same bargain: what does it reveal, what does it conceal, and what causes the Whisper to choose **ATTACK**?
 
@@ -146,13 +152,13 @@ Do not turn partial success into no success. If they disable one mount and wake 
 
 ### 3. The hull fight
 
-Once the approach is open, the security pair deploys. If the players stay inside their craft and continue solving the problem with piloting, hacking, and vehicle weapons, remain in Action Time.
+Once the approach is open, the defenders answer it — but sparingly. At most one security officer comes onto the hull, and a stevedore may follow to service a knocked-out mount; the second security officer holds the airlock or cargo door and does not leave it. If the players stay inside their craft and continue solving the problem with piloting, hacking, and vehicle weapons, remain in Action Time.
 
 If players leave the craft in EVA gear or exos with long-range weapons, and security moves to oppose them, escalate to Bullet Time.
 
-> **"Two figures just came over the curve. Suited. Mag-locked. One is marking Vantage. Both lasers are rotating with the mark."**
+> **"One figure just came over the curve. Suited, mag-locked, carbine up — and marking Vantage. Both lasers are rotating with the mark."**
 
-The security pair uses the ship, not empty space:
+The security officer on the hull uses the ship, not empty space:
 
 - Move below the hull's curve to break sight, then reappear somewhere useful.
 - Force a sniper to move so the expert system can reacquire them.

@@ -27,6 +27,7 @@ An Astro layout that wraps `AppShell` with the app's navigation configuration. A
 |---|---|---|---|
 | `title` | `string` | no | Page title — passed through to AppShell |
 | `frontmatter` | `{ title?: string }` | no | Astro injects this for markdown pages using `layout` frontmatter |
+| `hasHud` | `boolean` | no | When true, renders the `TacticalHud` component (`mode="dock"`) into AppShell's `hud` slot. Scoped to the System Reference Document (SRD). Default: `false`. |
 
 Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL"`. This allows both `.astro` pages (passing `title` directly) and `.md` pages (using `layout` frontmatter) to use the same layout.
 
@@ -36,8 +37,12 @@ Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FR
 |---|---|---|---|---|
 | `public` | Home | `/` | `pathname === "/"` | None |
 | `book_5` | Core Rules v7 | `/core-rulebook/00-intro/` | `pathname.startsWith("/core-rulebook/")` | Dynamic — populated from `core-rulebook` collection via `getCoreRulebookNavItems()` helper in `src/lib/nav.ts` |
+| `handyman` | Gear | `/gear/weapons/` | `pathname.startsWith("/gear/")` | Dynamic — categories from `gear` collection via `getGearNavItems()` |
+| `map` | Scenarios | `/scenarios/` | `pathname.startsWith("/scenarios/")` | Dynamic — scenarios from `scenarios` collection via `getScenarioNavItems()` |
+| `terminal` | System Reference v7 | `/srd/` | `pathname.startsWith("/srd")` | None (bottom-most rail target) |
 
-The globe icon (`public`) represents the app's home and is active only on `/`. The book icon (`book_5`) represents the core rulebook section and is active on all `/core-rulebook/*` routes. Sub-items are generated at build time from the `core-rulebook` content collection (see `specs/free-fall/core-rulebook-nav/spec.md`).
+The rail items are ordered logically from entry point (Home) and setting/lore (Core Rules), to equipment (Gear), adventures (Scenarios), and finally the game-agnostic foundational mechanics (System Reference v7) at the bottom.
+
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.
 

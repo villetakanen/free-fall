@@ -1,0 +1,272 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const scrollbarTokens = [
+  {
+    token: "--freefall-scrollbar-track",
+    value: "transparent",
+    description:
+      "Track background color — blends into container surface without light track bleed",
+  },
+  {
+    token: "--freefall-scrollbar-thumb",
+    value: "var(--freefall-color-primary-700)",
+    description:
+      "Resting thumb color — subtle slate visible against Void dark surfaces",
+  },
+  {
+    token: "--freefall-scrollbar-thumb-hover",
+    value: "var(--freefall-color-primary-600)",
+    description:
+      "Thumb hover color — provides clear visual feedback on pointer interaction",
+  },
+  {
+    token: "--freefall-scrollbar-thumb-active",
+    value: "var(--freefall-color-accent-400)",
+    description:
+      "Thumb active/drag color — Isotope Neon indicator during manual manipulation",
+  },
+  {
+    token: "--freefall-scrollbar-width",
+    value: "6px",
+    description: "Standard scrollbar cross-browser thickness (thin / 6px)",
+  },
+];
+---
+
+<BaseLayout title="Custom Scrollbars — FREE//FALL Design System">
+  <Fragment slot="head">
+    <style>
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: calc(2 * var(--freefall-space-1));
+        margin: calc(2 * var(--freefall-space-1)) 0 calc(4 * var(--freefall-space-1));
+      }
+
+      .demo-card {
+        border-radius: 4px;
+        padding: calc(2 * var(--freefall-space-1));
+        display: flex;
+        flex-direction: column;
+        gap: calc(1 * var(--freefall-space-1));
+        border: var(--freefall-border-hairline);
+      }
+
+      .demo-card--canvas {
+        background: var(--freefall-bg-canvas);
+      }
+
+      .demo-card--surface-1 {
+        background: var(--freefall-bg-surface-1);
+      }
+
+      .demo-card--surface-2 {
+        background: var(--freefall-bg-surface-2);
+      }
+
+      .scroll-box {
+        height: 180px;
+        overflow-y: auto;
+        padding-right: calc(1 * var(--freefall-space-1));
+        box-sizing: border-box;
+      }
+
+      .scroll-box--horizontal {
+        height: auto;
+        max-height: 120px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding-bottom: calc(1 * var(--freefall-space-1));
+      }
+
+      .demo-title {
+        font-family: var(--freefall-font-mono);
+        font-size: calc(1.3 * var(--freefall-space-1));
+        color: var(--freefall-color-accent-400);
+        margin: 0;
+      }
+
+      .demo-caption {
+        font-family: var(--freefall-font-mono);
+        font-size: calc(1.1 * var(--freefall-space-1));
+        color: var(--freefall-text-muted);
+      }
+
+      .token-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: calc(1.3 * var(--freefall-space-1));
+        margin: calc(2 * var(--freefall-space-1)) 0;
+      }
+
+      .token-table th {
+        text-align: left;
+        font-family: var(--freefall-font-mono);
+        color: var(--freefall-text-muted);
+        padding: calc(1 * var(--freefall-space-1)) 0;
+        border-bottom: 1px solid var(--freefall-color-primary-800);
+      }
+
+      .token-table td {
+        padding: calc(1 * var(--freefall-space-1)) 0;
+        border-bottom: 1px solid var(--freefall-color-primary-900);
+      }
+
+      .mono {
+        font-family: var(--freefall-font-mono);
+      }
+    </style>
+  </Fragment>
+
+  <h1>Custom Scrollbars</h1>
+  <p>
+    Operating systems and browsers default to high-contrast, wide grey or white scrollbars
+    that shatter the immersive dark aesthetic of <strong>The Void</strong>. FREE//FALL
+    enforces slim, hardware-themed custom scrollbars globally across all containers,
+    drawers, sliding panels, and code blocks.
+  </p>
+
+  <h2>Standard Compliance &amp; Browser Engine Architecture</h2>
+  <p>
+    Scrollbar styling follows W3C standard <code>scrollbar-width</code> and <code>scrollbar-color</code>
+    (Baseline Widely Available) combined with <code>::-webkit-scrollbar</code> pseudo-elements for
+    pixel-level corner radius and hover/active states:
+  </p>
+
+  <pre><code>{`/* Standard CSS (Firefox, Chrome 121+, Safari 17.2+) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--freefall-scrollbar-thumb) var(--freefall-scrollbar-track);
+}
+
+/* Progressive Enhancement (WebKit / Blink) */
+*::-webkit-scrollbar {
+  width: var(--freefall-scrollbar-width);
+  height: var(--freefall-scrollbar-width);
+}
+*::-webkit-scrollbar-track {
+  background: var(--freefall-scrollbar-track);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--freefall-scrollbar-thumb);
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--freefall-scrollbar-thumb-hover);
+}
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--freefall-scrollbar-thumb-active);
+}`}</code></pre>
+
+  <h2>Live Surface Demonstrations</h2>
+  <p>
+    Interact with the scrollable containers below. Observe how the 6px thumb adapts across
+    surface levels without track bleed:
+  </p>
+
+  <div class="demo-grid">
+    <div class="demo-card demo-card--canvas">
+      <h3 class="demo-title">CANVAS CONTAINER</h3>
+      <span class="demo-caption">Background: --freefall-bg-canvas</span>
+      <div class="scroll-box" tabindex="0" role="region" aria-label="Canvas scroll demonstration">
+        <p>
+          Tactical operations in the Free Zone are subject to extreme atmospheric interference.
+          Combatants relying on radio communications frequently suffer signal degradation.
+        </p>
+        <p>
+          When deploying electromagnetic countermeasures, ensure your squad's cybernetic suites
+          are running hardened firmware. Hardened nodes resist intrusive carrier wave sweeps
+          and keep telemetry streams synchronized.
+        </p>
+        <p>
+          In the event of complete comms blackout, fallback protocols require all operatives to
+          regroup at the nearest beacon coordinate within 120 seconds.
+        </p>
+        <p>
+          Mission objectives take precedence over non-essential hardware retrieval. Record all
+          trauma markers directly into personal flight logs.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-card demo-card--surface-1">
+      <h3 class="demo-title">SURFACE 1 (CARD / PANEL)</h3>
+      <span class="demo-caption">Background: --freefall-bg-surface-1</span>
+      <div class="scroll-box" tabindex="0" role="region" aria-label="Surface 1 scroll demonstration">
+        <p>
+          Action Resolution begins with an Action Pool of 2 to 5 twenty-sided dice (d20).
+          Dice are allocated between chosen tactical axes before resolution begins.
+        </p>
+        <p>
+          Each die that meets or exceeds the Target Number (TN) counts as a success.
+          A single success achieves a Basic Success, while two or more successes unlock
+          Greater Success outcomes.
+        </p>
+        <p>
+          Natural 20s always succeed regardless of challenge rating or situational penalties,
+          granting immediate critical narrative momentum.
+        </p>
+        <p>
+          When an actor suffers Harm, each filled Harm Slot removes one die from their
+          active Action Pool, reducing their capability down to a hard minimum floor of 2d20.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-card demo-card--surface-2">
+      <h3 class="demo-title">SURFACE 2 (HUD / ELEVATED)</h3>
+      <span class="demo-caption">Background: --freefall-bg-surface-2</span>
+      <div class="scroll-box" tabindex="0" role="region" aria-label="Surface 2 scroll demonstration">
+        <p>
+          The Tactical HUD Inspector Dock mounts directly against the viewport edge,
+          providing rapid access to combat matrices, damage mitigation, and dice sandboxes.
+        </p>
+        <p>
+          Side-by-side pane arrangements permit simultaneous multi-system monitoring during
+          high-intensity encounters without leaving the core mission dossier.
+        </p>
+        <p>
+          Active pane bodies utilize the 6px custom scrollbar tokens to prevent intrusion into
+          tight data layouts and mono metric readouts.
+        </p>
+        <p>
+          All scrollbars respond to hover and active click states with subtle Isotope Neon
+          accent illumination.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Horizontal Overflow Demonstration</h2>
+  <div class="demo-card demo-card--surface-1">
+    <h3 class="demo-title">WIDE DATA STREAM / CODE MATRIX</h3>
+    <span class="demo-caption">Horizontal track with standard 6px height</span>
+    <div class="scroll-box scroll-box--horizontal" tabindex="0" role="region" aria-label="Horizontal scroll demonstration">
+      <code class="mono">
+        EXEC_INIT_SEQUENCE // SYS_ID: FF-2048-SRD-7 // TN_MATRIX: [NORMAL: AUTO, CHALLENGING: 11, HARD: 16, NEAR_IMPOSSIBLE: 21] // POOL_FLOOR: 2d20 // POOL_CAP: 5d20 // AV_MITIGATION: NET_HARM = DV - AV // HARM_SLOTS: [0: TRANSIENT, 1: TRANSIENT, 2: PERMANENT] // STATUS: OPERATIONAL
+      </code>
+    </div>
+  </div>
+
+  <h2>Design Tokens</h2>
+  <table class="token-table">
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {scrollbarTokens.map((t) => (
+        <tr>
+          <td><code class="mono">{t.token}</code></td>
+          <td><code class="mono">{t.value}</code></td>
+          <td>{t.description}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</BaseLayout>

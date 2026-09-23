@@ -21,10 +21,6 @@ const { ariaLabel = "Secondary Navigation", active = false } = Astro.props;
     padding-inline-start: calc(6 * var(--freefall-space-1) + var(--freefall-space-2));
   }
 
-  .tray-link-group:not(.tray-link-group--active) {
-    display: none;
-  }
-
   @container (max-width: 64px) {
     .tray-link-group {
       display: none;
