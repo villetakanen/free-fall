@@ -1,5 +1,6 @@
 ---
 import AppShell from "@free-fall/design-system/components/AppShell.astro";
+import TacticalHud from "@free-fall/design-system/components/TacticalHud.astro";
 import {
   getCoreRulebookNavItems,
   getGearNavItems,
@@ -10,8 +11,10 @@ import {
 interface Props {
   title?: string;
   frontmatter?: { title?: string };
+  hasHud?: boolean;
 }
 
+const { hasHud = false } = Astro.props;
 const title =
   Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL";
 
@@ -66,4 +69,5 @@ if (scenarioSlug) {
     <slot name="head" slot="head" />
     <slot />
   </div>
+  {hasHud ? <TacticalHud slot="hud" mode="dock" /> : <slot name="hud" slot="hud" />}
 </AppShell>

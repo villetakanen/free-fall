@@ -7,6 +7,7 @@ import { remarkTermResolution } from "./src/lib/remark/remark-term-resolution";
 export default defineConfig({
   output: "static",
   redirects: {
+    "/srd": "/core-rulebook/system-reference",
     "/rules": "/core-rulebook/00-intro",
     "/rules/getting-started": "/core-rulebook/00-intro",
   },

@@ -500,6 +500,12 @@ const {
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .tactical-dock__pane {
+      animation: none;
+    }
+  }
+
   /* ── Pane Header ─────────────────────────────── */
   .tactical-dock__pane-header {
     height: var(--dock-header-height);

@@ -27,6 +27,7 @@ An Astro layout that wraps `AppShell` with the app's navigation configuration. A
 |---|---|---|---|
 | `title` | `string` | no | Page title — passed through to AppShell |
 | `frontmatter` | `{ title?: string }` | no | Astro injects this for markdown pages using `layout` frontmatter |
+| `hasHud` | `boolean` | no | When true, renders the `TacticalHud` component (`mode="dock"`) into AppShell's `hud` slot. Scoped to the System Reference Document (SRD). Default: `false`. |
 
 Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL"`. This allows both `.astro` pages (passing `title` directly) and `.md` pages (using `layout` frontmatter) to use the same layout.
 
