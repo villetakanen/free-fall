@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "policyVersion": "0.2",
+  "memoryRoot": ".foam",
+  "scopes": {
+    "private": {
+      "directory": "private"
+    }
+  }
+}
