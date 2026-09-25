@@ -72,5 +72,5 @@ if (scenarioSlug) {
     <slot name="head" slot="head" />
     <slot />
   </div>
-  {hasHud ? <TacticalHud slot="hud" mode="dock" /> : <slot name="hud" slot="hud" />}
+  {hasHud ? <TacticalHud slot="hud" /> : <slot name="hud" slot="hud" />}
 </AppShell>

@@ -84,7 +84,7 @@ p:last-child,
 }
 
 .text-ui-small {
-  font-size: calc(1.75 * var(--freefall-space-1));
+  font-size: var(--freefall-type-ui-small);
   line-height: calc(3 * var(--freefall-space-1));
   color: var(--freefall-text-display);
 }

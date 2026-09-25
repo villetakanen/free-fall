@@ -1,0 +1,123 @@
+---
+import HudCardDemo from "@free-fall/design-system/components/HudCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="HUD Card — FREE//FALL Design System">
+  <Fragment slot="head">
+    <style>
+      .hud-card-demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+        gap: calc(2 * var(--freefall-space-1));
+        margin: calc(2 * var(--freefall-space-1)) 0 calc(4 * var(--freefall-space-1));
+      }
+
+      .hud-card-demo-stack {
+        display: flex;
+        flex-direction: column;
+        gap: calc(1.5 * var(--freefall-space-1));
+        max-width: calc(42 * var(--freefall-space-1));
+      }
+
+      .hud-card-demo-field {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--freefall-space-1);
+        padding: calc(0.75 * var(--freefall-space-1)) 0;
+        border-bottom: 1px solid var(--freefall-color-primary-900);
+        font-size: var(--freefall-type-ui-small);
+      }
+
+      .hud-card-demo-field:last-child {
+        border-bottom: 0;
+      }
+
+      .hud-card-demo-label,
+      .hud-card-demo-value {
+        font-family: var(--freefall-font-mono);
+      }
+
+      .hud-card-demo-label {
+        color: var(--freefall-text-muted);
+      }
+
+      .hud-card-demo-value {
+        color: var(--freefall-color-accent-400);
+      }
+
+      .hud-card-demo-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc(0.75 * var(--freefall-space-1));
+      }
+
+      .hud-card-demo-chip {
+        border: 1px solid var(--freefall-color-primary-800);
+        background: var(--freefall-bg-surface-2);
+        color: var(--freefall-text-body);
+        font-family: var(--freefall-font-mono);
+        font-size: var(--freefall-type-ui-small);
+        padding: calc(0.5 * var(--freefall-space-1)) var(--freefall-space-1);
+      }
+    </style>
+  </Fragment>
+
+  <h1>HUD Card</h1>
+  <p>
+    Compact boxes for Tactical HUD pane content. Use them for rules fragments,
+    quick-reference data, and scenario-provided inspector content.
+  </p>
+
+  <h2>Examples</h2>
+  <div class="hud-card-demo-grid">
+    <HudCardDemo title="RESOLUTION MATRIX" icon="target">
+      <p class="hud-card__copy">
+        Use a titled HUD Card when the box has a specific quick-reference job.
+        The heading is mono data; the body can be prose or nested data.
+      </p>
+    </HudCardDemo>
+
+    <HudCardDemo title="POOL LIMITS" icon="emergency">
+      <div class="hud-card-demo-field">
+        <span class="hud-card-demo-label">BASE POOL</span>
+        <span class="hud-card-demo-value">5d20</span>
+      </div>
+      <div class="hud-card-demo-field">
+        <span class="hud-card-demo-label">HARM PENALTY</span>
+        <span class="hud-card-demo-value">-1d20</span>
+      </div>
+      <div class="hud-card-demo-field">
+        <span class="hud-card-demo-label">POOL FLOOR</span>
+        <span class="hud-card-demo-value">2d20</span>
+      </div>
+    </HudCardDemo>
+
+    <HudCardDemo title="PANE CONTROLS" icon="tune">
+      <div class="hud-card-demo-controls" aria-label="Static control style example">
+        <span class="hud-card-demo-chip">TN 11</span>
+        <span class="hud-card-demo-chip">TN 16</span>
+        <span class="hud-card-demo-chip">TN 21</span>
+      </div>
+    </HudCardDemo>
+  </div>
+
+  <h2>Untitled</h2>
+  <div class="hud-card-demo-stack">
+    <HudCardDemo>
+      <p class="hud-card__copy">
+        Untitled cards are allowed for terse notes, but titled cards are preferred
+        when a pane contains several boxes.
+      </p>
+    </HudCardDemo>
+  </div>
+
+  <h2>API</h2>
+  <pre><code>{`---
+import HudCard from "@free-fall/design-system/components/HudCard.astro";
+---
+
+<HudCard title="DAMAGE MITIGATION" icon="shield">
+  <p class="hud-card__copy">Armor Value reduces incoming Damage Value.</p>
+</HudCard>`}</code></pre>
+</BaseLayout>

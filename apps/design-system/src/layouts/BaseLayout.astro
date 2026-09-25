@@ -131,6 +131,7 @@ const navItems = Astro.props.navItems ?? [
       "/app-tray",
       "/drawer-brand",
       "/hamburger-button",
+      "/hud-card",
       "/tactical-hud",
       "/tray-button",
       "/tray-link-group",
@@ -160,6 +161,11 @@ const navItems = Astro.props.navItems ?? [
         label: "Hamburger Button",
         href: "/hamburger-button/",
         active: Astro.url.pathname.startsWith("/hamburger-button"),
+      },
+      {
+        label: "HUD Card",
+        href: "/hud-card/",
+        active: Astro.url.pathname.startsWith("/hud-card"),
       },
       {
         label: "Tactical HUD",

@@ -66,11 +66,14 @@ The scaffold has four regions:
   <body>
     <div class="app-shell">
       <AppTray items={navItems} brandHref={brandHref} />
-      <div class="app">
-        <AppBar title={title} />
-        <main>
-          <slot />
-        </main>
+      <div class="workspace">
+        <div class="app">
+          <AppBar title={title} />
+          <main>
+            <slot />
+          </main>
+        </div>
+        <slot name="hud" />
       </div>
     </div>
   </body>
@@ -85,7 +88,7 @@ The scaffold has four regions:
 | Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
 | Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width |
 
-The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow. The `.app` region is a bounded column: the app bar keeps its intrinsic height and `<main>` owns the remaining viewport height and vertical scrolling. The shell does not use compensating padding or fixed content heights.
+The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow; the `.workspace` beside it is a flex row and an inline-size query container named `hud-host`. Within the workspace, `.app` is a bounded column and the HUD occupies the named slot. The app bar keeps its intrinsic height and `<main>` owns the remaining viewport height and vertical scrolling. The shell does not use compensating padding or fixed content heights.
 
 AppShell owns the scaffold, viewport bounding, `<main>` scroll ownership, and
 the named `content` inline-size query container. It intentionally does not add
@@ -109,7 +112,7 @@ fields understood by AppTray; AppTray's full contract is documented in its spec.
 **Slots:**
 - **default slot**: page content rendered directly inside `<main>`.
 - **named `head` slot**: appends page-specific elements to `<head>` after the title.
-- **named `hud` slot**: positions docked inspector chrome (`TacticalHud`) on the right side of `.app-shell`, participating in the scaffold flex geometry alongside `AppTray` and `<main>`.
+- **named `hud` slot**: mounts host-scoped inspector chrome (`TacticalHud`) on the right side of `.app-shell`, participating in scaffold flex geometry alongside `AppTray` and `.app`. `.workspace` (the region beside navigation) is an inline-size query container for host-responsive HUD behavior; the HUD is not viewport-fixed.
 
 **Component structure:**
 
@@ -140,6 +143,7 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 - [x] Content area participates in the scaffold flex geometry when rail/tray width changes
 - [x] Named `head` slot allows page-specific `<head>` content
 - [x] Named `hud` slot mounts right-docked inspector tools (e.g., `TacticalHud`) into the scaffold flex flow
+- [x] The workspace provides an inline-size query-container host for HUD descendants; no viewport-fixed HUD positioning
 - [x] AppShell leaves gutters and readable measure to a consumer ContentGrid
 - [x] Design-system demo has a representative `/app-shell/` page
 - [ ] No duplicate `<html>`, `<head>`, or `base.css` imports across pages

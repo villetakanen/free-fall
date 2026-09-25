@@ -12,8 +12,8 @@ importers:
         specifier: ^2.0.0
         version: 2.4.4
       '@villetakanen/foam':
-        specifier: https://github.com/villetakanen/foam/releases/download/v0.2.0/villetakanen-foam-0.2.0.tgz
-        version: https://github.com/villetakanen/foam/releases/download/v0.2.0/villetakanen-foam-0.2.0.tgz
+        specifier: https://github.com/villetakanen/foam/releases/download/v0.3.0/villetakanen-foam-0.3.0.tgz
+        version: https://github.com/villetakanen/foam/releases/download/v0.3.0/villetakanen-foam-0.3.0.tgz
       lefthook:
         specifier: ^1.11.0
         version: 1.13.6
@@ -1004,13 +1004,13 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@villetakanen/foam@https://github.com/villetakanen/foam/releases/download/v0.2.0/villetakanen-foam-0.2.0.tgz':
-    resolution: {integrity: sha512-XvvtWLZxabCC/ounMqOGWJ+9LP2GPhk6oVqQdB9mtXKDN+O5wcmfbml7hyugbgkG/4j07XawhDcw9Qq8wxgmMA==, tarball: https://github.com/villetakanen/foam/releases/download/v0.2.0/villetakanen-foam-0.2.0.tgz}
-    version: 0.2.0
+  '@villetakanen/foam@https://github.com/villetakanen/foam/releases/download/v0.3.0/villetakanen-foam-0.3.0.tgz':
+    resolution: {integrity: sha512-IWINFAccaBz3FC0rhaROMSmVtqk2ny8efPJu6l/DJOCiavPN3WFMYLte8jlZNNX+HbeXUa0z8ABFjOpfEsi+iA==, tarball: https://github.com/villetakanen/foam/releases/download/v0.3.0/villetakanen-foam-0.3.0.tgz}
+    version: 0.3.0
     engines: {node: '>=22.19.0'}
     hasBin: true
     peerDependencies:
-      '@earendil-works/pi-coding-agent': 0.86.x
+      '@earendil-works/pi-coding-agent': '>=0.86.0 <0.88.0'
     peerDependenciesMeta:
       '@earendil-works/pi-coding-agent':
         optional: true
@@ -3325,7 +3325,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@villetakanen/foam@https://github.com/villetakanen/foam/releases/download/v0.2.0/villetakanen-foam-0.2.0.tgz': {}
+  '@villetakanen/foam@https://github.com/villetakanen/foam/releases/download/v0.3.0/villetakanen-foam-0.3.0.tgz': {}
 
   '@vitest/expect@3.2.4':
     dependencies:

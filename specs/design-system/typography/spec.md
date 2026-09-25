@@ -80,8 +80,8 @@ Instead of generic abstract headings, FREE//FALL uses a strict editorial scale t
 | `.text-body-lead` | Slightly enlarged body | Intro paragraphs, chapter summaries |
 | `.text-copy` | Base body size (1.125rem) | Standard paragraphs (`<p>`) |
 | `.text-caption` | Small, loose tracking | Figure captions, subtle notes |
-| `.text-ui` | Standard UI size (1.125rem) | Primary buttons, app bars, tabs |
-| `.text-ui-small` | Small UI size (0.875rem) | Secondary navigation, badges, metadata |
+| `.text-ui` | Standard UI size (`--freefall-type-base`, 1.125rem) | Primary buttons, app bars, tabs |
+| `.text-ui-small` | Small UI size (`--freefall-type-ui-small`, 0.875rem) | Secondary navigation, badges, metadata |
 
 *Note: `p` elements receive standard body styling by default. The `.text-copy` class is only needed to apply paragraph typography to non-`p` nodes.*
 
@@ -129,6 +129,7 @@ Note: `<pre>` and `<em>` element styles are intentionally scoped under `main` â€
 - [x] `src/styles/typography.css` defines `--freefall-font-body` and `--freefall-font-mono` custom properties
 - [x] `src/styles/typography.css` implements the editorial scale utility classes and comprehensive `main` rich-text scope styles
 - [x] Typography line heights derive from `var(--freefall-space-1)`
+- [x] Small UI text uses `--freefall-type-ui-small`, not spacing-token font-size math
 - [x] `src/styles/base.css` imports `typography.css`
 - [x] `AppShell` renders `FontLinks`, covering both apps
 - [x] Demo app has a typography reference page showing representative font faces, classes, and naked rich-text output in `main`

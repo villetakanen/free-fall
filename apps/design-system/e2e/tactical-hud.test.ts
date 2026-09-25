@@ -1,22 +1,40 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Tactical HUD Component (Multi-Pane Inspector Dock)", () => {
-  test("demo page renders documented sections and embedded multi-pane dock", async ({
+  test("demo page renders documented sections and host-scoped multi-pane dock", async ({
     page,
   }) => {
     await page.goto("/tactical-hud/");
     await page.waitForLoadState("networkidle");
 
     await expect(page.locator("h1")).toContainText("Tactical HUD");
-    const embeddedDock = page.locator(".tactical-dock--embedded");
-    await expect(embeddedDock).toBeVisible();
+    const dock = page.locator(".tactical-dock");
+    await expect(dock).toBeVisible();
 
     // Default open panes are rules and dice
-    await expect(embeddedDock.locator('[data-pane-id="rules"]')).toBeVisible();
-    await expect(embeddedDock.locator('[data-pane-id="dice"]')).toBeVisible();
+    await expect(dock.locator('[data-pane-id="rules"]')).toBeVisible();
+    await expect(dock.locator('[data-pane-id="dice"]')).toBeVisible();
 
     // Harm pane is closed by default
-    await expect(embeddedDock.locator('[data-pane-id="harm"]')).toBeHidden();
+    await expect(dock.locator('[data-pane-id="harm"]')).toBeHidden();
+  });
+
+  test("HUD visibility responds to host size without a viewport resize", async ({
+    page,
+  }) => {
+    await page.goto("/tactical-hud/");
+    const host = page.locator(".hud-stage-frame");
+    const dock = page.locator(".tactical-dock");
+
+    await host.evaluate((element) => {
+      (element as HTMLElement).style.width = "31rem";
+    });
+    await expect(dock).toBeHidden();
+
+    await host.evaluate((element) => {
+      (element as HTMLElement).style.width = "42rem";
+    });
+    await expect(dock).toBeVisible();
   });
 
   test("multi-pane toggle opens and closes side-by-side panes", async ({
@@ -25,33 +43,29 @@ test.describe("Tactical HUD Component (Multi-Pane Inspector Dock)", () => {
     await page.goto("/tactical-hud/");
     await page.waitForLoadState("networkidle");
 
-    const embeddedDock = page.locator(".tactical-dock--embedded");
+    const dock = page.locator(".tactical-dock");
 
     // Initially 2 panes open (Rules and Dice)
-    const openPanesInitial = embeddedDock.locator(".tactical-dock__pane--open");
+    const openPanesInitial = dock.locator(".tactical-dock__pane--open");
     await expect(openPanesInitial).toHaveCount(2);
 
     // Toggle Harm pane open via rail button [3]
-    const harmRailBtn = embeddedDock.locator('[data-toggle-pane="harm"]');
+    const harmRailBtn = dock.locator('[data-toggle-pane="harm"]');
     await harmRailBtn.click();
 
     // Now 3 panes are open side-by-side
-    await expect(embeddedDock.locator('[data-pane-id="harm"]')).toBeVisible();
-    await expect(
-      embeddedDock.locator(".tactical-dock__pane--open"),
-    ).toHaveCount(3);
+    await expect(dock.locator('[data-pane-id="harm"]')).toBeVisible();
+    await expect(dock.locator(".tactical-dock__pane--open")).toHaveCount(3);
 
     // Close the Rules pane via its header close button
-    const closeRulesBtn = embeddedDock.locator('[data-close-pane="rules"]');
+    const closeRulesBtn = dock.locator('[data-close-pane="rules"]');
     await closeRulesBtn.click();
 
     // Rules is now hidden, Harm and Dice remain open (2 open panes)
-    await expect(embeddedDock.locator('[data-pane-id="rules"]')).toBeHidden();
-    await expect(embeddedDock.locator('[data-pane-id="harm"]')).toBeVisible();
-    await expect(embeddedDock.locator('[data-pane-id="dice"]')).toBeVisible();
-    await expect(
-      embeddedDock.locator(".tactical-dock__pane--open"),
-    ).toHaveCount(2);
+    await expect(dock.locator('[data-pane-id="rules"]')).toBeHidden();
+    await expect(dock.locator('[data-pane-id="harm"]')).toBeVisible();
+    await expect(dock.locator('[data-pane-id="dice"]')).toBeVisible();
+    await expect(dock.locator(".tactical-dock__pane--open")).toHaveCount(2);
   });
 
   test("pluggable scenario pane (Crew Roster) renders via slot", async ({
@@ -60,13 +74,13 @@ test.describe("Tactical HUD Component (Multi-Pane Inspector Dock)", () => {
     await page.goto("/tactical-hud/");
     await page.waitForLoadState("networkidle");
 
-    const embeddedDock = page.locator(".tactical-dock--embedded");
+    const dock = page.locator(".tactical-dock");
 
     // Open Crew Roster pane (slot-injected 5th pane) via rail button
-    const crewRailBtn = embeddedDock.locator('[data-toggle-pane="crew"]');
+    const crewRailBtn = dock.locator('[data-toggle-pane="crew"]');
     await crewRailBtn.click();
 
-    const crewPane = embeddedDock.locator('[data-pane-id="crew"]');
+    const crewPane = dock.locator('[data-pane-id="crew"]');
     await expect(crewPane).toBeVisible();
     await expect(crewPane).toContainText("SCENARIO CREW ROSTER");
     await expect(crewPane).toContainText("KOROLEV");
@@ -77,8 +91,8 @@ test.describe("Tactical HUD Component (Multi-Pane Inspector Dock)", () => {
     await page.goto("/tactical-hud/");
     await page.waitForLoadState("networkidle");
 
-    const embeddedDock = page.locator(".tactical-dock--embedded");
-    const dicePane = embeddedDock.locator('[data-pane-id="dice"]');
+    const dock = page.locator(".tactical-dock");
+    const dicePane = dock.locator('[data-pane-id="dice"]');
     await expect(dicePane).toBeVisible();
 
     // Select 3d20

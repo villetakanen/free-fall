@@ -1,0 +1,60 @@
+---
+interface Props {
+  title?: string;
+  icon?: string;
+  class?: string;
+}
+
+const { title, icon, class: className = "" } = Astro.props;
+---
+
+<section class:list={["hud-card", className]}>
+  {
+    title && (
+      <h4 class="hud-card__title">
+        {icon && (
+          <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">
+            {icon}
+          </span>
+        )}
+        {title}
+      </h4>
+    )
+  }
+  <slot />
+</section>
+
+<style>
+  .hud-card {
+    background: var(--freefall-bg-surface-1);
+    border: var(--freefall-border-hairline);
+    border-radius: 2px;
+    padding: calc(1.25 * var(--freefall-space-1));
+  }
+
+  .hud-card__title {
+    display: flex;
+    align-items: center;
+    gap: calc(0.5 * var(--freefall-space-1));
+    font-family: var(--freefall-font-mono);
+    font-size: var(--freefall-type-ui-small);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--freefall-color-primary-100);
+    margin: 0 0 calc(1 * var(--freefall-space-1)) 0;
+    border-bottom: 1px solid var(--freefall-color-primary-800);
+    padding-bottom: calc(0.5 * var(--freefall-space-1));
+  }
+
+  .hud-card__icon {
+    font-size: var(--freefall-type-base);
+    color: var(--freefall-color-accent-400);
+  }
+
+  :global(.hud-card__copy) {
+    font-size: var(--freefall-type-base);
+    color: var(--freefall-text-body);
+    margin: 0;
+    line-height: calc(4 * var(--freefall-space-1));
+  }
+</style>
