@@ -38,6 +38,24 @@ const spacing = {
   16: "8rem",
 } as const;
 
+const breakpoints = [
+  {
+    name: "--breakpoint-tablet",
+    value: "620px",
+    role: "Navigation rail appears",
+  },
+  {
+    name: "--breakpoint-desktop",
+    value: "780px",
+    role: "General desktop content threshold",
+  },
+  {
+    name: "--breakpoint-desktop-full",
+    value: "1024px",
+    role: "AppTray enters persistent push mode",
+  },
+] as const;
+
 const primarySteps = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 ] as const;
@@ -375,6 +393,22 @@ const semanticTokens = [
       <div class="spacing-label" style="margin-top: 0.5rem;">comparison</div>
     </div>
   </div>
+
+  <h2>Breakpoints</h2>
+  <ul class="semantic-list">
+    {
+      breakpoints.map((token) => (
+        <li class="semantic-item">
+          <div>
+            <div>{token.role}</div>
+            <div class="semantic-name">
+              {token.name} → {token.value}
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
 
   <h2>Spacing — 0.5rem base (1rem = 16px)</h2>
   <ul class="spacing-list">

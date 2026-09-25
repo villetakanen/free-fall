@@ -53,6 +53,7 @@
 
   --breakpoint-tablet: 620px;
   --breakpoint-desktop: 780px;
+  --breakpoint-desktop-full: 1024px;
 
   /* =========================================
      SPACING (0.5rem base unit)

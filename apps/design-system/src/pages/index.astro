@@ -2,7 +2,11 @@
 import nineTailRaw from "@free-fall/design-system/assets/nine-tail.svg?raw";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const breakpoints = { tablet: "620px", desktop: "780px" };
+const breakpoints = {
+  tablet: "620px",
+  desktop: "780px",
+  desktopFull: "1024px",
+};
 ---
 
 <BaseLayout title="FREE//FALL Design System">
@@ -18,6 +22,7 @@ const breakpoints = { tablet: "620px", desktop: "780px" };
   <ul>
     <li>Tablet: {breakpoints.tablet}</li>
     <li>Desktop: {breakpoints.desktop}</li>
+    <li>Desktop full tray: {breakpoints.desktopFull}</li>
   </ul>
   <h2>Pages</h2>
   <ul>

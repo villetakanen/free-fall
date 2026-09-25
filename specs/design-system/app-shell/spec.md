@@ -26,7 +26,7 @@ SMALL (< 620px)
 |                               |
 +-------------------------------+
 
-MEDIUM (620–779px)
+MEDIUM (620–1023px)
 +---+---------------------------+
 |   | Top App Bar         title |
 | R +---------------------------+
@@ -35,14 +35,14 @@ MEDIUM (620–779px)
 | L |                           |
 +---+---------------------------+
 
-LARGE (≥ 780px)
-+---+---------------------------+
-|   | Top App Bar         title |
-| R +---------------------------+
-| A |                           |
-| I |      Content pane         |
-| L |                           |
-+---+---------------------------+
+LARGE (≥ 1024px)
++------+------------------------+
+| TRAY | Top App Bar      title |
+| open +------------------------+
+| by   |                        |
+| def. |      Content pane      |
+|      |                        |
++------+------------------------+
 ```
 
 The scaffold has four regions:
@@ -85,8 +85,8 @@ The scaffold has four regions:
 | Viewport | Navigation | Top bar | Content pane |
 |---|---|---|---|
 | Small (< 620px) | Hidden (burger fixed top-left) | Full width, 64px left margin clears burger | Fills remaining shell width |
-| Medium (tablet) | Rail visible (flex column, left) | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
-| Large (desktop) | Rail visible, tray pushes | Fills remaining width, layout clears rail automatically | Fills remaining width |
+| Medium (620–1023px) | Rail visible; full drawer overlays when opened | Fills remaining width, layout clears rail automatically | Fills remaining width after rail |
+| Large (≥ 1024px) | Full tray open by default; collapsible to rail; tray pushes in flex flow | Fills remaining width, layout clears tray/rail automatically | Fills remaining width |
 
 The `.app-shell` is a flex row. The AppTray's rail participates in the flex flow; the `.workspace` beside it is a flex row and an inline-size query container named `hud-host`. Within the workspace, `.app` is a bounded column and the HUD occupies the named slot. The app bar keeps its intrinsic height and `<main>` owns the remaining viewport height and vertical scrolling. The shell does not use compensating padding or fixed content heights.
 
@@ -136,7 +136,7 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 ### Definition of Done
 
 - [x] `AppShell.astro` provides full document skeleton with AppBar, AppTray, content slot, and hud slot
-- [ ] Both apps use the shell as their base layout on all pages
+- [x] Both apps use the shell as their base layout on all pages
 - [x] Top app bar is rendered via the `AppBar` component (see app-bar spec)
 - [x] Content pane (`<main>`) declares `container-type: inline-size` and `container-name: content` for consumer queries
 - [x] Content pane fills the viewport below the app bar and is the shell's vertical scroll owner
@@ -146,7 +146,7 @@ The shell imports `base.css`. Pages using the shell do not need to import it.
 - [x] The workspace provides an inline-size query-container host for HUD descendants; no viewport-fixed HUD positioning
 - [x] AppShell leaves gutters and readable measure to a consumer ContentGrid
 - [x] Design-system demo has a representative `/app-shell/` page
-- [ ] No duplicate `<html>`, `<head>`, or `base.css` imports across pages
+- [x] No duplicate `<html>`, `<head>`, or `base.css` imports across pages
 - [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
 
 ### Regression Guardrails
@@ -166,12 +166,12 @@ Scenario: Page uses shell layout
   Then: The HTML has correct document structure, FontLinks, AppTray, top bar with title, and page content in the default slot
 
 Scenario: Content responds to tray on desktop
-  Given: Viewport is 780px or above
-  When: The user opens the tray
+  Given: Viewport is 1024px or above
+  When: The user expands the tray from a collapsed rail state
   Then: The top bar and content pane shift right as the tray pushes into the flex row
 
 Scenario: Medium overlay does not define push behavior
-  Given: Viewport is between 620px and 779px
+  Given: Viewport is between 620px and 1023px
   When: The user opens the tray
   Then: The drawer and scrim establish an overlay contract
   And: The overlay contract makes no promise that content geometry remains fixed or is pushed

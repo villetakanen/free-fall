@@ -87,7 +87,7 @@ components.
 - [x] Icons inherit color and scale with font-size
 - [x] Icon rendering itself adds no JavaScript
 - [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass
-- [ ] Built HTML contains the Material Symbols stylesheet `<link>` tag
+- [x] Built HTML contains the Material Symbols stylesheet `<link>` tag
 
 ### Regression Guardrails
 
