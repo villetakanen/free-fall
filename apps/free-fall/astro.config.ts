@@ -4,6 +4,20 @@ import remarkDirective from "remark-directive";
 import { rehypeContentUrlRewrite } from "./src/lib/rehype/rehype-content-url-rewrite";
 import { remarkTermResolution } from "./src/lib/remark/remark-term-resolution";
 
+// Unified merges registrations of the same function. Fresh wrappers preserve
+// each package's options while forwarding the processor context.
+function termResolutionInstance(): typeof remarkTermResolution {
+  return function (options) {
+    return remarkTermResolution.call(this, options);
+  };
+}
+
+function contentUrlRewriteInstance(): typeof rehypeContentUrlRewrite {
+  return function (options) {
+    return rehypeContentUrlRewrite.call(this, options);
+  };
+}
+
 export default defineConfig({
   output: "static",
   redirects: {
@@ -18,7 +32,7 @@ export default defineConfig({
     remarkPlugins: [
       remarkDirective,
       [
-        remarkTermResolution,
+        termResolutionInstance(),
         {
           registryPath: "../../content/core-rulebook/chapters/registry.md",
           contentPath: "/content/core-rulebook/",
@@ -27,14 +41,14 @@ export default defineConfig({
       // Scenarios are dependent content: terms resolve against the parent
       // variant's registry. Spec: specs/content-scenarios/spec.md#constraints
       [
-        remarkTermResolution,
+        termResolutionInstance(),
         {
           registryPath: "../../content/core-rulebook/chapters/registry.md",
           contentPath: "/content/scenarios/",
         },
       ],
       [
-        remarkTermResolution,
+        termResolutionInstance(),
         {
           registryPath: "../../content/core-rulebook/chapters/registry.md",
           contentPath: "/content/srd/",
@@ -43,15 +57,15 @@ export default defineConfig({
     ],
     rehypePlugins: [
       [
-        rehypeContentUrlRewrite,
+        contentUrlRewriteInstance(),
         { basePath: "/core-rulebook/", contentPath: "/content/core-rulebook/" },
       ],
       [
-        rehypeContentUrlRewrite,
+        contentUrlRewriteInstance(),
         { basePath: "/core-rulebook/", contentPath: "/content/scenarios/" },
       ],
       [
-        rehypeContentUrlRewrite,
+        contentUrlRewriteInstance(),
         { basePath: "/core-rulebook/", contentPath: "/content/srd/" },
       ],
     ],
