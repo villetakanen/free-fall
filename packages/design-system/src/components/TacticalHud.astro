@@ -1,4 +1,7 @@
 ---
+import hudIconRaw from "../assets/hud-icon.svg?raw";
+import HudCard from "./HudCard.astro";
+
 /**
  * TacticalHud.astro — Multi-Pane Inspector Dock & Tactical Rules Reference.
  * Inspired by Adobe InDesign / Illustrator tool docks.
@@ -16,7 +19,6 @@ export interface HudPaneDefinition {
 }
 
 interface Props {
-  mode?: "dock" | "embedded";
   id?: string;
   class?: string;
   panes?: HudPaneDefinition[];
@@ -45,11 +47,10 @@ const DEFAULT_PANES: HudPaneDefinition[] = [
 ];
 
 const {
-  mode = "dock",
-  id = mode === "dock" ? "tactical-hud-dock" : "tactical-hud-embedded",
+  id = "tactical-hud-dock",
   class: className = "",
   panes = DEFAULT_PANES,
-  defaultOpenPanes = mode === "embedded" ? ["rules", "dice"] : [],
+  defaultOpenPanes = [],
 } = Astro.props;
 ---
 
@@ -57,11 +58,9 @@ const {
   id={id}
   class:list={[
     "tactical-dock",
-    `tactical-dock--${mode}`,
     className,
   ]}
   data-dock-root
-  data-mode={mode}
   data-default-open={JSON.stringify(defaultOpenPanes)}
   aria-label="Tactical HUD Inspector Dock"
 >
@@ -106,11 +105,7 @@ const {
             {pane.id === "rules" && (
               <slot name="pane-rules">
                 <div class="hud-panel-content">
-                  <section class="hud-card">
-                    <h4 class="hud-card__title">
-                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">target</span>
-                      RESOLUTION MATRIX
-                    </h4>
+                  <HudCard title="RESOLUTION MATRIX" icon="target">
                     <table class="hud-table">
                       <thead>
                         <tr>
@@ -156,13 +151,9 @@ const {
                         <span>Always &ge; 1 Success + Crit</span>
                       </div>
                     </div>
-                  </section>
+                  </HudCard>
 
-                  <section class="hud-card">
-                    <h4 class="hud-card__title">
-                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">timer</span>
-                      BULLET TIME SEQUENCE
-                    </h4>
+                  <HudCard title="BULLET TIME SEQUENCE" icon="timer">
                     <ol class="hud-stepper">
                       <li>
                         <span class="mono accent">1. DECLARE</span>
@@ -181,18 +172,14 @@ const {
                         <p>Successes determine effect; AV reduces DV point-for-point.</p>
                       </li>
                     </ol>
-                  </section>
+                  </HudCard>
 
-                  <section class="hud-card">
-                    <h4 class="hud-card__title">
-                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">shield</span>
-                      DAMAGE MITIGATION
-                    </h4>
+                  <HudCard title="DAMAGE MITIGATION" icon="shield">
                     <div class="hud-formula mono">
                       <span class="accent">NET HARM</span> = <span class="highlight">DV</span> &minus; <span class="muted">AV</span>
                     </div>
                     <p class="hud-card__copy">Armor Value reduces incoming Damage Value point-for-point. Remaining DV fills Harm slots.</p>
-                  </section>
+                  </HudCard>
 
                   <div class="hud-note">
                     <span class="hud-note__lead mono accent">&gt; GM RULE OF THUMB:</span>
@@ -205,11 +192,7 @@ const {
             {pane.id === "dice" && (
               <slot name="pane-dice">
                 <div class="hud-panel-content" data-dice-simulator>
-                  <section class="hud-card">
-                    <h4 class="hud-card__title">
-                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">casino</span>
-                      ACTION POOL SIMULATOR
-                    </h4>
+                  <HudCard title="ACTION POOL SIMULATOR" icon="casino">
 
                     <div class="hud-sandbox-controls">
                       <div class="hud-control-group">
@@ -249,7 +232,7 @@ const {
                         <span class="mono muted">READY TO EXECUTE</span>
                       </div>
                     </div>
-                  </section>
+                  </HudCard>
                 </div>
               </slot>
             )}
@@ -257,11 +240,7 @@ const {
             {pane.id === "harm" && (
               <slot name="pane-harm">
                 <div class="hud-panel-content">
-                  <section class="hud-card">
-                    <h4 class="hud-card__title">
-                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">emergency</span>
-                      POOL PENALTIES &amp; LIMITS
-                    </h4>
+                  <HudCard title="POOL PENALTIES &amp; LIMITS" icon="emergency">
                     <div class="hud-stats-grid">
                       <div class="hud-stat-box">
                         <span class="hud-stat-box__label">BASE POOL</span>
@@ -278,20 +257,16 @@ const {
                         <span class="hud-stat-box__sub">Absolute Min</span>
                       </div>
                     </div>
-                  </section>
+                  </HudCard>
 
-                  <section class="hud-card">
-                    <h4 class="hud-card__title">
-                      <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">key</span>
-                      4 PREREQUISITES
-                    </h4>
+                  <HudCard title="4 PREREQUISITES" icon="key">
                     <ul class="hud-bullet-list">
                       <li><strong>Skill</strong> — Relevant training</li>
                       <li><strong>Gear</strong> — Functional hardware</li>
                       <li><strong>Spend 1 Point</strong> — Body, Mind, or Ghost</li>
                       <li><strong>Take 1 Harm</strong> — Absorb damage</li>
                     </ul>
-                  </section>
+                  </HudCard>
                 </div>
               </slot>
             )}
@@ -319,6 +294,7 @@ const {
 
   <!-- Dock Rail (Vertical icon column on far right) -->
   <nav class="tactical-dock__rail" aria-label="Tactical HUD Dock Rail">
+    <span class="tactical-dock__rail-mark" aria-hidden="true" set:html={hudIconRaw} />
     {panes.map((pane, idx) => {
       const isOpen = defaultOpenPanes.includes(pane.id);
       return (
@@ -348,7 +324,7 @@ const {
   /* ── Design Tokens & Geometry ────────────────── */
   .tactical-dock {
     --dock-rail-width: calc(6 * var(--freefall-space-1)); /* 48px */
-    --dock-pane-width: calc(40 * var(--freefall-space-1)); /* 320px (matches --app-tray-tray-width) */
+    --dock-pane-width: calc(40 * var(--freefall-space-1)); /* 320px */
     --dock-header-height: calc(5 * var(--freefall-space-1)); /* 40px */
     --dock-z-rail: 95;
     --dock-z-panes: 94;
@@ -362,30 +338,13 @@ const {
     position: relative;
   }
 
-  /* ── Mode: Embedded (Preview in Documentation) ── */
-  .tactical-dock--embedded {
-    width: 100%;
-    max-width: 100%;
-    height: calc(65 * var(--freefall-space-1));
-    border: var(--freefall-border-hairline);
-    border-radius: 4px;
-    background: var(--freefall-bg-surface-1);
-    overflow: hidden;
-  }
-
-  /* ── Mode: Dock (Desktop Workspace Inspector) ─── */
-  .tactical-dock--dock {
-    display: none;
-  }
-
-  /* Tablet & Desktop: dock rail is visible */
-  @media (min-width: 620px) {
-    .tactical-dock--dock {
-      display: flex;
-      position: relative;
-      flex-shrink: 0;
-      height: 100%;
-    }
+  /* ── Host-mounted dock ────────────────────────── */
+  .tactical-dock {
+    display: flex;
+    position: relative;
+    flex: 0 0 auto;
+    width: max-content;
+    height: 100%;
   }
 
   /* ── Dock Rail (Far Right Strip) ─────────────── */
@@ -398,8 +357,22 @@ const {
     flex-direction: column;
     align-items: center;
     gap: calc(0.5 * var(--freefall-space-1));
-    padding-top: calc(1 * var(--freefall-space-1));
     z-index: var(--dock-z-rail);
+  }
+
+  .tactical-dock__rail-mark {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    flex: 0 0 auto;
+    padding: var(--freefall-space-1);
+    pointer-events: none;
+  }
+
+  .tactical-dock__rail-mark :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .tactical-dock__rail-btn {
@@ -569,61 +542,29 @@ const {
     gap: calc(1.5 * var(--freefall-space-1));
   }
 
-  /* ── Floating Overlay Mode (Laptop / Tablet) ─── */
-  .tactical-dock--overlay .tactical-dock__panes {
-    position: fixed;
-    top: 0;
-    right: var(--dock-rail-width);
-    bottom: 0;
-    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.8);
-    z-index: calc(var(--dock-z-panes) + 2);
-    pointer-events: auto;
-  }
+  /* Host-scoped overlay and suppression; the host names itself hud-host. */
+  @container hud-host (max-width: 75rem) {
+    .tactical-dock {
+      width: var(--dock-rail-width);
+    }
 
-  @media (max-width: 1023px) {
-    /* Tablet: Always overlay mode */
-    .tactical-dock--dock .tactical-dock__panes {
-      position: fixed;
+    .tactical-dock .tactical-dock__panes {
+      position: absolute;
+      max-width: calc(100cqi - var(--dock-rail-width));
+      overflow-x: auto;
       top: 0;
       right: var(--dock-rail-width);
       bottom: 0;
       box-shadow: -12px 0 40px rgba(0, 0, 0, 0.8);
       z-index: calc(var(--dock-z-panes) + 2);
+      pointer-events: auto;
     }
   }
 
-  /* ── Cards & Tactical Elements ───────────────── */
-  .hud-card {
-    background: var(--freefall-bg-surface-1);
-    border: var(--freefall-border-hairline);
-    border-radius: 2px;
-    padding: calc(1.25 * var(--freefall-space-1));
-  }
-
-  .hud-card__title {
-    display: flex;
-    align-items: center;
-    gap: calc(0.5 * var(--freefall-space-1));
-    font-family: var(--freefall-font-mono);
-    font-size: calc(1.25 * var(--freefall-space-1));
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--freefall-color-primary-100);
-    margin: 0 0 calc(1 * var(--freefall-space-1)) 0;
-    border-bottom: 1px solid var(--freefall-color-primary-800);
-    padding-bottom: calc(0.5 * var(--freefall-space-1));
-  }
-
-  .hud-card__icon {
-    font-size: calc(1.5 * var(--freefall-space-1));
-    color: var(--freefall-color-accent-400);
-  }
-
-  .hud-card__copy {
-    font-size: calc(1.25 * var(--freefall-space-1));
-    color: var(--freefall-text-body);
-    margin: 0;
-    line-height: 1.4;
+  @container hud-host (max-width: 32rem) {
+    .tactical-dock {
+      display: none;
+    }
   }
 
   /* ── Table (Resolution) ──────────────────────── */
@@ -920,7 +861,6 @@ const {
     const docks = document.querySelectorAll<HTMLElement>("[data-dock-root]");
 
     docks.forEach((dock) => {
-      const mode = dock.dataset.mode || "dock";
       const railBtns = dock.querySelectorAll<HTMLButtonElement>("[data-toggle-pane]");
       const closeBtns = dock.querySelectorAll<HTMLButtonElement>("[data-close-pane]");
       const defaultOpenStr = dock.dataset.defaultOpen || "[]";
@@ -933,39 +873,9 @@ const {
         }
       } catch {}
 
-      // ── Adaptive Spatial Layout (Push vs. Overlay) ──
-      const updateAdaptiveMode = () => {
-        if (mode !== "dock") return;
-        const windowWidth = window.innerWidth;
-
-        // Tablet mode (< 1024px) is always overlay
-        if (windowWidth < 1024) {
-          dock.classList.add("tactical-dock--overlay");
-          return;
-        }
-
-        // Available width for content check
-        // Left tray takes 320px (or 80px), rail takes 48px, minimum content measure is 600px
-        const activeCount = openPanes.size;
-        const totalPanesWidth = activeCount * 280; // 280px per pane
-        const estimatedAvailableForContent = windowWidth - 320 - 48 - totalPanesWidth;
-
-        // If content would be squashed below 580px, switch to floating overlay
-        if (estimatedAvailableForContent < 580 && activeCount >= 2) {
-          dock.classList.add("tactical-dock--overlay");
-        } else {
-          dock.classList.remove("tactical-dock--overlay");
-        }
-      };
-
+      // Layout adaptation is CSS container-query driven by the HUD host.
       const setPaneState = (paneId: string, open: boolean) => {
-        const isTablet = window.innerWidth < 1024 && mode === "dock";
-
         if (open) {
-          if (isTablet) {
-            // On tablet, cap at 1 open pane at a time
-            openPanes.clear();
-          }
           openPanes.add(paneId);
         } else {
           openPanes.delete(paneId);
@@ -988,7 +898,6 @@ const {
           btn.setAttribute("aria-expanded", String(isOpen));
         });
 
-        updateAdaptiveMode();
       };
 
       // Wire rail buttons
@@ -1011,7 +920,6 @@ const {
 
       // Initialize
       openPanes.forEach((id) => setPaneState(id, true));
-      window.addEventListener("resize", updateAdaptiveMode);
 
       // ── Hotkeys (1-5 toggle panes, Escape closes rightmost) ──
       document.addEventListener("keydown", (e) => {
@@ -1019,7 +927,7 @@ const {
         if (activeTag === "input" || activeTag === "textarea" || activeTag === "select") return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
 
-        if (e.key === "Escape" && openPanes.size > 0 && mode === "dock") {
+        if (e.key === "Escape" && openPanes.size > 0) {
           e.preventDefault();
           // Close the most recently added pane
           const lastPane = Array.from(openPanes).pop();
@@ -1028,7 +936,7 @@ const {
         }
 
         const num = parseInt(e.key, 10);
-        if (num >= 1 && num <= railBtns.length && mode === "dock") {
+        if (num >= 1 && num <= railBtns.length) {
           const targetBtn = railBtns[num - 1];
           const paneId = targetBtn?.dataset.togglePane;
           if (paneId) {

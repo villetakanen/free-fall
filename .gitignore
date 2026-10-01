@@ -146,3 +146,4 @@ vite.config.ts.timestamp-*
 
 # MacOS image cache
 **.DS_Store
+/.foam/

@@ -1,6 +1,6 @@
 {
   "name": "free-fall",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,9 +14,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
-    "vitest": "^3.2.0",
+    "@villetakanen/foam": "https://github.com/villetakanen/foam/releases/download/v0.3.0/villetakanen-foam-0.3.0.tgz",
     "lefthook": "^1.11.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

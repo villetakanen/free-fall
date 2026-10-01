@@ -53,6 +53,7 @@
 
   --breakpoint-tablet: 620px;
   --breakpoint-desktop: 780px;
+  --breakpoint-desktop-full: 1024px;
 
   /* =========================================
      SPACING (0.5rem base unit)
@@ -70,6 +71,7 @@
 
   --freefall-type-ratio: 1.414;
   --freefall-type-base: 1.125rem;
+  --freefall-type-ui-small: 0.875rem;
 
   /* =========================================
      CONTENT GRID
@@ -92,7 +94,7 @@
   --freefall-text-display: var(--freefall-color-primary-50);
   /* color-mix(in lab, var(--freefall-color-primary-50) 80%, var(--freefall-color-accent-400)); */
   --freefall-text-body: var(--freefall-color-primary-100);
-  --freefall-text-body-small: 0.875rem;
+  --freefall-text-body-small: var(--freefall-type-ui-small);
   --freefall-text-muted: var(--freefall-color-primary-200);
   --freefall-text-high: var(--freefall-color-primary-50);
 

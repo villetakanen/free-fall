@@ -178,6 +178,8 @@ Validation is per-file: when a `:term` directive is encountered and its slug is 
 
 **Current:** Content packages come in two kinds, and each gets its own plugin instance in the Astro config; what varies is which registry the instance indexes:
 
+Each package registration has a distinct plugin identity in both the remark term-resolution and rehype URL-rewrite stages. Unified merges repeated registrations of the same function, so separate option objects alone do not create separate instances. The configured pipeline processes core-rulebook, scenarios, and SRD together; adding a package preserves processing and validation for existing packages.
+
 - **Variant packages** (e.g., `content/core-rulebook/`) define a rules variant. Each ships its own `registry.md`, and terms in its prose resolve against it.
 - **Dependent packages** (e.g., `content/scenarios/`) target a rules variant and introduce no terms of their own. Their instance sets `contentPath` to the dependent package and `registryPath` to the parent variant's registry, so term links resolve to the variant's registry route.
 
@@ -217,6 +219,14 @@ Validation is per-file: when a `:term` directive is encountered and its slug is 
 ### Scenarios
 
 ```gherkin
+Scenario: All configured packages retain term resolution
+  Given the application's complete remark and rehype configuration
+  When core-rulebook, scenario, and SRD content contains :term[Action Pool]
+  Then every package produces a link to /core-rulebook/registry/#action-pool
+  And an unknown term in any of those packages fails processing
+  And relative rulebook links in every package are normalized
+  And files outside the configured content packages remain untouched
+
 Scenario: Basic term resolution
   Given registry.md contains <dfn id="action-pool">Action Pool</dfn>
   And a content file contains :term[Action Pool]

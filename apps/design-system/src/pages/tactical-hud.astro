@@ -1,4 +1,5 @@
 ---
+import HudCard from "@free-fall/design-system/components/HudCard.astro";
 import TacticalHudComponent, {
   type HudPaneDefinition,
 } from "@free-fall/design-system/components/TacticalHud.astro";
@@ -45,6 +46,12 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
       }
 
       .hud-stage-frame {
+        container-type: inline-size;
+        container-name: hud-host;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        height: calc(65 * var(--freefall-space-1));
         width: 100%;
         background: var(--freefall-bg-canvas);
         border: 1px dashed var(--freefall-color-primary-800);
@@ -155,25 +162,19 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
   <p>
     In the stage below, test the multi-pane dock. Click icons in the right rail
     (<code>[1] RULES GLOSSARY</code>, <code>[2] DICE SIM</code>, <code>[3] HARM</code>, <code>[4] CREW</code>)
-    or close buttons (<code>[×]</code>). Each pane is <strong>320px wide</strong>, perfectly matching
-    the width of the left navigation rail/tray (<code>--app-tray-tray-width</code>). As panes open,
-    they arrange side-by-side as equal-width columns:
+    or close buttons (<code>[×]</code>). Each pane is <strong>320px wide</strong>, derived from the
+    spacing grid. As panes open, they arrange side-by-side as equal-width columns:
   </p>
 
   <div class="hud-showcase-container">
     <div class="hud-stage-frame">
       <TacticalHudComponent
-        mode="embedded"
         panes={EXTENDED_PANES}
         defaultOpenPanes={["rules", "dice"]}
       >
         <!-- Slot 5: Custom Pluggable Scenario Pane Demonstration -->
         <div slot="pane-crew" class="hud-panel-content">
-          <section class="hud-card">
-            <h4 class="hud-card__title">
-              <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">group</span>
-              SCENARIO CREW ROSTER
-            </h4>
+          <HudCard title="SCENARIO CREW ROSTER" icon="group">
             <p class="hud-card__copy">
               Example scenario-provided pane: active shipboard operatives from <em>Northern Lights</em>.
             </p>
@@ -210,7 +211,7 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
                 <span>CARBINE (DV 6)</span>
               </div>
             </div>
-          </section>
+          </HudCard>
         </div>
       </TacticalHudComponent>
     </div>
@@ -219,56 +220,53 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
     </div>
   </div>
 
-  <!-- ── 2. Spatial Responsibility Tiers ────────── -->
-  <h2>Spatial Responsibility &amp; Screen Tiers</h2>
+  <!-- ── 2. Host-Scoped Spatial Behavior ─────────── -->
+  <h2>Host-Scoped Spatial Behavior</h2>
   <p>
-    The multi-pane dock adapts its layout behavior dynamically according to available real estate:
+    The HUD uses the nearest named <code>hud-host</code> container. Its behavior depends on that host's inline size, not the browser viewport.
   </p>
 
   <div class="spec-grid">
     <div class="spec-card">
       <h3 class="spec-card__title">
         <span class="material-symbols-sharp" aria-hidden="true">desktop_windows</span>
-        27" Display (&ge; 1800px)
+        Wide host (&gt; 75rem)
       </h3>
       <p>
-        <strong>In-Flow Push</strong>: With ample canvas (&gt; 2000px), up to 4&ndash;5 panes sit
-        side-by-side in document flex flow, pushing the content area left while keeping the reading measure
-        clean and generous (&ge; 700px).
+        <strong>In-flow</strong>: Panes participate in the host's flex/grid layout. The host decides how
+        adjacent content shares the remaining space.
       </p>
     </div>
 
     <div class="spec-card">
       <h3 class="spec-card__title">
         <span class="material-symbols-sharp" aria-hidden="true">laptop_mac</span>
-        MacBook (1024px &ndash; 1799px)
+        Constrained host (32rem&ndash;75rem)
       </h3>
       <p>
-        <strong>Adaptive Overlay</strong>: 1 pane pushes in-flow. When 2 or more panes open, the container
-        automatically transitions into a <strong>Floating Overlay</strong> docked to the right rail,
-        preventing content from being squeezed into an unreadable column.
+        <strong>Host-scoped layout</strong>: In a constrained host, panes become an overlay anchored
+        to that host's right edge. The same HUD can be placed in a wider host and participate in its flow.
       </p>
     </div>
 
     <div class="spec-card">
       <h3 class="spec-card__title">
         <span class="material-symbols-sharp" aria-hidden="true">tablet_mac</span>
-        Tablet (620px &ndash; 1023px)
+        CSS container query
       </h3>
       <p>
-        <strong>Single-Pane Overlay</strong>: Panes open as a floating overlay above text, capped at
-        1 pane at a time to keep the tablet display clear and focused.
+        <strong>Native CSS</strong>: Container queries respond to host resizing even when the viewport does not change.
       </p>
     </div>
 
     <div class="spec-card">
       <h3 class="spec-card__title">
         <span class="material-symbols-sharp" aria-hidden="true">smartphone</span>
-        Mobile (&lt; 620px)
+        Narrow host (&le; 32rem)
       </h3>
       <p>
-        <strong>Suppressed</strong>: The multi-pane dock does not render. Mobile uses touch-native term
-        inspection instead of desktop flight console emulation.
+        <strong>Narrow host</strong>: The dock is suppressed when its host is below the component's
+        minimum inline size, regardless of viewport width.
       </p>
     </div>
   </div>
@@ -294,6 +292,7 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
 
   <!-- ── 4. Component API ──────────────────────── -->
   <h2>Component API</h2>
+  <p>Mount the HUD inside a host that provides the <code>hud-host</code> inline-size query container and a containing block. The HUD selects in-flow, host-bounded overlay, or suppressed behavior from the host's size.</p>
   <table class="api-table">
     <thead>
       <tr>
@@ -304,14 +303,6 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><code>mode</code></td>
-        <td><code>"dock" | "embedded"</code></td>
-        <td><code>"dock"</code></td>
-        <td>
-          <code>"dock"</code> mounts the right-side inspector dock; <code>"embedded"</code> renders inline.
-        </td>
-      </tr>
       <tr>
         <td><code>panes</code></td>
         <td><code>HudPaneDefinition[]</code></td>
@@ -327,7 +318,7 @@ const EXTENDED_PANES: HudPaneDefinition[] = [
       <tr>
         <td><code>id</code></td>
         <td><code>string</code></td>
-        <td>Generated</td>
+        <td><code>tactical-hud-dock</code></td>
         <td>DOM ID for the dock container.</td>
       </tr>
     </tbody>

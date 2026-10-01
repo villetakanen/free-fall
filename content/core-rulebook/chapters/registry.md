@@ -45,7 +45,7 @@ order: 91
 
 <dfn id="dice-pool">Dice Pool</dfn> A pool of 5 dice, each with 20 sides.
 
-<dfn id="downtime">Downtime</dfn> A rest period during which all Temporary Harm is removed and broken gear can be repaired.
+<dfn id="downtime">Downtime</dfn> A rest period during which all Transient Harm is removed and broken gear can be repaired.
 
 ## G
 
@@ -55,7 +55,7 @@ order: 91
 
 <dfn id="hard">Hard</dfn> A challenge rating with TN 16+.
 
-<dfn id="harm">Harm</dfn> Consequence suffered by a character, absorbed by filling Harm Slots, converting Temporary Harm, or breaking bound items.
+<dfn id="harm">Harm</dfn> Consequence suffered by a character, absorbed by filling Harm Slots, converting Transient Harm, or breaking bound items.
 
 * [Harm & Consequences](/srd/#harm--consequences), in SRD
 
@@ -75,7 +75,7 @@ order: 91
 
 ## P
 
-<dfn id="permanent-harm">Permanent Harm</dfn> A Harm slot entry that persists beyond Downtime, created by converting an existing Temporary Harm.
+<dfn id="permanent-harm">Permanent Harm</dfn> A Harm slot entry that persists beyond Downtime, created by converting an existing Transient Harm.
 
 ## S
 

@@ -117,8 +117,8 @@ Scenario: Multiple slotted items have consistent spacing
 
 Scenario: Bar clears navigation at all breakpoints
   Given: The app renders with AppTray and AppBar
-  When: Viewed at small (< 620px), medium (620–779px), and large (>= 780px) viewports
-  Then: The bar title never overlaps with the hamburger button or navigation rail
+  When: Viewed at small (< 620px), medium (620–1023px), and large (>= 1024px) viewports
+  Then: The bar title never overlaps with the hamburger button, navigation rail, or open desktop tray
 
 Scenario: Bar is transparent
   Given: The app bar renders

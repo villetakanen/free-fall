@@ -53,7 +53,7 @@ To write callouts within standard Markdown files (`.md`), authors write raw HTML
 - [x] `packages/design-system/src/styles/callout.css` implements callout styling.
 - [x] `packages/design-system/src/styles/base.css` imports the callout stylesheet.
 - [x] Demo app lists and documents Callouts at `/callout/`.
-- [ ] Preface page uses the callout HTML structure.
+- [x] Preface page uses the callout HTML structure.
 - [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass.
 
 ### Usage Guidelines

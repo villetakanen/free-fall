@@ -54,13 +54,15 @@ const { title, navItems, brandHref } = Astro.props;
   <body>
     <div class="app-shell">
       <AppTray items={navItems} brandHref={brandHref} />
-      <div class="app">
-        <AppBar title={title} />
-        <main>
-          <slot />
-        </main>
+      <div class="workspace">
+        <div class="app">
+          <AppBar title={title} />
+          <main>
+            <slot />
+          </main>
+        </div>
+        <slot name="hud" />
       </div>
-      <slot name="hud" />
     </div>
   </body>
 </html>
@@ -76,7 +78,15 @@ const { title, navItems, brandHref } = Astro.props;
     width: 100dvw;
     overflow: hidden;
   }
-  .app-shell > .app {
+  .workspace {
+    container-type: inline-size;
+    container-name: hud-host;
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+  }
+  .workspace > .app {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;

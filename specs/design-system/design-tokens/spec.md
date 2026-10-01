@@ -84,6 +84,7 @@ clipping technique requires one-pixel geometry.
 |---|---|---|
 | tablet | `620px` | `--breakpoint-tablet` |
 | desktop | `780px` | `--breakpoint-desktop` |
+| desktop-full | `1024px` | `--breakpoint-desktop-full` |
 
 ### Anti-Patterns
 
@@ -96,7 +97,7 @@ clipping technique requires one-pixel geometry.
 
 ### Definition of Done
 
-- [x] `src/styles/tokens.css` defines all base palette and semantic custom properties listed above
+- [x] `src/styles/tokens.css` defines all base palette, breakpoint, and semantic custom properties listed above
 - [x] Semantic color tokens reference base palette tokens via `var()`
 - [x] `src/styles/base.css` imports `tokens.css`
 - [x] Demo app shows every base palette and public semantic color token listed above; other token families have representative demos on their owning pages

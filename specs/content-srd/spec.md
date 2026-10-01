@@ -72,7 +72,9 @@ const { Content } = await render(entry);
 The SRD mounts the Tactical HUD dock with 3 core tactical panes:
 1. **Rules Glossary** (`rules`, `menu_book` icon): Resolution Matrix, Target Numbers, Success ladder, Bullet Time action sequence, Damage Mitigation formula, and GM Rule of Thumb.
 2. **Dice Sim** (`dice`, `casino` icon): Interactive Action Pool Simulator (2d20–5d20, TN 11/16/21).
-3. **Harm Calc** (`harm`, `emergency` icon): Interactive 3-slot harm tracker and damage calculation.
+3. **Harm** (`harm`, `emergency` icon): Interactive three-slot harm tracker and damage calculation, following the [Harm Tracker contract](../design-system/tactical-hud/spec.md#5-harm-tracker).
+
+**Known defect — 2026-10-01 ([#61](https://github.com/villetakanen/free-fall/issues/61)):** The SRD currently mounts a static Harm reference pane. Injury tracking, damage calculation, asset resolution, and downtime recovery are missing. The interactive tracker remains intended behavior; its mechanics and verification live in the linked HUD contract.
 
 Each pane is fixed at **320px width** (`calc(40 * var(--freefall-space-1))`), perfectly matching the width of the left navigation rail/tray (`--app-tray-tray-width`).
 
@@ -111,6 +113,7 @@ Helper `getSrdNavItem(pathname)` in `apps/free-fall/src/lib/nav.ts` provides the
 - [x] `srd` collection configured in `apps/free-fall/src/content.config.ts`
 - [x] Dedicated SRD page served at `/srd/` via `apps/free-fall/src/pages/srd/index.astro`
 - [x] Tactical HUD mounted exclusively on `/srd/`
+- [ ] SRD Harm pane implements the linked Harm Tracker contract (known defect; [#61](https://github.com/villetakanen/free-fall/issues/61)).
 - [x] "System Reference v7" (`terminal` icon) placed as the bottom-most item in the navigation rail
 - [x] Legacy URL `/core-rulebook/system-reference` redirects to `/srd`
 - [x] `intro.md` and `registry.md` updated to link to `/srd/`

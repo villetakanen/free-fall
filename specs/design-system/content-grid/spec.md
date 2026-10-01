@@ -80,7 +80,7 @@ At the base tier, `.content-side`, `.content-wide`, and `.breakout` items stay i
 
 Every direct child of `.content-grid` is a grid item. Auto-placement can place an adjacent main-column item and `.content-side` item on the same implicit row; a side item without paired main content leaves the main cell on its row empty.
 
-To place a side note *beside* flowing text, wrap the run of main content in a plain `<div>` (one grid item) and put the `.content-side` element **immediately after it** — the two items share a grid row, and the note top-aligns with the wrapped block (`align-self: start`). `content/core-rulebook/chapters/01-world.md` and `content/scenarios/northern-lights/a-01-the-story-so-far.md` are the reference uses. On the base tier the note falls into the main flow after the wrapped block.
+To place a side note *beside* flowing text, wrap the run of main content in a plain `<div>` (one grid item) and put the `.content-side` element **immediately after it** — the two items share a grid row, and the note top-aligns with the wrapped block (`align-self: start`). `content/core-rulebook/chapters/01-world.md` and `content/scenarios/northern-lights/the-story-so-far.md` are the reference uses. On the base tier the note falls into the main flow after the wrapped block.
 
 **Wide content overflow (base tier):**
 
