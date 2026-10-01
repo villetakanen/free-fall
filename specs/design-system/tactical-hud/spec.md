@@ -113,7 +113,8 @@ export interface HudPaneDefinition {
 2. **`DICE SIM`** (`dice`, `casino` icon):
    - Interactive 2d20–5d20 dice pool sandbox with TN selection (TN 11, 16, 21), roll animation, Isotope Neon success highlights, and Nat 20 badges.
 3. **`HARM`** (`harm`, `emergency` icon):
-   - Interactive 3-slot harm tracker with slot states (Transient, Permanent, Broken Asset, Ousted), damage calculation, and downtime reset.
+   - Interactive three-slot harm tracker, damage calculation, and downtime recovery, governed by the Harm Tracker contract below.
+   - [DEPRECATED 2026-10-01] The former list of slot states included Broken Asset and Ousted. The SRD defines these as an asset condition and a character outcome, respectively.
 4. **Pluggable Panes**:
    - Custom rulesets or scenarios can provide additional panes via slots or pane definitions (e.g. `CREW ROSTER`, `COUNTDOWN CLOCKS`, or `VESSEL SYSTEMS`).
 
@@ -125,12 +126,28 @@ export interface HudPaneDefinition {
 - **Palette**: Void dark canvas (`--freefall-bg-canvas`), Surface elevation (`--freefall-bg-surface-2`), Ceramic off-white display typography (`--freefall-text-display`), and scarce Isotope acid-yellow (`--freefall-color-accent-400`) reserved exclusively for active indicators, dice hits, and criticals.
 - **Typography**: Lato for explanatory text; IBM Plex Mono for all TN values, formulas, dice outputs, and pane title headers.
 
+#### 5. Harm Tracker
+
+**Known defect — 2026-10-01:** The shipped `harm` pane in `packages/design-system/src/components/TacticalHud.astro` renders static pool penalties and prerequisites. It has no injury state, damage controls, asset resolution, or downtime action. The following contract is intended behavior, not a claim of delivery. Tracking issue: [#61](https://github.com/villetakanen/free-fall/issues/61).
+
+Rules authority: `content/srd/chapters/index.md`, “Harm & Consequences”; DV and AV definitions: `content/core-rulebook/chapters/registry.md`.
+
+- **State:** Three slots, each Empty, Transient, or Permanent. Occupied slots record a short narrative description and optional harm type. Show the derived Action Pool: `5 - occupied slots` dice, from 5d20 to 2d20. Promotion to Permanent does not consume another die.
+- **Damage:** Accept non-negative whole-number DV and AV; show `max(0, DV - AV)` pending harm levels. Invalid inputs show an explanation and leave recorded state unchanged. Also allow taking one harm directly, including harm taken to meet a prerequisite, without applying armor.
+- **Player choice:** Resolve pending harm one level at a time. The player chooses an empty slot (record Transient harm), an eligible Transient slot (replace it with Permanent harm), or a bound asset to mark Broken. A typed Transient slot accepts only incoming harm of the same type; an untyped Transient slot can accept any type. Permanent slots cannot absorb further harm. Do not automatically choose a consequence for the player.
+- **Assets and Ousted:** Record the chosen bound asset by name separately from the slots. Breaking an available asset resolves one harm level without changing slot occupancy; an already broken asset cannot absorb another level. Because the HUD has no inventory, the player identifies available bound assets and confirms when none remain. When no slot choice or available asset remains for pending harm, record the character as Ousted. Three filled slots alone do not imply Ousted.
+- **Downtime:** Clear Transient slots and recalculate the pool. Preserve Permanent harm, Broken assets, and Ousted status; downtime does not repair assets or restore an ousted character.
+- **Lifetime and correction:** This delivery is a single-character, page-local play aid. State survives closing/reopening the pane and stays isolated per HUD instance; a page reload starts fresh. State this lifetime in the UI. Allow correction of recorded entries and an explicit full reset, distinct from Downtime. Saved characters, inventory integration, cross-navigation persistence, and automatic coupling to Dice Sim are outside this delivery.
+- **Interaction:** Use labeled keyboard-operable controls, announce the updated pool and resolution outcome, and preserve existing reference information as the no-JavaScript fallback. Fit the existing 320px pane and host-responsive layout.
+
 ---
 
 ## Contract
 
 ### Definition of Done
 
+- [ ] Harm Tracker contract implemented: three-slot state, typed resolution, asset alternative, Ousted outcome, damage calculation, and downtime recovery (known defect; [#61](https://github.com/villetakanen/free-fall/issues/61)).
+- [ ] Harm tracker scenarios covered by automated tests and demonstrated in the living docs and SRD integration.
 - [x] Multi-pane dock architecture specified and documented.
 - [x] `TacticalHud.astro` component implements the dock rail, side-by-side panes row, and core panes.
 - [x] Multiple panes can be opened and displayed side-by-side simultaneously.
@@ -149,6 +166,46 @@ export interface HudPaneDefinition {
 ### Scenarios
 
 ```gherkin
+Scenario: Record and promote harm
+  Given all three harm slots are empty
+  When the player records one Transient physical harm
+  Then the Action Pool is 4d20
+  When the player resolves another physical harm by promoting that slot
+  Then that slot is Permanent and the Action Pool remains 4d20
+  And a social harm cannot promote a typed physical Transient slot
+
+Scenario: Calculate damage and choose consequences
+  Given DV is 5 and AV is 3
+  When the player applies damage
+  Then two harm levels await player-selected resolution
+  And DV 2 with AV 3 produces zero harm
+  And a negative, fractional, or missing value leaves recorded state unchanged
+
+Scenario: Break an asset before becoming ousted
+  Given three Permanent slots and an available bound asset
+  When the player resolves one harm by breaking that asset
+  Then the pool remains 2d20 and the character is not Ousted
+  When another harm arrives and the player confirms no available bound assets remain
+  Then the character is Ousted
+
+Scenario: Downtime preserves lasting consequences
+  Given one Transient slot, one Permanent slot, and a Broken asset
+  When the player takes Downtime
+  Then only the Transient slot clears and the pool becomes 4d20
+  And any Ousted status remains unchanged
+
+Scenario: Tracker lifetime and isolation
+  Given two HUD instances and harm recorded in one
+  When that pane is closed and reopened
+  Then its recorded state remains and the other HUD is unchanged
+  When the page reloads
+  Then both trackers start fresh as described by their visible lifetime notice
+
+Scenario: Reference fallback
+  Given JavaScript is disabled
+  When the Harm pane is rendered open
+  Then harm rules and pool penalties remain readable
+
 Scenario: Opening multiple panes side-by-side
   Given a HUD is mounted in a wide host
   When the user clicks a pane button in the right dock rail
