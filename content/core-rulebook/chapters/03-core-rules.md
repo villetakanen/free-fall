@@ -156,7 +156,7 @@ After applying AV and spending Attribute points, you must resolve each remaining
 
 #### Option A: Mark Transient Harm
 Fill one of your 3 empty [Harm Slots](registry#harm-slot).
-*   **Effect:** This [Transient Harm](registry#temporary-harm) reduces your available Action Pool by 1d20 for as long as the slot is filled.
+*   **Effect:** This :term[Transient Harm] reduces your available Action Pool by 1d20 for as long as the slot is filled.
 *   **Recovery:** Cleared during [Downtime](registry#downtime).
 
 #### Option B: Make Transient Harm Permanent
