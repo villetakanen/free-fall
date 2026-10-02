@@ -12,16 +12,16 @@ Welcome back to the fractured future of 2048. In FREE//FALL, survival isn't just
 
 ## The Attributes: Body, Mind & Ghost
 
-Three [Attributes](registry#attribute) represent your character's fundamental capacity and resilience:
+Three :term[Attribute]s represent your character's fundamental capacity and resilience:
 
-*   **Body:** Physical resilience, endurance, tolerance for physical strain, and the capacity to handle demanding physical gear or biological augmentations. It serves as the resource pool for physical actions and resisting or negating Physical [Harm](registry#harm).
-*   **Mind:** Mental acuity, processing power, focus, technical aptitude, and the capacity for complex interfaces or cybernetics. It is the resource pool for mental/technical actions and resisting or negating Psychic [Harm](registry#harm).
-*   **Ghost:** Social adaptability, composure, willpower, the ability to manage intrusive social or stealth technology, and the mental fortitude to handle deep neural interfaces. It is the resource pool for social/stealth actions and resisting or negating Compromise [Harm](registry#harm).
+*   **Body:** Physical resilience, endurance, tolerance for physical strain, and the capacity to handle demanding physical gear or biological augmentations. It serves as the resource pool for physical actions and resisting or negating Physical :term[Harm].
+*   **Mind:** Mental acuity, processing power, focus, technical aptitude, and the capacity for complex interfaces or cybernetics. It is the resource pool for mental/technical actions and resisting or negating Psychic :term[Harm].
+*   **Ghost:** Social adaptability, composure, willpower, the ability to manage intrusive social or stealth technology, and the mental fortitude to handle deep neural interfaces. It is the resource pool for social/stealth actions and resisting or negating Compromise :term[Harm].
 
 Each Attribute possesses two values:
 
 *   **Initial:** Your character's maximum potential or cap for that Attribute, determined during character creation. This rarely changes.
-*   **Current:** The points you currently have available to spend or lose. This value fluctuates due to exertion (spending points to act or negate Harm) and the constant drain of Attribute [Binding](registry#binding) from your gear and augmentations. Your Current value cannot exceed your Maximum Current Attribute value (Initial minus Binding Costs). Replenishing Current Attribute points typically requires downtime.
+*   **Current:** The points you currently have available to spend or lose. This value fluctuates due to exertion (spending points to act or negate Harm) and the constant drain of Attribute :term[Binding] from your gear and augmentations. Your Current value cannot exceed your Maximum Current Attribute value (Initial minus Binding Costs). Replenishing Current Attribute points typically requires downtime.
 
 Think of your Current Attributes as critical resources – fuel for pushing your limits and buffers against trauma.
 
@@ -29,7 +29,7 @@ Think of your Current Attributes as critical resources – fuel for pushing your
 
 In FREE//FALL, Gear is Capability. The weapons, armor, tools, and augmentations you choose are the primary source of your specialized skills and abilities. *“Having the right tool is the skill”*. Technology defines what you can achieve.
 
-However, this power comes at a significant price: Attribute [Binding](registry#binding).
+However, this power comes at a significant price: Attribute :term[Binding].
 Significant gear and augmentations impose a Binding Cost on one or more specific Attributes (e.g., Body 2, Mind 1, Ghost 3). This reflects the constant physical strain, power draw, neurological load, or cognitive effort the item demands.
 
 *   **Body Binding:** Physical weight, bulk, power requirements, and biological strain.
@@ -48,7 +48,7 @@ Resolving actions follow these steps when the pressure is on.
 
 ### 1. The Action Pool
 
-You begin each turn with a base **[Action Pool](registry#action-pool)** of 5d20. This pool represents your focus, potential actions, and overall effectiveness for the turn. Each die in the pool can be assigned to a declared action.
+You begin each turn with a base **:term[Action Pool]** of 5d20. This pool represents your focus, potential actions, and overall effectiveness for the turn. Each die in the pool can be assigned to a declared action.
 
 *   **Harm Penalty:** Each filled Harm Slot (Transient or Permanent) reduces your available Action Pool by 1d20.
 *   **Minimum Pool:** Your Action Pool can never drop below 2d20, no matter how much Harm you've suffered. Even on the brink, you can still act.
@@ -65,7 +65,7 @@ During the Declaration Phase, you state what you intend to do and assign dice fr
 
 Most actions beyond simple movement or basic interaction require you to meet at least one prerequisite before you can roll:
 
-1.  **Relevant Skill:** Possess the relevant Character [Skill](registry#skill) (an innate talent chosen during character creation based on your [Class](registry#class)).
+1.  **Relevant Skill:** Possess the relevant Character :term[Skill] (an innate talent chosen during character creation based on your :term[Class]).
 2.  **Functional Gear/Augmentation:** Have appropriate, functional Gear or Augmentation that enables the action.
 3.  **Spend Attribute Point:** Spend 1 Current point from the Attribute pool most relevant to the action (Body, Mind, or Ghost). This represents pushing your inherent limits through sheer effort.
 4.  **Take Harm:** Take 1 level of Harm relevant to the action type. This Harm is suffered before the roll and must be resolved immediately. This represents pushing yourself dangerously beyond safe limits.
@@ -77,9 +77,9 @@ You cannot attempt the specialized action if you cannot meet at least one prereq
 Once prerequisites are met, roll the specific dice assigned to that action.
 
 *   **Bonuses:** Certain advantageous situations might grant a numerical bonus (e.g., +2). Add this directly to the result shown on each die rolled.
-*   **Penalties:** Penalties instead increase the [Target Number (TN)](registry#target-number-tn) required for success (e.g., making a Challenging TN 11 become TN 16 for that roll).
+*   **Penalties:** Penalties instead increase the :term[Target Number] (TN) required for success (e.g., making a Challenging TN 11 become TN 16 for that roll).
 
-Compare each die's final result to the [Target Number (TN)](registry#target-number-tn) set by the GM.
+Compare each die's final result to the :term[Target Number] (TN) set by the GM.
 
 | Base Difficulty | Target Number |
 | :--- | :--- |
@@ -88,7 +88,7 @@ Compare each die's final result to the [Target Number (TN)](registry#target-numb
 | **Hard** | TN 16+ |
 | **Near Impossible** | TN 21+ |
 
-*   **[Successes](registry#successes):** Each die roll that meets or exceeds the TN counts as one Success.
+*   **:term[Successes]:** Each die roll that meets or exceeds the TN counts as one Success.
 *   **Natural 20:** A roll of 20 always counts as at least one Success, regardless of the TN.
 
 ### 5. Interpreting the Outcome
@@ -133,7 +133,7 @@ If any die rolled during a conflict situation shows a natural 1, the GM may intr
 
 ## The Harm System: Paying the Price
 
-Damage and trauma are represented by [Harm](registry#harm). This isn't just hit points; it's physical injury, psychic strain, or social fallout that degrades your ability to function.
+Damage and trauma are represented by :term[Harm]. This isn't just hit points; it's physical injury, psychic strain, or social fallout that degrades your ability to function.
 
 *   **Physical Harm:** Injury, trauma, exhaustion (Associated with Body).
 *   **Psychic Harm:** Mental stress, cognitive damage, sensory overload (Associated with Mind).
@@ -155,12 +155,12 @@ You can spend 1 Current point from the Attribute corresponding to the Harm type 
 After applying AV and spending Attribute points, you must resolve each remaining Level of Harm by choosing one of the following:
 
 #### Option A: Mark Transient Harm
-Fill one of your 3 empty [Harm Slots](registry#harm-slot).
+Fill one of your 3 empty :term[Harm Slot]s.
 *   **Effect:** This :term[Transient Harm] reduces your available Action Pool by 1d20 for as long as the slot is filled.
-*   **Recovery:** Cleared during [Downtime](registry#downtime).
+*   **Recovery:** Cleared during :term[Downtime].
 
 #### Option B: Make Transient Harm Permanent
-Choose one Harm Slot already filled with Transient Harm. It now becomes [Permanent Harm](registry#permanent-harm).
+Choose one Harm Slot already filled with Transient Harm. It now becomes :term[Permanent Harm].
 *   **Effect:** The slot remains filled (-1d20 to Action Pool) and carries lasting narrative consequences.
 *   **Recovery:** Significant downtime, resources, therapy, or surgery.
 
@@ -172,7 +172,7 @@ Choose a piece of Gear or Augmentation bound to the Attribute corresponding to t
 If all three Harm Slots are filled with Transient Harm and you suffer another level, you face a Forced Choice: Make Transient Harm Permanent (Option B) or Break Bound Gear (Option C).
 
 ### Ousted: The Final Toll
-If a character accumulates **3 Permanent Harms** filling all three of their Harm Slots, they are **[Ousted](registry#ousted)**. The character is either dead, forced into permanent retirement, or physically/mentally broken beyond the point of ever working as a mercenary again. Their story ends here.
+If a character accumulates **3 Permanent Harms** filling all three of their Harm Slots, they are **:term[Ousted]**. The character is either dead, forced into permanent retirement, or physically/mentally broken beyond the point of ever working as a mercenary again. Their story ends here.
 
 ## Vehicles & Exoskeletons (Brief Overview)
 
