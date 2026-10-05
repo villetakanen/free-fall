@@ -42,11 +42,11 @@ Body, Mind, and Ghost represent your innate capacity. These are finite resources
 
 <em>Power your Gear:</em> The higher your Initial Attribute, the more tech you can Bind.
 
-<em>Resist Harm:</em> You can replace Transient [Harm](registry#harm) with [Permanent Harm](registry#permanent-harm) in an Attribute to stay in the fight.
+<em>Resist Harm:</em> You can replace Transient :term[Harm] with :term[Permanent Harm] in an Attribute to stay in the fight.
 
 <em>Operational Capacity:</em> Once your Current pool is empty, you are exhausted, vulnerable, and unable to attempt actions outside your Skills or reduce incoming Harm through effort.
 
-<em>Push the Limits:</em> Spend a point of an Attribute to attempt an action as though you had a [Skill](registry#skill) for it.
+<em>Push the Limits:</em> Spend a point of an Attribute to attempt an action as though you had a :term[Skill] for it.
 
 In addition to the innate Resources the character has, some gear or augmentations might grant the Character additional Resources. The additional resources are often 1-1 replacapble with a specific innate Resource.
 
@@ -54,7 +54,7 @@ In addition to the innate Resources the character has, some gear or augmentation
 
 <span class="text-caption">Class and Skill</span>
 
-A lingering spark of inherent knack tied to your [Class](registry#class). It grants you a specific [Skill](registry#skill).
+A lingering spark of inherent knack tied to your :term[Class]. It grants you a specific :term[Skill].
 
 **Effect:** A Skill enables a character to attempt an action governed by the skill, without needing specific gear, spending an Attribute point, or taking Harm just to make the attempt. It represents years of muscle memory or intuition that tech cannot replicate.
 
@@ -140,7 +140,7 @@ Assign the Standard Array `[12, 8, 6]` to your three Attributes. These are your 
 ### Step 4: Select Gear & Calculate Binding
 
 Select your equipment. This is a critical step.
-Every significant piece of gear has an Attribute **[Binding](registry#binding)** Cost.
+Every significant piece of gear has an Attribute **:term[Binding]** Cost.
 
 **Calculate Current Attributes:** Subtract the Total Binding Cost from your Initial Attribute.
 
@@ -158,7 +158,7 @@ Every significant piece of gear has an Attribute **[Binding](registry#binding)**
 ### Example 1: "Rhino" - The Vanguard
 A walking tank built for the breach.
 
-*   **[Class](registry#class):** Vanguard (Skill: Breaching)
+*   **:term[Class]:** Vanguard (Skill: Breaching)
 *   **Initial Attributes:** Body 12, Ghost 8, Mind 6.
 *   **Gear Loadout:**
     *   "Rhino Hide" Heavy Armor: AV 3 (Physical). *[Binds 3 Body]*
@@ -175,7 +175,7 @@ A walking tank built for the breach.
 ### Example 2: "Whisper" - The Spectre (Hacker)
 A ghost in the machine using Hacking gear.
 
-*   **[Class](registry#class):** Wirehead/Spectre Hybrid (Skill: System Cracking)
+*   **:term[Class]:** Wirehead/Spectre Hybrid (Skill: System Cracking)
 *   **Initial Attributes:** Mind 12, Ghost 8, Body 6.
 *   **Gear Loadout:**
     *   Operator’s Slate ("Ghost Link"): The deck itself. *[Binds 1 Mind]*
@@ -194,7 +194,7 @@ A ghost in the machine using Hacking gear.
 ### Example 3: "Patch" - The Fixer
 Bricolage expert who keeps the team alive.
 
-*   **[Class](registry#class):** Fixer (Skill: Human Systems)
+*   **:term[Class]:** Fixer (Skill: Human Systems)
 *   **Initial Attributes:** Mind 12, Body 8, Ghost 6.
 *   **Gear Loadout:**
     *   Trauma Kit ("Patch-Up"): Enables Medical Actions. *[Binds 2 Mind]*
@@ -210,7 +210,7 @@ Bricolage expert who keeps the team alive.
 
 ## 4. Crews
 
-Mercenaries rarely operate alone. Your **[Crew](registry#crew)** is your life support system.
+Mercenaries rarely operate alone. Your **:term[Crew]** is your life support system.
 
 ### 1. The Niche
 *   **Extraction:** Getting people out of Al Presa or corporate holding.

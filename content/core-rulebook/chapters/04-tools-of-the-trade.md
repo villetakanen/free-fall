@@ -18,9 +18,9 @@ Many pieces of equipment share common qualities that define their function and i
 
 ### Attribute Binding (Attribute X)
 
-Significant gear and augmentations bind X points of a specified [Attribute](registry#attribute) ([Body](registry#attribute), [Mind](registry#attribute), or [Ghost](registry#attribute)), reducing the maximum Current points available. This represents the constant physical strain, power draw, neurological load, cognitive effort, or existential toll the item demands. This embodies the *"Capability has Costs"* principle.
+Significant gear and augmentations bind X points of a specified :term[Attribute] (:term[Body], :term[Mind], or :term[Ghost]), reducing the maximum Current points available. This represents the constant physical strain, power draw, neurological load, cognitive effort, or existential toll the item demands. This embodies the *"Capability has Costs"* principle.
 
-*   **Persistence:** The [Binding](registry#binding) cost remains even if the gear becomes Faulty or Broken. It persists until the item is properly removed, uninstalled, or discarded. For augmentations, removal often requires downtime or surgery.
+*   **Persistence:** The :term[Binding] cost remains even if the gear becomes Faulty or Broken. It persists until the item is properly removed, uninstalled, or discarded. For augmentations, removal often requires downtime or surgery.
 *   **Cumulation:** Binding costs from multiple items are cumulative. Managing the total Binding cost across your Attributes is crucial.
 *   **Body Binding:** Physical weight, bulk, power requirements drawing on biological energy, or the strain of physically demanding gear and augmentations.
 *   **Mind Binding:** Cognitive load required to process input/output, manage systems, handle complex interfaces, or maintain focus while using demanding tech. It is the mental bandwidth consumed.
@@ -28,7 +28,7 @@ Significant gear and augmentations bind X points of a specified [Attribute](regi
 
 ### Armor Value (AV X)
 
-Provides X points of protection against [Harm](registry#harm). Default is Physical unless specified (e.g., AV 1 vs Environmental). Reduces incoming Harm levels before resolution.
+Provides X points of protection against :term[Harm]. Default is Physical unless specified (e.g., AV 1 vs Environmental). Reduces incoming Harm levels before resolution.
 
 *   AV never reduces Harm suffered below **1 level**, unless an effect specifically states otherwise.
 *   Weapons with the **High Impact** quality inflict a minimum of **2 levels** of Harm, regardless of AV.
@@ -51,7 +51,7 @@ Represents a finite resource. When making an action check using this item, if **
 
 ### Single Use
 
-The item is fully expended by one activation. It functions at full effect for that single action and is spent when the action resolves. Expended Single Use gear is replenished during Downtime, the same way Broken gear is repaired. Single Use gear may grant a [Skill](registry#skill) for the action it enables; the capability is the charge.
+The item is fully expended by one activation. It functions at full effect for that single action and is spent when the action resolves. Expended Single Use gear is replenished during Downtime, the same way Broken gear is repaired. Single Use gear may grant a :term[Skill] for the action it enables; the capability is the charge.
 
 ### Load Bearing (X)
 
@@ -59,9 +59,9 @@ Helps distribute weight and power for attached equipment. Ignores up to X total 
 
 ## Augmentations: More Than Human
 
-In the unforgiving environments of 2048, the baseline human form is often insufficient. Augmentations — modifications to the body and mind — are not just advantages; they are frequently necessities, blurring the line between operator and equipment. They enhance capabilities, grant new senses, and are often the only way to overcome lasting [Permanent Harm](registry#harm) by replacing or repairing what was lost.
+In the unforgiving environments of 2048, the baseline human form is often insufficient. Augmentations — modifications to the body and mind — are not just advantages; they are frequently necessities, blurring the line between operator and equipment. They enhance capabilities, grant new senses, and are often the only way to overcome lasting :term[Permanent Harm] by replacing or repairing what was lost.
 
-Like all advanced gear, augmentations grant significant capabilities but come at a cost, integrating directly into your being and taxing your core Attributes via [Binding](registry#binding). The rationale for which Attribute is bound (Body, Mind, or Ghost) reflects the specific type of strain the augmentation imposes.
+Like all advanced gear, augmentations grant significant capabilities but come at a cost, integrating directly into your being and taxing your core Attributes via :term[Binding]. The rationale for which Attribute is bound (Body, Mind, or Ghost) reflects the specific type of strain the augmentation imposes.
 
 ### Categories of Augmentation
 
@@ -84,13 +84,13 @@ Firearms, melee implements, and specialized ordnance are the most direct tools f
 
 *   **Ammo (Type):** Runs out on attack roll of '1'. Requires an action or effort to reload. Ammo type influences frequency and availability.
 *   **Burst Fire:** Each Success equals 1 hit. The first hit strikes the primary target; extras hit additional nearby declared targets or add hits to declared targets.
-*   **Damage Value (DV):** The base levels of [Harm](registry#harm) inflicted per hit.
+*   **Damage Value (DV):** The base levels of :term[Harm] inflicted per hit.
 *   **High Impact:** Inflicts a minimum of 2 levels of Harm, regardless of AV.
 *   **High Visibility:** Creates a noticeable effect and gives away the attacker's position.
 *   **Piercing (X):** Ignores X levels of the target's AV. Default is 1 if no value is specified.
 *   **Range (Close / Medium / Long):** Optimal engagement distance. Attacking outside optimal range requires a natural 20 on at least one die to hit. Such a hit inflicts normal DV, not doubled.
 *   **Spread:** Each Success hits the primary target. Additional Successes can hit other targets within melee range of the primary target, maximum 1 hit per additional target.
-*   **Unwieldy:** Increases the [Target Number (TN)](registry#target-number-tn) by +5 when attacking targets at Close range.
+*   **Unwieldy:** Increases the :term[Target Number] (TN) by +5 when attacking targets at Close range.
 
 ### Damage Values
 
@@ -134,7 +134,7 @@ When piloting, use machine FRM and SYS instead of pilot Body and Mind for releva
 
 ### Pilot Binding Cost
 
-Operating the machine imposes a [Binding](registry#binding) cost on the pilot's Attributes (Body, Mind, or Ghost) for interface and control strain. This is separate from the machine's own attributes. Integrated systems might add Pilot Binding; Hardpoint-mounted gear does not.
+Operating the machine imposes a :term[Binding] cost on the pilot's Attributes (Body, Mind, or Ghost) for interface and control strain. This is separate from the machine's own attributes. Integrated systems might add Pilot Binding; Hardpoint-mounted gear does not.
 
 ### Vehicle Durability & Harm
 
