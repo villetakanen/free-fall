@@ -99,7 +99,7 @@ Compare each die's final result to the :term[Target Number] (TN) set by the GM.
 
 #### Critical Hits (Natural 20 on Attack)
 If any die rolled as part of an attack action shows a natural 20:
-*   **Within Optimal Range:** The hit is critical. It inflicts double the weapon's [Damage Value (DV)](#damage-value-dv) in Levels of Harm (before [Armor Value](#armor-value-av) reduction; minimum Harm rules still apply).
+*   **Within Optimal Range:** The hit is critical. It inflicts double the weapon's :term[Damage Value] (DV) in Levels of Harm (before :term[Armor Value] (AV) reduction; minimum Harm rules still apply).
 *   **Outside Optimal Range:** A natural 20 results in a normal hit, inflicting the standard DV.
 
 ## Time and Granularity: The 4 Modes
@@ -152,27 +152,31 @@ You can spend 1 Current point from the Attribute corresponding to the Harm type 
 
 ### Resolving Harm Levels
 
-After applying AV and spending Attribute points, you must resolve each remaining Level of Harm by choosing one of the following:
+After applying AV and spending Attribute points, you resolve each remaining level of Harm **one level at a time**. For each level, choose one of the following:
 
 #### Option A: Mark Transient Harm
-Fill one of your 3 empty :term[Harm Slot]s.
-*   **Effect:** This :term[Transient Harm] reduces your available Action Pool by 1d20 for as long as the slot is filled.
+Fill one of your 3 empty :term[Harm Slot]s with the Harm suffered and mark it as :term[Transient Harm].
+*   **Effect:** Reduces your available Action Pool by 1d20 for as long as the slot is filled.
 *   **Recovery:** Cleared during :term[Downtime].
 
 #### Option B: Make Transient Harm Permanent
-Choose one Harm Slot already filled with Transient Harm. It now becomes :term[Permanent Harm].
+Replace an existing Transient Harm in a filled slot and mark it :term[Permanent Harm]. If the transient Harm has a type, it can only be replaced with a Harm of the same type.
 *   **Effect:** The slot remains filled (-1d20 to Action Pool) and carries lasting narrative consequences.
 *   **Recovery:** Significant downtime, resources, therapy, or surgery.
 
 #### Option C: Break Bound Gear
-Choose a piece of Gear or Augmentation bound to the Attribute corresponding to the Harm type. It immediately becomes Broken.
+Mark a piece of Gear or Augmentation bound to the Attribute corresponding to the Harm type as **Broken**.
 *   **Effect:** The item ceases to function, but its Binding Cost remains until repaired or uninstalled.
 
-#### Forced Choice
-If all three Harm Slots are filled with Transient Harm and you suffer another level, you face a Forced Choice: Make Transient Harm Permanent (Option B) or Break Bound Gear (Option C).
+#### Forced Choice & Sequential Resolution
+When suffering multiple levels of Harm, resolve each level independently:
+
+> **Example:** A mercenary with 2 Transient Harms ("Mild concussion" [physical] and "Wanted criminal" [social]) and 1 empty slot takes 2 levels of physical Harm from a brawl:
+> - **Level 1:** The player fills the 3rd empty slot with transient physical Harm (e.g., "Bruised ribs").
+> - **Level 2:** With all slots full, the player must choose an eligible physical transient Harm to promote to Permanent Harm ("Mild concussion" or the newly recorded "Bruised ribs"), or mark a bound physical asset Broken.
 
 ### Ousted: The Final Toll
-If a character accumulates **3 Permanent Harms** filling all three of their Harm Slots, they are **:term[Ousted]**. The character is either dead, forced into permanent retirement, or physically/mentally broken beyond the point of ever working as a mercenary again. Their story ends here.
+If a player cannot resolve an incoming level of Harm by any of the options above—such as when all 3 Harm Slots are already filled with **:term[Permanent Harm]**, or when all slots are full and no matching transient Harm or bound asset is available—the character becomes **:term[Ousted]**. The character is dead, permanently incapacitated, or broken beyond recovery. Their story ends here.
 
 ## Vehicles & Exoskeletons (Brief Overview)
 
