@@ -6,11 +6,11 @@ order: 1
 
 # System Reference
 
-<span class="text-caption"> A System Reference Document (SRD)for FREE//FALL "v7" (0.7.0)</span>
+<span class="text-caption"> A System Reference Document (SRD) for FREE//FALL "v7" (0.7.1)</span>
 
 ## Introduction
 
-FREE//FALL v7 is a fast and tactical RPG system based on the exiting action resolution mechanics of Jukka Sorsa's [Hood](https://myrrys.com/hood/) and Harm tech form the Quick. This system reference defines core concepts, rules, techniques and mechanism in a game-agnostic manner.
+FREE//FALL v7 is a fast and tactical RPG system based on the exciting action resolution mechanics of Jukka Sorsa's [Hood](https://myrrys.com/hood/) and Harm tech from the Quick. This system reference defines core concepts, rules, techniques and mechanism in a game-agnostic manner.
 
 ## Principles
 
@@ -58,8 +58,8 @@ Depending on a game theme, the aspects dice are spit to might be called axes, ve
 
 ## Attributes
 
-Characters posses a set resources called :term[Attribute]s. An attribute has two ratings: initial and current. Attribute points can be used to:
-1. Attempting an Action the characted does not have a :term[Skill] for
+Characters possess a set of resources called :term[Attribute]s. An attribute has two ratings: initial and current. Attribute points can be used for:
+1. Attempting an Action the character does not have a :term[Skill] for
 2. Reducing a level of incoming :term[Harm]
 3. :term[Binding] gear etc. the character can utilize
 4. Restoring points in another Attribute (by default 2 attribute points buy 1 of another attribute).
@@ -76,16 +76,16 @@ _N.B. Taking a :term[Harm] or spending a point of a relevant :term[Attribute] on
 
 ## Harm & Consequences
 
-When not fatal or ousting, all negative and harmfull consequences to a character are recorded as :term[Harm]. A harm can be transient, or permanent, it has a short narrative description, and it can be _typed_.
+When not fatal or ousting, all negative and harmful consequences to a character are recorded as :term[Harm]. A harm can be transient, or permanent, it has a short narrative description, and it can be _typed_.
 
-A character has 3 :term[Harm Slot]s. Each filled slot, removes a Die from the :term[Action Pool].
+A character has 3 :term[Harm Slot]s. Each filled slot removes a Die from the :term[Action Pool].
 
-When a character suffers harm from any source, the player has to decide how the :term[Harm] is resolved.
+When a character suffers harm from any source, the player resolves it **one level at a time**.
 
-For each level of :term[Harm] suffered the player has 3 options:
+For each level of :term[Harm] suffered, the player has 3 options:
 1. Fill in an empty harm slot with the Harm suffered, and mark it :term[Transient Harm]
-2. Replace a transient Harm in a slot, and mark it :term[Permanent Harm]. If a transient Harm has a _type_, it can only be replaced with a Harm of the same _type_
-3. Mark a bound asset, such as a gear or augmentation, **Broken**
+2. Replace an existing transient Harm in a slot, and mark it :term[Permanent Harm]. If the transient Harm has a _type_, it can only be replaced with a Harm of the same _type_
+3. Mark a bound asset, such as gear or an augmentation, **Broken**
 
 If the player is not able to do any of the above, the character becomes :term[Ousted] from the game.
 
@@ -95,8 +95,12 @@ If the player is not able to do any of the above, the character becomes :term[Ou
 > 1. "Mild concussion" (physical)
 > 2. "Wanted criminal" (social)
 >
-> When they recieve 2 levels of _physical_ :term[Harm] from a brawl, they have to either: replace "mild concussion" with a :term[Permanent Harm], and record another :term[Transient Harm]; or to take a third Harm and make it permanent outright.
+> When they receive 2 levels of _physical_ :term[Harm] from a brawl, each level is resolved independently:
+> - **Level 1:** The player fills the 3rd empty slot with transient physical harm (e.g., "Bruised ribs").
+> - **Level 2:** The player chooses an eligible physical transient harm to promote to :term[Permanent Harm] (either converting "Mild concussion" or the newly recorded "Bruised ribs").
+>
+> Alternatively, the player could have promoted "Mild concussion" on level 1, or marked a bound asset **Broken** to absorb either level.
 
 All transient harm is removed with :term[Downtime] (think short rest).
 
-Any broken gear or items can be fixed with time and actions, given the required skill and so foth.
+Any broken gear or items can be fixed with time and actions, given the required skill and so forth.
