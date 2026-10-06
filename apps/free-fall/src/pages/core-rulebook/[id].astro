@@ -1,5 +1,9 @@
 ---
 import { getCollection, render } from "astro:content";
+import TacticalHud, {
+  type HudPaneDefinition,
+} from "@free-fall/design-system/components/TacticalHud.astro";
+import ActionResolutionPane from "../../components/ActionResolutionPane.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -12,9 +16,21 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const CORE_RULES_PANES: HudPaneDefinition[] = [
+  {
+    id: "rules",
+    title: "ACTION RESOLUTION",
+    icon: "menu_book",
+  },
+];
 ---
 
 <BaseLayout title={`${entry.data.title} — FREE//FALL`}>
   <Content />
+  <TacticalHud slot="hud" panes={CORE_RULES_PANES}>
+    <ActionResolutionPane slot="pane-rules" />
+  </TacticalHud>
 </BaseLayout>
+
 

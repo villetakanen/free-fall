@@ -33,7 +33,7 @@ test("content pane fills the viewport below the app bar", async ({ page }) => {
   await page.setViewportSize({ width: 780, height: 900 });
   await page.goto("/core-rulebook/02-characters-and-crews/");
 
-  const appBar = await page.locator("header").boundingBox();
+  const appBar = await page.locator("header.app-bar").boundingBox();
   const main = await page.locator("main").boundingBox();
 
   expect(main?.y).toBeCloseTo(appBar?.height ?? 0, 0);

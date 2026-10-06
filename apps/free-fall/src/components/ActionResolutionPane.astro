@@ -1,0 +1,317 @@
+---
+/**
+ * ActionResolutionPane.astro — Static Core Rules Action Resolution HUD Reference.
+ *
+ * Spec: specs/free-fall/core-rules-hud/spec.md
+ * Rules authority: content/core-rulebook/chapters/03-core-rules.md
+ * Design: Tactical HUD Cockpit Instrument (DESIGN.md)
+ */
+---
+
+<div class="action-resolution-pane">
+  <!-- 1. DIFFICULTY -->
+  <section class="hud-card">
+    <header class="hud-card__header">
+      <h4 class="hud-card__title">
+        <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">target</span>
+        DIFFICULTY
+      </h4>
+      <a href="/core-rulebook/03-core-rules/#4-rolling--determining-success" class="header-link mono">Rules &rarr;</a>
+    </header>
+
+    <div class="tn-table">
+      <div class="tn-row">
+        <span class="tn-label">Normal</span>
+        <span class="tn-val mono text-muted">&mdash; Auto &mdash;</span>
+      </div>
+      <div class="tn-row">
+        <span class="tn-label">Challenging</span>
+        <span class="tn-val mono accent">TN 11+</span>
+      </div>
+      <div class="tn-row">
+        <span class="tn-label">Hard</span>
+        <span class="tn-val mono accent">TN 16+</span>
+      </div>
+      <div class="tn-row">
+        <span class="tn-label">Near impossible</span>
+        <span class="tn-val mono accent">TN 21+</span>
+      </div>
+    </div>
+
+    <div class="outcome-bar">
+      <div class="outcome-segment">
+        <span class="mono text-muted">0:</span> Fail/Comp
+      </div>
+      <div class="outcome-segment is-accent">
+        <span class="mono accent">1:</span> Success
+      </div>
+      <div class="outcome-segment is-highlight">
+        <span class="mono highlight">2+:</span> Greater
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. EXCEPTIONS -->
+  <section class="hud-card">
+    <header class="hud-card__header">
+      <h4 class="hud-card__title">
+        <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">bolt</span>
+        EXCEPTIONS
+      </h4>
+      <a href="/core-rulebook/03-core-rules/#critical-hits-natural-20-on-attack" class="header-link mono">Rules &rarr;</a>
+    </header>
+
+    <div class="data-stack">
+      <div class="data-item">
+        <div class="data-tag-col">
+          <a href="/core-rulebook/03-core-rules/#critical-hits-natural-20-on-attack" class="data-tag mono accent">NAT 20</a>
+        </div>
+        <div class="data-val">
+          &ge;1 Success &bull; <strong class="highlight">2&times; DV</strong> in optimal range
+          <div class="data-sub text-muted">(standard DV outside optimal)</div>
+        </div>
+      </div>
+
+      <div class="data-item">
+        <div class="data-tag-col">
+          <a href="/core-rulebook/03-core-rules/#complications-natural-1" class="data-tag mono accent">NAT 1</a>
+        </div>
+        <div class="data-val">
+          Conflict complication on any 1
+        </div>
+      </div>
+
+      <div class="data-item">
+        <div class="data-tag-col">
+          <a href="/core-rulebook/03-core-rules/#4-rolling--determining-success" class="data-tag mono accent">MODS</a>
+        </div>
+        <div class="data-val">
+          Bonus: +n to dice &bull; Penalty: +5 TN
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ACTION & POOL -->
+  <section class="hud-card">
+    <header class="hud-card__header">
+      <h4 class="hud-card__title">
+        <span class="material-symbols-sharp hud-card__icon" aria-hidden="true">schema</span>
+        ACTION &amp; POOL
+      </h4>
+      <a href="/core-rulebook/03-core-rules/#1-the-action-pool" class="header-link mono">Rules &rarr;</a>
+    </header>
+
+    <div class="data-stack">
+      <div class="data-item">
+        <div class="data-tag-col">
+          <a href="/core-rulebook/03-core-rules/#1-the-action-pool" class="data-tag mono accent">POOL</a>
+        </div>
+        <div class="data-val">
+          <span class="mono highlight">5d20</span> (&minus;1d20 per Harm, min <span class="mono highlight">2d20</span>)
+        </div>
+      </div>
+
+      <div class="data-item">
+        <div class="data-tag-col">
+          <a href="/core-rulebook/03-core-rules/#3-prerequisites-for-specialized-actions" class="data-tag mono accent">PREREQS</a>
+        </div>
+        <div class="data-val">
+          <strong class="highlight">Skill</strong> &bull; <strong class="highlight">Gear</strong> &bull; <strong class="highlight">1 Stat</strong> &bull; <strong class="highlight">1 Harm</strong>
+        </div>
+      </div>
+
+      <div class="data-item">
+        <div class="data-tag-col">
+          <a href="/core-rulebook/03-core-rules/#action-resolution-making-your-move" class="data-tag mono accent">FLOW</a>
+        </div>
+        <div class="data-val mono flow-step">
+          Declare &rarr; Prereq &rarr; Roll &rarr; Resolve
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .action-resolution-pane {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2 * var(--freefall-space-1));
+    font-family: var(--freefall-font-body);
+    font-size: var(--freefall-type-ui-small);
+    line-height: 1.5;
+    color: var(--freefall-text-body);
+  }
+
+  /* ── Elevated HUD Card ───────────────────────── */
+  .hud-card {
+    background: var(--freefall-bg-surface-1);
+    border: var(--freefall-border-hairline);
+    border-radius: 2px;
+    padding: calc(1.5 * var(--freefall-space-1));
+  }
+
+  .hud-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 calc(1.25 * var(--freefall-space-1)) 0;
+    padding-bottom: calc(0.6 * var(--freefall-space-1));
+    border-bottom: 1px solid var(--freefall-color-primary-800);
+  }
+
+  .hud-card__title {
+    display: flex;
+    align-items: center;
+    gap: calc(0.6 * var(--freefall-space-1));
+    margin: 0;
+    font-family: var(--freefall-font-mono);
+    font-size: var(--freefall-type-ui-small);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--freefall-color-primary-100);
+  }
+
+  .hud-card__icon {
+    font-size: var(--freefall-type-base);
+    color: var(--freefall-color-accent-400);
+  }
+
+  .header-link {
+    font-size: calc(0.85 * var(--freefall-type-ui-small));
+    color: var(--freefall-text-link);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    opacity: 0.85;
+    transition: opacity 120ms ease, color 120ms ease;
+  }
+
+  .header-link:hover {
+    text-decoration: underline;
+    opacity: 1;
+    color: var(--freefall-color-accent-400);
+  }
+
+  /* ── TN Matrix (Difficulty) ──────────────────── */
+  .tn-table {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.4 * var(--freefall-space-1));
+    margin-bottom: calc(1.25 * var(--freefall-space-1));
+  }
+
+  .tn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(0.5 * var(--freefall-space-1)) calc(0.75 * var(--freefall-space-1));
+    background: var(--freefall-bg-surface-2);
+    border-radius: 2px;
+  }
+
+  .tn-label {
+    color: var(--freefall-text-body);
+  }
+
+  .tn-val {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Segmented Outcome Bar ───────────────────── */
+  .outcome-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--freefall-color-primary-800);
+    border: 1px solid var(--freefall-color-primary-800);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .outcome-segment {
+    background: var(--freefall-bg-surface-2);
+    padding: calc(0.6 * var(--freefall-space-1)) calc(0.35 * var(--freefall-space-1));
+    text-align: center;
+    font-size: calc(0.9 * var(--freefall-type-ui-small));
+    white-space: nowrap;
+  }
+
+  /* ── Data Stack (Exceptions, Action & Pool) ──── */
+  .data-stack {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.75 * var(--freefall-space-1));
+  }
+
+  .data-item {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: calc(0.75 * var(--freefall-space-1));
+    align-items: baseline;
+    padding-bottom: calc(0.75 * var(--freefall-space-1));
+    border-bottom: 1px solid var(--freefall-color-primary-900);
+  }
+
+  .data-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .data-tag-col {
+    display: flex;
+  }
+
+  .data-tag {
+    background: var(--freefall-bg-surface-2);
+    border: 1px solid var(--freefall-color-primary-800);
+    border-radius: 2px;
+    padding: calc(0.25 * var(--freefall-space-1)) calc(0.6 * var(--freefall-space-1));
+    font-size: calc(0.85 * var(--freefall-type-ui-small));
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--freefall-color-accent-400);
+    text-decoration: none;
+    transition: border-color 120ms ease, background 120ms ease;
+  }
+
+  .data-tag:hover {
+    border-color: var(--freefall-color-accent-400);
+    background: var(--freefall-color-accent-900);
+    text-decoration: none;
+  }
+
+  .data-val {
+    color: var(--freefall-text-body);
+    font-size: var(--freefall-type-ui-small);
+    line-height: 1.45;
+  }
+
+  .data-sub {
+    font-size: calc(0.85 * var(--freefall-type-ui-small));
+    margin-top: calc(0.2 * var(--freefall-space-1));
+  }
+
+  .flow-step {
+    color: var(--freefall-color-primary-100);
+    font-size: calc(0.9 * var(--freefall-type-ui-small));
+  }
+
+  /* ── Typography Helpers ──────────────────────── */
+  .mono {
+    font-family: var(--freefall-font-mono);
+  }
+
+  .accent {
+    color: var(--freefall-color-accent-400);
+  }
+
+  .highlight {
+    color: var(--freefall-color-primary-50);
+  }
+
+  .text-muted {
+    color: var(--freefall-text-muted);
+  }
+</style>
