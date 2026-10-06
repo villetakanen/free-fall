@@ -27,7 +27,7 @@ An Astro layout that wraps `AppShell` with the app's navigation configuration. A
 |---|---|---|---|
 | `title` | `string` | no | Page title — passed through to AppShell |
 | `frontmatter` | `{ title?: string }` | no | Astro injects this for markdown pages using `layout` frontmatter |
-| `hasHud` | `boolean` | no | When true, renders the `TacticalHud` component (`mode="dock"`) into AppShell's `hud` slot. Scoped to the System Reference Document (SRD). Default: `false`. |
+| `hasHud` | `boolean` | no | When true, renders the default three-pane `TacticalHud` component into AppShell's `hud` slot (used by the SRD at `/srd/`). When false or omitted, BaseLayout forwards any content slotted into `slot="hud"` directly to AppShell (used by `/core-rulebook/[id]` for the single-pane Action Resolution HUD per `specs/free-fall/core-rules-hud/spec.md`). Default: `false`. |
 
 Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FREE//FALL"`. This allows both `.astro` pages (passing `title` directly) and `.md` pages (using `layout` frontmatter) to use the same layout.
 

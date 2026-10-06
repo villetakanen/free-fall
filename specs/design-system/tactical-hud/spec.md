@@ -115,8 +115,12 @@ export interface HudPaneDefinition {
 3. **`HARM`** (`harm`, `emergency` icon):
    - Interactive three-slot harm tracker, damage calculation, and downtime recovery, governed by the Harm Tracker contract below.
    - [DEPRECATED 2026-10-01] The former list of slot states included Broken Asset and Ousted. The SRD defines these as an asset condition and a character outcome, respectively.
-4. **Pluggable Panes**:
-   - Custom rulesets or scenarios can provide additional panes via slots or pane definitions (e.g. `CREW ROSTER`, `COUNTDOWN CLOCKS`, or `VESSEL SYSTEMS`).
+4. **Pluggable Panes & Ruleset-Specific Docks**:
+   - Custom rulesets or scenarios can provide alternate pane sets via `panes` props and slot injections.
+   - **Core Rules HUD**: On Core Rules routes (`/core-rulebook/*`), the dock exposes exactly one static reference pane: **`ACTION RESOLUTION`** (`rules`, `menu_book` icon). It provides high-frequency GM lookups (difficulty target numbers, outcome ladder, critical/complication exceptions, and action pool/prerequisite procedure) with precise deep links to the full rules text. No interactive rollers or trackers are mounted on Core Rules routes.
+   - **System Reference HUD**: Retains the default three core tactical panes (`RULES GLOSSARY`, `DICE SIM`, and `HARM`).
+   - Custom scenario panes can provide additional panes via slots or pane definitions (e.g. `CREW ROSTER`, `COUNTDOWN CLOCKS`, or `VESSEL SYSTEMS`).
+
 
 ---
 

@@ -53,6 +53,7 @@ Use `specs/TEMPLATE.md` as the canonical structure: Blueprint (Context, Architec
 - **File paths, not concepts** — "`src/lib/nav.ts`" is actionable; "the nav helper" is ambiguous. Where practical, link code back to the spec with a comment (`// Spec: specs/{domain}/spec.md#section`).
 - **No tutorials** — Assume engineering competence. Document decisions and constraints, not general knowledge.
 - **Same-commit rule** — If code behavior changes, the spec must update in the same commit.
+- **Contracts, not copy** — Specs specify invariants, behaviors, schemas, and structural constraints. Never mandate tests that assert static prose or UI copy; copy evolves rapidly and asserting exact strings creates high-maintenance test drag.
 - **Deprecation over deletion** — When updating, mark outdated sections `[DEPRECATED yyyy-mm-dd]` with rationale rather than removing them.
 - **Execution via Issues** — Specs define state; execution is tracked via GitHub Issues (created by `/plan`), not plan files.
 

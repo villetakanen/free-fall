@@ -80,6 +80,7 @@ Create labels if they don't exist yet using `gh label create`.
 - **No speculation** — Only plan work the spec requires. Do not add issues for "nice to haves" or future work.
 - **Gap-only** — Do not plan work for things that already exist in the codebase. Audit first, plan the delta.
 - **Pointers, not copies** — Reference spec sections for design decisions; never duplicate spec content into an issue. Copies go stale the moment the spec evolves.
+- **Test invariants, not copy** — Only plan automated tests for interactive behaviors, state machines, layout invariants (overflow, zero-scroll budgets), and data contracts. Never plan tests asserting static copy or template prose.
 
 ## Boundaries
 

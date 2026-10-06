@@ -37,6 +37,7 @@ Everything — content structure, components, navigation, prose — is tested ag
 - Commit secrets, tokens, or `.env` files
 - Add external dependencies without discussion
 - Guess on ambiguous specs — stop and ask
+- Write tests that assert static copy, prose, or UI labels — test behaviors, invariants, link validity, and data schemas instead
 
 **ASK**
 - Before adding new dependencies

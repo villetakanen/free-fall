@@ -73,21 +73,23 @@ test.describe("SRD Tactical HUD Dock", () => {
     await expect(lastButton).toContainText("System Reference v7");
   });
 
-  test("non-SRD pages do NOT render the Tactical HUD", async ({ page }) => {
-    // Introduction page
-    await page.goto("/core-rulebook/00-intro/");
-    await expect(page.locator(".tactical-dock")).toHaveCount(0);
-
-    // World lore page
-    await page.goto("/core-rulebook/01-world/");
-    await expect(page.locator(".tactical-dock")).toHaveCount(0);
-
+  test("unrelated non-HUD pages do NOT render the Tactical HUD", async ({
+    page,
+  }) => {
     // Gear page
     await page.goto("/gear/weapons/");
     await expect(page.locator(".tactical-dock")).toHaveCount(0);
 
     // Landing page
     await page.goto("/");
+    await expect(page.locator(".tactical-dock")).toHaveCount(0);
+
+    // Scenarios listing
+    await page.goto("/scenarios/");
+    await expect(page.locator(".tactical-dock")).toHaveCount(0);
+
+    // About page
+    await page.goto("/about/");
     await expect(page.locator(".tactical-dock")).toHaveCount(0);
   });
 
