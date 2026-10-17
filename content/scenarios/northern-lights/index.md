@@ -21,6 +21,11 @@ contents:
       - contact
       - the-approach
       - onboarding
+      - the-lab
+  - section: "Handouts"
+    pages:
+      - the-read
+      - mission-override
   - section: "Opposition"
     icon: "security"
     pages:

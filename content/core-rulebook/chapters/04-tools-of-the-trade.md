@@ -12,6 +12,8 @@ In the fractured future of 2048, capability is bought, installed, or equipped. T
 
 This chapter details the rules governing equipment: the universal qualities shared across gear categories, the three categories of human augmentation, weapon and armor mechanics, and the specialized rules for vehicles and exoskeletons.
 
+For software activation, program tiers, and intrusion, see [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). Programs use the Binding and Load Bearing rules below.
+
 ## General Gear Qualities
 
 Many pieces of equipment share common qualities that define their function and interaction with the core mechanics.
