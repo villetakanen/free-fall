@@ -67,13 +67,17 @@ order: 91
 
 ## N
 
-<dfn id="near-impossible">Near Impossible</dfn> A challenge rating with TN 21+, achievable only with a natural 20.
+<dfn id="near-impossible">Near Impossible</dfn> A challenge rating with TN 21+. Bonuses can raise a die result to meet it; a natural 20 always counts as at least one Success.
 
 ## O
 
 <dfn id="ousted">Ousted</dfn> A character state reached when Harm cannot be absorbed by any available means.
 
 ## P
+
+<dfn id="program">Program</dfn> Hacking software that grants a defined capability while active, with a type, tier bonus, and Mind Binding cost.
+
+* [Hacking software](/core-rulebook/hacking-and-cyber-warfare/#programs-as-gear), in Core Rules
 
 <dfn id="permanent-harm">Permanent Harm</dfn> A Harm slot entry that persists beyond Downtime, created by converting an existing Transient Harm.
 
