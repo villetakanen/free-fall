@@ -1,0 +1,71 @@
+---
+title: "Scene 5: The Second Boarding"
+---
+
+# Scene 5: The Second Boarding
+
+The THESEUS signatures verify. The orders say **PROTECT ORIGIN-17**. Before anyone settles what that means, the crew's own ship interrupts.
+
+> **"Contact reclassified. Close aboard. Assessed type: stealth assault brig. Probable CSA. Identification unconfirmed."**
+
+This is [Contact](/scenarios/northern-lights/contact/) from the other side of the hull. The crew studies an approaching vessel, asks the assistant for its assessment, argues, and commits to action. This time someone else controls the approach. They are standing inside the ship they just demonstrated how to board.
+
+**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team and its shared systems. The brig's combat profile, final marine loadouts, exact impact location, and boarding fight remain to be developed.
+
+## The situation
+
+The report comes from the contractor vessel's sensors and assistant. It is an assessment, not a confirmed identity or a declaration from the marines. No surrender demand opens this scene. The brig has approached quietly and is now committing to a ram: breach the Whisper and overwhelm its defenders before they organize. CSA shock and awe.
+
+Give the table a short window to postulate. They can ask the assistant, examine the contact, recall doctrine, hail the vessel, or start moving. The mission override and the private handout are still fresh. Nobody has to decide whether their companion is compromised before acting, and nobody gets the luxury of resolving that argument first.
+
+If the crew blocked the override in [The Lab](/scenarios/northern-lights/the-lab/), open with the same contact report after that intrusion resolves. The CSA is here for the Whisper and its cargo. Its arrival does not depend on Origin-17 successfully reaching a contractor.
+
+## Read the approach
+
+The assistant can report observations and model possibilities. It does not immediately name the ram in the opening report. Let the players connect the designation to doctrine, ask a useful question, or work the sensor picture.
+
+For a focused assessment under pressure, use **Challenging TN 11+**, with the normal action prerequisites. Relevant routes include Sensors & Countermeasures, Tactical Defense applied to boarding doctrine, or functional sensor and analysis equipment. Judge other methods by what the player actually proposes. An unobstructed, already obvious collision course needs no roll to recognize.
+
+| Result | What the crew learns |
+|---|---|
+| No successes | They cannot distinguish the plan early enough to gain that warning. The brig's final alignment will make the ram obvious, leaving time for an immediate response rather than a prepared defense. |
+| One success | Recognize the standard approach: **ram, breach, overwhelm**. Give enough warning for a concrete preparation before final alignment. |
+| Two or more successes | Also identify a likely impact compartment or a useful time-to-impact estimate from the available track. Give actionable detail that lets the crew place that preparation well. |
+
+Decide the brig's intended impact area from the ship's current condition before revealing an assessment result. Use the same target when resolving its approach unless intervening actions change it. Do not move the ram to wherever the crew has just chosen to stand.
+
+If the players correctly infer the ram without rolling, let them prepare on that inference. A check can establish confidence or precision; it is not permission to act on a good idea. If they rammed the Whisper themselves, point out the familiar geometry when they examine it. They have just flown this maneuver.
+
+## The ship they have to defend
+
+Read the boarding ledger back into the scene. Disabled lasers remain disabled. Their breach remains open or patched exactly as they left it. Doors, comms, surviving spacers, and the contractor ship's damage all matter now.
+
+**A quiet entry buys concealment.** A crew that ghosted in may still be unlocated aboard the Whisper. The brig can ram the hauler without knowing where those contractors are waiting. Concealment buys a choice of position, an ambush, or a chance to stay out of the first sweep.
+
+**A loud entry leaves evidence.** A rammed compartment or a conspicuous boarding gives the marines a clearer picture. The contractors still know the interior and can use cover, hatches, and alternate positions. They also know which defenses they destroyed on the way in.
+
+**A maintained active sensor track buys warning.** Honor the earlier choice to keep watching the supposedly passing contact. The assistant reclassifies it sooner, giving more preparation time within this scene. It does not change the brig's intended attack.
+
+**Survivors are people with useful knowledge.** Pilots can work surviving ship systems; security and stevedores know the spaces about to become a battlefield. Whether they help depends on how the contractors treated them. The people spared in Onboarding can now stand beside the crew. The dead cannot.
+
+## Spend the warning
+
+Ask for concrete actions. “Prepare for boarding” needs a place, a task, and somebody doing it.
+
+- **Clear the likely impact area.** Move people, secure loose equipment, seal a surviving hatch, or take cover beyond the first breach. Better assessment helps them choose the right compartment.
+- **Prepare a defense.** Establish firing positions, arrange movable cover, or place an obstacle using the geometry they already fought through. Resolve difficult work with the normal rules; carry the resulting position into the boarding fight.
+- **Work the surviving systems.** Bring available defenses to bear, secure doors, or coordinate with the contractor vessel. Check what still functions and who can operate it. These are actions with consequences, not a reset of the Whisper.
+- **Stay unseen or seek a way out.** Reposition while the marines commit to their entry. The contractor ship's condition and fuel limit escape; simply accelerating away does not erase a military vessel with ample reserves.
+- **Hail the brig.** They can try to explain, bluff, threaten, or present the signed directive. Sending a message does not pause the approach or guarantee recognition of THESEUS authority. Any meaningful response must change the situation rather than merely consume their turn.
+
+The brig intends to ram. That intention sets the pressure; it does not make the vessel immune to an effective intervention. Honor actions that demonstrably alter the approach. Otherwise, carry their preparations forward into the impact rather than asking them to repeat those decisions afterward.
+
+## Final alignment
+
+When the approach becomes unmistakable, the assistant drops the classification language.
+
+> **"That's not a docking solution. They're coming through."**
+
+On a failed early assessment, this is the late warning: immediate movement, cover, sealing up, or bracing. On a successful assessment, it confirms what the crew already prepared for. Do not turn either result into an extra period of leisurely planning.
+
+Close the scene at impact, or at the changed outcome if the crew successfully alters the approach. Record where everyone is, which preparations succeeded, what the marines can see, and which survivors are cooperating. Keep the unresolved orders and the suspicion between characters alive. The next fight begins with the decisions they made under that uncertainty.

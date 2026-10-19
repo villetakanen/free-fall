@@ -22,6 +22,7 @@ contents:
       - the-approach
       - onboarding
       - the-lab
+      - the-second-boarding
   - section: "Handouts"
     pages:
       - the-read
@@ -30,6 +31,7 @@ contents:
     icon: "security"
     pages:
       - the-whispers-crew
+      - the-csa-marines
   - section: "Backstory"
     icon: "history_edu"
     pages:

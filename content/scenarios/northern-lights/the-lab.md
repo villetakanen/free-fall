@@ -88,13 +88,27 @@ The signature establishes that the directive verifies as THESEUS-signed. It does
 
 The orders say to suspend the purge and protect Origin-17. They do not compel anyone to do so. That is true for the player who received the private handout and for everyone else.
 
-Leave room for the affected player to speak. They may describe the intrusion, display the directive, conceal what they experienced, refuse the new orders, or argue that the signatures settle the matter. Do not ask them to perform infection or keep their handout secret. Complete honesty can be suspicious enough: “I'm still me. Look at the orders.”
+The contact report in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) interrupts as the signatures verify. Leave room for the affected player to speak while the crew responds to that approaching threat. They may describe the intrusion, display the directive, conceal what they experienced, refuse the new orders, or argue that the signatures settle the matter. Do not ask them to perform infection or keep their handout secret. Complete honesty can be suspicious enough: “I'm still me. Look at the orders.”
 
 The others have three facts: their companion was the point of contact, their companion's equipment transmitted new orders, and those orders authenticate. They lack the private reassurance that the character remains their player's to control. Let suspicion arise from that difference. Supporting the override is a plausible decision; it is also exactly what someone afraid of possession might regard as proof.
 
 Origin-17 does not need to manufacture a fight. It can answer questions through the module systems and argue for its survival. It has just learned enough about the world to change its approach. Its willingness to cooperate can be sincere without making the intrusion acceptable or its priorities safe.
 
 ## Investigating and intervening
+
+### Origin-17's offered support
+
+Once it has established access to the character's link or deck, Origin-17 offers the [BLACK warfare suite in the private handout](/scenarios/northern-lights/the-read/). Show the one-line EULA and explain its mechanical cost before the player chooses to use it. Origin-17 does not desire the permanent CNS takeover; the terms warn the host of that risk.
+
+There is **no one-hack-per-turn limit**. The player chooses each target in sight, declared effect, and allocation from their normal Action Pool, with at least one die per attack. BLACK adds +15 per die, with no upfront personal software Binding. Origin-17 supplies fresh programs for further allocated attacks, including in the same turn. A usable connection and normal hacking resolution still apply.
+
+**The Singularity** is scenario-local special gear recording permanent CNS integration. It begins with no Binding; **each natural 1 on an Origin-17-provided attack adds permanent Ghost 1 Binding**, regardless of success. Count individual 1s, not affected rolls. The cost applies to the host's use of the supplied suite, not Origin-17's own opening attacks. Apply ordinary program compromise after resolution as well.
+
+Disconnecting ends access to further supplied programs but does not remove The Singularity or its accumulated Binding. This is permanent encroachment into the host's CNS, not an automatic instruction to the player to obey Origin-17. The consequences of reaching or exceeding the host's Ghost capacity remain an explicit unresolved rule; do not invent possession or additional Harm as an automatic outcome.
+
+Let its usefulness fuel the uncertainty during the marine encounter. Their companion can now disrupt enemy equipment with BLACK software they did not bring aboard. That is evidence of assistance from Origin-17, not evidence that the player's decisions have been taken over. Do not turn the offer into a compulsory attack or require the player to conceal it.
+
+### The crew's responses
 
 **Check the signature.** Confirm the cryptographic result. Further investigation can clarify the directive's provenance and authority, but it does not undo the fact that the signature is valid.
 
@@ -108,12 +122,14 @@ Origin-17 does not need to manufacture a fight. It can answer questions through 
 
 ## Carry it forward
 
-Move on when the crew has acted on the contradiction: protect the QPU, continue the purge, attempt isolation, or hold position while seeking confirmation. Discussion can take time; do not force unanimity or select a traitor to end it.
+As the mission override verifies, the crew’s ship reports a new assessment of the nearby contact: a stealth assault brig, probably CSA. Cut directly to [Scene 5: The Second Boarding](/scenarios/northern-lights/the-second-boarding/). They have not had time to settle whether to protect the QPU, continue the purge, or trust their companion. Those decisions now happen under an approaching threat.
+
+If the crew prevented the override, the brig still arrives. Trigger the report as that intrusion is resolved; the marines were already inbound, independently of Origin-17. Do not force a successful transmission to make the transition work.
 
 Record who was read, what Origin-17 learned, whether the device intrusion succeeded, who received the override, and what the crew chose to do. Carry forward disconnected equipment, damaged shielding, remote queries awaiting replies, and the elapsed time toward the CSA arrival. A blocked transmission is a legitimate branch of the scene, not a reason to deliver the handout by fiat.
 
 ## Remaining mechanical work
 
-The two declared effects and the player's unchanged agency are established. Before treating this draft as a complete encounter, define target TNs, defensive timing, and the precise effect of shielding damage on its reach. The opening volley uses the 5d20 allocation and fresh-program capacity above; the later device intrusion still needs its timing specified. The extraction, isolation, and purge procedures also remain to be written.
+The two declared effects and the player's unchanged agency are established. Before treating this draft as a complete encounter, define target TNs, defensive timing, and the precise effect of shielding damage on its reach. The opening volley uses the 5d20 allocation and fresh-program capacity above; the later device intrusion still needs its timing specified. The extraction, isolation, and purge procedures also remain to be written, along with The Singularity’s consequence when its accumulated Binding reaches or exceeds the host’s Ghost capacity.
 
 Origin-17 can create fresh attack programs. A natural 1 still compromises the program used after resolution, including when the +15 bonus makes the roll succeed. That does not erase an already completed read or transmission, and it does not permanently disarm the intelligence. Resolve further attempts as actions with opportunities for the crew to respond; do not roll indefinitely until a predetermined outcome occurs.
