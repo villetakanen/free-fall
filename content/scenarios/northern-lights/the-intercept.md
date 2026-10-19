@@ -101,16 +101,18 @@ One more asymmetry, and it matters in act two: **delta-v**. The crew spent ~4,60
 | 19 | H+0 | The lesser submind finishes its homework and posts the contract. Solution locked; the 20-hour window opens. |
 | 19 | Launch | The crew burns. Three gravities, 43½ hours, tanks to fumes. |
 | ~21 | H+43:30 | Crew contact. **Scene 1.** |
-| ~21¼ | Contact +6 h | CSA merge. **They walk in around scene 5 or 6 — wherever the table actually is.** |
+| ~21¼ | Contact +6 h | CSA merge. **Scene 5: the contact report interrupts as the mission override verifies.** |
 | 23 | — | The Belt. Everyone's wall. |
 
-The six hours is a suggestion, not a law of physics — the merge point slides a few hours either way with the coasting velocity the CSA chose, so put the knock on the hull where the script needs it (it lands somewhere around Scene 6; you'll know the exact beat once the middle scenes are written). What is *not* negotiable is the shape: the crew arrived loud with empty tanks, and the second crew arrives silent with full ones.
+The six-hour lead is an approximate staging guide. Set the merge within that margin so the crew's ship identifies the brig as the Scene 4 override verifies; do not grant a separate deliberation scene first. This is a dramatic coincidence, not a response to the override: the CSA launched days earlier. If the crew prevents the override, report the contact as that intrusion is resolved instead. Preserve elapsed time and the warning advantages earned by the approach. The crew arrived loud with empty tanks; the second crew arrives silent with full ones.
 
-### The ping (however you stage the middle, it arrives like this)
+### The contact report
 
 The reveal is the assistant's, and it comes in as a correction, not an alarm — because for eight days there was nothing to be alarmed about. Something like:
 
-> **"Guys — I'm sorry. That transport I flagged going close by? It's not just going close by. It's *close.*"**
+> **"Contact reclassified. Close aboard. Assessed type: stealth assault brig. Probable CSA. Identification unconfirmed."**
+
+Run the assessment and preparation window in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/). The first report identifies a suspected vessel type, not its boarding plan. The brig is committing to a ram; recognizing that early is the crew’s opportunity.
 
 That is the whole horror of the merge in one line: the assistant did its job perfectly. A contact sharing the lane, matched vector, no intercept burn — *transit traffic*, filed and forgotten eight days ago. Nothing reclassifies it until the range stops making sense for traffic, and by then the CSA is already in the crew's lap. It never *closed*. It was always going to be here; the crew just never had a reason to look until now.
 

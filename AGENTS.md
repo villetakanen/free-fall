@@ -31,6 +31,13 @@ Everything — content structure, components, navigation, prose — is tested ag
 
 **Always use `pnpm` — never use `npm` or `npx` when `pnpm` or `pnpm exec` can do the job.**
 
+## Production Deployment
+
+- **Live site:** https://free-fall.myrrys.com
+- **Host:** Netlify. Merging into `main` automatically triggers the production deployment.
+- **Release route:** Validate changes on `dev`, then open and merge a `dev` → `main` release PR. A push to `dev` alone does not publish production.
+- **Verify publication:** After merging, check the live site's version and changed routes. A merged PR confirms the source release; report deployment success only after verifying the live site or Netlify deployment status.
+
 ## Judgment Boundaries
 
 **NEVER**
