@@ -18,7 +18,15 @@ function snapshot(page: Page): PlaygroundSheet {
   return JSON.parse(decodeURIComponent(new URL(page.url()).hash.slice(7)));
 }
 
+async function settings(page: Page, expanded = true) {
+  const trigger = page.locator("[data-settings-toggle]");
+  if ((await trigger.getAttribute("aria-expanded")) !== String(expanded))
+    await trigger.click();
+  await expect(trigger).toHaveAttribute("aria-expanded", String(expanded));
+}
+
 async function load(page: Page, id: string) {
+  await settings(page);
   await page.getByLabel("Starting sheet", { exact: true }).selectOption(id);
   await page.locator("[data-load]").click();
 }
@@ -49,6 +57,7 @@ test("identity and values round-trip through a new page without storage or chara
   page.on("request", (request) =>
     requests.push(request.url() + (request.postData() ?? "")),
   );
+  await settings(page);
   const name = '李 Å # / % 🚀 <img src=x onerror="alert(1)">';
   await page.getByLabel("Name", { exact: true }).fill(name);
   await page.getByLabel("Callsign", { exact: true }).fill("Quiet & Bold");
@@ -138,6 +147,7 @@ test("keyboard adjustments and repeated conversions commit against the latest sh
   await open(page);
   await load(page, "vector");
   const bases = snapshot(page).bmg;
+  await settings(page, false);
   const increase = page.locator('[data-attribute="ghost"] [data-adjust="1"]');
   await increase.focus();
   await page.keyboard.press("Enter");
@@ -168,6 +178,7 @@ test("fragment and browser history navigation restore snapshots; damaged URLs su
   await open(page);
   await load(page, "vector");
   const saved = page.url();
+  await settings(page, false);
   const next = loadPreset("root");
   if (!next.ok) throw new Error(next.error);
   const fragment = encodeSheetFragment(next.value);
@@ -227,6 +238,7 @@ test("Copy Link writes the full snapshot and falls back to a selectable current 
   });
   await open(page);
   await load(page, "sable");
+  await settings(page, false);
   await page.locator("[data-copy]").click();
   await expect(page.locator("html")).toHaveAttribute("data-copied", page.url());
   await page.evaluate(() => {
@@ -244,6 +256,7 @@ test("Copy Link writes the full snapshot and falls back to a selectable current 
         (el.selectionEnd ?? 0) - (el.selectionStart ?? 0),
     ),
   ).toBe(page.url().length);
+  await settings(page);
   await page.getByLabel("Name", { exact: true }).fill("New name");
   await expect(fallback).toHaveValue(page.url());
 });
@@ -259,6 +272,7 @@ test("320px layout keeps inputs and BMG controls within the content width", asyn
     return [...root.querySelectorAll("input, select, button")].flatMap(
       (element) => {
         const rect = element.getBoundingClientRect();
+        if (!rect.width && !rect.height) return [];
         return rect.left < bounds.left - 1 ||
           rect.right > bounds.right + 1 ||
           rect.height < 44
@@ -282,6 +296,7 @@ test("without JavaScript the route has a readable fallback and working site link
   const page = await context.newPage();
   await page.goto("http://localhost:14321/playground/");
   await expect(page.locator("[data-playground-fallback]")).toBeVisible();
+  await expect(page.locator("#playground-settings-hud")).toBeHidden();
   await expect(
     page.locator("[data-playground] input, [data-playground] button"),
   ).toHaveCount(0);
@@ -289,4 +304,83 @@ test("without JavaScript the route has a readable fallback and working site link
     page.locator('#app-tray-nav a[href="/"]').first(),
   ).toHaveAttribute("href", "/");
   await context.close();
+});
+
+test("Settings docks one form and preserves drafts, URL and keyboard focus", async ({
+  page,
+}) => {
+  await open(page);
+  const trigger = page.locator("[data-settings-toggle]");
+  const form = page.locator("[data-settings-form]");
+  const input = page.getByLabel("Body Current", { exact: true });
+  const picker = page.getByLabel("Starting sheet", { exact: true });
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(form).toBeHidden();
+  const initialUrl = page.url();
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  await expect(picker).toBeFocused();
+  await expect(
+    page.locator("#playground-settings-host [data-settings-form]"),
+  ).toHaveCount(1);
+  expect(page.url()).toBe(initialUrl);
+  await input.pressSequentially("123");
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  const savedUrl = page.url();
+  await input.fill("unfinished");
+  await input.press("Escape");
+  await expect(form).toBeHidden();
+  await expect(trigger).toBeFocused();
+  expect(page.url()).toBe(savedUrl);
+  await settings(page);
+  await expect(input).toHaveValue("unfinished");
+  await expect(input).toHaveAttribute("aria-invalid", "true");
+  await page
+    .locator('#playground-settings-hud [data-close-pane="custom"]')
+    .click();
+  await expect(trigger).toBeFocused();
+  await page.locator('[data-attribute="body"] [data-adjust="1"]').click();
+  await settings(page);
+  await expect(input).toHaveValue("124");
+  await expect(input).toHaveAttribute("aria-invalid", "false");
+  await expect(form).toHaveCount(1);
+  await expect(form.locator("input")).toHaveCount(8);
+});
+
+test("Settings preserves the same form and drafts when moving between HUD and narrow layout", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 800, height: 1000 });
+  await open(page);
+  await load(page, "vector");
+  const input = page.getByLabel("Mind Base", { exact: true });
+  await input.fill("unfinished");
+  const savedUrl = page.url();
+  await input.evaluate((element) => {
+    element.dataset.original = "true";
+  });
+  await page.setViewportSize({ width: 320, height: 740 });
+  await expect(
+    page.locator(".inline-settings [data-settings-form]"),
+  ).toBeVisible();
+  await expect(input).toBeFocused();
+  await expect(input).toHaveValue("unfinished");
+  await expect(input).toHaveAttribute("data-original", "true");
+  await page.locator("[data-settings-close]").click();
+  await expect(page.locator("[data-settings-form]")).toBeHidden();
+  await expect(page.locator("[data-settings-toggle]")).toBeFocused();
+  await settings(page);
+  await page.setViewportSize({ width: 1800, height: 1000 });
+  await expect(
+    page.locator("#playground-settings-host [data-settings-form]"),
+  ).toBeVisible();
+  await expect(input).toHaveValue("unfinished");
+  await expect(input).toHaveAttribute("data-original", "true");
+  await expect(page.locator("[data-settings-form]")).toHaveCount(1);
+  expect(page.url()).toBe(savedUrl);
+  await settings(page, false);
+  await page.setViewportSize({ width: 320, height: 740 });
+  await expect(page.locator("[data-settings-form]")).toBeHidden();
+  await settings(page);
+  await expect(input).toHaveValue("unfinished");
 });

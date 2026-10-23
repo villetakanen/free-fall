@@ -1,4 +1,5 @@
 ---
+import TacticalHud from "@free-fall/design-system/components/TacticalHud.astro";
 import CharacterPlayground from "../../components/CharacterPlayground.svelte";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
@@ -8,9 +9,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <CharacterPlayground client:only="svelte">
     <p slot="fallback" data-playground-fallback>Enable JavaScript to edit a character sheet or open a sheet link.</p>
   </CharacterPlayground>
+  <TacticalHud
+    slot="hud"
+    id="playground-settings-hud"
+    panes={[{ id: "custom", title: "Settings", icon: "settings" }]}
+  >
+    <div slot="pane-custom" id="playground-settings-host" />
+  </TacticalHud>
 </BaseLayout>
 
 <style>
+  :global(.workspace:not(:has([data-playground][data-ready="true"])) #playground-settings-hud) {
+    display: none;
+  }
   h1 span {
     display: block;
     margin-block-start: var(--freefall-space-1);
