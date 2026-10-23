@@ -1,6 +1,6 @@
 # Feature: Character Sheet Playground
 
-**Status:** Implemented, 2026-10-23. Tracked by [#79](https://github.com/villetakanen/free-fall/issues/79).
+**Status:** Implemented, 2026-10-23. Tracked by [#79](https://github.com/villetakanen/free-fall/issues/79); Settings refinement tracked by [#81](https://github.com/villetakanen/free-fall/issues/81).
 
 ## Blueprint
 
@@ -20,10 +20,19 @@ Playground is a top-level section at `/playground/` on the main FREE//FALL site,
 - Provide labeled name/callsign fields and direct numeric entry for all six Current/Base values. Clearing a numeric field commits `null`; zero remains zero. Invalid numeric drafts show an associated error and preserve the last committed state and URL.
 - Reuse BMG's attached +/− buttons, three conversion arrows, validation, and pure helpers. The controller accepts each valid proposal synchronously and updates the URL from that same snapshot.
 
+#### Settings HUD
+
+- The main play surface shows the committed name/callsign, BMG circle, Settings trigger and Copy Link. Preset selection/loading, identity editing and all six direct numeric inputs live together in a **Settings** pane in the existing Tactical HUD.
+- Settings starts closed. Opening, closing or resizing the pane preserves committed values, pending input drafts and the URL. The pane's visibility is page-local UI state, excluded from the sheet URL.
+- Reuse TacticalHud's `custom` pane slot with the `settings` icon. The existing Svelte controller owns one form and places that form into the HUD slot; no second sheet store or duplicate inputs are created.
+- At the HUD's suppressed host width (32rem or less), the same Settings trigger opens a collapsible form within the page. Switching between the two placements preserves the form and its values. Settings remains usable at 320px.
+- Settings opens with focus in the form, closes using the HUD close button or Escape, and returns focus to a visible Settings trigger. Typing numbers in the form never invokes HUD number shortcuts. Copy Link, recovery from invalid URLs and play controls remain available outside Settings.
+- [DEPRECATED 2026-10-23] Always-visible preset/identity controls and the adjacent Attributes editor. The user moved sheet initialization tools into Settings to keep the main sheet focused on play.
+
 | File | Responsibility |
 | --- | --- |
-| [playground/index.astro](../../../apps/free-fall/src/pages/playground/index.astro) | Route, layout, client-only island and fallback. |
-| [CharacterPlayground.svelte](../../../apps/free-fall/src/components/CharacterPlayground.svelte) | Preset selection, field editing, BMG ownership and link copying. |
+| [playground/index.astro](../../../apps/free-fall/src/pages/playground/index.astro) | Route, layout, Settings HUD slot, client-only island and fallback. |
+| [CharacterPlayground.svelte](../../../apps/free-fall/src/components/CharacterPlayground.svelte) | Preset selection, field editing, responsive Settings form, BMG ownership and link copying. |
 | [playground.ts](../../../apps/free-fall/src/lib/playground.ts) | Typed presets, sheet validation and pure URL encoding/decoding. |
 | [BaseLayout.astro](../../../apps/free-fall/src/layouts/BaseLayout.astro) | Existing shared navigation. |
 | [character-attributes.ts](../../../packages/design-system/src/components/character-attributes.ts) | Existing `BmgValues`, numeric validation and BMG operations. |
@@ -77,6 +86,7 @@ Show the chosen starting configuration alongside each preset. These are starting
 - [x] Copying and reopening a URL restores Unicode identity text and all six values, including zero and `null`.
 - [x] Invalid input or URL state is recoverable without overwriting the last valid snapshot; clipboard failure exposes a copyable link.
 - [x] Tests verify state/URL round trips, invalid payloads, preset data and browser editing/reload behavior without asserting static prose. Keyboard use and the JavaScript-disabled fallback are checked.
+- [x] Settings uses the HUD on supported host widths and an accessible collapsible form on narrow hosts; close/reopen and resizing preserve the single sheet and pending drafts.
 - [x] `pnpm typecheck` and relevant application Playwright checks pass.
 - [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass.
 
@@ -114,12 +124,19 @@ Scenario: JavaScript unavailable
   When /playground/ opens
   Then the site navigation and JavaScript-required explanation are readable
   And no nonfunctional character-editing controls are presented
+
+Scenario: Put setup aside while playing
+  Given a loaded sheet and an unfinished numeric draft in Settings
+  When the player closes and reopens Settings or changes the available screen width
+  Then the same form, draft and committed sheet remain available
+  And visibility changes do not alter the URL
 ```
 
 
 ### Implementation evidence (2026-10-23)
 
 - `apps/free-fall/src/lib/playground.test.ts`: 41 checks covering preset snapshots, complete URL round trips, blank/zero distinctions, invalid input and immutable validation.
-- `apps/free-fall/e2e/playground.test.ts`: 10 browser checks covering navigation, all presets, editing, keyboard BMG actions, reload/history restoration, malformed links, clipboard fallback, 320px layout and scripting-disabled fallback.
-- Repository build, lint and typecheck pass; the main app's Svelte island also passes `svelte-check` without warnings. All 120 unit tests and 89 browser checks pass across the app and design system.
+- `apps/free-fall/e2e/playground.test.ts`: 12 browser checks covering navigation, all presets, editing, keyboard BMG actions, reload/history restoration, malformed links, clipboard fallback, 320px layout and scripting-disabled fallback. Settings checks cover keyboard focus, close/reopen, retained invalid drafts, BMG updates reaching hidden fields, and moving the same form between HUD and inline placements.
+- Repository build, lint and typecheck pass; the main app's Svelte island also passes `svelte-check` without warnings. All 120 unit tests and 91 browser checks pass across the app and design system.
 - Release 0.11.0 identifies Playground as Experimental in the shared navigation, page heading and browser title.
+- Release 0.11.1 moves setup into Settings while keeping the existing URL format and Experimental designation.
