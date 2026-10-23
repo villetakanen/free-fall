@@ -10,6 +10,16 @@ The *Njord's Whisper* is not helpless. Three leased point-defense lasers sit at 
 
 Run the approach in **Action Time** while the crew acts through their vessel: piloting, hacking, firing rockets, finding angles, and managing damage. Escalate to **Bullet Time** when operators and the Whisper's security personnel meet outside the hull. The scene ends when the crew has made and secured an entry, not merely when they reach the ship.
 
+## Carry the deployment into action
+
+Use the positions and equipment confirmed in [Contact](/scenarios/northern-lights/contact/). Establish who is aboard the crew vessel, who has deployed outside it, who is crossing, and who has reached the target. Name their route, sightline, and working communication or hacking access. Suggested positions from the [briefing](/scenarios/northern-lights/briefing/) grant no free movement or automatic entry.
+
+Vector can pilot from either deployment through an optical or RF link. Check line of sight for optical contact and shielding/interference for RF. A lost link prevents new remote commands; the assistant can continue the agreed flight plan. To change it through Vector, restore the link or reach local controls. Normal pilot Binding and action costs still apply.
+
+Stitch can remain aboard in the Havoc and cross later, or accompany the first insertion under its own thrust. The Havoc does not fit the shuttle. A later crossing still takes time and a viable path through the defenses; record which opening admits the frame. The Tiger needs a line, shuttle, connected breach, or other transport. Root needs an actual electronic access path for remote work and a physical crossing for local work; The Wrench’s 5 cm reach does not grow because the target is visible.
+
+Sable can scout separately or take point with the group. Resolve her approach before granting a perch or entry, and let her regroup if the route fails. Vantage’s cover follows his actual weapon sightline. Repositioning any operator requires movement through the current situation, not a cut to their proposed destination.
+
 ## What controls what (GM)
 
 Keep the systems separate. The distinction is load-bearing.
@@ -92,7 +102,9 @@ The assistant has already chosen a target, and offers it with the same cheerful 
 
 It is not wrong, and that is the trouble with it. Let the crew take the recommendation or override it; whatever impact area they commit to is where [Scene 3](/scenarios/northern-lights/onboarding/) opens. The one cost the assistant cannot price is the one thing it does not know is aboard — and the "inert cargo" it dismisses up front is exactly where that thing has been waiting.
 
-Run the ram as three Action Time exchanges. Vector makes one Vehicle Handling roll in each. Between those rolls, every other player gets one consequential action through the vessel: hack the network, fire a rocket cannon, take a precision shot, operate point defense, manage damage, refine the impact solution, or invent something better.
+Before committing, bring everyone riding the ram into the cabin’s crash protection. Exterior deployments aboard this vessel wait until after impact. Record anyone already detached, crossing, or aboard the Whisper separately; they do not ride the collision.
+
+Run the ram as three Action Time exchanges. Vector makes one Vehicle Handling roll in each through her working link from a protected position; the helm is optional. If she is elsewhere and loses that link, pause her remote commands and establish what the assistant’s existing course does while the crew restores contact or reaches local controls. An absent Vector supplies no Vehicle Handling rolls: use the actual operator’s prerequisites and available assistance under the normal rules. Between those rolls, every other player gets one consequential action from their actual position: hack a reachable network, fire a controlled rocket cannon, operate point defense, manage damage, refine the impact solution, or invent something better.
 
 ### 1. Choose the line
 
@@ -102,11 +114,11 @@ The Whisper begins rotating. Vector puts the titanium prow toward the target and
 - **Greater success:** One mount can see them, and it acquires late. Give the crew the first action before it fires.
 - **Failure:** The rotation catches them between arcs. Two mounts can fire, and the crew must disable one, break the geometry, or take concentrated attrition.
 
-Ask everyone else what they do with the seconds Vector bought. The rockets can remove a mount. Root can force a brief **DEFER**. Vantage can brace a long gun against the hull and shoot. Stitch can keep damaged systems alive. Sable can read where the security pair is moving and call a breach they cannot cover in time.
+Ask everyone else what they do with the seconds the pilot bought. A controlled rocket cannon can remove a mount. Root can attempt a brief **DEFER** through a reachable interface. Vantage can work available ship weapons from protection; a detached Vantage with a clear line can use his long gun. Stitch can keep systems alive if she is there to reach them. Sable can report a breach route from whatever position and observations she actually has.
 
 ### 2. Hold the run
 
-The range collapses. The assistant can still calculate; only Vector can keep the prow between the crew and the beams while the Whisper rolls under them.
+The range collapses. The assistant keeps calculating; the operator must keep the prow between the crew and the beams while the Whisper rolls under them. Vector can do that remotely while her link holds.
 
 - **Success:** The prow holds. Apply any laser damage to the ram shield or a declared external system.
 - **Greater success:** Vector breaks one mount's track or presents a firing solution to an ally. The next action against that mount has the advantage of surprise and position.
@@ -116,9 +128,9 @@ Do not make a failed roll end the ram. It makes arrival worse.
 
 ### 3. Place the impact
 
-The Whisper fills the forward view. Crash foam fires. Everyone disappears into white.
+The Whisper fills the forward view. Crash foam fires. Everyone riding inside disappears into white. Detached operators remain where their own movement took them.
 
-- **Success:** The prow enters the chosen compartment. The crew arrives together, protected by the shield, with the breach where they wanted it.
+- **Success:** The prow enters the chosen compartment. Those riding the ram arrive together, protected by the shield, with the breach where they wanted it.
 - **Greater success:** As above, and the wrecked prow leaves a defensible route back into their vessel.
 - **Failure:** They still breach. Put them somewhere costly: the wrong compartment, a partially collapsed access, a venting cargo space, or directly beside the security pair. Inflict appropriate :term[Harm] for any protection the lasers already stripped away.
 
@@ -156,7 +168,9 @@ Once the approach is open, the defenders answer it — but sparingly. At most on
 
 If players leave the craft in EVA gear or exos with long-range weapons, and security moves to oppose them, escalate to Bullet Time.
 
-> **"One figure just came over the curve. Suited, mag-locked, carbine up — and marking Vantage. Both lasers are rotating with the mark."**
+Name an operator who is actually exposed and visible to the defender, then report the threat:
+
+> **"One figure just came over the curve. Suited, mag-locked, carbine up — and marking your position. Both lasers are rotating with the mark."**
 
 The security officer on the hull uses the ship, not empty space:
 
@@ -188,13 +202,15 @@ Before moving on, record what the players changed:
 - Is the defense network on **ATTACK**, **DEFER**, or compromised?
 - What is broken or damaged on the crew's vessel?
 - Can their vessel still separate, maneuver, and make the slow trip home?
-- Where is the entry, and can it be used as an exit?
+- Where is each operator, what route have they secured, and who still needs to cross?
+- Which optical/RF links and hacking access paths work from those positions?
+- Where is the entry, can it admit the deployed frames, and can it be used as an exit?
 - Where are the two security personnel?
 - What do the pilots and stevedores know about the attackers?
 - Did the approach cost minutes or hours?
 
 Those facts are the opening situation aboard. Do not reset them because the scene changed.
 
-The crew crosses the skin. Their assistant loses the interior picture. Origin-17, patient through all the shooting, finally has something close enough to touch.
+The first boarders cross the skin; operators covering outside or waiting aboard remain there until they move. Their assistant loses the interior picture. Origin-17, patient through all the shooting, finally has something close enough to touch.
 
 Check your seals.

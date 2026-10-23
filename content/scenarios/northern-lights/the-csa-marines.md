@@ -44,11 +44,23 @@ Only the two assaulters are committed to the immediate push through the interior
 
 Use the catalog **Wraith Infiltration Frame** as the starting point for the two assault frames: stealth, EVA mobility, and electronic warfare integration. These are custom scenario variants. Their defining addition is the CSA support systems described below, rather than increased armor or damage by default.
 
-The catalog Wraith has FRM 10, SYS 14, AV 2, Ghost 4 pilot Binding, and an additional Mind 1 while its Ghostlink is active. Those are comparison values, not a finalized stat block for the CSA variant. Determine the variant's complete load and costs alongside its weapons before running the fight.
+The catalog Wraith has FRM 10, SYS 14, AV 2, Ghost 3 pilot Binding, and an additional Mind 1 while its Ghostlink is active. Piloting requires a Neural Link, separately binding Ghost 3; the interface in the frame does not replace the implant. Its active Ghostlink Mind cost can use the link’s software/systems allowance. Those are comparison values, not a finalized stat block for the CSA variant. Determine the variant's complete load and costs alongside its weapons before running the fight.
 
 ## Local systems and voice coordination
 
-**IFF and identity checks.** Their identification-friend-or-foe systems distinguish teammates and classify other contacts, including civilians, contractors, and protected persons. An identity is tactically relevant. [Vantage's citizenship](/scenarios/northern-lights/c-02-the-operator/) triggers the established capture restriction: a valid identification narrows what the marines may do around him. It does not make him physically invulnerable.
+**IFF and identity checks.** Their identification-friend-or-foe systems distinguish teammates and classify other contacts, including civilians, contractors, and protected persons. [Vantage knows his Class A citizenship affords commercial protection](/scenarios/northern-lights/c-02-the-operator/#eu-full-citizen-class-a). The following orders are GM information, not a surprise about his own status.
+
+**The one they take alive.** Harming a recognised EU Class A citizen carries commercial consequences. The squad’s no-witnesses orders therefore carve Vantage out: capture him, or leave him recoverable through medical and cybernetic intervention. This restriction constrains their target selection and use of force; it grants him no AV or physical immunity. The player can deliberately invoke a protection Vantage already understands. Do not require a later revelation before allowing that choice.
+
+Before operative classification, prepared records and compliant targeting overlays can identify him. Other credible identity evidence can establish the same fact. Track which marines recognise him and what they have communicated by voice. Disabling IFF removes its combat bonuses and automated identification support; it does not erase an identification already made, revoke citizenship, or replace the marines’ orders. An uncertain identity needs verification, not automatic permission to ignore a known protected person.
+
+### Classified operative identities
+
+If Origin-17 has elevated a contractor, personal identity fields return **CLASSIFIED — N/A**. The identity is access-restricted, not deleted. **Only the CSA marine commander has sufficient clearance to read the THESEUS OPSEC designation behind that result.** Other marines do not gain the same access from their local IFF or from seeing a valid signature on a directive.
+
+Distinguish what a marine knows from what their display can currently show. Classification does not erase a previous recognition, revoke Vantage’s citizenship, or remove its Binding. If Vantage is the elevated contractor and has not yet been recognised, ordinary classified records cannot establish his citizenship; identification needs other credible evidence. Knowledge already established can still be communicated by voice.
+
+Reading an operative designation supplies information. It does not itself replace sealed CSA orders, make the marines obey the contractor, or guarantee escape. Assigning the command role among the existing four marines and specifying the commander’s response to that information remain part of completing the encounter; this clearance does not add a fifth marine.
 
 **Shared targeting.** One marine’s spoken observation can inform the others through LPC. A target handoff gives another operator information; it does not grant sight through a bulkhead, a free attack, or an automatic hit. Mark who has actually seen the target and who is relying on a report.
 

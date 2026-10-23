@@ -4,11 +4,15 @@ title: "Scene 1: Contact"
 
 # Scene 1: Contact
 
-Open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home.
+After the [crew briefing](/scenarios/northern-lights/briefing/), open *in media res*. Skim the forty-three hours of burn as a montage — they happened, the crew is aching, crammed in their straps, and the tanks have just enough fuel left for a slow crawl home.
 
-The game begins when the assistant calls the lock. A gig like this cannot be planned in advance — you learn what is actually out there when you arrive — and now they have arrived: still outside the Whisper's point-defense envelope, with a dark ship on the scope and a clock eating the margins. The assistant offers three modelled approaches, but those are models, not the menu. The crew can dig for more intel, creep in dark, go in loud — or hail the Whisper on point-comms, if someone is crazy enough to risk what might ride back in the reply. Players are inventive; let them be. **From here on, the game is the players' show.** The scene ends when they decide how to make the approach — Scene 2 is them flying it. (If a player wants the numbers, the whole intercept is Appendix A.02.)
+The game begins when the assistant calls the lock. The crew has assigned provisional positions and equipment; the exact approach needs live information. Now they have arrived: still outside the Whisper's point-defense envelope, with a dark ship on the scope and a clock eating the margins. The assistant offers three modelled approaches, but those are models, not the menu. The crew can dig for more intel, creep in dark, go in loud — or hail the Whisper on point-comms, if someone is crazy enough to risk what might ride back in the reply. Players are inventive; let them be. **From here on, the game is the players' show.** The scene ends when they decide how to make the approach — Scene 2 is them flying it. (If a player wants the numbers, the whole intercept is Appendix A.02.)
 
 > **"Lock. Target vessel, dead ahead, forty thousand kilometers and closing. Njord's Whisper. She's exactly where the math said she'd be."**
+
+## Confirm the deployment
+
+Read back the briefing’s first positions, active gear, crossing routes, and regroup plan. Everyone begins aboard the crew vessel after the burn; nobody is already on the Whisper because they chose to scout. After the assistant presents its observations and approach options, let each player keep or revise their assignment. Decide who crosses first, who remains aboard, and what prompts a later crossing. Carry those decisions into The Approach.
 
 ## How they got here
 
@@ -55,7 +59,7 @@ None of these is the "right" answer. Each buys something and spends something, a
 
 ### The crew weighs in (running the pregens)
 
-The five ready-made operators don't debate this neutrally — each is built to want a different door, and the argument *is* the scene. Let them fight about it in character; the approach the table lands on should feel like the crew's, not the assistant's.
+These are possible arguments from the pregens’ equipment and experience, not assigned opinions. Ask the players what their operators advocate after the briefing; any of them may prefer another approach. Their starting positions can change with the plan.
 
 - **Vector (Pilot)** wants to **ram**. Of course she does — it's her check, her frame, the one option where the ship in her hands decides the outcome instead of a probability readout. She'll frame it as decisive ("we're aboard before anyone gets a vote"), and she's not wrong. She flies the cold drift too if overruled, but the ram is the shot she's arguing for.
 - **Sable (Spectre)** wants to **ghost**. Silent insertion is her doctrine and her class; loud is how amateurs die. She'll push it hard and she'll be *right about the safety* — wrong only about the clock, which isn't her department. Vector-versus-Sable is the whole scenario's speed-vs-silence dial, embodied in two people who've trusted each other for a year.
@@ -63,7 +67,7 @@ The five ready-made operators don't debate this neutrally — each is built to w
 - **Root (Wirehead)** also leans **active**, for a different reason: they want the Whisper's systems mapped before cutting in, and the crossing doesn't scare them either way. The one voice for whom "she might see us" is a smaller worry than "I want to know what I'm plugging into."
 - **Stitch (Fixer)** leans **ghost**, and trusts the assistant's tidy percentages *least* of anyone — a medic's version of Sable's paranoia. When she says "I don't like getting our odds from a box," she is, unknowingly, the closest to right in the room. Note who hedges their faith in the ship now; those are the two the scenario vindicates later.
 
-The point isn't consensus — it's that whatever they pick, two of them wanted something else, and that seam is what the second half of the session pulls on.
+Record the plan they actually choose, including disagreements only if the players express them. The approach belongs to this crew.
 
 ### Why not perfect stealth? (GM note)
 

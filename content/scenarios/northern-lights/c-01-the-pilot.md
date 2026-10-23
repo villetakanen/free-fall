@@ -31,6 +31,15 @@ On a mission, the pilot wears the "Tiger" — an elegant, hard-space-enhanced ta
   - **Mind:** 12 − 2 = **10** (deep reserve for flying under fire), **9** in the Tiger
   - **Ghost:** 8 − 3 = **5** — and **2** in the Tiger (the frame demands almost everything she has left)
 
+## Starting position
+
+At the [crew briefing](/scenarios/northern-lights/briefing/), choose where you first deploy:
+
+- **Crew-vessel exterior:** cover the others’ deployment while directing flight through an optical or RF link. You retain a clear view of the vessel but must cross later to join the interior action.
+- **With the boarding team, in the Tiger:** direct insertion while linked, then bring your breaching and close-combat capability to the entry. Hull geometry may break optical contact; RF depends on shielding and interference.
+
+You need the link, not a seat at the helm. Give the assistant a continuing flight plan before contact becomes uncertain. A lost link prevents new remote commands; routine flight can continue. Normal ship pilot Binding still applies. The Tiger has no EVA thrusters, so arrange a line, shuttle, connected breach, or another viable lift. During a ram, pilot from crash protection and deploy afterward; that protected position need not be the helm.
+
 ## In this scenario
 
 - **Nominal is not their scene — degraded is.** If the Ram takes point-defense hits, if the active sweep wakes something that shoots back, if the ship comes off the breach with holed tanks: Vehicle Handling is what stands between "we limp home" and "we're a second derelict."

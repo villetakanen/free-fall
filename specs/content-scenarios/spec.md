@@ -255,3 +255,79 @@ Scenario: Scenario term missing from the parent registry fails the build
   When the build runs
   Then the build fails identifying the file and the unresolved term
 ```
+
+## Northern Lights: Vantage configurations and citizenship
+
+Vantage owns alternative Wraith and Combat Deck configurations. Both require the same installed Neural Link (Ghost 3). The Wraith binds Ghost 3 under the [gear contract](../content-gear/spec.md#wraith-pilot-interface-contract); the deck remains stowed and unbound while Vantage pilots it. In the deck configuration Vantage has exited the frame. This is Vantage's chosen loadout arrangement, not a universal prohibition on owning or combining these items.
+
+EU Class A citizenship is scenario-local gear binding Ghost 1, described on Vantage's character page. Vantage knows that harming him has commercial consequences and treats his virtual untouchability like playing an MMORPG. This protection is commercial leverage rather than AV or physical immunity. It remains bound across equipment changes; attaching a credential to armor does not let armor Load Bearing offset citizenship. Ordinary Compromise Harm can break its protection as bound Ghost gear; Broken status retains Binding under the existing rules.
+
+The player-facing citizenship section conveys that known protection. The CSA squad's particular capture orders and identification procedures live in `content/scenarios/northern-lights/the-csa-marines.md`. Recognition can be established by available identity evidence; loss of local IFF removes its bonuses but does not erase a marine's knowledge of an identified citizen or change orders. Other character information boundaries remain separate review work.
+
+Configuration values are personal maximum Current Attributes before expenditure or Harm, not automatic refills when changing gear. Initial Body/Mind/Ghost are 12/6/8. Frame FRM/SYS remain separate machine resources.
+
+### Verification
+
+- [x] Wraith configurations bind Ghost 7 in total, leaving maximum Current Ghost 1; deck configuration binds Ghost 4, leaving 4.
+- [x] Attached rail gun uses Wraith Load Bearing 2 against Body 7; attached Light Lance uses it against Mind 2. These are alternative weapons.
+- [x] Ghostlink Mind 1 or deck Mind 3 uses the Neural Link allowance once; the deck's temporary combat-only Mind is separate from ordinary Current Mind.
+- [x] The player knows citizenship's commercial protection; exact CSA capture orders reside in the GM opposition reference.
+- [x] Frame/deck transitions retain implant and citizenship Binding, remove unavailable capabilities, and do not refill spent Attributes.
+- [x] `pnpm build`, `pnpm lint`, `pnpm test`, and `pnpm typecheck` pass.
+
+## Northern Lights: briefing and initial deployment
+
+A player-facing Scene 0 precedes Contact in the overview manifest. The briefing establishes the known contract, provisional deployment, equipment, transport, communications, and regroup plan. Contact supplies live sensor information; players may revise their choices before committing to the approach. Starting positions are intentions until travel and entry are resolved.
+
+Each character page provides these two starting choices before its GM scene guidance:
+
+| Character | First position | Second position |
+| --- | --- | --- |
+| Vantage | External overwatch from the crew vessel | Accompany the boarding team at its chosen entry |
+| Vector | Crew-vessel exterior, covering deployment and directing flight | Boarding team in Tiger, directing insertion while linked |
+| Root | Sheltered systems support inside the crew vessel | Physical access with the boarding team |
+| Stitch | Remain with the crew vessel in Havoc, cross independently later | Accompany the first boarders under Havoc thrust |
+| Sable | Separate advance scout | Point operator with the main boarding group |
+
+These choices describe useful initial responsibilities, not exclusive slots or permanent party separation. Alternative feasible deployments remain valid. Only characters selected for play receive assignments; routine flight can remain with the assistant. No later encounter knowledge is required to choose.
+
+Vector can drive the crew vessel through an optical or RF link; she need not occupy the helm. Optical contact needs a clear path, while RF depends on shielding and interference. A lost link ends remote commands but does not erase the existing flight plan. The assistant handles routine flight; unavailable communication does not grant the player fresh remote actions. Ship pilot Binding still applies when remotely piloting. The Tiger's lack of EVA thrusters remains a crossing constraint.
+
+Stitch retains Havoc in both positions. It cannot fit the approach shuttle but can cross initially or later using its own EVA thrusters. Range, travel time, defensive fire, and entry clearance remain relevant. Root's remote support requires an actual access path; The Wrench remains limited to 5 cm, and unsuited vacuum survival supplies no propulsion. Sable's scouting earns a position during the approach rather than bypassing defenses or granting entry.
+
+High thrust and ram require suitable protection. Exterior positions are occupied only when conditions permit. Characters riding the ram must be inside crash protection before impact; detached characters retain their actual positions. Onboarding and the second boarding inherit the players' actual locations and available paths. Vantage's possible external shot is contingent on his position and sightline, not a scripted relocation to the Whisper's spine.
+
+### Verification
+
+- [x] Scene 0 is in the manifest before Contact and contains the known briefing plus a usable deployment record.
+- [x] All five character pages contain their two approved choices and link to the briefing; the briefing discloses no later threat or hidden cargo facts.
+- [x] Remote piloting and link loss agree across Vector, vessel, briefing, and approach.
+- [x] Havoc shuttle exclusion, independent crossing, Tiger transport limits, and Root access constraints agree across relevant pages.
+- [x] Ram and non-ram walkthroughs preserve positions; late crossings remain possible without moving characters by scene transition.
+- [x] Vantage's scripted spine position is replaced by a contingent GM opportunity.
+- [x] `pnpm build`, `pnpm lint`, `pnpm test`, and `pnpm typecheck` pass; generated scenario routes, manifest coverage, and internal links are verified.
+
+
+### Briefing schematic packet
+
+The players receive three schematics: their crew vessel, its approach shuttle, and the target vessel with assumed cargo reconstructed from its manifest. The first two describe known hardware; the target drawing distinguishes declared information from observations and excludes GM-only cargo truths. These are required briefing artifacts, not assumed to exist merely because the prose mentions them.
+
+- [ ] Supply and link all three player-facing schematics, with useful entry/clearance information and accessible text equivalents; verify target labels against information available before Contact.
+
+## Northern Lights: classified operative identity
+
+A successful Origin-17 read leaves the character under player control and elevates them to a THESEUS operative designation. The character privately knows that designation. Their personal identity is classified, not destroyed: ordinary identity displays show `CLASSIFIED — N/A` in place of personal details. Among other characters in the scenario, only the CSA marine commander has clearance to read the THESEUS OPSEC designation. Memory of a person is not erased by a classified record.
+
+Elevation supplies the fictional authorization for Origin-17's offered BLACK support. Using that support remains the player's choice and retains its existing connection requirements, Action Pool, program-compromise and Singularity costs. The separate device intrusion still determines whether new orders are transmitted. A resisted read causes no elevation; blocking transmission after a successful read does not undo the read or classification. No global speech restriction or compulsory loyalty follows from the designation.
+
+The private handout tells its recipient their designation and what others see, without disclosing the commander's clearance. The handout remains private as a table artifact; the character may claim their status, lie, describe the experience, or keep silent. Public signature verification is distinct from permission to read the classified identity. GM guidance can explain the elevation and verify observable evidence rather than requiring blanket ambiguity. It must not promise the obsolete escape guarantee absent from the actual support mechanics.
+
+The marine reference states the commander-only clearance without adding a fifth marine, assigning the command role, or inventing a change to CSA orders. Recognised citizenship is not revoked by classification, but ordinary classified records cannot newly disclose personal citizenship. The commander's response and the allocation of command among the four roles remain encounter-completion work.
+
+### Verification
+
+- [x] Preface, lab and private handout agree on read, classification, player knowledge, separate transmission and optional BLACK support.
+- [x] The player retains control of speech, actions, loyalty, and response; the private handout does not reveal the commander exception.
+- [x] Marine reference distinguishes classified visibility from prior recognition and records commander-only clearance.
+- [x] Successful read/blocked transmission and failed read are distinct outcomes; existing support costs remain unchanged.
+- [x] `pnpm build`, `pnpm lint`, `pnpm test`, and `pnpm typecheck` pass; affected internal links resolve.

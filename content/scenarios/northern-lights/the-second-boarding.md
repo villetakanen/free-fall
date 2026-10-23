@@ -8,7 +8,7 @@ The THESEUS signatures verify. The orders say **PROTECT ORIGIN-17**. Before anyo
 
 > **"Contact reclassified. Close aboard. Assessed type: stealth assault brig. Probable CSA. Identification unconfirmed."**
 
-This is [Contact](/scenarios/northern-lights/contact/) from the other side of the hull. The crew studies an approaching vessel, asks the assistant for its assessment, argues, and commits to action. This time someone else controls the approach. They are standing inside the ship they just demonstrated how to board.
+This is [Contact](/scenarios/northern-lights/contact/) from the other side of the hull. The crew studies an approaching vessel, asks the assistant for its assessment, argues, and commits to action. This time someone else controls the approach. The first boarders are inside the ship they just demonstrated how to board; anyone covering outside or still aboard the contractor vessel keeps their actual position.
 
 **GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team, local systems, and voice-only LPC. The brig's combat profile, final marine loadouts, exact impact location, and boarding fight remain to be developed.
 
@@ -50,7 +50,11 @@ Read the boarding ledger back into the scene. Disabled lasers remain disabled. T
 
 ## Spend the warning
 
-Ask for concrete actions. “Prepare for boarding” needs a place, a task, and somebody doing it.
+Ask for concrete actions. “Prepare for boarding” needs a place, a task, and somebody doing it. Read each operator’s current location, equipment, and communication path before offering an opportunity.
+
+**Vantage’s external shot is an opportunity, not an assigned perch.** If he maintained external overwatch with a suitable sightline, he may already be able to cover the approach. If he joined the interior team, reaching the spine or another firing position takes movement and a viable route. He is not automatically outside when the report arrives, and he need not be the only person watching that direction.
+
+The same continuity applies to the others. Vector needs a working optical or RF link for new commands to the crew vessel. Root’s remote access depends on an actual path. Stitch can cross later under Havoc thrust if the distance, defenses, and entry permit it. Sable keeps whatever scouting or point position she established; no warning teleports the crew into a prepared formation.
 
 - **Clear the likely impact area.** Move people, secure loose equipment, seal a surviving hatch, or take cover beyond the first breach. Better assessment helps them choose the right compartment.
 - **Prepare a defense.** Establish firing positions, arrange movable cover, or place an obstacle using the geometry they already fought through. Resolve difficult work with the normal rules; carry the resulting position into the boarding fight.
