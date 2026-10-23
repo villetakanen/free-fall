@@ -30,6 +30,15 @@ The stealth isn't in her kit. It's in her. That's the whole point: the class alr
   - **Ghost:** 8 − 1 = **7** (barely touched — she spent nothing on stealth gear, because the stealth is the *class*)
 - **Heavy option — Hardshell Combat Exoskeleton** (FRM 24 / SYS 6, AV 4). She keeps a frame racked for the jobs that are a stand-up fight, not a sneak — the reliable military tank, not the exotic stuff. In it the rifle mounts to a hardpoint (no Body binding), the frame soaks the hits, and she trades her ghost for a wall: *[Binds 3 Ghost; +1 targeting]* → Ghost 8 − 4 = **4**, Body free. A Spectre in a Hardshell is a contradiction on paper and a very bad morning in a corridor.
 
+## Starting position
+
+At the [crew briefing](/scenarios/northern-lights/briefing/), choose where you first deploy:
+
+- **Separate advance scout:** approach ahead of the main boarding group to observe defenders and find a usable route. If discovered, you have less immediate support.
+- **Point operator with the main boarding group:** screen its chosen entry and protect the first teammates across. You move with the group instead of independently choosing your approach.
+
+Infiltration works in either your Void Marine suit or the Hardshell. Their movement capability does not grant an unseen crossing or put you aboard automatically: establish the route, transport, and entry clearance for your chosen gear. Regroup if a separate approach fails. During a ram, anyone riding the vessel stays in crash protection until impact; a scout already outside keeps their actual position.
+
 ## In this scenario
 
 - **She is the act-two threat, wearing the wrong badge.** Sable trained in the doctrine the CSA breach team runs on — the stacking, the timing, the no-witnesses discipline. She can call their moves a beat before they make them, because she was made the same way. The scenario's thesis (the crew wrote the playbook used against them) lands hardest here: one of them learned it in uniform, and now reads it back to the table like sheet music.

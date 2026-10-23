@@ -15,6 +15,9 @@ content_warnings:
   - "Isolation & confinement"
 order: 1
 contents:
+  - section: "Briefing"
+    pages:
+      - briefing
   - section: "GM Materials"
     pages:
       - preface
@@ -89,8 +92,8 @@ The job is written to teach the game by playing it. Over one session your :term[
 
 ## Who It's For
 
-- **Players:** No prior knowledge required. Reading the core rulebook introduction is enough; the GM will handle the rest. Everything below this page's briefing is for the GM only — stay out if you want the ship to surprise you.
-- **GM:** Run it straight from the scenario pages. The scenario assumes the core rules of the FREE//FALL v7 playtest and uses gear from the standard catalog.
+- **Players:** No prior knowledge required. Reading the core rulebook introduction is enough; the GM will handle the rest. Read [Scene 0: Briefing](/scenarios/northern-lights/briefing/) together to choose initial deployments. Character pages place starting-position choices before their GM scene guidance; stop at that guidance. Other scenario material is for the GM unless handed to you during play.
+- **GM:** Start with [Scene 0: Briefing](/scenarios/northern-lights/briefing/), then open Contact with the crew’s provisional deployment plan. Run it straight from the scenario pages. The scenario assumes the core rules of the FREE//FALL v7 playtest and uses gear from the standard catalog.
 
 *Northern Lights* is a demo: it ships with up to five ready-made operators and runs out of the box — no character creation, no prep beyond reading the GM pages. Pick a contractor, check your seals, and board.
 

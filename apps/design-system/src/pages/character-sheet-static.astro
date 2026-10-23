@@ -1,0 +1,27 @@
+---
+import AttributeCircle from "@free-fall/design-system/components/AttributeCircle.svelte";
+import BmgCircle from "@free-fall/design-system/components/BmgCircle.svelte";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/character-sheet-print.css";
+
+const value = {
+  ghost: { current: 8, base: 12 },
+  mind: { current: 0, base: 10 },
+  body: { current: 13, base: 12 },
+};
+const blank = {
+  ghost: { current: null, base: null },
+  mind: { current: null, base: null },
+  body: { current: null, base: null },
+};
+---
+<BaseLayout title="Static Character Sheet — FREE//FALL Design System">
+  <h1>Static and print</h1>
+  <p>These specimens render at build time. Print uses the same values and directions in monochrome; empty fields leave room for handwriting.</p>
+  <BmgCircle {value} />
+  <h2>Unfilled sheet</h2>
+  <BmgCircle value={blank} appearance="print" />
+  <h2>Single field</h2>
+  <AttributeCircle type="body" current={13} base={12} appearance="print" />
+  <p><a href="/bmg-circle/">Interactive BMG Circle</a></p>
+</BaseLayout>

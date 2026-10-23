@@ -1,0 +1,27 @@
+---
+import CharacterCircleDemo from "../components/CharacterCircleDemo.svelte";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/character-sheet-print.css";
+---
+<BaseLayout title="BMG Circle — FREE//FALL Design System">
+  <h1>BMG Circle</h1>
+  <p>Spend two Current to gain one along an arrow. Ghost can supply Mind or Body; Mind can supply Body. Base stays unchanged.</p>
+  <CharacterCircleDemo client:load />
+  <h2>Client-rendered instance</h2>
+  <p>This independent instance renders entirely in the browser. The first example hydrates a static snapshot.</p>
+  <CharacterCircleDemo id="client" client:only="svelte" />
+  <h2>Controlled state</h2>
+  <pre><code>{`<BmgCircle {value} interactive
+  onchange={(next, cause) => { value = next; }} />`}</code></pre>
+  <p>The parent owns one snapshot. Each click proposes a complete replacement and an adjustment or conversion cause. Accept synchronously by replacing <code>value</code>; keep it unchanged to decline. Saving happens in the parent.</p>
+  <h2>Use from a script</h2>
+  <pre><code>{`import { convertBmg, setAttributeValue } from
+  "@free-fall/design-system/components/character-attributes";
+
+const result = convertBmg(value, "ghost-to-body");
+if (result.ok) value = result.value;
+else reportUnavailable(result.reason, result.message);`}</code></pre>
+  <p><code>setAttributeValue</code> updates Current or Base without affecting the other fields. <code>validateBmg</code> checks imported snapshots. Invalid, unfilled, or unsafe conversions return typed reasons without mutating supplied values.</p>
+  <p><a href="/attribute-circle/">Single attribute</a> · <a href="/character-sheet-static/">Static and print examples</a></p>
+</BaseLayout>
+<style>pre { white-space: pre-wrap; overflow-wrap: anywhere; }</style>

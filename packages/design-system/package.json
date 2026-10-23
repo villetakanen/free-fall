@@ -4,13 +4,15 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "typecheck": "astro check"
+    "typecheck": "astro check && svelte-check --tsconfig ./tsconfig.json --fail-on-warnings"
   },
   "exports": {
     "./*": "./src/*"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
-    "astro": "^5.5.0"
+    "astro": "^5.5.0",
+    "svelte": "5.57.2",
+    "svelte-check": "4.7.7"
   }
 }

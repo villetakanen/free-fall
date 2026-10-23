@@ -36,6 +36,15 @@ The rest of the crew wears its survival — suits, frames, seals. Root grew thei
   - **Ghost:** 12 − 5 = **7** (the deep sense of self that lets a person carry this much machine and stay a person)
 - The pools *are* the gear: while everything runs, Root is cracker, ghost, and vacuum-walker at once. Break the deck, vent the slate, tear the weave — each loss doesn't just hurt, it deletes a capability. Everyone on this crew is a wizard until their wand snaps.
 
+## Starting position
+
+At the [crew briefing](/scenarios/northern-lights/briefing/), choose where you first deploy:
+
+- **Inside the crew vessel:** provide systems support from shelter through remote interfaces the crew can actually reach. A sensor contact alone does not give you access to an isolated device.
+- **With the boarding team at its chosen entry:** reach local controls and disconnected electronics directly. The Wrench works within 5 cm of a casing, subject to shielding; that puts your remaining Body reserve close to the danger.
+
+Your vacuum-survival augmentations give you minutes of working exposure, not a means of propulsion. Arrange the crossing, return route, and a place to work before going outside. You can join later if shelter was the better starting position, or withdraw if physical access becomes untenable.
+
 ## In this scenario
 
 - **No network is still a way in.** The Wrench lets Root attempt EMR access to the marines' weapon electronics, frame controllers, or dumb IFF systems. Get the emitter within 5 cm of the target casing and establish whether shielding permits access, then use System Cracking or appropriate software under the hacking rules. Disabling equipment creates an opening; it does not change a marine's orders.

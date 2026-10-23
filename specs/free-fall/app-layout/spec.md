@@ -39,9 +39,10 @@ Title is resolved as `Astro.props.title || Astro.props.frontmatter?.title || "FR
 | `book_5` | Core Rules v7 | `/core-rulebook/00-intro/` | `pathname.startsWith("/core-rulebook/")` | Dynamic — populated from `core-rulebook` collection via `getCoreRulebookNavItems()` helper in `src/lib/nav.ts` |
 | `handyman` | Gear | `/gear/weapons/` | `pathname.startsWith("/gear/")` | Dynamic — categories from `gear` collection via `getGearNavItems()` |
 | `map` | Scenarios | `/scenarios/` | `pathname.startsWith("/scenarios/")` | Dynamic — scenarios from `scenarios` collection via `getScenarioNavItems()` |
+| `person_edit` | Playground (experimental) | `/playground/` | `pathname.startsWith("/playground/")` | None; [character sheet Playground](../playground/spec.md) |
 | `terminal` | System Reference v7 | `/srd/` | `pathname.startsWith("/srd")` | None (bottom-most rail target) |
 
-The rail items are ordered logically from entry point (Home) and setting/lore (Core Rules), to equipment (Gear), adventures (Scenarios), and finally the game-agnostic foundational mechanics (System Reference v7) at the bottom.
+The rail items are ordered logically from entry point (Home) and setting/lore (Core Rules), to equipment (Gear), adventures (Scenarios), character play (Playground), and finally the game-agnostic foundational mechanics (System Reference v7) at the bottom.
 
 
 **brandHref:** `/about/` — links the DrawerBrand logo to the about page.

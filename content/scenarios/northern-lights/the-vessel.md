@@ -62,3 +62,14 @@ The specialist AI is the reason five people can crew her. It flies, it burns, it
 
 **Pilot binding — Body 2, Mind 2.** On top of the crew cost: Body 2 for sustained high-G handling and ram geometry, Mind 2 for sensor fusion, fire control, and burn management — most of the Mind load shared with the assistant.
 
+
+
+## Remote piloting and deployment
+
+Vector can drive this vessel through a usable optical or RF link; she does not need to sit at the helm. Optical contact needs a clear path, and RF depends on hull shielding and interference. Establish the channel from her actual position before a piloting action. Remote piloting retains the normal pilot Binding; being outside the vessel does not grant free control.
+
+Before separating, agree what the assistant should do if contact fails. Losing the link stops new remote commands but does not erase the existing flight plan. Routine flight can continue; a new maneuver requiring Vector needs a restored link or local control. The assistant does not silently make unavailable player actions succeed.
+
+Stitch’s Havoc cannot fit the carried approach shuttle. It can cross under its own EVA thrust, initially or later, once range and conditions permit. Check the route, exposure, travel time, and clearance at the intended opening. Vector’s Tiger needs a line, shuttle, connected breach, or another viable lift; vacuum sealing alone is not propulsion.
+
+High thrust and ram limit deployment. Exterior stations wait until conditions allow; anyone riding a ram enters the cabin’s crash protection before impact. The [briefing](/scenarios/northern-lights/briefing/) records who rides, who crosses separately, and where they intend to regroup.

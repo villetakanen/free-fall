@@ -122,6 +122,33 @@ const navItems = Astro.props.navItems ?? [
     ],
   },
   {
+    icon: "account_circle",
+    label: "Character Sheet",
+    href: "/bmg-circle/",
+    active: [
+      "/bmg-circle",
+      "/attribute-circle",
+      "/character-sheet-static",
+    ].some((path) => Astro.url.pathname.startsWith(path)),
+    subItems: [
+      {
+        label: "Attribute Circle",
+        href: "/attribute-circle/",
+        active: Astro.url.pathname.startsWith("/attribute-circle"),
+      },
+      {
+        label: "BMG Circle",
+        href: "/bmg-circle/",
+        active: Astro.url.pathname.startsWith("/bmg-circle"),
+      },
+      {
+        label: "Static & Print",
+        href: "/character-sheet-static/",
+        active: Astro.url.pathname.startsWith("/character-sheet-static"),
+      },
+    ],
+  },
+  {
     icon: "web_asset",
     label: "App Shell",
     href: "/app-shell/",

@@ -30,6 +30,15 @@ She keeps no intrusive hardware in her own body — a hard line, given where she
   - **Mind:** 12 − 1 = **11** (an enormous reserve for medical checks — she is a *researcher* doing field medicine)
   - **Ghost:** 6 − 3 = **3** in the Havoc (the suit is most of her composure)
 
+## Starting position
+
+At the [crew briefing](/scenarios/northern-lights/briefing/), choose where you first deploy. Keep the Havoc in either case:
+
+- **With the crew vessel initially:** respond to damage or casualties there, then cross under your own thrust when needed. The first boarders do not have your hands beside them immediately.
+- **Alongside the first boarders:** cross independently with the insertion and provide medical support at the chosen entry. The crew vessel must manage without your immediate presence.
+
+The Havoc does not fit the approach shuttle. Its EVA thrusters, sealing, and twelve-hour life support let you cross without one, either at the start or later. Travel takes time, defenses can contest the route, and the frame needs an opening it can pass through. For a ram, either ride inside crash protection or establish your separate crossing; the collision does not move you from one group to the other.
+
 ## In this scenario
 
 - **She wears the enemy's coat — and it's bluffing for her.** The Havoc is CSA-tier corporate death-squad hardware: six weapon hardpoints and a fire-control suite, better than anything the marines who arrive in act two are actually issued. She's a *medic* — the mounts are mostly empty; she never kitted it out to kill. But a Havoc reads the same downrange whether it's loaded or not, and the CSA breach team, seeing a fully-mounted drop-suit on the hull, will range it as the single heaviest threat in the fight and act accordingly. Let the empty suit soak their caution. It is the best armor she has, and it weighs nothing.

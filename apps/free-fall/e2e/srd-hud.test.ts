@@ -65,7 +65,7 @@ test.describe("SRD Tactical HUD Dock", () => {
   }) => {
     await page.goto("/srd/");
     const trayButtons = page.locator("#app-tray-nav .tray-button");
-    await expect(trayButtons).toHaveCount(5);
+    await expect(trayButtons.nth(-2)).toHaveAttribute("href", "/playground/");
 
     const lastButton = trayButtons.last();
     await expect(lastButton).toHaveAttribute("href", "/srd/");

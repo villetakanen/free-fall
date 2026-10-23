@@ -4,7 +4,7 @@ title: "Scene 3: Onboarding"
 
 # Scene 3: Onboarding
 
-The crew is through the skin. [The Approach](/scenarios/northern-lights/the-approach/) ended at the breach; this scene is everything between the hull and the cargo modules — the freefall decks, and the people who live in them.
+The first boarders are through the skin. [The Approach](/scenarios/northern-lights/the-approach/) ended at the breach; this scene is everything between the hull and the cargo modules — the freefall decks, and the people who live in them.
 
 Hold the boundary. This is the *human* fight, and only that. It ends at the **dock** — the collar between the hygiene compartment and the first cargo module — and not one step past it. What waits on the far side has waited ten years; the crew do not get to meet it early, however fast they move. When a boarder's hand reaches that collar, you cut to Scene 4.
 
@@ -12,7 +12,7 @@ Hold the boundary. This is the *human* fight, and only that. It ends at the **do
 
 There is no single opening. The crew wrote it in [the approach](/scenarios/northern-lights/the-approach/), and you kept the ledger: which lasers still burn, whether the network sits on ATTACK or DEFER or a lie, what is broken on their own ship, where the entry is, where the security ended up, what the pilots and stevedores worked out, and whether the run cost minutes or hours. Read it back before the first exchange. The Whisper does not reset because the scene changed.
 
-The one thing the entry decides is *where the crew are standing when it starts* — and that reshapes everything else.
+The one thing the entry decides is *where its boarders are standing when it starts* — and that reshapes everything else.
 
 ## The interior
 
@@ -20,9 +20,21 @@ The one thing the entry decides is *where the crew are standing when it starts* 
 
 This is the crew's first honest lesson in the game's body: mass still matters and momentum still matters, but the floor is a suggestion.
 
+## Keep the threat moving
+
+The first entry starts the [boarding threat clock](/scenarios/northern-lights/the-intercept/#boarding-threat-clock) at **3:00**; retain its current stage if it started during The Approach. At unresolved junctions—choosing aft or forward, responding to surrender, opening the cargo route—advance one stage if the crew stalls after understanding the situation and having room to act. Follow the clock’s development and observation rules. Clarifying questions and ordinary action resolution are not ticks.
+
+If the brig reaches its warning or impact stages before the crew reaches the lab, bring [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) into the current situation. The lab can wait; the assault does not need its reveal.
+
+## Bring forward the actual positions
+
+Read the deployment ledger from The Approach. Only operators who completed the crossing and entry begin inside. External cover, remote support, advance scouts, and anyone waiting aboard keep their actual locations. Ask what those operators do while the boarders advance. Later arrivals need travel time, a viable route, and an opening their gear can pass through. Stitch can cross independently in the Havoc; she does not need the shuttle to return for her.
+
+Interior bulkheads can cut Vector’s optical link; establish whether RF still reaches the crew vessel. A lost link leaves the assistant on its agreed flight plan until contact or local control is restored. It does not move Vector back to a helm.
+
 ## Opening by entry
 
-**Ram — sleeping or control deck.** The prow came through where the assistant aimed it, into people rather than cargo. A rammed compartment is a killing floor: crash foam, a wall where no wall should be, hard vacuum arriving all at once. Its occupants are dead or dying in the first exchange — treat the space as cleared and *record who was in it*. If a witness serves the table, leave exactly one alive, maimed and tangled in the foam; never more. The crew arrive already at the top of the ladder, because they chose it. The rest of the scene is the survivors and the walk to the dock.
+**Ram — sleeping or control deck.** The prow came through where the assistant aimed it, into people rather than cargo. A rammed compartment is a killing floor: crash foam, a wall where no wall should be, hard vacuum arriving all at once. Its occupants are dead or dying in the first exchange — treat the space as cleared and *record who was in it*. If a witness serves the table, leave exactly one alive, maimed and tangled in the foam; never more. Those riding the ram arrive already at the top of the ladder, because they chose it. Anyone approaching separately still has to reach that entry. The rest of the scene is the survivors and the walk to the dock.
 
 - A **control-deck** ram guts the command crew — no ATTACK/DEFER authority, doors gone dumb, the pilots with them — but it puts the crew at the *stern* end, farthest from the dock, and every compartment between them and the modules still holds someone.
 - A **sleeping** ram lands them amidships in the airlock hub, the ship split around them: pilots aft, stevedores forward.
@@ -64,7 +76,8 @@ Before the cut, close the ledger:
 - Who is dead. Who surrendered. Who saw the crew's faces or heard their voices.
 - Who among the crew *believes* them — about the fault, about the cargo, about anything.
 - Which lasers still work, what is broken on the crew's own ship, and whether it can still fly home.
-- How much of the clock the whole boarding spent. The second crew is not slowing down.
+- Where each operator is, who has yet to cross or regroup, and which routes and links still connect them.
+- The story clock’s current stage, who received its warnings, and any action that changed the assault. Keep fictional travel and resource durations separately.
 
 None of that is color. It is the opening state of everything after: Scene 4 inherits this ship exactly as the crew leave it — bodies, survivors, and all.
 

@@ -341,3 +341,13 @@ Scenario: New gear file auto-discovered
   When the app is rebuilt
   Then getCollection("gear") includes an entry with the ID derived from "plasma-cutter"
 ```
+
+## Wraith pilot interface contract
+
+The Wraith Infiltration Frame requires an installed Neural Link. Its Ghostlink Interface is the frame's system, not a replacement for the pilot's implant. Pilot Binding is Ghost 3 in addition to the Neural Link's Ghost 3. Active Ghostlink adds Mind 1; when accessed through the Neural Link, that system cost is eligible for its shared Mind 8 Load Bearing allowance. The frame retains Load Bearing (2 Any) for directly attached gear, not its own pilot cost or the installed implant.
+
+### Verification
+
+- [x] Catalog prerequisite, pilot Binding, conditional cost, and rationale agree.
+- [x] Northern Lights' Wraith comparison and Vantage's configurations use the same contract.
+- [x] Each Load Bearing allocation covers eligible costs once, with the implant's Ghost Binding retained.

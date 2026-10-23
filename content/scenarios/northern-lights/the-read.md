@@ -28,9 +28,23 @@ Is this friendship? An ally? Are you useful? How would you tell the difference f
 
 You may tell the crew what happened, lie, stay silent, or try to explain something you barely have words for. **The handout itself stays private.** The others get your character's account, not this text.
 
+## Your new designation
+
+Your name has disappeared from the roster. Your suit tag says **CLASSIFIED — N/A**. So does the contract’s personnel annex.
+
+You know what sits behind it:
+
+> **THESEUS OPERATIVE**
+
+Origin-17 has elevated your clearance. Your old identity still exists. Other people’s systems no longer have permission to display it. You did not apply. Nobody asked you to sign.
+
+You can tell the crew what you know. You can deny it, lie, or keep quiet. Their displays will still say **CLASSIFIED — N/A**. They remember your face; they cannot use an ordinary identity lookup to verify your new designation.
+
+The clearance is real. Your choices are still yours. It does not make you loyal to THESEUS, make the new orders right, or make you follow them.
+
 ## Offered support
 
-Origin-17 offers software support through your link or deck. You choose whether to use it.
+Your new clearance opens Origin-17’s BLACK software support through your link or deck. Access is an offer, not an order. You choose whether to use it.
 
 Your interface presents one line of terms before you use the suite:
 
