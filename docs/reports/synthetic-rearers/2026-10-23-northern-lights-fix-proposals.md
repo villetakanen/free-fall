@@ -24,7 +24,7 @@ D3 is accepted as described below. Other recommendations remain unsettled unless
 | Decision | Recommendation | Why / affected fixes |
 | --- | --- | --- |
 | D1 — reveal authority (implemented) | Successful read elevates the character to a privately known THESEUS operative designation. Personal records remain but ordinary access displays CLASSIFIED — N/A; only the CSA marine commander can read the hidden OPSEC designation. | Player controls speech/actions. BLACK access is optional; later device intrusion separately governs transmission. F03 / #74. |
-| D2 — arrival clock | Use a fixed CSA arrival relative to contact, provisionally the existing six hours; provide rough durations and an early-arrival procedure. | Makes the time cost advertised for Ghost meaningful. Exact durations still need design. F04, F05, F12. |
+| D2 — story clock (accepted) | Start on entry to the Whisper; advance at narrative junctions when the crew stalls. Lab breach retires the boarding clock and brings final approach to at least 10:00, preserving later stages and consequences. | AW-style narrative pressure, not a fixed six-hour countdown. Clarifying questions are not stalling; player acceptance of the read/orders/support is never a required tick. F04. |
 | D3 — Vantage configurations (accepted) | Wraith pilot Binding Ghost 3; Neural Link Ghost 3 required for both Wraith and deck; citizenship gear Ghost 1. Wraith and deck are alternative active configurations. | Initial Ghost 8 − 3 − 3 − 1 = 1 in the Wraith. Owning all the toys does not mean running them together. F06; F02a. |
 | D4 — Root in transit | Prefer explicit support in the vessel's acceleration berth, scoped to transit, that makes every pregen's starting load legal. | Preserves Root's augmentation concept. The exact supported cost/allowance is not chosen; do not silently deactivate installed augmentations. F07. |
 | D5 — Binding boundaries | Decide ordinary voluntary overbinding and forced permanent Binding separately; define equality, overflow, and recovery after a cap changes. | Root's transit and The Singularity expose different cases. Neither negative Current Attributes nor automatic possession should be invented as an implementation convenience. F08, F09. |
@@ -44,10 +44,10 @@ F01 is withdrawn by user decision. D3 and citizenship player knowledge/cost are 
 | --- | --- | --- | --- | --- |
 | F01 | Lower the readiness claim | Withdrawn | Preserve readiness as the goal | Rejected |
 | F02 | Provide five shareable character pages | Hosting blocker | D6 | Proposed |
-| F03 | Align the reveal instructions and handouts | Hosting blocker | D1; issue #74 | Verified locally; uncommitted |
-| F04 | Make elapsed time govern CSA arrival consistently | Hosting blocker | D2 | Proposed |
-| F05 | Give approach detection an executable procedure | Hosting blocker | F04 for time consequences | Proposed |
-| F06 | Make Vantage's equipment prerequisites and totals valid | Hosting blocker | D3; issue #72 | Verified locally; uncommitted |
+| F03 | Align the reveal instructions and handouts | Hosting blocker | D1; issue #74 | Pushed: 906b73e |
+| F04 | Govern CSA escalation with a boarding story clock and lab handoff | Hosting blocker | D2; issue #75 | Verified locally; uncommitted |
+| F05 | Give approach detection an executable procedure | Hosting blocker | F04 for time consequences | Implemented; verification below |
+| F06 | Make Vantage's equipment prerequisites and totals valid | Hosting blocker | D3; issue #72 | Pushed: 906b73e |
 | F07 | Make transit and boarding configurations legal for every pregen | Hosting blocker | D4; F06; F08 if invoking a new general rule | Proposed |
 | F08 | Define the shared Binding boundary contract | Rules decision | D5 | Proposed |
 | F09 | Complete The Singularity's cost at capacity | Hosting blocker | F08; D5 | Proposed |
@@ -60,7 +60,7 @@ F01 is withdrawn by user decision. D3 and citizenship player knowledge/cost are 
 | F16 | Supply the three player-facing briefing schematics | Required briefing material | Crew vessel, shuttle, manifest-based target/cargo; geometry verification | Accepted; assets pending |
 | F17 | Replace predicted player reactions with GM-useful cues | Editorial | F03, F04, F13 | Proposed |
 | F18 | Add a focused scenario readiness review contract | Recurrence prevention | Lessons from F02–F17 | Proposed |
-| F19 | Scene 0 and five player-chosen initial deployments | Accepted addition | Approved pairs; issue #73 | Verified locally; uncommitted |
+| F19 | Scene 0 and five player-chosen initial deployments | Accepted addition | Approved pairs; issue #73 | Pushed: 906b73e |
 
 ## Atomic scopes and acceptance
 
@@ -93,19 +93,23 @@ Write one compact GM sequence identifying trigger, observable signs, private inf
 
 **Done when:** a walkthrough of successful read, resisted read, blocked transmission, and openly cooperative player produces no contradictory instructions or compulsory betrayal. Mechanical thresholds remain F09/F10's work.
 
-### F04 — One clock with meaningful approach costs
+### F04 — Boarding story clock and lab handoff
 
 **Scope:** `contact.md`, `the-approach.md`, `onboarding.md`, `the-intercept.md`, and timing transitions in `the-lab.md` / `the-second-boarding.md`. Owner: scenario intent.
 
-After D2, define the time origin, rough durations, what advances the clock, warning opportunities, and what happens if the marines arrive before the lab or after a rapid lab visit. Preserve the fact that CSA launched independently of the override. Distinguish fictional travel time from the advertised real session length.
+**Accepted D2:** start an Apocalypse World-style threat clock when the crew enters the Whisper. Advance at narrative junctions where the crew hesitates, circles back or leaves a situation unresolved, introducing corresponding CSA developments. Questions needed to understand the situation are not stalling. Exact stage contents and starting mark remain to specify.
 
-**Done when:** trace fast ram, slow Ghost, and prolonged negotiation without moving arrival to protect the reveal. Include a blocked-override case. If a dramatic trigger is chosen instead, remove promises that elapsed hours determine interception and explicitly price approaches through other consequences.
+Lab breach ends the boarding pacing mechanism and brings final approach to **at least 10:00**. If the clock has progressed further, retain the later stage and its consequences; never undo an arrival already established. Final alignment and impact develop while the crew handles Origin-17. The read, transmission, acceptance of orders and use of BLACK support are not required clock triggers. Effective player intervention can change the threat's course.
+
+Reconcile the older fixed-six-hour promise and the claim that arrival must coincide with successful override verification. The CSA was already inbound; neither the lab breach nor the override summons it. Approach consequences still include position, concealment, damage and warning; do not keep incompatible literal arrival-time promises.
+
+**Done when:** trace stalled boarding, rapid lab arrival below 10:00, lab entry after 10:00, an already-resolved arrival, and blocked/refused override without resetting events or forcing player decisions. Fictional durations remain relevant to travel and resources but do not secretly turn this pacing tool back into a stopwatch.
 
 ### F05 — Detection the GM can resolve
 
 **Scope:** approach options in `contact.md` and execution in `the-approach.md`. Owner: scenario intent; reuse core action rules.
 
-Label the assistant's precise percentages as fictional estimates. Define when detection is automatic, when uncertainty calls for a check, who rolls against what TN, and how each outcome affects information/position. Reuse the existing d20 procedure; do not invent percentile dice. Assigning the actual TNs remains design work.
+Label the assistant's precise percentages as fictional estimates. Define when detection is automatic, when uncertainty calls for a check, who rolls against what TN, and how each outcome affects information/position. Reuse the existing d20 procedure; do not invent percentile dice. Implemented: both baseline concealment rolls use Hard TN 16; the RF interface, result branches and player-invented hacks are defined in Contact and Approach. See the final accepted procedure below.
 
 **Done when:** each approach and one improvised approach can be adjudicated without converting `0.03%` or `8.12%` into an undocumented roll. Time consequences use F04.
 
@@ -338,3 +342,51 @@ User also said “They can't tell that to anyone. Nobody will see it. They can l
 - Handout's existing attack allocation, bonuses, compromise, connection requirements and permanent Singularity Binding mechanics are unchanged. Capacity consequences remain F09, not silently resolved here.
 
 Validation: full build, lint, 52 tests and typecheck passed. Reviewed failed read, successful read with blocked transmission, successful transmission, classification of Vantage, and commander versus ordinary observer access. A final app build and internal-link review cover the changed references. This supersedes earlier F03 proposals to remove erasure and ambiguity over disclosure. Changes remain local/uncommitted; no publication claimed.
+
+## F04 discussion — threat clock direction
+
+2026-10-23: User rejected six fictional hours as too long and wants pressure roughly after the lab breach, then clarified interest in an Apocalypse World-style story clock. The earlier fixed-six-hour and lab-triggered stopwatch suggestions are not accepted. Explore a GM threat clock tracking the CSA's developing approach and assault, calibrated to come to a head around/after lab contact, with observable warning and advancement grounded in fiction. Do not make successful read, accepted orders or BLACK use required ticks. Proposed stages and triggers still require user review; no clock implementation yet.
+
+Shipping reference: earlier locally verified work F03/F06/F19 and the report/log were committed and pushed to dev in 906b73e. Historical “uncommitted” entries describe their state before that ship action.
+
+2026-10-23: User refined F04: start the story clock when the crew enters the Whisper; advance at narrative junctions where the players stall. At the lab, if it has not reached 10:00, discard it “or something.” Proposed interpretation for review: retire the earlier pacing clock at the lab and hand off to final approach at 10:00 if less advanced; preserve any already-later stage and established consequences. Do not treat this interpretation as accepted yet. Distinguish stalled fictional action from players asking for necessary clarification. No clock text or mechanics implemented.
+
+2026-10-23: User confirmed the F04 handoff: lab breach brings the clock to at least 10:00; an already-later stage and its consequences persist. D2 and F04 now record this accepted direction, superseding the fixed-six-hour and literal timer proposals. Stage wording and starting mark still need definition; scenario/spec implementation remains pending.
+
+## Execution record — issue #75: boarding threat clock
+
+2026-10-23: User authorized implementation. Updated scenario spec and created [#75](https://github.com/villetakanen/free-fall/issues/75). The Intercept owns the stages: 3:00 closing (first interior entry), 6:00 ready, 9:00 committed (maintained watch can warn), 10:00 close aboard, 11:00 final alignment, 12:00 impact or an altered outcome. Stalling at unresolved narrative junctions advances one stage; clarification, handout reading and ordinary action resolution do not tick automatically. Observation and reporting require actual working paths.
+
+Lab breach is first entry into the connected living/lab module assembly. It retires boarding-stall pacing and carries the threat at max(current stage, 10:00), preserving warnings, damage and interventions. An already-resolved or derailed assault is not recreated. Final alignment and impact develop with room for player response; no successful read, accepted offer, transmission or obedience is required.
+
+Reconciled Contact, Approach, Onboarding, preface, Lab and Second Boarding. Removed the fixed contact-plus-six-hour promise and override-verification trigger; transit history remains approximate background. Approach concealment, resources, position and maintained watch still matter.
+
+Validation: build, lint, 52 tests and typecheck passed; final app build passed; seven changed routes and all internal links/fragments checked. Manual walkthroughs covered lab entry at 3/6/9 → 10, entry at 11 retaining 11, pre-lab impact, blocked/refused override, missing sensor/report paths and an already-diverted assault. No static-copy tests added. F04 implemented locally; not yet committed or pushed.
+
+Next discussion: F05, detection procedure. Existing assistant percentages are fictional estimates without an executable d20 mapping. Agree the procedure before assigning TNs or changing detection outcomes.
+
+### F05 — Earlier Ghost boundary (#76; superseded below)
+
+Ghost establishes arrival at the hull undetected without a routine pilot/detection check. The assistant’s percentages are fictional estimates, not dice mechanics. Passive observations and DEFER carry into Approach. Removed the secret “rare Ghost failure” and distinguished a stale burn sighting from a current track. Vehicle Handling applies to concrete contested maneuvers with declared stakes, not routine drift; later actions can still expose the crew.
+
+Implemented in Contact and Approach. Active sweep’s “bad roll” remains unresolved and is the next independent detection decision; F05 is not complete.
+
+Verification: app build passed (content loader reported duplicate-ID warnings for the two edited pages); generated pilot-check anchor resolves; diff whitespace check passed. Changes remain uncommitted.
+
+### F05 — Accepted aft-vector and sweep rolls (supersedes no-roll Ghost)
+
+Ghost requires Vehicle Handling to establish a low-signature aft vector behind the main engine, outside point-defense arcs, with boarding-compatible relative speed. Success earns the undetected coast without another routine check. Failure exposes the crew to a defensive main-engine burn: warn them and allow breakaway, then the immediate fallback is disabling point defenses and crossing by shuttle. Fuel constrains the Whisper but does not empty the threat. Origin-17 permits the burn through existing drive authority. Preserve alternative responses and transport limits, especially Havoc not fitting the shuttle.
+
+A hacker can conceal active sweep: success undetected/DEFER; failure detected with information retained, tracking and a challenge. Unconcealed sweep is detected automatically. Detection alone does not authorize ATTACK. Percentages stay fictional.
+
+Written into Contact, Approach and Intercept, with the spec updated under #76. Remaining F05 decisions: Ghost TN; sweep hack target system, electronic access method and TN. No invented remote access or percentile mechanic.
+
+Verification: app build passed with duplicate-ID loader warnings for edited pages; all three changed pages’ generated internal links and anchors resolve; diff check passed. Reviewed Ghost success/failure, shuttle transport limits, active sweep success/failure and drive-control continuity. Uncommitted.
+
+### F05 — Final accepted procedure (#76)
+
+Both baseline rolls are Hard, TN 16, one success required. Ghost uses Vehicle Handling; Greater Success preserves a usable breakaway vector. Sweep concealment uses System Cracking through the ship’s comms array into an exposed RF traffic-identification interface connected to civilian sensor processing. Masking the sweep as navigation traffic is an example, not a mandatory solution. Greater Success reveals sensor coverage and a useful crossing angle. Players can propose other hacks through remote comms; establish actual access, effects, stakes and appropriate difficulty. No blanket ship control. Skill-based improvisation needs no named program; active software follows normal bonuses and compromise rules. These decisions resolve the pending TN/access entries above.
+
+F04 and F05 are included in the requested commit/push. Validation results recorded below.
+
+Final verification before shipping: full build, lint, tests and typecheck passed. All seven changed scenario pages’ generated internal links/anchors resolve. Spec and continuity review passed; no static-copy tests added. Commit includes F04 (#75) and F05 (#76).

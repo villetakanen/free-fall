@@ -6,7 +6,13 @@ title: "Scene 4: The Lab"
 
 **GM draft — the intrusion and mission override below establish the scene. Defensive timing and the final extraction/purge procedures still need mechanical development.**
 
-[Onboarding](/scenarios/northern-lights/onboarding/) ends at the cargo airlock. Bring its ledger with you: survivors, witnesses, damaged systems, the contractor vessel's condition, and time spent boarding. None of it resets at the next door.
+[Onboarding](/scenarios/northern-lights/onboarding/) ends at the cargo airlock. Bring its ledger with you: survivors, witnesses, damaged systems, the contractor vessel's condition, the boarding threat-clock stage and warnings, and time spent boarding. None of it resets at the next door.
+
+## Hand off the threat clock
+
+First entry into the connected living/lab assembly is the lab breach for the [boarding threat clock](/scenarios/northern-lights/the-intercept/#at-the-lab-breach), whether through the normal door or another workable breach. Retire its boarding-stall mechanism and bring final approach to **at least 10:00**. Retain an already-later stage, impact, or effective intervention; the lab does not reset or resurrect the assault. Give the close-contact report only through available sensors/comms, and do not repeat a warning already delivered.
+
+Run the intrusion and the final approach alongside one another. Give the crew a meaningful response before final alignment and impact; use [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) for that pressure. Reading the handout, refusing the offer, or preventing a transmission is not an automatic clock tick.
 
 ## Crossing into the cargo
 
@@ -98,7 +104,7 @@ The signature establishes that the directive verifies as THESEUS-signed. It does
 
 The orders say to suspend the purge and protect Origin-17. They do not compel anyone to do so. That is true for the player who received the private handout and for everyone else.
 
-The contact report in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) interrupts as the signatures verify. Leave room for the affected player to speak while the crew responds to that approaching threat. They may describe the intrusion, display the directive, conceal what they experienced, refuse the new orders, or argue that the signatures settle the matter. Do not ask them to perform infection or keep the experience or designation secret. The handout itself stays private; their character can say whatever they choose. Complete honesty can be suspicious enough: “I'm still me. Look at the orders.”
+The incoming threat follows the clock stage carried into this scene, not the verification result. Leave room for the affected player to speak while the crew responds to that approaching threat. They may describe the intrusion, display the directive, conceal what they experienced, refuse the new orders, or argue that the signatures settle the matter. Do not ask them to perform infection or keep the experience or designation secret. The handout itself stays private; their character can say whatever they choose. Complete honesty can be suspicious enough: “I'm still me. Look at the orders.”
 
 After a successful transmission, the others have four facts: their companion was the point of contact, that companion’s identity now reads CLASSIFIED — N/A, their equipment transmitted new orders, and those orders authenticate. They lack the private reassurance that the character remains their player's to control. Let suspicion arise from that difference. Supporting the override is a plausible decision; it is also exactly what someone afraid of possession might regard as proof.
 
@@ -134,11 +140,11 @@ Let its usefulness fuel the uncertainty during the marine encounter. Their compa
 
 ## Carry it forward
 
-As the mission override verifies, the crew’s ship reports a new assessment of the nearby contact: a stealth assault brig, probably CSA. Cut directly to [Scene 5: The Second Boarding](/scenarios/northern-lights/the-second-boarding/). They have not had time to settle whether to protect the QPU, continue the purge, or trust their companion. Those decisions now happen under an approaching threat.
+Carry the final approach at its established stage. At 10:00 the close-contact report and assessment are available through functioning observation paths; 11:00 is final alignment; 12:00 resolves impact or the outcome changed by intervention. Use [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) without moving the crew from their actual positions or waiting for them to settle the orders.
 
-If the crew prevented the override, the brig still arrives. Trigger the report as that intrusion is resolved; the marines were already inbound, independently of Origin-17. Do not force a successful transmission to make the transition work.
+A blocked override leaves the clock where the fiction put it. If the assault already happened before lab entry, keep its consequences instead of delivering a second arrival. If the crew derailed it, respect that result.
 
-Record who was read and elevated, what Origin-17 learned, who observed the classified identity, whether the device intrusion succeeded, who received the override, and what the crew chose to do. Carry forward disconnected equipment, damaged shielding, remote queries awaiting replies, and the elapsed time toward the CSA arrival. A blocked transmission is a legitimate branch of the scene, not a reason to deliver the handout by fiat.
+Record who was read and elevated, what Origin-17 learned, who observed the classified identity, whether the device intrusion succeeded, who received the override, and what the crew chose to do. Carry forward disconnected equipment, damaged shielding, remote queries awaiting replies, the current threat-clock stage, and who has heard its warnings. A blocked transmission is a legitimate branch of the scene, not a reason to deliver the handout by fiat.
 
 ## Remaining mechanical work
 

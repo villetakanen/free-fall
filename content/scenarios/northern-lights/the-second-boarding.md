@@ -4,7 +4,7 @@ title: "Scene 5: The Second Boarding"
 
 # Scene 5: The Second Boarding
 
-The THESEUS signatures verify. The orders say **PROTECT ORIGIN-17**. Before anyone settles what that means, the crew's own ship interrupts.
+Use this reference when the [boarding threat clock](/scenarios/northern-lights/the-intercept/#boarding-threat-clock) brings the CSA approach into view. At 10:00, if the crew vessel has working sensors and a report path, its assistant cuts in:
 
 > **"Contact reclassified. Close aboard. Assessed type: stealth assault brig. Probable CSA. Identification unconfirmed."**
 
@@ -16,9 +16,9 @@ This is [Contact](/scenarios/northern-lights/contact/) from the other side of th
 
 The report comes from the contractor vessel's sensors and assistant. It is an assessment, not a confirmed identity or a declaration from the marines. No surrender demand opens this scene. The brig has approached quietly and is now committing to a ram: breach the Whisper and overwhelm its defenders before they organize. CSA shock and awe.
 
-Give the table a short window to postulate. They can ask the assistant, examine the contact, recall doctrine, hail the vessel, or start moving. The mission override and the private handout are still fresh. Nobody has to decide whether their companion is compromised before acting, and nobody gets the luxury of resolving that argument first.
+Give the table a short window to postulate. They can ask the assistant, examine the contact, recall doctrine, hail the vessel, or start moving. If the lab intrusion has happened, the mission override or private handout may be fresh. If not, the crew faces this threat with what they currently know. Nobody has to decide whether their companion is compromised before acting, and nobody gets the luxury of resolving that argument first.
 
-If the crew blocked the override in [The Lab](/scenarios/northern-lights/the-lab/), open with the same contact report after that intrusion resolves. The CSA is here for the Whisper and its cargo. Its arrival does not depend on Origin-17 successfully reaching a contractor.
+The CSA is here for the Whisper and its cargo. A failed read, blocked override, or refusal of the orders does not freeze its approach. If it arrives before the lab, run it there. If the warning or impact has already resolved, retain that state; do not repeat it because the crew reached a new page. Without a working sensor/report path, characters learn through whatever observation or communication remains possible.
 
 ## Read the approach
 
@@ -44,7 +44,7 @@ Read the boarding ledger back into the scene. Disabled lasers remain disabled. T
 
 **A loud entry leaves evidence.** A rammed compartment or a conspicuous boarding gives the marines a clearer picture. The contractors still know the interior and can use cover, hatches, and alternate positions. They also know which defenses they destroyed on the way in.
 
-**A maintained active sensor track buys warning.** Honor the earlier choice to keep watching the supposedly passing contact. The assistant reclassifies it sooner, giving more preparation time within this scene. It does not change the brig's intended attack.
+**A maintained active sensor track buys warning.** At 9:00, a working watch can expose the committed approach before the close-contact report at 10:00. Give those observers a chance to act and communicate. Preserve preparations made from that warning when the clock advances.
 
 **Survivors are people with useful knowledge.** Pilots can work surviving ship systems; security and stevedores know the spaces about to become a battlefield. Whether they help depends on how the contractors treated them. The people spared in Onboarding can now stand beside the crew. The dead cannot.
 
@@ -66,10 +66,10 @@ The brig intends to ram. That intention sets the pressure; it does not make the 
 
 ## Final alignment
 
-When the approach becomes unmistakable, the assistant drops the classification language.
+After the crew has had a meaningful response to the warning, develop the approach to **11:00**. Resolve the preparations they actually undertake; do not advance once per check or demand completion of the lab encounter. When the approach becomes unmistakable, the assistant drops the classification language.
 
 > **"That's not a docking solution. They're coming through."**
 
 On a failed early assessment, this is the late warning: immediate movement, cover, sealing up, or bracing. On a successful assessment, it confirms what the crew already prepared for. Do not turn either result into an extra period of leisurely planning.
 
-Close the scene at impact, or at the changed outcome if the crew successfully alters the approach. Record where everyone is, which preparations succeeded, what the marines can see, and which survivors are cooperating. Keep the unresolved orders and the suspicion between characters alive. The next fight begins with the decisions they made under that uncertainty.
+When the final run reaches the target, mark **12:00** and close the scene at impact, or at the changed outcome if the crew successfully alters the approach. A cancelled or diverted assault retires or changes the remaining clock; it is not forced to collide to complete the diagram. Record where everyone is, which preparations succeeded, what the marines can see, and which survivors are cooperating. Keep the unresolved orders and the suspicion between characters alive. The next fight begins with the decisions they made under that uncertainty.

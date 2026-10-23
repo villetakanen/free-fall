@@ -331,3 +331,30 @@ The marine reference states the commander-only clearance without adding a fifth 
 - [x] Marine reference distinguishes classified visibility from prior recognition and records commander-only clearance.
 - [x] Successful read/blocked transmission and failed read are distinct outcomes; existing support costs remain unchanged.
 - [x] `pnpm build`, `pnpm lint`, `pnpm test`, and `pnpm typecheck` pass; affected internal links resolve.
+
+## Northern Lights: boarding threat clock
+
+The GM tracks CSA escalation in `the-intercept.md` at 3:00, 6:00, 9:00, 10:00, 11:00 and 12:00. Start at 3:00 when the first contractor enters the Whisper's interior. Labels are narrative stages, not elapsed hours. At an unresolved narrative junction, once players understand the situation and have had a chance to act, advance one stage if the crew stalls; enact the CSA development and observable evidence available through working sensors/comms. Clarification, handout reading, normal action resolution and real-world accessibility needs are not ticks. There is no tick per failed roll or scene.
+
+Lab breach means first entry into Origin-17's connected living/lab module assembly, including an improvised breach. Retire the boarding-stall mechanism there and carry final approach at max(current stage, 10:00). Retain all established warnings, damage, interventions and later stages; a resolved or derailed assault is not recreated. After the handoff, stages advance through the final approach's fictional developments, with a meaningful chance to respond between them. Successful read, override transmission, agreement with orders and BLACK use are never required gates.
+
+At 9:00, maintained sensor watch can expose the committed approach; at 10:00 the close contact is reclassified if a working observation/report path exists. The report does not itself identify a ram: the existing assessment procedure supplies that opportunity. At 11:00 final alignment makes the attack clear; at 12:00 resolve impact or the outcome changed by player intervention. Early escalation can bring the assault before the lab. Actual knowledge follows working observation and communication, not automatic narration to disconnected characters.
+
+Transit history remains approximate background independent of this mechanism. Scene instructions remove literal contact-plus-six-hour promises and mandatory override-synchronized arrival. Approach choices retain their position, concealment, damage, resource and warning consequences. The CSA was already inbound; opening the lab does not summon it.
+
+### Verification
+
+- [x] Start, stage developments, advancement cues, observation conditions and lab handoff have one authoritative reference with scene links.
+- [x] Fast lab entry reaches 10:00; lab entry at 11:00 retains 11:00; an already-resolved 12:00 or derailed assault is not restarted.
+- [x] Stalling can advance the threat before the lab; clarification and handout reading do not automatically advance it.
+- [x] Read failure, blocked transmission and refused orders do not freeze or summon the CSA.
+- [x] Literal six-hour and override-verification triggers are removed from live scenario instructions.
+- [x] Build, lint, tests and typecheck pass; generated internal links and clock anchors resolve.
+
+## Northern Lights: approach concealment adjudication
+
+F05 (#76): the approved aft-vector roll supersedes the earlier automatic undetected Ghost arrival. Ghost requires a low-signature positioning burn followed by a coast behind the main engine, in a blind sector outside the point-defense arcs. Vehicle Handling earns that geometry and a manageable relative speed at boarding distance. Success grants an undetected coast without a second routine roll. Failure exposes the approach and costs the aft route: the Whisper can spend scarce fuel on a defensive main-engine burn. Telegraph the exhaust threat before rolling and give warning and a chance to break away; failure is not automatic incineration. Disabling point defenses and crossing by shuttle is the immediate fallback, while improvised alternatives remain valid. Origin-17 permits this defensive burn through its existing drive control.
+
+An active sweep supplies information regardless of concealment. A hacker can roll to conceal it: success preserves DEFER and an undetected sweep; failure, or an unconcealed sweep, alerts the Whisper, which tracks and challenges the crew. Detection alone does not authorize ATTACK. Hacking requires an established electronic access path and suitable capability, not mere visibility or assumed access to the void-gapped guns.
+
+Assistant percentages remain fictional estimates. Both baseline concealment actions are Hard, TN 16, with one success required. Greater Success on Ghost preserves a usable breakaway vector; on sweep concealment it reveals sensor coverage and a useful crossing angle. The Whisper exposes an RF traffic-identification interface connected to civilian sensor processing. Through the contractor vessel’s communications array, System Cracking can mask one sweep as routine navigation traffic. It grants no control of navigation, guns or subsequent detection. System Cracking permits improvisation without a named program; appropriate active software uses normal bonuses and compromise rules. Players may invent other remote-comms hacks: establish the reachable interface, intended effect and stakes, then set difficulty from the defenses and scope. TN 16 applies to this example, not every hack. Other pilot checks require concrete contested maneuvers and stated stakes. Approach choices do not automatically tick the boarding clock.

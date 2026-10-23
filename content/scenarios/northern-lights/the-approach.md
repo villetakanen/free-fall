@@ -6,7 +6,7 @@ title: "Scene 2: The Approach"
 
 The crew chose a plan in [Contact](/scenarios/northern-lights/contact/). Now make them fly it.
 
-The *Njord's Whisper* is not helpless. Three leased point-defense lasers sit at equal points around her hull, their fields of fire overlapping across the ship's surface. Coast through their envelope and they cut the crew's vessel apart one patient layer at a time. Go outside to stop them and two mounts with a clean angle can cut a person apart much faster.
+The *Njord's Whisper* is not helpless. Three leased point-defense lasers sit at equal points around her hull, their fields of fire overlapping across the ship's surface. Directly aft, the main engine masks a narrow approach from the lasers. That blind sector lies in the exhaust path. Coast through their envelope and they cut the crew's vessel apart one patient layer at a time. Go outside to stop them and two mounts with a clean angle can cut a person apart much faster.
 
 Run the approach in **Action Time** while the crew acts through their vessel: piloting, hacking, firing rockets, finding angles, and managing damage. Escalate to **Bullet Time** when operators and the Whisper's security personnel meet outside the hull. The scene ends when the crew has made and secured an entry, not merely when they reach the ship.
 
@@ -28,7 +28,7 @@ Keep the systems separate. The distinction is load-bearing.
 - **The six-person crew controls the ship:** sensors, communications, attitude commands, doors, airlocks, life support, cargo systems, and the authorization to use point defense.
 - **The lasers control themselves:** the three leased mounts share a proprietary expert system, void-gapped from every other system aboard. The crew can tell it **ATTACK** or **DEFER**. It handles acquisition, aim, and fire.
 
-Origin-17 permits the crew to rotate the Whisper for defense. A changed attitude does not threaten its destination. It does not fire the lasers, direct the defenders, or help the attackers. From its perspective, either crew can repair the damage later, and a freighter written off as piracy may disappear more cleanly than one merely missing. If an attacker reaches neural-interface range, origin-17 expects to take them over. Until then, it waits.
+Origin-17 permits the crew to rotate the Whisper for defense and permits a defensive main-engine burn against a detected aft approach. The burn spends scarce fuel; it is a real threat, not a free maneuver. A changed attitude does not threaten its destination. It does not fire the lasers, direct the defenders, or help the attackers. From its perspective, either crew can repair the damage later, and a freighter written off as piracy may disappear more cleanly than one merely missing. If an attacker reaches neural-interface range, origin-17 expects to take them over. Apart from permitting these defensive maneuvers, it waits.
 
 Compromising navigation does not stop the guns. Compromising the guns does not stop the ship.
 
@@ -138,15 +138,18 @@ The ram always costs stealth and a clean separation. Their vessel is now lodged 
 
 ## Path B: Infiltrate, then strike
 
-Ghost, active sweep, a cold shuttle, suited operators on lines, a false transponder: these are variations of one plan. Get close enough to neutralize the lasers before the lasers can dismantle the approach.
+Ghost, active sweep, a cold shuttle, suited operators on lines, a false transponder: these are variations of one plan. Earn a path past the lasers or neutralize the mounts covering the crossing.
 
 ### 1. Establish position
 
-Carry forward what Scene 1 bought.
+Carry forward what Scene 1 bought. The assistant’s percentages are fictional estimates, not dice procedures. Reserve Vehicle Handling checks for concrete contested maneuvers with stated stakes; see [When the pilot rolls](/scenarios/northern-lights/contact/#when-the-pilot-rolls).
 
-- **Ghost approach:** The defense network remains on **DEFER**. The crew chooses its first angle and acts before the Whisper understands what has arrived. They have less detail about the mounts and defenders.
-- **Active sweep, undetected:** The crew knows all three mount positions and the likely breach points. The network remains on **DEFER**, but any overt move will resolve the contact immediately.
-- **Active sweep, detected:** The Whisper has authorized **ATTACK**. One security officer is moving onto the hull, the other to the nearest door; a stevedore may be out servicing a mount. Start in an active firing arc.
+- **Ghost, successful positioning:** One success on **Vehicle Handling, Hard (TN 16)** establishes a hidden vector behind the main engine and a manageable relative speed at boarding distance. Greater Success also preserves a usable breakaway vector. Coast in without another routine roll. Carry the passive observations forward; the network remains on **DEFER**, and the engine masks the laser arcs. They can attempt entry from this position without first destroying the guns. This does not grant an open hatch or a free breach.
+- **Ghost, failed positioning:** The Whisper detects the aft approach and prepares a defensive engine burn. Telegraph drive activity and give the crew a chance to break away before ignition. The concealed coast is lost; do not turn failure into automatic incineration. The immediate alternative is to destroy or disable the point defenses covering a shuttle crossing, then send the shuttle. Resolve that fight below. The burn costs the Whisper scarce fuel, but the crew cannot count on fuel shortage to save them. Other workable responses remain possible; keep each operator’s actual transport constraints.
+- **Active sweep, concealed by the hacker:** The crew knows all three mount positions and likely breach points. The network remains on **DEFER**. Concealing the sweep does not conceal every subsequent action.
+- **Active sweep, detected:** A failed concealment hack—or a sweep without concealment—still yields the information. The Whisper tracks and challenges the crew; the network remains on **DEFER** until hostile action or an openly approaching boarding craft prompts **ATTACK**. Let the crew answer, bluff, withdraw or commit.
+
+For sweep concealment, use **System Cracking, Hard (TN 16)** through the crew vessel’s communications array to the Whisper’s RF traffic-identification interface, connected to civilian sensor processing. One success masks this sweep as routine navigation traffic; Greater Success also reveals sensor coverage and a useful crossing angle. Apply normal software bonuses and compromise when using a program; the Skill also permits improvisation without one. Players can invent other remote-comms hacks. Establish reachable systems, effects and stakes, then set an appropriate TN; see [Concealing the sweep](/scenarios/northern-lights/contact/#concealing-the-sweep). This interface does not connect to the void-gapped guns or grant navigation control.
 
 For another plan, state the same bargain: what does it reveal, what does it conceal, and what causes the Whisper to choose **ATTACK**?
 
@@ -194,6 +197,10 @@ With a route through the lasers, the crew still needs a door.
 
 The defenders can seal doors, vent compartments, and move through their own ship. Origin-17 does not interfere. Getting through the skin wins Scene 2; it does not make the interior safe.
 
+## Start the boarding clock
+
+When the first contractor gets inside the Whisper, start the [boarding threat clock](/scenarios/northern-lights/the-intercept/#boarding-threat-clock) at **3:00**. A scout reaching the hull alone has not entered. If someone entered earlier in the approach, keep the clock already running; a later group does not restart it. Advance at unresolved narrative junctions as described in the clock reference, not for every crossing or action.
+
 ## Carry the approach forward
 
 Before moving on, record what the players changed:
@@ -207,7 +214,8 @@ Before moving on, record what the players changed:
 - Where is the entry, can it admit the deployed frames, and can it be used as an exit?
 - Where are the two security personnel?
 - What do the pilots and stevedores know about the attackers?
-- Did the approach cost minutes or hours?
+- Did the approach cost minutes or hours for travel and resource purposes?
+- Has anyone entered and started the story clock? What stage and warnings are already established?
 
 Those facts are the opening situation aboard. Do not reset them because the scene changed.
 

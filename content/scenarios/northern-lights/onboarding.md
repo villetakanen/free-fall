@@ -20,6 +20,12 @@ The one thing the entry decides is *where its boarders are standing when it star
 
 This is the crew's first honest lesson in the game's body: mass still matters and momentum still matters, but the floor is a suggestion.
 
+## Keep the threat moving
+
+The first entry starts the [boarding threat clock](/scenarios/northern-lights/the-intercept/#boarding-threat-clock) at **3:00**; retain its current stage if it started during The Approach. At unresolved junctions—choosing aft or forward, responding to surrender, opening the cargo route—advance one stage if the crew stalls after understanding the situation and having room to act. Follow the clock’s development and observation rules. Clarifying questions and ordinary action resolution are not ticks.
+
+If the brig reaches its warning or impact stages before the crew reaches the lab, bring [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) into the current situation. The lab can wait; the assault does not need its reveal.
+
 ## Bring forward the actual positions
 
 Read the deployment ledger from The Approach. Only operators who completed the crossing and entry begin inside. External cover, remote support, advance scouts, and anyone waiting aboard keep their actual locations. Ask what those operators do while the boarders advance. Later arrivals need travel time, a viable route, and an opening their gear can pass through. Stitch can cross independently in the Havoc; she does not need the shuttle to return for her.
@@ -71,7 +77,7 @@ Before the cut, close the ledger:
 - Who among the crew *believes* them — about the fault, about the cargo, about anything.
 - Which lasers still work, what is broken on the crew's own ship, and whether it can still fly home.
 - Where each operator is, who has yet to cross or regroup, and which routes and links still connect them.
-- How much of the clock the whole boarding spent. The second crew is not slowing down.
+- The story clock’s current stage, who received its warnings, and any action that changed the assault. Keep fictional travel and resource durations separately.
 
 None of that is color. It is the opening state of everything after: Scene 4 inherits this ship exactly as the crew leave it — bodies, survivors, and all.
 

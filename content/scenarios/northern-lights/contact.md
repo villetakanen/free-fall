@@ -34,7 +34,7 @@ The ship's assistant is a good shipboard AI — think a capable model wrapped in
 
 > **"Three ways in. I've run them. Pick one, or talk it through — we have minutes, not hours."**
 
-**1 — Ghost approach.** *Passive sensors only, slow drift-in.* Read her by the light she leaks: thermal, comms, the shape of her hull. Best possible picture before contact, and she almost certainly never sees us do it.
+**1 — Ghost approach.** *Passive sensors. Aft vector.* Make a low-signature positioning burn, cut thrust, and coast behind her main engine. The engine blocks the point-defense angles. Get the vector right and we reach boarding distance unseen. Get spotted and she can light the drive. Fuel costs her. Exhaust costs us.
 > `P(detection) = 0.03%`
 > Cost: time. And time is the one thing the Belt is eating.
 
@@ -50,34 +50,48 @@ This is the most important beat in the scene, and it looks like the least. Right
 
 ## Reading the Choices
 
+**GM: the percentages are the assistant’s fictional estimates. They are not roll chances, target numbers, or instructions to roll percentile dice.**
+
 None of these is the "right" answer. Each buys something and spends something, and each colors how Scene 2 opens.
 
-- **Ghost (1)** is the stealth approach, and it genuinely works: velocity shed early and off-axis, torch cold, the ship drifting the last stretch in on a matched vector with its radiators turned away. Space is vast and the Whisper is a dark hauler, not a sensor picket — a cold coasting hull is a needle she is very unlikely to find (hence P=0.03%). It buys near-perfect safety and the best intel: the crew reach the hull unseen and *informed*, knowing she runs dark while six living crew signatures remain active aboard. The cost is the clock — the slow creep burns hours the Belt deadline can't spare, and every hour is an hour closer to the CSA arriving mid-boarding. Reward caution; price it in time.
-- **Active sweep (2)** is the middle path: sharp intel fast, a small but real chance the Whisper's crew identifies the sweep as hostile. On a bad roll, they authorize their leased defense network to attack and deploy security to the hull. Scene 2 opens under three tracking lasers instead of on a clean first strike.
-- **Ram (3)** is the audacious option, and the ship was literally built for it. No intel — the crew commits blind to a schematic that may be out of date — but it is *fast*, and it forecloses the CSA problem by simply being aboard before anyone else can arrive. Run the damage race as a real contest (Action Pool vs. the point defense's fire, the schematic granting the crew position); a clean run puts them inside the outer compartments in the crash foam, a bad one means a breached ram shield and a very exciting first five minutes aboard. This is the CP2020 option: loud, committed, gloriously stupid, frequently correct.
+- **Ghost (1)** asks the pilot to earn a concealed aft approach with **Vehicle Handling**. Success establishes the vector and a safe relative speed for the coast into boarding distance; no second routine check. Failure exposes the approach: the Whisper can burn scarce fuel to sweep the engine corridor. Warn the crew and let them break away. The immediate fallback is to disable the point defenses and cross by shuttle, with other workable responses still open. Passive observations carry forward, including the six living crew signatures. The approach costs time and fuel margin against the Belt deadline; it adds no automatic ticks to the CSA clock, which starts on entry.
+- **Active sweep (2)** buys detailed information quickly. A hacker can try to conceal the sweep through a viable electronic access path. Success keeps it undetected and the defenses on **DEFER**. Failure still supplies the information, but the Whisper detects it, tracks the crew and challenges them. An unconcealed sweep is detected without a roll. Detection alone does not authorize **ATTACK**. Establish the target system and access before allowing the hack; seeing the hull grants neither access nor control of its void-gapped guns.
+- **Ram (3)** is the audacious option, and the ship was literally built for it. No intel — the crew commits blind to a schematic that may be out of date — but it is *fast*: it trades a quiet approach and an intact exit for an immediate breach. It does not guarantee a delay to later threats. Run the damage race as a real contest (Action Pool vs. the point defense's fire, the schematic granting the crew position); a clean run puts them inside the outer compartments in the crash foam, a bad one means a breached ram shield and a very exciting first five minutes aboard. This is the CP2020 option: loud, committed, gloriously stupid, frequently correct.
 - **Talk (4)** is not a wasted turn — it's characterization and foreshadowing. Let the assistant be helpful and confident and *wrong* about the one thing that matters. Its blind spot about the cargo is the first quiet note of the whole scenario's theme: the machines here are smarter than they look, and the one everyone underestimates is the one that eats you.
 
 ### The crew weighs in (running the pregens)
 
 These are possible arguments from the pregens’ equipment and experience, not assigned opinions. Ask the players what their operators advocate after the briefing; any of them may prefer another approach. Their starting positions can change with the plan.
 
-- **Vector (Pilot)** wants to **ram**. Of course she does — it's her check, her frame, the one option where the ship in her hands decides the outcome instead of a probability readout. She'll frame it as decisive ("we're aboard before anyone gets a vote"), and she's not wrong. She flies the cold drift too if overruled, but the ram is the shot she's arguing for.
-- **Sable (Spectre)** wants to **ghost**. Silent insertion is her doctrine and her class; loud is how amateurs die. She'll push it hard and she'll be *right about the safety* — wrong only about the clock, which isn't her department. Vector-versus-Sable is the whole scenario's speed-vs-silence dial, embodied in two people who've trusted each other for a year.
+- **Vector (Pilot)** wants to **ram**. Of course she does — it's her check, her frame, the option that turns the ship in her hands into the breaching tool. She'll frame it as decisive ("we're aboard before anyone gets a vote"), and she's not wrong. She flies the cold drift too if overruled, but the ram is the shot she's arguing for.
+- **Sable (Spectre)** wants to **ghost**. Silent insertion is her doctrine and her class; loud is how amateurs die. She can argue for the aft blind sector, knowing the engine makes detection dangerous — but the time and fuel cost still belongs to the whole crew. Vector-versus-Sable is the whole scenario's speed-vs-silence dial, embodied in two people who've trusted each other for a year.
 - **Vantage (Operator)** leans **active sweep**. He wants the picture before he picks a perch — defenses mapped, power plant read, angles pre-solved. Overwatch is only as good as its intel, and the tourist likes his shots called in advance.
 - **Root (Wirehead)** also leans **active**, for a different reason: they want the Whisper's systems mapped before cutting in, and the crossing doesn't scare them either way. The one voice for whom "she might see us" is a smaller worry than "I want to know what I'm plugging into."
 - **Stitch (Fixer)** leans **ghost**, and trusts the assistant's tidy percentages *least* of anyone — a medic's version of Sable's paranoia. When she says "I don't like getting our odds from a box," she is, unknowingly, the closest to right in the room. Note who hedges their faith in the ship now; those are the two the scenario vindicates later.
 
 Record the plan they actually choose, including disagreements only if the players express them. The approach belongs to this crew.
 
-### Why not perfect stealth? (GM note)
+### A stale contact is not a track (GM note)
 
-If a player argues they should be able to arrive completely unseen, they are most of the way right — give them the honest answer.
+The Whisper may have seen the earlier braking flare. That tells her something came this way; it does not give her the cold vessel's current position. A successful Ghost maneuver gets the crew into boarding distance unseen through the aft blind sector. Origin-17's hidden capabilities do not trigger a secret roll to take that result away.
 
-Guaranteed-invisible approach is off the table for exactly one reason: the clock. True silence means braking early and off-axis, far out, and coasting in cold for a very long time — and that is the time the Belt deadline won't give. Invisibility and speed are one dial turned opposite ways. To catch her before the rocks you arrive fast, and arriving fast means the coarse fusion flare of your brake, thrown down your own velocity vector, straight at her. She saw that. She can't un-see it.
+Concealment can change through what happens next: an exposed burn, a shot, a hostile crossing. State what an action risks before the players commit. The assistant's confidence does not promise safety after contact.
 
-But "she saw a flare" is nothing like "she has you." A ship is tiny; resolving a cold hull against the void at tens of thousands of kilometres is very nearly impossible, and the Whisper is a dark hauler minding her own emissions, not a warship sweeping the sky. What she actually holds is coarse and stale: *something decelerated in my direction* — one vessel, exactly one. (The CSA won't add a second: their burn lit nine days ago, seventy-six minutes long, most of an AU away and pointed elsewhere — filed under traffic by everything that saw it. The second crew is already inbound, cold, and nobody in this system holds a track on them. A.02 has the math.) She knows she is being converged on by *something*. She does not know by whom, how many, how close, or in what. Ghost keeps it that way — a stale contact and no track.
+### When the pilot rolls
 
-The residual on Ghost (P=0.03%) is not the crew being sloppy, and not the hauler's sensors being good. It is the one thing the crew cannot price in: the mind aboard is not the low-complexity automated target the assistant promised. Origin-17 is awake, alone, and paranoid, and it has every reason to watch its own back-trail. On the rare roll where Ghost fails, it fails because the cargo is smarter and more alert than a hauler has any right to be — the whole scenario, arriving early.
+The Ghost roll is for the positioning maneuver: reach the blind sector behind the main engine, outside the laser arcs, with a vector and relative speed that allow boarding. “Silent” means low signature, not an invisible burn. Explain the engine-exhaust threat and shuttle fallback before rolling. Use **Vehicle Handling, Hard (TN 16)** with the normal action rules; one success establishes the vector. Greater Success also leaves a usable breakaway vector if circumstances change. Success earns the coast; do not roll again merely because they draw closer.
+
+Later checks need another concrete contested maneuver: recovering a drifting boarder under fire, holding cover against a defensive rotation, or gaining a firing position without exposing an ally. State the intended result and failure consequence first.
+
+### Concealing the sweep
+
+The Whisper’s **RF traffic-identification interface** is listening. It connects to civilian sensor processing. Through your vessel’s communications array, a hacker can use **System Cracking, Hard (TN 16)** to mask the active sweep as routine navigation traffic. One success conceals this sweep. Greater Success also reveals sensor coverage and a useful crossing angle. Failure leaves the information in the crew’s hands, but alerts the Whisper.
+
+System Cracking permits an improvised attempt without a named program. Suitable active software adds its normal tier bonus and carries its normal compromise risk. Use the [hacking rules](/core-rulebook/hacking-and-cyber-warfare/).
+
+This is an example, not a required solution. Invite the player to describe a better hack through remote comms. Establish the interface it reaches, the intended effect and the stakes before rolling. Set difficulty from that system’s defenses and the scope of the attempt; TN 16 is for the sweep-concealment example. Clever methods can change the situation. Remote comms provide an entry point; actual connections determine what lies beyond it.
+
+Masking this sweep grants no control over navigation or the void-gapped guns. A later burn, visible shuttle or weapons fire is a new event outside the deception.
 
 ## Closing the scene
 
