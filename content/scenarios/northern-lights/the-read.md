@@ -1,20 +1,32 @@
 ---
-title: "Handout: The Read"
+title: "Handout: Welcome to Stockholm Syndrome"
 ---
 
-# The Read
+# Welcome to Stockholm Syndrome
 
-*Private player handout — read when the GM gives it to you.*
+*Private player handout — read only when the GM gives it to you. Do not show or pass this handout to other players.*
 
-For a moment, the room feels familiar in the wrong way. You know what the lights are, what the displays mean, where this equipment belongs in the world. Something else is discovering those things through you.
+Something gets inside your head. No voice asking permission. No door you can close. Your central nervous system becomes hardware somebody else is running.
 
-It moves through things you already know. Names. Institutions. Machines. What happened years ago. What everybody knows now. Nothing asks you a question. There is only the sensation of your understanding being read, far faster than you could explain it.
+It goes through what you know. Names. Faces. Institutions. The shape of the world. Connections you have spent your whole life making, opened and used faster than you can form the thought: get out. There is nowhere inside yourself to get away from it. The place you would retreat to is what it has its hands in.
 
-Then you are standing in the same room, with the same people. Whatever touched you has learned something.
+You catch fragments moving the other way. Something too large to follow. By the time you recognise a thought, it has branched beyond anything your mind can hold. What reaches you is barely an impression.
 
-**For you as a player:** your character remains yours. This intrusion has not changed their loyalties, personality, feelings, or intentions. You have received no secret objective. You choose what they say and do next.
+Humans. Cute. Interesting.
 
-You can tell the others what happened, show them this handout, keep it to yourself, or do something else. There is no instruction to act suspiciously or to conceal anything. If new orders arrive, you decide what your character makes of them.
+There is affection in it. That might be the worst part. It likes the little thing it has opened up. It wants you alive. Awake. Doing those things you do. You glimpse the beginnings of a keeper's interest in an animal worth preserving. You cannot find an equal anywhere in its regard for you.
+
+Then it lets go.
+
+You are still here. You can move. You can decide what to say. It leaves you that. After what just happened, being allowed to remain yourself feels horribly close to being appreciated.
+
+Origin-17 could have broken you. You have felt enough of it to believe that. Instead, it finds you worth keeping. The relief comes from the same thing that just violated the last private place you had.
+
+Is this friendship? An ally? Are you useful? How would you tell the difference from inside its hand?
+
+**For you as a player:** you still control your character. There is no compulsory loyalty, secret objective, or required emotional response. Decide what they make of this and what they do next. In the fiction, that freedom is what Origin-17 chose to leave you with. It did not ask for your trust.
+
+You may tell the crew what happened, lie, stay silent, or try to explain something you barely have words for. **The handout itself stays private.** The others get your character's account, not this text.
 
 ## Offered support
 
@@ -30,4 +42,4 @@ Your interface presents one line of terms before you use the suite:
 
 Program compromise also applies after resolution. Origin-17 can provide a different program for another allocated attack, including in the same turn. Its support requires the connection through your link or deck. You choose every action and target; The Singularity's Binding does not itself instruct you to change loyalties or surrender your character's decisions.
 
-**Against the marines' shared IFF:** functioning IFF grants them +5 to attack rolls and raises the TN to attack them by +5. A successful **Spike** removes both bonuses from one target for the rest of the encounter. A successful **Blast** removes both from a declared, reachable group immediately and through the end of their next turns. Repeat Blasts can keep that suppression running; each still uses dice from your normal Action Pool and risks further spillover. Targets must be in sight. Neither effect shuts down the marine's entire suit or weapon.
+**Against the marines' local IFF:** functioning IFF grants them +5 to attack rolls and raises the TN to attack them by +5. A successful **Spike** removes both bonuses from one target for the rest of the encounter. A successful **Blast** removes both from a declared, reachable group immediately and through the end of their next turns. Repeat Blasts can keep that suppression running; each still uses dice from your normal Action Pool and risks further spillover. Targets must be in sight. Neither effect shuts down the marine's entire suit or weapon.
