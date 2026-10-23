@@ -29,6 +29,11 @@ Additional packages may appear under `packages/` as the project grows.
 | Interactivity | Svelte 5 (CSR islands) | Only when needed; opt-in per component |
 | Language | TypeScript | No `.js` files; strict mode |
 
+Both apps configure `@astrojs/svelte` (Astro 5-compatible version 7) with Svelte 5.
+Static Svelte usage adds no client runtime. A Svelte controller owns callback
+props when an Astro page opts into `client:load` or `client:only="svelte"`.
+The design-system package and demo app run `svelte-check` as part of typecheck.
+
 **Package linking:**
 
 Packages are linked via **Vite aliases**, not pnpm workspace protocol. This means:

@@ -1,0 +1,34 @@
+/* The docs shell scrolls on screen; these specimens need normal print flow. */
+@media print {
+  html:root {
+    --freefall-bg-canvas: white;
+    --freefall-text-display: black;
+    --freefall-text-body: black;
+    --freefall-text-muted: black;
+  }
+
+  html:root,
+  html:root body,
+  html body .app-shell,
+  html body .app-shell .workspace,
+  html body .app-shell .workspace > .app,
+  html body .app-shell main {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0;
+    overflow: visible !important;
+    background: white;
+    color: black;
+  }
+
+  html body .app-tray,
+  html body .app-bar {
+    display: none !important;
+  }
+
+  html body .content-grid {
+    display: block !important;
+    padding: var(--freefall-space-4);
+  }
+}

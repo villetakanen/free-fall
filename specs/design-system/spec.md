@@ -18,11 +18,15 @@ The design system is the single source of styling truth for FREE//FALL. It provi
 |---|---|---|
 | Foundation | Plain CSS files | Tokens (custom properties), reset, typography — mobile-first |
 | Global primitives | Plain CSS files | Content grid, surfaces, callouts, and small utilities |
-| Components | `.astro` files | Self-contained composition when plain HTML + CSS is insufficient |
+| Components | `.astro` and `.svelte` files | Composition; Svelte for controlled reactive character-sheet state |
 
 No build step. Source is distributed directly to consuming apps via Vite aliases.
 The package owns an `astro check` script so source-distributed components are
 typechecked directly rather than relying on a consumer build to discover errors.
+`Svelte-check` additionally validates Svelte components and the demo hosts.
+[AttributeCircle](attribute-circle/spec.md) and [BmgCircle](bmg-circle/spec.md)
+share pure TypeScript state operations and render statically unless their host
+opts into hydration or client-only rendering.
 
 **Demo app** (`apps/design-system/`):
 

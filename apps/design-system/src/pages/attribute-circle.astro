@@ -1,0 +1,27 @@
+---
+import Circle from "@free-fall/design-system/components/AttributeCircle.svelte";
+import CharacterCircleDemo from "../components/CharacterCircleDemo.svelte";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/character-sheet-print.css";
+---
+<BaseLayout title="Attribute Circle — FREE//FALL Design System">
+  <h1>Attribute Circle</h1>
+  <p>Current and Base are independent. The attached +/− controls adjust Current by one. Base never limits Current.</p>
+  <CharacterCircleDemo kind="single" client:load />
+  <h2>Static attributes</h2>
+  <div class="examples">
+    <Circle type="body" current={13} base={12} />
+    <Circle type="mind" current={0} base={10} />
+    <Circle type="ghost" current={null} base={null} />
+  </div>
+  <h2>Use in a sheet</h2>
+  <p>Import <code>AttributeCircle.svelte</code> from the design-system components. Supply <code>type</code>, <code>current</code>, and <code>base</code>. Static rendering is the default.</p>
+  <pre><code>{`<AttributeCircle type="ghost" {current} {base} interactive
+  oncurrentchange={(next) => { current = next; }} />`}</code></pre>
+  <p>A Svelte parent accepts a proposal by updating the prop synchronously. Keeping the previous value declines it. External prop updates emit no proposals. Use <code>null</code> for an empty field, and <code>appearance="print"</code> for an explicit monochrome specimen.</p>
+  <p><a href="/bmg-circle/">Compose all three attributes</a> · <a href="/character-sheet-static/">Static and print examples</a></p>
+</BaseLayout>
+<style>
+  .examples { display: flex; flex-wrap: wrap; gap: var(--freefall-space-4); }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>
