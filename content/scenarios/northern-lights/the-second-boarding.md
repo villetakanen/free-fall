@@ -10,7 +10,7 @@ The THESEUS signatures verify. The orders say **PROTECT ORIGIN-17**. Before anyo
 
 This is [Contact](/scenarios/northern-lights/contact/) from the other side of the hull. The crew studies an approaching vessel, asks the assistant for its assessment, argues, and commits to action. This time someone else controls the approach. They are standing inside the ship they just demonstrated how to board.
 
-**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team and its shared systems. The brig's combat profile, final marine loadouts, exact impact location, and boarding fight remain to be developed.
+**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team, local systems, and voice-only LPC. The brig's combat profile, final marine loadouts, exact impact location, and boarding fight remain to be developed.
 
 ## The situation
 
@@ -56,7 +56,7 @@ Ask for concrete actions. “Prepare for boarding” needs a place, a task, and 
 - **Prepare a defense.** Establish firing positions, arrange movable cover, or place an obstacle using the geometry they already fought through. Resolve difficult work with the normal rules; carry the resulting position into the boarding fight.
 - **Work the surviving systems.** Bring available defenses to bear, secure doors, or coordinate with the contractor vessel. Check what still functions and who can operate it. These are actions with consequences, not a reset of the Whisper.
 - **Stay unseen or seek a way out.** Reposition while the marines commit to their entry. The contractor ship's condition and fuel limit escape; simply accelerating away does not erase a military vessel with ample reserves.
-- **Hail the brig.** They can try to explain, bluff, threaten, or present the signed directive. Sending a message does not pause the approach or guarantee recognition of THESEUS authority. Any meaningful response must change the situation rather than merely consume their turn.
+- **Hail the brig.** The crew can try, but the CSA maintains no radio channel to them and gives no response. State that promptly; do not ask for repeated social rolls. The marines do not negotiate, and valid THESEUS signatures cannot countermand sealed CSA orders. Stopping the assault requires changing the tactical situation. Retreat or rout is possible; a bargain is not.
 
 The brig intends to ram. That intention sets the pressure; it does not make the vessel immune to an effective intervention. Honor actions that demonstrably alter the approach. Otherwise, carry their preparations forward into the impact rather than asking them to repeat those decisions afterward.
 

@@ -14,6 +14,8 @@ This chapter details the rules governing equipment: the universal qualities shar
 
 For software activation, program tiers, and intrusion, see [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). Programs use the Binding and Load Bearing rules below.
 
+The [utility catalog](/gear/utility/) includes **The Wrench**, an EMR remote control module for reaching internal electronics from within 5 cm of the casing without an active network connection. It supplies an access path; the hacking rules resolve the attempted override. Range, intervening material, and shielding still determine whether that path reaches the target.
+
 ## General Gear Qualities
 
 Many pieces of equipment share common qualities that define their function and interaction with the core mechanics.

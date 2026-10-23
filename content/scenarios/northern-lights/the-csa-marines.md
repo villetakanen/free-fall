@@ -10,9 +10,25 @@ title: "The CSA Marines"
 
 The CSA sends four people with an institution behind them. Logistics, intelligence, identity records, access credentials, and equipment support arrive packaged into their gear. Quiet approach, violent entry, coordinated advance: the marines expect their equipment to settle routine questions before a human has to ask them.
 
-They share target identities, friendly positions, cleared compartments, and assigned lanes. The hacker maintains the local combat picture; the sniper feeds observations into it. The assaulters enter with a plan and matching overlays. Their advantage is integration, not a claim that every individual weapon or frame is better than the contractors' best hardware.
+They enter with prepared identity records, assigned lanes, and a common plan. During the fight they report targets, positions, and cleared compartments by voice over internal laser-point-comms (LPC). The hacker coordinates those reports; the sniper calls observations. Each marine’s equipment processes its own local sensor picture. Their advantage is integration, not a claim that every individual weapon or frame is better than the contractors' best hardware.
 
-That support does not require instantaneous communication with distant headquarters. Prepared records and credentials travel with the team; the local network distributes observations during the boarding. New information from elsewhere still takes time to arrive.
+That support does not require instantaneous communication with distant headquarters. Prepared records and credentials travel with the team. Their LPC carries analog voice only: no shared data feed, remote software delivery, or automatic telemetry between marines.
+
+## Analog command, hackable equipment
+
+The team operates under sealed CSA orders without an external command uplink. They seize the Whisper's suspected contraband, eliminate witnesses, and recover the hardware. They do not know what Origin-17 is. Vantage's EU Class A citizenship creates the established capture exception.
+
+**The marines carry their orders; their machines do not command them.** They do not negotiate or maintain any radio channel to the contractors. Hails receive no response. Valid THESEUS credentials have no authority to replace their CSA mission. Hacking a display cannot rewrite their loyalties or turn them into obedient agents. They may retreat or rout when the assault becomes untenable; that is a response to the fight, not an invitation to bargain.
+
+“Analog” describes this command discipline. Their weapons, frames, sensors, IFF units, and comm hardware remain electronic and hackable. IFF is a dumb identification and coordination system, not an intelligence deciding whom they must obey. A marine can switch it off, losing its support and both combat bonuses below. Switching it back on does not bypass the established duration of a successful Spike or Blast.
+
+**No active network connection is not immunity.** In this setting, suitable electromagnetic radiation (EMR) tools can couple into internal circuitry—for example, using microwaves to reach a device's internal cards and attempt a remote override. Establish the tool, target, range, shielding, and intended function under [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). This supplies another possible access path, not automatic success or unlimited reach. Origin-17's offered support retains its own connection and sight requirements.
+
+Target the equipment's functions: disable a weapon's electronics, interfere with a frame, or disrupt IFF. Control of equipment can endanger or constrain its wearer. It does not grant control of the person.
+
+### Laser-point-comms
+
+Internal LPC is analog voice only. Treat the links as effectively unhackable in transit: access to the conversation requires a successful **Pwn of a marine’s comm unit**, with the listening or voice-injection function declared. The endpoint remains vulnerable through a feasible equipment-access path, including The Wrench at its contact-distance range. Pwn gives only the declared access and duration. It does not open a data network, propagate programs to teammates, or make a spoken instruction authoritative.
 
 ## Four jobs
 
@@ -26,25 +42,25 @@ Only the two assaulters are committed to the immediate push through the interior
 
 ## CSA assault frame — design basis
 
-Use the catalog **Wraith Infiltration Frame** as the starting point for the two assault frames: stealth, EVA mobility, and electronic warfare integration. These are custom scenario variants. Their defining addition is the CSA support network described below, rather than increased armor or damage by default.
+Use the catalog **Wraith Infiltration Frame** as the starting point for the two assault frames: stealth, EVA mobility, and electronic warfare integration. These are custom scenario variants. Their defining addition is the CSA support systems described below, rather than increased armor or damage by default.
 
 The catalog Wraith has FRM 10, SYS 14, AV 2, Ghost 4 pilot Binding, and an additional Mind 1 while its Ghostlink is active. Those are comparison values, not a finalized stat block for the CSA variant. Determine the variant's complete load and costs alongside its weapons before running the fight.
 
-## Shared systems
+## Local systems and voice coordination
 
 **IFF and identity checks.** Their identification-friend-or-foe systems distinguish teammates and classify other contacts, including civilians, contractors, and protected persons. An identity is tactically relevant. [Vantage's citizenship](/scenarios/northern-lights/c-02-the-operator/) triggers the established capture restriction: a valid identification narrows what the marines may do around him. It does not make him physically invulnerable.
 
-**Shared targeting.** One marine's observation can inform the others through the local network. A target handoff gives another operator information; it does not grant sight through a bulkhead, a free attack, or an automatic hit. Mark who has actually seen the target and who is relying on a report.
+**Shared targeting.** One marine’s spoken observation can inform the others through LPC. A target handoff gives another operator information; it does not grant sight through a bulkhead, a free attack, or an automatic hit. Mark who has actually seen the target and who is relying on a report.
 
 **Access credentials.** Military credentials and requisition authority give the hacker ways to approach compatible commercial systems. Establish whether a system recognizes that authority. Credentials can supply a legitimate access path; they are not universal control of every hatch, gun, or machine aboard the Whisper.
 
-**Equipment telemetry.** The team sees reported injuries, ammunition state, and frame faults. They can change lanes, cover an affected operator, or send assistance before that marine has explained the problem over voice. Each response still takes the actions it requires.
+**Local diagnostics.** Each marine sees their own injuries, ammunition state, and frame faults. Teammates learn through spoken reports or direct observation. They can change lanes, cover an affected operator, or send assistance once they know. Each response still takes the actions it requires.
 
 ## Give the hackers something to touch
 
 ### IFF combat bonuses
 
-While a marine's shared IFF is functioning, apply **+5 to each die on their attack rolls** and **+5 to the TN of attacks against them**. The defensive benefit raises the attacker's TN; it is not an extra defense roll or AV. Losing IFF removes both bonuses while leaving the marine's ordinary equipment and training intact.
+While a marine's local IFF is functioning, apply **+5 to each die on their attack rolls** and **+5 to the TN of attacks against them**. The defensive benefit raises the attacker's TN; it is not an extra defense roll or AV. Losing IFF removes both bonuses while leaving the marine's ordinary equipment and training intact.
 
 Show the assistance: coordinated changes of position, matching target calls, and warnings that let a marine move before a shot. When a hack takes it away, make the loss just as apparent.
 
@@ -52,7 +68,7 @@ Show the assistance: coordinated changes of position, matching target calls, and
 
 Declare the affected target or group and establish access before rolling under [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). These are the scenario's specific effects on a successful intrusion:
 
-| Program | Effect on shared IFF |
+| Program | Effect on local IFF |
 |---|---|
 | **Spike** | Permanently disable one target's IFF for this encounter. Both bonuses are lost. A reboot or an action from the marine hacker cannot restore it during the fight. |
 | **Blast** | Suppress IFF for the declared, reachable group immediately and through the end of each affected marine's next turn. Both bonuses are absent throughout that interval, including against attacks made while the marine is not acting. IFF returns afterward unless permanently disabled or suppressed again. |
@@ -67,8 +83,8 @@ That makes the choice concrete: **Spike removes one target's advantage for good;
 
 These systems expose bounded functions for normal hacking resolution and the [BLACK support offered by Origin-17](/scenarios/northern-lights/the-read/). Declare the specific target, reachable interface, and intended effect before rolling. Possible interventions include:
 
-- Mark a cleared corridor as uncleared, forcing the team to question its route information.
-- Interrupt a target handoff so the next marine must acquire the target independently.
+- Mark a cleared corridor as uncleared on one marine’s local display, forcing that operator to question the route.
+- Pwn a comm unit to interfere with a spoken target handoff, forcing the recipient to acquire the target independently.
 - Report a local frame fault, drawing attention toward a problem the operator must verify.
 - Corrupt a local identity assessment, creating a conflict with another sensor or record.
 
@@ -78,8 +94,8 @@ Show the consequence in play. A marine checks a doorway, requests a second ident
 
 ## When the picture breaks
 
-The marines remain trained people when their network becomes unreliable. They fall back on direct observation, voice communication, and checking one another. They can challenge false information, but doing so takes attention and appropriate actions. This fallback does not restore the IFF bonuses: Spike lasts for the encounter, and Blast follows the duration above. The hacker can address other interference or pursue the source of the attacks while the assaulters adapt.
+The marines remain trained people when their local equipment becomes unreliable. They fall back on direct observation, voice communication, and checking one another. They can challenge false information, but doing so takes attention and appropriate actions. This fallback does not restore the IFF bonuses: Spike lasts for the encounter, and Blast follows the duration above. The hacker can address other interference or pursue the source of the attacks while the assaulters adapt.
 
 Keep the fallback visible. The crew should be able to tell that a synchronized advance has become people stopping to confirm names, positions, and orders. That is what dismantling the CSA's advantage looks like.
 
-Before finalizing the encounter, set the four loadouts, software defenses, Attribute reserves, and withdrawal conditions. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
+Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside the four loadouts, software defenses, and Attribute reserves. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
