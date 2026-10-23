@@ -1,0 +1,28 @@
+---
+import CharacterPlayground from "../../components/CharacterPlayground.svelte";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Playground (Experimental) — FREE//FALL">
+  <h1>Playground <span>Experimental</span></h1>
+  <CharacterPlayground client:only="svelte">
+    <p slot="fallback" data-playground-fallback>Enable JavaScript to edit a character sheet or open a sheet link.</p>
+  </CharacterPlayground>
+</BaseLayout>
+
+<style>
+  h1 span {
+    display: block;
+    margin-block-start: var(--freefall-space-1);
+    color: var(--freefall-text-muted);
+    font-size: var(--freefall-type-ui-small);
+    line-height: calc(3 * var(--freefall-space-1));
+    font-weight: 400;
+  }
+  @container content (inline-size < 30rem) {
+    h1 {
+      font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio));
+      line-height: calc(7 * var(--freefall-space-1));
+    }
+  }
+</style>
