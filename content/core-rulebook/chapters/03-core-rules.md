@@ -178,15 +178,6 @@ When suffering multiple levels of Harm, resolve each level independently:
 ### Ousted: The Final Toll
 If a player cannot resolve an incoming level of Harm by any of the options above—such as when all 3 Harm Slots are already filled with **:term[Permanent Harm]**, or when all slots are full and no matching transient Harm or bound asset is available—the character becomes **:term[Ousted]**. The character is dead, permanently incapacitated, or broken beyond recovery. Their story ends here.
 
-## Vehicles & Exoskeletons (Brief Overview)
+## Vehicles & Exoskeletons
 
-Operating vehicles or exoskeletons substitutes the machine's capabilities for your own.
-*   **Frame (FRM):** Physical integrity and movement. Substitutes for the pilot's Body.
-*   **Systems (SYS):** Onboard computers and sensors. Substitutes for the pilot's Mind.
-*   **Binding Cost:** Piloting imposes a Binding Cost on the pilot's Attributes.
-
-When the machine takes Harm, the pilot allocates it:
-*   **Allocate to Machine:** Spend 1 Current point from the machine's attribute (FRM or SYS). This damages the machine.
-*   **Allocate to Pilot:** The pilot suffers the Harm level themselves, resolving it with their own Harm Slots or personal Bound Gear.
-
-Complete rules for vehicles will be detailed in later chapters.
+When you pilot a machine, use the [Vehicles & Exoskeletons](/core-rulebook/vehicles-and-exoskeletons/) rules for its Frame and Systems, pilot Binding and allocation of Harm. Your Action Pool and the core action procedure still apply. Personal gear uses the [gear rules](/core-rulebook/04-tools-of-the-trade/) without requiring this additional subsystem.

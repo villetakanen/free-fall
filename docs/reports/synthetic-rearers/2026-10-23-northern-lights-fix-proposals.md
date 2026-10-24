@@ -45,8 +45,8 @@ F01 is withdrawn by user decision. D3 and citizenship player knowledge/cost are 
 | F01 | Lower the readiness claim | Withdrawn | Preserve readiness as the goal | Rejected |
 | F02 | Provide five shareable character pages | Hosting blocker | D6 | Proposed |
 | F03 | Align the reveal instructions and handouts | Hosting blocker | D1; issue #74 | Pushed: 906b73e |
-| F04 | Govern CSA escalation with a boarding story clock and lab handoff | Hosting blocker | D2; issue #75 | Verified locally; uncommitted |
-| F05 | Give approach detection an executable procedure | Hosting blocker | F04 for time consequences | Implemented; verification below |
+| F04 | Govern CSA escalation with a boarding story clock and lab handoff | Hosting blocker | D2; issue #75 | Pushed: 1e8fbcc |
+| F05 | Give approach detection an executable procedure | Hosting blocker | F04 for time consequences | Pushed: 1e8fbcc |
 | F06 | Make Vantage's equipment prerequisites and totals valid | Hosting blocker | D3; issue #72 | Pushed: 906b73e |
 | F07 | Make transit and boarding configurations legal for every pregen | Hosting blocker | D4; F06; F08 if invoking a new general rule | Proposed |
 | F08 | Define the shared Binding boundary contract | Rules decision | D5 | Proposed |
@@ -125,7 +125,7 @@ Apply accepted D3: Wraith Ghost 3, shared required Neural Link Ghost 3, citizens
 
 **Scope:** `the-vessel.md`, all five pregens, and starting/boarding instructions. Owner: scenario intent.
 
-Audit transit, active piloting, boarding, and optional loadouts, including crew cost plus pilot cost. Root's currently stated Body result is `6 − 5 − 2 = −1`. Resolve D4 explicitly and explain where transit Binding stops and how the boarding configuration takes over. Releasing Binding changes a cap; do not assume it also restores spent points.
+Audit transit, active piloting, boarding, and optional loadouts, including pilot costs and personal equipment. The accepted passenger fix (#83) removes the scenario-local Body 2 surcharge: Root’s passenger Body capacity is `6 − 5 = 1`. Audit how active piloting and boarding configurations change the remaining costs. Releasing Binding changes a cap; do not assume it also restores spent points.
 
 **Done when:** a five-character configuration table accounts for prerequisites, installed augmentations, Load Bearing, vessel costs, current values, and maximum current values. No starting configuration depends on an undocumented exception. This is an audit of authored sheets, not a new character-builder feature.
 
@@ -390,3 +390,27 @@ Both baseline rolls are Hard, TN 16, one success required. Ghost uses Vehicle Ha
 F04 and F05 are included in the requested commit/push. Validation results recorded below.
 
 Final verification before shipping: full build, lint, tests and typecheck passed. All seven changed scenario pages’ generated internal links/anchors resolve. Spec and continuity review passed; no static-copy tests added. Commit includes F04 (#75) and F05 (#76).
+
+### F07 — Passenger Binding removed (#83)
+
+Accepted: Binding pays for a usable capability. Riding in confinement does not justify a scenario-local surcharge. Broken/Faulty gear retaining Binding is a damage consequence, not precedent for passenger costs. Removed contractor-vessel Body 2 passenger Binding; pilot Body 2/Mind 2 remains for actual operation. Acceleration still restricts movement and deployment. Whisper wording no longer implies roominess determines passenger Binding. Root retains passenger Body capacity 1 from 6 − 5; no recovery of spent points is granted. The wider five-character active-piloting/loadout audit remains open.
+
+Verified: app build passed; diff check passed; no remaining live scenario references to the removed crew/confinement surcharge. Changes uncommitted.
+
+### Dedicated machine rules chapter (#85, 2026-10-24)
+
+Accepted: vehicles/exos form a distinct subsystem built on shared gear qualities; personal gear is usable without machine rules. Restored a dedicated Vehicles & Exoskeletons chapter, moved the existing mechanics unchanged, linked it from core and gear, and added the piloted-machine / commandeered-installation boundary. Commanding a large vessel does not give a personal vehicle stat block or whole-vessel Binding. Catalog storage and stats are unchanged.
+
+Scenario follow-up still required: separate the commandeered parent transport from the Dart-like boarding/ram shuttle (pilot Body 1/Mind 1), and reconcile their equipment, capacity and approach roles. The earlier passenger-cost correction remains separate; this chapter move does not claim that scenario migration is complete.
+
+Verified: app build and diff check passed; all four affected chapter routes, their internal links/anchors and the new navigation entry resolve. Machine-mechanics text matches the previous chapter verbatim apart from heading levels. Uncommitted.
+
+### Transport/shuttle separation implemented (#86, 2026-10-24)
+
+Parent transport and Whisper are commandeered installations, with systems and operational facts rather than whole-vessel FRM/SYS and Binding. The modified Dart is the piloted ram/approach craft: FRM 18, SYS 12, AV 2; pilot Body 1/Mind 1. Existing scenario weapons, prow AV 6 and crash foam are explicit modifications; stripped cargo space provides five protected boarding positions. Havoc stays out and crosses independently. Ghost failure reroutes this same shuttle. Updated briefing, Contact, Approach, Onboarding, Vector and second-boarding continuity. Parent remains sensor/comms support and the onward ride home; a lodged shuttle does not lodge the parent.
+
+Vector’s listed kit plus shuttle piloting gives maximum Current Body/Mind/Ghost 3/9/5 outside Tiger, 3/8/2 with Tiger active. Machine pools stay separate. Standard gear Load Bearing supplies no machine resource pool. Includes the prior passenger correction (#83) and dedicated chapter (#85).
+
+Shipping verification: full build, lint, 120 tests and typecheck passed. Duplicate-ID content-loader warnings remain. Reviewed parent/shuttle roles, linked and onboard pilot costs, Ghost reroute, ram riders and return route. Unrelated design-system work excluded from this commit.
+
+All scenario pages and changed core chapters passed generated-link checks. A broader scan found an unrelated existing registry link to missing `02-characters-and-crews/#i-gear--augmentations-the-chrome`; not introduced or changed here.

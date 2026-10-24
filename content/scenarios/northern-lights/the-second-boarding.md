@@ -38,7 +38,7 @@ If the players correctly infer the ram without rolling, let them prepare on that
 
 ## The ship they have to defend
 
-Read the boarding ledger back into the scene. Disabled lasers remain disabled. Their breach remains open or patched exactly as they left it. Doors, comms, surviving spacers, and the contractor ship's damage all matter now.
+Read the boarding ledger back into the scene. Disabled lasers remain disabled. Their breach remains open or patched exactly as they left it. Doors, comms, surviving spacers, and the boarding shuttle's damage all matter now.
 
 **A quiet entry buys concealment.** A crew that ghosted in may still be unlocated aboard the Whisper. The brig can ram the hauler without knowing where those contractors are waiting. Concealment buys a choice of position, an ambush, or a chance to stay out of the first sweep.
 
@@ -54,12 +54,12 @@ Ask for concrete actions. “Prepare for boarding” needs a place, a task, and 
 
 **Vantage’s external shot is an opportunity, not an assigned perch.** If he maintained external overwatch with a suitable sightline, he may already be able to cover the approach. If he joined the interior team, reaching the spine or another firing position takes movement and a viable route. He is not automatically outside when the report arrives, and he need not be the only person watching that direction.
 
-The same continuity applies to the others. Vector needs a working optical or RF link for new commands to the crew vessel. Root’s remote access depends on an actual path. Stitch can cross later under Havoc thrust if the distance, defenses, and entry permit it. Sable keeps whatever scouting or point position she established; no warning teleports the crew into a prepared formation.
+The same continuity applies to the others. Vector needs a working optical or RF link for new piloting commands to the shuttle. Root’s remote access depends on an actual path. Stitch can cross later under Havoc thrust if the distance, defenses, and entry permit it. Sable keeps whatever scouting or point position she established; no warning teleports the crew into a prepared formation.
 
 - **Clear the likely impact area.** Move people, secure loose equipment, seal a surviving hatch, or take cover beyond the first breach. Better assessment helps them choose the right compartment.
 - **Prepare a defense.** Establish firing positions, arrange movable cover, or place an obstacle using the geometry they already fought through. Resolve difficult work with the normal rules; carry the resulting position into the boarding fight.
 - **Work the surviving systems.** Bring available defenses to bear, secure doors, or coordinate with the contractor vessel. Check what still functions and who can operate it. These are actions with consequences, not a reset of the Whisper.
-- **Stay unseen or seek a way out.** Reposition while the marines commit to their entry. The contractor ship's condition and fuel limit escape; simply accelerating away does not erase a military vessel with ample reserves.
+- **Stay unseen or seek a way out.** Reposition while the marines commit to their entry. The shuttle’s condition limits the crossing back; the parent transport’s condition and fuel limit the onward escape; simply accelerating away does not erase a military vessel with ample reserves.
 - **Hail the brig.** The crew can try, but the CSA maintains no radio channel to them and gives no response. State that promptly; do not ask for repeated social rolls. The marines do not negotiate, and valid THESEUS signatures cannot countermand sealed CSA orders. Stopping the assault requires changing the tactical situation. Retreat or rout is possible; a bargain is not.
 
 The brig intends to ram. That intention sets the pressure; it does not make the vessel immune to an effective intervention. Honor actions that demonstrably alter the approach. Otherwise, carry their preparations forward into the impact rather than asking them to repeat those decisions afterward.

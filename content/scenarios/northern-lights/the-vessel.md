@@ -4,7 +4,7 @@ title: "The Vessel"
 
 # The Vessel
 
-**The thing that holds the crew together is a small, fast boarding craft: a privateer of the space age.** Five operators have run her together for the better part of a year — same five, same ship, no churn. That is rare; crews rotate constantly, people burn out, cash out, or don't come back, because deaths happen even to professionals. This crew hasn't lost anyone. They know the ship and each other the way a hand knows a glove, and that cohesion is their real asset, more than the titanium prow, more than the AI. It is also what the scenario spends the evening pulling apart.
+**The thing that holds the crew together is a working transport carrying a stripped-down boarding shuttle.** Five operators have run her together for the better part of a year — same five, same ship, no churn. That is rare; crews rotate constantly, people burn out, cash out, or don't come back, because deaths happen even to professionals. This crew hasn't lost anyone. They know the ship and each other the way a hand knows a glove, and that cohesion is their real asset, more than the shuttle’s titanium prow, more than the AI. It is also what the scenario spends the evening pulling apart.
 
 ## Naming her
 
@@ -17,59 +17,56 @@ She carries only a hull code on the registry. Crews name their own ships, and th
 
 Whatever they pick, write it into the scene: the assistant should address them by the ship's name from the first line, and the ship should feel like the sixth member of the crew — right up until the scenario starts teaching them what a ship's mind can actually be.
 
-Statted below as an example FREE//FALL vessel — an aggressive privateer boarding craft. Ship types are countless; treat her as a working template as much as a scenario prop.
+## Parent transport
 
-## Stat block
+The transport gets the crew across interplanetary space and carries their equipment and boarding shuttle. Command it through its assistant, navigation system and working stations. It is an environment to commandeer, not a personal vehicle: no FRM/SYS pool and no pilot Binding for giving it orders.
+
+- **Transit:** antimatter-catalyzed fusion torch, sustained 3 g intercept; the remaining fuel buys a slow ride home. See [The Intercept](/scenarios/northern-lights/the-intercept/).
+- **Support:** passive sensors, active radar/lidar, optical and RF communications, and the specialist assistant. It supplies observations and relays commands while working links permit.
+- **Accommodation:** five operators, acceleration berths, environmental sealing and weeks of life support. Under thrust, movement and exterior deployment are constrained; passengers pay no Binding.
+- **Mission bay:** boarding shuttle, the crew’s frames and a Cutter Light EVA Frame for hauling or repair. Whoever operates the Cutter pays its own pilot Binding.
+
+During insertion the transport stays off, outside the close point-defense engagement. Record its position and communications, not a substitute Attribute pool. If it is threatened, resolve access, orders, damaged systems and crew responses through the core rules. Boarding or damaging it does not drain one whole-ship health pool.
+
+## Boarding shuttle — modified Dart
+
+A stripped-down, utilitarian Dart derivative. This is the craft Vector pilots behind the Whisper’s engine or drives through its hull. It uses the [vehicle subsystem](/core-rulebook/vehicles-and-exoskeletons/).
 
 ```yaml
-title: "[Crew's Vessel]"
-nickname: "Privateer boarding craft"
+title: "Boarding Shuttle"
+nickname: "Modified Dart"
 category: "vehicle"
-size_category: "Huge"
-frame: 32
-systems: 24
-vehicle_av: 3
-binding:
-  body: 2
+size_category: "Large"
+frame: 18
+systems: 12
+vehicle_av: 2
+binding: {}
 pilot_binding:
-  body: 2
-  mind: 2
+  body: 1
+  mind: 1
 qualities:
-  - "Movement System (Antimatter-catalyzed fusion torch — sustained 3 g brachistochrone)"
-  - "Fuel Reserve (Oversized — one full-burn intercept, then a crawl home)"
-  - "Ramming Prow (Reinforced titanium bow — breaches transport hull plating; front facing AV 6)"
-  - "Crash Foam (Full-cabin impact suspension — boarding by ram)"
-  - "Point Defense (1 Laser + 2 Micro-Rocket Cannons)"
-  - "Carried Craft (Approach Shuttle — see Dart Courier Shuttle)"
-  - "Ship's Equipment (Cutter Light EVA Frame — work exo in the bay, mission pool gear: anyone binds it when the job calls for hauling or cutting)"
-  - "Sensor Suite (Passive array + active radar/lidar)"
-  - "Integrated AI (Specialist shipboard assistant — flight, sensors, fire control, tactical modelling)"
-  - "Occupancy (5 — powered exoskeleton acceleration berths)"
-  - "Confinement (Crew bound to acceleration couches under thrust)"
+  - "Movement System (High-G space drive — local approach and crossing)"
+  - "Ramming Prow (Reinforced titanium bow; front-facing AV 6)"
+  - "Crash Foam (Cabin impact protection)"
+  - "Armament (1 laser + 2 micro-rocket cannons)"
+  - "Occupancy (5 protected boarding positions; stripped cargo interior)"
+  - "Sensor Suite (Basic navigation)"
+  - "Optical and RF control link"
   - "Environmental Sealing"
-  - "Life Support (Extended — weeks)"
-  - "Signature: Loud (fusion torch — no stealth under thrust)"
+  - "Life Support (48 hours)"
 source: "northern-lights-demo"
 ```
 
-## Effect
+**Scenario modifications:** the catalog Dart’s two seats, cargo space and single Light hardpoint are replaced by this boarding fit-out: five protected positions, prow, crash foam and the listed weapons. Its FRM 18, SYS 12, AV 2 and pilot Body 1/Mind 1 remain the Dart baseline. The prow’s AV 6 applies only when it faces the attack. These are this shuttle’s modifications, not free upgrades to every Dart.
 
-A boarding craft, not a warship. Everything about her is bent toward one move: cross a gulf fast, arrive with the crew alive, and put them inside a hull that would rather stay closed. The oversized tanks buy the brachistochrone burn (Appendix A.02) — the drive is a fusion torch spiked with a metered trickle of antimatter to light it, and that antimatter is the ugliest line on the fuel invoice, logged by the platform to the milligram. The titanium prow turns the whole ship into a battering ram when the crew commits to it; the crash foam is what lets them survive doing so. Her point defense is for sweeping debris and swatting a curious drone — she loses any straight fight against something built to shoot back.
-
-The specialist AI is the reason five people can crew her. It flies, it burns, it runs the sensors and the guns, and it models options faster than any of them can. It is narrow and incurious and exactly what it appears to be — hold that thought for later in the scenario.
-
-**Crew binding — Body 2.** This is the part players feel. She is *small*: under thrust, every soul aboard is bound Body 2 whether they touch a control or not, strapped into a coffin-sized acceleration compartment, pinned by gravity, unable to walk, reach, or turn without the exoskeleton doing it for them. Play the confinement. The burn is not a loading screen — it is hours of being a body in a box, and the crew arrives at the *Njord's Whisper* already spent before a single hatch opens.
-
-**Pilot binding — Body 2, Mind 2.** On top of the crew cost: Body 2 for sustained high-G handling and ram geometry, Mind 2 for sensor fusion, fire control, and burn management — most of the Mind load shared with the assistant.
-
-
+Passengers pay no vehicle Binding. The pilot binds Body 1 and Mind 1 for control and access to the shuttle’s machine Attributes. Personal equipment keeps its own costs. The shuttle has no carried shuttle of its own.
 
 ## Remote piloting and deployment
 
-Vector can drive this vessel through a usable optical or RF link; she does not need to sit at the helm. Optical contact needs a clear path, and RF depends on hull shielding and interference. Establish the channel from her actual position before a piloting action. Remote piloting retains the normal pilot Binding; being outside the vessel does not grant free control.
+Vector can pilot the shuttle through a usable optical or RF link from the parent transport or another actual position; she does not need its helm. Optical contact needs a clear path; shielding and interference can block RF. Remote piloting retains Body 1/Mind 1. Commands to the parent’s assistant are not shuttle piloting.
 
-Before separating, agree what the assistant should do if contact fails. Losing the link stops new remote commands but does not erase the existing flight plan. Routine flight can continue; a new maneuver requiring Vector needs a restored link or local control. The assistant does not silently make unavailable player actions succeed.
+Agree the continuing flight plan before contact fails. Loss of the link ends fresh remote commands; the shuttle’s flight computer continues that plan. Restore the link or reach local controls for a new maneuver. The parent’s assistant cannot transmit through a broken channel.
 
-Stitch’s Havoc cannot fit the carried approach shuttle. It can cross under its own EVA thrust, initially or later, once range and conditions permit. Check the route, exposure, travel time, and clearance at the intended opening. Vector’s Tiger needs a line, shuttle, connected breach, or another viable lift; vacuum sealing alone is not propulsion.
+The Tiger fits the boarding fit-out but has no EVA thrusters; it needs a shuttle ride, line or another viable crossing. Havoc does not fit. Stitch travels on the parent transport and crosses independently under the Havoc’s own thrust, initially or later. Check range, exposure, life support and entry clearance.
 
-High thrust and ram limit deployment. Exterior stations wait until conditions allow; anyone riding a ram enters the cabin’s crash protection before impact. The [briefing](/scenarios/northern-lights/briefing/) records who rides, who crosses separately, and where they intend to regroup.
+Anyone riding a ram takes a protected shuttle position before impact. Operators staying on the parent or crossing separately do not ride the collision. A failed Ghost approach breaks off the aft coast; clearing the guns allows the **same shuttle** to approach from another vector. Record the crossing and return route in the [briefing](/scenarios/northern-lights/briefing/).

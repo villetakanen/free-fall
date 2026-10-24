@@ -264,3 +264,11 @@ Scenario: Version display reads from content package
   When the landing page renders VersionInfo
   Then the rules version displays "0.7.1"
 ```
+
+## Core rulebook: vehicle and exoskeleton rules boundary
+
+`content/core-rulebook/chapters/vehicles-and-exoskeletons.md` is the dedicated machine subsystem, following Tools of the Trade and preceding Hacking & Cyber Warfare. Vehicles and exoskeletons are machines with their own FRM/SYS, pilot interface costs and Harm allocation; they reuse shared gear qualities without being personal gear. Gear rules are usable independently of this subsystem. Tools of the Trade and the core overview link to the authoritative chapter rather than duplicating it or promising future rules.
+
+The chapter distinguishes directly piloted action-scale machines from ships, stations and large installations commandeered through people, interfaces and systems. Commanding an installation does not grant a personal vehicle stat block or impose whole-vessel pilot Binding; role in play, rather than tonnage alone, defines the boundary. Existing machine mechanics and catalog data remain unchanged by this structural correction.
+
+Verification: build the new route and chapter navigation, check inbound links and shared-rule links, and confirm machine-specific mechanics no longer reside in Tools of the Trade.

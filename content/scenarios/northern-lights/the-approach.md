@@ -6,15 +6,17 @@ title: "Scene 2: The Approach"
 
 The crew chose a plan in [Contact](/scenarios/northern-lights/contact/). Now make them fly it.
 
-The *Njord's Whisper* is not helpless. Three leased point-defense lasers sit at equal points around her hull, their fields of fire overlapping across the ship's surface. Directly aft, the main engine masks a narrow approach from the lasers. That blind sector lies in the exhaust path. Coast through their envelope and they cut the crew's vessel apart one patient layer at a time. Go outside to stop them and two mounts with a clean angle can cut a person apart much faster.
+The *Njord's Whisper* is not helpless. Three leased point-defense lasers sit at equal points around her hull, their fields of fire overlapping across the ship's surface. Directly aft, the main engine masks a narrow approach from the lasers. That blind sector lies in the exhaust path. Coast through their envelope and they cut the boarding shuttle apart one patient layer at a time. Go outside to stop them and two mounts with a clean angle can cut a person apart much faster.
 
 Run the approach in **Action Time** while the crew acts through their vessel: piloting, hacking, firing rockets, finding angles, and managing damage. Escalate to **Bullet Time** when operators and the Whisper's security personnel meet outside the hull. The scene ends when the crew has made and secured an entry, not merely when they reach the ship.
+
+The close approach, ram, rocket fire and machine damage below concern the boarding shuttle. The parent transport remains the sensor/comms support platform outside the close engagement. Only operators who board the shuttle ride its maneuvers.
 
 ## Carry the deployment into action
 
 Use the positions and equipment confirmed in [Contact](/scenarios/northern-lights/contact/). Establish who is aboard the crew vessel, who has deployed outside it, who is crossing, and who has reached the target. Name their route, sightline, and working communication or hacking access. Suggested positions from the [briefing](/scenarios/northern-lights/briefing/) grant no free movement or automatic entry.
 
-Vector can pilot from either deployment through an optical or RF link. Check line of sight for optical contact and shielding/interference for RF. A lost link prevents new remote commands; the assistant can continue the agreed flight plan. To change it through Vector, restore the link or reach local controls. Normal pilot Binding and action costs still apply.
+Vector can pilot the shuttle from either deployment through an optical or RF link. Check line of sight for optical contact and shielding/interference for RF. A lost link prevents new remote commands; the assistant can continue the agreed flight plan. To change it through Vector, restore the link or reach local controls. Shuttle pilot Binding is Body 1/Mind 1; normal action costs apply. The parent transport receives orders through its systems and assistant, without pilot Binding.
 
 Stitch can remain aboard in the Havoc and cross later, or accompany the first insertion under its own thrust. The Havoc does not fit the shuttle. A later crossing still takes time and a viable path through the defenses; record which opening admits the frame. The Tiger needs a line, shuttle, connected breach, or other transport. Root needs an actual electronic access path for remote work and a physical crossing for local work; The Wrench’s 5 cm reach does not grow because the target is visible.
 
@@ -59,12 +61,12 @@ Before the crew identifies a threat, the network is on **DEFER**: tracking, solv
 Once authorized, the expert system follows one doctrine:
 
 1. If two lasers can reach an exposed crew member, both target that person.
-2. Otherwise, the lasers concentrate on the crew vessel's rocket cannons and point defense.
+2. Otherwise, the lasers concentrate on the boarding shuttle's rocket cannons and point defense.
 3. With no better target, they hold one patch of hull and ablate it until something fails.
 
 The lasers do not spread damage politely. One mount is pressure. Two are a kill solution.
 
-At Action Time, resolve every active laser with line of sight at the end of the exchange. If a crew action contested that mount, the roll decides whether it fires cleanly. If nobody dealt with it, it hits. Apply its DV against the vessel normally: the crew chooses where the machine pays, but the expert system prefers rocket cannons and point defense before holding its beam on the hull. Two mounts on the same target produce two hits. Repeated exposure threatens the return trip, not just this approach.
+At Action Time, resolve every active laser with line of sight at the end of the exchange. If a crew action contested that mount, the roll decides whether it fires cleanly. If nobody dealt with it, it hits. Apply its DV against the shuttle using the vehicle Harm rules: the crew chooses where the machine pays, but the expert system prefers rocket cannons and point defense before holding its beam on the hull. Two mounts on the same target produce two hits. Repeated exposure threatens the return trip, not just this approach.
 
 At Bullet Time, the network is one actor with a 5d20 :term[Action Pool]. Divide its dice between the mounts that can fire. When two mounts can see one exposed person, declare that concentrated attack before the players declare their actions. They know what is about to happen and can reach cover, break the track, disable a mount, or accept the fire to buy someone else an opening.
 
@@ -74,7 +76,7 @@ The players do not need one prescribed tool.
 
 - **Hack the network:** Root can attack the proprietary mount network with System Cracking. Useful effects include forcing **DEFER**, spoofing a non-hostile classification, delaying an **ATTACK** authorization, or breaking coordination so two mounts cannot concentrate fire. The network is separate from every other ship system; this access goes nowhere else.
 - **Take the shot:** A long-range precision weapon can disable an exposed mount. Vantage's Light Lance or Rail Gun is built for this work. The shooter needs a stable line and becomes the network's first personal target if the shot reveals them.
-- **Fire the rockets:** The crew vessel's two micro-rocket cannons can destroy mounts quickly. Rockets are overt. The first launch ends any pretense that this is traffic.
+- **Fire the rockets:** The boarding shuttle's two micro-rocket cannons can destroy mounts quickly. Rockets are overt. The first launch ends any pretense that this is traffic.
 - **Reach the hardware:** An operator on the hull can sabotage a mount or use its service access. This avoids shooting through the ship they intend to board, but puts a body inside overlapping fields of fire.
 - **Mask it:** A pilot can keep the Whisper's hull between the crew and a mount. Masking buys an exchange; rotation or movement can bring the gun back.
 
@@ -94,7 +96,7 @@ Use :term[Challenging] TN 11 for a professional action under pressure. Raise it 
 
 ## Path A: High-velocity ram
 
-The crew foams up and commits the whole vessel. The Whisper authorizes **ATTACK**, but a ram gives the defenders no reason to be on the hull and no time to get there — security stays inside, braces, and waits at the compartments to meet whoever survives the impact. The closing velocity leaves them only long enough to guess where the prow lands and pull people clear of it.
+The boarders foam up and commit the shuttle. The parent transport stays off. The Whisper authorizes **ATTACK**, but a ram gives the defenders no reason to be on the hull and no time to get there — security stays inside, braces, and waits at the compartments to meet whoever survives the impact. The closing velocity leaves them only long enough to guess where the prow lands and pull people clear of it.
 
 The assistant has already chosen a target, and offers it with the same cheerful precision it brings to everything:
 
@@ -114,7 +116,7 @@ The Whisper begins rotating. Vector puts the titanium prow toward the target and
 - **Greater success:** One mount can see them, and it acquires late. Give the crew the first action before it fires.
 - **Failure:** The rotation catches them between arcs. Two mounts can fire, and the crew must disable one, break the geometry, or take concentrated attrition.
 
-Ask everyone else what they do with the seconds the pilot bought. A controlled rocket cannon can remove a mount. Root can attempt a brief **DEFER** through a reachable interface. Vantage can work available ship weapons from protection; a detached Vantage with a clear line can use his long gun. Stitch can keep systems alive if she is there to reach them. Sable can report a breach route from whatever position and observations she actually has.
+Ask everyone else what they do with the seconds the pilot bought. A controlled rocket cannon can remove a mount. Root can attempt a brief **DEFER** through a reachable interface. Vantage can work available shuttle weapons from protection; a detached Vantage with a clear line can use his long gun. Stitch can keep systems alive if she is there to reach them. Sable can report a breach route from whatever position and observations she actually has.
 
 ### 2. Hold the run
 
@@ -131,10 +133,10 @@ Do not make a failed roll end the ram. It makes arrival worse.
 The Whisper fills the forward view. Crash foam fires. Everyone riding inside disappears into white. Detached operators remain where their own movement took them.
 
 - **Success:** The prow enters the chosen compartment. Those riding the ram arrive together, protected by the shield, with the breach where they wanted it.
-- **Greater success:** As above, and the wrecked prow leaves a defensible route back into their vessel.
+- **Greater success:** As above, and the wrecked prow leaves a defensible route back into their shuttle.
 - **Failure:** They still breach. Put them somewhere costly: the wrong compartment, a partially collapsed access, a venting cargo space, or directly beside the security pair. Inflict appropriate :term[Harm] for any protection the lasers already stripped away.
 
-The ram always costs stealth and a clean separation. Their vessel is now lodged in the Whisper. What the players decide is how much of it still works, where it lands, and how many defenders are waiting at the hole.
+The ram always costs stealth and a clean separation. Their shuttle is now lodged in the Whisper. What the players decide is how much of it still works, where it lands, and how many defenders are waiting at the hole.
 
 ## Path B: Infiltrate, then strike
 
@@ -145,7 +147,7 @@ Ghost, active sweep, a cold shuttle, suited operators on lines, a false transpon
 Carry forward what Scene 1 bought. The assistant’s percentages are fictional estimates, not dice procedures. Reserve Vehicle Handling checks for concrete contested maneuvers with stated stakes; see [When the pilot rolls](/scenarios/northern-lights/contact/#when-the-pilot-rolls).
 
 - **Ghost, successful positioning:** One success on **Vehicle Handling, Hard (TN 16)** establishes a hidden vector behind the main engine and a manageable relative speed at boarding distance. Greater Success also preserves a usable breakaway vector. Coast in without another routine roll. Carry the passive observations forward; the network remains on **DEFER**, and the engine masks the laser arcs. They can attempt entry from this position without first destroying the guns. This does not grant an open hatch or a free breach.
-- **Ghost, failed positioning:** The Whisper detects the aft approach and prepares a defensive engine burn. Telegraph drive activity and give the crew a chance to break away before ignition. The concealed coast is lost; do not turn failure into automatic incineration. The immediate alternative is to destroy or disable the point defenses covering a shuttle crossing, then send the shuttle. Resolve that fight below. The burn costs the Whisper scarce fuel, but the crew cannot count on fuel shortage to save them. Other workable responses remain possible; keep each operator’s actual transport constraints.
+- **Ghost, failed positioning:** The Whisper detects the aft approach and prepares a defensive engine burn. Telegraph drive activity and give the crew a chance to break away before ignition. The concealed coast is lost; do not turn failure into automatic incineration. The immediate alternative is to destroy or disable the point defenses covering a shuttle crossing, then bring the same shuttle in from another vector. Resolve that fight below. The burn costs the Whisper scarce fuel, but the crew cannot count on fuel shortage to save them. Other workable responses remain possible; keep each operator’s actual transport constraints.
 - **Active sweep, concealed by the hacker:** The crew knows all three mount positions and likely breach points. The network remains on **DEFER**. Concealing the sweep does not conceal every subsequent action.
 - **Active sweep, detected:** A failed concealment hack—or a sweep without concealment—still yields the information. The Whisper tracks and challenges the crew; the network remains on **DEFER** until hostile action or an openly approaching boarding craft prompts **ATTACK**. Let the crew answer, bluff, withdraw or commit.
 
@@ -207,8 +209,8 @@ Before moving on, record what the players changed:
 
 - Which of the three lasers still works?
 - Is the defense network on **ATTACK**, **DEFER**, or compromised?
-- What is broken or damaged on the crew's vessel?
-- Can their vessel still separate, maneuver, and make the slow trip home?
+- What is broken or damaged on the boarding shuttle?
+- Can the shuttle separate and return to the parent transport? What crossing remains if it cannot?
 - Where is each operator, what route have they secured, and who still needs to cross?
 - Which optical/RF links and hacking access paths work from those positions?
 - Where is the entry, can it admit the deployed frames, and can it be used as an exit?
