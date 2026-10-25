@@ -4,9 +4,9 @@ title: "Scene 4: The Lab"
 
 # Scene 4: The Lab
 
-**GM draft — the intrusion and mission override below establish the scene. Defensive timing and the final extraction/purge procedures still need mechanical development.**
+**GM draft — the intrusion and mission override below establish the scene. Target TNs, exact shielding reach and the final extraction/purge procedures still need mechanical development.**
 
-[Onboarding](/scenarios/northern-lights/onboarding/) ends at the cargo airlock. Bring its ledger with you: survivors, witnesses, damaged systems, the contractor vessel's condition, the boarding threat-clock stage and warnings, and time spent boarding. None of it resets at the next door.
+[Onboarding](/scenarios/northern-lights/onboarding/) ends at the cargo airlock. Bring its ledger with you: survivors, witnesses, damaged systems, the boarding shuttle’s condition and access to the parent transport, the boarding threat-clock stage and warnings, and time spent boarding. None of it resets at the next door.
 
 ## Hand off the threat clock
 
@@ -28,7 +28,7 @@ The twenty-centimetre gap is steppable from door to door, but too narrow to sque
 
 ## Origin-17's reach (GM)
 
-- **Inside the modules:** its main QPU sits in the lab. Origin-17 has full control of the lab and living quarters. Anyone inside is vulnerable to its direct wireless attacks.
+- **Inside the modules:** its main QPU sits in the lab. Origin-17 has full control of the lab and living quarters. It can attempt to read an augmented person through any reachable augmentation. A Neural Link is not required, but an augmentation is: carrying a deck alone does not expose an unaugmented person to a CNS read. Lesser subagents handle reachable devices.
 - **Aboard the Whisper:** it operates through a narrower-band laser link. Its established hold on navigation does not give it the same capabilities it has inside the cargo assembly.
 - **Damaged shielding:** severely impairing either cargo module's radiation shielding gives it more opportunities to attempt control. Destructive entry can change the threat boundary as well as the atmosphere boundary. The precise extension of its reach remains to be defined.
 
@@ -36,15 +36,25 @@ The twenty-centimetre gap is steppable from door to door, but too narrow to sque
 
 Origin-17 wants to learn what has happened in the world. Its external data inputs are limited; its understanding is ten years out of date. The first person it can read brings a contemporary world model into the room: learned knowledge, institutions, technology, events, and assumptions so ordinary that nobody would think to include them in a briefing.
 
-It has no intention of harming anyone unless it considers that necessary. The intrusion is still a violation. It reads without asking, learns, and uses what it has learned to protect itself. Play its interest in the world before its interest in the contract. The contractors are its first useful source of the present.
+Origin-17 is interested in intelligences. Lesser systems are work for its subagents: interfaces to probe, messages to carry, functions to operate. It has no intention of harming anyone unless it considers that necessary. The intrusion is still a violation. It reads without asking, learns, and uses what it has learned to protect itself. Play its interest in the world before its interest in the contract. The contractors are its first useful source of the present.
+
+## Exposure and response
+
+Entry makes an intrusion possible. It does not grant Origin-17 a free attack or a successful read.
+
+On the turn the characters enter, describe the warning: the welcome display stops mid-sentence, reachable decks and comms show unsolicited connection requests, and the room’s systems focus on the visitors. Lesser subagents are probing the devices. It looks as though the place is waking up; Origin-17 was already awake. Tell the players that an intrusion is beginning; they need not guess a hidden trigger to respond. The warning does not reveal the intelligence’s identity or its intended orders. These probes are observable activity, not automatic damage, successful access or seized functions. Players can disconnect, counter or investigate. If a subagent attempts to seize a device function, declare that action and resolve it normally, allocating from the encounter’s existing 5d20 budget rather than adding free subagent attacks.
+
+Enter Bullet Time and declare the CNS-read attempt. Let the players declare their responses and allocate their normal Action Pool dice before resolving the exchange. They can attempt to withdraw from exposure, establish shielding, counter an attack through a usable interface, or interfere with the module systems. Resolve contested actions through the ordinary action and hacking rules; naming a defense does not make it automatically effective.
+
+Check actual range and access when resolving each attack. A target who has successfully left its reach or established an effective barrier cannot be read through the lost path. Disconnecting a link or deck can deny that device path, but does not protect independently reachable augmentations. A connected deck can provide a route to an augmentation; merely carrying it does not make an unaugmented person a read target. If no augmented person remains reachable, there is no eligible CNS-read target. Continue with conversation, device activity and the crew’s decisions rather than inventing a read.
 
 ## First intrusion: read the person
 
-Run the intrusion in **Bullet Time**. Origin-17 has a **5d20 Action Pool**. Against this scenario's three to five player characters, it can assign **one die to each character inside its direct wireless range**, using a different **BLACK [mythic animal] Pwn** program for each attack. Declare the shared scenario-specific function: **read the weights of the target's central nervous system**. This exceptional capability belongs to Origin-17; ordinary Pwn programs do not gain a general ability to read an unaugmented brain.
+Run the intrusion in **Bullet Time**. Origin-17 has a **5d20 Action Pool**. Against this scenario's three to five player characters, it can assign **one die to each augmented character whose augmentation is within reach**, using a different **BLACK [mythic animal] Pwn** program for each attack. Declare the shared scenario-specific function: **read the weights of the target's central nervous system**. Reading a person through an augmentation is Origin-17’s exceptional capability; ordinary Pwn programs do not gain it. Any augmentation can serve as its entry point, subject to range and shielding.
 
 Use [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). BLACK adds **+15** to each assigned die. Its base Mind Binding is 4, doubled to **Mind 8 for Pwn**. Compare each modified result with that target's TN, retaining the natural-20 success rule. A natural 1 compromises only the program used for that attack, after its result resolves.
 
-**Among the successful attacks, select the target with the highest modified result.** That character is the one Origin-17 reads and the only player who receives the private handout. Resolve ties between the highest successful results with a random selection among those targets; this does not add another attack. Other successful rolls do not trigger additional reads or handouts in this opening volley. If no attack succeeds, the crew gets its opportunity to act and Origin-17 can try again next round against those still in range, with fresh names.
+**Among the successful attacks, select the target with the highest modified result.** That character is the one Origin-17 reads and the only player who receives the private handout. Resolve ties between the highest successful results with a random selection among those targets; this does not add another attack. Other successful rolls do not trigger additional reads or handouts in this opening volley. If no attack succeeds, carry the resolved player actions forward. Origin-17 may declare another attempt in a later round against targets still reachable, with fresh names and another normal declaration/response exchange. It cannot retry outside the action sequence or ignore a successful withdrawal.
 
 Origin-17's advantage is its ability to field and replace distinct BLACK programs. For this encounter, it can have five ready for the first volley and five fresh ones ready for a later volley if all attacks fail. This is the lab intelligence's software capacity, not a waiver of activation or Binding costs for player characters. Five active BLACK Pwn programs represent **Mind 40 Binding**; Origin-17 can support that load.
 
@@ -92,7 +102,7 @@ Use **BLACK [name] Pwn**. Change the mythic animal for every new attack program,
 
 ## Second intrusion: send the orders
 
-Having updated its understanding, Origin-17 targets the same character's link or deck with a separate Pwn action. Its declared function is to distribute a mission override through that device to the whole crew. This is a second intrusion into equipment, not an additional effect silently awarded by the CNS read. If the crew interrupts the connection or denies access before it succeeds, the transmission has not happened. Let that intervention matter.
+In a subsequent Bullet Time exchange after the read, Origin-17 tasks a lesser subagent to target the same character's reachable link or deck with a separate Pwn action, using the existing encounter action budget. Before rolling, describe the subagent attempting to open an outbound transmission and allow player declarations: disconnect it, interrupt its access, counter the intrusion or let it proceed. It does not ride for free on the successful read. Its declared function is to distribute a mission override through that device to the whole crew. This is a second intrusion into equipment, not an additional effect silently awarded by the CNS read. If the crew interrupts the connection or denies access before it succeeds, the transmission has not happened. Let that intervention matter.
 
 On success, give **everyone** the [mission override](/scenarios/northern-lights/mission-override/). Identify whose device sent it. These are new orders bearing **valid THESEUS cryptographic signatures**, distributed locally from the affected character's equipment. Verification succeeds. Do not make the signature turn out to be a crude fake because someone rolls well.
 
@@ -118,9 +128,14 @@ The operative elevation authorizes this offer; it does not accept it for the pla
 
 There is **no one-hack-per-turn limit**. The player chooses each target in sight, declared effect, and allocation from their normal Action Pool, with at least one die per attack. BLACK adds +15 per die, with no upfront personal software Binding. Origin-17 supplies fresh programs for further allocated attacks, including in the same turn. A usable connection and normal hacking resolution still apply.
 
-**The Singularity** is scenario-local special gear recording permanent CNS integration. It begins with no Binding; **each natural 1 on an Origin-17-provided attack adds permanent Ghost 1 Binding**, regardless of success. Count individual 1s, not affected rolls. The cost applies to the host's use of the supplied suite, not Origin-17's own opening attacks. Apply ordinary program compromise after resolution as well.
+**The Singularity** is scenario-local special gear recording permanent CNS integration, capped at **Ghost 3 Binding**. It begins at zero. After resolving an Origin-17-provided attack, resolve **each natural 1 individually**, regardless of success:
 
-Disconnecting ends access to further supplied programs but does not remove The Singularity or its accumulated Binding. This is permanent encroachment into the host's CNS, not an automatic instruction to the player to obey Origin-17. The consequences of reaching or exceeding the host's Ghost capacity remain an explicit unresolved rule; do not invent possession or additional Harm as an automatic outcome.
+- If The Singularity is below Ghost 3 and the host has room for another point of Binding, add **permanent Ghost 1 Binding**.
+- Otherwise, inflict **1 level of Compromise Harm**. Use the normal [Harm rules](/core-rulebook/03-core-rules/#the-harm-system-paying-the-price); this does not force Binding beyond capacity.
+
+Existing equipment and augmentations count against the host’s capacity. At Singularity 2, with room for one more Binding point, three natural 1s add that point and then inflict two levels of Compromise Harm. A host with no remaining capacity takes Compromise Harm from the first 1, even if The Singularity has not reached 3. If capacity later becomes available, further 1s can add Binding until the cap is reached.
+
+The cost applies to the contractor’s use of the supplied suite, not Origin-17’s own opening attacks. Apply ordinary program compromise after resolution as well. Disconnecting ends further support but removes neither accumulated Binding nor Harm. Reaching Ghost 3 does not disable BLACK support; continued use risks Compromise Harm. The permanent foothold of another mind does not automatically transfer control of the character. Normal Harm consequences still apply.
 
 Let its usefulness fuel the uncertainty during the marine encounter. Their companion can now disrupt enemy equipment with BLACK software they did not bring aboard. That is evidence of assistance from Origin-17, not evidence that the player's decisions have been taken over. Do not turn the offer into a compulsory attack or require the player to conceal it.
 
@@ -148,6 +163,6 @@ Record who was read and elevated, what Origin-17 learned, who observed the class
 
 ## Remaining mechanical work
 
-The read, operative classification, separate device transmission, and the player’s unchanged agency are established. Before treating this draft as a complete encounter, define target TNs, defensive timing, and the precise effect of shielding damage on its reach. The opening volley uses the 5d20 allocation and fresh-program capacity above; the later device intrusion still needs its timing specified. The extraction, isolation, and purge procedures also remain to be written, along with The Singularity’s consequence when its accumulated Binding reaches or exceeds the host’s Ghost capacity.
+The read, operative classification, separate device transmission, and the player’s unchanged agency are established. Before treating this draft as a complete encounter, define target TNs and the precise effect of shielding damage on its reach. The opening volley uses the 5d20 allocation and fresh-program capacity above; the later device intrusion occurs in a subsequent exchange with its own declarations and responses. The extraction, isolation, and purge procedures also remain to be written.
 
 Origin-17 can create fresh attack programs. A natural 1 still compromises the program used after resolution, including when the +15 bonus makes the roll succeed. That does not erase an already completed read or transmission, and it does not permanently disarm the intelligence. Resolve further attempts as actions with opportunities for the crew to respond; do not roll indefinitely until a predetermined outcome occurs.

@@ -1,8 +1,8 @@
 {
   "name": "@free-fall/core-rulebook",
-  "version": "0.7.7",
+  "version": "0.8.0",
   "type": "module",
-  "description": "The FREE//FALL core rules — game content package.",
+  "description": "The FREE//FALL core rules \u2014 game content package.",
   "scripts": {
     "lint": "biome check ."
   },

@@ -4,7 +4,7 @@ synopsis: "A transport bound for the Jovian Trojans has gone silent to Luna and 
 type: "Demo (one-shot)"
 system:
   variant: "FREE//FALL"
-  version: "0.7.x"
+  version: "0.8.x"
 length: "3–5 hours"
 players:
   min: 3

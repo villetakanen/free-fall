@@ -50,7 +50,7 @@ F01 is withdrawn by user decision. D3 and citizenship player knowledge/cost are 
 | F06 | Make Vantage's equipment prerequisites and totals valid | Hosting blocker | D3; issue #72 | Pushed: 906b73e |
 | F07 | Make transit and boarding configurations legal for every pregen | Hosting blocker | D4; F06; F08 if invoking a new general rule | Proposed |
 | F08 | Define the shared Binding boundary contract | Rules decision | D5 | Proposed |
-| F09 | Complete The Singularity's cost at capacity | Hosting blocker | F08; D5 | Proposed |
+| F09 | Complete The Singularity's cost at capacity | Hosting blocker | F08; D5; #88 | Implemented locally |
 | F10 | Finish lab intrusion and shielding procedures | Hosting blocker | F03 | Proposed |
 | F11 | Make logs, isolation, extraction, and purge executable | Hosting blocker | F10 | Proposed |
 | F12 | Supply runnable marine profiles | Hosting blocker | F08 where relevant | Proposed |
@@ -424,3 +424,21 @@ Verified: app build passed; prerequisite anchor resolves; diff check passed. No 
 F08/#87 follow-up: added a “Zero is okay” callout alongside Attribute definitions. Separates no Current points to spend from full Binding capacity; confirms continued Skills, bound capabilities and Action Pool.
 
 Shipping #87: full build, lint, 120 tests and typecheck passed; diff check passed. No build warnings reported in this run. Accepted ordinary Binding/action boundary and zero callout ready for commit; F09 forced Singularity growth is next.
+
+### F09 — Accepted Singularity cap (#88, 2026-10-25)
+
+Cap permanent Singularity Binding at Ghost 3. Each natural 1 adds one point only if below that cap and the host can accommodate it; otherwise it causes one level of Compromise Harm under normal Harm rules. Resolve multiple 1s individually. At Singularity 2 with one capacity available, three 1s add one Binding and two Harm levels. At full host capacity Harm begins immediately; freeing capacity later permits further Binding up to 3. Disconnection does not erase accumulated costs. No automatic possession; ordinary Harm consequences remain. Lab, handout and marine guidance aligned. Supersedes earlier unresolved-overflow entries.
+
+### F10 — Intrusion opportunity and timing (#89, 2026-10-25)
+
+Entry creates exposure, not an automatic read. Observable module/interface warning and declared CNS attack precede player declarations and resolution. Players can attempt defense, withdrawal or intervention through actual reachable systems; eligibility follows resolved access/range. Disconnecting a deck alone does not shield a brain from the exceptional direct read. Device transmission is a separate subsequent exchange with a visible outbound attempt and a chance to disconnect/counter. Retries use normal exchanges and cannot negate successful withdrawal. Target TNs and exact intact/damaged shielding reach remain pending; F10 is partial.
+
+### F10 — Intelligence and device targets (#89 follow-up)
+
+Origin-17 reads people through reachable augmentations (any augmentation; no unaugmented-brain read). A deck alone is only a device target; a connection to an augmentation can provide a route. Lesser subagents probe devices on entry, giving observable apparent “waking” without automatic damage or control. Actual device seizures are declared actions, not extra free attacks. After a read, a subagent attempts the separate orders transmission. O17 was already awake. No eligible augmented target means no forced read. Supersedes the earlier direct-unaugmented-CNS explanation.
+
+### Release preparation — 2026-10-25
+
+Release includes all approved dev changes, pending F09/F10 work and the character-sheet row layout (#84). Versions: root/app 0.12.0, core 0.8.0, scenarios 0.3.0, design-system and reference app 0.1.0 (initial explicit versions); unchanged gear 0.2.0 and SRD 0.7.1. Northern Lights targets 0.8.x. Remaining F10 TN/shielding and F11 mission procedures remain explicitly unfinished.
+
+Release validation: build, lint, typecheck and all 120 unit tests passed. Both browser suites passed after granting local-server permission. Package versions and Northern Lights compatibility updated. One duplicate-ID loader warning remains; it did not prevent route generation.
