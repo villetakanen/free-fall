@@ -1,6 +1,6 @@
 ---
 title: "Tools of the Trade"
-description: "Equipment, augmentations, vehicles, and the cost of capability in the fractured future of 2048."
+description: "Equipment, augmentations, and the cost of capability in the fractured future of 2048."
 order: 4
 ---
 
@@ -8,9 +8,9 @@ order: 4
 
 <span class="text-caption">Capability Has Costs</span>
 
-In the fractured future of 2048, capability is bought, installed, or equipped. The tools you carry, the armor you wear, the weapons you wield, the augmentations fused to your body, and the machines you pilot are not just accessories — they are extensions of your will and the primary source of your effectiveness. Success often hinges on having the right tool for the job. *"Having the right tool IS the skill."*
+In the fractured future of 2048, capability is bought, installed, or equipped. The tools you carry, the armor you wear, the weapons you wield, and the augmentations fused to your body are not just accessories — they are extensions of your will and the primary source of your effectiveness. Success often hinges on having the right tool for the job. *"Having the right tool IS the skill."*
 
-This chapter details the rules governing equipment: the universal qualities shared across gear categories, the three categories of human augmentation, weapon and armor mechanics, and the specialized rules for vehicles and exoskeletons.
+This chapter details the rules governing equipment: the universal qualities shared across gear categories, the three categories of human augmentation, weapon and armor mechanics, and their costs and capabilities.
 
 For software activation, program tiers, and intrusion, see [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). Programs use the Binding and Load Bearing rules below.
 
@@ -25,7 +25,8 @@ Many pieces of equipment share common qualities that define their function and i
 Significant gear and augmentations bind X points of a specified :term[Attribute] (:term[Body], :term[Mind], or :term[Ghost]), reducing the maximum Current points available. This represents the constant physical strain, power draw, neurological load, cognitive effort, or existential toll the item demands. This embodies the *"Capability has Costs"* principle.
 
 *   **Persistence:** The :term[Binding] cost remains even if the gear becomes Faulty or Broken. It persists until the item is properly removed, uninstalled, or discarded. For augmentations, removal often requires downtime or surgery.
-*   **Cumulation:** Binding costs from multiple items are cumulative. Managing the total Binding cost across your Attributes is crucial.
+*   **Capacity:** Binding costs are cumulative and may fill an Attribute’s entire capacity, leaving Maximum Current at zero. Ordinary Binding cannot exceed that capacity.
+*   **Unbound use:** Equipment whose required Binding is unmet does not grant the equipment prerequisite. To attempt an action with it, use another [specialized-action prerequisite](/core-rulebook/03-core-rules/#3-prerequisites-for-specialized-actions). This enables the declared action, not ongoing Binding or passive benefits. Functional equipment, access and required interfaces still matter.
 *   **Body Binding:** Physical weight, bulk, power requirements drawing on biological energy, or the strain of physically demanding gear and augmentations.
 *   **Mind Binding:** Cognitive load required to process input/output, manage systems, handle complex interfaces, or maintain focus while using demanding tech. It is the mental bandwidth consumed.
 *   **Ghost Binding:** Strain on social adaptability, composure, willpower, or predictive capabilities. Reflects the cost of integrating intrusive tech, suppressing baseline human responses, or the existential weight of replacing humanity with machinery.
@@ -121,43 +122,6 @@ Staying alive often means mitigating incoming damage. Armor and specialized suit
 *   **Environmental Sealing:** Protects from vacuum and hostile atmospheres — radiation, toxins, extreme temperature. Essential for EVA. Often includes Life Support.
 *   **Life Support (X hours):** Provides breathable air and thermal regulation for X hours when sealed. Consumable resource.
 
-## Vehicles & Exoskeletons
+## Machines you pilot
 
-Complex machines offering enhanced mobility, protection, and firepower. They operate under specific rules modifying the core system.
-
-### Machine Attributes
-
-Vehicles and exoskeletons have **Frame (FRM)** and **Systems (SYS)** attributes, each with Permanent and Current values.
-
-*   **Frame (FRM):** Physical integrity, motive power, structural resilience.
-*   **Systems (SYS):** Onboard computers, sensors, electronic warfare capability.
-
-### Attribute Substitution
-
-When piloting, use machine FRM and SYS instead of pilot Body and Mind for relevant actions and resistance involving the machine. The pilot's own Attributes are used for internal state checks.
-
-### Pilot Binding Cost
-
-Operating the machine imposes a :term[Binding] cost on the pilot's Attributes (Body, Mind, or Ghost) for interface and control strain. This is separate from the machine's own attributes. Integrated systems might add Pilot Binding; Hardpoint-mounted gear does not.
-
-### Vehicle Durability & Harm
-
-*   **AV:** Machines have their own Armor Value.
-*   **Attribute Damage:** Harm targeting the machine (after AV) reduces Current FRM for Physical damage or Current SYS for System damage, if the pilot allocates Harm to the machine.
-*   **Spending Machine Attributes:** The pilot can spend 1 Current FRM or SYS instead of Body or Mind to negate 1 level of Harm targeting the machine or meet an action prerequisite involving it. Machine attributes cannot substitute for Ghost.
-*   **Pilot Choice:** For each level of Harm targeting the machine after AV, the pilot chooses:
-    1.  **Allocate to Machine:** Spend 1 Current FRM or SYS (if available).
-    2.  **Allocate to Pilot:** The pilot suffers the Harm level using their own Harm slots and mitigation.
-*   **Becoming Broken:** If the machine cannot absorb Harm (attribute at 0) and the pilot does not take it, the machine becomes **Broken** — non-functional, with Pilot Binding remaining.
-
-### Vehicle & Exo Qualities
-
-*   **Cargo Capacity (X):** Available cargo space.
-*   **Hardened (Vehicle/Exo):** Functions differently from personal gear Hardened. The first time the machine would become Broken, it becomes **Faulty** instead — suffering significant operational penalties (reduced speed, sensor range, weapon accuracy) but remaining minimally functional. Binding cost remains. If it would become Broken again while Faulty, it becomes truly Broken and non-functional.
-*   **Hardpoints (X, Type):** Mount points for integrated weapons (Light, Heavy, Support). Mounted weapons do not add Pilot Binding. Firing checks use SYS for targeting or FRM for exo melee.
-*   **Integrated System:** Built-in functions such as Advanced Sensors or ECM. May add Pilot Binding or require SYS/FRM checks.
-*   **Movement System (Type/Rating):** Defines the movement mode — EVA Thrusters, Space Drive, Walker Legs. Modifies how FRM is used for movement.
-*   **Occupancy (X):** Number of pilot and passenger positions.
-*   **Remote Operation:** Can be controlled remotely with potential penalties. Requires specific gear. Checks use operator Mind or Ghost.
-*   **Sensor Suite (Type/Rating):** Onboard sensor capabilities. Checks use SYS.
-*   **Size Category:** Abstract size classification — Personal, Small, Medium, Large, Huge.
+Vehicles and exoskeletons have their own capabilities, resources and damage procedure. Use [Vehicles & Exoskeletons](/core-rulebook/vehicles-and-exoskeletons/) when directly operating those machines. Their rules build on the shared qualities here; personal gear does not require the machine subsystem.

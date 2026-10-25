@@ -1,0 +1,119 @@
+---
+import BmgCircle from "@free-fall/design-system/components/BmgCircle.svelte";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/character-sheet-print.css";
+
+const value = {
+  body: { current: 7, base: 12 },
+  mind: { current: 6, base: 6 },
+  ghost: { current: 1, base: 8 },
+};
+const examples = [
+  { id: "overview", title: "Sheet overview", narrow: false },
+  { id: "narrow", title: "In a narrow container", narrow: true },
+];
+---
+
+<BaseLayout title="Character Sheet Row — Layout 1 — FREE//FALL Design System">
+  <h1>Character sheet row</h1>
+  <p class="variant">Layout 1</p>
+  <p>Info and Harm share the smaller column. One BMG circle occupies the larger column beside them. The row stacks when its container runs out of room.</p>
+
+  {examples.map(({ id, title, narrow }) => (
+    <section class="specimen breakout" data-example={id} aria-labelledby={`${id}-title`}>
+      <h2 id={`${id}-title`}>{title}</h2>
+      <div class:list={["example-host", { narrow }]}>
+        <div class="char-sheet-row">
+          <div class="supporting">
+            <section aria-labelledby={`${id}-identity`}>
+              <h3 id={`${id}-identity`}>Info / Meta</h3>
+              <dl class="identity">
+                <div><dt>Callsign</dt><dd>Vantage</dd></div>
+                <div><dt>Name</dt><dd>—</dd></div>
+                <div><dt>Role</dt><dd>Operator</dd></div>
+              </dl>
+            </section>
+            <section aria-labelledby={`${id}-harm`}>
+              <h3 id={`${id}-harm`}>Harm</h3>
+              <ol class="harm-slots" aria-label="Harm slots">
+                {[1, 2, 3].map((slot) => (
+                  <li><span class="slot-number">{slot}</span><span>Empty</span></li>
+                ))}
+              </ol>
+            </section>
+          </div>
+          <div class="primary">
+            <BmgCircle {value} />
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <h2>The proportions</h2>
+  <p>The <a href="/content-grid/">prose grid</a>, in reverse: <strong>42.5ch</strong> for the supporting column, then <strong>67ch</strong> for the primary column, with the standard 2rem gap. There is no intermediate narrow-side tier.</p>
+  <p>On small containers the order is Info/Meta, Harm, then BMG. The smaller example above uses the same layout inside a 320px host. These are static specimens; the Harm slots show placement, not an editor.</p>
+
+  <h2>Use the row</h2>
+  <pre><code>{`<!-- base.css supplies the layout in Astro, Svelte or plain HTML. -->
+<div class="char-sheet-row">
+  <div>
+    <!-- Info / Meta, then Harm -->
+  </div>
+  <div>
+    <!-- One BMG circle -->
+  </div>
+</div>`}</code></pre>
+  <p>Give the row exactly two children, compact first and primary second. In a page-level content grid, use <code>class="char-sheet-row breakout"</code> to make both prose tracks available. The row supplies spacing and proportions; its children supply their own content and presentation.</p>
+  <p><a href="/bmg-circle/">BMG Circle</a> · <a href="/character-sheet-static/">Static and print</a></p>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio) * var(--freefall-type-ratio) * var(--freefall-type-ratio));
+    line-height: calc(7 * var(--freefall-space-1));
+  }
+  .variant {
+    color: var(--freefall-text-muted);
+    font: var(--freefall-type-ui-small) / 1.5 var(--freefall-font-mono);
+  }
+  .specimen {
+    min-inline-size: 0;
+    margin-block-end: var(--freefall-space-8);
+  }
+  .example-host { inline-size: 100%; }
+  .example-host.narrow { max-inline-size: calc(40 * var(--freefall-space-1)); }
+  .supporting { display: grid; gap: var(--freefall-space-4); }
+  .supporting > section { padding: var(--freefall-space-2); background: var(--freefall-bg-surface-1); }
+  h3 {
+    margin: 0 0 var(--freefall-space-2);
+    font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio));
+    line-height: calc(4 * var(--freefall-space-1));
+  }
+  .identity { display: grid; gap: var(--freefall-space-2); margin: 0; }
+  .identity dt { font: var(--freefall-type-ui-small) / 1.5 var(--freefall-font-mono); color: var(--freefall-text-muted); }
+  .identity dd { margin: var(--freefall-space-1) 0 0; }
+  .harm-slots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--freefall-space-1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .harm-slots li {
+    display: grid;
+    gap: var(--freefall-space-1);
+    padding: var(--freefall-space-1);
+    margin: 0;
+    background: var(--freefall-bg-surface-2);
+    color: var(--freefall-text-muted);
+    font-size: var(--freefall-type-ui-small);
+  }
+  .slot-number { font-family: var(--freefall-font-mono); color: var(--freefall-text-display); }
+  .primary { display: flex; justify-content: center; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; min-inline-size: 0; }
+  @media print {
+    .supporting > section, .harm-slots li { background: transparent; color: black; }
+  }
+</style>

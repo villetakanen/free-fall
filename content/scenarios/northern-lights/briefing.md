@@ -16,7 +16,7 @@ The money is in escrow. The signature says **PROTOCOL BLACK**. No name.
 
 The advisory lists automated defenses and a compromised crew. The Copenhagen Protocol applies. **No witnesses.** Nobody has offered extra pay for finding out whether the crew knows what it’s carrying.
 
-You brought a boarding ship with a titanium prow, point defense, and a shuttle. The assistant can fly it. The fuel left after the intercept gets you a slow ride home.
+You brought a transport and a stripped-down boarding shuttle with a titanium prow, crash foam and weapons. The assistant runs the transport; the shuttle is the craft you pilot into the approach. The fuel left after the intercept gets you a slow ride home.
 
 The briefing packet includes schematics of your vessel and shuttle, plus a layout of the *Whisper* and its declared cargo reconstructed from the manifest. Your own hardware you know. The target drawing is what the paperwork says should be there.
 
@@ -35,7 +35,7 @@ For now, you’re all aboard your own vessel. Mark your intended positions on th
 | Operator | First option | Second option |
 | --- | --- | --- |
 | **Vantage** | Cover the crossing from the crew vessel’s exterior; the Whisper’s hull blocks shots into its interior. | Accompany the boarding team at its chosen entry; cover its advance with less view of the wider approach. |
-| **Vector** | Cover deployment from the crew vessel’s exterior while directing flight through an optical or RF link. | Join the boarding team in the Tiger; direct insertion while linked, then bring breaching and close-combat capability inside. |
+| **Vector** | Cover deployment from the crew vessel’s exterior while directing the shuttle through an optical or RF link. | Join the boarding team in the Tiger; direct insertion while linked, then bring breaching and close-combat capability inside. |
 | **Root** | Provide systems support from shelter inside the crew vessel, through interfaces actually within reach. | Join the boarding team to reach local controls and isolated electronics at close range. |
 | **Stitch** | Stay with the crew vessel in the Havoc for damage or casualty response, then cross independently when needed. | Cross with the first boarders under the Havoc’s own thrust and provide immediate medical support at the entry. |
 | **Sable** | Approach separately as an advance scout, finding a route with less immediate backup. | Take point with the main boarding group, screening the entry and protecting teammates as they cross. |
@@ -44,7 +44,7 @@ With fewer than five players, assign only the operators in play. Leave unfilled 
 
 ## Check the crossing
 
-**Vector’s link.** Driving the vessel requires a usable optical or RF connection, not a seat at the helm. Optical communication needs a clear path; hull shielding and interference can block RF. Decide what flight plan the assistant should continue if contact is lost. Losing the link stops new remote commands, not that existing plan. Piloting still costs the vessel’s normal pilot Binding. The Tiger has no EVA thrusters: arrange a line, shuttle, connected breach, or another viable lift for her crossing.
+**Vector’s link.** Piloting the shuttle requires a usable optical or RF connection, not a seat at the helm. Optical communication needs a clear path; hull shielding and interference can block RF. Decide what flight plan the assistant should continue if contact is lost. Losing the link stops new remote commands, not that existing plan. Shuttle piloting binds Body 1/Mind 1, including remote operation; giving the parent transport orders adds no pilot Binding. The Tiger has no EVA thrusters: arrange a line, shuttle, connected breach, or another viable lift for her crossing.
 
 **Stitch’s Havoc.** It does not fit the approach shuttle. Its EVA thrusters, sealing, and twelve-hour life support let her cross independently now or later. Distance, transit time, defensive fire, and clearance at the intended entry still matter. Being able to reach the hull does not mean the frame fits through every opening.
 
@@ -54,7 +54,7 @@ With fewer than five players, assign only the operators in play. Leave unfilled 
 
 **Vantage’s sightline.** External overwatch covers what his weapon can actually see. It cannot follow teammates through bulkheads. Choose the Wraith and weapon or the separate deck configuration before deploying; the deck’s support does not accompany the Wraith loadout.
 
-**If you ram.** Everyone riding the vessel must enter its crash protection before impact. Exterior stations wait until after the collision; Vector can pilot from protection over her link. Anyone who has already crossed or is travelling independently stays in their actual position. Plan where those groups meet after the breach.
+**If you ram.** Everyone riding the shuttle must enter its crash protection before impact. Its exterior stations wait until after the collision; operators on the parent transport stay there. Vector can pilot from protection over her link. Anyone who has already crossed or is travelling independently stays in their actual position. Plan where those groups meet after the breach.
 
 ## Leave with a crew plan
 

@@ -129,8 +129,14 @@ const navItems = Astro.props.navItems ?? [
       "/bmg-circle",
       "/attribute-circle",
       "/character-sheet-static",
+      "/char-sheet-row-layout-1",
     ].some((path) => Astro.url.pathname.startsWith(path)),
     subItems: [
+      {
+        label: "Sheet Row — Layout 1",
+        href: "/char-sheet-row-layout-1/",
+        active: Astro.url.pathname.startsWith("/char-sheet-row-layout-1"),
+      },
       {
         label: "Attribute Circle",
         href: "/attribute-circle/",

@@ -12,37 +12,20 @@ Statted below as an example FREE//FALL vessel — a slow civilian freighter, the
 
 ## Stat block
 
-```yaml
-title: "Njord's Whisper"
-nickname: "'00' long-haul freefall hauler"
-category: "vehicle"
-size_category: "Huge"
-frame: 40
-systems: 8
-vehicle_av: 1
-binding: {}
-pilot_binding:
-  body: 1
-  mind: 1
-qualities:
-  - "Movement System (Antimatter-catalyzed fusion torch — throttled to a continuous 0.01 g freight crawl)"
-  - "Fuel Reserve (Freighter — months of endurance; propellant a rounding error on the manifest)"
-  - "Cargo Maw (Bow-loading hold — cargo enters through the front; the obvious way in)"
-  - "Occupancy (Small civilian crew — lived-in freefall cabin: strap bunks, 0 g galley, months of clutter)"
-  - "Life Support (Months)"
-  - "Environmental Sealing"
-  - "Sensor Suite (Basic navigational / traffic-control)"
-  - "Automated Defenses (Modest anti-piracy point defense — not built to fight anything determined)"
-  - "Negligible Gravity (0.01 g sternward from the freight crawl — plays as freefall; loose objects settle toward the engine over seconds, not instantly)"
-  - "Signature: Dark (comms to Luna and Belt traffic control cut)"
-source: "northern-lights-demo"
-```
+The Whisper is a commandeered installation, not a piloted vehicle stat block. Its drive, sensors, doors, communications and point-defense network are distinct systems with the access and control described in [The Approach](/scenarios/northern-lights/the-approach/). It has no whole-ship FRM/SYS pool or pilot Binding.
+
+- **Drive:** antimatter-catalyzed fusion torch; 0.01 g freight crawl, effectively freefall inside. Defensive burns cost fuel reserved for the remaining journey.
+- **Cargo:** bow-loading maw and modular cargo assembly.
+- **Habitation:** civilian freefall compartments, environmental sealing and months of life support.
+- **Sensors:** basic navigation and traffic-control interfaces; external communications to Luna and Belt traffic control have been cut.
+- **Defenses:** three independently controlled leased point-defense mounts. Resolve those mounts and local breaches, not damage to a universal ship pool.
+
 
 ## Effect
 
-A dumb truck. High frame for a big, cheap, structurally-simple hull wrapped around tankage and cargo volume; low systems because there was never anything clever to run; AV 1 because nobody armors a freighter. She front-loads cargo through the bow maw and pushes it at a hundredth of a g for as long as it takes. Her defenses are the civilian anti-piracy minimum — enough to discourage an opportunist, nowhere near enough to stop a crew that came to board her.
+A dumb truck: a big, cheap hull wrapped around tankage and cargo volume, with civilian systems and no warship armor. She front-loads cargo through the bow maw and pushes it at a hundredth of a g for as long as it takes. Her defenses are the civilian anti-piracy minimum — enough to discourage an opportunist, nowhere near enough to stop a crew that came to board her.
 
-**No crew binding.** She asks nothing of the body to ride: roomy enough, freefall throughout, no confinement cost. She is a *comfortable* ship to be aboard — which is exactly the wrong instinct, this trip.
+**Passengers pay no vessel Binding.** She is roomy, with space to move in freefall. She is a *comfortable* ship to be aboard — which is exactly the wrong instinct, this trip.
 
 **Pilot binding — Body 1, Mind 1.** She flies herself, mostly. A hauler's autopilot holds a freight crawl for months; the civilian crew are supervisors, not stick-and-rudder pilots.
 

@@ -1,0 +1,26 @@
+/* Spec: specs/design-system/char-sheet-row/spec.md
+   Layout 1: the prose grid's compact measure first, primary measure second.
+   The pair responds to its own width, including inside another layout. */
+.char-sheet-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--freefall-space-4);
+  inline-size: 100%;
+  max-inline-size: calc(
+    var(--freefall-content-side-wide) + var(--freefall-content-main) +
+      var(--freefall-space-4)
+  );
+  min-inline-size: 0;
+}
+
+.char-sheet-row > * {
+  flex: 1 1 var(--freefall-content-main);
+  min-inline-size: 0;
+  max-inline-size: var(--freefall-content-main);
+  overflow-wrap: anywhere;
+}
+
+.char-sheet-row > :first-child {
+  flex-basis: var(--freefall-content-side-wide);
+}

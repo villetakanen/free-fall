@@ -52,7 +52,14 @@ Your interface presents one line of terms before you use the suite:
 
 **You may make as many Origin-17-provided BLACK attacks as you allocate actions to against targets in sight.** Declare each target and effect, and assign at least one die per attack from your normal Action Pool. This grants no extra dice or additional pool. Add BLACK's **+15 to each assigned die**. Supplied programs have no upfront personal Binding cost. Origin-17 provides fresh programs as needed: BLACK Griffin Blast, BLACK Unicorn Blast, BLACK Hydra Spike. You are limited by your actions and access, not a stock of software.
 
-**Every natural 1 on an Origin-17-provided attack permanently binds 1 Ghost to a special gear entry: The Singularity.** Count each natural 1 separately, even when several occur in one roll and even when the attack succeeds. Two natural 1s add Ghost 2 Binding. This is cognitive spillover: part of the operator takes up permanent residence in your CNS. Record the cumulative Binding on your sheet. It persists when you disconnect or stop using the suite.
+**Every natural 1 on an Origin-17-provided attack has a cost.** After the attack resolves, count each 1 separately, even when the attack succeeds:
+
+- Add **permanent Ghost 1 Binding** to **The Singularity**, up to a maximum of Ghost 3, if you have capacity for it alongside your existing Binding.
+- If that point cannot fit, or The Singularity is already at Ghost 3, take **1 level of Compromise Harm** instead. Resolve it through the normal Harm rules.
+
+At Singularity 2 with room for one more point, three natural 1s add the final Binding point and cause two levels of Compromise Harm. If you have no room for Binding, Harm starts immediately. Later freed capacity can accommodate further Binding up to the cap.
+
+This is cognitive spillover: part of the operator takes up permanent residence in your CNS. Record The Singularity on your sheet. Disconnecting or stopping the suite does not remove its Binding or erase Harm. You can continue using the suite at the cap, but further 1s cause Compromise Harm. The Singularity does not take control of your choices; normal Harm consequences still apply.
 
 Program compromise also applies after resolution. Origin-17 can provide a different program for another allocated attack, including in the same turn. Its support requires the connection through your link or deck. You choose every action and target; The Singularity's Binding does not itself instruct you to change loyalties or surrender your character's decisions.
 

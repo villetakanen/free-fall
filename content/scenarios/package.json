@@ -1,8 +1,8 @@
 {
   "name": "@free-fall/scenarios",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "type": "module",
-  "description": "FREE//FALL scenarios — playable adventures targeting a rules variant.",
+  "description": "FREE//FALL scenarios \u2014 playable adventures targeting a rules variant.",
   "scripts": {
     "lint": "biome check ."
   },

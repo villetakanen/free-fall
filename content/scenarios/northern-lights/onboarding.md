@@ -10,7 +10,7 @@ Hold the boundary. This is the *human* fight, and only that. It ends at the **do
 
 ## Where it starts (GM)
 
-There is no single opening. The crew wrote it in [the approach](/scenarios/northern-lights/the-approach/), and you kept the ledger: which lasers still burn, whether the network sits on ATTACK or DEFER or a lie, what is broken on their own ship, where the entry is, where the security ended up, what the pilots and stevedores worked out, and whether the run cost minutes or hours. Read it back before the first exchange. The Whisper does not reset because the scene changed.
+There is no single opening. The crew wrote it in [the approach](/scenarios/northern-lights/the-approach/), and you kept the ledger: which lasers still burn, whether the network sits on ATTACK or DEFER or a lie, what is broken on their shuttle, where the entry is, where the security ended up, what the pilots and stevedores worked out, and whether the run cost minutes or hours. Read it back before the first exchange. The Whisper does not reset because the scene changed.
 
 The one thing the entry decides is *where its boarders are standing when it starts* — and that reshapes everything else.
 
@@ -30,7 +30,7 @@ If the brig reaches its warning or impact stages before the crew reaches the lab
 
 Read the deployment ledger from The Approach. Only operators who completed the crossing and entry begin inside. External cover, remote support, advance scouts, and anyone waiting aboard keep their actual locations. Ask what those operators do while the boarders advance. Later arrivals need travel time, a viable route, and an opening their gear can pass through. Stitch can cross independently in the Havoc; she does not need the shuttle to return for her.
 
-Interior bulkheads can cut Vector’s optical link; establish whether RF still reaches the crew vessel. A lost link leaves the assistant on its agreed flight plan until contact or local control is restored. It does not move Vector back to a helm.
+Interior bulkheads can cut Vector’s optical link; establish whether RF still reaches the shuttle. A lost link leaves the assistant on its agreed flight plan until contact or local control is restored. It does not move Vector back to a helm.
 
 ## Opening by entry
 
@@ -75,7 +75,7 @@ Before the cut, close the ledger:
 
 - Who is dead. Who surrendered. Who saw the crew's faces or heard their voices.
 - Who among the crew *believes* them — about the fault, about the cargo, about anything.
-- Which lasers still work, what is broken on the crew's own ship, and whether it can still fly home.
+- Which lasers still work, what is broken on the shuttle, whether it can return to the parent transport, and what other crossing remains.
 - Where each operator is, who has yet to cross or regroup, and which routes and links still connect them.
 - The story clock’s current stage, who received its warnings, and any action that changed the assault. Keep fictional travel and resource durations separately.
 

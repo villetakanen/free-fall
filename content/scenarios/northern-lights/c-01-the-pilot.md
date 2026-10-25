@@ -31,19 +31,21 @@ On a mission, the pilot wears the "Tiger" — an elegant, hard-space-enhanced ta
   - **Mind:** 12 − 2 = **10** (deep reserve for flying under fire), **9** in the Tiger
   - **Ghost:** 8 − 3 = **5** — and **2** in the Tiger (the frame demands almost everything she has left)
 
+**While piloting the shuttle:** add Body 1/Mind 1. With the listed personal kit, your maximum Current Body/Mind/Ghost is **3/9/5** outside the Tiger, or **3/8/2** while also piloting the Tiger. Shuttle FRM 18/SYS 12 and Tiger FRM 6/SYS 12 remain separate; spend from the machine involved in the action. Releasing Binding does not refill spent points.
+
 ## Starting position
 
 At the [crew briefing](/scenarios/northern-lights/briefing/), choose where you first deploy:
 
-- **Crew-vessel exterior:** cover the others’ deployment while directing flight through an optical or RF link. You retain a clear view of the vessel but must cross later to join the interior action.
+- **Crew-vessel exterior:** cover the others’ deployment while directing the shuttle through an optical or RF link. You retain a clear view of the vessel but must cross later to join the interior action.
 - **With the boarding team, in the Tiger:** direct insertion while linked, then bring your breaching and close-combat capability to the entry. Hull geometry may break optical contact; RF depends on shielding and interference.
 
-You need the link, not a seat at the helm. Give the assistant a continuing flight plan before contact becomes uncertain. A lost link prevents new remote commands; routine flight can continue. Normal ship pilot Binding still applies. The Tiger has no EVA thrusters, so arrange a line, shuttle, connected breach, or another viable lift. During a ram, pilot from crash protection and deploy afterward; that protected position need not be the helm.
+You need the link, not a seat at the helm. Give the assistant a continuing flight plan before contact becomes uncertain. A lost link prevents new remote commands; routine flight can continue. Shuttle pilot Binding is Body 1/Mind 1. Commands to the parent transport do not impose pilot Binding. The Tiger has no EVA thrusters, so arrange a line, shuttle, connected breach, or another viable lift. During a ram, pilot from crash protection and deploy afterward; that protected position need not be the helm.
 
 ## In this scenario
 
 - **Nominal is not their scene — degraded is.** If the Ram takes point-defense hits, if the active sweep wakes something that shoots back, if the ship comes off the breach with holed tanks: Vehicle Handling is what stands between "we limp home" and "we're a second derelict."
-- **In the Tiger, she is the boarding action.** The Close Combat Suite grants Close Combat Tactics; SYS 12 moves her faster than anything else in the corridor; grapplers take her along any surface in any orientation. The hardpoints carry her fight for free: the plasma lance opens *one* door, hull, or argument — Single Use, it grants Breaching for that firing, so make it the right door (and mind the backblast — her own crew stacks behind her) — and the droid array tazes whatever tries to close the gap while she works. The price is written in her sheet: Ghost 2 while piloted — composure pared to the bone, in the scenario where composure is what the cargo eats. And no thrusters: knocked off the hull, she is cargo.
+- **In the Tiger, she is the boarding action.** The Close Combat Suite grants Close Combat Tactics; FRM 6 supplies her machine movement resource; SYS 12 supports its sensors and systems; grapplers take her along any surface in any orientation. The hardpoints carry her fight for free: the plasma lance opens *one* door, hull, or argument — Single Use, it grants Breaching for that firing, so make it the right door (and mind the backblast — her own crew stacks behind her) — and the droid array tazes whatever tries to close the gap while she works. The price is written in her sheet: Ghost 2 while piloted — composure pared to the bone, in the scenario where composure is what the cargo eats. And no thrusters: knocked off the hull, she is cargo.
 - **After the QNA, the assistant's word is worthless** — the crew has just watched a machine forge paperwork-perfect orders. A human who can fly *without asking the ship* becomes the only navigation the crew can trust. Vector doesn't know they're the insurance against their own AI yet. The player will figure it out at the exact right moment.
 - The trip home: near-dry tanks, whatever damage act two left, possibly a CSA interceptor with full tanks deciding whether to care. That leg is flown by hand or not at all.
 
