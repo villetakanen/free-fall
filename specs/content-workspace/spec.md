@@ -272,3 +272,9 @@ Scenario: Version display reads from content package
 The chapter distinguishes directly piloted action-scale machines from ships, stations and large installations commandeered through people, interfaces and systems. Commanding an installation does not grant a personal vehicle stat block or impose whole-vessel pilot Binding; role in play, rather than tonnage alone, defines the boundary. Existing machine mechanics and catalog data remain unchanged by this structural correction.
 
 Verification: build the new route and chapter navigation, check inbound links and shared-rule links, and confirm machine-specific mechanics no longer reside in Tools of the Trade.
+
+## Binding and unsupported equipment actions
+
+Binding may fill an Attribute's entire Binding capacity, leaving zero Maximum Current; ordinary Binding cannot exceed that capacity. An item whose required Binding is not met does not itself satisfy the functional-equipment action prerequisite. Using accessible, functional unbound equipment follows the existing specialized-action prerequisite alternatives, like acting without a supplied Skill. An alternate prerequisite enables the declared action, not ongoing Binding or continuing access. Harm taken for that action is the normal one-level prerequisite, not payment per missing Binding point. Physical access and necessary interfaces remain required. Pilot Binding references this same rule. Forced permanent Binding effects such as The Singularity remain a separate unresolved boundary.
+
+The core Attribute definitions include a visible zero-value callout: zero alone causes no incapacity or Harm, removes no dice, and does not disable already-bound capabilities. No Current points means no spending from that Attribute; full Binding capacity means no additional ordinary Binding.

@@ -23,6 +23,10 @@ Each Attribute possesses two values:
 *   **Initial:** Your character's maximum potential or cap for that Attribute, determined during character creation. This rarely changes.
 *   **Current:** The points you currently have available to spend or lose. This value fluctuates due to exertion (spending points to act or negate Harm) and the constant drain of Attribute :term[Binding] from your gear and augmentations. Your Current value cannot exceed your Maximum Current Attribute value (Initial minus Binding Costs). Replenishing Current Attribute points typically requires downtime.
 
+> **Zero is okay.**
+>
+> You can have 0 in Body, Mind or Ghost and still act. Zero is not automatic Harm, unconsciousness or loss of control. It means you have no points there to spend on pushing or negating Harm; when its Binding capacity is full, you cannot bind more to that Attribute. Your Skills, already-bound capabilities and Action Pool still work. Use another action prerequisite when needed.
+
 Think of your Current Attributes as critical resources – fuel for pushing your limits and buffers against trauma.
 
 ## Gear, Augmentations & Binding: The Cost of Capability
@@ -40,7 +44,7 @@ This Binding Cost is subtracted from your Initial Attribute value to determine y
 
 > **Example:** If you have Initial Body 12 and wear armor with Body Binding 3, your Maximum Current Body becomes 9. You start with 9 Current Body points and can never recover more until the armor is removed.
 
-Binding Costs from multiple items are cumulative. Crucially, Attribute Binding Costs remain even if the gear becomes Broken. The strain persists until the item is unequipped or uninstalled.
+Binding Costs from multiple items are cumulative. Binding may use the entire Attribute capacity, leaving Maximum Current at zero; ordinary Binding cannot exceed that capacity. Zero remaining capacity alone does not cause Harm or prevent actions. Crucially, Attribute Binding Costs remain even if the gear becomes Broken. The strain persists until the item is unequipped or uninstalled.
 
 ## Action Resolution: Making Your Move
 
@@ -66,11 +70,15 @@ During the Declaration Phase, you state what you intend to do and assign dice fr
 Most actions beyond simple movement or basic interaction require you to meet at least one prerequisite before you can roll:
 
 1.  **Relevant Skill:** Possess the relevant Character :term[Skill] (an innate talent chosen during character creation based on your :term[Class]).
-2.  **Functional Gear/Augmentation:** Have appropriate, functional Gear or Augmentation that enables the action.
+2.  **Functional Gear/Augmentation:** Have appropriate, functional Gear or Augmentation that enables the action, with its required Binding met.
 3.  **Spend Attribute Point:** Spend 1 Current point from the Attribute pool most relevant to the action (Body, Mind, or Ghost). This represents pushing your inherent limits through sheer effort.
 4.  **Take Harm:** Take 1 level of Harm relevant to the action type. This Harm is suffered before the roll and must be resolved immediately. This represents pushing yourself dangerously beyond safe limits.
 
 You cannot attempt the specialized action if you cannot meet at least one prerequisite.
+
+**Using unbound equipment:** an item whose required Binding you have not met does not supply the equipment prerequisite. You can still attempt a feasible action with it by meeting another prerequisite above, just as when you lack a Skill supplied by gear. You still need the functional equipment, physical access and any necessary interface. The alternate prerequisite enables this action; it does not bind the item or grant continuing access to its capabilities. Meet a prerequisite again for each further action.
+
+For example, if you can cover only Ghost 3 of a mech’s required Ghost 4, you cannot bind it normally. With access to its controls and the required interface, you can take 1 level of appropriate Harm before a declared piloting action to meet that action’s prerequisite. This is the ordinary Harm prerequisite, not a payment of Harm per missing Binding point. It does not make the mech continuously bound or waive its interface requirements.
 
 ### 4. Rolling & Determining Success
 

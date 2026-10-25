@@ -414,3 +414,13 @@ Vector’s listed kit plus shuttle piloting gives maximum Current Body/Mind/Ghos
 Shipping verification: full build, lint, 120 tests and typecheck passed. Duplicate-ID content-loader warnings remain. Reviewed parent/shuttle roles, linked and onboard pilot costs, Ghost reroute, ram riders and return route. Unrelated design-system work excluded from this commit.
 
 All scenario pages and changed core chapters passed generated-link checks. A broader scan found an unrelated existing registry link to missing `02-characters-and-crews/#i-gear--augmentations-the-chrome`; not introduced or changed here.
+
+### F08 — Full Binding and unbound actions (#87, 2026-10-25)
+
+Accepted: ordinary Binding may fill capacity but cannot exceed it. An unbound item does not supply the functional-gear prerequisite; using it follows the existing alternatives for an unsupported specialized action. Relevant Skill, expenditure or Harm enables a feasible declared action, not continuing Binding. Necessary equipment/access/interfaces still apply. Harm is the normal action prerequisite, not an overflow price per Binding point. Added the Ghost 3 / mech Ghost 4 example and aligned core, gear and pilot guidance. The Singularity’s forced permanent cost remains separate and unresolved.
+
+Verified: app build passed; prerequisite anchor resolves; diff check passed. No static-prose tests added. Uncommitted.
+
+F08/#87 follow-up: added a “Zero is okay” callout alongside Attribute definitions. Separates no Current points to spend from full Binding capacity; confirms continued Skills, bound capabilities and Action Pool.
+
+Shipping #87: full build, lint, 120 tests and typecheck passed; diff check passed. No build warnings reported in this run. Accepted ordinary Binding/action boundary and zero callout ready for commit; F09 forced Singularity growth is next.

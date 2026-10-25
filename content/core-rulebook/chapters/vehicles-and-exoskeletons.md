@@ -35,6 +35,8 @@ When piloting, use machine FRM and SYS instead of pilot Body and Mind for releva
 
 Operating the machine imposes a :term[Binding] cost on the pilot's Attributes (Body, Mind, or Ghost) for interface and control strain. This is separate from the machine's own attributes. Integrated systems might add Pilot Binding; Hardpoint-mounted gear does not.
 
+If you cannot meet the pilot Binding, you cannot bind the machine normally. A feasible action through its controls can instead use another [specialized-action prerequisite](/core-rulebook/03-core-rules/#3-prerequisites-for-specialized-actions), including taking appropriate Harm before the action. This enables that action, not continued operation without prerequisites. Required interfaces and access still apply; the machine’s own resources and action limits remain unchanged.
+
 ## Vehicle Durability & Harm
 
 *   **AV:** Machines have their own Armor Value.
