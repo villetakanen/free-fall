@@ -89,6 +89,8 @@ import { version as CORE_VERSION } from "../../../../../content/core-rulebook/pa
 
 There is no `index.ts` re-export. The `package.json` version string is the single source of truth.
 
+**Rules generation:** Core rules and SRD remain on `0.7.x` for the v7 playtest. Increment their patch versions independently for revisions; a new rules generation requires explicit user authorization. Application, scenario and other package versions are independent and do not advance the rules generation. Scenario rules compatibility names the targeted rules line (`0.7.x` for Northern Lights).
+
 **Content collection configuration**
 
 The Astro content collection loader is updated to reference the new path:

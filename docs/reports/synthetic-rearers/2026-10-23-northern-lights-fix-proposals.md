@@ -512,3 +512,7 @@ Added the approved core chapter: ordinary adversaries use an authored available 
 The Other Side prose pass: user requested a tone brief and writing-aid subagent. Saved `2026-10-26-rules-prose-brief.md`; shortened the chapter to roughly 330 body words, two sections and one example. Linked inherited procedures rather than restating them. Review retained Reserve recovery explicitly; mechanics unchanged.
 
 Shipping The Other Side (#106) and approved default weapons (#104): full build, lint, tests and typecheck passed. Core rules patch 0.8.2; SRD patch 0.7.2 also records the earlier Binding correction. Hardshell CTS removal and the no-cost CSA suite decision remain to be applied to catalog/scenario prose before finalizing pilot reserves.
+
+### Rules numbering corrected (#107, 2026-10-26)
+
+Core 0.7.7 was incorrectly advanced to 0.8.0 in 9b70cde, followed by 0.8.1 and 0.8.2. Corrected to 0.7.10, retaining the three patch increments within the v7 line. Northern Lights compatibility restored to 0.7.x. SRD remains 0.7.2; app numbering is independent. Core and SRD stay on 0.7.x until the user explicitly authorizes a new rules generation. This supersedes earlier release-number recommendations in this log; historical commits are not rewritten.
