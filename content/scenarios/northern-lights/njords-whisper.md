@@ -41,3 +41,5 @@ The stat block is the ship her manifest describes. It is not the ship the crew w
 ## Connected cargo spaces
 
 The cargo entry leads to the living module, whose systems O17 has overtaken. The physically connected QNA housing compartment lies farther in; entry there is for hands-on work on the array. The living-module encounter requires no such entry. The manifest drawing should distinguish both compartments and their physical connection without revealing the hidden takeover.
+
+**GM: manifest versus reality.** The cargo documentation names a QNA. The housing actually supports an active NHE with multiple QNAs and other processing hardware. Keep the player’s manifest schematic a statement of what was declared, not an omniscient inventory. Physical inspection and access to maintenance records can expose that mismatch.

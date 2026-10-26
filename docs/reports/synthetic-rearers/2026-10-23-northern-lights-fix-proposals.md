@@ -52,7 +52,7 @@ F01 is withdrawn by user decision. D3 and citizenship player knowledge/cost are 
 | F08 | Define the shared Binding boundary contract | Rules decision | D5 | Proposed |
 | F09 | Complete The Singularity's cost at capacity | Hosting blocker | F08; D5; #88 | Implemented locally |
 | F10 | Finish lab intrusion and shielding procedures | Hosting blocker | F03; #89, #94 | Implemented locally |
-| F11 | Make logs, isolation, extraction, and purge executable | Hosting blocker | F10 | Proposed |
+| F11 | Make the mistaken contract and intervention consequences runnable | Hosting blocker | F10 | Proposed |
 | F12 | Supply runnable marine profiles | Hosting blocker | F08 where relevant | Proposed |
 | F13 | Finish confrontation, escape, and aftermath | Hosting blocker | F04, F09, F11, F12 | Proposed |
 | F14 | Replace stale appendix references with working links | Quick correction | None | Proposed |
@@ -153,13 +153,13 @@ Supply target TNs, defenses, opening and follow-up action timing, and intact/dam
 
 **Done when:** run the opening volley and later device intrusion with ordinary dice resolution and no “roll until the plot happens” loop. Both successful and prevented intrusions advance the scenario.
 
-### F11 — Resolve the original job
+### F11 — The mistaken contract and intervention consequences
 
 **Scope:** lab mission procedures and their links to the briefing. Owner: scenario intent.
 
 Define requirements, access, actions/duration, opposition, costs, and failure consequences for extracting logs, isolating the array, moving it, purging it, and physically destroying it. Explain which actions satisfy which contract objectives; destruction is not automatically log extraction.
 
-**Done when:** a GM can resolve the original purge mission and the protection alternative, with information available before irreversible decisions. These procedures remain usable if CSA arrives early or the override never transmits.
+**Done when:** the GM can reveal the mistaken premise, adjudicate credible intervention attempts and track exposure evidence/consequences without inventing a guaranteed clean completion route. Procedures remain usable if CSA arrives early or the override never transmits. Unexpected bargains, buyers and escapes remain open.
 
 ### F12 — Four runnable marines
 
@@ -175,7 +175,7 @@ Complete each role's actions, Attributes/reserves, weapons, defenses, software, 
 
 Define starting positions, objectives, escalation, retreat/rout triggers, and escape requirements. Supply concise consequences for purge, protection, escape with survivors, refusal of both contracts, and defeat/capture, including logs, payment, surviving civilians, and the array's fate. Cover the advertised three-to-five-player range through explicit opposition guidance rather than an assumed five-person party.
 
-**Done when:** at least one full route from contact through resolution can run without encounter design by the GM, and each listed branch reaches an aftermath. Both three- and five-player configurations receive a tabletop dry run; human playtesting remains required for balance and the three-to-five-hour claim.
+**Done when:** the GM can run the expected confrontation and likely aftermaths, and adjudicate unexpected outcomes from faction knowledge, interests, access and consequences rather than force a listed ending. Both three- and five-player configurations receive a tabletop dry run; human playtesting remains required for balance and the three-to-five-hour claim.
 
 ### F14 — Named links instead of appendix codes
 
@@ -476,3 +476,17 @@ Accepted after core-rule review: natural 1 may succeed with bonuses; no SRD or F
 O17 is conscious/sentient, cybernetically beyond other scenario actors, and self-aware of immaturity relative to its own potential. This is not human childlikeness; it wants to mature before consequential projects. Control of one or many people is possible with effective access, but unwanted here. Read/release and player agency remain the encounter contract. Destruction of this shard’s local embodiment is transient; survival instinct, work and local stakes remain real. No invented backup or revival mechanism. Added GM reference in preface, aligned lab guidance and removed human-child imagery.
 
 Shipping #94: build, lint, typecheck and 148 unit tests passed; scenario and hacking-rule internal links/anchors verified. No content-loader warnings in this build. F10 is implemented; next is F11, beginning with hard-line log extraction and its relationship to O17’s control.
+
+### F11/F13 reframed — deathtrap, not predetermined ending (#100)
+
+Accepted: briefing misidentifies an active NHE across multiple QNAs/other compute as a single QNA job; lethal CSA extraction is already inbound (EU capture exception retained); successful power shutdown and knowledge extraction still create plausible compromise, with ordinary authorities expected to exterminate before contact. Actual infection is not assumed. Technical actions can succeed while the promised clean return fails.
+
+GM guidance now distinguishes established facts, likely responses and open outcomes. A disabled-module sale to New China is an example to adjudicate, not a guaranteed branch. Track evidence, buyer motives, transport, containment and deception. Reveal discoverable stakes before commitment; no omniscient authorities or invented backup to negate success. Updated preface, encounter, ship/timeline references and second-boarding follow-through. Player briefing/manifest retain the mistaken premise. F11/F13 remain partial: practical interventions and complete opposition/aftermath tools still need work.
+
+### F12 command arrangement — implemented (#101, 2026-10-26)
+
+Approved: hacker is the local field commander, following the assault pair from protected positions and directing through team feeds. Technical access and institutional clearance embody CSA’s information-centered authority. The sniper covers actual sightlines. Commander-only THESEUS access works through available relayed identification data, without a face-to-face encounter; sealed orders and the separate EU capture exception remain intact.
+
+This supersedes the brief’s blanket no-shared-feeds statement: LPC remains analog voice, with separate local sensor/identity data links. Feeds establish actual observation and hacking paths, not universal access or extra actions. Broken feeds cost fresh visibility, not authority, remembered facts or local IFF bonuses. Updated brief and scenario spec. Full profiles, reserves and withdrawal triggers remain open F12 work.
+
+Release preparation (2026-10-26): #100 and #101 validated with full build, lint, typecheck, 148 unit tests and 45 application browser tests. App/root 0.14.0 includes the already-committed character-sheet additions; scenarios 0.4.0 includes O17 encounter guidance, the mistaken contract and CSA command; core 0.8.1 adds targeting-hacks clarification. Other packages retain their versions. Uncommitted design-system Harm demo work is excluded. Production publication is verified separately after merging the release PR.

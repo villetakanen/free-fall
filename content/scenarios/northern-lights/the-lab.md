@@ -30,7 +30,7 @@ The twenty-centimetre gap is steppable from door to door, but too narrow to sque
 
 | Actor or system | Established control | Limits |
 | --- | --- | --- |
-| **O17** | Intelligence resident in the QNA, physically connected to the housing network and PSU. | Uses actual connected sensors, interfaces and actuators; a power connection alone is not control of every powered device. |
+| **O17** | Intelligence embodied across multiple QNAs and other processing hardware, physically connected to the housing network and PSU. | Uses actual connected sensors, interfaces and actuators; a power connection alone is not control of every powered device. |
 | **Living-module systems** | Overtaken by O17: installed lighting, displays, doors, environmental controls and communications hardware. | Each effect needs the corresponding functioning hardware. Control of this environment is not control of the whole Whisper. |
 | **Navigation ANI** | Fully controls the Whisper’s navigation for O17, including the established course and drive control. | A specialized executor, without O17’s fluid intelligence, open-ended development or empathy. Other ship systems remain in human hands. |
 | **Lesser device subagents** | Carry out probes and declared device intrusions for O17. | Reachable interfaces and the existing action budget still apply; probes do not grant automatic control. |
@@ -204,8 +204,18 @@ A blocked override leaves the clock where the fiction put it. If the assault alr
 
 Record who was read and elevated, what Origin-17 learned, who observed the classified identity, whether the device intrusion succeeded, who received the override, and what the crew chose to do. Carry forward disconnected equipment, damaged shielding, remote queries awaiting replies, the current threat-clock stage, and who has heard its warnings. A blocked transmission is a legitimate branch of the scene, not a reason to deliver the handout by fiat.
 
+## If they pursue the original job
+
+Use [The deathtrap](/scenarios/northern-lights/preface/#the-deathtrap-gm). The housing contains multiple QNAs and other processing equipment supporting an active NHE. The singular array in the briefing is not a complete inventory. Make that discrepancy discoverable through physical inspection, maintenance information or conversation before treating removal of one component as a decisive purge.
+
+If the crew establishes a credible shutdown, resolve it honestly. Record which power feeds, processors and connections are disabled, and what systems remain operational; do not invent a secret backup merely to cancel success. Cutting this installation off does not automatically remove the navigation ANI already aboard the Whisper or effects already delivered to a contractor.
+
+If they recover knowledge, record what they obtained, its carrier and who knows about their exposure. Even a powered-down housing and successful extraction leave plausible NHE compromise. Normal authorities are expected to destroy suspected carriers before contact. Suspicion is not proof of actual infection; do not impose automatic possession, reinfection or loyalty changes to justify the policy.
+
+The crew may bargain, hide the evidence, abandon the contract, attempt a private sale or pursue another plan. Identify the people, access, transport and information their plan needs, then resolve those obstacles. The job is a deathtrap; the outcome remains theirs to change.
+
 ## Remaining mechanical work
 
-The read, operative classification, separate device transmission, target TNs, counterplay and the player’s unchanged agency are established above. The extraction, isolation and purge procedures remain to be written under F11; those require physical access decisions beyond this living-module encounter.
+The read, operative classification, separate device transmission, target TNs, counterplay and the player’s unchanged agency are established above. F11 still needs practical evidence and intervention details for physical access, power isolation and handling recovered knowledge. These support adjudicating player attempts and their consequences; they must not promise a clean contract-completion route.
 
 Origin-17 can create fresh attack programs. A natural 1 still compromises the program used after resolution, including when the +15 bonus makes the roll succeed. That does not erase an already completed read or transmission, and it does not permanently disarm the intelligence. Resolve further attempts as actions with opportunities for the crew to respond; do not roll indefinitely until a predetermined outcome occurs.

@@ -73,3 +73,7 @@ After the crew has had a meaningful response to the warning, develop the approac
 On a failed early assessment, this is the late warning: immediate movement, cover, sealing up, or bracing. On a successful assessment, it confirms what the crew already prepared for. Do not turn either result into an extra period of leisurely planning.
 
 When the final run reaches the target, mark **12:00** and close the scene at impact, or at the changed outcome if the crew successfully alters the approach. A cancelled or diverted assault retires or changes the remaining clock; it is not forced to collide to complete the diagram. Record where everyone is, which preparations succeeded, what the marines can see, and which survivors are cooperating. Keep the unresolved orders and the suspicion between characters alive. The next fight begins with the decisions they made under that uncertainty.
+
+## Follow the surviving plan
+
+CSA doctrine establishes what the team intends, not a compulsory defeat. If the crew changes the approach, bargains with another party, escapes or arranges a sale, carry those results forward. Use [Prepare the trap, not the ending](/scenarios/northern-lights/preface/#prepare-the-trap-not-the-ending) to establish the next party’s knowledge and interests. A disabled module does not erase plausible NHE compromise, but authorities do not receive evidence by GM fiat. Unexpected success deserves consequences, not cancellation.
