@@ -355,3 +355,11 @@ The Wraith Infiltration Frame requires an installed Neural Link. Its Ghostlink I
 ## Hardshell targeting support
 
 The catalog Hardshell has Ghost 3 pilot Binding and no integrated Combat Targeting Suite or active targeting surcharge. Its armor, FRM/SYS, mounts and other qualities remain unchanged. Scenario-installed targeting support defines its own effects and costs; the CSA IFF/COMMS suite occupies Support with no additional Binding.
+
+## CSA IFF/COMMS System
+
+One utility catalog entry describes external and invasively installed internal variants with Body 1/Mind 1 Binding. An exo Support mount removes pilot Binding under normal mount rules. Eligible Load Bearing applies normally; internal hardware is not attached suit gear. Functioning IFF grants +5 per attack die and +5 to incoming attack TNs, not AV. Analog LPC voice and separate sensor/identity data feeds are distinct functions. Device access does not transfer institutional clearance. Internal installation provides an augmentation endpoint; limited hacking access and human agency remain unchanged.
+
+## LHI EVA Light Tactical Frame
+
+The L-hit is Luna Heavy Industries’ lightweight EVA weapons/support platform: FRM 3, SYS 10, AV 0, Small; one Assault and one Support hardpoint, EVA thrusters, magnetic anchors, firing stabilizers, sealing and four-hour life support. It requires an installed Neural Link. Mind 4 pilot Binding is eligible for that link’s shared Mind 8 systems/software allowance, leaving 4 for software; the implant’s Ghost 3 remains. This explicit item behavior supersedes the proposed exclusion of pilot Binding from the allowance. Stabilizers enable mounted fire in free flight without an extra attack bonus. Mounted equipment adds no pilot Binding.

@@ -4,7 +4,7 @@ title: "The CSA Marines"
 
 # The CSA Marines
 
-**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. Commander and sniper profiles, software defenses and withdrawal triggers remain to be completed.
+**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. The commander’s equipment and software are set below. The sniper’s equipment is set below; their Reserve, passive software defenses and withdrawal triggers remain to be completed.
 
 ## Friday-night cleanup
 
@@ -24,11 +24,44 @@ That support does not require instantaneous communication with distant headquart
 
 ## The hacker commands
 
+**Main adversary.** Use full Body, Mind and Ghost under [The Other Side](/core-rulebook/the-other-side/#the-main-adversary). The commander declares after the players, with the normal 5d20 and three Harm slots. **Initial Attributes: Body 8, Mind 12, Ghost 6.** **Current: Body 1, Mind 3, Ghost 2** with the loadout below.
+
 The person with the access credentials gives the orders. CSA puts technical access and institutional clearance in the same hands: the hacker is this team’s commander. The assaulters clear the way while the commander follows from protected positions, watches their feeds, and directs the operation. The sniper covers usable sightlines. Keep the commander close enough to maintain local links and move with the team; cover and available connections determine their position, not a fixed marching order.
 
 **Remote operations, local command.** The commander deploys with the assault because headquarters is too far away to direct a close fight. They can observe through a teammate’s sensors without standing beside them. Track which feeds reach the commander and what those sensors can actually see. A camera does not see through bulkheads; an interrupted feed supplies no fresh observations. Spoken reports over LPC can fill gaps, with the limits of what the reporting marine knows.
 
 The commander’s systems work still consumes actions. Directing the team does not grant extra attacks, simultaneous hacks, or control of another marine’s decisions.
+
+### Commander loadout
+
+| Equipment | Binding before allowances |
+|---|---|
+| Neural Link | Ghost 3 |
+| Internal Oxygenator | Body 3 |
+| Void Marine suit — AV 2, sealing, thrusters, six-hour life support | Body 3, Ghost 1 |
+| Internal [CSA IFF/COMMS System](/gear/utility/) | Body 1, Mind 1 |
+| Suit-mounted Combat Deck | Mind 3 |
+| Suit-mounted Wrench — EMR access within 5 cm | Mind 1 |
+
+The suit’s Load Bearing covers the deck and Wrench: **4 of 5 points**. Run the internal IFF and software through the Neural Link: **1 + 16 = 17 Mind**, minus its allowance of **8**, leaves **9 bound**. Total Binding is **Body 7 / Mind 9 / Ghost 4**; available Current is **1 / 3 / 2**. The deck also supplies **3 temporary combat-only Mind points per scene**, tracked separately from personal Current.
+
+The oxygenator supplies twelve hours of internal air. The suit supplies sealing and protection. Interface cables and the suit’s communications hardware provide paths to compatible systems; the Wrench reaches nearby electronics when shielding permits. A target on a feed still needs an actual intrusion path.
+
+### Software: built for amateurs
+
+All five programs start active. Bonuses apply per assigned die; costs below are before the Link allowance.
+
+| Program | Intended effect | Bonus | Mind |
+|---|---|---:|---:|
+| CHROME Cadillac Counter | Counter a hostile intrusion | +10 | 6 |
+| CHROME Corvette Spike | Disable a reachable weapon’s electronics | +10 | 3 |
+| CHROME Thunderbird Blast | Disrupt sensors across reachable targets | +10 | 3 |
+| STEEL Impala Spike | Extract access records or local logs | +5 | 2 |
+| RED Bel Air Counter | Bypass routine civilian access controls | +0 | 2 |
+
+They brought military suppression and cheap tools for a civilian ship. No Pwn: nobody expected to need finesse. No BLACK: this is an issued library. Follow normal [activation, Binding and compromise rules](/core-rulebook/hacking-and-cyber-warfare/); a compromised program is lost for the mission. The commander allocates their own dice to every hack and Counter. Reserve IFF’s attack bonus for attack rolls, not routine data extraction or access checks.
+
+**GM:** The commander’s finite tools make O17’s supply of fresh BLACK programs an alarming exception. Let burned programs narrow the commander’s options; do not replenish them to match O17.
 
 ## Analog command, hackable equipment
 
@@ -52,7 +85,7 @@ Internal LPC is analog voice only. Treat the links as effectively unhackable in 
 |---|---|---|
 | Assault operator ×2 | Hardshell Combat Exoskeleton with CSA IFF/COMMS and boarding weapons | Secure the breach and advance toward the lab using shared lanes and target information. |
 | Hacker / commander | Custom intrusion kit, command feeds and defensive software | Direct the assault from cover, maintain the combat picture, contest ship systems, and investigate hostile interference. |
-| Sniper | Custom marksman weapon and targeting system | Observe exposed routes, feed target information to the team, and cover their movement from a suitable firing position. |
+| Sniper | L-hit, Light Lance and CSA IFF/COMMS | Observe exposed routes, feed target information to the team, and cover their movement from a suitable firing position. |
 
 Only the two assaulters are committed to the immediate push through the interior. The hacker's systems work consumes actions; the sniper needs a real sightline and must reposition when the crew denies it. Their roles create simultaneous pressures without giving all four an automatic shot into every compartment.
 
@@ -60,7 +93,7 @@ Only the two assaulters are committed to the immediate push through the interior
 
 Use the catalog **Hardshell Combat Exoskeleton** for both assaulters: FRM 24, SYS 6, AV 4, Hardened, EVA thrusters, magnetic boots and eight hours of life support. Each has two Assault hardpoints and one Support hardpoint. Pilot Binding is Ghost 3. Use the catalog’s remaining qualities unchanged.
 
-The **CSA IFF/COMMS package occupies the Support hardpoint** on each frame and adds no Binding cost. It provides the identification and targeting support, analog LPC voice and separate command feeds described below. Target those functions individually: suppressing IFF removes its combat bonuses without automatically silencing communications. Physical destruction of the whole package can remove all of its functions; resolve the actual damage and scope.
+The **[CSA IFF/COMMS System](/gear/utility/) occupies the Support hardpoint** on each frame and adds no Binding cost. It provides the identification and targeting support, analog LPC voice and separate command feeds described below. Target those functions individually: suppressing IFF removes its combat bonuses without automatically silencing communications. Physical destruction of the whole package can remove all of its functions; resolve the actual damage and scope.
 
 ### Default assault loadout
 
@@ -79,6 +112,21 @@ Use the IFF bonuses below for CSA targeting support.
 Each assaulter starts with **Reserve 4**, after Binding, and **3 points bound to the Hardshell**. Use the ordinary-adversary rules in [The Other Side](/core-rulebook/the-other-side/): 5d20, three empty Harm slots, declarations before the players. Track each operator separately from their frame’s **FRM 24 / SYS 6**.
 
 Leaving the frame returns its 3 bound points: an unspent Reserve becomes **7**. Spent points stay spent. The operator loses the frame’s protection and capabilities; mounted weapons and IFF/COMMS return no points. Rebinding the frame commits 3 Reserve again.
+
+## Sniper equipment
+
+The **L-hit — Luna Heavy Industries EVA Light Tactical Frame** carries a **Light Lance** on its Assault hardpoint and **CSA IFF/COMMS** on Support. **FRM 3 / SYS 10 / AV 0**; EVA thrusters, magnetic anchors, firing stabilizers, sealing and four-hour life support. Use the [catalog frame](/gear/exos/) and [Light Lance](/gear/weapons/) profile: **DV 3 Physical, Long range, Piercing 1**.
+
+The frame requires an installed **Neural Link**. Its Mind 4 pilot Binding and two active programs fill the Link’s allowance:
+
+| Active program | Effect | Bonus per die | Mind |
+|---|---|---:|---:|
+| STEEL Corvette Spike | Disable reachable weapon electronics | +5 | 2 |
+| STEEL Impala Spike | Extract access records or local logs | +5 | 2 |
+
+**Allowance: 4 + 2 + 2 = 8.** Net personal Binding is **Ghost 3** for the Link; the mounted weapon and IFF/COMMS add none. Keep the machine’s FRM/SYS separate from the pilot’s Reserve, which remains to be set. Releasing the fully offset frame or software frees allowance, not personal points.
+
+Run the Spikes through the frame’s mission computer and a reachable electronic interface. The sniper uses the same Action Pool for firing, repositioning and hacking. Programs follow normal compromise rules; seeing a target through the scope grants no intrusion path. Stabilizers make free-flight shots possible; the frame provides no armor.
 
 ## Local systems and coordination
 
@@ -146,6 +194,6 @@ Direct observation, voice communication and checking one another are available r
 
 Make the cracks visible: an unanswered demand for support, conflicting calls, a stalled advance, a marine backing toward cover. Let the crew exploit those openings. Neither automatic recovery nor automatic rout should cancel what actually happens in the fight.
 
-Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside software defenses and the remaining commander and sniper profiles. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
+Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside software defenses and the sniper’s Reserve and starting sightlines. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
 
 **Target access for BLACK support:** sight and a live support connection remain required, but neither replaces a suitable path from your equipment to the target. Establish the transmitting interface, receiving device and channel. The supplied program does not give you O17’s prepared module hardware or universal implant access.

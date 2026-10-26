@@ -524,3 +524,21 @@ Removed catalog CTS and Ghost +1 active surcharge. Hardshell pilot Binding remai
 ### CSA assaulter Reserves (#110, 2026-10-26)
 
 Both assaulters start at Reserve 4 after Binding, with 3 bound to their Hardshell. Leaving it returns 3 (unspent 4 → 7); rebinding commits 3. Mounted weapons and IFF/COMMS return none. Normal ordinary-adversary action/Harm rules apply, with separate tracking for each operator and FRM 24/SYS 6 frame. Commander/sniper numbers and boss assignment remain open.
+
+### CSA main adversary confirmed (#111, 2026-10-26)
+
+Hacker-commander receives main-adversary treatment: full Body/Mind/Ghost and declarations after players. Normal five dice and three Harm slots; existing panic/fallibility remains. This supersedes earlier pending boss-assignment entries. Attribute values and equipment remain the next decisions.
+
+Commander initial Attributes approved: Body 8, Mind 12, Ghost 6. Equipment direction is mostly internal augmentations plus a survival/space suit; exact items and Current values remain under discussion.
+
+### Commander equipment and CSA catalog system (#112, 2026-10-26)
+
+Approved internal IFF/COMMS Body 1/Mind 1, catalog name CSA confirmed. One internal/external utility entry preserves zero pilot Binding on a Support mount. Commander uses Neural Link, Oxygenator, Void Marine, internal IFF, external deck and Wrench. Suit offsets hardware 4; Link offsets 8 of IFF/software 17. Current B1/M3/G2; deck grants its separate three temporary combat-only Mind points.
+
+Active library: CHROME Cadillac Counter 6, Corvette Spike 3, Thunderbird Blast 3; STEEL Impala Spike 2; RED Bel Air Counter 2. Mustang Pwn dropped, no Pwn loadout. Classic US-car naming approved. Finite compromise/activation economy contrasts with O17’s exceptional fresh BLACK supply. Commander equipment now set; sniper and passive defenses remain open.
+
+### L-hit and sniper programs recorded (#113, 2026-10-26)
+
+Approved name: Luna Heavy Industries EVA Light Tactical Frame, “L-hit.” FRM 3/SYS 10/AV 0; light EVA platform with thrusters, anchors, stabilizers, sealing, four-hour support, one Assault and one Support mount. Neural Link required. Final pilot Binding Mind 4 (supersedes Mind 2/Ghost 2 proposals), explicitly eligible for Link’s Mind 8 allowance.
+
+Sniper mounts Light Lance and CSA IFF/COMMS. Two active STEEL car-name programs: Corvette Spike for weapon electronics, Impala Spike for records/logs. Each Mind 2; 4 + 2 + 2 fills allowance 8, leaving implant Ghost 3 as net personal Binding. Offsets create no refundable personal points. Catalog, brief and specs aligned. Reserve 3 and pistol/tether were proposals, not accepted defaults; those and exact sightlines remain open.
