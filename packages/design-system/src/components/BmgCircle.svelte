@@ -48,18 +48,46 @@
     }
   }
 
+  // One 12-unit line: the ~28-unit inward barb folds back 30° from the arc’s tangent.
+  // Closed silhouettes let feedback trace the line’s edges without filling it.
+  // Coordinates share the ring’s 560-unit design canvas.
   const paths: Record<Conversion, string> = {
-    "ghost-to-mind": "M 224.28 17.86 A 268 268 0 0 0 37.11 393.26 L 29.86 396.64 L 51.37 412.00 L 51.61 386.50 L 44.36 389.88 A 260 260 0 0 1 225.94 25.68 Z",
-    "ghost-to-body": "M 335.72 17.86 A 268 268 0 0 1 522.89 393.26 L 530.14 396.64 L 508.63 412.00 L 508.39 386.50 L 515.64 389.88 A 260 260 0 0 0 334.06 25.68 Z",
-    "mind-to-body": "M 74.70 452.27 A 268 268 0 0 0 469.50 469.50 L 475.16 475.16 L 482.24 449.70 L 458.19 458.19 L 463.85 463.85 A 260 260 0 0 1 80.83 447.12 Z",
+    "ghost-to-mind": "M 223.86 15.90 A 270 270 0 0 0 71.53 451.58 L 67.31 403.35 L 55.36 404.39 L 55.61 407.34 A 258 258 0 0 1 226.36 27.64 Z",
+    "ghost-to-body": "M 336.14 15.90 A 270 270 0 0 1 488.47 451.58 L 492.69 403.35 L 504.64 404.39 L 504.39 407.34 A 258 258 0 0 0 333.64 27.64 Z",
+    "mind-to-body": "M 73.17 453.55 A 270 270 0 0 0 485.18 455.51 L 438.41 468.04 L 441.51 479.63 L 444.37 478.87 A 258 258 0 0 1 82.36 445.84 Z",
   };
+
+  // CSS conic gradients run clockwise from twelve o'clock. Reverse the two
+  // counterclockwise routes, and pad the seam clear of their pointed ends.
+  const gradients: Record<Conversion, { from: number; span: number; reverse: boolean }> = {
+    "ghost-to-mind": { from: 225, span: 113, reverse: true },
+    "ghost-to-body": { from: 2, span: 113, reverse: false },
+    "mind-to-body": { from: 125, span: 95, reverse: true },
+  };
+
 </script>
 
 <div class="bmg" class:paper={appearance === "print"} class:long role="group" aria-label={label} data-bmg>
   <div class="stage">
     <svg class="ring" viewBox="0 0 560 560" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        {#each CONVERSIONS as route}
+          <clipPath id={`${uid}-${route.id}-fill`}><path d={paths[route.id]} /></clipPath>
+        {/each}
+      </defs>
       {#each CONVERSIONS as route}
-        <path d={paths[route.id]} data-arc={route.id} class:active={active?.id === route.id} />
+        {@const gradient = gradients[route.id]}
+        <path role="presentation" d={paths[route.id]} data-arc={route.id} class:active={active?.id === route.id}
+          onpointerenter={() => { if (ready) hovered = route.id; }} onpointerleave={() => { hovered = null; }} />
+        <foreignObject class="gradient" data-arc-fill={route.id} class:active={active?.id === route.id}
+          x="0" y="0" width="560" height="560" clip-path={`url(#${uid}-${route.id}-fill)`}>
+          <div class="gradient-paint"
+            style:--gradient-from={`${gradient.from}deg`}
+            style:--gradient-end-angle={`${gradient.span + 10}deg`}
+            style:--gradient-start={`var(--freefall-attr-${gradient.reverse ? route.destination : route.source})`}
+            style:--gradient-end={`var(--freefall-attr-${gradient.reverse ? route.source : route.destination})`}></div>
+        </foreignObject>
+        <path class="outline" d={paths[route.id]} data-arc-outline={route.id} class:active={active?.id === route.id} />
       {/each}
     </svg>
     {#each ATTRIBUTES as attribute}
@@ -75,11 +103,13 @@
       {@const name = `Spend 2 ${ATTRIBUTE_LABELS[route.source]} Current for 1 ${ATTRIBUTE_LABELS[route.destination]} Current`}
       <div class="conversion" data-route={route.id}>
         {#if ready}
-          <button type="button" data-convert={route.id} aria-label={name} aria-disabled={!result.ok}
+          <button class="freefall-button freefall-button--square" type="button" data-convert={route.id} aria-label={name} aria-disabled={!result.ok}
             aria-describedby={!result.ok ? `${uid}-${route.id}-reason` : undefined}
             title={result.ok ? name : result.message} onclick={() => convert(route.id)}
             onpointerenter={() => { hovered = route.id; }} onpointerleave={() => { hovered = null; }}
-            onfocus={() => { focused = route.id; }} onblur={() => { focused = null; }}>2:1</button>
+            onfocus={() => { focused = route.id; }} onblur={() => { focused = null; }}>
+            <span class="material-symbols-sharp" aria-hidden="true">sync_alt</span>
+          </button>
           {#if !result.ok}<span class="reason" id={`${uid}-${route.id}-reason`}>{result.message}</span>{/if}
         {/if}
         <span class="ratio" class:screen-hidden={ready} aria-label={name}>2:1</span>
@@ -100,30 +130,55 @@
     color: var(--freefall-text-muted);
   }
   .stage {
+    --ring-inset: 0%;
+    --side-route-offset: 9.55%;
+    --side-route-top: 31.98%;
+    --bottom-route-top: 94.3%;
     position: relative;
     aspect-ratio: 1;
   }
   .ring {
     position: absolute;
-    inset: 0;
-    inline-size: 100%;
-    block-size: 100%;
+    inset: var(--ring-inset);
+    inline-size: calc(100% - 2 * var(--ring-inset));
+    block-size: calc(100% - 2 * var(--ring-inset));
   }
   .ring path {
     fill: var(--freefall-border-strong);
   }
-  .ring path.active {
-    fill: var(--freefall-action-base);
+  .ring .outline {
+    fill: none;
+    stroke: var(--freefall-action-base);
+    stroke-width: calc(var(--freefall-space-1) / 8);
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+  }
+  .ring .outline, .ring .gradient {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.33s ease-in-out;
+  }
+  .ring .outline.active, .ring .gradient.active {
+    opacity: 1;
+  }
+  .gradient-paint {
+    inline-size: 100%;
+    block-size: 100%;
+    background: var(--gradient-start);
+    background: conic-gradient(from var(--gradient-from) in lch shorter hue,
+      var(--gradient-start) 10deg, var(--gradient-end) var(--gradient-end-angle));
   }
   .position {
     --freefall-attribute-circle-width: 100%;
     position: absolute;
     inline-size: calc(28% + 2.75 * var(--freefall-space-1));
-    transform: translate(calc(-50% - 1.375 * var(--freefall-space-1)), -50%);
+    /* Anchor the face center, excluding the label area on its selected side. */
+    transform: translate(calc(-50% - 1.375 * var(--freefall-space-1)), calc(-50% + 1.75 * var(--freefall-space-1)));
   }
   [data-position="ghost"] {
     left: 50%;
     top: 28%;
+    transform: translate(calc(-50% - 1.375 * var(--freefall-space-1)), calc(-50% - 1.75 * var(--freefall-space-1)));
   }
   [data-position="mind"] {
     left: 32%;
@@ -137,19 +192,33 @@
     position: absolute;
     transform: translate(-50%, -50%);
   }
+  .conversion button {
+    position: relative;
+  }
+  .conversion button::after {
+    content: "2:1";
+    position: absolute;
+    top: calc(100% + var(--freefall-space-1) / 2);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--freefall-text-muted);
+    font: 500 var(--freefall-type-ui-small) / 1 var(--freefall-font-mono);
+    white-space: nowrap;
+    pointer-events: none;
+  }
   [data-route="ghost-to-mind"] {
-    left: 9.55%;
-    top: 31.98%;
+    left: var(--side-route-offset);
+    top: var(--side-route-top);
   }
   [data-route="ghost-to-body"] {
-    left: 90.45%;
-    top: 31.98%;
+    left: calc(100% - var(--side-route-offset));
+    top: var(--side-route-top);
   }
   [data-route="mind-to-body"] {
     left: 50%;
-    top: 94.3%;
+    top: var(--bottom-route-top);
   }
-  button, .ratio {
+  .ratio {
     box-sizing: border-box;
     display: grid;
     place-items: center;
@@ -159,23 +228,6 @@
     color: var(--freefall-text-display);
     background: var(--freefall-bg-canvas);
     font: 500 calc(1.75 * var(--freefall-space-1)) / 1 var(--freefall-font-mono);
-  }
-  button {
-    border: calc(var(--freefall-space-1) / 8) solid var(--freefall-border-strong);
-    border-radius: 0;
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  button:hover, button:focus-visible {
-    border-color: var(--freefall-action-base);
-  }
-  button:focus-visible {
-    outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base);
-    outline-offset: calc(var(--freefall-space-1) / 2);
-  }
-  button[aria-disabled="true"] {
-    color: var(--freefall-text-muted);
-    cursor: not-allowed;
   }
   .screen-hidden {
     display: none;
@@ -196,7 +248,7 @@
     width: calc(18 * var(--freefall-space-1));
     height: auto;
     padding: var(--freefall-space-1);
-    top: calc(100% + var(--freefall-space-1));
+    top: calc(100% + var(--freefall-type-ui-small) + 1.5 * var(--freefall-space-1));
     z-index: 10;
     white-space: normal;
     background: var(--freefall-bg-surface-2);
@@ -219,6 +271,15 @@
   }
   .legend li {
     margin: 0;
+  }
+  @container (width > 26rem) {
+    .bmg:not(.long) .stage {
+      --ring-inset: 6.25%;
+      /* Scale route anchors with the ring, keeping button targets full size. */
+      --side-route-offset: 14.60625%;
+      --side-route-top: 34.2325%;
+      --bottom-route-top: 88.7625%;
+    }
   }
   @container (max-width: 26rem) {
     .stage {
@@ -266,12 +327,18 @@
   .paper .ring path {
     fill: black;
   }
+  .paper .ring .outline, .paper .ring .gradient {
+    display: none;
+  }
   .paper .ratio {
     color: black;
     background: white;
   }
   .paper.long {
     max-inline-size: calc(40 * var(--freefall-space-1));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ring .outline, .ring .gradient { transition: none; }
   }
   @media print {
     .bmg.long {
@@ -285,7 +352,7 @@
     .ring path, .ring path.active {
       fill: black;
     }
-    .conversion button, .reason, .status {
+    .ring .outline, .ring .gradient, .conversion button, .reason, .status {
       display: none;
     }
     .ratio, .screen-hidden {

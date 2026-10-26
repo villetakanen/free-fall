@@ -65,6 +65,9 @@
   --freefall-space-8: 4rem;
   --freefall-space-16: 8rem;
 
+  --freefall-button-height: calc(5.5 * var(--freefall-space-1));
+  --freefall-button-icon-size: calc(3 * var(--freefall-space-1));
+
   /* =========================================
      TYPE SCALE (augmented fourth)
      ========================================= */

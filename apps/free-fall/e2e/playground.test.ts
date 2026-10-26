@@ -129,12 +129,13 @@ test("numeric validation preserves URL and supports blank, zero and Base indepen
   }
   await input.fill("13");
   await expect(input).toHaveAttribute("aria-invalid", "false");
+  await page.getByLabel("Body Binding", { exact: true }).fill("0");
   await page.getByLabel("Body Base", { exact: true }).fill("1");
   expect(snapshot(page).bmg.body).toEqual({ current: 13, base: 1 });
   await input.fill("");
   expect(snapshot(page).bmg.body.current).toBeNull();
   await expect(
-    page.locator('[data-attribute="body"] [data-adjust="1"]'),
+    page.locator('[data-attribute="body"] [data-adjust="-1"]'),
   ).toHaveAttribute("aria-disabled", "true");
   await input.fill("0");
   expect(snapshot(page).bmg.body.current).toBe(0);
@@ -148,23 +149,22 @@ test("keyboard adjustments and repeated conversions commit against the latest sh
   await load(page, "vector");
   const bases = snapshot(page).bmg;
   await settings(page, false);
-  const increase = page.locator('[data-attribute="ghost"] [data-adjust="1"]');
-  await increase.focus();
+  const activate = page.locator('[data-attribute="ghost"] [data-adjust="-1"]');
+  await activate.focus();
   await page.keyboard.press("Enter");
-  expect(snapshot(page).bmg.ghost.current).toBe(6);
+  expect(snapshot(page).bmg.ghost.current).toBe(4);
   const ghostMind = page.locator('[data-convert="ghost-to-mind"]');
   await ghostMind.focus();
   await page.keyboard.press("Enter");
   await page.keyboard.press("Enter");
-  expect(snapshot(page).bmg.ghost.current).toBe(2);
+  expect(snapshot(page).bmg.ghost.current).toBe(0);
   expect(snapshot(page).bmg.mind.current).toBe(12);
-  await page.locator('[data-convert="ghost-to-body"]').click();
   await expect(ghostMind).toHaveAttribute("aria-disabled", "true");
   await page.locator('[data-convert="mind-to-body"]').click();
   const after = snapshot(page);
   expect(after.bmg.ghost.current).toBe(0);
   expect(after.bmg.mind.current).toBe(10);
-  expect(after.bmg.body.current).toBe(6);
+  expect(after.bmg.body.current).toBe(5);
   for (const attribute of ["body", "mind", "ghost"] as const)
     expect(after.bmg[attribute].base).toBe(bases[attribute].base);
   await page.reload();
@@ -214,7 +214,7 @@ test("fragment and browser history navigation restore snapshots; damaged URLs su
 });
 
 test("unsupported version is recoverable on first load", async ({ page }) => {
-  const fragment = `#sheet=${encodeURIComponent(JSON.stringify({ ...emptySheet(), version: 2 }))}`;
+  const fragment = `#sheet=${encodeURIComponent(JSON.stringify({ ...emptySheet(), version: 3 }))}`;
   await open(page, fragment);
   await expect(page.locator("[data-url-error]")).toBeVisible();
   expect(new URL(page.url()).hash).toBe(fragment);
@@ -339,12 +339,12 @@ test("Settings docks one form and preserves drafts, URL and keyboard focus", asy
     .locator('#playground-settings-hud [data-close-pane="custom"]')
     .click();
   await expect(trigger).toBeFocused();
-  await page.locator('[data-attribute="body"] [data-adjust="1"]').click();
+  await page.locator('[data-attribute="body"] [data-adjust="-1"]').click();
   await settings(page);
-  await expect(input).toHaveValue("124");
+  await expect(input).toHaveValue("122");
   await expect(input).toHaveAttribute("aria-invalid", "false");
   await expect(form).toHaveCount(1);
-  await expect(form.locator("input")).toHaveCount(8);
+  await expect(form.locator("input")).toHaveCount(11);
 });
 
 test("Settings preserves the same form and drafts when moving between HUD and narrow layout", async ({
@@ -383,4 +383,64 @@ test("Settings preserves the same form and drafts when moving between HUD and na
   await expect(page.locator("[data-settings-form]")).toBeHidden();
   await settings(page);
   await expect(input).toHaveValue("unfinished");
+});
+
+test("Downtime restores saved unbound pools after spending and reload", async ({
+  page,
+}) => {
+  await open(page);
+  await load(page, "vantage");
+  await page.getByLabel("Name", { exact: true }).fill("A kept identity");
+  const original = snapshot(page);
+  await settings(page, false);
+  await page.locator('[data-attribute="body"] [data-adjust="-1"]').click();
+  await page.locator('[data-convert="mind-to-body"]').click();
+  expect(snapshot(page).binding).toEqual(original.binding);
+  await page.reload();
+  await expect(page.locator("[data-downtime]")).toBeEnabled();
+  await page.locator("[data-downtime]").click();
+  expect(snapshot(page)).toEqual(original);
+  await page.locator("[data-downtime]").click();
+  expect(snapshot(page)).toEqual(original);
+  await settings(page);
+  await expect(page.getByLabel("Body Current", { exact: true })).toHaveValue(
+    "7",
+  );
+  await page.getByLabel("Body Binding", { exact: true }).fill("13");
+  await expect(
+    page.getByLabel("Body Binding", { exact: true }),
+  ).toHaveAttribute("aria-invalid", "true");
+  expect(snapshot(page)).toEqual(original);
+  await page.getByLabel("Body Binding", { exact: true }).fill("12");
+  await settings(page, false);
+  await page.locator("[data-downtime]").click();
+  expect(snapshot(page).bmg.body.current).toBe(0);
+  expect(snapshot(page).bmg.body.base).toBe(12);
+  await page.reload();
+  await expect(current(page, "body")).toHaveText("0");
+});
+
+test("legacy links preserve spent values and require explicit Binding before Downtime", async ({
+  page,
+}) => {
+  const preset = loadPreset("vector");
+  if (!preset.ok) throw new Error(preset.error);
+  const { binding: _binding, ...legacy } = preset.value;
+  legacy.bmg.ghost.current = 1;
+  const fragment = `#sheet=${encodeURIComponent(JSON.stringify({ ...legacy, version: 1 }))}`;
+  await open(page, fragment);
+  await expect(current(page, "ghost")).toHaveText("1");
+  await expect(page.locator("[data-downtime]")).toBeDisabled();
+  expect(new URL(page.url()).hash).toBe(fragment);
+  await settings(page);
+  for (const [attribute, value] of [
+    ["Body", "2"],
+    ["Mind", "2"],
+    ["Ghost", "3"],
+  ])
+    await page.getByLabel(`${attribute} Binding`, { exact: true }).fill(value);
+  await settings(page, false);
+  await page.locator("[data-downtime]").click();
+  expect(snapshot(page).version).toBe(2);
+  expect(snapshot(page).bmg.ghost.current).toBe(5);
 });

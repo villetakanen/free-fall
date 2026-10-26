@@ -6,6 +6,7 @@ import {
   loadPreset,
   NORTHERN_LIGHTS_PRESETS,
   parseAttributeDraft,
+  takeDowntime,
   validateSheet,
 } from "./playground";
 
@@ -49,7 +50,7 @@ describe("sheet URL contract", () => {
   it.each([
     null,
     {},
-    { ...emptySheet(), version: 2 },
+    { ...emptySheet(), version: 3 },
     { ...emptySheet(), name: 1 },
     { ...emptySheet(), callsign: null },
     { ...emptySheet(), bmg: {} },
@@ -147,5 +148,79 @@ describe("Northern Lights preset data", () => {
     expect(
       new Set(NORTHERN_LIGHTS_PRESETS.map((preset) => preset.id)).size,
     ).toBe(5);
+  });
+});
+
+describe("Downtime recovery", () => {
+  it.each(
+    NORTHERN_LIGHTS_PRESETS.map((preset) => preset.id),
+  )("restores %s to its equipped pools without changing identity or Base", (id) => {
+    const loaded = loadPreset(id);
+    if (!loaded.ok) throw new Error(loaded.error);
+    const sheet = loaded.value;
+    sheet.name = "Preserved";
+    const original = structuredClone(sheet);
+    sheet.bmg.body.current = 0;
+    sheet.bmg.mind.current = 99;
+    sheet.bmg.ghost.current = null;
+    const spent = structuredClone(sheet);
+    const result = takeDowntime(sheet);
+    expect(result).toEqual({ ok: true, value: original });
+    expect(sheet).toEqual(spent);
+    if (!result.ok) throw new Error(result.error);
+    expect(takeDowntime(result.value)).toEqual(result);
+    const encoded = encodeSheetFragment(sheet);
+    if (!encoded.ok) throw new Error(encoded.error);
+    const decoded = decodeSheetFragment(encoded.value);
+    if (!decoded.ok) throw new Error(decoded.error);
+    expect(takeDowntime(decoded.value)).toEqual(result);
+  });
+
+  it("migrates legacy links without guessing Binding from spent Current", () => {
+    const loaded = loadPreset("vantage");
+    if (!loaded.ok) throw new Error(loaded.error);
+    const { binding: _binding, ...legacy } = loaded.value;
+    legacy.bmg.body.current = 1;
+    const result = decodeSheetFragment(
+      `#sheet=${encodeURIComponent(JSON.stringify({ ...legacy, version: 1 }))}`,
+    );
+    if (!result.ok) throw new Error(result.error);
+    expect(result.value.bmg).toEqual(legacy.bmg);
+    expect(result.value.version).toBe(2);
+    expect(result.value.binding).toEqual({
+      body: null,
+      mind: null,
+      ghost: null,
+    });
+    expect(takeDowntime(result.value).ok).toBe(false);
+  });
+
+  it("preserves unknown recovery values and restores fully bound pools to zero", () => {
+    const sheet = emptySheet();
+    expect(takeDowntime(sheet).ok).toBe(false);
+    for (const attribute of ["body", "mind", "ghost"] as const) {
+      sheet.bmg[attribute] = { current: null, base: 12 };
+      sheet.binding[attribute] = 12;
+    }
+    const result = takeDowntime(sheet);
+    if (!result.ok) throw new Error(result.error);
+    expect(
+      Object.values(result.value.bmg).map((value) => value.current),
+    ).toEqual([0, 0, 0]);
+  });
+
+  it.each([
+    -1,
+    0.5,
+    13,
+    Number.MAX_SAFE_INTEGER + 1,
+    "2",
+    undefined,
+  ])("rejects invalid or excessive Binding %s atomically", (binding) => {
+    const sheet = emptySheet();
+    sheet.bmg.body.base = 12;
+    const input = { ...sheet, binding: { ...sheet.binding, body: binding } };
+    expect(validateSheet(input).ok).toBe(false);
+    expect(takeDowntime(input).ok).toBe(false);
   });
 });

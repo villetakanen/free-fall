@@ -7,6 +7,7 @@
   const initial = (): BmgValues => ({ ghost: { current: 8, base: 12 }, mind: { current: 8, base: 10 }, body: { current: 12, base: 12 } });
   let value = $state(initial());
   let fixture = $state("populated");
+  let labelPosition = $state<"above" | "below">("above");
   let reject = $state(false);
   let proposals = $state(0);
   let cause = $state("");
@@ -19,6 +20,7 @@
     const next = initial();
     if (fixture === "blank") for (const pair of Object.values(next)) { pair.current = null; pair.base = null; }
     if (fixture === "zero") next.ghost.current = 0;
+    if (fixture === "one") next.ghost.current = 1;
     if (fixture === "last-pair") next.ghost.current = 3;
     if (fixture === "large") for (const pair of Object.values(next)) { pair.current = Number.MAX_SAFE_INTEGER; pair.base = Number.MAX_SAFE_INTEGER; }
     if (fixture === "three-digit") for (const pair of Object.values(next)) { pair.current = 128; pair.base = 100; }
@@ -35,7 +37,7 @@
 
 <div class="demo" data-demo={id}>
   {#if kind === "single"}
-    <AttributeCircle type="ghost" current={value.ghost.current} base={value.ghost.base} interactive
+    <AttributeCircle type="ghost" current={value.ghost.current} base={value.ghost.base} {labelPosition} interactive
       oncurrentchange={(next, delta) => {
         const result = setAttributeValue(value, "ghost", "current", next);
         if (!result.ok) throw new TypeError(result.message);
@@ -45,16 +47,23 @@
     <BmgCircle {value} interactive onchange={change} />
   {/if}
   <div class="options">
+    {#if kind === "single"}
+      <label>Label position
+        <select bind:value={labelPosition} data-label-position-control>
+          <option value="above">Top</option><option value="below">Bottom</option>
+        </select>
+      </label>
+    {/if}
     <label>Values
       <select bind:value={fixture} onchange={populate} data-fixture>
         <option value="populated">Populated</option><option value="blank">Unfilled</option>
-        <option value="zero">Ghost at zero</option><option value="last-pair">Ghost at 3</option>
+        <option value="zero">Ghost at zero</option><option value="one">Ghost at 1</option><option value="last-pair">Ghost at 3</option>
         <option value="three-digit">Three digits</option><option value="large">Largest safe integer</option>
       </select>
     </label>
     <label><input type="checkbox" bind:checked={reject} data-reject /> Decline changes</label>
-    <button type="button" onclick={populate} data-reset>Reset values</button>
-    <button type="button" onclick={baseUpdate} data-base-update>Change Ghost Base</button>
+    <button class="freefall-button" type="button" onclick={populate} data-reset>Reset values</button>
+    <button class="freefall-button" type="button" onclick={baseUpdate} data-base-update>Change Ghost Base</button>
     <output data-proposals={proposals}>{proposals} proposals{cause ? ` · ${cause}` : ""}</output>
   </div>
 </div>
@@ -80,7 +89,7 @@
     flex-wrap: wrap;
     gap: var(--freefall-space-1);
   }
-  select, button {
+  select {
     min-block-size: calc(5.5 * var(--freefall-space-1));
     max-inline-size: 100%;
     padding: var(--freefall-space-1);
