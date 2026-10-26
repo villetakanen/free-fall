@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount, tick } from "svelte";
+  import HarmSlots from "@free-fall/design-system/components/HarmSlots.svelte";
   import BmgCircle from "@free-fall/design-system/components/BmgCircle.svelte";
   import { ATTRIBUTES, ATTRIBUTE_LABELS, setAttributeValue, type Attribute, type AttributeValue, type BmgValues } from "@free-fall/design-system/components/character-attributes";
-  import { decodeSheetFragment, emptySheet, encodeSheetFragment, loadPreset, NORTHERN_LIGHTS_PRESETS, parseAttributeDraft, takeDowntime, validateSheet, type PlaygroundSheet, CHARACTER_CLASSES, CHARACTER_SKILLS, HARM_TYPES, emptyHarm, actionPool, type HarmSlot, type HarmType } from "../lib/playground";
+  import { decodeSheetFragment, emptySheet, encodeSheetFragment, loadPreset, NORTHERN_LIGHTS_PRESETS, parseAttributeDraft, takeDowntime, validateSheet, type PlaygroundSheet, CHARACTER_CLASSES, CHARACTER_SKILLS } from "../lib/playground";
 
   type Field = keyof AttributeValue | "binding";
   type FieldKey = `${Attribute}-${Field}`;
@@ -29,17 +30,6 @@
 
   const chosenClass = $derived(CHARACTER_CLASSES.find((item) => item.id === sheet.characterClass));
   const chosenSkills = $derived(CHARACTER_SKILLS.filter((item) => sheet.skills.includes(item.id)));
-  function editHarm(index: number, slot: HarmSlot) {
-    if (!ready || urlError) return;
-    commit({ ...sheet, harm: sheet.harm.map((value, i) => i === index ? slot : value) });
-  }
-  function setHarmState(index: number, state: HarmSlot["state"]) {
-    const previous = sheet.harm[index];
-    editHarm(index, state === "empty" ? emptyHarm() : {
-      state, type: previous.type ?? "physical", description: previous.description,
-    });
-  }
-
   function syncFields(changed: readonly FieldKey[] = keys) {
     for (const attribute of ATTRIBUTES) for (const field of fields) {
       const key: FieldKey = `${attribute}-${field}`;
@@ -341,39 +331,9 @@
       </section>
       <section class="condition" aria-labelledby={`${uid}-harm-heading`}>
         <h3 id={`${uid}-harm-heading`}>Harm</h3>
-        <div class="harm-slots">
-          {#each sheet.harm as slot, index}
-            <details class="harm-slot" data-harm-slot={index} data-state={slot.state}>
-              <summary><span class="harm-marker" aria-hidden="true">{slot.state === "empty" ? "○" : slot.state === "transient" ? "◐" : "●"}</span>
-                <span>{slot.state === "empty" ? "Empty" : slot.description || `${slot.type[0].toUpperCase()}${slot.type.slice(1)} Harm`}
-                  {#if slot.state !== "empty"}<small>{slot.state === "transient" ? "Transient" : "Permanent"} · {slot.type}</small>{/if}
-                </span><span class="sr-only"> — Harm slot {index + 1}</span>
-              </summary>
-              <fieldset disabled={!ready || !!urlError}>
-                <legend class="sr-only">Harm slot {index + 1}</legend>
-                <label for={`${uid}-harm-${index}-state`}>State
-                  <select id={`${uid}-harm-${index}-state`} aria-label={`Harm ${index + 1} state`} value={slot.state}
-                    onchange={(event) => setHarmState(index, event.currentTarget.value as HarmSlot["state"])}>
-                    <option value="empty">Empty</option><option value="transient">Transient</option><option value="permanent">Permanent</option>
-                  </select>
-                </label>
-                {#if slot.state !== "empty"}
-                  <label for={`${uid}-harm-${index}-type`}>Type
-                    <select id={`${uid}-harm-${index}-type`} aria-label={`Harm ${index + 1} type`} value={slot.type}
-                      onchange={(event) => editHarm(index, { ...slot, type: event.currentTarget.value as HarmType })}>
-                      {#each HARM_TYPES as type}<option value={type}>{type[0].toUpperCase()}{type.slice(1)}</option>{/each}
-                    </select>
-                  </label>
-                  <label for={`${uid}-harm-${index}-description`}>Description
-                    <input id={`${uid}-harm-${index}-description`} aria-label={`Harm ${index + 1} description`} value={slot.description}
-                      oninput={(event) => editHarm(index, { ...slot, description: event.currentTarget.value })} />
-                  </label>
-                {/if}
-              </fieldset>
-            </details>
-          {/each}
-        </div>
-        <div class="action-pool"><a href="/core-rulebook/03-core-rules/#1-the-action-pool">Action Pool</a><output data-action-pool aria-live="polite">{actionPool(sheet.harm)}d20</output></div>
+        <HarmSlots value={sheet.harm} interactive={ready && !urlError}
+          poolHref="/core-rulebook/03-core-rules/#1-the-action-pool"
+          onchange={(harm) => { if (ready && !urlError) commit({ ...sheet, harm }); }} />
         <button class="freefall-button" type="button" onclick={downtime}
           disabled={!ready || !!urlError || !recovery.ok} data-downtime
           aria-describedby={`${uid}-downtime-help`}>Downtime</button>
@@ -429,15 +389,7 @@
   .skill-summary { display: grid; gap: var(--freefall-space-2); }
   .skill-summary h3, .condition h3 { margin: 0; font-size: var(--freefall-type-base); }
   .skill-summary p { margin: var(--freefall-space-1) 0 0; }
-  .harm-slots { display: grid; gap: var(--freefall-space-1); margin-block: var(--freefall-space-2); }
-  .harm-slot { background: var(--freefall-bg-surface-1); min-inline-size: 0; }
-  .harm-slot summary { display: flex; gap: var(--freefall-space-2); align-items: center; padding: var(--freefall-space-1) var(--freefall-space-2); min-block-size: calc(5.5 * var(--freefall-space-1)); box-sizing: border-box; cursor: pointer; overflow-wrap: anywhere; }
-  .harm-slot summary > span { min-inline-size: 0; }
-  .harm-marker { font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio)); }
-  .harm-slot small { display: block; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); }
-  .harm-slot fieldset { display: grid; gap: var(--freefall-space-1); padding: var(--freefall-space-2); }
-  .action-pool { display: flex; align-items: baseline; justify-content: space-between; gap: var(--freefall-space-2); margin-block: var(--freefall-space-2); }
-  .action-pool output { font: 600 calc(var(--freefall-type-base) * var(--freefall-type-ratio) * var(--freefall-type-ratio)) var(--freefall-font-mono); }
+
   .sharing-help summary { cursor: pointer; }
   summary:focus-visible { outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base); }
   .condition > .hint { margin-block: var(--freefall-space-1) 0; }

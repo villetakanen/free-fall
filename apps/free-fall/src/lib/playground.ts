@@ -179,23 +179,19 @@ export const CHARACTER_SKILLS = [
     description: "Operating detection systems and deploying electronic warfare",
   },
 ] as const;
-export const HARM_TYPES = ["physical", "psychic", "compromise"] as const;
-export type HarmType = (typeof HARM_TYPES)[number];
-export type HarmSlot =
-  | { state: "empty"; type: null; description: "" }
-  | {
-      state: "transient" | "permanent";
-      type: HarmType;
-      description: string;
-    };
-export const emptyHarm = (): HarmSlot => ({
-  state: "empty",
-  type: null,
-  description: "",
-});
-export function actionPool(harm: readonly HarmSlot[]): number {
-  return Math.max(2, 5 - harm.filter((slot) => slot.state !== "empty").length);
-}
+export {
+  actionPool,
+  emptyHarm,
+  HARM_TYPES,
+  type HarmSlot,
+  type HarmType,
+} from "../../../../packages/design-system/src/components/character-harm";
+
+import {
+  emptyHarm,
+  HARM_TYPES,
+  type HarmSlot,
+} from "../../../../packages/design-system/src/components/character-harm";
 
 export type PlaygroundSheet = {
   version: 3;

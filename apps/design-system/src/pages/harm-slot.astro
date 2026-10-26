@@ -1,0 +1,41 @@
+---
+import BmgCircle from "@free-fall/design-system/components/BmgCircle.svelte";
+import HarmRowDemo from "../components/HarmRowDemo.svelte";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/character-sheet-print.css";
+const value = {
+  body: { current: 7, base: 12 },
+  mind: { current: 6, base: 6 },
+  ghost: { current: 1, base: 8 },
+};
+---
+<BaseLayout title="Harm Slot — FREE//FALL Design System">
+  <h1>Harm Slot</h1>
+  <p>One consequence, kept visible. Select the slot to record harm, then reopen it to edit, mark permanent, or clear after recovery.</p>
+  <div class="char-sheet-row breakout harm-composition">
+    <div class="supporting">
+      <section aria-labelledby="identity-heading">
+        <h2 id="identity-heading">Info / Meta</h2>
+        <dl><dt>Callsign</dt><dd>Vantage</dd><dt>Role</dt><dd>Operator</dd></dl>
+      </section>
+      <section aria-labelledby="harm-heading">
+        <h2 id="harm-heading">Harm</h2>
+        <HarmRowDemo client:load />
+      </section>
+    </div>
+    <div class="primary"><BmgCircle {value} /></div>
+  </div>
+  <h2>A place for the consequence</h2>
+  <p>Each filled slot removes one Action Pool die. Transient and permanent harm have the same die cost; permanence changes recovery. A solid highlight-colour edge and an explicit label identify permanent harm.</p>
+  <p>The shared <code>HarmSlot.svelte</code> and <code>HarmSlots.svelte</code> components accept host-owned values and propose changes on Save or Clear. Static rendering is the default. This composition places the three-slot row and dice count beside the BMG circle using the existing character sheet proportions. Save commits the draft; Cancel or Escape leaves the slot unchanged. Printing keeps the current description and state.</p>
+</BaseLayout>
+
+<style>
+  .harm-composition { margin-block: var(--freefall-space-4); }
+  .supporting, .primary { min-width: 0; }
+  .supporting { display: grid; align-content: space-between; gap: var(--freefall-space-4); }
+  .supporting h2 { font-size: calc(3 * var(--freefall-space-1)); margin: 0 0 var(--freefall-space-2); }
+  dl { margin: 0; }
+  dt { font-family: var(--freefall-font-mono); font-size: var(--freefall-type-ui-small); text-transform: uppercase; color: var(--freefall-text-muted); }
+  dd { margin: 0 0 var(--freefall-space-2); }
+</style>
