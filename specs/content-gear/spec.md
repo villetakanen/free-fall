@@ -358,7 +358,7 @@ The catalog Hardshell has Ghost 3 pilot Binding and no integrated Combat Targeti
 
 ## CSA IFF/COMMS System
 
-One utility catalog entry describes external and invasively installed internal variants with Body 1/Mind 1 Binding. An exo Support mount removes pilot Binding under normal mount rules. Eligible Load Bearing applies normally; internal hardware is not attached suit gear. Functioning IFF grants +5 per attack die and +5 to incoming attack TNs, not AV. Analog LPC voice and separate sensor/identity data feeds are distinct functions. Device access does not transfer institutional clearance. Internal installation provides an augmentation endpoint; limited hacking access and human agency remain unchanged.
+One utility catalog entry describes external and invasively installed internal variants with Body 1/Mind 1 Binding. An exo Support mount removes pilot Binding under normal mount rules. Eligible Load Bearing applies normally; internal hardware is not attached suit gear. Functioning IFF grants +5 per attack die and +5 to incoming physical attack TNs, not AV or hacking defenses. Analog LPC voice and separate sensor/identity data feeds are distinct functions. Device access does not transfer institutional clearance. Internal installation provides an augmentation endpoint; limited hacking access and human agency remain unchanged.
 
 ## LHI EVA Light Tactical Frame
 

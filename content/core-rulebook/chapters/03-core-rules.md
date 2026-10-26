@@ -105,6 +105,12 @@ Compare each die's final result to the :term[Target Number] (TN) set by the GM.
 *   **:term[Successes]:** Each die roll that meets or exceeds the TN counts as one Success.
 *   **Natural 20:** A roll of 20 always counts as at least one Success, regardless of the TN.
 
+#### Contested action order
+
+Resolve each actor’s first action, then their second, and so on. When actions compete, compare the **highest natural die allocated to each action**. The higher result resolves first. Bonuses determine success against the TN; they do not change this order. Do not add the dice together. On a tie, the players decide the order; the GM arbitrates if they disagree.
+
+An action still needs to succeed to have its effect. A successful defense must resolve before the action it prevents. A later action can end an ongoing effect without reversing what already happened.
+
 ### 5. Interpreting the Outcome
 
 *   **0 Successes:** Failure. The action does not achieve its intended effect. The GM may introduce a complication.

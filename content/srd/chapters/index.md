@@ -33,7 +33,7 @@ Actions are declared in order: NPCs, characters, then bosses. If an actor has at
 
 For each declared goal or action, roll the reserved dice against a :term[Target Number] set by the GM. Each die that meets or exceeds the TN counts as a success. Typically, one success is enough for the action to proceed as planned. If there is no TN and the action is uncontested, no roll is necessary.
 
-All actions are resolved simultaneously: first the first actions of each actor, then the second, and so forth. When two actions are contested, the bigger dice (in any of the dice rolled) happens first.
+Resolve the first actions of each actor, then the second, and so forth. When actions compete, compare the **highest natural die allocated to each action**: the higher result resolves first. Bonuses affect success against the TN, not action order; do not sum the dice. Ties follow the rule of equality. An action still needs to succeed to have its effect, and a successful defense must resolve before the action it prevents. A later action can end an ongoing effect without reversing what already happened.
 
 > **Continuing the example**
 >

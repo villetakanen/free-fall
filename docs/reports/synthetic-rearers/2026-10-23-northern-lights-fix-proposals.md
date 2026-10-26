@@ -542,3 +542,17 @@ Active library: CHROME Cadillac Counter 6, Corvette Spike 3, Thunderbird Blast 3
 Approved name: Luna Heavy Industries EVA Light Tactical Frame, “L-hit.” FRM 3/SYS 10/AV 0; light EVA platform with thrusters, anchors, stabilizers, sealing, four-hour support, one Assault and one Support mount. Neural Link required. Final pilot Binding Mind 4 (supersedes Mind 2/Ghost 2 proposals), explicitly eligible for Link’s Mind 8 allowance.
 
 Sniper mounts Light Lance and CSA IFF/COMMS. Two active STEEL car-name programs: Corvette Spike for weapon electronics, Impala Spike for records/logs. Each Mind 2; 4 + 2 + 2 fills allowance 8, leaving implant Ghost 3 as net personal Binding. Offsets create no refundable personal points. Catalog, brief and specs aligned. Reserve 3 and pistol/tether were proposals, not accepted defaults; those and exact sightlines remain open.
+
+### Sniper Reserve approved (#114, 2026-10-26)
+
+Set Reserve 3 after Binding; implanted Neural Link holds 3 points. Frame/software are fully offset, so leaving the L-hit frees allowance without returning personal points. Normal ordinary-adversary five dice, three Harm slots and declaration before players. This supersedes earlier pending sniper-Reserve entries. Passive cyber defenses and encounter positions/withdrawal remain open.
+
+### IFF defensive scope (#115, 2026-10-26)
+
+Approved physical attacks only for the defensive +5 TN. Catalog and marine brief aligned; hacking gains no defensive IFF modifier. Offensive bonus unchanged. The proposed passive military TN 21 remains a separate decision.
+
+### Natural-die order and Counter timing (#116, 2026-10-26)
+
+Approved: highest natural die assigned to each competing action determines order, not the sum or modified result. Bonuses determine TN success separately. One successful Counter blocks the targeted hack only if it resolves first; a completed effect is not undone. Existing action sequence and player-decides ties remain. Clarified core, SRD, introduction, hacking and lab guidance. O17’s opening-volley target selection is a distinct rule and is unchanged.
+
+Counter follow-up (#116): a later successful Counter ends the targeted hack’s remaining duration/control. Only completed effects persist: a Pwn-triggered shot and its damage remain, but further control ends. Updated core, SRD, hacking, lab and intent; supersedes wording that could imply a late Counter has no effect.

@@ -56,7 +56,7 @@ When chaos erupts, you roll an **Action Pool of 2 to 5 twenty-sided dice (d20)**
 
 <span class="underline">Divide and Conquer:</span> You can split these dice across multiple goals or vectors. Need to sprint to cover (2 dice) while simultaneously hacking a corporate drone (3 dice)? You can try.
 
-<span class="underline">Simultaneous Resolution:</span> Actions are declared in order (NPCs, then Characters, then Bosses). Once declared, *everything happens at once*. In contested actions, the highest individual die rolled happens first.
+<span class="underline">Simultaneous Resolution:</span> Actions are declared in order (NPCs, then Characters, then Bosses). Once declared, *everything happens at once*. In contested actions, the highest natural die allocated to each action determines which resolves first; bonuses affect success, not order.
 
 <span class="underline">Target Numbers:</span> You are looking for dice that equal or beat the GM's Target Number (TN). A Normal task requires no roll. Challenging is **11+**, Hard is **16+**, and Near Impossible is **21+**. A natural 20 is always a success.
 

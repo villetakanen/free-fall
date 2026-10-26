@@ -71,7 +71,7 @@ Make these features visible as the living module responds. Identify the path of 
 | Local power feeds and device cables | Disconnect the identified emitter, terminal or interface when accessible. | This does not power down the QNA, erase the navigation ANI or disconnect unrelated devices. |
 | Living-module pressure door | Close it to break optical exposure or withdraw through it. | A closed door is not universal RF shielding and does not sever wiring. |
 
-Describe what an intervention actually stops. A successful Counter negates the declared intrusion it targets; another target or later attack requires its own response. Resolve competing actions through the core sequence and retain completed withdrawals or disconnections when checking whether an attack can land.
+Describe what an intervention actually stops. A successful Counter that resolves first negates the declared intrusion it targets; another target or later attack requires its own response. Resolve competing actions through the core sequence, comparing highest natural dice without software bonuses. A later successful Counter ends the targeted hack’s ongoing control or remaining duration; completed effects stand. Retain completed withdrawals or disconnections when checking whether an attack can land.
 
 ## What Origin-17 wants
 

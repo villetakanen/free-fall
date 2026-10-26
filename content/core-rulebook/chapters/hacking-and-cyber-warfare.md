@@ -88,7 +88,11 @@ One success affects the declared group or system area. Greater Success can incre
 
 A defensive or bypass function: defeat a trace, neutralize a hostile program, spoof credentials, bypass a firewall rule, decrypt a live stream, or obscure an intrusion.
 
-One success negates the targeted hostile action or bypasses the specified defense. Greater Success can yield intelligence, a temporary defensive advantage, or an opening for a counterattack. Use Counter proactively or as a declared defense against an incoming threat. Counter programs bind **twice** their tier's base Mind cost.
+One success stops the targeted hack’s ongoing control or remaining duration, or bypasses the specified defense. If Counter resolves first, it prevents the hack. If the hack resolves first, completed effects stand; Counter ends what is still running. Compare highest natural dice using [contested action order](/core-rulebook/03-core-rules/#contested-action-order). Software bonuses affect success, not timing.
+
+> Pwn makes an exo shoot itself before Counter resolves. The shot and its damage stand; the successful Counter ends further control.
+
+Greater Success can yield intelligence, a temporary defensive advantage, or an opening for a counterattack. Use Counter proactively, against an incoming threat, or to end an ongoing hack. Counter programs bind **twice** their tier’s base Mind cost.
 
 ### Pwn
 

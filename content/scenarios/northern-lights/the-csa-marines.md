@@ -4,7 +4,7 @@ title: "The CSA Marines"
 
 # The CSA Marines
 
-**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. The commander’s equipment and software are set below. The sniper’s equipment is set below; their Reserve, passive software defenses and withdrawal triggers remain to be completed.
+**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. The commander’s equipment and software are set below. The sniper’s equipment is set below; passive software defenses and withdrawal triggers remain to be completed.
 
 ## Friday-night cleanup
 
@@ -124,7 +124,7 @@ The frame requires an installed **Neural Link**. Its Mind 4 pilot Binding and tw
 | STEEL Corvette Spike | Disable reachable weapon electronics | +5 | 2 |
 | STEEL Impala Spike | Extract access records or local logs | +5 | 2 |
 
-**Allowance: 4 + 2 + 2 = 8.** Net personal Binding is **Ghost 3** for the Link; the mounted weapon and IFF/COMMS add none. Keep the machine’s FRM/SYS separate from the pilot’s Reserve, which remains to be set. Releasing the fully offset frame or software frees allowance, not personal points.
+**Allowance: 4 + 2 + 2 = 8.** Net personal Binding is **Ghost 3** for the Link; the mounted weapon and IFF/COMMS add none. The sniper starts with **Reserve 3 after Binding**, with **3 points bound to the installed Neural Link**. Use ordinary-adversary rules: 5d20, three empty Harm slots, declarations before the players. Track the frame’s FRM/SYS separately. Releasing the fully offset frame or software frees allowance, not personal points.
 
 Run the Spikes through the frame’s mission computer and a reachable electronic interface. The sniper uses the same Action Pool for firing, repositioning and hacking. Programs follow normal compromise rules; seeing a target through the scope grants no intrusion path. Stabilizers make free-flight shots possible; the frame provides no armor.
 
@@ -154,7 +154,7 @@ Reading an operative designation supplies information. It does not itself replac
 
 ### IFF combat bonuses
 
-While a marine's local IFF is functioning, apply **+5 to each die on their attack rolls** and **+5 to the TN of attacks against them**. The defensive benefit raises the attacker's TN; it is not an extra defense roll or AV. Losing IFF removes both bonuses while leaving the marine's ordinary equipment and training intact.
+While a marine's local IFF is functioning, apply **+5 to each die on their attack rolls** and **+5 to the TN of physical attacks against them**. This defensive bonus does not apply to hacking. The defensive benefit raises the attacker's TN; it is not an extra defense roll or AV. Losing IFF removes both bonuses while leaving the marine's ordinary equipment and training intact.
 
 Show the assistance: coordinated changes of position, matching target calls, and warnings that let a marine move before a shot. When a hack takes it away, make the loss just as apparent.
 
@@ -194,6 +194,6 @@ Direct observation, voice communication and checking one another are available r
 
 Make the cracks visible: an unanswered demand for support, conflicting calls, a stalled advance, a marine backing toward cover. Let the crew exploit those openings. Neither automatic recovery nor automatic rout should cancel what actually happens in the fight.
 
-Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside software defenses and the sniper’s Reserve and starting sightlines. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
+Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside software defenses and the sniper’s starting sightlines. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
 
 **Target access for BLACK support:** sight and a live support connection remain required, but neither replaces a suitable path from your equipment to the target. Establish the transmitting interface, receiving device and channel. The supplied program does not give you O17’s prepared module hardware or universal implant access.
