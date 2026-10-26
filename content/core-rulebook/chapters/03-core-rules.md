@@ -65,7 +65,7 @@ You begin each turn with a base **:term[Action Pool]** of 5d20. This pool repres
 
 ### 2. Declaration Phase & Assigning Dice
 
-During the Declaration Phase, you state what you intend to do and assign dice from your available pool to each action.
+During the Declaration Phase, you state what you intend to do and assign dice from your available pool to each action. Ordinary adversaries declare first, then the players, then the main adversary (the boss). See [The Other Side](/core-rulebook/the-other-side/) for running adversaries with a shared Reserve or full Attributes.
 
 *   Every action you attempt requires at least one die to be assigned to it.
 *   Assigning multiple dice to a single action increases your chance of achieving a Greater Success.

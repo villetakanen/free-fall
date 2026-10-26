@@ -6,7 +6,7 @@ order: 1
 
 # System Reference
 
-<span class="text-caption"> A System Reference Document (SRD) for FREE//FALL "v7" (0.7.1)</span>
+<span class="text-caption"> A System Reference Document (SRD) for FREE//FALL "v7" (0.7.2)</span>
 
 ## Introduction
 

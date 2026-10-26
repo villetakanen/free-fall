@@ -504,3 +504,11 @@ F12 follow-up (#104): weapon proposal accepted as the default, with GM discretio
 ### Binding release correction (#105, 2026-10-26)
 
 Accepted: releasing Binding returns held points immediately, not just capacity. Body 8, rifle Binding 4, spend 2: Current 2; drop rifle: Current 6; rebind: Current 2. New Binding commits available Current points. Offsets and zero-cost mounted equipment create no refund; Broken gear retains Binding until removed. Updated main rules, gear, hacking, registry and SRD; earlier capacity-only release interpretations are superseded. Shared Reserve/main-adversary design remains discussion, not implemented rules.
+
+### The Other Side implemented (#106, 2026-10-26)
+
+Added the approved core chapter: ordinary adversaries use an authored available Reserve after Binding, with actual bound costs beside equipment; no hidden B/M/G calculation. Main adversary uses normal Attributes and declares after players. Normal Action Pools, typed Harm and machine FRM/SYS remain intact. Gear release/refund and rebinding preserve spent points. This establishes the framework for F12 profiles; no CSA pilot numbers or boss assignment are approved by this change.
+
+The Other Side prose pass: user requested a tone brief and writing-aid subagent. Saved `2026-10-26-rules-prose-brief.md`; shortened the chapter to roughly 330 body words, two sections and one example. Linked inherited procedures rather than restating them. Review retained Reserve recovery explicitly; mechanics unchanged.
+
+Shipping The Other Side (#106) and approved default weapons (#104): full build, lint, tests and typecheck passed. Core rules patch 0.8.2; SRD patch 0.7.2 also records the earlier Binding correction. Hardshell CTS removal and the no-cost CSA suite decision remain to be applied to catalog/scenario prose before finalizing pilot reserves.

@@ -62,7 +62,17 @@ Use the catalog **Hardshell Combat Exoskeleton** for both assaulters: FRM 24, SY
 
 The **CSA IFF/COMMS package occupies the Support hardpoint** on each frame. It provides the identification and targeting support, analog LPC voice and separate command feeds described below. Target those functions individually: suppressing IFF removes its combat bonuses without automatically silencing communications. Physical destruction of the whole package can remove all of its functions; resolve the actual damage and scope.
 
-The two Assault mounts remain to be finalized. The proposed heavy rifles, lead operator’s plasma lance and second operator’s shotgun are not yet an approved loadout. Complete weapon compatibility, targeting benefits and pilot reserves before running the fight; do not stack an unspecified catalog targeting bonus on top of the defined CSA IFF bonus.
+### Default assault loadout
+
+| Mount | Lead assaulter | Second assaulter |
+|---|---|---|
+| Assault 1 | Heavy Kinetic Assault Rifle | Heavy Kinetic Assault Rifle |
+| Assault 2 | Plasma Lance | Shotgun |
+| Support | CSA IFF/COMMS | CSA IFF/COMMS |
+
+Use these as the defaults; the GM can change the loadout. These weapons fit the listed mounts for this scenario. Use their catalog profiles and the normal mounted-weapon rules. The lead breaches; the second clears the opening. Both have a heavy rifle for sustained fire. The plasma lance remains single-use, and its backblast makes positioning matter.
+
+Complete targeting benefits and pilot reserves before running the fight; do not stack an unspecified catalog targeting bonus on top of the defined CSA IFF bonus.
 
 ## Local systems and coordination
 
