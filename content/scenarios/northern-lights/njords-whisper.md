@@ -37,3 +37,7 @@ The stat block is the ship her manifest describes. It is not the ship the crew w
 - **The defenses are separate.** Three leased laser mounts share a proprietary expert system void-gapped from navigation, the QNA, and every other ship system. The crew authorizes **ATTACK** or **DEFER**; the network handles acquisition and fire. Origin-17 cannot operate it.
 - **The crew is still aboard.** [Two pilots, two security personnel, and two stevedores](/scenarios/northern-lights/the-whispers-crew/) control the ship around the compromised navigation. All six can fight. Open approach brings security onto the hull while the pilots rotate the Whisper and authorize point defense.
 - **Two ways in.** She was built to open at the front, and the cargo modules — origin-17's shard among them — came aboard through the bow **maw**; that maw is the obvious thing to ram or cut. But her crew airlocks are the **two docking points on the sleeping module**, amidships — a boarding craft that means to *dock* rather than *breach* mates there. The maw is how you force your way in; the airlocks are how you knock.
+
+## Connected cargo spaces
+
+The cargo entry leads to the living module, whose systems O17 has overtaken. The physically connected QNA housing compartment lies farther in; entry there is for hands-on work on the array. The living-module encounter requires no such entry. The manifest drawing should distinguish both compartments and their physical connection without revealing the hidden takeover.

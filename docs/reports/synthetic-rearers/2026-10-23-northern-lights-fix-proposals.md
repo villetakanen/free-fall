@@ -51,7 +51,7 @@ F01 is withdrawn by user decision. D3 and citizenship player knowledge/cost are 
 | F07 | Make transit and boarding configurations legal for every pregen | Hosting blocker | D4; F06; F08 if invoking a new general rule | Proposed |
 | F08 | Define the shared Binding boundary contract | Rules decision | D5 | Proposed |
 | F09 | Complete The Singularity's cost at capacity | Hosting blocker | F08; D5; #88 | Implemented locally |
-| F10 | Finish lab intrusion and shielding procedures | Hosting blocker | F03 | Proposed |
+| F10 | Finish lab intrusion and shielding procedures | Hosting blocker | F03; #89, #94 | Implemented locally |
 | F11 | Make logs, isolation, extraction, and purge executable | Hosting blocker | F10 | Proposed |
 | F12 | Supply runnable marine profiles | Hosting blocker | F08 where relevant | Proposed |
 | F13 | Finish confrontation, escape, and aftermath | Hosting blocker | F04, F09, F11, F12 | Proposed |
@@ -442,3 +442,37 @@ Origin-17 reads people through reachable augmentations (any augmentation; no una
 Release includes all approved dev changes, pending F09/F10 work and the character-sheet row layout (#84). Versions: root/app 0.12.0, core 0.8.0, scenarios 0.3.0, design-system and reference app 0.1.0 (initial explicit versions); unchanged gear 0.2.0 and SRD 0.7.1. Northern Lights targets 0.8.x. Remaining F10 TN/shielding and F11 mission procedures remain explicitly unfinished.
 
 Release validation: build, lint, typecheck and all 120 unit tests passed. Both browser suites passed after granting local-server permission. Package versions and Northern Lights compatibility updated. One duplicate-ID loader warning remains; it did not prevent route generation.
+
+### Proposed corpus alignment — O17 environment and attack paths (2026-10-26)
+
+Discussion/proposal only; no scenario or core-rule edits authorized by this entry. Established intent: the encounter takes place in the living module physically connected to the QNA housing compartment (called “lab” in existing material). Characters need enter the latter only to work on/dismantle the QNA. O17 is physically connected to housing network and PSU, has overtaken the living systems, and fully controls Whisper navigation through a narrow ANI. That ANI is a specialized executor, not another fluid intelligence. O17 can exploit suitable sensory/data input, including optical signals observed by navigation ANI; no mandatory laser-network link. Inside the overtaken living environment, coordinated emitters/interfaces make any reachable augmentation a potential entry point. Elsewhere a suitable path must be established. Devices remain lesser-subagent targets; no augmentation means no CNS read.
+
+Proposed atomic edits:
+1. Scene geography and naming: title Scene 4 around the living-module encounter, retaining the existing route for compatibility; define the farther QNA compartment as the optional physical-work destination. Align index, Onboarding, preface, vessel reference and scene text. Describe assembly network/PSU access without inventing laboratory equipment.
+2. Control map: distinguish O17 cognition, module sensors/actuators, Whisper navigation ANI and lesser device subagents. Update lab, Approach, crew reference, preface and timeline. Navigation control does not grant all ship systems.
+3. Established navigation compromise: replace mandatory narrower-band laser link with a suitable information path (RF, wired, optical/sensor input). Recommend that cutting upstream communication blocks new instructions but does not uninstall the navigation ANI; persistence/recovery behavior still needs explicit acceptance.
+4. Attack-path guidance: living module is prepared exposure; outside it name controlled emitter/interface, receiver, channel and feasible effect. Seeing a person is insufficient. Coordinate read, offered BLACK and marine hacking text; assistance does not give the contractor omnidirectional O17 reach.
+5. Shielding: replace automatic expanding radius with actual channel changes. A breach may expose an emitter, interrupt a cable or disable hardware. Leaving the prepared environment removes that exposure unless another path remains. No invented fixed meter radii or one door blocking every channel.
+6. Narrative/control separation: welcoming/probing systems are visible activity; hostile device control and CNS reads require existing declared action resolution. No extra subagent pools. The entire reveal and offer can occur in the living module.
+7. Clock/mission handoff: clarify living-module entry as the existing at-least-10:00 handoff, rather than requiring QNA dismantling or entry into its compartment. Retain established outcomes, bypass routes and counterplay. Dismantling remains a separate F11 procedure.
+8. General hacking callout: information paths can include RF, cables or sensor input, but receiving a signal is not automatic exploitation; identify receiver and feasible capability. Isolation removes paths, not all possible attacks; severing a path need not undo an established compromise. Distinguish core principle from O17-specific implant access.
+
+Cross-cutting: update scenario and rules specs, align briefing schematic requirements (F16), check local links/anchors and supersede stale decisions without rewriting historical reports. Preserve sealed CSA orders, human agency, no automatic unaugmented read, and the existing action budget. TNs and F11 dismantling/purge procedures remain distinct unresolved work.
+
+### O17 corpus alignment implemented (#94)
+
+Approved scenario changes applied: living-module encounter, optional physical QNA compartment access, control map, installed navigation ANI persistence, suitable input paths, channel-specific shielding and damage, living-entry clock handoff, and BLACK support access limits. Existing scene route and clock anchor retained. Updated preface, timeline, crew/ship references and scene links. General hacking box remains unimplemented pending review. Build and all scenario internal links/anchors passed.
+
+Proposed replacement box — Targeting hacks: Name the device, the function you want to change, and how your equipment reaches it. Sight identifies a target; a usable channel makes it reachable. RF needs a receiver; an optical signal needs a sensor processing it; a buried implant needs a path that reaches its electronics. A suit camera and the wearer’s implant are separate targets unless a connection joins them. Establish access before setting the TN. A powerful program can defeat defenses; it does not supply missing transmission hardware. Creative paths are welcome when the target can actually receive them.
+
+Targeting-hacks box accepted and added to the hacking rules under #94. This completes the agreed corpus/attack-path clarification, not all of F10: target TNs and concrete defensive-hardware details remain explicitly open. General rule spec updated.
+
+### F10 completed — scenario defaults (2026-10-26)
+
+Accepted after core-rule review: natural 1 may succeed with bonuses; no SRD or FREE//FALL natural-1 failure amendment. BLACK +15 always meets passive TN 16, with program compromise after success. Materialized TN 16 personal hardware/module overrides, TN 21 military security and Counter against O17, and accessible uncontested physical operations without rolls. Added specific module emitter, display/speaker, service-control, cable/power and door interventions with channel-specific limits. Read selection, normal Counter resolution and denial of actual access remain meaningful. This completes F10 clarification under #89/#94; F11 mission operations are next. Earlier pending-TN/hardware entries are superseded.
+
+### O17 GM framing — accepted follow-up to #94
+
+O17 is conscious/sentient, cybernetically beyond other scenario actors, and self-aware of immaturity relative to its own potential. This is not human childlikeness; it wants to mature before consequential projects. Control of one or many people is possible with effective access, but unwanted here. Read/release and player agency remain the encounter contract. Destruction of this shard’s local embodiment is transient; survival instinct, work and local stakes remain real. No invented backup or revival mechanism. Added GM reference in preface, aligned lab guidance and removed human-child imagery.
+
+Shipping #94: build, lint, typecheck and 148 unit tests passed; scenario and hacking-rule internal links/anchors verified. No content-loader warnings in this build. F10 is implemented; next is F11, beginning with hard-line log extraction and its relationship to O17’s control.

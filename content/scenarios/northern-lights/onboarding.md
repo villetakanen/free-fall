@@ -67,7 +67,7 @@ Their [full profiles, knowledge, and morale are here](/scenarios/northern-lights
 
 The scene has one geographic end: a boarder's hand on the **dock collar** at the forward end of hygiene, the module string beyond it. Everything above — the ladder, the rooms, the drift — is the crew buying their way to that collar past the people who live here.
 
-When they reach it, stop. Do not open it in this scene. [Scene 4: The Lab](/scenarios/northern-lights/the-lab/) takes the crew through the cargo airlock and across the unsealed twenty-centimetre gap to the living module's pressure door. The dock is not a continuous pressurized passage into the cargo.
+When they reach it, stop. Do not open it in this scene. [Scene 4: The Living Module](/scenarios/northern-lights/the-lab/) takes the crew through the cargo airlock and across the unsealed twenty-centimetre gap to the living module's pressure door. The dock is not a continuous pressurized passage into the cargo.
 
 ## Carry it forward
 

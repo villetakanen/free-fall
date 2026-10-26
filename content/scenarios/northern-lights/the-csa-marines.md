@@ -111,3 +111,5 @@ The marines remain trained people when their local equipment becomes unreliable.
 Keep the fallback visible. The crew should be able to tell that a synchronized advance has become people stopping to confirm names, positions, and orders. That is what dismantling the CSA's advantage looks like.
 
 Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside the four loadouts, software defenses, and Attribute reserves. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
+
+**Target access for BLACK support:** sight and a live support connection remain required, but neither replaces a suitable path from your equipment to the target. Establish the transmitting interface, receiving device and channel. The supplied program does not give you O17’s prepared module hardware or universal implant access.
