@@ -3,13 +3,14 @@
 **Status:** Current behavior implemented and verified locally, 2026-10-26.
 Initial Playground: [#79](https://github.com/villetakanen/free-fall/issues/79);
 Settings: [#81](https://github.com/villetakanen/free-fall/issues/81);
-activation and Downtime: [#92](https://github.com/villetakanen/free-fall/issues/92).
+activation and Downtime: [#92](https://github.com/villetakanen/free-fall/issues/92);
+Layout 1 integration: [#96](https://github.com/villetakanen/free-fall/issues/96).
 
 ## Blueprint
 
 ### Context
 
-Parent: [App Layout](../app-layout/spec.md). Dependencies: [BMG Circle](../../design-system/bmg-circle/spec.md) and [platform](../../platform/spec.md).
+Parent: [App Layout](../app-layout/spec.md). Dependencies: [BMG Circle](../../design-system/bmg-circle/spec.md), [Character Sheet Row — Layout 1](../../design-system/char-sheet-row/spec.md), and [platform](../../platform/spec.md).
 
 Playground is a top-level section at `/playground/` on the main FREE//FALL site, marked **Experimental** in navigation, the page heading and title. It provides one editable character sheet, started empty or from a Northern Lights player character. Phase one contains only name, callsign, and Body/Mind/Ghost Current, Base, and Binding. The complete sheet travels in its URL; editing runs entirely in the browser.
 
@@ -22,6 +23,14 @@ Playground is a top-level section at `/playground/` on the main FREE//FALL site,
 - Provide an Empty option and five named Northern Lights presets, applied through an explicit Load action. Loading replaces the complete sheet. Opening a valid sheet URL restores that snapshot without applying a preset over it.
 - Provide labeled name/callsign fields and direct numeric entry for Current, Base, and Binding for all three attributes. Clearing a numeric field commits `null`; zero remains zero. Invalid numeric drafts show an associated error and preserve the last committed state and URL.
 - Reuse BMG's attached activation buttons, three conversion arrows, validation, and pure helpers. The controller accepts each valid proposal synchronously and updates the URL from that same snapshot.
+
+#### Character-sheet composition
+
+- The play surface uses the shared `.char-sheet-row` Layout 1 with exactly two direct children: committed identity, sheet actions, recovery guidance and sharing in the compact column; one interactive BMG circle in the primary column.
+- The Playground occupies the content grid's `.breakout` tracks. At sufficient host width, Layout 1 places the 42.5ch compact column before the 67ch primary column with the shared space-4 gap. When the pair does not fit, the compact content precedes BMG in one stack. The DS primitive owns this decision; Playground adds no separate layout breakpoint or track sizes.
+- Settings keeps its existing HUD/inline placements outside the row. Resizing or opening Settings preserves the same BMG instance, sheet URL, input drafts and controls. Long identity text wraps within the compact column.
+- Harm tracking remains outside this phase. The DS reference's illustrative Harm slots are not presented as functioning sheet controls.
+- [DEPRECATED 2026-10-26] The separate identity/action bar above a centered BMG used the original Playground composition. Layout 1 now supplies the shared sheet structure.
 
 #### Settings HUD
 
@@ -121,6 +130,7 @@ Show the chosen starting configuration alongside each preset. These are starting
 - [x] Settings uses the HUD on supported host widths and an accessible collapsible form on narrow hosts; close/reopen and resizing preserve the single sheet and pending drafts.
 - [x] Downtime restores all three unbound pools while preserving other sheet data, including after reload.
 - [x] Legacy URLs preserve Current/Base and require explicit Binding before recovery.
+- [x] Playground uses Layout 1's compact-first proportions on wide hosts and stacks in source order on narrow hosts without overflow or changing sheet state.
 - [x] `pnpm typecheck` and relevant application Playwright checks pass.
 - [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass.
 
@@ -167,6 +177,14 @@ Scenario: Put setup aside while playing
   Then the same form, draft and committed sheet remain available
   And visibility changes do not alter the URL
 
+Scenario: Adapt the sheet row to available space
+  Given a loaded sheet with identity and interactive BMG values
+  When the host has room for both Layout 1 columns
+  Then identity and sheet actions occupy the compact left column beside one BMG circle
+  When that same host becomes too narrow for both columns
+  Then compact content precedes BMG in one stack without horizontal overflow
+  And the same sheet, URL and controls remain available
+
 Scenario: Restore the equipped pools
   Given Vantage has Base 12/6/8 and Binding 5/0/7
   And spending or conversion has changed Current
@@ -199,12 +217,14 @@ Scenario: Reject excessive Binding
   snapshots, immutable/idempotent recovery, full Binding, and legacy migration.
 - [Browser checks](../../../apps/free-fall/e2e/playground.test.ts) cover loading,
   editing, spending/conversion, Downtime after reload, legacy links, invalid
-  drafts/URLs, clipboard fallback, keyboard focus, Settings relocation, 320px
-  layout, and the scripting-disabled fallback.
+  drafts/URLs, clipboard fallback, keyboard focus, Settings relocation, wide
+  Layout 1 proportions, host-boundary wrapping, 320px layout with long identity
+  text, and the scripting-disabled fallback.
 - [Circle checks](../../../apps/design-system/e2e/character-circles.spec.ts)
   own shared control styling, composition geometry, and print verification.
-- Verified locally on 2026-10-26: build, lint, typecheck, app Svelte diagnostics,
-  133 unit tests, 14 Playground browser checks, and nine circle browser checks.
+- Verified locally for app 0.13.1 on 2026-10-26: build, lint, typecheck, app
+  Svelte diagnostics, 133 unit tests and 99 browser checks across both apps,
+  including 15 Playground checks.
 - [DEPRECATED 2026-10-26] The earlier verification summaries covered version 1
   and six numeric inputs. The current contract includes nine numeric inputs,
   explicit Binding, and Downtime; the Experimental designation is retained.

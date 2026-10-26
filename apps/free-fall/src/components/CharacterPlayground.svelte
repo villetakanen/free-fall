@@ -207,21 +207,6 @@
 </script>
 
 <section class="playground" aria-label="Character sheet" data-playground data-ready={ready}>
-  <div class="play-bar">
-    <dl class="identity-summary">
-      <div><dt>Callsign</dt><dd>{sheet.callsign || "—"}</dd></div>
-      <div><dt>Name</dt><dd>{sheet.name || "—"}</dd></div>
-    </dl>
-    <div class="actions">
-      <button class="freefall-button" type="button" onclick={downtime}
-        disabled={!ready || !!urlError || !recovery.ok} data-downtime
-        aria-describedby={`${uid}-downtime-help`}>Downtime</button>
-      <button class="freefall-button" type="button" onclick={toggleSettings} disabled={!ready} data-settings-toggle
-        aria-expanded={settingsOpen} aria-controls={narrowHost ? `${uid}-inline-settings` : "playground-settings-hud-pane-custom"}>Settings</button>
-      <button class="freefall-button" type="button" onclick={copyLink} disabled={!ready || !!urlError} data-copy>Copy link</button>
-    </div>
-  </div>
-
   {#if urlError}
     <div class="error" role="alert" data-url-error>
       <p>{urlError} Your last valid sheet is unchanged.</p>
@@ -289,23 +274,39 @@
     </div>
   </div>
 
-  <p class="hint" id={`${uid}-downtime-help`}>
-    {recovery.ok ? "Downtime restores all three Current pools to Base minus Binding." : recovery.error}
-  </p>
-  <div class="diagram"><BmgCircle value={sheet.bmg} interactive={ready && !urlError} onchange={changeBmg} /></div>
-  <div class="sharing">
-    <p class="hint">Your sheet lives in this link. Copy or bookmark it to keep it.</p>
-    <p class="status" role="status" aria-atomic="true">{status}</p>
-    {#if copyFallback && !urlError}
-      <label for={`${uid}-link`}>Sheet link
-        <input id={`${uid}-link`} type="text" readonly value={link} onfocus={(event) => event.currentTarget.select()} data-link-fallback />
-      </label>
-    {/if}
+  <div class="char-sheet-row">
+    <div class="sheet-meta">
+      <dl class="identity-summary">
+        <div><dt>Callsign</dt><dd>{sheet.callsign || "—"}</dd></div>
+        <div><dt>Name</dt><dd>{sheet.name || "—"}</dd></div>
+      </dl>
+      <div class="actions">
+        <button class="freefall-button" type="button" onclick={downtime}
+          disabled={!ready || !!urlError || !recovery.ok} data-downtime
+          aria-describedby={`${uid}-downtime-help`}>Downtime</button>
+        <button class="freefall-button" type="button" onclick={toggleSettings} disabled={!ready} data-settings-toggle
+          aria-expanded={settingsOpen} aria-controls={narrowHost ? `${uid}-inline-settings` : "playground-settings-hud-pane-custom"}>Settings</button>
+        <button class="freefall-button" type="button" onclick={copyLink} disabled={!ready || !!urlError} data-copy>Copy link</button>
+      </div>
+      <p class="hint" id={`${uid}-downtime-help`}>
+        {recovery.ok ? "Downtime restores all three Current pools to Base minus Binding." : recovery.error}
+      </p>
+      <div class="sharing">
+        <p class="hint">Your sheet lives in this link. Copy or bookmark it to keep it.</p>
+        <p class="status" role="status" aria-atomic="true">{status}</p>
+        {#if copyFallback && !urlError}
+          <label for={`${uid}-link`}>Sheet link
+            <input id={`${uid}-link`} type="text" readonly value={link} onfocus={(event) => event.currentTarget.select()} data-link-fallback />
+          </label>
+        {/if}
+      </div>
+    </div>
+    <div class="diagram"><BmgCircle value={sheet.bmg} interactive={ready && !urlError} onchange={changeBmg} /></div>
   </div>
 </section>
 
 <style>
-  .playground { --settings-inline: 0; grid-column: main; min-inline-size: 0; padding-block-end: calc(6 * var(--freefall-space-1)); }
+  .playground { --settings-inline: 0; min-inline-size: 0; padding-block-end: calc(6 * var(--freefall-space-1)); }
   .toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: var(--freefall-space-2); }
   label { display: grid; gap: var(--freefall-space-1); min-inline-size: 0; }
   .preset-picker { flex: 1 1 calc(28 * var(--freefall-space-1)); display: grid; gap: var(--freefall-space-1); }
@@ -333,15 +334,13 @@
   .field-error { display: block; margin-block-start: var(--freefall-space-1); font-size: var(--freefall-type-ui-small); overflow-wrap: anywhere; }
   .error { padding: var(--freefall-space-2); background: var(--freefall-bg-surface-2); }
   [aria-invalid="true"] { border-color: var(--freefall-action-base); }
-  .sharing { margin-block-start: var(--freefall-space-4); }
+  .sheet-meta { display: grid; gap: var(--freefall-space-4); }
+  .sheet-meta > p, .sharing > p { margin: 0; }
+  .sharing { display: grid; gap: var(--freefall-space-2); }
   .status:empty { display: none; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-  @container content (inline-size >= calc(92.6ch + 6rem)) {
-    .playground { grid-column: main-start / side-end; }
-  }
-  .play-bar, .actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--freefall-space-2); }
-  .play-bar { justify-content: space-between; margin-block-end: var(--freefall-space-4); }
-  .identity-summary { display: flex; flex-wrap: wrap; gap: var(--freefall-space-4); margin: 0; min-inline-size: 0; }
+  .actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--freefall-space-2); }
+  .identity-summary { display: grid; gap: var(--freefall-space-2); margin: 0; min-inline-size: 0; }
   .identity-summary dt { font: var(--freefall-type-ui-small) var(--freefall-font-mono); color: var(--freefall-text-muted); }
   .identity-summary dd { margin: var(--freefall-space-1) 0 0; overflow-wrap: anywhere; }
   .inline-settings { padding: var(--freefall-space-2); margin-block-end: var(--freefall-space-4); background: var(--freefall-bg-surface-2); }

@@ -6,9 +6,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout title="Playground (Experimental) — FREE//FALL">
   <h1>Playground <span>Experimental</span></h1>
-  <CharacterPlayground client:only="svelte">
-    <p slot="fallback" data-playground-fallback>Enable JavaScript to edit a character sheet or open a sheet link.</p>
-  </CharacterPlayground>
+  <div class="breakout">
+    <CharacterPlayground client:only="svelte">
+      <p slot="fallback" data-playground-fallback>Enable JavaScript to edit a character sheet or open a sheet link.</p>
+    </CharacterPlayground>
+  </div>
   <TacticalHud
     slot="hud"
     id="playground-settings-hud"

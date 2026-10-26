@@ -267,6 +267,19 @@ test("320px layout keeps inputs and BMG controls within the content width", asyn
   await page.setViewportSize({ width: 320, height: 740 });
   await open(page);
   await load(page, "vantage");
+  await page
+    .getByLabel("Callsign", { exact: true })
+    .fill("Unbroken".repeat(20));
+  await settings(page, false);
+  const row = page.locator("[data-playground] .char-sheet-row");
+  const compact = await row.locator(":scope > :first-child").boundingBox();
+  const primary = await row.locator(":scope > :last-child").boundingBox();
+  if (!compact || !primary) throw new Error("Sheet columns are not rendered.");
+  expect(primary.y).toBeGreaterThan(compact.y + compact.height);
+  expect(primary.x).toBeCloseTo(compact.x, 0);
+  expect(primary.width).toBeCloseTo(compact.width, 0);
+  await expect(row.locator("[data-bmg]")).toHaveCount(1);
+  await settings(page);
   const problems = await page.locator("[data-playground]").evaluate((root) => {
     const bounds = root.getBoundingClientRect();
     return [...root.querySelectorAll("input, select, button")].flatMap(
@@ -287,6 +300,83 @@ test("320px layout keeps inputs and BMG controls within the content width", asyn
       .locator("main")
       .evaluate((el) => el.scrollWidth <= el.clientWidth),
   ).toBe(true);
+});
+
+test("sheet row uses reversed prose tracks and adapts to its host without replacing state", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 2000, height: 1000 });
+  await open(page);
+  await load(page, "vector");
+  await settings(page, false);
+  await page.evaluate(() => document.fonts.ready);
+  const row = page.locator("[data-playground] .char-sheet-row");
+  const bmg = row.locator("[data-bmg]");
+  const savedUrl = page.url();
+  await bmg.evaluate((element) => {
+    element.setAttribute("data-original", "true");
+  });
+  const geometry = () =>
+    row.evaluate((element) => {
+      const rect = (node: Element) => {
+        const { x, y, width, right, bottom } = node.getBoundingClientRect();
+        return { x, y, width, right, bottom };
+      };
+      return {
+        row: rect(element),
+        compact: rect(element.children[0]),
+        primary: rect(element.children[1]),
+      };
+    });
+  await expect
+    .poll(async () => {
+      const box = await geometry();
+      return Math.abs(box.compact.y - box.primary.y) < 1;
+    })
+    .toBe(true);
+  const tracks = await page.locator(".content-grid").evaluate((grid) => {
+    const widths = getComputedStyle(grid)
+      .gridTemplateColumns.match(/[\d.]+px/g)
+      ?.map(Number.parseFloat);
+    if (!widths || widths.length !== 5)
+      throw new Error("Expected the wide prose grid.");
+    return { primary: widths[1], gap: widths[2], compact: widths[3] };
+  });
+  const wide = await geometry();
+  expect(wide.compact.width).toBeCloseTo(tracks.compact, 0);
+  expect(wide.primary.width).toBeCloseTo(tracks.primary, 0);
+  expect(wide.primary.x - wide.compact.right).toBeCloseTo(tracks.gap, 0);
+  await expect(row.locator(":scope > *")).toHaveCount(2);
+  await expect(
+    row.locator(":scope > :first-child [data-settings-toggle]"),
+  ).toBeVisible();
+  await expect(row.locator(":scope > :last-child [data-bmg]")).toHaveCount(1);
+
+  const host = page.locator("[data-playground]");
+  await host.evaluate((element, width) => {
+    (element as HTMLElement).style.inlineSize = `${width}px`;
+  }, wide.row.width - 1);
+  await expect
+    .poll(async () => {
+      const box = await geometry();
+      return box.primary.y > box.compact.bottom;
+    })
+    .toBe(true);
+  await host.evaluate((element) => {
+    (element as HTMLElement).style.removeProperty("inline-size");
+  });
+  await expect
+    .poll(async () => {
+      const box = await geometry();
+      return Math.abs(box.compact.y - box.primary.y) < 1;
+    })
+    .toBe(true);
+  expect(page.url()).toBe(savedUrl);
+  await expect(bmg).toHaveAttribute("data-original", "true");
+  await page.locator('[data-convert="ghost-to-mind"]').click();
+  expect(snapshot(page).bmg.ghost.current).toBe(3);
+  await page.locator("[data-downtime]").click();
+  expect(page.url()).toBe(savedUrl);
 });
 
 test("without JavaScript the route has a readable fallback and working site links", async ({
