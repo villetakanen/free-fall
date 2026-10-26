@@ -22,9 +22,10 @@ Many pieces of equipment share common qualities that define their function and i
 
 ### Attribute Binding (Attribute X)
 
-Significant gear and augmentations bind X points of a specified :term[Attribute] (:term[Body], :term[Mind], or :term[Ghost]), reducing the maximum Current points available. This represents the constant physical strain, power draw, neurological load, cognitive effort, or existential toll the item demands. This embodies the *"Capability has Costs"* principle.
+Significant gear and augmentations bind X points of a specified :term[Attribute] (:term[Body], :term[Mind], or :term[Ghost]), holding those points aside from Current and reducing the maximum Current points available. New Binding requires that many available Current points. This represents the constant physical strain, power draw, neurological load, cognitive effort, or existential toll the item demands. This embodies the *"Capability has Costs"* principle.
 
 *   **Persistence:** The :term[Binding] cost remains even if the gear becomes Faulty or Broken. It persists until the item is properly removed, uninstalled, or discarded. For augmentations, removal often requires downtime or surgery.
+*   **Release:** Proper removal or discarding immediately returns the points actually bound to Current and raises its ceiling by the same amount. Spent points remain spent. Rebinding commits the points again. Return only the net cost after Load Bearing or other offsets; a zero-cost mount grants no refund.
 *   **Capacity:** Binding costs are cumulative and may fill an Attribute’s entire capacity, leaving Maximum Current at zero. Ordinary Binding cannot exceed that capacity.
 *   **Unbound use:** Equipment whose required Binding is unmet does not grant the equipment prerequisite. To attempt an action with it, use another [specialized-action prerequisite](/core-rulebook/03-core-rules/#3-prerequisites-for-specialized-actions). This enables the declared action, not ongoing Binding or passive benefits. Functional equipment, access and required interfaces still matter.
 *   **Body Binding:** Physical weight, bulk, power requirements drawing on biological energy, or the strain of physically demanding gear and augmentations.

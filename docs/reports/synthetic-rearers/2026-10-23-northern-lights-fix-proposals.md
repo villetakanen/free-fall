@@ -490,3 +490,29 @@ Approved: hacker is the local field commander, following the assault pair from p
 This supersedes the brief’s blanket no-shared-feeds statement: LPC remains analog voice, with separate local sensor/identity data links. Feeds establish actual observation and hacking paths, not universal access or extra actions. Broken feeds cost fresh visibility, not authority, remembered facts or local IFF bonuses. Updated brief and scenario spec. Full profiles, reserves and withdrawal triggers remain open F12 work.
 
 Release preparation (2026-10-26): #100 and #101 validated with full build, lint, typecheck, 148 unit tests and 45 application browser tests. App/root 0.14.0 includes the already-committed character-sheet additions; scenarios 0.4.0 includes O17 encounter guidance, the mistaken contract and CSA command; core 0.8.1 adds targeting-hacks clarification. Other packages retain their versions. Uncommitted design-system Harm demo work is excluded. Production publication is verified separately after merging the release PR.
+
+### F12 CSA hubris and assault equipment (#104, 2026-10-26)
+
+Implemented the approved Friday-night cleanup attitude: shoot the amateurs, secure cargo, beers afterward. Familiar drills do not guarantee composure. Failed support, conflicting observations and casualties can produce panic in operators or commander; reactions follow events rather than a scripted rout. Replaced guaranteed disciplined fallback guidance and retained action costs, sealed orders and EU capture protection.
+
+Accepted equipment decisions carried forward: catalog Hardshell replaces Wraith for the two assaulters; each Support mount carries CSA IFF/COMMS. Individual functions remain separately targetable; IFF suppression alone does not silence comms. Assault weapons remain proposals (heavy rifles, lance/shotgun), with compatibility, targeting benefits, reserves and final profiles unresolved.
+
+Validation: full build, lint, unit tests and typecheck passed. No new mechanics or static-copy tests added.
+
+F12 follow-up (#104): weapon proposal accepted as the default, with GM discretion to change it. Both Hardshells mount Heavy Kinetic Assault Rifles; lead adds Plasma Lance, second adds Shotgun; Support remains IFF/COMMS. Scenario-specific mount compatibility is explicit. This supersedes the pending-weapon status above; full profiles and targeting/reserve details remain open.
+
+### Binding release correction (#105, 2026-10-26)
+
+Accepted: releasing Binding returns held points immediately, not just capacity. Body 8, rifle Binding 4, spend 2: Current 2; drop rifle: Current 6; rebind: Current 2. New Binding commits available Current points. Offsets and zero-cost mounted equipment create no refund; Broken gear retains Binding until removed. Updated main rules, gear, hacking, registry and SRD; earlier capacity-only release interpretations are superseded. Shared Reserve/main-adversary design remains discussion, not implemented rules.
+
+### The Other Side implemented (#106, 2026-10-26)
+
+Added the approved core chapter: ordinary adversaries use an authored available Reserve after Binding, with actual bound costs beside equipment; no hidden B/M/G calculation. Main adversary uses normal Attributes and declares after players. Normal Action Pools, typed Harm and machine FRM/SYS remain intact. Gear release/refund and rebinding preserve spent points. This establishes the framework for F12 profiles; no CSA pilot numbers or boss assignment are approved by this change.
+
+The Other Side prose pass: user requested a tone brief and writing-aid subagent. Saved `2026-10-26-rules-prose-brief.md`; shortened the chapter to roughly 330 body words, two sections and one example. Linked inherited procedures rather than restating them. Review retained Reserve recovery explicitly; mechanics unchanged.
+
+Shipping The Other Side (#106) and approved default weapons (#104): full build, lint, tests and typecheck passed. Core rules patch 0.8.2; SRD patch 0.7.2 also records the earlier Binding correction. Hardshell CTS removal and the no-cost CSA suite decision remain to be applied to catalog/scenario prose before finalizing pilot reserves.
+
+### Rules numbering corrected (#107, 2026-10-26)
+
+Core 0.7.7 was incorrectly advanced to 0.8.0 in 9b70cde, followed by 0.8.1 and 0.8.2. Corrected to 0.7.10, retaining the three patch increments within the v7 line. Northern Lights compatibility restored to 0.7.x. SRD remains 0.7.2; app numbering is independent. Core and SRD stay on 0.7.x until the user explicitly authorizes a new rules generation. This supersedes earlier release-number recommendations in this log; historical commits are not rewritten.

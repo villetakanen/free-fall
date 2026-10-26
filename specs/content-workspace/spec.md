@@ -89,6 +89,8 @@ import { version as CORE_VERSION } from "../../../../../content/core-rulebook/pa
 
 There is no `index.ts` re-export. The `package.json` version string is the single source of truth.
 
+**Rules generation:** Core rules and SRD remain on `0.7.x` for the v7 playtest. Increment their patch versions independently for revisions; a new rules generation requires explicit user authorization. Application, scenario and other package versions are independent and do not advance the rules generation. Scenario rules compatibility names the targeted rules line (`0.7.x` for Northern Lights).
+
 **Content collection configuration**
 
 The Astro content collection loader is updated to reference the new path:
@@ -282,3 +284,13 @@ The core Attribute definitions include a visible zero-value callout: zero alone 
 ## Hacking target access
 
 The hacking chapter provides a targeting callout requiring a device, intended function and feasible equipment-to-target path before setting a TN. Visibility alone does not grant electronic access, connected targets remain distinct, and software strength does not supply missing transmission hardware. Creative sensory/data paths remain possible when the target actually receives them.
+
+## Binding holds points aside
+
+Binding commits Current points and reduces the available ceiling by the same amount. Releasing actual Binding immediately returns those points to Current; spent points remain spent. Rebinding requires available Current and commits it again, preventing drop/re-equip recovery loops. Existing cumulative capacity limits remain. Faulty/Broken equipment retains Binding until removed; installed augmentations require actual removal, and permanent Binding is not casually releasable. Only net Binding actually imposed returns: mounts or Load Bearing do not create refundable costs. This supersedes any capacity-only interpretation of releasing Binding.
+
+## The Other Side
+
+`content/core-rulebook/chapters/the-other-side.md` supplies lightweight adversary rules at `/core-rulebook/the-other-side/`, ordered after Hacking & Cyber Warfare. Ordinary adversaries have one authored available Reserve after Binding, capabilities/equipment and normal Harm slots. Reserve substitutes for personal Attribute spending and Binding; there are no hidden Body/Mind/Ghost values to derive. Record actual bound costs beside gear. Spending reduces Reserve; releasing a cost returns it; rebinding requires and commits the same points. The main adversary uses ordinary Body/Mind/Ghost and declares after players; ordinary adversaries declare before players. Both use normal Action Pools and Harm. Machines retain separate FRM/SYS.
+
+Verification: build chapter route and navigation, resolve its core/gear/machine links, and manually trace spending, equipment release/rebinding, zero Reserve and typed Harm. A Reserve 4 adversary with rifle Binding 4 becomes Reserve 8 on release, then 4 on rebinding; spending 2 before that sequence leaves 2 afterward. The chapter introduces no automatic morale procedure, extra boss dice or hidden Attribute bookkeeping.

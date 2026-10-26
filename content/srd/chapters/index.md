@@ -6,7 +6,7 @@ order: 1
 
 # System Reference
 
-<span class="text-caption"> A System Reference Document (SRD) for FREE//FALL "v7" (0.7.1)</span>
+<span class="text-caption"> A System Reference Document (SRD) for FREE//FALL "v7" (0.7.2)</span>
 
 ## Introduction
 
@@ -63,6 +63,8 @@ Characters possess a set of resources called :term[Attribute]s. An attribute has
 2. Reducing a level of incoming :term[Harm]
 3. :term[Binding] gear etc. the character can utilize
 4. Restoring points in another Attribute (by default 2 attribute points buy 1 of another attribute).
+
+Binding holds Attribute points aside: subtract the cost from current points when binding, and return those bound points immediately when the Binding is actually released. New Binding requires sufficient available points. Spent points remain spent; releasing and reapplying the same Binding cannot recover them. Return only the cost actually bound, after any applicable offsets. The game specifies what releases a particular asset’s Binding.
 
 ## Skills
 

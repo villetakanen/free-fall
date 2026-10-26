@@ -60,7 +60,7 @@ A Program is software with a defined function, type, tier, and Mind :term[Bindin
 
 **Active programs bind Mind cumulatively.** Subtract their total Binding, after applicable Load Bearing, from your Initial Mind to determine your maximum Current Mind alongside your other bound gear. Programs do not have a separate universal slot limit.
 
-**Deactivation releases that program's Binding.** With access to your interface, this is normally a negligible action on your turn. Releasing Binding removes the load; it is not a recovery action for Mind points you have spent.
+**Deactivation releases that program's Binding.** With access to your interface, this is normally a negligible action on your turn. Releasing Binding immediately returns the Mind points actually held aside by that program. Mind points you have spent remain spent. Activating the program again commits its Binding cost again; any costs offset by a Neural Link or other allowance return no points.
 
 ### Program compromise
 
