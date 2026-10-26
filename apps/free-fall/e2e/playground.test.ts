@@ -379,10 +379,11 @@ test("sheet row uses reversed prose tracks and adapts to its host without replac
 
 test("without JavaScript the route has a readable fallback and working site links", async ({
   browser,
+  baseURL,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto("http://localhost:14321/playground/");
+  await page.goto(`${baseURL}/playground/`);
   await expect(page.locator("[data-playground-fallback]")).toBeVisible();
   await expect(page.locator("#playground-settings-hud")).toBeHidden();
   await expect(
@@ -545,24 +546,22 @@ test("class choices and Harm persist, derive dice and recover selectively", asyn
   expect(snapshot(page).skills).toEqual(["human-systems", "deadeye"]);
   await settings(page, false);
   const slot = page.locator('[data-harm-slot="0"]');
-  await slot.locator("summary").focus();
+  const dialog = page.locator("dialog[open]");
+  await slot.locator("button").focus();
   await page.keyboard.press("Enter");
-  await page
-    .getByLabel("Harm 1 state", { exact: true })
-    .selectOption("transient");
-  await page.getByLabel("Harm 1 type", { exact: true }).selectOption("psychic");
-  await page
-    .getByLabel("Harm 1 description", { exact: true })
-    .fill("Ringing <img src=x>");
+  const beforeDraft = page.url();
+  await dialog.locator("select").selectOption("psychic");
+  await dialog.locator("textarea").fill("Ringing <img src=x>");
+  expect(page.url()).toBe(beforeDraft);
+  await dialog.locator('[type="submit"]').click();
   await expect(page.locator("[data-action-pool]")).toHaveText("4d20");
-  await page
-    .getByLabel("Harm 1 state", { exact: true })
-    .selectOption("permanent");
+  await slot.locator("button").click();
+  await dialog.locator('[type="checkbox"]').check();
+  await dialog.locator('[type="submit"]').click();
   await expect(page.locator("[data-action-pool]")).toHaveText("4d20");
-  await page.locator('[data-harm-slot="1"] summary').click();
-  await page
-    .getByLabel("Harm 2 state", { exact: true })
-    .selectOption("transient");
+  await page.locator('[data-harm-slot="1"] button').click();
+  await dialog.locator("textarea").fill("Bruised ribs");
+  await dialog.locator('[type="submit"]').click();
   await expect(page.locator("[data-action-pool]")).toHaveText("3d20");
   const saved = snapshot(page);
   await page.reload();
@@ -573,26 +572,23 @@ test("class choices and Harm persist, derive dice and recover selectively", asyn
   expect(snapshot(page).harm[0]).toEqual(saved.harm[0]);
   expect(snapshot(page).harm[1].state).toBe("empty");
   await expect(page.locator("[data-action-pool]")).toHaveText("4d20");
-  await page.locator('[data-harm-slot="0"] summary').click();
-  await page.getByLabel("Harm 1 state", { exact: true }).selectOption("empty");
+  await page.locator('[data-harm-slot="0"] button').click();
+  await dialog.getByRole("button", { name: "Clear", exact: true }).click();
   expect(snapshot(page).harm[0]).toEqual(emptySheet().harm[0]);
   await expect(page.locator("[data-action-pool]")).toHaveText("5d20");
 });
 
-test("expanded Harm editors fit a narrow host and rule links resolve", async ({
+test("Harm dialogs fit a narrow host and rule links resolve", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await open(page);
   await load(page, "vantage");
   await settings(page, false);
-  await page.locator('[data-harm-slot="0"] summary').click();
-  await page
-    .getByLabel("Harm 1 state", { exact: true })
-    .selectOption("permanent");
-  await page
-    .getByLabel("Harm 1 description", { exact: true })
-    .fill("Long".repeat(40));
+  await page.locator('[data-harm-slot="0"] button').click();
+  const dialog = page.locator("dialog[open]");
+  await dialog.locator("textarea").fill("Long".repeat(40));
+  await dialog.locator('[type="submit"]').click();
   expect(
     await page
       .locator("main")

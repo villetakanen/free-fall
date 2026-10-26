@@ -247,3 +247,21 @@ Scenario: Reject excessive Binding
 - Issue #98 adds version-3 Class/Skills and three typed Harm slots, selected preset Skills, condition editing and derived Action Pool. Version-1/2 migration preserves existing attribute data without inferring career choices.
 - Build, lint and typecheck pass; dedicated app Svelte diagnostics report zero errors and warnings. All 148 unit checks and all 17 Playground browser checks pass.
 - Browser verification covers selected cross-class Skills, Harm permanence and clearing, URL reload, selective Downtime recovery, keyboard expansion, narrow editors and resolved rules anchors. Wide and 320px compositions were inspected visually.
+
+### Shared Harm presentation (2026-10-26)
+
+The approved [Harm Slots](../../design-system/harm-slot/spec.md) replace the
+inline disclosure editors. Three controlled shared slots sit in one row, with
+Action Pool below a full-width divider: label left, large count right. The
+count numeral uses highlight colour and the d20 suffix uses normal text colour.
+A centered native dialog edits a draft; Save or Clear commits one complete
+snapshot through the existing validation and URL update path. Cancel/Escape
+preserve the sheet and URL. Existing typed harm, version-3 links, old-link
+migration, and selective Downtime recovery remain unchanged. Preset loading,
+history changes and recovery update the same controlled slots.
+
+[DEPRECATED 2026-10-26] The earlier inline Harm disclosure editors committed
+individual field changes immediately. Shared slot dialogs now commit on Save.
+
+Shared Harm release 0.14.1 verification: all 148 unit tests, 45 application
+and 57 design-system browser checks pass, along with build, lint and typecheck.

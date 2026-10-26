@@ -128,10 +128,16 @@ const navItems = Astro.props.navItems ?? [
     active: [
       "/bmg-circle",
       "/attribute-circle",
+      "/harm-slot",
       "/character-sheet-static",
       "/char-sheet-row-layout-1",
     ].some((path) => Astro.url.pathname.startsWith(path)),
     subItems: [
+      {
+        label: "Harm Slot",
+        href: "/harm-slot/",
+        active: Astro.url.pathname.startsWith("/harm-slot"),
+      },
       {
         label: "Sheet Row — Layout 1",
         href: "/char-sheet-row-layout-1/",

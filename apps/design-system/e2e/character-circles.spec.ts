@@ -326,6 +326,7 @@ test("all six targets fit narrow layouts, large numbers, text enlargement and fo
 
 test("static HTML is complete without JavaScript or a Svelte client runtime", async ({
   browser,
+  baseURL,
   request,
 }) => {
   const response = await request.get("/character-sheet-static/");
@@ -334,7 +335,7 @@ test("static HTML is complete without JavaScript or a Svelte client runtime", as
   );
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto("http://localhost:14322/character-sheet-static/");
+  await page.goto(`${baseURL}/character-sheet-static/`);
   const groups = page.locator("[data-bmg]");
   await expect(groups).toHaveCount(2);
   await expect(current(groups.first(), "mind")).toHaveText("0");
@@ -382,13 +383,13 @@ test("print keeps committed values and monochrome directions while hiding contro
   });
 });
 
-test("touch activates a conversion once", async ({ browser }) => {
+test("touch activates a conversion once", async ({ browser, baseURL }) => {
   const context = await browser.newContext({
     hasTouch: true,
     viewport: { width: 360, height: 900 },
   });
   const page = await context.newPage();
-  await page.goto("http://localhost:14322/bmg-circle/");
+  await page.goto(`${baseURL}/bmg-circle/`);
   const root = demo(page);
   await convert(root, "mind-to-body").tap();
   await expect(current(root, "mind")).toHaveText("6");
