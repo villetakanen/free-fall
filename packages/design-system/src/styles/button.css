@@ -1,0 +1,52 @@
+/* Spec: specs/design-system/button/spec.md */
+.freefall-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--freefall-space-1);
+  min-inline-size: var(--freefall-button-height);
+  min-block-size: var(--freefall-button-height);
+  max-inline-size: 100%;
+  padding: var(--freefall-space-1) var(--freefall-space-2);
+  border: calc(var(--freefall-space-1) / 8) solid var(--freefall-border-strong);
+  border-radius: 0;
+  background: var(--freefall-bg-surface-2);
+  color: var(--freefall-text-display);
+  font: 500 var(--freefall-type-ui-small) / 1.5 var(--freefall-font-body);
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color 0.2s ease;
+}
+
+.freefall-button--square {
+  inline-size: var(--freefall-button-height);
+  block-size: var(--freefall-button-height);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.freefall-button .material-symbols-sharp {
+  font-size: var(--freefall-button-icon-size);
+}
+
+.freefall-button:is(:hover, :active, :focus-visible) {
+  border-color: var(--freefall-action-base);
+}
+
+.freefall-button:focus-visible {
+  outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base);
+  outline-offset: calc(var(--freefall-space-1) / 2);
+}
+
+.freefall-button:is(:disabled, [aria-disabled="true"]) {
+  color: var(--freefall-text-muted);
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  .freefall-button {
+    transition: none;
+  }
+}

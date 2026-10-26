@@ -15,25 +15,25 @@ test("single circle preserves ownership, Base, and focus at zero", async ({
 }) => {
   await page.goto("/attribute-circle/");
   const root = demo(page);
-  await expect(adjust(root, "ghost", 1)).toBeVisible();
+  await expect(adjust(root, "ghost", 1)).toHaveCount(0);
+  await expect(adjust(root, "ghost", -1)).toBeVisible();
   await root.locator("[data-base-update]").click();
   await expect(base(root, "ghost")).toHaveText("6");
   await expect(current(root, "ghost")).toHaveText("8");
-  await adjust(root, "ghost", 1).focus();
+  await adjust(root, "ghost", -1).focus();
   await page.keyboard.press("Enter");
-  await expect(current(root, "ghost")).toHaveText("9");
+  await expect(current(root, "ghost")).toHaveText("7");
   await expect(root.locator("[data-proposals]")).toHaveAttribute(
     "data-proposals",
     "1",
   );
   await expect(root.locator('[role="status"]')).not.toBeEmpty();
   await root.locator("[data-reject]").check();
-  await adjust(root, "ghost", 1).click();
-  await expect(current(root, "ghost")).toHaveText("9");
+  await adjust(root, "ghost", -1).click();
+  await expect(current(root, "ghost")).toHaveText("7");
   await expect(root.locator('[role="status"]')).toBeEmpty();
   await root.locator("[data-reject]").uncheck();
-  await root.locator("[data-fixture]").selectOption("zero");
-  await adjust(root, "ghost", 1).click();
+  await root.locator("[data-fixture]").selectOption("one");
   await adjust(root, "ghost", -1).focus();
   await page.keyboard.press("Space");
   await expect(current(root, "ghost")).toHaveText("0");
@@ -46,7 +46,7 @@ test("single circle preserves ownership, Base, and focus at zero", async ({
   await page.keyboard.press("Enter");
   await expect(root.locator("[data-proposals]")).toHaveAttribute(
     "data-proposals",
-    "2",
+    "1",
   );
 });
 
@@ -74,7 +74,8 @@ test("conversions and child controls share one state without duplicate proposals
     "aria-disabled",
     "true",
   );
-  await adjust(root, "ghost", 1).click();
+  await root.locator("[data-fixture]").selectOption("last-pair");
+  await adjust(root, "ghost", -1).click();
   const button = convert(root, "ghost-to-body");
   await button.focus();
   await expect(root.locator('[data-arc="ghost-to-body"]')).toHaveClass(
@@ -93,7 +94,7 @@ test("conversions and child controls share one state without duplicate proposals
   await expect(button).toHaveAccessibleDescription(/\S/);
   await expect(root.locator("[data-proposals]")).toHaveAttribute(
     "data-proposals",
-    "4",
+    "2",
   );
   await expect(current(other, "ghost")).toHaveText("8");
   await expect(other.locator("[data-proposals]")).toHaveAttribute(
@@ -136,13 +137,13 @@ test("rapid actions and rejected conversions use committed props", async ({
     "data-proposals",
     "2",
   );
-  await adjust(root, "ghost", 1).evaluate((element) => {
+  await adjust(root, "ghost", -1).evaluate((element) => {
     for (let i = 0; i < 10; i++) (element as HTMLButtonElement).click();
   });
-  await expect(current(root, "ghost")).toHaveText("11");
+  await expect(current(root, "ghost")).toHaveText("0");
   await expect(root.locator("[data-proposals]")).toHaveAttribute(
     "data-proposals",
-    "12",
+    "3",
   );
 });
 
@@ -154,13 +155,10 @@ test("unfilled and safe-integer boundaries disable only eligible actions", async
   await root.locator("[data-fixture]").selectOption("blank");
   await expect(
     root.locator('[data-bmg] button[aria-disabled="true"]'),
-  ).toHaveCount(9);
+  ).toHaveCount(6);
   await expect(root.locator('[data-field="current"].blank')).toHaveCount(3);
   await root.locator("[data-fixture]").selectOption("large");
-  await expect(adjust(root, "ghost", 1)).toHaveAttribute(
-    "aria-disabled",
-    "true",
-  );
+  await expect(adjust(root, "ghost", 1)).toHaveCount(0);
   await expect(adjust(root, "ghost", -1)).toHaveAttribute(
     "aria-disabled",
     "false",
@@ -186,6 +184,44 @@ test("unfilled and safe-integer boundaries disable only eligible actions", async
     "aria-disabled",
     "false",
   );
+});
+
+test("circle actions use the shared DS button appearance in every stat", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/bmg-circle/");
+  const root = demo(page);
+  const reference = root.locator("[data-reset]");
+  const appearance = (button: Locator) =>
+    button.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        color: style.color,
+        background: style.backgroundColor,
+        border: style.borderColor,
+        borderWidth: style.borderWidth,
+        font: style.font,
+        radius: style.borderRadius,
+      };
+    });
+  await page.mouse.move(0, 0);
+  const normal = await appearance(reference);
+  const controls = root.locator("[data-bmg] button");
+  await expect(controls).toHaveCount(6);
+  for (const button of await controls.all()) {
+    expect(await appearance(button)).toEqual(normal);
+    await expect(button).toHaveCSS("width", "44px");
+    await expect(button).toHaveCSS("height", "44px");
+    await expect(button).toHaveAccessibleName(/\S/);
+  }
+  await reference.hover();
+  const hovered = await appearance(reference);
+  expect(hovered.border).not.toBe(normal.border);
+  for (const button of await controls.all()) {
+    await button.hover();
+    expect(await appearance(button)).toEqual(hovered);
+  }
 });
 
 async function assertGeometry(root: Locator) {
@@ -234,7 +270,7 @@ async function assertGeometry(root: Locator) {
   expect(problems).toEqual([]);
 }
 
-test("all nine targets fit narrow layouts, large numbers, text enlargement and font fallback", async ({
+test("all six targets fit narrow layouts, large numbers, text enlargement and font fallback", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
@@ -243,7 +279,7 @@ test("all nine targets fit narrow layouts, large numbers, text enlargement and f
   );
   await page.goto("/bmg-circle/");
   const root = demo(page);
-  await expect(root.locator("[data-bmg] button")).toHaveCount(9);
+  await expect(root.locator("[data-bmg] button")).toHaveCount(6);
   for (const width of [320, 360, 400, 480, 768, 1100]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.keyboard.press("Escape");
@@ -323,6 +359,9 @@ test("print keeps committed values and monochrome directions while hiding contro
   await expect(base(root, "body")).toHaveText("12");
   await expect(root.locator("[data-bmg] button:visible")).toHaveCount(0);
   await expect(root.locator("[data-bmg] .ratio:visible")).toHaveCount(3);
+  await expect(
+    root.locator("[data-arc-fill]:visible, [data-arc-outline]:visible"),
+  ).toHaveCount(0);
   const colors = await root
     .locator("dd, dt, [data-arc]")
     .evaluateAll((elements) =>

@@ -8,7 +8,7 @@
     current: number | null;
     base: number | null;
     interactive?: boolean;
-    oncurrentchange?: (next: number, delta: 1 | -1) => void;
+    oncurrentchange?: (next: number, delta: -1) => void;
     appearance?: "screen" | "print";
     labelPosition?: "above" | "below";
     highlighted?: boolean;
@@ -34,11 +34,11 @@
   });
   onMount(() => { mounted = true; });
 
-  function adjust(delta: 1 | -1) {
+  function activate() {
     if (!ready) return;
-    const result = adjustCurrent(current, delta);
+    const result = adjustCurrent(current, -1);
     if (!result.ok) return;
-    flushSync(() => { announcement = ""; oncurrentchange?.(result.value, delta); });
+    flushSync(() => { announcement = ""; oncurrentchange?.(result.value, -1); });
     if (current === result.value) announcement = `${name} Current ${current}.`;
   }
 </script>
@@ -49,7 +49,8 @@
   <div class="face">
     <span class="name" id={`${uid}-name`}>{name}</span>
     <svg class="division" viewBox="0 0 100 100" aria-hidden="true">
-      <path d="M 7 75 L 93 25" />
+      <path d="M 16 87 L 99 39" />
+      <path class="highlight" d="M 16 87 L 99 39" />
     </svg>
     <dl>
       <div class="current-field">
@@ -66,16 +67,15 @@
       </div>
     </dl>
     {#if ready}
+      {@const result = adjustCurrent(current, -1)}
       <div class="adjustments">
-        {#each [1, -1] as delta}
-          {@const result = adjustCurrent(current, delta as 1 | -1)}
-          <button type="button" data-adjust={delta} aria-label={`${delta === 1 ? "Increase" : "Decrease"} ${name} Current by 1`}
-            aria-disabled={!result.ok} aria-describedby={!result.ok ? `${uid}-reason-${delta}` : undefined}
-            title={!result.ok ? result.message : undefined} onclick={() => adjust(delta as 1 | -1)}>
-            {delta === 1 ? "+" : "−"}
-          </button>
-          {#if !result.ok}<span class="reason" id={`${uid}-reason-${delta}`}>{result.message}</span>{/if}
-        {/each}
+        <button class="freefall-button freefall-button--square" type="button" data-adjust="-1"
+          aria-label={`Spend 1 ${name} Current`} aria-disabled={!result.ok}
+          aria-describedby={!result.ok ? `${uid}-reason` : undefined}
+          title={result.ok ? `Spend 1 ${name} Current` : result.message} onclick={activate}>
+          <span class="material-symbols-sharp" aria-hidden="true">bolt</span>
+        </button>
+        {#if !result.ok}<span class="reason" id={`${uid}-reason`}>{result.message}</span>{/if}
       </div>
     {/if}
   </div>
@@ -85,15 +85,26 @@
 <style>
   .attribute {
     --attribute-ink: var(--freefall-attr-ghost);
-    --circle-rule: var(--freefall-text-muted);
-    --control-size: calc(5.5 * var(--freefall-space-1));
+    --circle-rule: var(--freefall-border-strong);
+    --circle-surface: var(--freefall-bg-surface-1);
+    --circle-rule-width: calc(3 * var(--freefall-space-1) / 8);
+    --circle-highlight-width: calc(var(--freefall-space-1) / 8);
+    --circle-highlight-opacity: 0;
+    --circle-enter-transition: 0.12s ease-in;
+    --circle-exit-transition: 0.4s ease-out;
+    --circle-transition: var(--circle-exit-transition);
+    --control-size: var(--freefall-button-height);
     --overhang: calc(var(--control-size) / 2);
     box-sizing: border-box;
-    inline-size: var(--freefall-attribute-circle-width, calc(35 * var(--freefall-space-1)));
+    inline-size: var(--freefall-attribute-circle-width, calc(22.5 * var(--freefall-space-1)));
     max-inline-size: 100%;
-    padding: calc(3.5 * var(--freefall-space-1)) 0 calc(3.5 * var(--freefall-space-1)) var(--overhang);
+    padding: calc(3.5 * var(--freefall-space-1)) 0 0 var(--overhang);
     color: var(--attribute-ink);
     font-family: var(--freefall-font-mono);
+  }
+  .attribute[data-label-position="below"] {
+    padding-block-start: 0;
+    padding-block-end: calc(3.5 * var(--freefall-space-1));
   }
   .attribute[data-attribute="body"] {
     --attribute-ink: var(--freefall-attr-body);
@@ -101,16 +112,36 @@
   .attribute[data-attribute="mind"] {
     --attribute-ink: var(--freefall-attr-mind);
   }
-  .highlighted {
-    --circle-rule: var(--freefall-action-base);
+  @media screen {
+    .attribute:not(.paper):is(:hover, :active, :has(:focus-visible), .highlighted) {
+      --circle-highlight-opacity: 1;
+      --circle-surface: var(--freefall-bg-surface-2);
+      --circle-transition: var(--circle-enter-transition);
+    }
   }
   .face {
     position: relative;
+    -webkit-user-select: none;
+    user-select: none;
     container-type: inline-size;
     aspect-ratio: 1;
-    border: calc(var(--freefall-space-1) / 4) solid var(--circle-rule);
+    border: var(--circle-rule-width) solid var(--circle-rule);
     border-radius: 50%;
-    background: var(--freefall-bg-canvas);
+    background: var(--circle-surface);
+    box-shadow: 0 0 0 calc(3 * var(--freefall-space-1) / 8) var(--circle-surface);
+    transition: background-color var(--circle-transition), box-shadow var(--circle-transition);
+  }
+  .face::before {
+    content: "";
+    position: absolute;
+    /* The containing block starts inside the strong border. Center the thin
+       highlight on that border, leaving an equal strong edge on either side. */
+    inset: calc((var(--circle-rule-width) + var(--circle-highlight-width)) / -2);
+    border: var(--circle-highlight-width) solid var(--attribute-ink);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--circle-highlight-opacity);
+    transition: opacity var(--circle-transition);
   }
   .name {
     position: absolute;
@@ -118,9 +149,10 @@
     left: 50%;
     transform: translateX(-50%);
     color: var(--freefall-text-display);
-    font-size: calc(1.5 * var(--freefall-space-1));
+    font-size: var(--freefall-type-ui-small);
     line-height: 1.25;
     font-weight: 600;
+    text-transform: uppercase;
     white-space: nowrap;
   }
   [data-label-position="below"] .name {
@@ -137,7 +169,14 @@
   .division path {
     fill: none;
     stroke: var(--circle-rule);
-    stroke-width: 1;
+    stroke-width: var(--circle-rule-width);
+    vector-effect: non-scaling-stroke;
+  }
+  .division .highlight {
+    stroke: var(--attribute-ink);
+    stroke-width: var(--circle-highlight-width);
+    opacity: var(--circle-highlight-opacity);
+    transition: opacity var(--circle-transition);
   }
   dl {
     margin: 0;
@@ -161,17 +200,19 @@
     transform: translate(-50%, -50%);
   }
   .current-field dt {
-    left: 60%;
-    top: 53%;
+    right: 5%;
+    top: 34%;
+    transform: translateY(-50%) rotate(-30deg);
+    transform-origin: right center;
   }
   .current-field dd {
     left: 50%;
     top: 29%;
-    font-size: 36cqw;
+    font-size: 40cqw;
   }
   .base-field dt {
     left: 39%;
-    top: 80%;
+    top: 82%;
   }
   .base-field dd {
     left: 72%;
@@ -195,36 +236,11 @@
   .adjustments {
     position: absolute;
     left: calc(-1 * var(--overhang));
-    top: 50%;
+    top: calc(50% + var(--control-size) / 2 + var(--freefall-space-1) / 2);
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: var(--freefall-space-1);
-  }
-  button {
-    display: grid;
-    place-items: center;
-    inline-size: var(--control-size);
-    block-size: var(--control-size);
-    padding: 0;
-    border: calc(var(--freefall-space-1) / 8) solid var(--circle-rule);
-    border-radius: 0;
-    background: var(--freefall-bg-surface-2);
-    color: var(--freefall-text-display);
-    font: 500 calc(3 * var(--freefall-space-1)) / 1 var(--freefall-font-mono);
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  button:hover, button:focus-visible {
-    border-color: var(--freefall-action-base);
-  }
-  button:focus-visible {
-    outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base);
-    outline-offset: calc(var(--freefall-space-1) / 2);
-  }
-  button[aria-disabled="true"] {
-    color: var(--freefall-text-muted);
-    cursor: not-allowed;
   }
   .reason, .sr-only {
     position: absolute;
@@ -283,23 +299,33 @@
   .attribute.paper {
     --attribute-ink: black;
     --circle-rule: black;
+    --circle-transition: 0s;
     background: white;
   }
   .paper .face {
     background: white;
+    box-shadow: none;
   }
   .paper .name, .paper dt {
     color: black;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .attribute {
+      --circle-enter-transition: 0s;
+      --circle-exit-transition: 0s;
+    }
   }
   @media print {
     .attribute[data-attribute] {
       --attribute-ink: black;
       --circle-rule: black;
+      --circle-transition: 0s;
       background: white;
       break-inside: avoid;
     }
     .face {
       background: white;
+      box-shadow: none;
     }
     .name, dt {
       color: black;

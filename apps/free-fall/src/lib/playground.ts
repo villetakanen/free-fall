@@ -1,24 +1,28 @@
 import {
+  ATTRIBUTE_LABELS,
   ATTRIBUTES,
+  type Attribute,
   type BmgValues,
   isAttributeNumber,
   validateBmg,
 } from "../../../../packages/design-system/src/components/character-attributes";
 
 export type PlaygroundSheet = {
-  version: 1;
+  version: 2;
   name: string;
   callsign: string;
   bmg: BmgValues;
+  binding: Record<Attribute, number | null>;
 };
 
 type Result<T> = { ok: true; value: T } | { ok: false; error: string };
 
 export function emptySheet(): PlaygroundSheet {
   return {
-    version: 1,
+    version: 2,
     name: "",
     callsign: "",
+    binding: { body: 0, mind: 0, ghost: 0 },
     bmg: {
       body: { current: null, base: null },
       mind: { current: null, base: null },
@@ -35,7 +39,7 @@ export function validateSheet(input: unknown): Result<PlaygroundSheet> {
       error: "This link does not contain a character sheet.",
     };
   const candidate = input as Record<string, unknown>;
-  if (candidate.version !== 1)
+  if (candidate.version !== 1 && candidate.version !== 2)
     return { ok: false, error: "This sheet link uses an unsupported version." };
   if (
     typeof candidate.name !== "string" ||
@@ -47,9 +51,50 @@ export function validateSheet(input: unknown): Result<PlaygroundSheet> {
   const sheet = emptySheet();
   sheet.name = candidate.name;
   sheet.callsign = candidate.callsign;
+  const binding = candidate.binding;
+  if (
+    candidate.version === 2 &&
+    (!binding || typeof binding !== "object" || Array.isArray(binding))
+  )
+    return { ok: false, error: "This sheet is missing its Binding values." };
   for (const attribute of ATTRIBUTES) {
     const { current, base } = checked.value[attribute];
     sheet.bmg[attribute] = { current, base };
+    // Spent Current cannot tell us the loadout's Binding in an older link.
+    const bound =
+      candidate.version === 1
+        ? null
+        : (binding as Record<string, unknown>)[attribute];
+    if (!isAttributeNumber(bound))
+      return {
+        ok: false,
+        error: `${ATTRIBUTE_LABELS[attribute]} Binding must be a nonnegative safe integer or blank.`,
+      };
+    if (base !== null && bound !== null && bound > base)
+      return {
+        ok: false,
+        error: `${ATTRIBUTE_LABELS[attribute]} Binding cannot exceed Base.`,
+      };
+    sheet.binding[attribute] = bound;
+  }
+  return { ok: true, value: sheet };
+}
+
+/** Restore the unbound pools without changing identity, Base, or loadout. */
+export function takeDowntime(input: unknown): Result<PlaygroundSheet> {
+  const checked = validateSheet(input);
+  if (!checked.ok) return checked;
+  const sheet = checked.value;
+  for (const attribute of ATTRIBUTES) {
+    const base = sheet.bmg[attribute].base;
+    const binding = sheet.binding[attribute];
+    if (base === null || binding === null)
+      return {
+        ok: false,
+        error:
+          "Set Base and Binding for all three attributes in Settings before taking Downtime.",
+      };
+    sheet.bmg[attribute].current = base - binding;
   }
   return { ok: true, value: sheet };
 }
@@ -160,10 +205,12 @@ export function loadPreset(id: string): Result<PlaygroundSheet> {
   sheet.callsign = preset.callsign;
   for (const [index, attribute] of (
     ["body", "mind", "ghost"] as const
-  ).entries())
+  ).entries()) {
     sheet.bmg[attribute] = {
       current: preset.current[index],
       base: preset.base[index],
     };
+    sheet.binding[attribute] = preset.base[index] - preset.current[index];
+  }
   return { ok: true, value: sheet };
 }

@@ -10,6 +10,8 @@ import "../styles/character-sheet-print.css";
   <h2>Client-rendered instance</h2>
   <p>This independent instance renders entirely in the browser. The first example hydrates a static snapshot.</p>
   <CharacterCircleDemo id="client" client:only="svelte" />
+  <h2>Arrow feedback</h2>
+  <p>Each arc is one continuous line with a single straight inward barb at its end. Hover an arrow or its conversion button to fill it with an LCH gradient from the source stat’s highlight color to the destination’s. The separate 1px border highlight keeps its own color. Arrow entry and exit both use 0.33s ease-in-out. Stat circles keep their own feedback timing. Reduced motion removes animation, and print keeps solid monochrome arrows.</p>
   <h2>Controlled state</h2>
   <pre><code>{`<BmgCircle {value} interactive
   onchange={(next, cause) => { value = next; }} />`}</code></pre>

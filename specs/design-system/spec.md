@@ -17,7 +17,7 @@ The design system is the single source of styling truth for FREE//FALL. It provi
 | Layer | Format | Purpose |
 |---|---|---|
 | Foundation | Plain CSS files | Tokens (custom properties), reset, typography — mobile-first |
-| Global primitives | Plain CSS files | Content grid, surfaces, callouts, and small utilities |
+| Global primitives | Plain CSS files | Content grid, surfaces, callouts, action buttons, and small utilities |
 | Components | `.astro` and `.svelte` files | Composition; Svelte for controlled reactive character-sheet state |
 
 No build step. Source is distributed directly to consuming apps via Vite aliases.
@@ -26,7 +26,9 @@ typechecked directly rather than relying on a consumer build to discover errors.
 `Svelte-check` additionally validates Svelte components and the demo hosts.
 [AttributeCircle](attribute-circle/spec.md) and [BmgCircle](bmg-circle/spec.md)
 share pure TypeScript state operations and render statically unless their host
-opts into hydration or client-only rendering.
+opts into hydration or client-only rendering. Their controls and Playground
+actions use the CSS [Action Button](button/spec.md) primitive; circle consumers
+position buttons without overriding their visual treatment.
 
 **Demo app** (`apps/design-system/`):
 

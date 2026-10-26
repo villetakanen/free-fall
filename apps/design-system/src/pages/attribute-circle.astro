@@ -6,7 +6,7 @@ import "../styles/character-sheet-print.css";
 ---
 <BaseLayout title="Attribute Circle — FREE//FALL Design System">
   <h1>Attribute Circle</h1>
-  <p>Current and Base are independent. The attached +/− controls adjust Current by one. Base never limits Current.</p>
+  <p>Current and Base are independent. The attached activation button spends one Current. Base never limits Current.</p>
   <CharacterCircleDemo kind="single" client:load />
   <h2>Static attributes</h2>
   <div class="examples">
@@ -19,6 +19,10 @@ import "../styles/character-sheet-print.css";
   <pre><code>{`<AttributeCircle type="ghost" {current} {base} interactive
   oncurrentchange={(next) => { current = next; }} />`}</code></pre>
   <p>A Svelte parent accepts a proposal by updating the prop synchronously. Keeping the previous value declines it. External prop updates emit no proposals. Use <code>null</code> for an empty field, and <code>appearance="print"</code> for an explicit monochrome specimen.</p>
+  <p>The attribute label uses uppercase IBM Plex Mono at <code>--freefall-type-ui-small</code> (0.875rem). Set <code>labelPosition="above"</code> (the default) or <code>labelPosition="below"</code>: its 1.75rem label area is reserved only on that side, with a 0.5rem gap from the face.</p>
+  <p><code>--freefall-attribute-circle-width</code> defaults to 11.25rem including the button overhang. The face is 9.875rem across (158px at a 16px root size), close to the circles in the full-size BMG composition. The action uses the shared DS button style and <code>--freefall-button-height</code>: 2.75rem square, with a Material Symbols Sharp bolt icon.</p>
+  <p>The face uses <code>--freefall-bg-surface-1</code>, extending 0.1875rem beyond the outline without adding layout space. At the default size, the elevated backing is 164px across. The outline, divider, and button borders use <code>--freefall-border-strong</code>; the circle outline and divider are 0.1875rem (3px) thick. Print uses a plain white face with black lines.</p>
+  <p>Hover, press, keyboard focus, and conversion highlighting add a 1px stat-color line in the middle of the 3px circle outline and divider, and bring the background to elevation 2. Entry uses 0.12s ease-in; exit uses 0.4s ease-out. Reduced motion switches immediately; print stays monochrome.</p>
   <p><a href="/bmg-circle/">Compose all three attributes</a> · <a href="/character-sheet-static/">Static and print examples</a></p>
 </BaseLayout>
 <style>

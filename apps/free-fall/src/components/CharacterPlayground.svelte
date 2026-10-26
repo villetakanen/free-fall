@@ -2,12 +2,12 @@
   import { onMount, tick } from "svelte";
   import BmgCircle from "@free-fall/design-system/components/BmgCircle.svelte";
   import { ATTRIBUTES, ATTRIBUTE_LABELS, setAttributeValue, type Attribute, type AttributeValue, type BmgValues } from "@free-fall/design-system/components/character-attributes";
-  import { decodeSheetFragment, emptySheet, encodeSheetFragment, loadPreset, NORTHERN_LIGHTS_PRESETS, parseAttributeDraft, type PlaygroundSheet } from "../lib/playground";
+  import { decodeSheetFragment, emptySheet, encodeSheetFragment, loadPreset, NORTHERN_LIGHTS_PRESETS, parseAttributeDraft, takeDowntime, validateSheet, type PlaygroundSheet } from "../lib/playground";
 
-  type Field = keyof AttributeValue;
+  type Field = keyof AttributeValue | "binding";
   type FieldKey = `${Attribute}-${Field}`;
   const attributeOrder = ["body", "mind", "ghost"] as const;
-  const fields = ["current", "base"] as const;
+  const fields = ["current", "base", "binding"] as const;
   const fieldKey = (attribute: Attribute, field: Field): FieldKey => `${attribute}-${field}`;
   const keys = ATTRIBUTES.flatMap((attribute) => fields.map((field): FieldKey => `${attribute}-${field}`));
   let sheet = $state(emptySheet());
@@ -23,13 +23,15 @@
   let settingsOpen = $state(false);
   let narrowHost = $state(false);
   const uid = $props.id();
+  const recovery = $derived(takeDowntime(sheet));
+  const fieldLabel = (field: Field) => field === "current" ? "Current" : field === "base" ? "Base" : "Binding";
   const preset = $derived(NORTHERN_LIGHTS_PRESETS.find((item) => item.id === selected));
 
   function syncFields(changed: readonly FieldKey[] = keys) {
     for (const attribute of ATTRIBUTES) for (const field of fields) {
       const key: FieldKey = `${attribute}-${field}`;
       if (changed.includes(key)) {
-        drafts[key] = String(sheet.bmg[attribute][field] ?? "");
+        drafts[key] = String((field === "binding" ? sheet.binding[attribute] : sheet.bmg[attribute][field]) ?? "");
         delete errors[key];
       }
     }
@@ -92,10 +94,18 @@
     drafts[key] = draft;
     const parsed = parseAttributeDraft(draft);
     if (!parsed.ok) { errors[key] = parsed.error; return; }
-    const result = setAttributeValue(sheet.bmg, attribute, field, parsed.value);
-    if (!result.ok) { errors[key] = result.message; return; }
+    let next: PlaygroundSheet;
+    if (field === "binding") {
+      next = { ...sheet, binding: { ...sheet.binding, [attribute]: parsed.value } };
+    } else {
+      const result = setAttributeValue(sheet.bmg, attribute, field, parsed.value);
+      if (!result.ok) { errors[key] = result.message; return; }
+      next = { ...sheet, bmg: result.value };
+    }
+    const checked = validateSheet(next);
+    if (!checked.ok) { errors[key] = checked.error; return; }
     delete errors[key];
-    commit({ ...sheet, bmg: result.value });
+    commit(checked.value);
   }
 
   function changeBmg(next: BmgValues) {
@@ -103,6 +113,12 @@
     const changed = ATTRIBUTES.filter((attribute) => next[attribute].current !== sheet.bmg[attribute].current)
       .map((attribute): FieldKey => `${attribute}-current`);
     commit({ ...sheet, bmg: next }, changed);
+  }
+
+  function downtime() {
+    if (!ready || urlError || !recovery.ok) return;
+    if (commit(recovery.value, ATTRIBUTES.map((attribute): FieldKey => `${attribute}-current`)))
+      status = "Downtime: all Current pools restored to Base minus Binding.";
   }
 
   async function copyLink() {
@@ -197,22 +213,25 @@
       <div><dt>Name</dt><dd>{sheet.name || "—"}</dd></div>
     </dl>
     <div class="actions">
-      <button type="button" onclick={toggleSettings} disabled={!ready} data-settings-toggle
+      <button class="freefall-button" type="button" onclick={downtime}
+        disabled={!ready || !!urlError || !recovery.ok} data-downtime
+        aria-describedby={`${uid}-downtime-help`}>Downtime</button>
+      <button class="freefall-button" type="button" onclick={toggleSettings} disabled={!ready} data-settings-toggle
         aria-expanded={settingsOpen} aria-controls={narrowHost ? `${uid}-inline-settings` : "playground-settings-hud-pane-custom"}>Settings</button>
-      <button type="button" onclick={copyLink} disabled={!ready || !!urlError} data-copy>Copy link</button>
+      <button class="freefall-button" type="button" onclick={copyLink} disabled={!ready || !!urlError} data-copy>Copy link</button>
     </div>
   </div>
 
   {#if urlError}
     <div class="error" role="alert" data-url-error>
       <p>{urlError} Your last valid sheet is unchanged.</p>
-      <button type="button" onclick={() => load("empty")} data-reset>Reset to empty</button>
+      <button class="freefall-button" type="button" onclick={() => load("empty")} data-reset>Reset to empty</button>
     </div>
   {/if}
   {#if actionError}<p class="error" role="alert">{actionError}</p>{/if}
 
   <div class="inline-settings" id={`${uid}-inline-settings`} hidden={!narrowHost || !settingsOpen}>
-    <header><h2>Settings</h2><button type="button" onclick={toggleSettings} data-settings-close>Close settings</button></header>
+    <header><h2>Settings</h2><button class="freefall-button" type="button" onclick={toggleSettings} data-settings-close>Close settings</button></header>
     <div class="inline-settings-body">
       <div class="settings-form" data-settings-form use:placeSettings>
         <div class="toolbar">
@@ -225,7 +244,7 @@
               </optgroup>
             </select>
           </div>
-          <button type="button" onclick={() => load()} disabled={!ready || !!urlError} data-load>Load sheet</button>
+          <button class="freefall-button" type="button" onclick={() => load()} disabled={!ready || !!urlError} data-load>Load sheet</button>
         </div>
         <p class="configuration" id={`${uid}-configuration`}>
           {#if preset}<a href={preset.source}>{preset.callsign}</a> · {preset.configuration}. Loading replaces your sheet.
@@ -245,7 +264,7 @@
         </fieldset>
         <div class="numbers">
           <h2>Attributes</h2>
-          <p class="hint">Set your values here. Use +/− to adjust Current, or the arrows to convert 2 points into 1. Base is your initial capacity, not a limit.</p>
+          <p class="hint">Set your values here. Activation spends 1 Current; arrows convert 2 points into 1. Downtime restores Current to Base minus Binding. Base is your initial capacity.</p>
           {#each attributeOrder as attribute}
             <fieldset class="attribute" disabled={!ready || !!urlError}>
               <legend>{ATTRIBUTE_LABELS[attribute]}</legend>
@@ -253,9 +272,9 @@
                 {#each fields as field}
                   {@const key = fieldKey(attribute, field)}
                   <div class="number-field">
-                    <label for={`${uid}-${key}`}>{field === "current" ? "Current" : "Base"}</label>
+                    <label for={`${uid}-${key}`}>{fieldLabel(field)}</label>
                     <input id={`${uid}-${key}`} type="text" inputmode="numeric" autocomplete="off" spellcheck="false"
-                      aria-label={`${ATTRIBUTE_LABELS[attribute]} ${field === "current" ? "Current" : "Base"}`}
+                      aria-label={`${ATTRIBUTE_LABELS[attribute]} ${fieldLabel(field)}`}
                       value={drafts[key] ?? ""} aria-invalid={!!errors[key]}
                       aria-describedby={errors[key] ? `${uid}-${key}-error` : undefined}
                       oninput={(event) => editNumber(attribute, field, event.currentTarget.value)} />
@@ -270,6 +289,9 @@
     </div>
   </div>
 
+  <p class="hint" id={`${uid}-downtime-help`}>
+    {recovery.ok ? "Downtime restores all three Current pools to Base minus Binding." : recovery.error}
+  </p>
   <div class="diagram"><BmgCircle value={sheet.bmg} interactive={ready && !urlError} onchange={changeBmg} /></div>
   <div class="sharing">
     <p class="hint">Your sheet lives in this link. Copy or bookmark it to keep it.</p>
@@ -287,17 +309,15 @@
   .toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: var(--freefall-space-2); }
   label { display: grid; gap: var(--freefall-space-1); min-inline-size: 0; }
   .preset-picker { flex: 1 1 calc(28 * var(--freefall-space-1)); display: grid; gap: var(--freefall-space-1); }
-  input, select, button {
+  input, select {
     box-sizing: border-box; min-inline-size: 0; max-inline-size: 100%;
     min-block-size: calc(5.5 * var(--freefall-space-1)); padding: var(--freefall-space-1) var(--freefall-space-2);
     background: var(--freefall-bg-surface-2); color: var(--freefall-text-display);
     border: calc(var(--freefall-space-1) / 8) solid var(--freefall-border-strong); border-radius: 0; font: inherit;
   }
   input, select { inline-size: 100%; }
-  button { cursor: pointer; }
-  button:hover { border-color: var(--freefall-action-base); }
-  :is(input, select, button):focus-visible { outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base); outline-offset: calc(var(--freefall-space-1) / 2); }
-  :disabled { opacity: 0.6; cursor: not-allowed; }
+  :is(input, select):focus-visible { outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base); outline-offset: calc(var(--freefall-space-1) / 2); }
+  :is(input, select):disabled { opacity: 0.6; cursor: not-allowed; }
   fieldset { border: 0; padding: 0; margin: 0; min-inline-size: 0; }
   .configuration, .hint { color: var(--freefall-text-muted); font-size: var(--freefall-type-ui-small); }
   .identity { display: grid; gap: var(--freefall-space-2); margin-block: var(--freefall-space-4); }
@@ -306,7 +326,7 @@
   h2 { margin: 0; font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio)); }
   .attribute { margin-block-start: calc(3 * var(--freefall-space-1)); }
   .attribute legend { font: 600 var(--freefall-type-ui-small) var(--freefall-font-mono); padding: 0; margin-block-end: var(--freefall-space-1); }
-  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--freefall-space-2); }
+  .pair { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--freefall-space-2); }
   .number-field { min-inline-size: 0; }
   .number-field label { margin-block-end: var(--freefall-space-1); font: var(--freefall-type-ui-small) var(--freefall-font-mono); }
   .number-field input { font-family: var(--freefall-font-mono); padding-inline: var(--freefall-space-1); }
