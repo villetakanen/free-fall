@@ -28,7 +28,7 @@ The stealth isn't in her kit. It's in her. That's the whole point: the class alr
   - **Body:** 12 − 7 = **5**
   - **Mind:** 6 − 0 = **6**
   - **Ghost:** 8 − 1 = **7** (barely touched — she spent nothing on stealth gear, because the stealth is the *class*)
-- **Heavy option — Hardshell Combat Exoskeleton** (FRM 24 / SYS 6, AV 4). She keeps a frame racked for the jobs that are a stand-up fight, not a sneak — the reliable military tank, not the exotic stuff. In it the rifle mounts to a hardpoint (no Body binding), the frame soaks the hits, and she trades her ghost for a wall: *[Binds 3 Ghost; +1 targeting]* → Ghost 8 − 4 = **4**, Body free. A Spectre in a Hardshell is a contradiction on paper and a very bad morning in a corridor.
+- **Heavy option — Hardshell Combat Exoskeleton** (FRM 24 / SYS 6, AV 4). She keeps a frame racked for the jobs that are a stand-up fight, not a sneak — the reliable military tank, not the exotic stuff. In it the rifle mounts to a hardpoint (no Body binding), the frame soaks the hits, and she trades her ghost for a wall: *[Binds 3 Ghost]* → Ghost 8 − 3 = **5**, Body free. A Spectre in a Hardshell is a contradiction on paper and a very bad morning in a corridor.
 
 ## Starting position
 

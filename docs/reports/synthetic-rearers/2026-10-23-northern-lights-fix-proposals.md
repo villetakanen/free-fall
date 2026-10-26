@@ -516,3 +516,11 @@ Shipping The Other Side (#106) and approved default weapons (#104): full build, 
 ### Rules numbering corrected (#107, 2026-10-26)
 
 Core 0.7.7 was incorrectly advanced to 0.8.0 in 9b70cde, followed by 0.8.1 and 0.8.2. Corrected to 0.7.10, retaining the three patch increments within the v7 line. Northern Lights compatibility restored to 0.7.x. SRD remains 0.7.2; app numbering is independent. Core and SRD stay on 0.7.x until the user explicitly authorizes a new rules generation. This supersedes earlier release-number recommendations in this log; historical commits are not rewritten.
+
+### Hardshell correction implemented (#109, 2026-10-26)
+
+Removed catalog CTS and Ghost +1 active surcharge. Hardshell pilot Binding remains Ghost 3; CSA IFF/COMMS explicitly costs only its Support mount and adds no Binding. Existing IFF bonuses and function-specific disruption remain. Corrected Sable’s heavy-option Ghost calculation to 8 − 3 = 5; standard loadout unchanged. No other active content consumers found. CSA Reserves remain a separate decision.
+
+### CSA assaulter Reserves (#110, 2026-10-26)
+
+Both assaulters start at Reserve 4 after Binding, with 3 bound to their Hardshell. Leaving it returns 3 (unspent 4 → 7); rebinding commits 3. Mounted weapons and IFF/COMMS return none. Normal ordinary-adversary action/Harm rules apply, with separate tracking for each operator and FRM 24/SYS 6 frame. Commander/sniper numbers and boss assignment remain open.

@@ -4,7 +4,7 @@ title: "The CSA Marines"
 
 # The CSA Marines
 
-**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. Weapon profiles, Attribute reserves, and final custom gear statistics remain to be set.
+**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. Commander and sniper profiles, software defenses and withdrawal triggers remain to be completed.
 
 ## Friday-night cleanup
 
@@ -58,9 +58,9 @@ Only the two assaulters are committed to the immediate push through the interior
 
 ## CSA assault frame — design basis
 
-Use the catalog **Hardshell Combat Exoskeleton** for both assaulters: FRM 24, SYS 6, AV 4, Hardened, EVA thrusters, magnetic boots and eight hours of life support. Each has two Assault hardpoints and one Support hardpoint. Pilot Binding is Ghost 3; the active Combat Targeting Suite adds Ghost 1. Use the catalog’s remaining qualities unchanged.
+Use the catalog **Hardshell Combat Exoskeleton** for both assaulters: FRM 24, SYS 6, AV 4, Hardened, EVA thrusters, magnetic boots and eight hours of life support. Each has two Assault hardpoints and one Support hardpoint. Pilot Binding is Ghost 3. Use the catalog’s remaining qualities unchanged.
 
-The **CSA IFF/COMMS package occupies the Support hardpoint** on each frame. It provides the identification and targeting support, analog LPC voice and separate command feeds described below. Target those functions individually: suppressing IFF removes its combat bonuses without automatically silencing communications. Physical destruction of the whole package can remove all of its functions; resolve the actual damage and scope.
+The **CSA IFF/COMMS package occupies the Support hardpoint** on each frame and adds no Binding cost. It provides the identification and targeting support, analog LPC voice and separate command feeds described below. Target those functions individually: suppressing IFF removes its combat bonuses without automatically silencing communications. Physical destruction of the whole package can remove all of its functions; resolve the actual damage and scope.
 
 ### Default assault loadout
 
@@ -72,7 +72,13 @@ The **CSA IFF/COMMS package occupies the Support hardpoint** on each frame. It p
 
 Use these as the defaults; the GM can change the loadout. These weapons fit the listed mounts for this scenario. Use their catalog profiles and the normal mounted-weapon rules. The lead breaches; the second clears the opening. Both have a heavy rifle for sustained fire. The plasma lance remains single-use, and its backblast makes positioning matter.
 
-Complete targeting benefits and pilot reserves before running the fight; do not stack an unspecified catalog targeting bonus on top of the defined CSA IFF bonus.
+Use the IFF bonuses below for CSA targeting support.
+
+### Assaulter reserves
+
+Each assaulter starts with **Reserve 4**, after Binding, and **3 points bound to the Hardshell**. Use the ordinary-adversary rules in [The Other Side](/core-rulebook/the-other-side/): 5d20, three empty Harm slots, declarations before the players. Track each operator separately from their frame’s **FRM 24 / SYS 6**.
+
+Leaving the frame returns its 3 bound points: an unspent Reserve becomes **7**. Spent points stay spent. The operator loses the frame’s protection and capabilities; mounted weapons and IFF/COMMS return no points. Rebinding the frame commits 3 Reserve again.
 
 ## Local systems and coordination
 
@@ -140,6 +146,6 @@ Direct observation, voice communication and checking one another are available r
 
 Make the cracks visible: an unanswered demand for support, conflicting calls, a stalled advance, a marine backing toward cover. Let the crew exploit those openings. Neither automatic recovery nor automatic rout should cancel what actually happens in the fight.
 
-Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside the four loadouts, software defenses, and Attribute reserves. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
+Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside software defenses and the remaining commander and sniper profiles. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
 
 **Target access for BLACK support:** sight and a live support connection remain required, but neither replaces a suitable path from your equipment to the target. Establish the transmitting interface, receiving device and channel. The supplied program does not give you O17’s prepared module hardware or universal implant access.

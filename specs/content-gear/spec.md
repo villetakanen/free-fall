@@ -351,3 +351,7 @@ The Wraith Infiltration Frame requires an installed Neural Link. Its Ghostlink I
 - [x] Catalog prerequisite, pilot Binding, conditional cost, and rationale agree.
 - [x] Northern Lights' Wraith comparison and Vantage's configurations use the same contract.
 - [x] Each Load Bearing allocation covers eligible costs once, with the implant's Ghost Binding retained.
+
+## Hardshell targeting support
+
+The catalog Hardshell has Ghost 3 pilot Binding and no integrated Combat Targeting Suite or active targeting surcharge. Its armor, FRM/SYS, mounts and other qualities remain unchanged. Scenario-installed targeting support defines its own effects and costs; the CSA IFF/COMMS suite occupies Support with no additional Binding.
