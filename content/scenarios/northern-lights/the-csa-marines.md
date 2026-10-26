@@ -4,7 +4,15 @@ title: "The CSA Marines"
 
 # The CSA Marines
 
-**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two stealth-exo assaulters, one hacker, and one sniper. Weapon profiles, Attribute reserves, and final custom gear statistics remain to be set.
+**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. Weapon profiles, Attribute reserves, and final custom gear statistics remain to be set.
+
+## Friday-night cleanup
+
+For the marines, this is Friday-night cleanup. Breach the transport, shoot the amateurs, secure the cargo. Beers afterward. Their equipment is expensive, their intelligence is authoritative, and the people aboard are already classified as targets. They expect a successful operation and a few stories to tell.
+
+Play their confidence as casual: clipped jokes, routine target calls, impatience with resistance. They know their drills. They have not prepared emotionally for those drills to fail. Hubris is their starting condition.
+
+When the assault turns against them, let that confidence crack. A marine freezes, fires too much, demands support, or backs away from an uncleared doorway. The commander may restore order—or make things worse by insisting the picture must be wrong. Training gives them responses; it does not make them fearless. Choose reactions from what each person experiences; panic is possible, not a compulsory scripted turn. Their contempt does not remove the EU citizen capture exception.
 
 ## Superiority by support
 
@@ -42,7 +50,7 @@ Internal LPC is analog voice only. Treat the links as effectively unhackable in 
 
 | Marine | Equipment direction | Task |
 |---|---|---|
-| Assault operator ×2 | Custom CSA stealth exo and compact boarding weapons | Secure the breach and advance toward the lab using shared lanes and target information. |
+| Assault operator ×2 | Hardshell Combat Exoskeleton with CSA IFF/COMMS and boarding weapons | Secure the breach and advance toward the lab using shared lanes and target information. |
 | Hacker / commander | Custom intrusion kit, command feeds and defensive software | Direct the assault from cover, maintain the combat picture, contest ship systems, and investigate hostile interference. |
 | Sniper | Custom marksman weapon and targeting system | Observe exposed routes, feed target information to the team, and cover their movement from a suitable firing position. |
 
@@ -50,9 +58,11 @@ Only the two assaulters are committed to the immediate push through the interior
 
 ## CSA assault frame — design basis
 
-Use the catalog **Wraith Infiltration Frame** as the starting point for the two assault frames: stealth, EVA mobility, and electronic warfare integration. These are custom scenario variants. Their defining addition is the CSA support systems described below, rather than increased armor or damage by default.
+Use the catalog **Hardshell Combat Exoskeleton** for both assaulters: FRM 24, SYS 6, AV 4, Hardened, EVA thrusters, magnetic boots and eight hours of life support. Each has two Assault hardpoints and one Support hardpoint. Pilot Binding is Ghost 3; the active Combat Targeting Suite adds Ghost 1. Use the catalog’s remaining qualities unchanged.
 
-The catalog Wraith has FRM 10, SYS 14, AV 2, Ghost 3 pilot Binding, and an additional Mind 1 while its Ghostlink is active. Piloting requires a Neural Link, separately binding Ghost 3; the interface in the frame does not replace the implant. Its active Ghostlink Mind cost can use the link’s software/systems allowance. Those are comparison values, not a finalized stat block for the CSA variant. Determine the variant's complete load and costs alongside its weapons before running the fight.
+The **CSA IFF/COMMS package occupies the Support hardpoint** on each frame. It provides the identification and targeting support, analog LPC voice and separate command feeds described below. Target those functions individually: suppressing IFF removes its combat bonuses without automatically silencing communications. Physical destruction of the whole package can remove all of its functions; resolve the actual damage and scope.
+
+The two Assault mounts remain to be finalized. The proposed heavy rifles, lead operator’s plasma lance and second operator’s shotgun are not yet an approved loadout. Complete weapon compatibility, targeting benefits and pilot reserves before running the fight; do not stack an unspecified catalog targeting bonus on top of the defined CSA IFF bonus.
 
 ## Local systems and coordination
 
@@ -114,11 +124,11 @@ Show the consequence in play. A marine checks a doorway, requests a second ident
 
 ## When the picture breaks
 
-A severed feed leaves the commander with the last received picture. They must seek a report, restore a usable connection, reposition, or act on incomplete information. The assaulters continue their orders and exercise their own judgment. Loss of a command feed does not by itself disable their local IFF or erase earlier identifications. Their commander's authority survives the outage; immediate visibility does not.
+A severed feed leaves the commander with the last received picture. They must seek a report, restore a usable connection, reposition, or act on incomplete information. The assaulters still have their orders, but must decide what to do with an incomplete picture. Loss of a command feed does not by itself disable their local IFF or erase earlier identifications. Their commander's authority survives the outage; immediate visibility does not.
 
-The marines remain trained people when their local equipment becomes unreliable. They fall back on direct observation, voice communication, and checking one another. They can challenge false information, but doing so takes attention and appropriate actions. This fallback does not restore the IFF bonuses: Spike lasts for the encounter, and Blast follows the duration above. The hacker can address other interference or pursue the source of the attacks while the assaulters adapt.
+Direct observation, voice communication and checking one another are available responses, not a guaranteed disciplined fallback. Initial irritation and demands for a fix can become hesitation or panic when impossible readings, failed weapons or a wounded teammate overturn their expectations. One operator may try a familiar drill while another freezes, fires excessively or retreats. The commander can demand repeated confirmation, blame an operator or issue orders from an obsolete picture. Verifying information or restoring coordination takes attention and appropriate actions. This fallback does not restore the IFF bonuses: Spike lasts for the encounter, and Blast follows the duration above. If the commander holds their nerve, they can address other interference or pursue its source. They share the same action limits and uncertainty as the rest of the team; panicked fire grants no extra attacks.
 
-Keep the fallback visible. The crew should be able to tell that a synchronized advance has become people stopping to confirm names, positions, and orders. That is what dismantling the CSA's advantage looks like.
+Make the cracks visible: an unanswered demand for support, conflicting calls, a stalled advance, a marine backing toward cover. Let the crew exploit those openings. Neither automatic recovery nor automatic rout should cancel what actually happens in the fight.
 
 Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside the four loadouts, software defenses, and Attribute reserves. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
 

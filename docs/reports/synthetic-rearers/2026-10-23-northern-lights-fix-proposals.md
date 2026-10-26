@@ -490,3 +490,11 @@ Approved: hacker is the local field commander, following the assault pair from p
 This supersedes the brief’s blanket no-shared-feeds statement: LPC remains analog voice, with separate local sensor/identity data links. Feeds establish actual observation and hacking paths, not universal access or extra actions. Broken feeds cost fresh visibility, not authority, remembered facts or local IFF bonuses. Updated brief and scenario spec. Full profiles, reserves and withdrawal triggers remain open F12 work.
 
 Release preparation (2026-10-26): #100 and #101 validated with full build, lint, typecheck, 148 unit tests and 45 application browser tests. App/root 0.14.0 includes the already-committed character-sheet additions; scenarios 0.4.0 includes O17 encounter guidance, the mistaken contract and CSA command; core 0.8.1 adds targeting-hacks clarification. Other packages retain their versions. Uncommitted design-system Harm demo work is excluded. Production publication is verified separately after merging the release PR.
+
+### F12 CSA hubris and assault equipment (#104, 2026-10-26)
+
+Implemented the approved Friday-night cleanup attitude: shoot the amateurs, secure cargo, beers afterward. Familiar drills do not guarantee composure. Failed support, conflicting observations and casualties can produce panic in operators or commander; reactions follow events rather than a scripted rout. Replaced guaranteed disciplined fallback guidance and retained action costs, sealed orders and EU capture protection.
+
+Accepted equipment decisions carried forward: catalog Hardshell replaces Wraith for the two assaulters; each Support mount carries CSA IFF/COMMS. Individual functions remain separately targetable; IFF suppression alone does not silence comms. Assault weapons remain proposals (heavy rifles, lance/shotgun), with compatibility, targeting benefits, reserves and final profiles unresolved.
+
+Validation: full build, lint, unit tests and typecheck passed. No new mechanics or static-copy tests added.
