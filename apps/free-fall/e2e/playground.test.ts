@@ -214,7 +214,7 @@ test("fragment and browser history navigation restore snapshots; damaged URLs su
 });
 
 test("unsupported version is recoverable on first load", async ({ page }) => {
-  const fragment = `#sheet=${encodeURIComponent(JSON.stringify({ ...emptySheet(), version: 3 }))}`;
+  const fragment = `#sheet=${encodeURIComponent(JSON.stringify({ ...emptySheet(), version: 99 }))}`;
   await open(page, fragment);
   await expect(page.locator("[data-url-error]")).toBeVisible();
   expect(new URL(page.url()).hash).toBe(fragment);
@@ -347,9 +347,7 @@ test("sheet row uses reversed prose tracks and adapts to its host without replac
   expect(wide.primary.width).toBeCloseTo(tracks.primary, 0);
   expect(wide.primary.x - wide.compact.right).toBeCloseTo(tracks.gap, 0);
   await expect(row.locator(":scope > *")).toHaveCount(2);
-  await expect(
-    row.locator(":scope > :first-child [data-settings-toggle]"),
-  ).toBeVisible();
+  await expect(page.locator("[data-settings-toggle]")).toBeVisible();
   await expect(row.locator(":scope > :last-child [data-bmg]")).toHaveCount(1);
 
   const host = page.locator("[data-playground]");
@@ -531,6 +529,84 @@ test("legacy links preserve spent values and require explicit Binding before Dow
     await page.getByLabel(`${attribute} Binding`, { exact: true }).fill(value);
   await settings(page, false);
   await page.locator("[data-downtime]").click();
-  expect(snapshot(page).version).toBe(2);
+  expect(snapshot(page).version).toBe(3);
   expect(snapshot(page).bmg.ghost.current).toBe(5);
+});
+
+test("class choices and Harm persist, derive dice and recover selectively", async ({
+  page,
+}) => {
+  await open(page);
+  await load(page, "vantage");
+  await page
+    .getByLabel("Chosen Skills", { exact: true })
+    .selectOption(["deadeye", "human-systems"]);
+  await page.getByLabel("Class", { exact: true }).selectOption("fixer");
+  expect(snapshot(page).skills).toEqual(["human-systems", "deadeye"]);
+  await settings(page, false);
+  const slot = page.locator('[data-harm-slot="0"]');
+  await slot.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await page
+    .getByLabel("Harm 1 state", { exact: true })
+    .selectOption("transient");
+  await page.getByLabel("Harm 1 type", { exact: true }).selectOption("psychic");
+  await page
+    .getByLabel("Harm 1 description", { exact: true })
+    .fill("Ringing <img src=x>");
+  await expect(page.locator("[data-action-pool]")).toHaveText("4d20");
+  await page
+    .getByLabel("Harm 1 state", { exact: true })
+    .selectOption("permanent");
+  await expect(page.locator("[data-action-pool]")).toHaveText("4d20");
+  await page.locator('[data-harm-slot="1"] summary').click();
+  await page
+    .getByLabel("Harm 2 state", { exact: true })
+    .selectOption("transient");
+  await expect(page.locator("[data-action-pool]")).toHaveText("3d20");
+  const saved = snapshot(page);
+  await page.reload();
+  await expect(page.locator("[data-action-pool]")).toHaveText("3d20");
+  expect(snapshot(page)).toEqual(saved);
+  await expect(page.locator("[data-harm-slot] img")).toHaveCount(0);
+  await page.locator("[data-downtime]").click();
+  expect(snapshot(page).harm[0]).toEqual(saved.harm[0]);
+  expect(snapshot(page).harm[1].state).toBe("empty");
+  await expect(page.locator("[data-action-pool]")).toHaveText("4d20");
+  await page.locator('[data-harm-slot="0"] summary').click();
+  await page.getByLabel("Harm 1 state", { exact: true }).selectOption("empty");
+  expect(snapshot(page).harm[0]).toEqual(emptySheet().harm[0]);
+  await expect(page.locator("[data-action-pool]")).toHaveText("5d20");
+});
+
+test("expanded Harm editors fit a narrow host and rule links resolve", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await open(page);
+  await load(page, "vantage");
+  await settings(page, false);
+  await page.locator('[data-harm-slot="0"] summary').click();
+  await page
+    .getByLabel("Harm 1 state", { exact: true })
+    .selectOption("permanent");
+  await page
+    .getByLabel("Harm 1 description", { exact: true })
+    .fill("Long".repeat(40));
+  expect(
+    await page
+      .locator("main")
+      .evaluate((el) => el.scrollWidth <= el.clientWidth),
+  ).toBe(true);
+  const links = await page
+    .locator(".skill-summary a, .action-pool a")
+    .evaluateAll((items) =>
+      items.map((item) => (item as HTMLAnchorElement).href),
+    );
+  for (const href of links) {
+    const target = new URL(href);
+    const response = await page.goto(href);
+    expect(response?.ok()).toBe(true);
+    await expect(page.locator(`[id="${target.hash.slice(1)}"]`)).toHaveCount(1);
+  }
 });

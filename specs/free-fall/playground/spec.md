@@ -4,7 +4,8 @@
 Initial Playground: [#79](https://github.com/villetakanen/free-fall/issues/79);
 Settings: [#81](https://github.com/villetakanen/free-fall/issues/81);
 activation and Downtime: [#92](https://github.com/villetakanen/free-fall/issues/92);
-Layout 1 integration: [#96](https://github.com/villetakanen/free-fall/issues/96).
+Layout 1 integration: [#96](https://github.com/villetakanen/free-fall/issues/96);
+character-first row: [#98](https://github.com/villetakanen/free-fall/issues/98).
 
 ## Blueprint
 
@@ -12,7 +13,7 @@ Layout 1 integration: [#96](https://github.com/villetakanen/free-fall/issues/96)
 
 Parent: [App Layout](../app-layout/spec.md). Dependencies: [BMG Circle](../../design-system/bmg-circle/spec.md), [Character Sheet Row — Layout 1](../../design-system/char-sheet-row/spec.md), and [platform](../../platform/spec.md).
 
-Playground is a top-level section at `/playground/` on the main FREE//FALL site, marked **Experimental** in navigation, the page heading and title. It provides one editable character sheet, started empty or from a Northern Lights player character. Phase one contains only name, callsign, and Body/Mind/Ghost Current, Base, and Binding. The complete sheet travels in its URL; editing runs entirely in the browser.
+Playground is a top-level section at `/playground/` on the main FREE//FALL site, marked **Experimental** in navigation, the page heading and title. It provides one editable character sheet, started empty or from a Northern Lights player character. The sheet contains identity, Class and selected Skills, three Harm slots, a derived Action Pool, and Body/Mind/Ghost Current, Base, and Binding. The complete sheet travels in its URL; editing runs entirely in the browser.
 
 ### Architecture
 
@@ -26,15 +27,18 @@ Playground is a top-level section at `/playground/` on the main FREE//FALL site,
 
 #### Character-sheet composition
 
-- The play surface uses the shared `.char-sheet-row` Layout 1 with exactly two direct children: committed identity, sheet actions, recovery guidance and sharing in the compact column; one interactive BMG circle in the primary column.
+- The play surface uses the shared `.char-sheet-row` Layout 1 with exactly two direct children: callsign-led identity, Class and selected Skills, three Harm slots and derived Action Pool in the compact column; one interactive BMG circle in the primary column. Settings and Copy link occupy a compact toolbar outside the row; Downtime sits beside condition controls. Sharing guidance is disclosed on demand.
 - The Playground occupies the content grid's `.breakout` tracks. At sufficient host width, Layout 1 places the 42.5ch compact column before the 67ch primary column with the shared space-4 gap. When the pair does not fit, the compact content precedes BMG in one stack. The DS primitive owns this decision; Playground adds no separate layout breakpoint or track sizes.
 - Settings keeps its existing HUD/inline placements outside the row. Resizing or opening Settings preserves the same BMG instance, sheet URL, input drafts and controls. Long identity text wraps within the compact column.
-- Harm tracking remains outside this phase. The DS reference's illustrative Harm slots are not presented as functioning sheet controls.
+- [DEPRECATED 2026-10-26] Harm was excluded from the initial resource-only Playground; the first-row play surface now tracks it.
+- Class and Skill choices live in Settings. Skills are unranked permissions, with their scope and a rules link on the play surface. Multiple Skills, including another Class’s Skills, support experienced characters. Changing Class preserves selected Skills.
+- Exactly three Harm slots store an optional description, Physical/Psychic/Compromise type, and Empty/Transient/Permanent state. Empty slots contain no injury data. Controls allow correction and clearing; they do not adjudicate incoming damage. Occupied slots each cost one Action Pool die regardless of permanence; the displayed pool is max(2, 5 − occupied slots)d20.
+- Presets supply the Class and chosen Skill from their source character sheets and start with empty Harm. Version-1/2 links migrate with blank Class, no Skills and empty Harm, never inferred from callsign. Version 3 carries the complete new state; malformed Class, Skill or Harm data is rejected atomically.
 - [DEPRECATED 2026-10-26] The separate identity/action bar above a centered BMG used the original Playground composition. Layout 1 now supplies the shared sheet structure.
 
 #### Settings HUD
 
-- The main play surface shows the committed name/callsign, BMG circle, Downtime, Settings trigger and Copy Link. Preset selection/loading, identity editing and all nine direct numeric inputs live together in a **Settings** pane in the existing Tactical HUD.
+- The main play surface shows committed identity and chosen Skills, Harm and Action Pool, BMG, and Downtime; the sheet toolbar offers Settings and Copy Link. Preset selection/loading, identity and Class/Skill editing and all nine direct numeric inputs live together in a **Settings** pane in the existing Tactical HUD.
 - Settings starts closed. Opening, closing or resizing the pane preserves committed values, pending input drafts and the URL. The pane's visibility is page-local UI state, excluded from the sheet URL.
 - Reuse TacticalHud's `custom` pane slot with the `settings` icon. The existing Svelte controller owns one form and places that form into the HUD slot; no second sheet store or duplicate inputs are created.
 - At the HUD's suppressed host width (32rem or less), the same Settings trigger opens a collapsible form within the page. Switching between the two placements preserves the form and its values. Settings remains usable at 320px.
@@ -53,7 +57,10 @@ Playground is a top-level section at `/playground/` on the main FREE//FALL site,
 
 ```ts
 type PlaygroundSheet = {
-  version: 2;
+  version: 3;
+  characterClass: string | null; // supported Class identifier
+  skills: string[]; // unique supported Skill identifiers
+  harm: HarmSlot[]; // exactly three slots
   name: string;
   callsign: string;
   bmg: BmgValues;
@@ -75,8 +82,7 @@ type PlaygroundSheet = {
   Downtime for recovery; no separate Short Rest mechanic is defined. One play-surface action sets
   every Current to Base minus Binding atomically, preserving identity, Base,
   and Binding. This replaces manual increments as the recovery action. The
-  Playground action currently covers attribute pools; Harm and gear repair
-  remain outside its scope.
+  Playground action also clears Transient Harm while preserving Permanent Harm; gear repair remains outside its scope.
 - Settings exposes Binding as a nonnegative safe integer or unknown (`null`).
   Binding cannot exceed a known Base; invalid edits preserve the committed URL.
   Base and Binding edits do not change Current. Spending and conversion still
@@ -88,8 +94,8 @@ type PlaygroundSheet = {
   Subsequent spending, conversion, and direct Current edits never change it.
 - Version-1 URLs migrate in memory with unknown Binding for all three stats;
   they remain readable/editable. The app never infers Binding from spent Current,
-  callsigns, or current presets. The next committed edit writes version 2.
-- Version-2 URLs carry Binding in full. Downtime is idempotent and survives URL
+  callsigns, or current presets. The next committed edit writes version 3.
+- Version-2 and version-3 URLs carry Binding in full. Downtime is idempotent and survives URL
   copy, reload, and history navigation without storage or network requests.
 - Shared [action-button styling](../../design-system/button/spec.md) supplies
   all Playground action buttons. The malformed-link reset to Empty remains a
@@ -114,7 +120,7 @@ Show the chosen starting configuration alongside each preset. These are starting
 ### Constraints
 
 - Character state lives only in component memory and the URL fragment. Phase one uses no character backend, accounts, cookies, local/session storage or IndexedDB; character values are excluded from network requests and telemetry.
-- Scope is one sheet with identity and three Current/Base/Binding triples. Gear-derived Binding, loadout switching, Harm, skills and character-generation rules belong to later work. The broader [Crew Keeper](../../content-scenarios/crew-keeper/spec.md) is a separate feature.
+- Scope is one sheet with identity, Class/Skills, Harm, Action Pool and three Current/Base/Binding triples. Gear-derived Binding, loadout switching and character-generation enforcement belong to later work. The broader [Crew Keeper](../../content-scenarios/crew-keeper/spec.md) is a separate feature.
 - Reuse the current Astro/Svelte integration and design-system behavior. Presets are explicit data, rather than runtime parsing of Markdown prose. Numeric fields, Load and Copy Link remain keyboard accessible; field errors are associated with their inputs.
 
 ## Contract
@@ -133,6 +139,13 @@ Show the chosen starting configuration alongside each preset. These are starting
 - [x] Playground uses Layout 1's compact-first proportions on wide hosts and stacks in source order on narrow hosts without overflow or changing sheet state.
 - [x] `pnpm typecheck` and relevant application Playwright checks pass.
 - [x] `pnpm build`, `pnpm lint`, and `pnpm test` pass.
+
+### First-row completion
+
+- [x] Class/Skills and all three Harm slots round-trip through URL copy, reload and history; malformed state is recoverable.
+- [x] Legacy links preserve original values and start without inferred career or injury data.
+- [x] Harm occupancy derives Action Pool; Downtime clears only Transient Harm and restores pools atomically.
+- [x] Keyboard controls and 320px/wide layouts preserve one BMG and one Settings form without overflow.
 
 ### Regression Guardrails
 
@@ -199,7 +212,7 @@ Scenario: Open a legacy sheet
   Then Current and Base are preserved and Binding is unknown
   And Downtime is unavailable with an associated explanation
   When the player supplies all missing Binding values
-  Then a version-2 URL preserves those values and Downtime becomes available
+  Then a version-3 URL preserves those values and Downtime becomes available
 
 Scenario: Reject excessive Binding
   Given a committed Base of 12
@@ -228,3 +241,9 @@ Scenario: Reject excessive Binding
 - [DEPRECATED 2026-10-26] The earlier verification summaries covered version 1
   and six numeric inputs. The current contract includes nine numeric inputs,
   explicit Binding, and Downtime; the Experimental designation is retained.
+
+### Character-first row verification (2026-10-26)
+
+- Issue #98 adds version-3 Class/Skills and three typed Harm slots, selected preset Skills, condition editing and derived Action Pool. Version-1/2 migration preserves existing attribute data without inferring career choices.
+- Build, lint and typecheck pass; dedicated app Svelte diagnostics report zero errors and warnings. All 148 unit checks and all 17 Playground browser checks pass.
+- Browser verification covers selected cross-class Skills, Harm permanence and clearing, URL reload, selective Downtime recovery, keyboard expansion, narrow editors and resolved rules anchors. Wide and 320px compositions were inspected visually.

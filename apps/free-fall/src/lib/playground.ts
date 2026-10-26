@@ -7,8 +7,201 @@ import {
   validateBmg,
 } from "../../../../packages/design-system/src/components/character-attributes";
 
+// Class/Skill permissions from Characters & Crews; no numerical skill ratings.
+export const CHARACTER_CLASSES = [
+  {
+    id: "vanguard",
+    label: "The Vanguard",
+  },
+  {
+    id: "spectre",
+    label: "The Spectre",
+  },
+  {
+    id: "wirehead",
+    label: "The Wirehead",
+  },
+  {
+    id: "fixer",
+    label: "The Fixer",
+  },
+  {
+    id: "operator",
+    label: "The Operator",
+  },
+  {
+    id: "broker",
+    label: "The Broker",
+  },
+  {
+    id: "pilot",
+    label: "The Pilot",
+  },
+] as const;
+export const CHARACTER_SKILLS = [
+  {
+    id: "breaching",
+    characterClass: "vanguard",
+    label: "Breaching",
+    description:
+      "Forcing entry through barriers, doors, and fortified positions",
+  },
+  {
+    id: "close-combat-tactics",
+    characterClass: "vanguard",
+    label: "Close Combat Tactics",
+    description: "Hand-to-hand fighting and melee weapon proficiency",
+  },
+  {
+    id: "tactical-defense",
+    characterClass: "vanguard",
+    label: "Tactical Defense",
+    description: "Holding ground, providing cover, and protecting allies",
+  },
+  {
+    id: "infiltration",
+    characterClass: "spectre",
+    label: "Infiltration",
+    description:
+      "Bypassing security and moving undetected through hostile territory",
+  },
+  {
+    id: "sabotage",
+    characterClass: "spectre",
+    label: "Sabotage",
+    description:
+      "Disabling systems, planting charges, and destroying infrastructure",
+  },
+  {
+    id: "surveillance",
+    characterClass: "spectre",
+    label: "Surveillance",
+    description:
+      "Monitoring targets, gathering intel, and counter-surveillance",
+  },
+  {
+    id: "system-cracking",
+    characterClass: "wirehead",
+    label: "System Cracking",
+    description:
+      "Breaking into secure networks and overriding digital defenses",
+  },
+  {
+    id: "data-mining",
+    characterClass: "wirehead",
+    label: "Data Mining",
+    description:
+      "Extracting, decrypting, and analyzing information from systems",
+  },
+  {
+    id: "cybernetics-intrusion",
+    characterClass: "wirehead",
+    label: "Cybernetics Intrusion",
+    description: "Hacking augmentations and neural implants in hostile targets",
+  },
+  {
+    id: "human-systems",
+    characterClass: "fixer",
+    label: "Human Systems",
+    description: "Field medicine, trauma care, and biological repair",
+  },
+  {
+    id: "field-systems-tech",
+    characterClass: "fixer",
+    label: "Field Systems Tech",
+    description: "Repairing gear, jury-rigging equipment, and Bricolage",
+  },
+  {
+    id: "clocksmith-ai",
+    characterClass: "fixer",
+    label: "Clocksmith (AI)",
+    description:
+      "Programming, maintaining, and negotiating with artificial intelligences",
+  },
+  {
+    id: "deadeye",
+    characterClass: "operator",
+    label: "Deadeye",
+    description: "Precision shooting at range, called shots, and overwatch",
+  },
+  {
+    id: "target-acquisition",
+    characterClass: "operator",
+    label: "Target Acquisition",
+    description:
+      "Marking targets, calculating trajectories, and coordinating fire",
+  },
+  {
+    id: "field-support",
+    characterClass: "operator",
+    label: "Field Support",
+    description:
+      "Providing suppressive fire, area denial, and tactical coordination",
+  },
+  {
+    id: "negotiation",
+    characterClass: "broker",
+    label: "Negotiation",
+    description:
+      "Brokering deals, extracting concessions, and defusing standoffs",
+  },
+  {
+    id: "impersonation",
+    characterClass: "broker",
+    label: "Impersonation",
+    description:
+      "Assuming false identities and blending into hostile social environments",
+  },
+  {
+    id: "influence-peddling",
+    characterClass: "broker",
+    label: "Influence Peddling",
+    description:
+      "Leveraging contacts, favors, and blackmail to move the needle",
+  },
+  {
+    id: "vehicle-handling",
+    characterClass: "pilot",
+    label: "Vehicle Handling",
+    description:
+      "Operating ground, air, and space vehicles under combat conditions",
+  },
+  {
+    id: "logistics",
+    characterClass: "pilot",
+    label: "Logistics",
+    description: "Managing supply chains, routes, and extraction plans",
+  },
+  {
+    id: "sensors-countermeasures",
+    characterClass: "pilot",
+    label: "Sensors & Countermeasures",
+    description: "Operating detection systems and deploying electronic warfare",
+  },
+] as const;
+export const HARM_TYPES = ["physical", "psychic", "compromise"] as const;
+export type HarmType = (typeof HARM_TYPES)[number];
+export type HarmSlot =
+  | { state: "empty"; type: null; description: "" }
+  | {
+      state: "transient" | "permanent";
+      type: HarmType;
+      description: string;
+    };
+export const emptyHarm = (): HarmSlot => ({
+  state: "empty",
+  type: null,
+  description: "",
+});
+export function actionPool(harm: readonly HarmSlot[]): number {
+  return Math.max(2, 5 - harm.filter((slot) => slot.state !== "empty").length);
+}
+
 export type PlaygroundSheet = {
-  version: 2;
+  version: 3;
+  characterClass: string | null;
+  skills: string[];
+  harm: HarmSlot[];
   name: string;
   callsign: string;
   bmg: BmgValues;
@@ -19,7 +212,10 @@ type Result<T> = { ok: true; value: T } | { ok: false; error: string };
 
 export function emptySheet(): PlaygroundSheet {
   return {
-    version: 2,
+    version: 3,
+    characterClass: null,
+    skills: [],
+    harm: [emptyHarm(), emptyHarm(), emptyHarm()],
     name: "",
     callsign: "",
     binding: { body: 0, mind: 0, ghost: 0 },
@@ -39,7 +235,11 @@ export function validateSheet(input: unknown): Result<PlaygroundSheet> {
       error: "This link does not contain a character sheet.",
     };
   const candidate = input as Record<string, unknown>;
-  if (candidate.version !== 1 && candidate.version !== 2)
+  if (
+    candidate.version !== 1 &&
+    candidate.version !== 2 &&
+    candidate.version !== 3
+  )
     return { ok: false, error: "This sheet link uses an unsupported version." };
   if (
     typeof candidate.name !== "string" ||
@@ -49,11 +249,69 @@ export function validateSheet(input: unknown): Result<PlaygroundSheet> {
   const checked = validateBmg(candidate.bmg);
   if (!checked.ok) return { ok: false, error: checked.message };
   const sheet = emptySheet();
+  if (candidate.version === 3) {
+    if (
+      candidate.characterClass !== null &&
+      !CHARACTER_CLASSES.some((item) => item.id === candidate.characterClass)
+    )
+      return {
+        ok: false,
+        error: "Choose a supported Class or leave it blank.",
+      };
+    if (
+      !Array.isArray(candidate.skills) ||
+      candidate.skills.some(
+        (skill) => !CHARACTER_SKILLS.some((item) => item.id === skill),
+      ) ||
+      new Set(candidate.skills).size !== candidate.skills.length
+    )
+      return {
+        ok: false,
+        error: "Skills must be unique choices from the Class lists.",
+      };
+    if (!Array.isArray(candidate.harm) || candidate.harm.length !== 3)
+      return {
+        ok: false,
+        error: "A sheet must contain exactly three Harm slots.",
+      };
+    const harm: HarmSlot[] = [];
+    for (const slot of candidate.harm) {
+      if (!slot || typeof slot !== "object" || Array.isArray(slot))
+        return {
+          ok: false,
+          error: "This sheet contains an invalid Harm slot.",
+        };
+      if (
+        slot.state === "empty" &&
+        slot.type === null &&
+        slot.description === ""
+      )
+        harm.push(emptyHarm());
+      else if (
+        (slot.state === "transient" || slot.state === "permanent") &&
+        HARM_TYPES.includes(slot.type) &&
+        typeof slot.description === "string"
+      )
+        harm.push({
+          state: slot.state,
+          type: slot.type,
+          description: slot.description,
+        });
+      else
+        return {
+          ok: false,
+          error: "Each Harm slot needs a valid state, type and description.",
+        };
+    }
+    sheet.characterClass = candidate.characterClass as string | null;
+    sheet.skills = [...candidate.skills];
+    sheet.harm = harm;
+  }
   sheet.name = candidate.name;
   sheet.callsign = candidate.callsign;
   const binding = candidate.binding;
   if (
-    candidate.version === 2 &&
+    candidate.version !== 1 &&
     (!binding || typeof binding !== "object" || Array.isArray(binding))
   )
     return { ok: false, error: "This sheet is missing its Binding values." };
@@ -96,6 +354,9 @@ export function takeDowntime(input: unknown): Result<PlaygroundSheet> {
       };
     sheet.bmg[attribute].current = base - binding;
   }
+  sheet.harm = sheet.harm.map((slot) =>
+    slot.state === "transient" ? emptyHarm() : slot,
+  );
   return { ok: true, value: sheet };
 }
 
@@ -141,6 +402,7 @@ type Preset = {
   id: string;
   callsign: string;
   role: string;
+  skill: string;
   configuration: string;
   source: string;
   base: readonly [number, number, number];
@@ -153,6 +415,7 @@ export const NORTHERN_LIGHTS_PRESETS: readonly Preset[] = [
     id: "vector",
     callsign: "Vector",
     role: "Pilot",
+    skill: "vehicle-handling",
     configuration: "Outside Tiger",
     source: "/scenarios/northern-lights/c-01-the-pilot/",
     base: [6, 12, 8],
@@ -162,6 +425,7 @@ export const NORTHERN_LIGHTS_PRESETS: readonly Preset[] = [
     id: "vantage",
     callsign: "Vantage",
     role: "Operator",
+    skill: "deadeye",
     configuration: "Heavy overwatch: Wraith and railgun",
     source: "/scenarios/northern-lights/c-02-the-operator/",
     base: [12, 6, 8],
@@ -171,6 +435,7 @@ export const NORTHERN_LIGHTS_PRESETS: readonly Preset[] = [
     id: "root",
     callsign: "Root",
     role: "Wirehead",
+    skill: "system-cracking",
     configuration: "Listed loadout, before additional software",
     source: "/scenarios/northern-lights/c-03-the-wirehead/",
     base: [6, 8, 12],
@@ -180,6 +445,7 @@ export const NORTHERN_LIGHTS_PRESETS: readonly Preset[] = [
     id: "stitch",
     callsign: "Stitch",
     role: "Fixer",
+    skill: "human-systems",
     configuration: "Havoc, Threat-Assessment inactive",
     source: "/scenarios/northern-lights/c-04-the-fixer/",
     base: [8, 12, 6],
@@ -189,6 +455,7 @@ export const NORTHERN_LIGHTS_PRESETS: readonly Preset[] = [
     id: "sable",
     callsign: "Sable",
     role: "Spectre",
+    skill: "infiltration",
     configuration: "Void Marine and assault rifle",
     source: "/scenarios/northern-lights/c-05-the-spectre/",
     base: [12, 6, 8],
@@ -203,6 +470,8 @@ export function loadPreset(id: string): Result<PlaygroundSheet> {
   if (!preset)
     return { ok: false, error: "Choose an available starting sheet." };
   sheet.callsign = preset.callsign;
+  sheet.characterClass = preset.role.toLowerCase();
+  sheet.skills = [preset.skill];
   for (const [index, attribute] of (
     ["body", "mind", "ghost"] as const
   ).entries()) {
