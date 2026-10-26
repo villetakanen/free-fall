@@ -498,3 +498,9 @@ Implemented the approved Friday-night cleanup attitude: shoot the amateurs, secu
 Accepted equipment decisions carried forward: catalog Hardshell replaces Wraith for the two assaulters; each Support mount carries CSA IFF/COMMS. Individual functions remain separately targetable; IFF suppression alone does not silence comms. Assault weapons remain proposals (heavy rifles, lance/shotgun), with compatibility, targeting benefits, reserves and final profiles unresolved.
 
 Validation: full build, lint, unit tests and typecheck passed. No new mechanics or static-copy tests added.
+
+F12 follow-up (#104): weapon proposal accepted as the default, with GM discretion to change it. Both Hardshells mount Heavy Kinetic Assault Rifles; lead adds Plasma Lance, second adds Shotgun; Support remains IFF/COMMS. Scenario-specific mount compatibility is explicit. This supersedes the pending-weapon status above; full profiles and targeting/reserve details remain open.
+
+### Binding release correction (#105, 2026-10-26)
+
+Accepted: releasing Binding returns held points immediately, not just capacity. Body 8, rifle Binding 4, spend 2: Current 2; drop rifle: Current 6; rebind: Current 2. New Binding commits available Current points. Offsets and zero-cost mounted equipment create no refund; Broken gear retains Binding until removed. Updated main rules, gear, hacking, registry and SRD; earlier capacity-only release interpretations are superseded. Shared Reserve/main-adversary design remains discussion, not implemented rules.

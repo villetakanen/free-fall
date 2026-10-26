@@ -282,3 +282,7 @@ The core Attribute definitions include a visible zero-value callout: zero alone 
 ## Hacking target access
 
 The hacking chapter provides a targeting callout requiring a device, intended function and feasible equipment-to-target path before setting a TN. Visibility alone does not grant electronic access, connected targets remain distinct, and software strength does not supply missing transmission hardware. Creative sensory/data paths remain possible when the target actually receives them.
+
+## Binding holds points aside
+
+Binding commits Current points and reduces the available ceiling by the same amount. Releasing actual Binding immediately returns those points to Current; spent points remain spent. Rebinding requires available Current and commits it again, preventing drop/re-equip recovery loops. Existing cumulative capacity limits remain. Faulty/Broken equipment retains Binding until removed; installed augmentations require actual removal, and permanent Binding is not casually releasable. Only net Binding actually imposed returns: mounts or Load Bearing do not create refundable costs. This supersedes any capacity-only interpretation of releasing Binding.

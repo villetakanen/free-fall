@@ -21,7 +21,7 @@ Three :term[Attribute]s represent your character's fundamental capacity and resi
 Each Attribute possesses two values:
 
 *   **Initial:** Your character's maximum potential or cap for that Attribute, determined during character creation. This rarely changes.
-*   **Current:** The points you currently have available to spend or lose. This value fluctuates due to exertion (spending points to act or negate Harm) and the constant drain of Attribute :term[Binding] from your gear and augmentations. Your Current value cannot exceed your Maximum Current Attribute value (Initial minus Binding Costs). Replenishing Current Attribute points typically requires downtime.
+*   **Current:** The points you currently have available to spend or lose. This value fluctuates due to exertion (spending points to act or negate Harm) and the points held aside by Attribute :term[Binding] from your gear and augmentations. Your Current value cannot exceed your Maximum Current Attribute value (Initial minus Binding Costs). Releasing Binding returns the points it held aside immediately. Recovering spent points typically requires downtime.
 
 > **Zero is okay.**
 >
@@ -40,7 +40,13 @@ Significant gear and augmentations impose a Binding Cost on one or more specific
 *   **Mind Binding:** Cognitive load, system processing demands, attention required.
 *   **Ghost Binding:** Social processing strain, stealth system management, deep neural interface stress.
 
-This Binding Cost is subtracted from your Initial Attribute value to determine your Maximum Current Attribute points available while the gear is equipped or the augmentation is installed.
+Binding holds points aside. When you bind an item, subtract its cost from Current and reduce your Maximum Current by the same amount (Initial minus total Binding). You need enough available Current points to commit to the new Binding, as well as room within your Attribute capacity. You can bind all your available points, leaving Current at zero.
+
+**Release the gear, get the bound points back.** When an item is actually unequipped, discarded or uninstalled, reduce its Binding and immediately add the released points to Current. Points already spent remain spent. Rebinding commits those points again; dropping and picking up equipment does not recover spent points.
+
+> **Drop the rifle:** With Body 8, binding a Body 4 rifle leaves Current 4. Spend 2 and Current becomes 2. Drop the rifle: its 4 bound points return, leaving Current 6. Bind it again and Current returns to 2.
+
+Return only the Binding actually imposed after offsets such as Load Bearing. Dropping a mounted weapon that imposed no pilot Binding returns no pilot Attribute points. Removing an installed augmentation still requires the appropriate procedure; permanent Binding cannot be released by discarding unrelated equipment.
 
 > **Example:** If you have Initial Body 12 and wear armor with Body Binding 3, your Maximum Current Body becomes 9. You start with 9 Current Body points and can never recover more until the armor is removed.
 
@@ -174,7 +180,7 @@ Replace an existing Transient Harm in a filled slot and mark it :term[Permanent 
 
 #### Option C: Break Bound Gear
 Mark a piece of Gear or Augmentation bound to the Attribute corresponding to the Harm type as **Broken**.
-*   **Effect:** The item ceases to function, but its Binding Cost remains until repaired or uninstalled.
+*   **Effect:** The item ceases to function, but its Binding Cost remains until the item is unequipped or uninstalled. Repair restores function without releasing Binding.
 
 #### Forced Choice & Sequential Resolution
 When suffering multiple levels of Harm, resolve each level independently:

@@ -21,7 +21,7 @@ order: 91
 
 ## B
 
-<dfn id="binding">Binding</dfn> The cost of equipping powerful gear, which reduces a character's current Attribute pool.
+<dfn id="binding">Binding</dfn> The cost of equipping powerful gear, which reduces a character's current Attribute pool. Binding holds Current points aside; releasing it immediately returns those points, while spent points remain spent.
 
 * [Gear & Augmentations](02-characters-and-crews#i-gear--augmentations-the-chrome)
 
