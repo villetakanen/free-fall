@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  actionPool,
+  CHARACTER_CLASSES,
+  CHARACTER_SKILLS,
   decodeSheetFragment,
   emptySheet,
   encodeSheetFragment,
@@ -50,7 +53,7 @@ describe("sheet URL contract", () => {
   it.each([
     null,
     {},
-    { ...emptySheet(), version: 3 },
+    { ...emptySheet(), version: 99 },
     { ...emptySheet(), name: 1 },
     { ...emptySheet(), callsign: null },
     { ...emptySheet(), bmg: {} },
@@ -186,7 +189,7 @@ describe("Downtime recovery", () => {
     );
     if (!result.ok) throw new Error(result.error);
     expect(result.value.bmg).toEqual(legacy.bmg);
-    expect(result.value.version).toBe(2);
+    expect(result.value.version).toBe(3);
     expect(result.value.binding).toEqual({
       body: null,
       mind: null,
@@ -222,5 +225,126 @@ describe("Downtime recovery", () => {
     const input = { ...sheet, binding: { ...sheet.binding, body: binding } };
     expect(validateSheet(input).ok).toBe(false);
     expect(takeDowntime(input).ok).toBe(false);
+  });
+});
+
+describe("career and condition", () => {
+  it("round-trips selected cross-class skills and typed Harm without aliases", () => {
+    const sheet = emptySheet();
+    sheet.characterClass = "operator";
+    sheet.skills = ["deadeye", "human-systems"];
+    sheet.harm[0] = {
+      state: "transient",
+      type: "psychic",
+      description: "耳鳴り <script>",
+    };
+    sheet.harm[1] = {
+      state: "permanent",
+      type: "compromise",
+      description: "Exposed",
+    };
+    const encoded = encodeSheetFragment(sheet);
+    if (!encoded.ok) throw new Error(encoded.error);
+    const decoded = decodeSheetFragment(encoded.value);
+    expect(decoded).toEqual({ ok: true, value: sheet });
+    if (!decoded.ok) throw new Error(decoded.error);
+    decoded.value.skills.push("breaching");
+    decoded.value.harm[0].description = "Changed";
+    expect(sheet.skills).toHaveLength(2);
+    expect(sheet.harm[0].description).not.toBe("Changed");
+  });
+  it.each([
+    1, 2,
+  ])("migrates version %s without guessing career or condition", (version) => {
+    const loaded = loadPreset("vantage");
+    if (!loaded.ok) throw new Error(loaded.error);
+    const result = validateSheet({ ...loaded.value, version });
+    if (!result.ok) throw new Error(result.error);
+    expect(result.value.characterClass).toBeNull();
+    expect(result.value.skills).toEqual([]);
+    expect(result.value.harm).toEqual(emptySheet().harm);
+    expect(result.value.bmg).toEqual(loaded.value.bmg);
+    if (version === 2)
+      expect(result.value.binding).toEqual(loaded.value.binding);
+  });
+  it.each([
+    { characterClass: "unknown" },
+    { characterClass: undefined },
+    { skills: ["unknown"] },
+    { skills: ["deadeye", "deadeye"] },
+    { skills: null },
+    { harm: [] },
+    { harm: [null, null, null] },
+    {
+      harm: [
+        { state: "empty", type: "physical", description: "" },
+        ...emptySheet().harm.slice(1),
+      ],
+    },
+    {
+      harm: [
+        { state: "transient", type: "unknown", description: "" },
+        ...emptySheet().harm.slice(1),
+      ],
+    },
+    {
+      harm: [
+        { state: "permanent", type: "physical", description: 42 },
+        ...emptySheet().harm.slice(1),
+      ],
+    },
+  ])("rejects malformed new state atomically", (patch) => {
+    expect(validateSheet({ ...emptySheet(), ...patch }).ok).toBe(false);
+  });
+  it("counts occupied slots once and clears only Transient Harm during recovery", () => {
+    const loaded = loadPreset("vantage");
+    if (!loaded.ok) throw new Error(loaded.error);
+    const sheet = loaded.value;
+    expect(actionPool(sheet.harm)).toBe(5);
+    sheet.harm[0] = {
+      state: "transient",
+      type: "physical",
+      description: "Bruised",
+    };
+    expect(actionPool(sheet.harm)).toBe(4);
+    sheet.harm[0].state = "permanent";
+    expect(actionPool(sheet.harm)).toBe(4);
+    sheet.harm[1] = {
+      state: "transient",
+      type: "psychic",
+      description: "Ringing",
+    };
+    sheet.harm[2] = {
+      state: "transient",
+      type: "compromise",
+      description: "Tracked",
+    };
+    expect(actionPool(sheet.harm)).toBe(2);
+    const before = structuredClone(sheet);
+    const recovered = takeDowntime(sheet);
+    if (!recovered.ok) throw new Error(recovered.error);
+    expect(sheet).toEqual(before);
+    expect(recovered.value.harm[0]).toEqual(before.harm[0]);
+    expect(recovered.value.harm.slice(1)).toEqual(emptySheet().harm.slice(1));
+    expect(actionPool(recovered.value.harm)).toBe(4);
+    expect(takeDowntime(recovered.value)).toEqual(recovered);
+  });
+  it("has unique skill identifiers and coherent preset selections", () => {
+    expect(new Set(CHARACTER_SKILLS.map((item) => item.id)).size).toBe(
+      CHARACTER_SKILLS.length,
+    );
+    for (const skill of CHARACTER_SKILLS)
+      expect(
+        CHARACTER_CLASSES.some((item) => item.id === skill.characterClass),
+      ).toBe(true);
+    for (const preset of NORTHERN_LIGHTS_PRESETS) {
+      const loaded = loadPreset(preset.id);
+      if (!loaded.ok) throw new Error(loaded.error);
+      expect(loaded.value.skills).toHaveLength(1);
+      expect(
+        CHARACTER_SKILLS.find((item) => item.id === loaded.value.skills[0])
+          ?.characterClass,
+      ).toBe(loaded.value.characterClass);
+    }
   });
 });

@@ -26,7 +26,7 @@ Sable can scout separately or take point with the group. Resolve her approach be
 
 Keep the systems separate. The distinction is load-bearing.
 
-- **Origin-17 controls navigation only:** the Whisper's committed trajectory, drive, and flight computer.
+- **Origin-17 controls Whisper navigation through a narrow ANI:** the committed trajectory, drive and flight computer. The ANI executes its existing task if upstream communication is cut. O17 separately controls the connected cargo living-module systems; neither hold grants the rest of the ship.
 - **The six-person crew controls the ship:** sensors, communications, attitude commands, doors, airlocks, life support, cargo systems, and the authorization to use point defense.
 - **The lasers control themselves:** the three leased mounts share a proprietary expert system, void-gapped from every other system aboard. The crew can tell it **ATTACK** or **DEFER**. It handles acquisition, aim, and fire.
 

@@ -185,3 +185,5 @@ Do not run them to extermination by default.
 - A surviving stevedore knows the cargo deck and where the QNA integration work happened.
 
 Record who survives, who surrendered, who saw the contractors, and who believes them. The second boarding team will encounter those facts, not a reset ship.
+
+**Navigation compromise:** O17’s narrow ANI controls navigation, not the civilian crew’s minds or every ship system. Cutting its upstream communication does not remove the installed executor. Restoring navigation requires addressing that compromise; see [Control and reach](/scenarios/northern-lights/the-lab/#control-and-reach-gm).

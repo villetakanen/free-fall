@@ -14,6 +14,16 @@ Hacking uses the same [action rules](/core-rulebook/03-core-rules/#action-resolu
 
 **Declare the target and effect.** Name the device, network, or augmentation you intend to affect and what you want it to do. Establish how you can reach it: a network connection, a wireless interface, physical access, or an improvised method that makes sense in the situation. A prerequisite enables an attempt; it does not make an unreachable target accessible.
 
+> **Targeting hacks**
+>
+> **Name the device, the function you want to change, and how your equipment reaches it.**
+>
+> Seeing a target isn’t enough. Radio needs a receiver. Blinking lights need a sensor that processes them. An implant inside someone’s body needs a channel that reaches its electronics.
+>
+> A suit camera and its wearer’s implant are separate targets unless a connection joins them. Reaching one does not automatically expose the other.
+>
+> Establish access first, then set the TN. Powerful software can defeat defenses; it doesn’t supply missing transmitters. Invent clever paths—the target must actually be able to receive them.
+
 **Assign dice.** Allocate at least one die from your :term[Action Pool]. More dice improve your chance of success and greater effects. Activation and hacking actions share the same pool as movement, shooting, and everything else you do that turn.
 
 **Meet a prerequisite.** Before rolling, meet at least one:

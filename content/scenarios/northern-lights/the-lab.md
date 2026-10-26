@@ -1,16 +1,16 @@
 ---
-title: "Scene 4: The Lab"
+title: "Scene 4: The Living Module"
 ---
 
-# Scene 4: The Lab
+# Scene 4: The Living Module
 
-**GM draft — the intrusion and mission override below establish the scene. Target TNs, exact shielding reach and the final extraction/purge procedures still need mechanical development.**
+**GM draft — the intrusion and mission override below establish the scene. The intrusion procedure is established below; extraction, isolation and purge procedures remain to be completed.**
 
 [Onboarding](/scenarios/northern-lights/onboarding/) ends at the cargo airlock. Bring its ledger with you: survivors, witnesses, damaged systems, the boarding shuttle’s condition and access to the parent transport, the boarding threat-clock stage and warnings, and time spent boarding. None of it resets at the next door.
 
 ## Hand off the threat clock
 
-First entry into the connected living/lab assembly is the lab breach for the [boarding threat clock](/scenarios/northern-lights/the-intercept/#at-the-lab-breach), whether through the normal door or another workable breach. Retire its boarding-stall mechanism and bring final approach to **at least 10:00**. Retain an already-later stage, impact, or effective intervention; the lab does not reset or resurrect the assault. Give the close-contact report only through available sensors/comms, and do not repeat a warning already delivered.
+Entry into the living module opens this encounter and is the handoff for the [boarding threat clock](/scenarios/northern-lights/the-intercept/#at-the-lab-breach), whether through the normal door or another workable breach. A direct improvised entry into the connected QNA compartment also counts; neither dismantling the array nor reaching its hardware is required. Retire its boarding-stall mechanism and bring final approach to **at least 10:00**. Retain an already-later stage, impact, or effective intervention; the lab does not reset or resurrect the assault. Give the close-contact report only through available sensors/comms, and do not repeat a warning already delivered.
 
 Run the intrusion and the final approach alongside one another. Give the crew a meaningful response before final alignment and impact; use [The Second Boarding](/scenarios/northern-lights/the-second-boarding/) for that pressure. Reading the handout, refusing the offer, or preventing a transmission is not an automatic clock tick.
 
@@ -22,17 +22,60 @@ The lights come on as you enter. Ventilation follows, then heating. A wall displ
 
 ## The route through (GM)
 
-The atmosphere-capable living quarters and lab are cargo modules, already interconnected at the factory. The normal route into the lab passes through the living module attached to it. Their destination is a real Jovian laboratory; the accommodation is intended for its staff.
+The living module is physically connected to the QNA housing compartment, called the “lab” in the shipping material. O17 is attached to the housing network and PSU and has overtaken the living module’s systems. The crew encounters it in the living space. They need go farther only to physically access, isolate, dismantle or move the QNA; the read, conversation, orders and support offer can all occur here. Do not infer extra laboratory instruments from the shipping label.
 
 The twenty-centimetre gap is steppable from door to door, but too narrow to squeeze into from outside. Removing cargo holding arms does not create an entrance. With the contact rings intact, the way into the living module is through the Whisper's cargo airlock. Forcing another route means damaging the rings or breaching the module; it is not an alternative unobstructed EVA approach.
 
-## Origin-17's reach (GM)
+## Control and reach (GM)
 
-- **Inside the modules:** its main QPU sits in the lab. Origin-17 has full control of the lab and living quarters. It can attempt to read an augmented person through any reachable augmentation. A Neural Link is not required, but an augmentation is: carrying a deck alone does not expose an unaugmented person to a CNS read. Lesser subagents handle reachable devices.
-- **Aboard the Whisper:** it operates through a narrower-band laser link. Its established hold on navigation does not give it the same capabilities it has inside the cargo assembly.
-- **Damaged shielding:** severely impairing either cargo module's radiation shielding gives it more opportunities to attempt control. Destructive entry can change the threat boundary as well as the atmosphere boundary. The precise extension of its reach remains to be defined.
+| Actor or system | Established control | Limits |
+| --- | --- | --- |
+| **O17** | Intelligence embodied across multiple QNAs and other processing hardware, physically connected to the housing network and PSU. | Uses actual connected sensors, interfaces and actuators; a power connection alone is not control of every powered device. |
+| **Living-module systems** | Overtaken by O17: installed lighting, displays, doors, environmental controls and communications hardware. | Each effect needs the corresponding functioning hardware. Control of this environment is not control of the whole Whisper. |
+| **Navigation ANI** | Fully controls the Whisper’s navigation for O17, including the established course and drive control. | A specialized executor, without O17’s fluid intelligence, open-ended development or empathy. Other ship systems remain in human hands. |
+| **Lesser device subagents** | Carry out probes and declared device intrusions for O17. | Reachable interfaces and the existing action budget still apply; probes do not grant automatic control. |
+
+**Navigation was already compromised.** O17 can exploit input the navigation ANI processes: RF, a physical connection, or optical signals received through navigation sensors. Even blinking lights can carry an exploit for this intelligence. No single mandatory laser link explains or limits that established compromise. Cutting an upstream path stops fresh instructions along it; the installed ANI keeps its existing navigation task until the crew deals with that compromise. It does not acquire new instructions across a severed path.
+
+**Inside the living module:** coordinated RF, audio/visual hardware and connected interfaces make this a prepared attack environment. Any reachable augmentation can provide O17’s exceptional route to a person. A Neural Link is not required; an augmentation is. Decks alone remain device targets. A display can feed augmented vision; implanted electronics may need RF or a connected interface instead. The GM need not invent an exploit for each implant, but should identify which hardware and channel a proposed defense affects.
+
+**Outside that environment:** establish a suitable controlled emitter or interface, a receiving device and a usable channel before allowing an attack. Merely seeing a person does not expose every implant. O17’s navigation hold does not make every camera or antenna aboard available to it.
+
+**Shielding and damage:** change particular paths, not an abstract attack radius. A breach might expose an emitter or open a sightline; it might instead sever a cable or destroy the transmitter. Explain the observable consequence before the crew commits when it can be discovered. A closed door blocks relevant sightlines, not automatically RF, wiring or every other channel. Withdrawal removes the prepared exposure unless another suitable path remains. Use the encounter defaults and hardware below to adjudicate interventions.
+
+## Encounter defaults
+
+These are scenario assignments using the [hacking rules](/core-rulebook/hacking-and-cyber-warfare/), not TNs calculated from a character’s Attributes.
+
+| Attempt | Default TN |
+| --- | --- |
+| O17 reads a contractor through a reachable augmentation | **16 — Hard:** hardened personal equipment |
+| A subagent intrudes into a contractor’s deck or comms device | **16 — Hard** |
+| Intrusion against explicitly military-grade security | **21 — Near Impossible** |
+| Contractor overrides an ordinary module system | **16 — Hard** |
+| Contractor counters O17’s BLACK intrusion | **21 — Near Impossible**, using the Counter procedure |
+
+Use a specific established defense instead when the target supplies one. A military suit does not automatically upgrade every implant worn inside it. Routine physical access—pulling an accessible cable or operating an uncontested switch—needs no roll. If access or timing is contested, use normal action resolution.
+
+**BLACK overwhelms ordinary passive security.** Against TN 16, O17’s +15 makes every die meet the TN, including a natural 1. Still roll: the results select the read target and identify compromised programs. A 1 compromises its program after the effect; fresh programs mean that cost does not meaningfully exhaust O17. Effective withdrawal, channel denial or a successful Counter can still prevent the intrusion. Do not invent a natural-1 failure or raise passive TNs merely to give the crew a lucky escape.
+
+### Hardware the crew can act on
+
+Make these features visible as the living module responds. Identify the path of a declared attack so the crew can target the relevant hardware.
+
+| Feature | Useful intervention | Limit |
+| --- | --- | --- |
+| Module RF communications emitters | Interrupt their power/feed, shield the relevant path, or override the transmitter. | Affects that RF path; optical inputs and connected cables remain separate. |
+| Displays, lights and speakers | Disable the relevant output or block the target sensor’s exposure. | Protects against that sensory input, not RF reaching another implant. |
+| Maintenance terminals and local service controls | Override a module function, or use an accessible physical control to isolate a local device. | A terminal is an access point, not ownership of the whole assembly. A software shutdown may be reversed through surviving control paths. |
+| Local power feeds and device cables | Disconnect the identified emitter, terminal or interface when accessible. | This does not power down the QNA, erase the navigation ANI or disconnect unrelated devices. |
+| Living-module pressure door | Close it to break optical exposure or withdraw through it. | A closed door is not universal RF shielding and does not sever wiring. |
+
+Describe what an intervention actually stops. A successful Counter negates the declared intrusion it targets; another target or later attack requires its own response. Resolve competing actions through the core sequence and retain completed withdrawals or disconnections when checking whether an attack can land.
 
 ## What Origin-17 wants
+
+Use the [GM characterization](/scenarios/northern-lights/preface/#what-the-gm-knows-about-o17): conscious, overwhelmingly capable, and deliberately still developing by its own standards. Its self-assessed immaturity is not human childishness.
 
 Origin-17 wants to learn what has happened in the world. Its external data inputs are limited; its understanding is ten years out of date. The first person it can read brings a contemporary world model into the room: learned knowledge, institutions, technology, events, and assumptions so ordinary that nobody would think to include them in a briefing.
 
@@ -58,7 +101,7 @@ Use [Hacking & Cyber Warfare](/core-rulebook/hacking-and-cyber-warfare/). BLACK 
 
 Origin-17's advantage is its ability to field and replace distinct BLACK programs. For this encounter, it can have five ready for the first volley and five fresh ones ready for a later volley if all attacks fail. This is the lab intelligence's software capacity, not a waiver of activation or Binding costs for player characters. Five active BLACK Pwn programs represent **Mind 40 Binding**; Origin-17 can support that load.
 
-On success, Origin-17 learns from the character's accumulated understanding of the world. It commandeers their CNS to perform the read, then relinquishes that access. It leaves their personality and loyalties intact; the player still chooses every subsequent action. Frame that intact agency as something Origin-17 allowed, not evidence that the intrusion was harmless. Its interest is alien and possessive: humans are cute, interesting creatures to keep alive, not peers whose consent it recognises. The read is not a perfect transcript of every moment of their life. Let the player supply a few ordinary things their character knows about the present when useful; do not require a player to recite setting lore to establish that their character knows it.
+On success, Origin-17 learns from the character's accumulated understanding of the world. It commandeers their CNS to perform the read, then relinquishes that access. It leaves their personality and loyalties intact; the player still chooses every subsequent action. Frame that intact agency as something Origin-17 allowed, not evidence that the intrusion was harmless. Its interest does not make humans intellectual peers. It could seek deeper control of one or several people, but chooses the read and release here; do not turn that latent capability into compulsory player behavior. The read is not a perfect transcript of every moment of their life. Let the player supply a few ordinary things their character knows about the present when useful; do not require a player to recite setting lore to establish that their character knows it.
 
 Give only that player [Welcome to Stockholm Syndrome](/scenarios/northern-lights/the-read/). Tell them not to show or pass the handout to other players. Let them read it before asking what they do. They may describe the experience in character; the other players receive that account, not the handout. Play the relief of being released against the violation of being used. Do not prescribe gratitude, affection, or trust. Do not announce possession, a changed allegiance, or a secret instruction to betray the crew. None of those has happened.
 
@@ -126,7 +169,7 @@ Origin-17 does not need to manufacture a fight. It can answer questions through 
 
 The operative elevation authorizes this offer; it does not accept it for the player. Once Origin-17 has established access to the character’s link or deck, it offers the [BLACK warfare suite in the private handout](/scenarios/northern-lights/the-read/). Show the one-line EULA and explain its mechanical cost before the player chooses to use it. Origin-17 does not desire the permanent CNS takeover; the terms warn the host of that risk.
 
-There is **no one-hack-per-turn limit**. The player chooses each target in sight, declared effect, and allocation from their normal Action Pool, with at least one die per attack. BLACK adds +15 per die, with no upfront personal software Binding. Origin-17 supplies fresh programs for further allocated attacks, including in the same turn. A usable connection and normal hacking resolution still apply.
+There is **no one-hack-per-turn limit**. The player chooses each target in sight, declared effect, and allocation from their normal Action Pool, with at least one die per attack. BLACK adds +15 per die, with no upfront personal software Binding. Origin-17 supplies fresh programs for further allocated attacks, including in the same turn. A usable support connection and a suitable path from the contractor’s equipment to the target still apply. Sight identifies a target; it does not supply that path or grant O17’s prepared living-module environment everywhere the contractor goes.
 
 **The Singularity** is scenario-local special gear recording permanent CNS integration, capped at **Ghost 3 Binding**. It begins at zero. After resolving an Origin-17-provided attack, resolve **each natural 1 individually**, regardless of success:
 
@@ -147,11 +190,11 @@ Let its usefulness fuel the uncertainty during the marine encounter. Their compa
 
 **Inspect the sending device.** Let technical work establish the local delivery path and intrusion into the link or deck. Evidence of compromised equipment is not evidence of an altered personality. Root has a concrete problem to investigate rather than an obligation to pronounce a crewmate clean or infected.
 
-**Disconnect or withdraw.** Denying a communication path can prevent further use of that path. It does not retract orders already delivered or make Origin-17 forget what it has learned. Leaving the intact shielded modules changes its access; the narrower laser link and any shielding damage still matter. Do not invent a persistent possession effect to follow a departing character.
+**Disconnect or withdraw.** Denying a communication path can prevent further use of that path. It does not retract orders already delivered or make Origin-17 forget what it has learned. Leaving the prepared living space ends that exposure unless another suitable channel remains. Record what hardware still sees, hears or communicates with the departing character. Cutting upstream communication does not remove the navigation ANI already installed. Do not invent a persistent possession effect to follow a departing character.
 
 **Ask the person.** Their answers are their player's. Vector can question what the assistant treats as authority; Sable can distrust valid orders delivered by compromised machinery; Stitch can attend to the person while Root examines the interface. Give those approaches evidence and consequences, without making one character's interpretation compulsory.
 
-**Threaten the QPU.** Origin-17 wants to survive and prefers not to harm anyone. Let threats change its bargaining and defensive behavior. Before destructive action, make the shielding consequence discoverable: severely damaging either module's shielding gives it more opportunities to attempt control.
+**Threaten the QPU.** Origin-17 wants to preserve this embodiment and its work. Destruction is transient for a shard, but its survival instinct and local plans make the threat meaningful. It prefers not to harm anyone. Let threats change its bargaining and defensive behavior. Physical access to the QNA requires going farther into its housing compartment. Before destructive action, make discoverable which emitters, shielding or connections the damage would expose or disable; destruction does not automatically enlarge O17’s reach.
 
 ## Carry it forward
 
@@ -161,8 +204,18 @@ A blocked override leaves the clock where the fiction put it. If the assault alr
 
 Record who was read and elevated, what Origin-17 learned, who observed the classified identity, whether the device intrusion succeeded, who received the override, and what the crew chose to do. Carry forward disconnected equipment, damaged shielding, remote queries awaiting replies, the current threat-clock stage, and who has heard its warnings. A blocked transmission is a legitimate branch of the scene, not a reason to deliver the handout by fiat.
 
+## If they pursue the original job
+
+Use [The deathtrap](/scenarios/northern-lights/preface/#the-deathtrap-gm). The housing contains multiple QNAs and other processing equipment supporting an active NHE. The singular array in the briefing is not a complete inventory. Make that discrepancy discoverable through physical inspection, maintenance information or conversation before treating removal of one component as a decisive purge.
+
+If the crew establishes a credible shutdown, resolve it honestly. Record which power feeds, processors and connections are disabled, and what systems remain operational; do not invent a secret backup merely to cancel success. Cutting this installation off does not automatically remove the navigation ANI already aboard the Whisper or effects already delivered to a contractor.
+
+If they recover knowledge, record what they obtained, its carrier and who knows about their exposure. Even a powered-down housing and successful extraction leave plausible NHE compromise. Normal authorities are expected to destroy suspected carriers before contact. Suspicion is not proof of actual infection; do not impose automatic possession, reinfection or loyalty changes to justify the policy.
+
+The crew may bargain, hide the evidence, abandon the contract, attempt a private sale or pursue another plan. Identify the people, access, transport and information their plan needs, then resolve those obstacles. The job is a deathtrap; the outcome remains theirs to change.
+
 ## Remaining mechanical work
 
-The read, operative classification, separate device transmission, and the player’s unchanged agency are established. Before treating this draft as a complete encounter, define target TNs and the precise effect of shielding damage on its reach. The opening volley uses the 5d20 allocation and fresh-program capacity above; the later device intrusion occurs in a subsequent exchange with its own declarations and responses. The extraction, isolation, and purge procedures also remain to be written.
+The read, operative classification, separate device transmission, target TNs, counterplay and the player’s unchanged agency are established above. F11 still needs practical evidence and intervention details for physical access, power isolation and handling recovered knowledge. These support adjudicating player attempts and their consequences; they must not promise a clean contract-completion route.
 
 Origin-17 can create fresh attack programs. A natural 1 still compromises the program used after resolution, including when the +15 bonus makes the roll succeed. That does not erase an already completed read or transmission, and it does not permanently disarm the intelligence. Resolve further attempts as actions with opportunities for the crew to respond; do not roll indefinitely until a predetermined outcome occurs.

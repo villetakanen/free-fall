@@ -125,11 +125,13 @@ A first argument is not automatically a stall. Questions needed to understand th
 
 A tick changes the CSA's situation even when nobody can observe it. Report only evidence available through actual sightlines, sensors, and communication. A broken sensor array does not manufacture the assistant's warning; a disconnected operator does not hear it until someone gets a message through. Track who knows what. If an action directly establishes a later stage, record that stage rather than replaying earlier ones.
 
-### At the lab breach
+<span id="at-the-lab-breach"></span>
 
-When the first contractor enters Origin-17's connected living/lab module assembly, retire the boarding-stall mechanism. That includes a workable improvised entry. **Bring final approach to at least 10:00.** If the clock was at 3:00, 6:00 or 9:00, it is now 10:00; issue the close-contact report if the crew has the means to receive it. If it was already at 10:00 or 11:00, retain that stage and every warning or action already resolved. If impact has happened, it stays happened.
+### At living-module entry
 
-The lab and final approach now run alongside one another. The crew may face the intrusion, resist it, block the transmission, accept or refuse the orders, or move to defend the ship. None of those decisions is a required tick. Give the crew a meaningful response to the warning, then develop the brig's final alignment at 11:00 and resolve its closing run at 12:00 using [The Second Boarding](/scenarios/northern-lights/the-second-boarding/). Do not wait for a successful override, and do not advance once per hack while resolving the lab.
+When the first contractor enters the living module, retire the boarding-stall mechanism. That includes a workable improvised entry, including direct entry to the connected QNA compartment. Entering that compartment or dismantling the array is not required. **Bring final approach to at least 10:00.** If the clock was at 3:00, 6:00 or 9:00, it is now 10:00; issue the close-contact report if the crew has the means to receive it. If it was already at 10:00 or 11:00, retain that stage and every warning or action already resolved. If impact has happened, it stays happened.
+
+The living-module encounter and final approach now run alongside one another. The crew may face the intrusion, resist it, block the transmission, accept or refuse the orders, or move to defend the ship. None of those decisions is a required tick. Give the crew a meaningful response to the warning, then develop the brig's final alignment at 11:00 and resolve its closing run at 12:00 using [The Second Boarding](/scenarios/northern-lights/the-second-boarding/). Do not wait for a successful override, and do not advance once per hack while resolving the encounter.
 
 ### When the crew changes the threat
 

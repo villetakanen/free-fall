@@ -2,7 +2,7 @@
   import { onMount, tick } from "svelte";
   import BmgCircle from "@free-fall/design-system/components/BmgCircle.svelte";
   import { ATTRIBUTES, ATTRIBUTE_LABELS, setAttributeValue, type Attribute, type AttributeValue, type BmgValues } from "@free-fall/design-system/components/character-attributes";
-  import { decodeSheetFragment, emptySheet, encodeSheetFragment, loadPreset, NORTHERN_LIGHTS_PRESETS, parseAttributeDraft, takeDowntime, validateSheet, type PlaygroundSheet } from "../lib/playground";
+  import { decodeSheetFragment, emptySheet, encodeSheetFragment, loadPreset, NORTHERN_LIGHTS_PRESETS, parseAttributeDraft, takeDowntime, validateSheet, type PlaygroundSheet, CHARACTER_CLASSES, CHARACTER_SKILLS, HARM_TYPES, emptyHarm, actionPool, type HarmSlot, type HarmType } from "../lib/playground";
 
   type Field = keyof AttributeValue | "binding";
   type FieldKey = `${Attribute}-${Field}`;
@@ -26,6 +26,19 @@
   const recovery = $derived(takeDowntime(sheet));
   const fieldLabel = (field: Field) => field === "current" ? "Current" : field === "base" ? "Base" : "Binding";
   const preset = $derived(NORTHERN_LIGHTS_PRESETS.find((item) => item.id === selected));
+
+  const chosenClass = $derived(CHARACTER_CLASSES.find((item) => item.id === sheet.characterClass));
+  const chosenSkills = $derived(CHARACTER_SKILLS.filter((item) => sheet.skills.includes(item.id)));
+  function editHarm(index: number, slot: HarmSlot) {
+    if (!ready || urlError) return;
+    commit({ ...sheet, harm: sheet.harm.map((value, i) => i === index ? slot : value) });
+  }
+  function setHarmState(index: number, state: HarmSlot["state"]) {
+    const previous = sheet.harm[index];
+    editHarm(index, state === "empty" ? emptyHarm() : {
+      state, type: previous.type ?? "physical", description: previous.description,
+    });
+  }
 
   function syncFields(changed: readonly FieldKey[] = keys) {
     for (const attribute of ATTRIBUTES) for (const field of fields) {
@@ -118,7 +131,7 @@
   function downtime() {
     if (!ready || urlError || !recovery.ok) return;
     if (commit(recovery.value, ATTRIBUTES.map((attribute): FieldKey => `${attribute}-current`)))
-      status = "Downtime: all Current pools restored to Base minus Binding.";
+      status = "Downtime: pools restored and Transient Harm cleared.";
   }
 
   async function copyLink() {
@@ -247,6 +260,29 @@
               oninput={(event) => commit({ ...sheet, callsign: event.currentTarget.value })} />
           </label>
         </fieldset>
+        <fieldset class="identity" disabled={!ready || !!urlError}>
+          <legend>Class and Skills</legend>
+          <label for={`${uid}-class`}>Class
+            <select id={`${uid}-class`} aria-label="Class" value={sheet.characterClass ?? ""}
+              onchange={(event) => commit({ ...sheet, characterClass: event.currentTarget.value || null })}>
+              <option value="">Not chosen</option>
+              {#each CHARACTER_CLASSES as item}<option value={item.id}>{item.label}</option>{/each}
+            </select>
+          </label>
+          <label for={`${uid}-skills`}>Chosen Skills
+            <select id={`${uid}-skills`} aria-label="Chosen Skills" multiple size="6" aria-describedby={`${uid}-skills-help`}
+              onchange={(event) => commit({ ...sheet, skills: Array.from(event.currentTarget.selectedOptions, (option) => option.value) })}>
+              {#each CHARACTER_CLASSES as item}
+                <optgroup label={item.label}>
+                  {#each CHARACTER_SKILLS.filter((skill) => skill.characterClass === item.id) as skill}
+                    <option value={skill.id} selected={sheet.skills.includes(skill.id)}>{skill.label}</option>
+                  {/each}
+                </optgroup>
+              {/each}
+            </select>
+          </label>
+          <p class="hint" id={`${uid}-skills-help`}>Start with one Skill from your Class. Experienced characters may have additional Skills, including another Class’s. Use Ctrl or Command to select multiple options.</p>
+        </fieldset>
         <div class="numbers">
           <h2>Attributes</h2>
           <p class="hint">Set your values here. Activation spends 1 Current; arrows convert 2 points into 1. Downtime restores Current to Base minus Binding. Base is your initial capacity.</p>
@@ -274,32 +310,77 @@
     </div>
   </div>
 
+  <div class="actions sheet-toolbar">
+    <button class="freefall-button" type="button" onclick={toggleSettings} disabled={!ready} data-settings-toggle
+      aria-expanded={settingsOpen} aria-controls={narrowHost ? `${uid}-inline-settings` : "playground-settings-hud-pane-custom"}>Settings</button>
+    <button class="freefall-button" type="button" onclick={copyLink} disabled={!ready || !!urlError} data-copy>Copy link</button>
+    <details class="sharing-help"><summary>Keep this sheet</summary><p class="hint">Your sheet lives in this link. Copy or bookmark it to keep it.</p></details>
+  </div>
+  <div class="sharing">
+    <p class="status" role="status" aria-atomic="true">{status}</p>
+    {#if copyFallback && !urlError}
+      <label for={`${uid}-link`}>Sheet link
+        <input id={`${uid}-link`} type="text" readonly value={link} onfocus={(event) => event.currentTarget.select()} data-link-fallback />
+      </label>
+    {/if}
+  </div>
   <div class="char-sheet-row">
     <div class="sheet-meta">
-      <dl class="identity-summary">
-        <div><dt>Callsign</dt><dd>{sheet.callsign || "—"}</dd></div>
-        <div><dt>Name</dt><dd>{sheet.name || "—"}</dd></div>
-      </dl>
-      <div class="actions">
+      <header class="identity-summary">
+        <h2 class="callsign">{sheet.callsign || "Unnamed character"}</h2>
+        {#if sheet.name}<p>{sheet.name}</p>{/if}
+        <p class="class-name">{chosenClass?.label ?? "Class not chosen"}</p>
+      </header>
+      <section class="skill-summary" aria-label="Class skill summary">
+        {#each chosenSkills as skill}
+          <div>
+            <h3><a href="/core-rulebook/02-characters-and-crews/#classes-and-skills">{skill.label}</a></h3>
+            <p>{skill.description}.</p>
+          </div>
+        {:else}<p class="hint">Choose your Class and Skill in Settings.</p>{/each}
+      </section>
+      <section class="condition" aria-labelledby={`${uid}-harm-heading`}>
+        <h3 id={`${uid}-harm-heading`}>Harm</h3>
+        <div class="harm-slots">
+          {#each sheet.harm as slot, index}
+            <details class="harm-slot" data-harm-slot={index} data-state={slot.state}>
+              <summary><span class="harm-marker" aria-hidden="true">{slot.state === "empty" ? "○" : slot.state === "transient" ? "◐" : "●"}</span>
+                <span>{slot.state === "empty" ? "Empty" : slot.description || `${slot.type[0].toUpperCase()}${slot.type.slice(1)} Harm`}
+                  {#if slot.state !== "empty"}<small>{slot.state === "transient" ? "Transient" : "Permanent"} · {slot.type}</small>{/if}
+                </span><span class="sr-only"> — Harm slot {index + 1}</span>
+              </summary>
+              <fieldset disabled={!ready || !!urlError}>
+                <legend class="sr-only">Harm slot {index + 1}</legend>
+                <label for={`${uid}-harm-${index}-state`}>State
+                  <select id={`${uid}-harm-${index}-state`} aria-label={`Harm ${index + 1} state`} value={slot.state}
+                    onchange={(event) => setHarmState(index, event.currentTarget.value as HarmSlot["state"])}>
+                    <option value="empty">Empty</option><option value="transient">Transient</option><option value="permanent">Permanent</option>
+                  </select>
+                </label>
+                {#if slot.state !== "empty"}
+                  <label for={`${uid}-harm-${index}-type`}>Type
+                    <select id={`${uid}-harm-${index}-type`} aria-label={`Harm ${index + 1} type`} value={slot.type}
+                      onchange={(event) => editHarm(index, { ...slot, type: event.currentTarget.value as HarmType })}>
+                      {#each HARM_TYPES as type}<option value={type}>{type[0].toUpperCase()}{type.slice(1)}</option>{/each}
+                    </select>
+                  </label>
+                  <label for={`${uid}-harm-${index}-description`}>Description
+                    <input id={`${uid}-harm-${index}-description`} aria-label={`Harm ${index + 1} description`} value={slot.description}
+                      oninput={(event) => editHarm(index, { ...slot, description: event.currentTarget.value })} />
+                  </label>
+                {/if}
+              </fieldset>
+            </details>
+          {/each}
+        </div>
+        <div class="action-pool"><a href="/core-rulebook/03-core-rules/#1-the-action-pool">Action Pool</a><output data-action-pool aria-live="polite">{actionPool(sheet.harm)}d20</output></div>
         <button class="freefall-button" type="button" onclick={downtime}
           disabled={!ready || !!urlError || !recovery.ok} data-downtime
           aria-describedby={`${uid}-downtime-help`}>Downtime</button>
-        <button class="freefall-button" type="button" onclick={toggleSettings} disabled={!ready} data-settings-toggle
-          aria-expanded={settingsOpen} aria-controls={narrowHost ? `${uid}-inline-settings` : "playground-settings-hud-pane-custom"}>Settings</button>
-        <button class="freefall-button" type="button" onclick={copyLink} disabled={!ready || !!urlError} data-copy>Copy link</button>
-      </div>
-      <p class="hint" id={`${uid}-downtime-help`}>
-        {recovery.ok ? "Downtime restores all three Current pools to Base minus Binding." : recovery.error}
-      </p>
-      <div class="sharing">
-        <p class="hint">Your sheet lives in this link. Copy or bookmark it to keep it.</p>
-        <p class="status" role="status" aria-atomic="true">{status}</p>
-        {#if copyFallback && !urlError}
-          <label for={`${uid}-link`}>Sheet link
-            <input id={`${uid}-link`} type="text" readonly value={link} onfocus={(event) => event.currentTarget.select()} data-link-fallback />
-          </label>
-        {/if}
-      </div>
+        <p class="hint" id={`${uid}-downtime-help`}>
+          {recovery.ok ? "Restore pools; clear Transient Harm." : recovery.error}
+        </p>
+      </section>
     </div>
     <div class="diagram"><BmgCircle value={sheet.bmg} interactive={ready && !urlError} onchange={changeBmg} /></div>
   </div>
@@ -335,14 +416,32 @@
   .error { padding: var(--freefall-space-2); background: var(--freefall-bg-surface-2); }
   [aria-invalid="true"] { border-color: var(--freefall-action-base); }
   .sheet-meta { display: grid; gap: var(--freefall-space-4); }
-  .sheet-meta > p, .sharing > p { margin: 0; }
+  .sharing > p { margin: 0; }
   .sharing { display: grid; gap: var(--freefall-space-2); }
   .status:empty { display: none; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
   .actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--freefall-space-2); }
-  .identity-summary { display: grid; gap: var(--freefall-space-2); margin: 0; min-inline-size: 0; }
-  .identity-summary dt { font: var(--freefall-type-ui-small) var(--freefall-font-mono); color: var(--freefall-text-muted); }
-  .identity-summary dd { margin: var(--freefall-space-1) 0 0; overflow-wrap: anywhere; }
+  .sheet-toolbar { margin-block-end: var(--freefall-space-2); }
+  .identity-summary { min-inline-size: 0; overflow-wrap: anywhere; }
+  .identity-summary p { margin: var(--freefall-space-1) 0 0; }
+  h2.callsign { font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio) * var(--freefall-type-ratio)); }
+  .class-name { font-family: var(--freefall-font-mono); color: var(--freefall-text-muted); }
+  .skill-summary { display: grid; gap: var(--freefall-space-2); }
+  .skill-summary h3, .condition h3 { margin: 0; font-size: var(--freefall-type-base); }
+  .skill-summary p { margin: var(--freefall-space-1) 0 0; }
+  .harm-slots { display: grid; gap: var(--freefall-space-1); margin-block: var(--freefall-space-2); }
+  .harm-slot { background: var(--freefall-bg-surface-1); min-inline-size: 0; }
+  .harm-slot summary { display: flex; gap: var(--freefall-space-2); align-items: center; padding: var(--freefall-space-1) var(--freefall-space-2); min-block-size: calc(5.5 * var(--freefall-space-1)); box-sizing: border-box; cursor: pointer; overflow-wrap: anywhere; }
+  .harm-slot summary > span { min-inline-size: 0; }
+  .harm-marker { font-size: calc(var(--freefall-type-base) * var(--freefall-type-ratio)); }
+  .harm-slot small { display: block; color: var(--freefall-text-muted); font-family: var(--freefall-font-mono); }
+  .harm-slot fieldset { display: grid; gap: var(--freefall-space-1); padding: var(--freefall-space-2); }
+  .action-pool { display: flex; align-items: baseline; justify-content: space-between; gap: var(--freefall-space-2); margin-block: var(--freefall-space-2); }
+  .action-pool output { font: 600 calc(var(--freefall-type-base) * var(--freefall-type-ratio) * var(--freefall-type-ratio)) var(--freefall-font-mono); }
+  .sharing-help summary { cursor: pointer; }
+  summary:focus-visible { outline: calc(var(--freefall-space-1) / 4) solid var(--freefall-action-base); }
+  .condition > .hint { margin-block: var(--freefall-space-1) 0; }
+
   .inline-settings { padding: var(--freefall-space-2); margin-block-end: var(--freefall-space-4); background: var(--freefall-bg-surface-2); }
   .inline-settings[hidden] { display: none; }
   .inline-settings header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--freefall-space-1); margin-block-end: var(--freefall-space-2); }

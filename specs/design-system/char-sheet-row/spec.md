@@ -20,7 +20,7 @@ A character-sheet row pairs compact identity and supporting information with a l
 - Content stays in DOM order in both arrangements. Nested text and controls may wrap; flexible children can shrink without expanding the page horizontally. Static HTML, Svelte-rendered HTML and print use the same CSS.
 - The living reference at `/char-sheet-row-layout-1/` demonstrates real character-sheet content at the available page width and in a narrow host. Navigation exposes it under Character Sheet. Examples distinguish layout from any future Harm editor behavior.
 - The Layout 1 specimen stacks Info/Meta above three Harm slots in the compact column, beside one BMG circle in the primary column. On a small host the complete compact column precedes BMG. Both specimens render statically with the same values; this is a composition reference, not a character editor.
-- [Playground](../../free-fall/playground/spec.md) consumes the same primitive with committed identity and sheet actions in the compact column and one interactive BMG circle in the primary column. Its current feature scope excludes the specimen's illustrative Harm slots; the consumer owns character state and controls.
+- [Playground](../../free-fall/playground/spec.md) consumes the same primitive with callsign-led identity, chosen Class Skills, three editable Harm slots and derived Action Pool in the compact column and one interactive BMG circle in the primary column. The consumer owns character state, recovery and controls; its sheet toolbar sits outside the row.
 
 | File | Responsibility |
 | --- | --- |

@@ -1,6 +1,6 @@
 {
   "name": "@free-fall/scenarios",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "description": "FREE//FALL scenarios \u2014 playable adventures targeting a rules variant.",
   "scripts": {
