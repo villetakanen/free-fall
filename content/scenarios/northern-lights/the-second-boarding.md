@@ -10,7 +10,7 @@ Use this reference when the [boarding threat clock](/scenarios/northern-lights/t
 
 This is [Contact](/scenarios/northern-lights/contact/) from the other side of the hull. The crew studies an approaching vessel, asks the assistant for its assessment, argues, and commits to action. This time someone else controls the approach. The first boarders are inside the ship they just demonstrated how to board; anyone covering outside or still aboard the contractor vessel keeps their actual position.
 
-**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team, local systems, and voice-only LPC. The team’s [post-impact deployment](/scenarios/northern-lights/the-csa-marines/#after-the-ram) follows the actual breach and the crew’s preparations. The brig’s combat profile, exact impact location and the rest of the boarding fight remain to be developed.
+**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team, local systems, and voice-only LPC. The team’s [post-impact deployment](/scenarios/northern-lights/the-csa-marines/#after-the-ram) follows the actual breach and the crew’s preparations. The brig’s combat profile and the rest of the boarding fight remain to be developed.
 
 ## The situation
 
@@ -30,9 +30,9 @@ For a focused assessment under pressure, use **Challenging TN 11+**, with the no
 |---|---|
 | No successes | They cannot distinguish the plan early enough to gain that warning. The brig's final alignment will make the ram obvious, leaving time for an immediate response rather than a prepared defense. |
 | One success | Recognize the standard approach: **ram, breach, overwhelm**. Give enough warning for a concrete preparation before final alignment. |
-| Two or more successes | Also identify a likely impact compartment or a useful time-to-impact estimate from the available track. Give actionable detail that lets the crew place that preparation well. |
+| Two or more successes | Identify the intended impact in the **ship’s living quarters, north of the cockpit and south of the cargo dock**; add a time-to-impact estimate if the available track supports one. Give actionable detail that lets the crew place that preparation well. |
 
-Decide the brig's intended impact area from the ship's current condition before revealing an assessment result. Use the same target when resolving its approach unless intervening actions change it. Do not move the ram to wherever the crew has just chosen to stand.
+The brig targets the Whisper’s **shipboard living quarters: north of the cockpit, south of the cargo dock** on the schematic. These are the hauler crew’s quarters, not the cargo living module attached to O17’s housing. Keep this target through the approach unless damage or intervening actions change it. The warning lets the crew evacuate, suit up or prepare an ambush; do not move the ram to wherever they choose to stand.
 
 If the players correctly infer the ram without rolling, let them prepare on that inference. A check can establish confidence or precision; it is not permission to act on a good idea. If they rammed the Whisper themselves, point out the familiar geometry when they examine it. They have just flown this maneuver.
 
@@ -56,7 +56,7 @@ Ask for concrete actions. “Prepare for boarding” needs a place, a task, and 
 
 The same continuity applies to the others. Vector needs a working optical or RF link for new piloting commands to the shuttle. Root’s remote access depends on an actual path. Stitch can cross later under Havoc thrust if the distance, defenses, and entry permit it. Sable keeps whatever scouting or point position she established; no warning teleports the crew into a prepared formation.
 
-- **Clear the likely impact area.** Move people, secure loose equipment, seal a surviving hatch, or take cover beyond the first breach. Better assessment helps them choose the right compartment.
+- **Clear the likely impact area.** Move people, secure loose equipment, check suit seals, or take cover beyond the first breach. Better assessment helps them choose the right compartment.
 - **Prepare a defense.** Establish firing positions, arrange movable cover, or place an obstacle using the geometry they already fought through. Resolve difficult work with the normal rules; carry the resulting position into the boarding fight.
 - **Work the surviving systems.** Bring available defenses to bear, secure doors, or coordinate with the contractor vessel. Check what still functions and who can operate it. These are actions with consequences, not a reset of the Whisper.
 - **Stay unseen or seek a way out.** Reposition while the marines commit to their entry. The shuttle’s condition limits the crossing back; the parent transport’s condition and fuel limit the onward escape; simply accelerating away does not erase a military vessel with ample reserves.
@@ -70,7 +70,7 @@ After the crew has had a meaningful response to the warning, develop the approac
 
 > **"That's not a docking solution. They're coming through."**
 
-On a failed early assessment, this is the late warning: immediate movement, cover, sealing up, or bracing. On a successful assessment, it confirms what the crew already prepared for. Do not turn either result into an extra period of leisurely planning.
+On a failed early assessment, this is the late warning: immediate movement, cover, sealing suits, or bracing. On a successful assessment, it confirms what the crew already prepared for. Do not turn either result into an extra period of leisurely planning.
 
 When the final run reaches the target, mark **12:00** and close the scene at impact, or at the changed outcome if the crew successfully alters the approach. A cancelled or diverted assault retires or changes the remaining clock; it is not forced to collide to complete the diagram. Record where everyone is, which preparations succeeded, what the marines can see, and which survivors are cooperating. Keep the unresolved orders and the suspicion between characters alive. The next fight begins with the decisions they made under that uncertainty.
 

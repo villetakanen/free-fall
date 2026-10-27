@@ -197,7 +197,7 @@ With a route through the lasers, the crew still needs a door.
 - **Hull cut:** Slow and visible, but the crew chooses the compartment. The plasma lance opens one decisive hole and is then spent.
 - **Cargo maw:** Built to open, built to move large loads, and obvious to both sides. The stevedores have had time to make it hostile.
 
-The defenders can seal doors, vent compartments, and move through their own ship. Origin-17 does not interfere. Getting through the skin wins Scene 2; it does not make the interior safe.
+The defenders can lock doors and move through their own ship. Venting the hull exposes the connected interior; there are no internal pressure hatches to isolate individual rooms. Origin-17 does not interfere. Getting through the skin wins Scene 2; it does not make the interior safe.
 
 ## Start the boarding clock
 

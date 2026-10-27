@@ -38,6 +38,20 @@ The stat block is the ship her manifest describes. It is not the ship the crew w
 - **The crew is still aboard.** [Two pilots, two security personnel, and two stevedores](/scenarios/northern-lights/the-whispers-crew/) control the ship around the compromised navigation. All six can fight. Open approach brings security onto the hull while the pilots rotate the Whisper and authorize point defense.
 - **Two ways in.** She was built to open at the front, and the cargo modules — origin-17's shard among them — came aboard through the bow **maw**; that maw is the obvious thing to ram or cut. But her crew airlocks are the **two docking points on the sleeping module**, amidships — a boarding craft that means to *dock* rather than *breach* mates there. The maw is how you force your way in; the airlocks are how you knock.
 
+## Shipboard living quarters
+
+The hauler crew’s living quarters sit **north of the cockpit and south of the cargo dock** on the schematic. These are separate from the cargo’s living module attached to the QNA housing.
+
+**GM: CSA impact point.** The brig targets these shipboard quarters. Use this location for approach warnings and the boarding breach unless damage or player intervention changes the ram.
+
+## Pressure loss
+
+The Whisper has no internal pressure hatches. Ordinary doors divide the rooms but cannot contain decompression: an open hull breach vents the connected interior. Exterior airlocks still serve their normal purpose.
+
+The CSA brig seals around its breach while lodged. Detachment tears that seal open. Anyone left inside needs vacuum protection or an independent sealed enclosure; closing a room door will not save their air. If earlier damage has already vented the ship, retain that state.
+
+The cargo modules have their own pressure enclosures, separated from the ship by the vacuum gap described below. They retain air only while their own seals and hulls remain intact.
+
 ## Connected cargo spaces
 
 The cargo entry leads to the living module, whose systems O17 has overtaken. The physically connected QNA housing compartment lies farther in; entry there is for hands-on work on the array. The living-module encounter requires no such entry. The manifest drawing should distinguish both compartments and their physical connection without revealing the hidden takeover.

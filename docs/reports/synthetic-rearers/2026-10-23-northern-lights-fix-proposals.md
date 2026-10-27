@@ -574,3 +574,11 @@ IFF/COMMS data provides plausible access, not analog-voice propagation or magic 
 ### Brig disabling fire (#120, 2026-10-27)
 
 Approved: commander strands the contamination by targeting Whisper engines/propellant, then power/communications, then the contractors’ main vessel’s drives. Kinetic hits tear through actual locations and systems; no automatic destruction of O17. A silent disabled wreck is effectively lost because search and interception cost is prohibitive at this setting’s propulsion limits. Before firing on the crew’s vessel, its assistant warns of guns tracking the drive section; use available observation if that link is lost. Players can respond. Implemented in the marine brief and scenario spec.
+
+### CSA breach location (#121, 2026-10-27)
+
+Approved and implemented: brig targets Whisper shipboard living quarters north of cockpit, south of cargo dock. Distinct from cargo living module attached to O17 housing. Precise approach assessment reveals the target; crew can evacuate, seal hatches or prepare an ambush. Damage/intervention can change impact, and marine deployment follows actual breach. Vessel reference, second boarding and marine brief aligned.
+
+### Whisper pressure loss (#122, 2026-10-27)
+
+Approved: utilitarian Whisper has no internal pressure hatches. Supersedes hatch-sealing preparations above. Lodged brig seals the breach; detachment tears the seal open and vents the connected interior, with warning as release begins. Ordinary doors do not isolate pressure loss. Independent cargo enclosures across the vacuum gap retain air while intact. Corrected earlier first-boarding room-local decompression claims and approach guidance; prior damage/venting persists.

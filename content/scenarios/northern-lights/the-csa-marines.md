@@ -91,6 +91,10 @@ Only the two assaulters are committed to the immediate push through the interior
 
 ## After the ram
 
+The intended breach opens into the Whisper’s shipboard living quarters, north of the cockpit and south of the cargo dock. This is not O17’s cargo living module. If the crew altered the ram, use the actual breach instead.
+
+The lodged brig seals around the breach. When it detaches, that seal tears open and the Whisper’s connected interior vents. There are no internal pressure hatches. Warn anyone still breathing ship air as the brig begins to pull free; ordinary doors offer no protection. Independent cargo enclosures retain pressure only while their own seals remain intact.
+
 All four ride the impact in crash foam. They release and deploy afterward, using normal actions.
 
 | Marine | Intended position |
@@ -228,7 +232,7 @@ The **brig itself rammed the Whisper**. If the commander has followed the assaul
 
 | Step | Actions |
 |---|---|
-| Detach | **1–3 actions:** 1 for a clean release, 2 for damaged attachments, 3 for a badly fouled breach. Choose from the established collision damage. |
+| Detach | **1–3 actions:** 1 for a clean release, 2 for damaged attachments, 3 for a badly fouled breach. Choose from the established collision damage. Release tears open the breach seal and vents the connected interior. |
 | Position | **1 action** to gain separation and a firing line after release. |
 | Fire | **1–3 railgun shots per turn**, while the guns, control and firing line remain available. |
 
