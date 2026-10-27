@@ -4,7 +4,7 @@ title: "The CSA Marines"
 
 # The CSA Marines
 
-**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. The commander’s equipment and software are set below. The sniper’s equipment is set below; passive software defenses and withdrawal triggers remain to be completed.
+**GM reference — draft opposition and scenario-local equipment.** Four marines arrive in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/): two Hardshell-equipped assaulters, one hacker, and one sniper. The assault loadouts and Reserves are set below. The commander’s equipment and software are set below. The sniper’s equipment and the team’s cyber defenses are set below. Use the rout sequence below if the commander breaks.
 
 ## Friday-night cleanup
 
@@ -67,7 +67,7 @@ They brought military suppression and cheap tools for a civilian ship. No Pwn: n
 
 The team operates under sealed CSA orders without an external command uplink. They seize the Whisper's suspected contraband, eliminate witnesses, and recover the hardware. They do not know what Origin-17 is. Vantage's EU Class A citizenship creates the established capture exception.
 
-**The marines carry their orders; their machines do not command them.** They do not negotiate or maintain any radio channel to the contractors. Hails receive no response. Valid THESEUS credentials have no authority to replace their CSA mission. Hacking a display cannot rewrite their loyalties or turn them into obedient agents. They may retreat or rout when the assault becomes untenable; that is a response to the fight, not an invitation to bargain.
+**The marines carry their orders; their machines do not command them.** They do not negotiate or maintain any radio channel to the contractors. Hails receive no response. Valid THESEUS credentials have no authority to replace their CSA mission. Hacking a display cannot rewrite their loyalties or turn them into obedient agents. They planned extraction after victory. Fear can turn the assault into a rout; it does not open a negotiation channel.
 
 “Analog” describes this command discipline. Their weapons, frames, sensors, IFF units, and comm hardware remain electronic and hackable. IFF is a dumb identification and coordination system, not an intelligence deciding whom they must obey. A marine can switch it off, losing its support and both combat bonuses below. Switching it back on does not bypass the established duration of a successful Spike or Blast.
 
@@ -88,6 +88,21 @@ Internal LPC is analog voice only. Treat the links as effectively unhackable in 
 | Sniper | L-hit, Light Lance and CSA IFF/COMMS | Observe exposed routes, feed target information to the team, and cover their movement from a suitable firing position. |
 
 Only the two assaulters are committed to the immediate push through the interior. The hacker's systems work consumes actions; the sniper needs a real sightline and must reposition when the crew denies it. Their roles create simultaneous pressures without giving all four an automatic shot into every compartment.
+
+## After the ram
+
+All four ride the impact in crash foam. They release and deploy afterward, using normal actions.
+
+| Marine | Intended position |
+|---|---|
+| Lead assaulter | First through the breach; secures the opening and advances. |
+| Second assaulter | Covers the lead, then follows. Keep the lead’s plasma-lance backblast clear of teammates. |
+| Commander | Initially inside the ram’s protected interior, establishing feeds; then follows into cover behind the assaulters. |
+| Sniper | Exits onto the Whisper’s exterior hull. Uses the L-hit’s thrusters and anchors to establish a perch covering the breach and exposed approaches. |
+
+The sniper can watch crossings, reinforcements and escape routes. Interior shots need a real sightline through an opening. Establish the perch and what it sees before firing; the crew can act while the sniper deploys.
+
+The ram is their entry point and intended way back. Use its established impact location. Damage, blocked exits and the crew’s preparations can disrupt this plan or make a perch exposed or useless; carry those results into deployment.
 
 ## CSA assault frame — design basis
 
@@ -150,6 +165,17 @@ Reading an operative designation supplies information. It does not itself replac
 
 **Local diagnostics.** Each marine sees their own injuries, ammunition state, and frame faults. Teammates learn through spoken reports or direct observation; a sensor feed shows only what it actually captures, not an automatic readout of every reserve or fault. They can change lanes, cover an affected operator, or send assistance once they know. Each response still takes the actions it requires.
 
+## Cyber defenses
+
+| Target or action | TN |
+|---|---:|
+| Hack CSA military equipment: IFF/COMMS, frame controllers, weapon electronics, deck or implants | **21** |
+| Cadillac Counter against incoming BLACK software | **21** |
+
+Establish an intrusion path before rolling. The commander needs a usable connection to the threatened system and must allocate dice to Counter. A voice report identifies trouble; it does not supply that connection. IFF adds no defensive modifier to either TN.
+
+Resolve order by the highest **natural** die. Cadillac adds **+10** for success against the TN. A successful Counter resolving first prevents the hack; resolving later ends its remaining control or duration. Completed effects stand: a shot stays fired, and a Spike-disabled IFF stays disabled. Each further intrusion needs its own response.
+
 ## Give the hackers something to touch
 
 ### IFF combat bonuses
@@ -194,6 +220,31 @@ Direct observation, voice communication and checking one another are available r
 
 Make the cracks visible: an unanswered demand for support, conflicting calls, a stalled advance, a marine backing toward cover. Let the crew exploit those openings. Neither automatic recovery nor automatic rout should cancel what actually happens in the fight.
 
-Retreat and rout are possible; negotiation is not. The exact withdrawal triggers and escape procedure remain to be established. Before finalizing the encounter, set those alongside software defenses and the sniper’s starting sightlines. Keep [Vantage's premium hardware](/scenarios/northern-lights/c-02-the-operator/) and [Stitch's imposing but lightly armed Havoc](/scenarios/northern-lights/c-04-the-fixer/) relevant when choosing those values.
+## Contamination: the commander runs
+
+If the commander’s morale breaks, they flag the Whisper as **NHE contamination** and try to get the brig clear before it is taken over. This is panic with an official designation. They may leave the boarding team behind. Other marines can flee toward the breach, freeze or keep fighting with an obsolete picture.
+
+The **brig itself rammed the Whisper**. If the commander has followed the assaulters inside, establish how they reach its controls or command it through a working connection. Getting back still takes movement and access.
+
+| Step | Actions |
+|---|---|
+| Detach | **1–3 actions:** 1 for a clean release, 2 for damaged attachments, 3 for a badly fouled breach. Choose from the established collision damage. |
+| Position | **1 action** to gain separation and a firing line after release. |
+| Fire | **1–3 railgun shots per turn**, while the guns, control and firing line remain available. |
+
+Resolve these as actions, with declarations and opportunities to intervene. A blocked release, disabled drive or obstructed firing line needs to be dealt with; spending the listed actions does not erase the obstacle. Each shot is a firing action, not a free interrupt.
+
+**Slugs, not firestorms.** This is a boarding brig. Hits can puncture hulls, wreck machinery, sever connections and vent compartments. Track the struck location and consequences. Repeated fire is dangerous; it does not automatically ignite the Whisper or destroy O17.
+
+### Eight turns at most
+
+Mark **turn 1** when the commander breaks and orders detachment. The boarding team’s IFF/COMMS data feeds provide a possible route back to the brig: establish the connected endpoints O17 can exploit. Analog voice alone is not a data network.
+
+With a viable path or foothold, **O17 compromises the brig by the end of turn 8 at latest**. Count detachment and positioning turns too. Resolve earlier intrusion attempts normally; eight turns is the limit, not safe time promised to the commander.
+
+Cutting every usable path before O17 gains a foothold can stop the countdown, at the cost of feeds and contact with abandoned marines. Cutting the upstream link after compromise does not remove installed control. Carry actual access changes forward.
+
+At compromise, the commander loses reliable control of the brig. Stop treating its railguns as theirs to fire; resolve O17’s use of the seized systems from its motives. Shots already fired and damage already inflicted stand.
+
 
 **Target access for BLACK support:** sight and a live support connection remain required, but neither replaces a suitable path from your equipment to the target. Establish the transmitting interface, receiving device and channel. The supplied program does not give you O17’s prepared module hardware or universal implant access.

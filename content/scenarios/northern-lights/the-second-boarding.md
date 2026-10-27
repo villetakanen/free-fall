@@ -10,7 +10,7 @@ Use this reference when the [boarding threat clock](/scenarios/northern-lights/t
 
 This is [Contact](/scenarios/northern-lights/contact/) from the other side of the hull. The crew studies an approaching vessel, asks the assistant for its assessment, argues, and commits to action. This time someone else controls the approach. The first boarders are inside the ship they just demonstrated how to board; anyone covering outside or still aboard the contractor vessel keeps their actual position.
 
-**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team, local systems, and voice-only LPC. The brig's combat profile, final marine loadouts, exact impact location, and boarding fight remain to be developed.
+**GM draft:** this scene covers recognition and preparation up to the ram. [The CSA Marines](/scenarios/northern-lights/the-csa-marines/) defines the four-person team, local systems, and voice-only LPC. The team’s [post-impact deployment](/scenarios/northern-lights/the-csa-marines/#after-the-ram) follows the actual breach and the crew’s preparations. The brig’s combat profile, exact impact location and the rest of the boarding fight remain to be developed.
 
 ## The situation
 
@@ -77,3 +77,5 @@ When the final run reaches the target, mark **12:00** and close the scene at imp
 ## Follow the surviving plan
 
 CSA doctrine establishes what the team intends, not a compulsory defeat. If the crew changes the approach, bargains with another party, escapes or arranges a sale, carry those results forward. Use [Prepare the trap, not the ending](/scenarios/northern-lights/preface/#prepare-the-trap-not-the-ending) to establish the next party’s knowledge and interests. A disabled module does not erase plausible NHE compromise, but authorities do not receive evidence by GM fiat. Unexpected success deserves consequences, not cancellation.
+
+If the boarding assault breaks the commander’s confidence, use [Contamination: the commander runs](/scenarios/northern-lights/the-csa-marines/#contamination-the-commander-runs). The brig attempts to detach and fire kinetic railgun slugs while O17 exploits its connections; the crew and abandoned marines can intervene throughout.

@@ -556,3 +556,17 @@ Approved physical attacks only for the defensive +5 TN. Catalog and marine brief
 Approved: highest natural die assigned to each competing action determines order, not the sum or modified result. Bonuses determine TN success separately. One successful Counter blocks the targeted hack only if it resolves first; a completed effect is not undone. Existing action sequence and player-decides ties remain. Clarified core, SRD, introduction, hacking and lab guidance. O17’s opening-volley target selection is a distinct rule and is unchanged.
 
 Counter follow-up (#116): a later successful Counter ends the targeted hack’s remaining duration/control. Only completed effects persist: a Pwn-triggered shot and its damage remain, but further control ends. Updated core, SRD, hacking, lab and intent; supersedes wording that could imply a late Counter has no effect.
+
+### CSA cyber-defense defaults (#117, 2026-10-27)
+
+Approved and implemented: TN 21 for CSA military equipment and TN 21 for Cadillac Counter against incoming BLACK. Actual connection and allocated commander dice required; voice alone supplies no access and IFF adds no defensive cyber modifier. Natural-die order and ongoing-effect termination retained; completed Spike disable is not reset. This supersedes earlier pending passive-defense entries. Starting sightlines, withdrawal and escape remain open.
+
+### CSA post-impact deployment (#118, 2026-10-27)
+
+Approved: all four ride the ram in crash foam and deploy after release. Lead secures breach; second covers and follows with backblast clearance. Commander starts protected in ram, then follows behind assaulters. Sniper exits to hull and establishes a real perch using L-hit thrusters/anchors; interior targets require an opening. Deployment is not instantaneous; preparations/damage can disrupt it. Ram is intended entry and return point. Withdrawal triggers and escape procedure remain next.
+
+### Commander rout and compromise deadline (#119, 2026-10-27)
+
+Approved rout replaces proposed orderly withdrawal triggers. Commander may flag contamination, abandon marines, detach the brig itself (not a separate shuttle), position and fire kinetic railgun slugs. Detach 1–3 actions from damage; position 1 action; 1–3 shots per turn. Maximum 8 turns to brig compromise, starting with break/detachment order and including setup; earlier intrusion remains possible.
+
+IFF/COMMS data provides plausible access, not analog-voice propagation or magic reach. Severing paths before a foothold can stop the countdown; installed control survives upstream disconnection. Player intervention changes access, escape and firing opportunities. Compromise ends commander control without undoing fired shots. Boarding-brig slugs cause local kinetic damage, not automatic incendiary destruction. Exact ship weapon damage and impact geometry remain separate encounter details.
