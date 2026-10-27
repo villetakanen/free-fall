@@ -234,7 +234,13 @@ The **brig itself rammed the Whisper**. If the commander has followed the assaul
 
 Resolve these as actions, with declarations and opportunities to intervene. A blocked release, disabled drive or obstructed firing line needs to be dealt with; spending the listed actions does not erase the obstacle. Each shot is a firing action, not a free interrupt.
 
-**Slugs, not firestorms.** This is a boarding brig. Hits can puncture hulls, wreck machinery, sever connections and vent compartments. Track the struck location and consequences. Repeated fire is dangerous; it does not automatically ignite the Whisper or destroy O17.
+The commander fires to strand the contamination. Target the Whisper’s engines and propellant systems first, then power and communications. Once those are disabled, turn the guns on the **contractors’ main vessel’s drives**. Anyone who could carry the contamination away gets left behind.
+
+Railgun slugs tear holes through hulls and whatever lies behind them. Establish the struck location: ruptured tanks lose propellant, severed feeds cut power, breached compartments vent. Damage follows the shot’s path; destroying O17 requires hitting its hardware.
+
+**Warn the crew before the brig fires on their vessel.** Its shipboard assistant reports: “Brig turning. Guns tracking our drive section.” Give the players time to act on that warning before resolving the shot. If the assistant’s connection is lost, convey the turn through an available sensor feed or direct observation.
+
+A silent wreck stranded this far out is effectively lost. At this setting’s propulsion limits, finding and reaching it costs more than anyone is likely to spend. The commander can report containment and run while O17 survives aboard. For the crew, working drives and communications are their way home.
 
 ### Eight turns at most
 
