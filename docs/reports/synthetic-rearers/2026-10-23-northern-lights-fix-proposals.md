@@ -598,3 +598,17 @@ Approved ordinary-adversary migration implemented. Chosen default: Reserve 2 per
 ### Independent fusion laboratory module (#126, 2026-10-27)
 
 Approved and implemented: large advanced lab module has a fusion toroid, shielding, cooling/heat rejection, multiple quantum processors and future FPGA-like controllers. Manifest legitimately declares equipment; active NHE is concealed. Supersedes earlier single-array/undeclared-hardware discrepancy. Independent supply survives disconnection from Whisper. Reactor control and computing distribution are separate; physical compute isolation can stop local processing without disabling reactor controls/cooling. Detailed shutdown procedure remains open. Aligned vessel, living-module encounter, preface, timeline and civilian knowledge.
+
+### No supplied shutdown route (#127, 2026-10-27)
+
+Approved correction supersedes #126’s computing-isolation outcome and the expectation of a detailed shutdown procedure. Independent fusion and substantial physical infrastructure remain. The original purge job is based on a false account of its target and is not practically achievable as briefed; physical entry does not grant a convenient shutdown route. Extraordinary player plans can still change outcomes through established access/effects. Removed the implied guaranteed compute cutoff from scenario and spec.
+
+### Physical storage recovery (#128, 2026-10-27)
+
+Approved and implemented: contract asks for physical persistent storage (disks or equivalent), not hard-line logs. Corrected synopsis, contract block, briefing and timeline. GM guidance distinguishes removing media from downloading information, complete recovery and disabling O17. Earlier log-extraction objective is superseded; unrelated crew records and marine software functions remain.
+
+### Witness orders and evacuation limits (#129, 2026-10-27)
+
+Approved and implemented: both contracts require witness elimination; O17 override now explicitly retains it. Players may refuse. Parent transport oxygen supports three extra people, perhaps four after jettisoning expendable mass and establishing a shorter fuel-feasible return. Cannot take six or up to nine survivors home on existing supplies. Vessel and civilian bargaining guidance disclose that constraint before evacuation commitments.
+
+Correction to #129: O17’s override does not repeat or underline witness elimination. It changes the QNA objective; the existing witness parameter remains in force without restatement. Removed the added witness lines from the handout; retained GM continuity guidance.

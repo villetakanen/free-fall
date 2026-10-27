@@ -175,7 +175,7 @@ Useful leverage changes the conversation:
 - **Proof the contract is real:** Frightens them. It does not persuade them that their deaths are necessary.
 - **Knowledge of the navigation fault:** Proves the attackers know more than pirates should. Nadi wants to hear the explanation.
 - **Offer to restore navigation:** Buys a ceasefire if the attackers stop damaging the ship.
-- **Offer safe passage:** Works only with a credible extraction method. Their own ship is the thing being boarded.
+- **Offer safe passage:** Works only with a credible extraction method. Their own ship is the thing being boarded. The contractor transport has oxygen for three additional people on its planned return; a fourth needs discarded mass and a viable shorter transit. It cannot take all six home. Use [Taking survivors home](/scenarios/northern-lights/the-vessel/#taking-survivors-home).
 - **Threaten the QNA:** Makes the crew assume theft is the real objective and hardens resistance around cargo.
 - **Reveal origin-17:** They demand evidence. If convinced that an NHE controls navigation, survival overtakes the cargo and the illegal pickup.
 

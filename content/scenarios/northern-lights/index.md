@@ -1,6 +1,6 @@
 ---
 title: "Northern Lights"
-synopsis: "A transport bound for the Jovian Trojans has gone silent to Luna and Belt traffic control. She is in deep space, still reachable by trajectory intercept — for the next 20 hours. Board the Njord's Whisper, extract the hard-line data logs on the Quantum Neural Array, and purge the unit. The crew is considered compromised. No witnesses."
+synopsis: "A transport bound for the Jovian Trojans has gone silent to Luna and Belt traffic control. She is in deep space, still reachable by trajectory intercept — for the next 20 hours. Board the Njord's Whisper, recover the Quantum Neural Array’s physical storage, and purge the unit. The crew is considered compromised. No witnesses."
 type: "Demo (one-shot)"
 system:
   variant: "FREE//FALL"
@@ -70,7 +70,7 @@ TIME CRITICAL: Tracking solution degrades in
 20 hours. After that, the Whisper is gone.
 
 OBJECTIVE: Board the vessel.
-- Extract hard-line data logs regarding the
+- Recover the physical storage of the
   "QNA" (Quantum Neural Array).
 - Purge the QNA unit. Total neutralization.
 

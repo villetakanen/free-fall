@@ -10,7 +10,7 @@ You know the job. You do not yet know which way aboard will work. Agree who goes
 
 ## The contract
 
-The *Njord’s Whisper* has gone dark on a run toward the Jovian Trojans. Your client wants three things: board her, recover the QNA’s hard-line logs, and purge the array.
+The *Njord’s Whisper* has gone dark on a run toward the Jovian Trojans. Your client wants three things: board her, recover the QNA’s physical storage, and purge the array.
 
 The money is in escrow. The signature says **PROTOCOL BLACK**. No name.
 

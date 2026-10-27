@@ -26,7 +26,7 @@ The living module is physically connected to the QNA housing compartment, called
 
 The twenty-centimetre gap is steppable from door to door, but too narrow to squeeze into from outside. Removing cargo holding arms does not create an entrance. With the contact rings intact, the way into the living module is through the Whisper's cargo airlock. Forcing another route means damaging the rings or breaching the module; it is not an alternative unobstructed EVA approach.
 
-The housing has **independent fusion power**. Its toroid and dedicated control hardware run without the Whisper’s supply. Reactor control and computing power distribution are separate systems. Physically isolating the computing supply can stop O17’s local processing while leaving reactor control and cooling running; reaching those internal systems requires entering the housing. Pulling the ship’s feed does not achieve that shutdown. The installation still needs its heat-rejection equipment.
+The housing has **independent fusion power**. Its toroid and dedicated control hardware run without the Whisper’s supply. The contract’s assumed QNA purge does not apply to this active NHE installation. Entering the housing provides physical access to machinery, not a practical shutdown procedure. Pulling the ship’s feed does not stop it. The installation still needs its heat-rejection equipment.
 
 ## Control and reach (GM)
 
@@ -157,7 +157,7 @@ The signature establishes that the directive verifies as THESEUS-signed. It does
 
 ## Let the crew decide
 
-The orders say to suspend the purge and protect Origin-17. They do not compel anyone to do so. That is true for the player who received the private handout and for everyone else.
+The orders suspend the QNA purge and protect Origin-17. They retain the original requirement to eliminate witnesses. Neither directive compels the players to comply. That is true for the player who received the private handout and for everyone else.
 
 The incoming threat follows the clock stage carried into this scene, not the verification result. Leave room for the affected player to speak while the crew responds to that approaching threat. They may describe the intrusion, display the directive, conceal what they experienced, refuse the new orders, or argue that the signatures settle the matter. Do not ask them to perform infection or keep the experience or designation secret. The handout itself stays private; their character can say whatever they choose. Complete honesty can be suspicious enough: “I'm still me. Look at the orders.”
 
@@ -212,12 +212,14 @@ Use [The deathtrap](/scenarios/northern-lights/preface/#the-deathtrap-gm). The h
 
 If the crew establishes a credible shutdown, resolve it honestly. Record which power feeds, processors and connections are disabled, and what systems remain operational; do not invent a secret backup merely to cancel success. Cutting this installation off does not automatically remove the navigation ANI already aboard the Whisper or effects already delivered to a contractor.
 
-If they recover knowledge, record what they obtained, its carrier and who knows about their exposure. Even a powered-down housing and successful extraction leave plausible NHE compromise. Normal authorities are expected to destroy suspected carriers before contact. Suspicion is not proof of actual infection; do not impose automatic possession, reinfection or loyalty changes to justify the policy.
+The contract requires physical persistent storage: disks or their equivalent, not a downloaded log export. It assumes a discrete QNA with removable storage. Here, removing some media does not establish that the crew has recovered the whole target’s persistent state or disabled O17. Assess what those components actually contain and what still operates.
+
+If they recover storage or copy information, record what they obtained, its carrier and who knows about their exposure. Even a powered-down housing and successful extraction leave plausible NHE compromise. Normal authorities are expected to destroy suspected carriers before contact. Suspicion is not proof of actual infection; do not impose automatic possession, reinfection or loyalty changes to justify the policy.
 
 The crew may bargain, hide the evidence, abandon the contract, attempt a private sale or pursue another plan. Identify the people, access, transport and information their plan needs, then resolve those obstacles. The job is a deathtrap; the outcome remains theirs to change.
 
 ## Remaining mechanical work
 
-The read, operative classification, separate device transmission, target TNs, counterplay and the player’s unchanged agency are established above. F11 still needs practical evidence and intervention details for physical access, power isolation and handling recovered knowledge. These support adjudicating player attempts and their consequences; they must not promise a clean contract-completion route.
+The read, operative classification, separate device transmission, target TNs, counterplay and the player’s unchanged agency are established above. Further intervention guidance should establish discoverable evidence and the consequences of handling recovered knowledge. The original job rests on a false account of the target; do not supply a practical shutdown route to make that job work. Adjudicate extraordinary player plans from established access and effects.
 
 Origin-17 can create fresh attack programs. A natural 1 still compromises the program used after resolution, including when the +15 bonus makes the roll succeed. That does not erase an already completed read or transmission, and it does not permanently disarm the intelligence. Resolve further attempts as actions with opportunities for the crew to respond; do not roll indefinitely until a predetermined outcome occurs.

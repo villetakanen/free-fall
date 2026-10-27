@@ -28,6 +28,14 @@ The transport gets the crew across interplanetary space and carries their equipm
 
 During insertion the transport stays off, outside the close point-defense engagement. Record its position and communications, not a substitute Attribute pool. If it is threatened, resolve access, orders, damaged systems and crew responses through the core rules. Boarding or damaging it does not drain one whole-ship health pool.
 
+## Taking survivors home
+
+The remaining oxygen supports **three additional people** on the planned return journey. A fourth may be possible if the crew jettisons expendable mass and the assistant calculates a shorter transit within the remaining fuel. Establish what they abandon and the revised flight plan before counting that fourth place.
+
+The transport cannot bring all six civilian survivors home, let alone as many as nine survivors across both boarding encounters. More people need another vessel, another destination or a materially changed supply situation. Getting them aboard does not create enough oxygen for the journey.
+
+Both contracts demand no witnesses. Rescue means refusing that order. Give the players the oxygen limit when they consider evacuation, while they can still act on it.
+
 ## Boarding shuttle — modified Dart
 
 A stripped-down, utilitarian Dart derivative. This is the craft Vector pilots behind the Whisper’s engine or drives through its hull. It uses the [vehicle subsystem](/core-rulebook/vehicles-and-exoskeletons/).

@@ -23,7 +23,7 @@ Protect Origin-17.
 Preserve the Quantum Neural Array hosting it.
 Prevent its destruction or seizure by hostile parties.
 
-The prior neutralization order is superseded.
+The prior QNA neutralization order is superseded.
 ```
 
 This directive arrived locally, through your companion's equipment. It is not a newly received reply to a confirmation request sent to Luna or Terra. Such an exchange would take time.
