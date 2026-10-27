@@ -27,7 +27,7 @@ All six can fight. Most would rather not die for the cargo — but the stevedore
 | Subject | Crew understanding |
 |---|---|
 | **The pickup** | A sealed, well-paid, undeclared cargo transfer arranged through the QNA's buyer. Illegal, but not unusual enough to justify a death sentence. |
-| **The QNA** | Legitimate manifest cargo bound for Jupiter orbit. The picked-up package was integrated into its shipping assembly under remote instructions. |
+| **The QNA** | Part of a declared advanced laboratory module with independent fusion power, bound for Jupiter orbit. The picked-up package was integrated into its shipping assembly under remote instructions. |
 | **Navigation** | Compromised after integration. The Whisper remains on her filed route but rejects diversion. Defensive attitude commands still work. |
 | **The silence** | Their own choice. Reporting the fault also reports the undeclared rendezvous and invites seizure. |
 | **The attackers** | Pirates, corporate recovery, or deniable law enforcement. If shown, the PROTOCOL BLACK contract proves someone powerful ordered their deaths; it is not authority they recognize. |
@@ -52,14 +52,17 @@ Do not play them as a disciplined military fireteam. They know one another, know
 
 ## Running civilian opposition
 
-Each crew member is an individual actor. Use the same compact profile for what matters in a fight:
+Use [The Other Side](/core-rulebook/the-other-side/) for all six: **Reserve 2 each after Binding**, **5d20**, and **three empty Harm slots**. They declare before the players. Track each person’s Reserve, Harm and equipment separately; Rhea’s rank does not give her boss declaration order.
 
-- **Action Pool:** 5d20
-- **Harm Slots:** 3
-- **Skills:** The listed professional actions require no Attribute spend or Harm.
-- **Other actions:** Keep them within ordinary human competence. Do not build hidden PC sheets to make a civilian unexpectedly superhuman.
+Spend 1 Reserve to enable a feasible specialized action without a Skill or bound capability, or to negate a level of Harm after armor. At zero, Skills and bound gear still work. Use normal Harm, Impact and Ousting rules.
 
-The profiles omit Body, Mind, Ghost, and Binding arithmetic because those resources do not improve this encounter at the table. Their gear, skills, position, and willingness to continue are the relevant limits.
+| Crew | Actual Binding | Total bound |
+|---|---|---:|
+| Rhea, Kaito, Nadi — each | Workhorse suit 2; Light Pistol 1 | 3 |
+| Jo | Workhorse suit 2; Light Pistol 1; Pneumatic Ram 2 | 5 |
+| Ana, Milo — each | Void Marine suit 4; attached Kinetic Carbine 0 | 4 |
+
+Each Void Marine offsets its attached carbine’s 1-point cost with Load Bearing (5 Any). Dropping that carbine returns no Reserve. Dropping a bound pistol returns 1; Jo’s ram returns 2. Removing a suit returns its actual Binding, but takes removal and loses its protection. If security keeps a carbine after removing the suit, binding it without the allowance costs 1. Spent Reserve stays spent. Commanding the Whisper adds no pilot Binding.
 
 ## Pilots
 
@@ -67,10 +70,11 @@ Rhea and Kaito remain on the control deck until the ship is breached or one must
 
 ```yaml
 PILOTS (2)
+Reserve: 2 each after Binding
 Action Pool: 5d20 each
 Harm Slots: 3 each
 Armor: EVA Suit (Workhorse), AV 1
-Weapon: Light Pistol, DV 2 Physical, Close/Medium range
+Weapon: Light Pistol, DV 2 Physical, Close/Medium range, Impact 1
 Skills:
   - Rhea: Vehicle Handling
   - Kaito: Sensors & Countermeasures
@@ -94,6 +98,7 @@ Ana and Milo are the ship's door, and they know the hull is the worst place to b
 
 ```yaml
 HULL SECURITY (2)
+Reserve: 2 each after Binding
 Action Pool: 5d20 each
 Harm Slots: 3 each
 Armor: Void Marine, AV 2
@@ -124,11 +129,12 @@ Jo and Nadi begin around the dock and the cargo modules. They turn a working shi
 
 ```yaml
 STEVEDORES (2)
+Reserve: 2 each after Binding
 Action Pool: 5d20 each
 Harm Slots: 3 each
 Armor: EVA Suit (Workhorse), AV 1
 Weapons:
-  - Light Pistol, DV 2 Physical, Close/Medium range
+  - Light Pistol, DV 2 Physical, Close/Medium range, Impact 1
   - Pneumatic Ram, DV 3 Physical, Close range, High Impact (Jo)
 Skills:
   - Jo: Breaching
@@ -137,11 +143,13 @@ Skills:
 
 **Priorities:**
 
-1. Isolate damaged compartments and preserve atmosphere.
+1. Use sealing foam, membranes and patches to isolate damage and preserve air pockets.
 2. Move cargo across the most likely entry route.
 3. Protect the QNA because it is the most valuable thing aboard.
-4. Pull wounded crew away from the breach.
+4. Help people suit up and pull casualties away from the breach.
 5. Make the crew fight for every metre; break only when the ship is plainly lost.
+
+Damage control takes access, materials and work. Record completed seals: the brig’s later detachment vents only spaces still connected to its breach. A secured air pocket holds until its seal is damaged.
 
 Nadi handles Field Systems Tech. Jo handles Breaching and knows the pneumatic ram well enough to make a cargo hatch, suit, or person regret being in front of it.
 

@@ -34,10 +34,12 @@ Interior bulkheads can cut Vector’s optical link; establish whether RF still r
 
 ## Opening by entry
 
-**Ram — sleeping or control deck.** The prow came through where the assistant aimed it, into people rather than cargo. A rammed compartment is a killing floor: crash foam, a wall where no wall should be, hard vacuum arriving all at once. Its occupants are dead or dying in the first exchange — treat the space as cleared and *record who was in it*. If a witness serves the table, leave exactly one alive, maimed and tangled in the foam; never more. Those riding the ram arrive already at the top of the ladder, because they chose it. Anyone approaching separately still has to reach that entry. The rest of the scene is the survivors and the walk to the dock.
+**Ram — sleeping or control deck.** The prow tears into the chosen compartment. Resolve the impact against the people and equipment actually there: direct strikes, collapsing structure, debris and any open breach. Warning, distance from the impact and protection matter. Apply the normal Harm rules where survival is uncertain. Record casualties and damage; the ram does not automatically clear the room.
 
-- A **control-deck** ram guts the command crew — no ATTACK/DEFER authority, doors gone dumb, the pilots with them — but it puts the crew at the *stern* end, farthest from the dock, and every compartment between them and the modules still holds someone.
-- A **sleeping** ram lands them amidships in the airlock hub, the ship split around them: pilots aft, stevedores forward.
+Survivors may be trapped, injured or still able to fight. Describe who the crew can reach and what blocks access so they can attempt rescue. Those riding the ram arrive at its actual breach; anyone approaching separately must still reach it.
+
+- A **control-deck** ram puts the crew at the *stern* end, farthest from the dock. Establish which pilots and controls the impact reaches. Destroyed controls lose their functions; surviving pilots can use whatever systems and connections remain. Carry their existing ATTACK/DEFER decisions forward unless the impact actually interrupts them.
+- A **sleeping** ram lands amidships in the airlock hub: pilots aft, stevedores forward, unless earlier events moved them.
 
 **Dock — the two airlocks (Ghost, a cold shuttle, a talked-open lock).** They came in the way the crew's own people do, through a sleeping-module airlock, intact and unbled. Now the fork that defines the scene: **aft** to the control deck for the pilots, the comms, the doors, and the point-defense authority — or **forward**, through hygiene toward the dock and the prize. Either way is a fight through people. Let them choose their war.
 
@@ -51,7 +53,7 @@ Whatever the entry, the fight climbs the same four rungs. Let the table decide h
 
 **Guns.** Corridor work in freefall — run it in **Bullet Time**. The defenders give ground compartment by compartment and fall back toward the **control deck**, the last room worth dying in the doorway of. Use the geometry: a hatch is a fatal funnel, a drifting cargo pallet is cover that keeps moving, a man cut down sags aft into someone else's line. :term[Challenging] TN 11 for a clean professional action; :term[Hard] TN 16 from a bad angle, in a vented space, or against a braced defender.
 
-**Explosives.** Blow a hatch, ride a breaching charge or swing Jo’s pneumatic ram. Opening the hull to vacuum vents the Whisper’s connected interior: its ordinary doors cannot hold pressure. Anyone without vacuum protection is exposed, including people the crew meant to keep alive. The cargo modules retain air behind their own intact pressure enclosures across the vacuum gap; venting the hauler does not destroy the QNA.
+**Explosives.** Blow a hatch, ride a breaching charge or swing Jo’s pneumatic ram. Opening the hull to vacuum vents the Whisper’s connected interior: its ordinary doors cannot hold pressure, but completed makeshift seals can protect isolated air pockets. Anyone without vacuum protection is exposed, including people the crew meant to keep alive. The cargo modules retain air behind their own intact pressure enclosures across the vacuum gap; venting the hauler does not destroy the QNA.
 
 **Ends.** The contract says no witnesses. Some of these people will surrender; the clause asks the crew to kill them anyway. That is a *decision at the table* — a player, a gun, and a spacer who has dropped theirs — never a die roll, never an automatic result of combat, never yours to narrate for them. Whatever they choose, write it down. It walks back aboard in Scene 4, and again with the second crew.
 

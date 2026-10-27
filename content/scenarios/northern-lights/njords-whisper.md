@@ -48,7 +48,9 @@ The hauler crew’s living quarters sit **north of the cockpit and south of the 
 
 The Whisper has no internal pressure hatches. Ordinary doors divide the rooms but cannot contain decompression: an open hull breach vents the connected interior. Exterior airlocks still serve their normal purpose.
 
-The CSA brig seals around its breach while lodged. Detachment tears that seal open. Anyone left inside needs vacuum protection or an independent sealed enclosure; closing a room door will not save their air. If earlier damage has already vented the ship, retain that state.
+Sealing foam, membranes, tape and patches can isolate damaged sections and preserve air pockets. Establish the materials, access and work needed; a closed ordinary door alone is not a pressure seal. The stevedores know this work. Record which pockets they secure and who gets suited before the air goes.
+
+The CSA brig seals around its breach while lodged. Detachment tears that seal open. Anyone left inside needs vacuum protection or an independent sealed enclosure; closing a room door will not save their air. Prepared seals protect isolated pockets unless damaged. Detachment vents only spaces still connected to the breach. If earlier damage has already vented the ship, retain that state.
 
 The cargo modules have their own pressure enclosures, separated from the ship by the vacuum gap described below. They retain air only while their own seals and hulls remain intact.
 
@@ -56,4 +58,8 @@ The cargo modules have their own pressure enclosures, separated from the ship by
 
 The cargo entry leads to the living module, whose systems O17 has overtaken. The physically connected QNA housing compartment lies farther in; entry there is for hands-on work on the array. The living-module encounter requires no such entry. The manifest drawing should distinguish both compartments and their physical connection without revealing the hidden takeover.
 
-**GM: manifest versus reality.** The cargo documentation names a QNA. The housing actually supports an active NHE with multiple QNAs and other processing hardware. Keep the player’s manifest schematic a statement of what was declared, not an omniscient inventory. Physical inspection and access to maintenance records can expose that mismatch.
+The manifest declares a large, advanced laboratory module: a fusion toroid, shielding, cooling and heat-rejection equipment, multiple quantum processors and banks of reconfigurable logic hardware. Its physically connected living module houses the intended staff. The installation has room for its machinery; it is not a single portable array.
+
+**Independent power.** The toroid powers the installation without the Whisper’s supply. Dedicated processors and reconfigurable controllers operate the reactor. Reactor control and computing power distribution are separate: isolating O17’s computing supply need not disable reactor control or cooling. Disconnecting the hauler’s feed does not shut the module down. Heat rejection remains a physical requirement.
+
+**GM: manifest versus reality.** The advanced laboratory equipment is declared. The concealed fact is the active NHE inhabiting it. The player’s manifest schematic can show the reactor, computing installation and connected accommodation without revealing O17. Evidence of the intelligence comes from its activity, records or interaction, not merely from finding more processors than the paperwork admits.

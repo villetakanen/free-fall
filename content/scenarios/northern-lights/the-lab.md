@@ -16,15 +16,17 @@ Run the intrusion and the final approach alongside one another. Give the crew a 
 
 ## Crossing into the cargo
 
-The cargo airlock's outer door opens onto the living module's pressure door, twenty centimetres away. The contact rings almost meet. They are incompatible: there is no sealed passage between them. Step across the narrow vacuum gap, work the module's entry, and bring the others through. Inside: accommodation for four to six scientists, engineers, and mechanics. Everything is new. Mattresses sealed in plastic. Galley fittings taped shut. A manufacturer's inspection tag hanging from a restraint. This was somebody's future workplace, shipped to a real Jovian laboratory under a false manifest that makes perfect sense.
+The cargo airlock's outer door opens onto the living module's pressure door, twenty centimetres away. The contact rings almost meet. They are incompatible: there is no sealed passage between them. Step across the narrow vacuum gap, work the module's entry, and bring the others through. Inside: accommodation for four to six scientists, engineers, and mechanics. Everything is new. Mattresses sealed in plastic. Galley fittings taped shut. A manufacturer's inspection tag hanging from a restraint. This was somebody's future workplace, shipped to a real Jovian laboratory under a manifest that declares the equipment and conceals its occupant.
 
 The lights come on as you enter. Ventilation follows, then heating. A wall display welcomes the incoming staff and asks you to complete commissioning. Nothing has to look corrupted. The discomfort is how attentively the module receives you: a light follows your movement, a terminal wakes beside your hand, the next door unlocks before you reach it. Origin-17 controls this entire assembly. The quarters are waking around their visitors; the intelligence operating them is already awake.
 
 ## The route through (GM)
 
-The living module is physically connected to the QNA housing compartment, called the “lab” in the shipping material. O17 is attached to the housing network and PSU and has overtaken the living module’s systems. The crew encounters it in the living space. They need go farther only to physically access, isolate, dismantle or move the QNA; the read, conversation, orders and support offer can all occur here. Do not infer extra laboratory instruments from the shipping label.
+The living module is physically connected to the QNA housing compartment, called the “lab” in the shipping material. O17 is attached to the housing network and PSU and has overtaken the living module’s systems. The crew encounters it in the living space. They need go farther only to physically access, isolate, dismantle or move the QNA; the read, conversation, orders and support offer can all occur here. The manifest declares a large advanced lab module, including its fusion toroid, shielding, cooling, multiple quantum processors and reconfigurable logic hardware.
 
 The twenty-centimetre gap is steppable from door to door, but too narrow to squeeze into from outside. Removing cargo holding arms does not create an entrance. With the contact rings intact, the way into the living module is through the Whisper's cargo airlock. Forcing another route means damaging the rings or breaching the module; it is not an alternative unobstructed EVA approach.
+
+The housing has **independent fusion power**. Its toroid and dedicated control hardware run without the Whisper’s supply. Reactor control and computing power distribution are separate systems. Physically isolating the computing supply can stop O17’s local processing while leaving reactor control and cooling running; reaching those internal systems requires entering the housing. Pulling the ship’s feed does not achieve that shutdown. The installation still needs its heat-rejection equipment.
 
 ## Control and reach (GM)
 
@@ -206,7 +208,7 @@ Record who was read and elevated, what Origin-17 learned, who observed the class
 
 ## If they pursue the original job
 
-Use [The deathtrap](/scenarios/northern-lights/preface/#the-deathtrap-gm). The housing contains multiple QNAs and other processing equipment supporting an active NHE. The singular array in the briefing is not a complete inventory. Make that discrepancy discoverable through physical inspection, maintenance information or conversation before treating removal of one component as a decisive purge.
+Use [The deathtrap](/scenarios/northern-lights/preface/#the-deathtrap-gm). The housing contains multiple QNAs and other processing equipment supporting an active NHE. The briefing reduces a declared advanced laboratory installation to a QNA target. Its manifest already lists substantial computing and power hardware; what it omits is the active intelligence. Inspection, records and conversation can establish what O17 occupies before anyone treats removal of one component as a decisive purge.
 
 If the crew establishes a credible shutdown, resolve it honestly. Record which power feeds, processors and connections are disabled, and what systems remain operational; do not invent a secret backup merely to cancel success. Cutting this installation off does not automatically remove the navigation ANI already aboard the Whisper or effects already delivered to a contractor.
 

@@ -582,3 +582,19 @@ Approved and implemented: brig targets Whisper shipboard living quarters north o
 ### Whisper pressure loss (#122, 2026-10-27)
 
 Approved: utilitarian Whisper has no internal pressure hatches. Supersedes hatch-sealing preparations above. Lodged brig seals the breach; detachment tears the seal open and vents the connected interior, with warning as release begins. Ordinary doors do not isolate pressure loss. Independent cargo enclosures across the vacuum gap retain air while intact. Corrected earlier first-boarding room-local decompression claims and approach guidance; prior damage/venting persists.
+
+### Ram casualties and rescue (#123, 2026-10-27)
+
+Approved and implemented: removed automatic dead/dying occupants and exactly-one-survivor limit from Onboarding. Resolve impact using actual positions, warning, protection and normal Harm where uncertain. Survivors may need rescue or remain dangerous; identify access and obstacles. Control-deck impacts affect actual pilots and systems rather than automatically deleting all command authority.
+
+### Improvised pressure isolation (#124, 2026-10-27)
+
+Approved and implemented: no pressure doors does not mean no isolation. Stevedores use foam, membranes, tape and patches to secure air pockets, help people suit up and recover casualties. Work requires actual materials and access. Completed seals survive brig detachment unless damaged; only connected spaces vent. Clarified vessel, crew, Onboarding and marine references.
+
+### Civilian Reserves (#125, 2026-10-27)
+
+Approved ordinary-adversary migration implemented. Chosen default: Reserve 2 per civilian after Binding, five dice and three Harm slots; all declare before players. Catalog-checked commitments: Rhea/Kaito/Nadi 3, Jo 5, Ana/Milo 4 with carbines covered by Void Marine Load Bearing. Recorded release/refund rules and allowance loss, retained individual Skills, added missing pistol Impact 1. No hidden B/M/G or ship pilot cost.
+
+### Independent fusion laboratory module (#126, 2026-10-27)
+
+Approved and implemented: large advanced lab module has a fusion toroid, shielding, cooling/heat rejection, multiple quantum processors and future FPGA-like controllers. Manifest legitimately declares equipment; active NHE is concealed. Supersedes earlier single-array/undeclared-hardware discrepancy. Independent supply survives disconnection from Whisper. Reactor control and computing distribution are separate; physical compute isolation can stop local processing without disabling reactor controls/cooling. Detailed shutdown procedure remains open. Aligned vessel, living-module encounter, preface, timeline and civilian knowledge.
