@@ -444,3 +444,67 @@ The manifest declares a large advanced laboratory module, including fusion toroi
 Original contract objective is physical QNA persistent-storage recovery (disks or equivalent), not hard-line log extraction. This supersedes earlier log-objective wording. Player-facing contract, briefing and synopsis use physical storage; timeline agrees. The client assumes a discrete array with removable media. Recovering some media from the actual NHE installation guarantees neither complete persistent-state recovery nor shutdown. Legitimate separate log-reading activities remain unchanged.
 
 The original witness-elimination parameter remains unchanged: O17’s override suspends QNA neutralization only. The override handout does not repeat or emphasize the witness order. GM guidance retains that continuity, and player compliance remains voluntary. Contractor transport remaining oxygen supports three additional people on planned return. A fourth is conditional on jettisoning expendable mass and a revised shorter transit within remaining fuel. Six civilian or up to nine total survivors cannot all return on existing supplies; further rescue requires changed transport, destination or supplies. Reveal limits when evacuation is considered.
+
+Northern Lights live prose uses named links rather than legacy appendix codes for timeline, intercept and vessel references. Schematics are outside the current refinement pass by user decision (2026-10-27); their creation is not a gate for completing this pass.
+
+O17 legitimately administers the gig using THESEUS master credentials; device intrusion is delivery, not forged contract authority. It certifies revised-objective fulfilment with the client key and releases escrow. Operative designation is permanent. GM epilogue page closes a Luna return with two fully augmented THESEUS cyborgs asking the designated character to follow. End at the request: no played encounter, compelled compliance or automatic return irrespective of player outcomes. Page belongs to GM Materials and is linked from encounter closure.
+
+Northern Lights pregens distinguish Current Attributes from the Action Pool. All five explicitly list starting Action Pool 5d20 and three initially empty Harm slots; configuration tables retain Maximum Current Attributes terminology. This label clarification changes no Attribute values or equipment.
+
+Living-module and second-boarding introductions link to implemented intervention, deployment and rout guidance. They do not promise a practical purge/shutdown procedure or an unneeded whole-brig profile. Further intrusion guidance is active GM instruction, not a remaining-work notice. This editorial correction does not assert overall scenario readiness.
+
+Pregen draft-note review proceeds one approved item at a time. Vector’s damaged-flight note is player-facing guidance about difficult maneuvers and establishing a control link, without predicting encounter outcomes. Other draft notes remain pending independent review.
+
+Vector’s Tiger reminder retains only player-known mobility/recovery and single-use plasma-lance backblast precautions. Stats remain in the loadout; cargo/composure foreshadowing is removed.
+
+Removed Vector’s draft claim that O17 forges orders and renders the contractor transport assistant untrustworthy. No compromise of that assistant follows automatically from the mission amendment; player conclusions are not prescribed.
+
+Vector’s final draft return-trip bullet is removed: no CSA spoiler or mandatory manual-return claim. Shared fuel/return constraints belong in vessel briefing, not a replacement character note. Vector retains the two approved player-facing role/equipment reminders.
+
+Vantage’s first draft note is player-facing concealed-overwatch guidance. A dampened Wraith on the contractor hull is not automatically resolved because the vessel is detected; firing, transmissions or exposed movement can disclose the observer. Remaining Vantage notes await separate review.
+
+Vantage’s duplicate GM note linking to the later boarding encounter is removed from his character page; movement and sightline continuity remain in starting positions and the encounter itself.
+
+Vantage’s draft railgun-versus-CSA prompt is removed from the character page, eliminating future-opposition disclosure and the incorrect shuttle label without restricting player tactics.
+
+Vantage’s final scenario note conveys expensive kit and novelty-seeking without identifying future opponents. His reviewed scenario notes are player-facing; the GM-warning label is removed.
+
+Root’s Wrench reminder names no future adversaries; it retains the 5 cm reach and shielding-dependent access requirement as player-known equipment guidance.
+
+Root’s vacuum note states equipment capability and exposure limits without prescribing emotions or instructing the GM to stage an encounter.
+
+Root’s character notes do not disclose the later CNS intrusion or guarantee exact knowledge of it. Investigation follows actual evidence and capabilities.
+
+Root’s design-thesis/O17 commentary is removed from the pregen. Reviewed scenario notes contain only player-facing equipment guidance.
+
+Stitch’s first scenario note describes the Havoc’s appearance and empty mounts without revealing future opponents or prescribing their response.
+
+Stitch’s duplicate AV commentary is removed; her sheet retains armor values without prescribing enemy intimidation or revealing later opposition.
+
+Stitch’s vacuum-medicine commentary is removed without replacement or extra treatment procedure; use normal treatment rules.
+
+Stitch retains the established medic build. The draft Clocksmith (AI) variant suggestion and its encounter spoiler are removed completely from her page.
+
+Stitch is not reserved for a fourth player; removed draft staffing prescription from her page. Character selection remains with players at supported player counts.
+
+Sable’s service-background note establishes CSA familiarity without revealing the later boarding force or guaranteeing advance knowledge of its actions.
+
+Removed Sable’s forged-orders/assistant-compromise draft claim and prescribed vindication of distrust, matching Vector’s correction.
+
+Sable’s Infiltration reminder retains her Skill in either suit while respecting equipment and route constraints; GM staging language is removed.
+
+Stitch’s first hook retains starting characterization without promising that the scenario proves her distrust correct or revealing the CSA encounter.
+
+GM brief and intrusion procedure explicitly exclude unaugmented Stitch from O17 personal/CNS attacks: no attack vector exists into her. External equipment remains separately targetable through actual access, without granting CNS access. Sable’s notebook hook references operators she trusted rather than comparing them to the players.
+
+Sable’s final hook retains history and unease without the GM instruction to ask her why; the player supplies her motivation.
+
+Sable’s introduction describes her equipment preference without claiming she avoids all electronics or has EMP-immune gear; her actual loadout remains unchanged.
+
+Removed Sable’s class-makes-her-a-ghost paragraph. Skills supply action prerequisites; character prose must not turn them into automatic success or supernatural capability.
+
+Vector’s introduction distinguishes assistant-managed transit from her shuttle maneuvering, boarding and recovery role, without implying inevitable assistant compromise or manual piloting of the transport.
+
+Root’s introduction describes conditional vacuum capability and personal beliefs without predicting a hull breach or other scenario events.
+
+Stitch’s Human Systems reminder describes attempts using improvised means, without GM build commentary, advice to equip other characters or changes to her loadout.

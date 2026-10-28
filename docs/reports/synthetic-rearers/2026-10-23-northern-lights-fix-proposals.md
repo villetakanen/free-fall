@@ -195,6 +195,8 @@ Use the established term **Current Attributes**, distinguishing it from **Maximu
 
 ### F16 — A schematic that supports decisions
 
+**Out of scope for this refinement pass — user decision, 2026-10-27.** Retained below as historical scope, not a completion requirement.
+
 **Scope:** `njords-whisper.md`, scenario assets, and links from boarding/lab/confrontation scenes. Owner: scenario spec; follow `DESIGN.md`.
 
 Provide a compact compartment schematic with forward/aft, entry points, hatches, pressure boundaries, the lab modules and narrow gap, and tactically relevant sightlines. Include an equivalent text description. Resolve geometry from scene prose before drawing; do not invent contradictory rooms for visual convenience.
@@ -612,3 +614,131 @@ Approved and implemented: contract asks for physical persistent storage (disks o
 Approved and implemented: both contracts require witness elimination; O17 override now explicitly retains it. Players may refuse. Parent transport oxygen supports three extra people, perhaps four after jettisoning expendable mass and establishing a shorter fuel-feasible return. Cannot take six or up to nine survivors home on existing supplies. Vessel and civilian bargaining guidance disclose that constraint before evacuation commitments.
 
 Correction to #129: O17’s override does not repeat or underline witness elimination. It changes the QNA objective; the existing witness parameter remains in force without restatement. Removed the added witness lines from the handout; retained GM continuity guidance.
+
+### Named references and scope (#130, 2026-10-27)
+
+Replaced remaining authored A.01/A.02/B.01 references in preface, Contact and timeline with direct links to The Story So Far, The Intercept and The Vessel. F14 implemented. User excludes schematics from this pass; F16 is no longer a pending completion requirement.
+
+### Contract authority and Luna epilogue (#131, 2026-10-27)
+
+Approved and implemented: O17 has THESEUS master keys and acts as account administrator, amending the gig and certifying fulfilment/releasing escrow with client key. Intrusion is delivery, not illicit mission authority. Designation is permanent. Conditional Luna epilogue: payment cleared, two fully augmented THESEUS cyborgs ask the designated character to follow; cut there. Not played, no forced compliance. Added GM epilogue and manifest/encounter links.
+
+### Pregen resource labels (#132, 2026-10-27)
+
+Approved and implemented: renamed Current Pool to Current Attributes on four sheets; Operator retains its configuration table of Maximum Current Attributes. All five now show Action Pool 5d20 and three initially empty Harm slots. Numerical stats and loadouts unchanged.
+
+### Obsolete draft notices (#133, 2026-10-27)
+
+Approved and implemented: replaced living-module and Second Boarding draft-work notices with links to existing original-job, marine deployment and rout procedures. Removed Remaining mechanical work heading and obsolete authoring reminder; retained fresh-program and action-opportunity guidance under Further intrusions. No overall readiness claim added.
+
+### Vector draft note 1 (#134, 2026-10-27)
+
+Approved and implemented: replaced Nominal/degraded bullet with player-facing damaged-craft and difficult-approach guidance, requiring a control link before taking over. Remaining In this scenario bullets are draft material under individual review, not newly endorsed scenario facts.
+
+### Vector draft note 2 (2026-10-27)
+
+Approved and implemented: Tiger note now gives grappler/no-thruster recovery and single-use lance/backblast precautions. Removed repeated statistics and cargo-composure spoiler. Remaining notes still await individual review.
+
+### Vector draft note 3 (#136, 2026-10-27)
+
+Approved and removed: After the QNA bullet, which falsely described forged orders and presumed the contractor transport assistant untrustworthy. No replacement needed. Other characters’ draft claims remain pending individual review.
+
+### Vector draft note 4 (2026-10-27)
+
+Approved and removed: return-trip bullet leaked CSA opposition and asserted mandatory manual flight. Proposed generic return-planning replacement rejected as shared vessel briefing rather than character-specific starting guidance. Vector In this scenario review complete; other four character sections remain pending.
+
+### Vantage draft note 1 (#137, 2026-10-27)
+
+Approved and implemented: retained credible concealed overwatch on contractor hull in dampened Wraith, rewrote Cool shot framing for the player. Detecting ship does not automatically resolve observer or give point defenses a target. Firing/transmission/exposed movement may reveal position. Other notes remain draft pending review.
+
+### Vantage draft note 2 (2026-10-27)
+
+Approved and removed: GM-facing later-overwatch note and Second Boarding spoiler link. Starting-position guidance and the boarding scene already preserve actual location, movement and sightlines.
+
+### Vantage draft note 3 (2026-10-27)
+
+Approved and removed: railgun-versus-CSA breaching-shuttle prompt, which spoiled the later arrival, mislabeled the brig and instructed GM staging. No replacement or restriction on player tactics.
+
+### Vantage draft note 4 (2026-10-27)
+
+Approved replacement: “You bought the best kit before your first contract. You’re still collecting firsts.” Removed CSA gear comparison and now-obsolete GM-only warning. Vantage scenario-note review complete; his privileged adventure-seeking stance remains implicit.
+
+### Root draft note 1 (2026-10-27)
+
+Approved and implemented player-facing Wrench reminder: electronics within 5 cm, shielding-dependent access. Removed future marine/IFF target disclosure. Remaining Root notes await independent review.
+
+### Root draft note 2 (2026-10-28)
+
+Approved and implemented: vacuum reminder states weave/oxygenator capability and exposure/return constraint. Removed prescribed fearlessness and GM instruction to stage a showcase scene.
+
+### Root draft note 3 (2026-10-28)
+
+Approved and removed: QNA intrusion spoiler and guaranteed exact understanding of the event. Root’s expertise informs investigation during play, not automatic knowledge from character notes.
+
+### Root draft note 4 (2026-10-28)
+
+Approved and removed: design-thesis commentary explaining Attribute choices and disclosing O17. Root scenario-note review complete; only approved player-facing equipment reminders remain.
+
+### Stitch draft note 1 (2026-10-28)
+
+Approved and implemented: Havoc appearance versus mostly empty mounts, expressed as player-known equipment context. Removed CSA arrival spoiler, automatic enemy reaction and misleading equipment superiority claims.
+
+### Stitch draft note 2 (2026-10-28)
+
+Approved and removed: duplicate AV 2 commentary that spoiled the marines and prescribed intimidation as her defense. Armor remains on the sheet; previous approved note covers appearance without guaranteed reactions.
+
+### Stitch draft note 3 (2026-10-28)
+
+Approved and removed: vacuum-medicine bullet. Proposed replacement rejected as unnecessary commentary; normal treatment rules already handle the action. No separate seal-treatment roll introduced.
+
+### Stitch draft note 4 (2026-10-28)
+
+User explicitly rejected and removed entire Clocksmith (AI) alternate-build suggestion. No such variant is part of this pregen; retained established medic build. Removed accompanying intelligence spoiler and exclusive-conversation claim.
+
+### Stitch draft note 5 (2026-10-28)
+
+Approved and removed: staffing note reserving Stitch for fourth player and directing three-player groups to omit her. Players may choose her at any supported player count. Stitch scenario-note review complete; hooks remain separate material.
+
+### Sable draft note 1 (2026-10-28)
+
+Approved and implemented: player-facing CSA service background and familiarity with drills/equipment/orders. Removed future boarding-team spoiler and guaranteed prediction of enemy actions.
+
+### Sable draft note 2 (2026-10-28)
+
+Approved and removed: machines-betray-everyone commentary falsely calling the authorized orders forged, assuming assistant compromise and declaring Sable’s distrust correct. No replacement.
+
+### Sable draft note 3 (2026-10-28)
+
+Approved and implemented: retained Infiltration in either suit, subject to equipment and available route. Removed GM theatrics. All five In this scenario sections have now received the individual approved-note pass; hooks and other page prose remain separate review scope.
+
+### Stitch hook 1 (2026-10-28)
+
+Approved and implemented: retain oldest-hand, unaugmented-body and distrust characterization. Removed promised vindication during the job and future CSA comparison.
+
+### Stitch intrusion exclusion and Sable notebook hook (2026-10-28)
+
+User explicitly requires GM brief to state O17 has no attack vector into Stitch. Added in preface and intrusion procedure: unaugmented, no CNS read/takeover, no attack die allocated to her; external equipment does not bridge to her mind. Approved Sable hook now says operators she trusted instead of better operators than the table.
+
+### Sable final hook (2026-10-28)
+
+Approved and removed the GM instruction “Ask her why.” Retained her prior-service history and unease about the contract; motivation belongs to the player.
+
+### Sable equipment preference (2026-10-28)
+
+Approved and implemented: replaced claims of avoiding electronics and kit working through EMP with a preference for understandable, maintainable equipment and distrust despite using electronics. Preserved service history; no immunity or loadout change.
+
+### Sable automatic-stealth claim (2026-10-28)
+
+Approved and removed the class-makes-her-a-ghost paragraph. User clarified this misunderstands Skills: Infiltration supplies the specialized-action prerequisite, not automatic stealth, invisibility or success. No replacement needed alongside retained Skill reminder.
+
+### Vector introduction (2026-10-28)
+
+Approved and implemented: assistant handles long transit; Vector handles close maneuvering, boarding runs and shuttle recovery. Removed main-ship manual-flight premise and expected assistant distrust, respecting transport commandeering versus shuttle piloting.
+
+### Root introduction predictions (2026-10-28)
+
+Approved and removed the predicted hull breach and promise that this job tests Root’s back-door theory. Retained vacuum adaptations as conditional capability and the character’s belief about systems.
+
+### Stitch Human Systems reminder (2026-10-28)
+
+Approved and implemented: shortened No trauma kit author commentary to a player-facing reminder that Human Systems permits attempts at field medicine, trauma care and biological repair using improvised means. Removed advice to equip other characters; loadout unchanged.

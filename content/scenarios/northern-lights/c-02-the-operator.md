@@ -18,6 +18,8 @@ On a boarding he takes the outside — signature-dampened, mag-locked to a hull 
 
 - **Class:** The Operator (Skill: Deadeye)
 - **Initial Attributes:** Body 12, Mind 6, Ghost 8
+- **Action Pool:** 5d20
+- **Harm slots:** 3, initially empty
 - **Installed augmentation:** Neural Link — the shared interface for the Wraith or Combat Deck. *Binds Ghost 3; Load Bearing (Mind 8, software/systems accessed through the link only).*
 - **Citizenship:** EU Full Citizen, Class A. *Binds Ghost 1; see below.*
 - **Owned equipment — choose a configuration:**
@@ -65,12 +67,8 @@ Either position can use your Wraith and chosen weapon; position does not automat
 
 ## In this scenario
 
-*GM guidance — contains future scene information.*
-
-- Cool shot #1: covering the boarding party's crossing from the crew's own hull — in a dampened Wraith, an overwatch position nobody on the Whisper can resolve.
-- External overwatch may become useful again later. Carry Vantage’s actual location and sightline into the next threat; if he moved inside, reaching a new perch takes movement and a viable route. The GM opportunity is in [The Second Boarding](/scenarios/northern-lights/the-second-boarding/#spend-the-warning).
-- A rail gun answer to a CSA breaching shuttle is exactly the kind of loud, committed, gloriously stupid the preface endorses. Let them.
-- The mirror, inverted: the CSA out-equips the crew — *issued, one grade better* — except for Vantage, whose showroom kit out-equips the marines. The one line item on this crew the CSA's doctrine didn't price in is a tourist.
+- Your dampened Wraith lets you cover the crossing concealed against your own vessel’s hull. Detecting the vessel does not reveal your position to the Whisper or its point defenses. Firing, transmitting or moving into an exposed sensor view may give you away.
+- You bought the best kit before your first contract. You’re still collecting firsts.
 
 ## Hooks (draft)
 

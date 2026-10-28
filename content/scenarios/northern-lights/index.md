@@ -26,6 +26,7 @@ contents:
       - onboarding
       - the-lab
       - the-second-boarding
+      - epilogue
   - section: "Handouts"
     pages:
       - the-read

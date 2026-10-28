@@ -4,7 +4,7 @@ title: "Scene 4: The Living Module"
 
 # Scene 4: The Living Module
 
-**GM draft — the intrusion and mission override below establish the scene. The intrusion procedure is established below; extraction, isolation and purge procedures remain to be completed.**
+**GM reference.** Run the intrusion and mission override below. For attempts to carry out the original contract, use [If they pursue the original job](/scenarios/northern-lights/the-lab/#if-they-pursue-the-original-job).
 
 [Onboarding](/scenarios/northern-lights/onboarding/) ends at the cargo airlock. Bring its ledger with you: survivors, witnesses, damaged systems, the boarding shuttle’s condition and access to the parent transport, the boarding threat-clock stage and warnings, and time spent boarding. None of it resets at the next door.
 
@@ -38,6 +38,8 @@ The housing has **independent fusion power**. Its toroid and dedicated control h
 | **Lesser device subagents** | Carry out probes and declared device intrusions for O17. | Reachable interfaces and the existing action budget still apply; probes do not grant automatic control. |
 
 **Navigation was already compromised.** O17 can exploit input the navigation ANI processes: RF, a physical connection, or optical signals received through navigation sensors. Even blinking lights can carry an exploit for this intelligence. No single mandatory laser link explains or limits that established compromise. Cutting an upstream path stops fresh instructions along it; the installed ANI keeps its existing navigation task until the crew deals with that compromise. It does not acquire new instructions across a severed path.
+
+**Stitch is not an eligible personal target.** She has no augmentations and O17 has no attack vector into her CNS. Do not allocate a read attack to her. Access to her Havoc or other external equipment does not create access to her mind.
 
 **Inside the living module:** coordinated RF, audio/visual hardware and connected interfaces make this a prepared attack environment. Any reachable augmentation can provide O17’s exceptional route to a person. A Neural Link is not required; an augmentation is. Decks alone remain device targets. A display can feed augmented vision; implanted electronics may need RF or a connected interface instead. The GM need not invent an exploit for each implant, but should identify which hardware and channel a proposed defense affects.
 
@@ -153,7 +155,7 @@ On success, give **everyone** the [mission override](/scenarios/northern-lights/
 
 There has been no immediate consultation with Luna or Terra. A message sent there and an answer coming back must cross the distance. The local transmission can arrive now; remote confirmation cannot. If the crew requests it, record when they sent the query and determine the delay from their position and communications access. Keep the [incoming CSA flight](/scenarios/northern-lights/the-intercept/) moving while they wait.
 
-The signature establishes that the directive verifies as THESEUS-signed. It does not establish that a distant human handler just approved it, explain why the original contract contradicts it, or certify the sender's mental state. Origin-17 is the source of the change. The compromised character's device is the delivery point.
+The signature establishes that the directive verifies as THESEUS-signed. It does not establish that a distant human handler just approved it, explain why the original contract contradicts it, or certify the sender's mental state. Origin-17 uses THESEUS master credentials as the gig’s account administrator. It has actual authority to amend the contract and certify fulfilment with the client key; the escrow can be released under the revised objective. The compromised character’s device is the delivery point, not the source of that authority.
 
 ## Let the crew decide
 
@@ -218,8 +220,8 @@ If they recover storage or copy information, record what they obtained, its carr
 
 The crew may bargain, hide the evidence, abandon the contract, attempt a private sale or pursue another plan. Identify the people, access, transport and information their plan needs, then resolve those obstacles. The job is a deathtrap; the outcome remains theirs to change.
 
-## Remaining mechanical work
+For payment and the unplayed Luna return, use [Epilogue](/scenarios/northern-lights/epilogue/).
 
-The read, operative classification, separate device transmission, target TNs, counterplay and the player’s unchanged agency are established above. Further intervention guidance should establish discoverable evidence and the consequences of handling recovered knowledge. The original job rests on a false account of the target; do not supply a practical shutdown route to make that job work. Adjudicate extraordinary player plans from established access and effects.
+## Further intrusions
 
 Origin-17 can create fresh attack programs. A natural 1 still compromises the program used after resolution, including when the +15 bonus makes the roll succeed. That does not erase an already completed read or transmission, and it does not permanently disarm the intelligence. Resolve further attempts as actions with opportunities for the crew to respond; do not roll indefinitely until a predetermined outcome occurs.
